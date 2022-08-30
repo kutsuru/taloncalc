@@ -12,6 +12,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   exports: [
@@ -28,6 +29,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatDialogModule,
     MatGridListModule,
     MatRadioModule,
+    MatMenuModule
   ],
 })
-export class MaterialModule {}
+export class MaterialModule { }

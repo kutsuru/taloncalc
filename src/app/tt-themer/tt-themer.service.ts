@@ -1,5 +1,6 @@
 import { DOCUMENT } from "@angular/common";
 import { Inject, Injectable, OnInit } from "@angular/core";
+import { BehaviorSubject, Observable } from "rxjs";
 
 interface TTTheme {
     name: string,
@@ -11,10 +12,9 @@ interface TTTheme {
 })
 export class TTThemerService implements OnInit {
     /* current theme */
-    private _activeTheme: TTTheme;
-    get activeTheme() {
-        return this._activeTheme;
-    }
+    private _activeThemeData: TTTheme;
+    private _activeTheme: BehaviorSubject<TTTheme>;
+    readonly activeTheme$: Observable<TTTheme>;
     /* define available themes */
     public readonly themes: TTTheme[] = [
         {
@@ -32,7 +32,9 @@ export class TTThemerService implements OnInit {
     ];
 
     constructor(@Inject(DOCUMENT) private doc: Document) {
-        this._activeTheme = this.themes[0];
+        this._activeThemeData = this.themes[0];
+        this._activeTheme = new BehaviorSubject(this._activeThemeData);
+        this.activeTheme$ = this._activeTheme.asObservable();
     }
     ngOnInit(): void {
         /* apply default theme */
@@ -41,8 +43,9 @@ export class TTThemerService implements OnInit {
 
     /* public functions */
     setTheme(newTheme: TTTheme) {
-        if (newTheme.name != this._activeTheme.name) {
-            this._activeTheme = newTheme;
+        if (newTheme.name != this._activeThemeData.name) {
+            this._activeThemeData = newTheme;
+            this._activeTheme.next(newTheme);
             this.applyTheme();
         }
     }
@@ -53,8 +56,8 @@ export class TTThemerService implements OnInit {
         if(themesToRemove.length > 0){
             this.doc.body.classList.remove(...themesToRemove);
         }
-        if(this.activeTheme.tag.length > 0){
-            this.doc.body.classList.add(this._activeTheme.tag);
+        if(this._activeThemeData.tag.length > 0){
+            this.doc.body.classList.add(this._activeThemeData.tag);
         }
     }
 }
