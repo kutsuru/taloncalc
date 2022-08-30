@@ -1,0 +1,885 @@
+{
+  "Stats": {
+    "STR": {
+      "STR+0": {
+        "gid": 0,
+        "duration": 0,
+        "dispelOnDeath": false,
+        "name": "None",
+        "bonus": ""
+      },
+      "STR+1": {
+        "gid": 12041,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Fried Grasshopper Legs",
+        "bonus": "( function (x) { x.scStrFood = 1; });"
+      },
+      "STR+2": {
+        "gid": 12042,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Seasoned Sticky Webfoot",
+        "bonus": "( function (x) { x.scStrFood = 2; });"
+      },
+      "STR+3": {
+        "gid": 12043,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Bomber Steak",
+        "bonus": "( function (x) { x.scStrFood = 3; });"
+      },
+      "STR+4": {
+        "gid": 12044,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Herb Marinade Beef",
+        "bonus": "( function (x) { x.scStrFood = 4; });"
+      },
+      "STR+5": {
+        "gid": 12045,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Lutie Lady's Pancake",
+        "bonus": "( function (x) { x.scStrFood = 5; });"
+      },
+      "STR+6": {
+        "gid": 12071,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Shiny Marinade Beef",
+        "bonus": "( function (x) { x.scStrFood = 6; });"
+      },
+      "STR+7": {
+        "gid": 12072,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Whole Roast",
+        "bonus": "( function (x) { x.scStrFood = 7; });"
+      },
+      "STR+8": {
+        "gid": 12073,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Bearfoot Special",
+        "bonus": "( function (x) { x.scStrFood = 8; });"
+      },
+      "STR+9": {
+        "gid": 12074,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Tendon Satay",
+        "bonus": "( function (x) { x.scStrFood = 9; });"
+      },
+      "STR+10": {
+        "gid": 12075,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Steamed Tongue",
+        "bonus": "( function (x) { x.scStrFood = 10; });"
+      }
+    },
+    "AGI": {
+      "AGI+0": {
+        "gid": 0,
+        "duration": 0,
+        "dispelOnDeath": false,
+        "name": "None",
+        "bonus": ""
+      },
+      "AGI+1": {
+        "gid": 12056,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Frog Egg Squid Ink Soup",
+        "bonus": "( function (x) { x.scAgiFood = 1; });"
+      },
+      "AGI+2": {
+        "gid": 12057,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Lutie Cold Noodle",
+        "bonus": "( function (x) { x.scAgiFood = 2; });"
+      },
+      "AGI+3": {
+        "gid": 12058,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Tentacle Cheese Gratin",
+        "bonus": "( function (x) { x.scAgiFood = 3; });"
+      },
+      "AGI+4": {
+        "gid": 12059,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Herb Marinade Beef",
+        "bonus": "( function (x) { x.scAgiFood = 4; });"
+      },
+      "AGI+5": {
+        "gid": 12060,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Steamed Bat Wing in Pumpkin",
+        "bonus": "( function (x) { x.scAgiFood = 5; });"
+      },
+      "AGI+6": {
+        "gid": 12086,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Chile Shrimp Gratin",
+        "bonus": "( function (x) { x.scAgiFood = 6; });"
+      },
+      "AGI+7": {
+        "gid": 12087,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Steamed Alligator with Vegetable",
+        "bonus": "( function (x) { x.scAgiFood = 7; });"
+      },
+      "AGI+8": {
+        "gid": 12088,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Incredibly Spicy Curry",
+        "bonus": "( function (x) { x.scAgiFood = 8; });"
+      },
+      "AGI+9": {
+        "gid": 12089,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Special Meat Stew",
+        "bonus": "( function (x) { x.scAgiFood = 9; });"
+      },
+      "AGI+10": {
+        "gid": 12050,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Steamed Desert Scorpions",
+        "bonus": "( function (x) { x.scAgiFood = 10; });"
+      }
+    },
+    "VIT": {
+      "VIT+0": {
+        "gid": 0,
+        "duration": 0,
+        "dispelOnDeath": false,
+        "name": "None",
+        "bonus": ""
+      },
+      "VIT+1": {
+        "gid": 12051,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Steamed Crab Nippers",
+        "bonus": "( function (x) { x.scVitFood = 1; });"
+      },
+      "VIT+2": {
+        "gid": 12052,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Assorted Seafood",
+        "bonus": "( function (x) { x.scVitFood = 2; });"
+      },
+      "VIT+3": {
+        "gid": 12053,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Clam Soup",
+        "bonus": "( function (x) { x.scVitFood = 3; });"
+      },
+      "VIT+4": {
+        "gid": 12054,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Seasoned Jellyfish",
+        "bonus": "( function (x) { x.scVitFood = 4; });"
+      },
+      "VIT+5": {
+        "gid": 12055,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Spicy Fried Bao",
+        "bonus": "( function (x) { x.scVitFood = 5; });"
+      },
+      "VIT+6": {
+        "gid": 12081,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Awfully Bitter Bracer",
+        "bonus": "( function (x) { x.scVitFood = 6; });"
+      },
+      "VIT+7": {
+        "gid": 12082,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Sumptuous Feast",
+        "bonus": "( function (x) { x.scVitFood = 7; });"
+      },
+      "VIT+8": {
+        "gid": 12083,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Giant Burito",
+        "bonus": "( function (x) { x.scVitFood = 8; });"
+      },
+      "VIT+9": {
+        "gid": 12084,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Ascending Dragon Soup",
+        "bonus": "( function (x) { x.scVitFood = 9; });"
+      },
+      "VIT+10": {
+        "gid": 12085,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Immortal Stew",
+        "bonus": "( function (x) { x.scVitFood = 10; });"
+      }
+    },
+    "INT": {
+      "INT+0": {
+        "gid": 0,
+        "duration": 0,
+        "dispelOnDeath": false,
+        "name": "None",
+        "bonus": ""
+      },
+      "INT+1": {
+        "gid": 12046,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Grape Juice Herbal Tea",
+        "bonus": "( function (x) { x.scIntFood = 1; });"
+      },
+      "INT+2": {
+        "gid": 12047,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Autumn Red Tea",
+        "bonus": "( function (x) { x.scIntFood = 2; });"
+      },
+      "INT+3": {
+        "gid": 12048,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Honey Herbal Tea",
+        "bonus": "( function (x) { x.scIntFood = 3; });"
+      },
+      "INT+4": {
+        "gid": 12049,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Morocc Fruit Wine",
+        "bonus": "( function (x) { x.scIntFood = 4; });"
+      },
+      "INT+5": {
+        "gid": 12050,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Mastela Fruit Wine",
+        "bonus": "( function (x) { x.scIntFood = 5; });"
+      },
+      "INT+6": {
+        "gid": 12076,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Awfully Bitter Bracer",
+        "bonus": "( function (x) { x.scIntFood = 6; });"
+      },
+      "INT+7": {
+        "gid": 12077,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Special Royal Jelly Herbal Tea",
+        "bonus": "( function (x) { x.scIntFood = 7; });"
+      },
+      "INT+8": {
+        "gid": 12078,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Royal Family Tea",
+        "bonus": "( function (x) { x.scIntFood = 8; });"
+      },
+      "INT+9": {
+        "gid": 12079,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Tristan XII",
+        "bonus": "( function (x) { x.scIntFood = 9; });"
+      },
+      "INT+10": {
+        "gid": 12080,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Dragon Breath Cocktail",
+        "bonus": "( function (x) { x.scIntFood = 10; });"
+      }
+    },
+    "DEX": {
+      "DEX+0": {
+        "gid": 0,
+        "duration": 0,
+        "dispelOnDeath": false,
+        "name": "None",
+        "bonus": ""
+      },
+      "DEX+1": {
+        "gid": 12061,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Honey Grape Juice",
+        "bonus": "( function (x) { x.scDexFood = 1; });"
+      },
+      "DEX+2": {
+        "gid": 12062,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Chocolate Mousse Cake",
+        "bonus": "( function (x) { x.scDexFood = 2; });"
+      },
+      "DEX+3": {
+        "gid": 12063,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Fruit Mix",
+        "bonus": "( function (x) { x.scDexFood = 3; });"
+      },
+      "DEX+4": {
+        "gid": 12064,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Cream Sandwich",
+        "bonus": "( function (x) { x.scDexFood = 4; });"
+      },
+      "DEX+5": {
+        "gid": 12065,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Green Salad",
+        "bonus": "( function (x) { x.scDexFood = 5; });"
+      },
+      "DEX+6": {
+        "gid": 12091,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Peach Cake",
+        "bonus": "( function (x) { x.scDexFood = 6; });"
+      },
+      "DEX+7": {
+        "gid": 12092,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Soul Haunted Bread",
+        "bonus": "( function (x) { x.scDexFood = 7; });"
+      },
+      "DEX+8": {
+        "gid": 12093,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Special Toast",
+        "bonus": "( function (x) { x.scDexFood = 8; });"
+      },
+      "DEX+9": {
+        "gid": 12094,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Heavenly Fruit Juice",
+        "bonus": "( function (x) { x.scDexFood = 9; });"
+      },
+      "DEX+10": {
+        "gid": 12095,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Hwergelmir's Tonic",
+        "bonus": "( function (x) { x.scDexFood = 10; });"
+      }
+    },
+    "LUK": {
+      "LUK+0": {
+        "gid": 0,
+        "duration": 0,
+        "dispelOnDeath": false,
+        "name": "None",
+        "bonus": ""
+      },
+      "LUK+1": {
+        "gid": 12066,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Fried Monkey Tails",
+        "bonus": "( function (x) { x.scLukFood = 1; });"
+      },
+      "LUK+2": {
+        "gid": 12067,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Mixed Juice",
+        "bonus": "( function (x) { x.scLukFood = 2; });"
+      },
+      "LUK+3": {
+        "gid": 12068,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Fried Sweet Potato",
+        "bonus": "( function (x) { x.scLukFood = 3; });"
+      },
+      "LUK+4": {
+        "gid": 12069,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Steamed Ancient Lips",
+        "bonus": "( function (x) { x.scLukFood = 4; });"
+      },
+      "LUK+5": {
+        "gid": 12070,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Fried Scorpion Tails",
+        "bonus": "( function (x) { x.scLukFood = 5; });"
+      },
+      "LUK+6": {
+        "gid": 12096,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Lucky Soup",
+        "bonus": "( function (x) { x.scLukFood = 6; });"
+      },
+      "LUK+7": {
+        "gid": 12097,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Assorted Shish Kebob",
+        "bonus": "( function (x) { x.scLukFood = 7; });"
+      },
+      "LUK+8": {
+        "gid": 12098,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Strawberry Flavored Rice Ball",
+        "bonus": "( function (x) { x.scLukFood = 8; });"
+      },
+      "LUK+9": {
+        "gid": 12099,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Blood Flavored Soda",
+        "bonus": "( function (x) { x.scLukFood = 9; });"
+      },
+      "LUK+10": {
+        "gid": 12100,
+        "duration": 120000,
+        "dispelOnDeath": false,
+        "name": "Cooked Nine Tail's Tails",
+        "bonus": "( function (x) { x.scLukFood = 10; });"
+      }
+    }
+  },
+  "New World": {
+    "Rune Strawberry Cake": {
+      "gid": 12319,
+      "duration": 600000,
+      "dispelOnDeath": false,
+      "description": "ATK + 5, MATK + 5",
+      "bonus": "( function (x) { x.scAtkPotion = 5; x.scMatkPotion = 5 });"
+    },
+    "Schwartzwald Pine Jubilee": {
+      "gid": 12320,
+      "duration": 600000,
+      "dispelOnDeath": false,
+      "description": "HIT + 10, Perfect Dodge + 20",
+      "bonus": "( function (x) { x.scHitFood = 10; x.scPdFood = 20 });"
+    },
+    "Arunafeltz Desert Sandwich": {
+      "gid": 12321,
+      "duration": 600000,
+      "dispelOnDeath": false,
+      "description": "CRIT + 7",
+      "bonus": "( function (x) { x.scIncCrit = 7; });"
+    },
+    "Manuk's Sturdiness": {
+      "gid": 12342,
+      "duration": 600000,
+      "dispelOnDeath": true,
+      "description": "Increases physical damage on Manuk maps by 10%",
+      "bonus": "( function (x) { x.addRace2.manuk += 10; });"
+    },
+    "Manuk's Faith": {
+      "gid": 12348,
+      "duration": 600000,
+      "dispelOnDeath": true,
+      "description": "Increases magical damage on Manuk maps by 10%",
+      "bonus": "( function (x) { x.magicAddRace2.manuk += 10; });"
+    },
+    "Manuk's Will": {
+      "gid": 12343,
+      "duration": 600000,
+      "dispelOnDeath": true,
+      "description": "Decreases damage on Manuk maps by 10%",
+      "bonus": "( function (x) { x.subRace2.manuk += 10; });"
+    },
+    "Pinguicula's Fruit Jam": {
+      "gid": 12344,
+      "duration": 600000,
+      "dispelOnDeath": true,
+      "description": "Increases physical damage on Splendide maps by 10%",
+      "bonus": "( function (x) { x.addRace2.splendide += 10; });"
+    },
+    "Cornus' Tear": {
+      "gid": 12349,
+      "duration": 600000,
+      "dispelOnDeath": true,
+      "description": "Increases magical damage on Splendide maps by 10%",
+      "bonus": "( function (x) { x.magicAddRace2.splendide += 10; });"
+    },
+    "Luciola's Honey Jam": {
+      "gid": 12345,
+      "duration": 600000,
+      "dispelOnDeath": true,
+      "description": "Decreases damage on Splendide maps by 10%",
+      "bonus": "( function (x) { x.subRace2.splendide += 10; });"
+    }
+  },
+  "BG": {
+    "Military Ration B": {
+      "gid": 12272,
+      "duration": 600000,
+      "dispelOnDeath": false,
+      "description": "HIT + 33",
+      "bonus": "( function (x) { x.scHitFood = 33; });"
+    },
+    "Military Ration C": {
+      "gid": 12272,
+      "duration": 600000,
+      "dispelOnDeath": false,
+      "description": "FLEE + 33",
+      "bonus": "( function (x) { x.scFleeFood = 33; });"
+    },
+    "Tasty Pink Ration": {
+      "gid": 12269,
+      "duration": 600000,
+      "dispelOnDeath": false,
+      "description": "ATK + 15",
+      "bonus": "( function (x) { x.scAtkPotion = 15; });"
+    },
+    "Tasty White Ration": {
+      "gid": 12270,
+      "duration": 600000,
+      "dispelOnDeath": false,
+      "description": "MATK + 15",
+      "bonus": "( function (x) { x.scMatkPotion = 15; });"
+    }
+  },
+  "Summer Cocktails": {
+    "Venatu's Beep": {
+      "gid": 8956,
+      "duration": 1800000,
+      "dispelOnDeath": true,
+      "description": "Increase ATK by 5%",
+      "bonus": "( function (x) { x.scIncAtkRate = 5; });"
+    },
+    "Old Dracula's Mix": {
+      "gid": 8816,
+      "duration": 1800000,
+      "dispelOnDeath": true,
+      "description": "Job EXP + 15%",
+      "bonus": "( function (x) { x.scJexpBoost += 15; });"
+    },
+    "Spammers Heaven": {
+      "gid": 8951,
+      "duration": 2700000,
+      "dispelOnDeath": true,
+      "description": "ASPD + 10%",
+      "bonus": "( function (x) { x.scIncAspdRate = 10; });"
+    },
+    "Myst Case's Surprise": {
+      "gid": 8957,
+      "duration": 1800000,
+      "dispelOnDeath": true,
+      "description": "CRIT + 30",
+      "bonus": "( function (x) { x.scIncMatkRate = 5; });"
+    },
+    "Seductive Bathory": {
+      "gid": 8952,
+      "duration": 2700000,
+      "dispelOnDeath": true,
+      "description": "Reduce Cast Time by 10%",
+      "bonus": "( function (x) { x.scCastRate = 10; });"
+    },
+    "Sting's Slap": {
+      "gid": 8953,
+      "duration": 1800000,
+      "dispelOnDeath": true,
+      "description": "10% resistance to Physical Attacks for 30 minutes",
+      "bonus": "( function (x) { x.scDefRate = 10; });"
+    },
+    "Blossoming Geographer": {
+      "gid": 8954,
+      "duration": 1800000,
+      "dispelOnDeath": true,
+      "description": "10% resistance to Magic Attacks",
+      "bonus": "( function (x) { x.scMdefRate = 10; });"
+    },
+    "Drip of Yggdrasil": {
+      "gid": 8955,
+      "duration": 1800000,
+      "dispelOnDeath": true,
+      "description": "Base EXP + 10%",
+      "bonus": "( function (x) { x.scExpBoost += 10; });"
+    },
+    "Moscow Headless Mule": {
+      "gid": 21077,
+      "duration": 600000,
+      "dispelOnDeath": true,
+      "description": "FLEE + 30 and you regenerate 3% of your Maximum HP every 10 seconds. Can not be used while in Frenzy",
+      "bonus": "( function (x) { x.flee += 30; });"
+    },
+    "Bobo's Boba": {
+      "gid": 21790,
+      "duration": 300000,
+      "dispelOnDeath": true,
+      "description": "Ignores 10% DEF and MDEF on all monsters",
+      "bonus": "( function (x) { x.ignoreDefClass.all += 10; x.ignoreMdefClass.all += 10; });"
+    },
+    "Wolfchev's Nightcap": {
+      "gid": 21791,
+      "duration": 900000,
+      "dispelOnDeath": true,
+      "description": "Increases physical and magical damage against Biolab monsters by 15%",
+      "bonus": "( function (x) { x.addRace2.biolab += 15; x.magicAddRace2.biolab += 15 });"
+    },
+    "Chepet's Match": {
+      "gid": 14536,
+      "duration": 900000,
+      "dispelOnDeath": true,
+      "description": "Increases heal power of [Heal], [Sanctuary] and [Potion Pitcher] by 10% ",
+      "bonus": "( function (x) { x.healPower.heal += 10; x.healPower.sanctuary += 10; x.healPower.potionPitcher += 10; });"
+    },
+    "Dullahan's Ale": {
+      "gid": 21793,
+      "duration": 1200000,
+      "dispelOnDeath": true,
+      "description": "Perfect Dodge + 10",
+      "bonus": "( function (x) { x.perfectDodge += 10; });"
+    },
+    "Sippin' Galapago": {
+      "gid": 21794,
+      "duration": 900000,
+      "dispelOnDeath": true,
+      "description": "Increases received heal from any skills by 10%",
+      "bonus": "( function (x) { x.healPower2.all += 10; });"
+    },
+    "Sleeper's Dream": {
+      "gid": 21795,
+      "duration": 900000,
+      "dispelOnDeath": true,
+      "description": "MaxHP + 5%",
+      "bonus": "( function (x) { x.maxHpRate += 5; });"
+    },
+    "Mobster's Paradise": {
+      "gid": 21796,
+      "duration": 900000,
+      "dispelOnDeath": true,
+      "description": "MaxSP + 5%",
+      "bonus": "( function (x) { x.maxSpRate += 5; });"
+    }
+  },
+  "Misc": {
+    "Abrasive": {
+      "gid": 14536,
+      "duration": 300000,
+      "dispelOnDeath": false,
+      "description": "CRIT + 30",
+      "bonus": "( function (x) { x.scIncCrit = 30; });"
+    },
+    "Buche de Noël": {
+      "gid": 12354,
+      "duration": 600000,
+      "dispelOnDeath": false,
+      "description": "HIT + 3, CRIT + 7, natural HP/SP regeneration + 3%",
+      "bonus": "( function (x) { x.hit += 3; x.crit += 7; x.hpRecoveryRate += 3, x.spRecoveryRate += 3});"
+    },
+    "Guarana Candy": {
+      "gid": 12414,
+      "duration": 1800000,
+      "dispelOnDeath": false,
+      "description": "ASPD + 10%, VIT + 5, fast movement",
+      "bonus": "( function (x) { x.scAspdPotion = Math.max(100, x.scAspdPotion); x.scIncreaseAgi = Math.max(5, x.scIncreaseAgi)});"
+    },
+    "Greater Agimat of Ancient Spirit": {
+      "gid": 12775,
+      "duration": 1200000,
+      "dispelOnDeath": false,
+      "description": "Increases physical and magical damage inflicted on Demon monsters by 10%",
+      "bonus": "( function (x) { x.magicAddRace.demon += 10; x.addRace.demon += 10 });"
+    },
+    "Box of Resentment": {
+      "gid": 12030,
+      "duration": 60000,
+      "dispelOnDeath": false,
+      "description": "ATK + 20",
+      "bonus": "( function (x) { x.scAtkPotion = 20; });"
+    },
+    "Box of Drowsiness": {
+      "gid": 12031,
+      "duration": 60000,
+      "dispelOnDeath": false,
+      "description": "MATK + 20",
+      "bonus": "( function (x) { x.scMatkPotion = 20; });"
+    },
+    "Sesame Pastry": {
+      "gid": 12266,
+      "duration": 180000,
+      "dispelOnDeath": false,
+      "description": "HIT + 30",
+      "bonus": "( function (x) { x.scHitFood = 30; });"
+    },
+    "Honey Pastry": {
+      "gid": 12267,
+      "duration": 180000,
+      "dispelOnDeath": false,
+      "description": "FLEE + 30",
+      "bonus": "( function (x) { x.scFleeFood = 30; });"
+    },
+    "Rainbow Cake": {
+      "gid": 12268,
+      "duration": 60000,
+      "dispelOnDeath": false,
+      "description": "ATK + 10, MATK + 10",
+      "bonus": "( function (x) { x.scAtkPotion = 10; x.scMatkPotion = 10 });"
+    }
+  },
+  "Resistance": {
+    "Coldproof Potion": {
+      "gid": 12119,
+      "duration": 1200000,
+      "dispelOnDeath": false,
+      "description": "Water resistance + 20%, Wind resistance - 15%",
+      "bonus": "( function (x) { x.subElement.water += 20; x.subElement.wind -= 15; });"
+    },
+    "Earthproof Potion": {
+      "gid": 12120,
+      "duration": 1200000,
+      "dispelOnDeath": false,
+      "description": "Earth resistance + 20%, Fire resistance - 15%",
+      "bonus": "( function (x) { x.subElement.earth += 20; x.subElement.fire -= 15; });"
+    },
+    "Fireproof Potion": {
+      "gid": 12118,
+      "duration": 1200000,
+      "dispelOnDeath": false,
+      "description": "Fire resistance + 20%, Water resistance - 15%",
+      "bonus": "( function (x) { x.subElement.fire += 20; x.subElement.water -= 15; });"
+    },
+    "Thunderproof Potion": {
+      "gid": 12121,
+      "duration": 1200000,
+      "dispelOnDeath": false,
+      "description": "Wind resistance + 20%, Earth resistance - 15%",
+      "bonus": "( function (x) { x.subElement.wind += 20; x.subElement.earth -= 15; });"
+    }
+  },
+  "Eclage": {
+    "Snow Flip": {
+      "gid": 12812,
+      "duration": 1200000,
+      "dispelOnDeath": false,
+      "description": "Increases all damage against and experience from [Water] property monsters by 5%",
+      "bonus": "( function (x) { x.addElement.water += 5; x.magicAddElement.water += 5; x.expAddElement.water += 5; });"
+    },
+    "Peony Mommy": {
+      "gid": 12813,
+      "duration": 1200000,
+      "dispelOnDeath": false,
+      "description": "Increases all damage against and experience from [Fire] property monsters by 5%",
+      "bonus": "( function (x) { x.addElement.fire += 5; x.magicAddElement.fire += 5; x.expAddElement.fire += 5; });"
+    },
+    "Slapping Herb": {
+      "gid": 12814,
+      "duration": 1200000,
+      "dispelOnDeath": false,
+      "description": "Increases all damage against and experience from [Earth] property monsters by 5%",
+      "bonus": "( function (x) { x.addElement.earth += 5; x.magicAddElement.earth += 5; x.expAddElement.earth += 5; });"
+    },
+    "Yggdrasil Dust": {
+      "gid": 12815,
+      "duration": 1200000,
+      "dispelOnDeath": false,
+      "description": "Increases all damage against and experience from [Wind] property monsters by 5%",
+      "bonus": "( function (x) { x.addElement.wind += 5; x.magicAddElement.wind += 5; x.expAddElement.wind += 5; });"
+    }
+  },
+  "Eden": {
+    "Rough Energy Crystal": {
+      "gid": 6623,
+      "duration": 7200000,
+      "dispelOnDeath": false,
+      "description": "ATK + 3, MATK + 3",
+      "bonus": "( function (x) { x.scAtkPotion = 3; x.scMatkPotion = 3 });"
+    },
+    "Purified Energy Crystal": {
+      "gid": 6624,
+      "duration": 7200000,
+      "dispelOnDeath": false,
+      "description": "ATK + 6, MATK + 6",
+      "bonus": "( function (x) { x.scAtkPotion = 6; x.scMatkPotion = 6 });"
+    },
+    "High Energy Crystal": {
+      "gid": 6625,
+      "duration": 7200000,
+      "dispelOnDeath": false,
+      "description": "ATK + 6, MATK + 6",
+      "bonus": "( function (x) { x.scAtkPotion = 6; x.scMatkPotion = 6 });"
+    }
+  },
+  "Aspd Potion": {
+    "None": {
+      "gid": 0,
+      "job": "0xfffffff",
+      "duration": 1800000,
+      "dispelOnDeath": false,
+      "description": "No ASPD Potion",
+      "bonus": ""
+    },
+    "Concentration Potion": {
+      "gid": 655,
+      "job": "0xfffffff",
+      "duration": 1800000,
+      "dispelOnDeath": false,
+      "description": "ASPD Potion #0",
+      "bonus": "( function (x) { x.scAspdPotion = Math.max(100, x.scAspdPotion)});"
+    },
+    "Awakening Potion": {
+      "gid": 656,
+      "job": "0xfe1ffff",
+      "duration": 1800000,
+      "dispelOnDeath": false,
+      "description": "ASPD Potion #1",
+      "bonus": "( function (x) { x.scAspdPotion = Math.max(150, x.scAspdPotion)});"
+    },
+    "Berserk Potion": {
+      "gid": 657,
+      "job": "0x9c03f73",
+      "duration": 1800000,
+      "dispelOnDeath": false,
+      "description": "ASPD Potion #2",
+      "bonus": "( function (x) { x.scAspdPotion = Math.max(200, x.scAspdPotion)});"
+    },
+    "Berserk Potion (Potion Pitcher)": {
+      "gid": 657,
+      "job": "0xfffffff",
+      "duration": 900000,
+      "dispelOnDeath": false,
+      "description": "ASPD Potion #2",
+      "bonus": "( function (x) { x.scAspdPotion = Math.max(200, x.scAspdPotion)});"
+    },
+    "Poison Bottle": {
+      "gid": 656,
+      "job": "0x4000002",
+      "duration": 60000,
+      "dispelOnDeath": false,
+      "description": "ASPD Potion #3",
+      "bonus": "( function (x) { x.scAspdPotion = Math.max(250, x.scAspdPotion)});"
+    }
+  }
+}

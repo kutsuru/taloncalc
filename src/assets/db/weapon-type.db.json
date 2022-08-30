@@ -1,0 +1,215 @@
+{
+  "Unarmed": {
+    "id": 0,
+    "sizeModifier": {
+      "small": 1,
+      "medium": 1,
+      "large": 1
+    },
+    "isTwoHanded": false
+  },
+  "Dagger": {
+    "id": 1,
+    "sizeModifier": {
+      "small": 1,
+      "medium": 0.75,
+      "large": 0.5
+    },
+    "isTwoHanded": false
+  },
+  "Sword": {
+    "id": 2,
+    "sizeModifier": {
+      "small": 0.75,
+      "medium": 1,
+      "large": 0.75
+    },
+    "isTwoHanded": false
+  },
+  "Two-handed Sword": {
+    "id": 3,
+    "sizeModifier": {
+      "small": 0.75,
+      "medium": 0.75,
+      "large": 1
+    },
+    "isTwoHanded": true
+  },
+  "Spear": {
+    "id": 4,
+    "sizeModifier": {
+      "small": 0.75,
+      "medium": 0.75,
+      "large": 1
+    },
+    "isTwoHanded": false
+  },
+  "Two-handed Spear": {
+    "id": 5,
+    "sizeModifier": {
+      "small": 0.75,
+      "medium": 0.75,
+      "large": 1
+    },
+    "isTwoHanded": true
+  },
+  "Axe": {
+    "id": 6,
+    "sizeModifier": {
+      "small": 0.5,
+      "medium": 0.75,
+      "large": 1
+    },
+    "isTwoHanded": false
+  },
+  "Two-handed Axe": {
+    "id": 7,
+    "sizeModifier": {
+      "small": 0.5,
+      "medium": 0.75,
+      "large": 1
+    },
+    "isTwoHanded": true
+  },
+  "Mace": {
+    "id": 8,
+    "sizeModifier": {
+      "small": 0.75,
+      "medium": 1,
+      "large": 1
+    },
+    "isTwoHanded": false
+  },
+  "Staff": {
+    "id": 9,
+    "sizeModifier": {
+      "small": 1,
+      "medium": 1,
+      "large": 1
+    },
+    "isTwoHanded": false
+  },
+  "Bow": {
+    "id": 10,
+    "sizeModifier": {
+      "small": 1,
+      "medium": 1,
+      "large": 0.75
+    },
+    "ammoType": "arrow",
+    "isTwoHanded": true
+  },
+  "Katar": {
+    "id": 11,
+    "sizeModifier": {
+      "small": 0.75,
+      "medium": 1,
+      "large": 0.75
+    },
+    "isTwoHanded": true
+  },
+  "Book": {
+    "id": 12,
+    "sizeModifier": {
+      "small": 1,
+      "medium": 1,
+      "large": 0.5
+    },
+    "isTwoHanded": false
+  },
+  "Knuckles": {
+    "id": 13,
+    "sizeModifier": {
+      "small": 1,
+      "medium": 0.75,
+      "large": 0.5
+    },
+    "isTwoHanded": false
+  },
+  "Instrument": {
+    "id": 14,
+    "sizeModifier": {
+      "small": 0.75,
+      "medium": 1,
+      "large": 0.75
+    },
+    "isTwoHanded": false
+  },
+  "Whip": {
+    "id": 15,
+    "sizeModifier": {
+      "small": 0.75,
+      "medium": 1,
+      "large": 0.5
+    },
+    "isTwoHanded": false
+  },
+  "Huuma Shuriken": {
+    "id": 16,
+    "sizeModifier": {
+      "small": 0.75,
+      "medium": 1,
+      "large": 0.5
+    },
+    "isTwoHanded": true
+  },
+  "Revolver": {
+    "id": 17,
+    "sizeModifier": {
+      "small": 1,
+      "medium": 1,
+      "large": 1
+    },
+    "ammoType": "bullet",
+    "isTwoHanded": true
+  },
+  "Rifle": {
+    "id": 18,
+    "sizeModifier": {
+      "small": 1,
+      "medium": 1,
+      "large": 1
+    },
+    "ammoType": "bullet",
+    "isTwoHanded": true
+  },
+  "Shotgun": {
+    "id": 19,
+    "sizeModifier": {
+      "small": 1,
+      "medium": 1,
+      "large": 1
+    },
+    "ammoType": "bullet",
+    "isTwoHanded": true
+  },
+  "Gatling Gun": {
+    "id": 20,
+    "sizeModifier": {
+      "small": 1,
+      "medium": 1,
+      "large": 1
+    },
+    "ammoType": "bullet",
+    "isTwoHanded": true
+  },
+  "Grenade Launcher": {
+    "id": 21,
+    "sizeModifier": {
+      "small": 1,
+      "medium": 1,
+      "large": 1
+    },
+    "ammoType": "grenade",
+    "isTwoHanded": true
+  },
+  "Two-Handed Staff": {
+    "id": 22,
+    "sizeModifier": {
+      "small": 1,
+      "medium": 1,
+      "large": 1
+    },
+    "isTwoHanded": true
+  }
+}

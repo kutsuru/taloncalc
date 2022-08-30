@@ -1,0 +1,236 @@
+{
+  "arrow": {
+    "Arrow": {
+      "attack": 25,
+      "element": "neutral"
+    },
+    "Silver Arrow": {
+      "attack": 30,
+      "element": "holy"
+    },
+    "Fire Arrow": {
+      "attack": 30,
+      "element": "fire"
+    },
+    "Iron Arrow": {
+      "attack": 30,
+      "element": "neutral"
+    },
+    "Stone Arrow": {
+      "attack": 30,
+      "element": "earth"
+    },
+    "Crystal Arrow": {
+      "attack": 30,
+      "element": "water"
+    },
+    "Wind Arrow": {
+      "attack": 30,
+      "element": "wind"
+    },
+    "Shadow Arrow": {
+      "attack": 30,
+      "element": "shadow"
+    },
+    "Immaterial Arrow": {
+      "attack": 30,
+      "element": "ghost"
+    },
+    "Rusty Arrow": {
+      "attack": 30,
+      "element": "poison"
+    },
+    "Steel Arrow": {
+      "attack": 40,
+      "element": "neutral"
+    },
+    "Oridecon Arrow": {
+      "attack": 50,
+      "element": "neutral"
+    },
+    "Arrow of Counter Evil": {
+      "attack": 50,
+      "element": "holy"
+    },
+    "Frozen Arrow": {
+      "attack": 1,
+      "element": "water",
+      "bonus": "(function (x) { x.add_effect.freeze += 20; });"
+    },
+    "Poison Arrow": {
+      "attack": 1,
+      "element": "poison",
+      "bonus": "(function (x) { x.add_effect.poison += 20; });"
+    },
+    "Sharp Arrow": {
+      "attack": 10,
+      "element": "neutral",
+      "bonus": "(function (x) { x.critical_long += 20; });"
+    },
+    "Holy Arrow": {
+      "attack": 50,
+      "element": "holy",
+      "bonus": "(function (x) { x.add_race_demon += 5; });"
+    },
+    "Hunting Arrow": {
+      "attack": 35,
+      "element": "neutral"
+    },
+    "Elven Arrow": {
+      "attack": 45,
+      "element": "neutral"
+    },
+    "Curse Arrow": {
+      "attack": 1,
+      "element": "neutral",
+      "bonus": "(function (x) { x.add_effect.curse += 10; });"
+    },
+    "Flash Arrow": {
+      "attack": 1,
+      "element": "neutral",
+      "bonus": "(function (x) { x.add_effect.blind += 10; });"
+    },
+    "Mute Arrow": {
+      "attack": 1,
+      "element": "neutral",
+      "bonus": "(function (x) { x.add_effect.silence += 10; });"
+    },
+    "Sleep Arrow": {
+      "attack": 1,
+      "element": "neutral",
+      "bonus": "(function (x) { x.add_effect.sleep += 10; });"
+    },
+    "Stun Arrow": {
+      "attack": 1,
+      "element": "neutral",
+      "bonus": "(function (x) { x.add_effect.stun += 10; });"
+    }
+  },
+  "bullet": {
+    "Bullet": {
+      "attack": 10,
+      "element": "neutral"
+    },
+    "Silver Bullet": {
+      "attack": 15,
+      "element": "holy"
+    },
+    "Bloody Bullet": {
+      "attack": 10,
+      "element": "neutral",
+      "bonus": "(function (x) { x.add_effect.bleeding += 1; });"
+    },
+    "Fire Bullet": {
+      "attack": 15,
+      "element": "fire"
+    },
+    "Wind Bullet": {
+      "attack": 15,
+      "element": "wind"
+    },
+    "Earth Bullet": {
+      "attack": 15,
+      "element": "earth"
+    },
+    "Water Bullet": {
+      "attack": 15,
+      "element": "water"
+    },
+    "Shadow Bullet": {
+      "attack": 15,
+      "element": "shadow"
+    },
+    "Immaterial Bullet": {
+      "attack": 15,
+      "element": "ghost"
+    },
+    "Gong Bug": {
+      "attack": 50,
+      "element": "neutral",
+      "bonus": "(function (x) { x.add_effect.stun += 10; });"
+    }
+  },
+  "grenade": {
+    "Flare Sphere": {
+      "attack": 50,
+      "element": "fire"
+    },
+    "Freezing Sphere": {
+      "attack": 50,
+      "element": "water"
+    },
+    "Lightning Sphere": {
+      "attack": 50,
+      "element": "wind"
+    },
+    "Blind Sphere": {
+      "attack": 50,
+      "element": "shadow",
+      "bonus": "(function (x) { x.add_effect.blind += 5; });"
+    },
+    "Poison Sphere": {
+      "attack": 50,
+      "element": "poison",
+      "bonus": "(function (x) { x.add_effect.poison += 5; });"
+    }
+  },
+  "shuriken": {
+    "Shuriken": {
+      "attack": 10,
+      "element": "neutral"
+    },
+    "Raincloud Shuriken": {
+      "attack": 30,
+      "element": "neutral"
+    },
+    "Flash Shuriken": {
+      "attack": 45,
+      "element": "neutral"
+    },
+    "Sharp Leaf Shuriken": {
+      "attack": 70,
+      "element": "neutral"
+    },
+    "Thorn Needle Shuriken": {
+      "attack": 100,
+      "element": "neutral"
+    },
+    "Starfish": {
+      "attack": 110,
+      "element": "neutral",
+      "bonus": "(function (x) { x.add_effect.stun += 10; });"
+    }
+  },
+  "kunai": {
+    "Heat Wave Kunai": {
+      "attack": 30,
+      "element": "fire"
+    },
+    "Icicle Kunai": {
+      "attack": 30,
+      "element": "water"
+    },
+    "High Wind Kunai": {
+      "attack": 30,
+      "element": "wind"
+    },
+    "Black Earth Kunai": {
+      "attack": 30,
+      "element": "earth"
+    },
+    "Fell Poison Kunai": {
+      "attack": 30,
+      "element": "poison",
+      "bonus": "(function (x) { x.add_effect.poison += 5; });"
+    },
+    "Dried Fish": {
+      "attack": 50,
+      "element": "neutral"
+    },
+    "Flying Fish": {
+      "attack": 50,
+      "element": "neutral",
+      "bonus": "(function (x) { x.add_effect.stun += 10; });"
+    }
+  }
+}

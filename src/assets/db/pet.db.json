@@ -1,0 +1,849 @@
+{
+  "Alice": {
+    "id": 1,
+    "desc": "MDEF+1, Demi-Human Resistance +1%",
+    "bonus": "(function (x,y) {$n$tx.mdef += 1;$n$tx.add_element.shadow += 1; });"
+  },
+  "Isis": {
+    "id": 2,
+    "desc": "ATK +1%, MATK -1%",
+    "bonus": "(function (x,y) {$n$tx.add_class.all += 1;$n$tx.matk_rate += -1; });"
+  },
+  "Incubus": {
+    "id": 3,
+    "desc": "MSP +5%",
+    "bonus": "(function (x,y) {$n$tx.max_sp_rate += 5; });"
+  },
+  "Fire Imp": {
+    "id": 4,
+    "desc": "Fire Resistance +2%, Physical Damage against Fire Element +2%",
+    "bonus": "(function (x,y) {$n$tx.sub_element.fire += 2;$n$tx.sub_race.plant += 2; });"
+  },
+  "Whisper": {
+    "id": 5,
+    "desc": "FLEE +7,DEF -3",
+    "bonus": "(function (x,y) {$n$tx.flee += 7;$n$tx.def += -3; });"
+  },
+  "Orc Warrior": {
+    "id": 6,
+    "desc": "ATK +10,DEF -3",
+    "bonus": "(function (x,y) {$n$tx.atk += 10;$n$tx.def += -3; });"
+  },
+  "Shinobi": {
+    "id": 7,
+    "desc": "AGI +2",
+    "bonus": "(function (x,y) {$n$tx.agi += 2; });"
+  },
+  "Christmas Goblin": {
+    "id": 8,
+    "desc": "MHP +30, Water Resistance +5%",
+    "bonus": "(function (x,y) {$n$tx.max_hp += 30;$n$tx.sub_element.water += 10; });"
+  },
+  "Golem": {
+    "id": 9,
+    "desc": "MHP +100, FLEE -5",
+    "bonus": "(function (x,y) {$n$tx.max_hp += 100;$n$tx.flee += -5; });"
+  },
+  "Baby Desert Wolf": {
+    "id": 10,
+    "desc": "INT +1, MSP +20",
+    "bonus": "(function (x,y) {$n$tx.int += 1;$n$tx.max_sp += 20; });"
+  },
+  "Goblin Leader": {
+    "id": 11,
+    "desc": "Physical Damage against Demi-Human Race +3%",
+    "bonus": "(function (x,y) {$n$tx.add_race.demi-human += 3; });"
+  },
+  "Succubus": {
+    "id": 12,
+    "desc": "Add a 5% chance of gaining 5% of physical damage inflicted on an enemy as HP",
+    "bonus": "(function (x,y) {$n$tx.hp_drain_rate.chance += 5;$n$tx.hp_drain_rate.value += 5; });"
+  },
+  "Savage Babe": {
+    "id": 13,
+    "desc": "VIT +1, MHP +50",
+    "bonus": "(function (x,y) {$n$tx.vit += 1;$n$tx.max_hp += 50; });"
+  },
+  "Zherlthsh": {
+    "id": 14,
+    "desc": "MATK +2%, Magical Damage against Demi-Human +2%",
+    "bonus": "(function (x,y) {$n$tx.matk_rate += 2;$n$tx.magic_add_race.demi-human += 2; });"
+  },
+  "Steel Chonchon": {
+    "id": 15,
+    "desc": "FLEE +6, AGI -1",
+    "bonus": "(function (x,y) {$n$tx.flee += 6;$n$tx.agi += -1; });"
+  },
+  "Spore": {
+    "id": 16,
+    "desc": "HIT +5 ,ATK -2",
+    "bonus": "(function (x,y) {$n$tx.hit += 5;$n$tx.atk += -2; });"
+  },
+  "Smokie": {
+    "id": 17,
+    "desc": "AGI +1, Perfect Dodge +1",
+    "bonus": "(function (x,y) {$n$tx.agi += 1;$n$tx.perfect_dodge += 1; });"
+  },
+  "Sohee": {
+    "id": 18,
+    "desc": "STR +1, DEX +1",
+    "bonus": "(function (x,y) {$n$tx.str += 1;$n$tx.dex += 1; });"
+  },
+  "Green-Maiden": {
+    "id": 19,
+    "desc": "DEF +1, Demi-Human Resistance +1%",
+    "bonus": "(function (x,y) {$n$tx.def += 1;$n$tx.add_element.shadow += 1; });"
+  },
+  "Chonchon": {
+    "id": 20,
+    "desc": "AGI +1, FLEE +2",
+    "bonus": "(function (x,y) {$n$tx.agi += 1;$n$tx.flee += 2; });"
+  },
+  "Deviruchi": {
+    "id": 21,
+    "desc": "ATK +1%, MATK +1%, MHP -3%, MSP -3%",
+    "bonus": "(function (x,y) {$n$tx.add_class.all += 1;$n$tx.matk_rate += 1;$n$tx.max_hp_rate += -3;$n$tx.max_sp_rate += -3; });"
+  },
+  "Dullahan": {
+    "id": 22,
+    "desc": "CRIT ATK +5%",
+    "bonus": "(function (x,y) {$n$tx.critical_atk_rate += 5; });"
+  },
+  "Evil Nymph": {
+    "id": 23,
+    "desc": "MSP +30, SP Recovery +5%",
+    "bonus": "(function (x,y) {$n$tx.max_sp += 30;$n$tx.sp_recovery_rate += 5; });"
+  },
+  "Dokebi": {
+    "id": 24,
+    "desc": "MATK +1%, ATK -1%",
+    "bonus": "(function (x,y) {$n$tx.matk_rate += 1;$n$tx.add_class.all += -1; });"
+  },
+  "Drops": {
+    "id": 25,
+    "desc": "HIT +3, ATK +3",
+    "bonus": "(function (x,y) {$n$tx.hit += 3;$n$tx.atk += 3; });"
+  },
+  "Nightmare Terror": {
+    "id": 26,
+    "desc": "Sleep Resistance +100%",
+    "bonus": "(function (x,y) {$n$tx.res_effect.sleep += 100; });"
+  },
+  "Baphomet Jr.": {
+    "id": 27,
+    "desc": "DEF +1, MDEF +1, Stun Resistance -1%",
+    "bonus": "(function (x,y) {$n$tx.def += 1;$n$tx.mdef += 1;$n$tx.res_effect.stun += -1; });"
+  },
+  "Hunter Fly": {
+    "id": 28,
+    "desc": "Perfect Dodge +2, FLEE -5",
+    "bonus": "(function (x,y) {$n$tx.perfect_dodge += 2;$n$tx.flee += -5; });"
+  },
+  "Picky": {
+    "id": 29,
+    "desc": "STR +1, ATK +5",
+    "bonus": "(function (x,y) {$n$tx.str += 1;$n$tx.atk += 5; });"
+  },
+  "Earth Petite": {
+    "id": 30,
+    "desc": "ASPD +1%, DEF -2, MDEF -2",
+    "bonus": "(function (x,y) {$n$tx.aspd_rate += 1;$n$tx.def += -2;$n$tx.mdef += -2; });"
+  },
+  "Stone Shooter": {
+    "id": 31,
+    "desc": "Fire Resistance +3%",
+    "bonus": "(function (x,y) {$n$tx.sub_element.fire += 3; });"
+  },
+  "Peco Peco": {
+    "id": 32,
+    "desc": "MHP +150, MSP -10",
+    "bonus": "(function (x,y) {$n$tx.max_hp += 150;$n$tx.max_sp += -10; });"
+  },
+  "Poison Spore": {
+    "id": 33,
+    "desc": "STR +1, INT +1",
+    "bonus": "(function (x,y) {$n$tx.str += 1;$n$tx.int += 1; });"
+  },
+  "Poporing": {
+    "id": 34,
+    "desc": "LUK +2, Poison Resistance +10%",
+    "bonus": "(function (x,y) {$n$tx.luk += 2;$n$tx.res_effect.poison += 10; });"
+  },
+  "Poring": {
+    "id": 35,
+    "desc": "LUK +2, CRIT +1",
+    "bonus": "(function (x,y) {$n$tx.luk += 2;$n$tx.crit += 1; });"
+  },
+  "Bongun": {
+    "id": 36,
+    "desc": "VIT +1, Stun Resistance +1%",
+    "bonus": "(function (x,y) {$n$tx.vit += 1;$n$tx.res_effect.stun += 1; });"
+  },
+  "Marionette": {
+    "id": 37,
+    "desc": "SP Recovery +3%",
+    "bonus": "(function (x,y) {$n$tx.sp_recovery_rate += 3; });"
+  },
+  "Miyabi Doll": {
+    "id": 38,
+    "desc": "INT +1, Cast Time -3%",
+    "bonus": "(function (x,y) {$n$tx.int += 1;$n$tx.cast_rate += -3; });"
+  },
+  "Mao Guai": {
+    "id": 39,
+    "desc": "MSP +10",
+    "bonus": "(function (x,y) {$n$tx.max_sp += 10; });"
+  },
+  "Munak": {
+    "id": 40,
+    "desc": "INT +1, DEF +1",
+    "bonus": "(function (x,y) {$n$tx.int += 1;$n$tx.def += 1; });"
+  },
+  "Medusa": {
+    "id": 41,
+    "desc": "VIT +1, Stone Curse Resistance +5%",
+    "bonus": "(function (x,y) {$n$tx.vit += 1;$n$tx.res_effect.stone += 5; });"
+  },
+  "Rice Cake": {
+    "id": 42,
+    "desc": "Neutral Resistance +1%",
+    "bonus": "(function (x,y) {$n$tx.sub_element.neutral += 1; });"
+  },
+  "Yoyo": {
+    "id": 43,
+    "desc": "CRIT +3,LUK -1",
+    "bonus": "(function (x,y) {$n$tx.crit += 3;$n$tx.luk += -1; });"
+  },
+  "Leaf Cat": {
+    "id": 44,
+    "desc": "Brute Resistance +3%",
+    "bonus": "(function (x,y) {$n$tx.add_element.earth += 3; });"
+  },
+  "Lunatic": {
+    "id": 45,
+    "desc": "CRIT +2, ATK +2",
+    "bonus": "(function (x,y) {$n$tx.crit += 2;$n$tx.atk += 2; });"
+  },
+  "Rocker": {
+    "id": 46,
+    "desc": "HP Recovery +5%, MHP +25",
+    "bonus": "(function (x,y) {$n$tx.hp_recovery_rate += 5;$n$tx.max_hp += 25; });"
+  },
+  "Loli Ruri": {
+    "id": 47,
+    "desc": "MHP +3%, 5% to cast Heal Lv. 1 on the owner receiving Physical Damage",
+    "bonus": "(function (x,y) {$n$tx.max_hp_rate += 3; });"
+  },
+  "Acidus": {
+    "id": 48,
+    "desc": "FLEE +10",
+    "bonus": "(function (x,y) {$n$tx.flee += 10; });"
+  },
+  "Baby Leopard": {
+    "id": 49,
+    "desc": "ASPD +5%",
+    "bonus": "(function (x,y) {$n$tx.aspd_rate += 5; });"
+  },
+  "Develing": {
+    "id": 50,
+    "desc": "Shadow Resistance +3%",
+    "bonus": "(function (x,y) {$n$tx.sub_element.shadow += 3; });"
+  },
+  "Garm Baby": {
+    "id": 51,
+    "desc": "Water Resistance +7%",
+    "bonus": "(function (x,y) {$n$tx.sub_element.water += 7; });"
+  },
+  "Green Ferus": {
+    "id": 52,
+    "desc": "Increase damage against Dragon by 5% and Demon by 2%",
+    "bonus": "(function (x,y) {$n$tx.add_race.dragon += 5;$n$tx.add_race.demon += 2; });"
+  },
+  "Headless Mule": {
+    "id": 53,
+    "desc": "DEX+1, Shadow Resistance +3%",
+    "bonus": "(function (x,y) {$n$tx.dex += 1;$n$tx.sub_element.shadow += 3; });"
+  },
+  "Jakk": {
+    "id": 54,
+    "desc": "Shadow Resistance +3%, Holy Resistance -3%",
+    "bonus": "(function (x,y) {$n$tx.sub_element.holy += -3;$n$tx.sub_element.shadow += 3; });"
+  },
+  "Myst Case": {
+    "id": 55,
+    "desc": "Shadow Resistance -3%, Holy Resistance +3%",
+    "bonus": "(function (x,y) {$n$tx.sub_element.holy += 3;$n$tx.sub_element.shadow += -3; });"
+  },
+  "Orc Baby": {
+    "id": 56,
+    "desc": "Resistance to small monsters +15",
+    "bonus": "(function (x,y) {$n$tx.sub_size.small += 15; });"
+  },
+  "Pinguicula": {
+    "id": 57,
+    "desc": "All stats +1 if equipped with Poring Cake Hat",
+    "bonus": ""
+  },
+  "Siroma": {
+    "id": 58,
+    "desc": "LUK +2",
+    "bonus": "(function (x,y) {$n$tx.luk += 2; });"
+  },
+  "Taini": {
+    "id": 59,
+    "desc": "DEX +2",
+    "bonus": "(function (x,y) {$n$tx.dex += 2; });"
+  },
+  "Tatacho": {
+    "id": 60,
+    "desc": "STR +2",
+    "bonus": "(function (x,y) {$n$tx.str += 2; });"
+  },
+  "Thanatos Dolor": {
+    "id": 61,
+    "desc": "FLEE +5, STR +1, INT +1, DEX +1]",
+    "bonus": "(function (x,y) {$n$tx.str += 1;$n$tx.int += 1;$n$tx.dex += 1;$n$tx.flee += 5; });"
+  },
+  "Xmas Lunatic": {
+    "id": 62,
+    "desc": "AGI +2",
+    "bonus": "(function (x,y) {$n$tx.agi += 2; });"
+  },
+  "Zipper Bear": {
+    "id": 63,
+    "desc": "ATK +10",
+    "bonus": "(function (x,y) {$n$tx.atk += 10; });"
+  },
+  "Zhu Po Long": {
+    "id": 64,
+    "desc": "Increase damage against Plant and Formless by 3%",
+    "bonus": "(function (x,y) {$n$tx.add_race.formless += 3;$n$tx.add_race.plant += 3; });"
+  },
+  "Woodie": {
+    "id": 65,
+    "desc": "VIT +3, Increases effectiveness of your Heal, Sanctuary and Potion Pitcher by 5%",
+    "bonus": "(function (x,y) {$n$tx.vit += 3;$n$tx.heal_power.all += 5;$n$tx.heal_power.potion_pitcher += 5;$n$tx.heal_power.sanctuary += 5; });"
+  },
+  "Alicel": {
+    "id": 66,
+    "desc": "DEF +1, Demi-Human Resistance +1%",
+    "bonus": "(function (x,y) {$n$tx.def += 1;$n$tx.add_element.shadow += 1; });"
+  },
+  "Am Mut": {
+    "id": 67,
+    "desc": "MATK +2%",
+    "bonus": "(function (x,y) {$n$tx.matk_rate += 2; });"
+  },
+  "Bradium Golem": {
+    "id": 68,
+    "desc": "MHP +250, FLEE +10",
+    "bonus": "(function (x,y) {$n$tx.max_hp += 250;$n$tx.flee += 10; });"
+  },
+  "Choco": {
+    "id": 69,
+    "desc": "ASPD +3%",
+    "bonus": "(function (x,y) {$n$tx.aspd_rate += 3; });"
+  },
+  "Condor": {
+    "id": 70,
+    "desc": "STR +3, ATK +6",
+    "bonus": "(function (x,y) {$n$tx.str += 3;$n$tx.atk += 6; });"
+  },
+  "Desert Wolf": {
+    "id": 71,
+    "desc": "INT +2, MSP +100",
+    "bonus": "(function (x,y) {$n$tx.int += 2;$n$tx.max_sp += 100; });"
+  },
+  "Draco": {
+    "id": 72,
+    "desc": "VIT +1, MDEF +1, ASPD +2%",
+    "bonus": "(function (x,y) {$n$tx.vit += 1;$n$tx.mdef += 1;$n$tx.aspd_rate += 2; });"
+  },
+  "Evil Marionette": {
+    "id": 73,
+    "desc": "MHP+50, MSP+10, HP & SP Recovery +10%",
+    "bonus": "(function (x,y) {$n$tx.max_hp += 50;$n$tx.max_sp += 10;$n$tx.sp_recovery_rate += -10;$n$tx.hp_recovery_rate += -10; });"
+  },
+  "Giant Whisper": {
+    "id": 74,
+    "desc": "FLEE +10, Perfect Dodge +1",
+    "bonus": "(function (x,y) {$n$tx.flee += 10;$n$tx.perfect_dodge += 1; });"
+  },
+  "Grand Peco": {
+    "id": 75,
+    "desc": "MHP +500, MSP +25",
+    "bonus": "(function (x,y) {$n$tx.max_hp += 500;$n$tx.max_sp += 25; });"
+  },
+  "High Orc": {
+    "id": 76,
+    "desc": "ATK +2%",
+    "bonus": "(function (x,y) {$n$tx.add_class.all += 2; });"
+  },
+  "Jaguar": {
+    "id": 77,
+    "desc": "ASPD +5%",
+    "bonus": "(function (x,y) {$n$tx.aspd_rate += 5; });"
+  },
+  "Savage": {
+    "id": 78,
+    "desc": "MHP +300, VIT +5",
+    "bonus": "(function (x,y) {$n$tx.max_hp += 300;$n$tx.vit += 5; });"
+  },
+  "Yao Jun": {
+    "id": 79,
+    "desc": "INT+1, VIT+1, DEF+1, MDEF+1, MHP+150, MSP+10",
+    "bonus": "(function (x,y) {$n$tx.int += 1;$n$tx.vit += 1;$n$tx.def += 1;$n$tx.mdef += 1;$n$tx.max_hp += 150;$n$tx.max_sp += 10; });"
+  },
+  "Mini Ice Titan": {
+    "id": 80,
+    "desc": "ASPD +1%. Chance to Freeze enemy when doing physical attakcs",
+    "bonus": "(function (x,y) {$n$tx.aspd_rate += 1; });"
+  },
+  "Aqua Elemental": {
+    "id": 81,
+    "desc": "ASPD +1%, Water Resistance +2%",
+    "bonus": "(function (x,y) {$n$tx.aspd_rate += 1;$n$tx.sub_element.water += 2; });"
+  },
+  "Bathory": {
+    "id": 82,
+    "desc": "VIT +1, Shadow Resistance +3%",
+    "bonus": "(function (x,y) {$n$tx.vit += 1;$n$tx.sub_element.shadow += 3; });"
+  },
+  "Beary Punny Bear": {
+    "id": 83,
+    "desc": "FLEE +5, STR +1, INT +1, DEX +1",
+    "bonus": "(function (x,y) {$n$tx.flee += 5;$n$tx.str += 1;$n$tx.int += 1;$n$tx.dex += 1; });"
+  },
+  "Blue Unicorn": {
+    "id": 84,
+    "desc": "INT +1, Holy Resistance +2%",
+    "bonus": "(function (x,y) {$n$tx.int += 1;$n$tx.sub_element.holy += 2; });"
+  },
+  "Chepet": {
+    "id": 85,
+    "desc": "LUK +1, Holy Resistance +2%",
+    "bonus": "(function (x,y) {$n$tx.luk += 1;$n$tx.sub_element.holy += 2; });"
+  },
+  "Cornus": {
+    "id": 86,
+    "desc": "ASPD +2%, ATK -1%",
+    "bonus": "(function (x,y) {$n$tx.aspd_rate += 2;$n$tx.add_class.all += -1; });"
+  },
+  "Domovoi": {
+    "id": 87,
+    "desc": "AGI +2",
+    "bonus": "(function (x,y) {$n$tx.agi += 2; });"
+  },
+  "Dumpling Child": {
+    "id": 88,
+    "desc": "Neutral Resistance +1%",
+    "bonus": "(function (x,y) {$n$tx.sub_element.neutral += 1; });"
+  },
+  "Eggyra": {
+    "id": 89,
+    "desc": "AGI +3",
+    "bonus": "(function (x,y) {$n$tx.agi += 3; });"
+  },
+  "Ferus": {
+    "id": 90,
+    "desc": "Increase damage against Dragon by 5% & Undead by 2%",
+    "bonus": "(function (x,y) {$n$tx.add_race.dragon += 5;$n$tx.add_race.undead += 2; });"
+  },
+  "Freezer": {
+    "id": 91,
+    "desc": "STR +1, Water Resistance 2%",
+    "bonus": "(function (x,y) {$n$tx.str += 1;$n$tx.sub_element.water += 2; });"
+  },
+  "Garden Keeper": {
+    "id": 92,
+    "desc": "INT +1, AGI +1, Holy Resistance +2%",
+    "bonus": "(function (x,y) {$n$tx.int += 1;$n$tx.agi += 1;$n$tx.sub_element.holy += 2; });"
+  },
+  "Galapago": {
+    "id": 93,
+    "desc": "AGI +2, LUK +4 if equipped with Galapago Cap",
+    "bonus": "(function (x,y) {$n$tx.agi += 2; });"
+  },
+  "Gibbet": {
+    "id": 94,
+    "desc": "Perfect Dodge +1, AGI +2, Shadow Resistance +1%",
+    "bonus": "(function (x,y) {$n$tx.perfect_dodge += 1;$n$tx.agi += 1;$n$tx.sub_element.shadow += 1; });"
+  },
+  "Hell Poodle": {
+    "id": 95,
+    "desc": "DEF +1, VIT +2, Shadow Resistance +1%",
+    "bonus": "(function (x,y) {$n$tx.def += 1;$n$tx.sub_element.shadow += 1; });"
+  },
+  "Hylozoist": {
+    "id": 96,
+    "desc": "LUK +2, Ghost Resistance +2%",
+    "bonus": "(function (x,y) {$n$tx.luk += 2;$n$tx.sub_element.ghost += 2; });"
+  },
+  "Little Poring": {
+    "id": 97,
+    "desc": "LUK +2, CRIT +1",
+    "bonus": "(function (x,y) {$n$tx.luk += 2;$n$tx.crit += 1; });"
+  },
+  "Lude": {
+    "id": 98,
+    "desc": "INT +2, Ghost Resistance +2%",
+    "bonus": "(function (x,y) {$n$tx.int += 2;$n$tx.sub_element.ghost += 2; });"
+  },
+  "Mavka": {
+    "id": 99,
+    "desc": "Earth Resistance +2%, Damage against Fire Monsters +1%",
+    "bonus": "(function (x,y) {$n$tx.sub_element.earth += 2;$n$tx.sub_race.formless += 1;$n$tx.sub_race.plant += 1; });"
+  },
+  "Mermaid": {
+    "id": 100,
+    "desc": "INT +1, DEX +1",
+    "bonus": "(function (x,y) {$n$tx.int += 1;$n$tx.dex += 1; });"
+  },
+  "Pandaring": {
+    "id": 101,
+    "desc": "VIT +2, INT +4 if equipped with Panda Hat",
+    "bonus": "(function (x,y) {$n$tx.vit += 2; });"
+  },
+  "Pouring": {
+    "id": 102,
+    "desc": "STR +2",
+    "bonus": "(function (x,y) {$n$tx.str += 2; });"
+  },
+  "Sedora": {
+    "id": 103,
+    "desc": "LUK +2",
+    "bonus": "(function (x,y) {$n$tx.luk += 2; });"
+  },
+  "Snow Bunny": {
+    "id": 104,
+    "desc": "ASPD +1%, DEX +1",
+    "bonus": "(function (x,y) {$n$tx.aspd_rate += 1;$n$tx.dex += 1; });"
+  },
+  "Snowier": {
+    "id": 105,
+    "desc": "ASPD +1%, STR +1",
+    "bonus": "(function (x,y) {$n$tx.aspd_rate += 1;$n$tx.str += 1; });"
+  },
+  "Teddy Bear": {
+    "id": 106,
+    "desc": "VIT +2",
+    "bonus": "(function (x,y) {$n$tx.vit += 2; });"
+  },
+  "Tiyanak": {
+    "id": 107,
+    "desc": "STR +1, LUK +1, Shadow Resistance +2%",
+    "bonus": "(function (x,y) {$n$tx.str += 1;$n$tx.luk += 1;$n$tx.sub_element.water += 2; });"
+  },
+  "Chung E": {
+    "id": 108,
+    "desc": "DEF +1, Demi-Human Resistance +1%",
+    "bonus": "(function (x,y) {$n$tx.def += 1;$n$tx.add_element.shadow += 1; });"
+  },
+  "Tiny Agni": {
+    "id": 109,
+    "desc": "Physical/Magical Damage against Fire Monsters +2%",
+    "bonus": "(function (x,y) {$n$tx.sub_race.plant += 2;$n$tx.magic_add_element.fire += 2; });"
+  },
+  "Tiny Aqua": {
+    "id": 110,
+    "desc": "Physical/Magical Damage against Water Monsters +2%",
+    "bonus": "(function (x,y) {$n$tx.sub_race.undead += 2;$n$tx.magic_add_element.water += 2; });"
+  },
+  "Tiny Ventus": {
+    "id": 111,
+    "desc": "Physical/Magical Damage against Wind Monsters +2%",
+    "bonus": "(function (x,y) {$n$tx.sub_race.insect += 2;$n$tx.magic_add_element.wind += 2; });"
+  },
+  "Agni": {
+    "id": 112,
+    "desc": "Physical/Magical Damage against Fire Monsters +2%, Fire Resistance +2%",
+    "bonus": "(function (x,y) {$n$tx.sub_race.plant += 2;$n$tx.magic_add_element.fire += 2;$n$tx.sub_element.fire += 2; });"
+  },
+  "Ventus": {
+    "id": 113,
+    "desc": "Physical/Magical Damage against Wind Monsters +2%, Wind Resistance +2%",
+    "bonus": "(function (x,y) {$n$tx.sub_race.insect += 2;$n$tx.magic_add_element.wind += 2;$n$tx.sub_element.wind += 2; });"
+  },
+  "Eira": {
+    "id": 114,
+    "desc": "Increases effectiveness of your Heal, Sanctuary and Potion Pitcher by 5%, 2% Chance of gaining 5% of physical damage inflicted on an enemy as HP",
+    "bonus": "(function (x,y) {$n$tx.heal_power.all += 5;$n$tx.heal_power.potion_pitcher += 5;$n$tx.heal_power.sanctuary += 5;$n$tx.hp_drain_rate.chance += 2;$n$tx.hp_drain_rate.value += 5; });"
+  },
+  "Aqua": {
+    "id": 115,
+    "desc": "Physical/Magical Damage against Water Monsters +2%, Water Resistance +2%",
+    "bonus": "(function (x,y) {$n$tx.sub_race.undead += 2;$n$tx.magic_add_element.water += 2;$n$tx.sub_element.water += 2; });"
+  },
+  "Angry Penguin": {
+    "id": 116,
+    "desc": "Increases effectiveness of your Heal, Sanctuary and Potion Pitcher by 3%, reduces SP usage of skills by 5%",
+    "bonus": "(function (x,y) {$n$tx.sp_cost_reduction_rate += -5;$n$tx.heal_power.all += 3;$n$tx.heal_power.potion_pitcher += 3;$n$tx.heal_power.sanctuary += 3; });"
+  },
+  "Baby Skoll": { "id": 117, "desc": "", "bonus": "" },
+  "Ballooling": {
+    "id": 118,
+    "desc": "Increases effectiveness of Heal, Sanctuary and Potion Pitcher on yourself by 2%",
+    "bonus": "(function (x,y) {$n$tx.heal_power2.heal += 2;$n$tx.heal_power.potion_pitcher += 2;$n$tx.heal_power2.sanctuary += 2; });"
+  },
+  "Jejeling": {
+    "id": 119,
+    "desc": "VIT +2, DEX +4 if equipped with Baseball Cap",
+    "bonus": "(function (x,y) {$n$tx.vit += 2; });"
+  },
+  "Elephant": {
+    "id": 120,
+    "desc": "Perfect Dodge +2, VIT +3",
+    "bonus": "(function (x,y) {$n$tx.perfect_dodge += 2;$n$tx.vit += 2; });"
+  },
+  "Gorilla": {
+    "id": 121,
+    "desc": "STR +3, VIT +3",
+    "bonus": "(function (x,y) {$n$tx.str += 3;$n$tx.vit += 2; });"
+  },
+  "Lion": {
+    "id": 122,
+    "desc": "FLEE +5, VIT +3",
+    "bonus": "(function (x,y) {$n$tx.flee += 5;$n$tx.vit += 2; });"
+  },
+  "Rhino": {
+    "id": 123,
+    "desc": "ATK +5, VIT +3",
+    "bonus": "(function (x,y) {$n$tx.atk += 5;$n$tx.vit += 3; });"
+  },
+  "Little Fatum": {
+    "id": 124,
+    "desc": "ASPD +1%, DEX +1",
+    "bonus": "(function (x,y) {$n$tx.aspd_rate += 1;$n$tx.dex += 1; });"
+  },
+  "Lucky Case": { "id": 125, "desc": "", "bonus": "" },
+  "Miming": {
+    "id": 126,
+    "desc": "INT +1, VIT +1, Increases effectiveness of your Heal, Sanctuary and Potion Pitcher by 5%",
+    "bonus": "(function (x,y) {$n$tx.int += 1;$n$tx.vit += 1;$n$tx.heal_power.all += 5;$n$tx.heal_power.potion_pitcher += 5;$n$tx.heal_power.sanctuary += 5; });"
+  },
+  "Skelion": {
+    "id": 127,
+    "desc": "MHP +250, MDEF +1, ASPD +2%, Ghost Resistance +2%",
+    "bonus": "(function (x,y) {$n$tx.max_hp += 50;$n$tx.mdef += 1;$n$tx.aspd_rate += 2;$n$tx.sub_element.ghost += 2; });"
+  },
+  "Tikbalang": {
+    "id": 128,
+    "desc": "Increase damage to Bakonawa, Bangungot and Buwaya by 10%] (not calced",
+    "bonus": ""
+  },
+  "Toucan": {
+    "id": 129,
+    "desc": "DEX +1, FLEE +5",
+    "bonus": "(function (x,y) {$n$tx.dex += 1;$n$tx.flee += 5; });"
+  },
+  "White Goat": {
+    "id": 130,
+    "desc": "+1.5% chance to cast Level 2 Bash when doing a physical attack, Increases the healing effectiveness of Carrots by 100%",
+    "bonus": "(function (x,y) {$n$tx.add_item_heal_rate += [515, 100, 0]; });"
+  },
+  "Wild Rider": {
+    "id": 131,
+    "desc": "AGI +2, DEX +3, if equipped with Drooping Cat",
+    "bonus": "(function (x,y) {$n$tx.agi += 2; });"
+  },
+  "Sprouting Egg": {
+    "id": 132,
+    "desc": "Add a 2% chance of gaining 5% of physical damage inflicted as HP, HP/SP regeneration +10%, MHP +300",
+    "bonus": "(function (x,y) {$n$tx.max_hp += 300;$n$tx.hp_recovery_rate += 10;$n$tx.sp_recovery_rate += 10;$n$tx.hp_drain_rate.chance += 2;$n$tx.hp_drain_rate.value += 5; });"
+  },
+  "Bandit": {
+    "id": 133,
+    "desc": "MSP +25, Add a 2.5% chance of casting Lv1 Steal when doing a physical attack. Increase resistance to Shadow Property attacks by 1%",
+    "bonus": "(function (x,y) {$n$tx.max_sp += 25;$n$tx.sub_element.shadow += 1; });"
+  },
+  "Moonlight Flower": {
+    "id": 134,
+    "desc": "ASPD +2%, INT +1, MHP +2%",
+    "bonus": "(function (x,y) {$n$tx.int += 1;$n$tx.aspd_rate += 2;$n$tx.max_hp_rate += 2; });"
+  },
+  "Scatleton": {
+    "id": 135,
+    "desc": "VIT +1, Shadow Resistance +1%, Ghost Resistance +2",
+    "bonus": "(function (x,y) {$n$tx.vit += 1;$n$tx.sub_element.shadow += 1;$n$tx.sub_element.ghost += 2; });"
+  },
+  "Lora": {
+    "id": 136,
+    "desc": "MDEF +1, increases effectiveness of received heal from Heal, Sanctuary and Potion Pitcher by 2%",
+    "bonus": "(function (x,y) {$n$tx.mdef += 1;$n$tx.heal_power2.heal += 2;$n$tx.heal_power.potion_pitcher += 2;$n$tx.heal_power2.sanctuary += 2; });"
+  },
+  "Angeling": {
+    "id": 137,
+    "desc": "MDEF +2, Angel Resistance +2%",
+    "bonus": "(function (x,y) {$n$tx.mdef += 2;$n$tx.add_element.ghost += 2; });"
+  },
+  "Eggring": {
+    "id": 138,
+    "desc": "Increases duration of stat foods by 50%",
+    "bonus": ""
+  },
+  "Elvira": {
+    "id": 139,
+    "desc": "Reduces after-cast delay by 3%",
+    "bonus": "(function (x,y) {$n$tx.delay_rate += 3; });"
+  },
+  "Eremes Guile": {
+    "id": 140,
+    "desc": "Demi-Human resistance +2%",
+    "bonus": "(function (x,y) {$n$tx.add_element.shadow += 2; });"
+  },
+  "Rainbow": {
+    "id": 141,
+    "desc": "Increases Holy Light and Magnus Exorcismus damage by 7%",
+    "bonus": "(function (x,y) {$n$tx.skill_atk.Holy Light += 7;$n$tx.skill_atk.Magnus Exorcismus += 7; });"
+  },
+  "Shroud": {
+    "id": 142,
+    "desc": "Adds a 0.25% chance of inflicting Curse status on opponent when attacking",
+    "bonus": ""
+  },
+  "Casual Pope": {
+    "id": 143,
+    "desc": "MDEF +1, INT +1, VIT +1, Holy Resistance +1%",
+    "bonus": "(function (x,y) {$n$tx.vit += 1;$n$tx.int += 1;$n$tx.mdef += 1;$n$tx.sub_element.holy += 1; });"
+  },
+  "Rudo": {
+    "id": 144,
+    "desc": "MHP +2%, increases natural SP Recovery by 10%, Demi-Human resistance +1%",
+    "bonus": "(function (x,y) {$n$tx.max_hp_rate += 2;$n$tx.add_element.shadow += 1;$n$tx.sp_recovery_rate += 10; });"
+  },
+  "Soheon": {
+    "id": 145,
+    "desc": "ASPD +2%, Critical damage +3%",
+    "bonus": "(function (x,y) {$n$tx.aspd_rate += 2;$n$tx.critical_atk_rate += 3; });"
+  },
+  "Celine Kimi": {
+    "id": 146,
+    "desc": "HIT +5, DEF +1, ATK +7, adds a low chance of dropping Izidor when defeating a Boss type monster",
+    "bonus": "(function (x,y) {$n$tx.hit += 5;$n$tx.atk += 7;$n$tx.def += 1; });"
+  },
+  "Saga": {
+    "id": 147,
+    "desc": "Physical damage against Plant and Insect +3%, Physical damage against Water Property +2%",
+    "bonus": "(function (x,y) {$n$tx.add_race.plant += 3;$n$tx.add_race.insect += 3;$n$tx.sub_race.undead += 2; });"
+  },
+  "Geiravor Disciple": {
+    "id": 148,
+    "desc": "FLEE +7, ASPD +2%",
+    "bonus": "(function (x,y) {$n$tx.flee += 7;$n$tx.aspd_rate += 2; });"
+  },
+  "Geiravor Partisan": {
+    "id": 149,
+    "desc": "Adds a 2% chance of casting Lv 5 Dark Strike when casting magic attacks",
+    "bonus": "(function (x,y) {$n$tx.autospell += 112; });"
+  },
+  "Normal Pope": {
+    "id": 150,
+    "desc": "Increases effectiveness of your Heal, Sanctuary and Potion Pitcher by 5%. Add a 2% chance of gaining 5% of physical damage inflicted on an enemy as HP with each attack.",
+    "bonus": "(function (x,y) {$n$tx.heal_power.all += 5;$n$tx.heal_power.potion_pitcher += 5;$n$tx.heal_power.sanctuary += 5;$n$tx.hp_drain_rate.chance += 2;$n$tx.hp_drain_rate.value += 5; });"
+  },
+  "Sppo": {
+    "id": 151,
+    "desc": "Increase resistance against Water Property by 2%. Increase Physical and Magical damage against Water element monsters by 2%. Add a chance to get a Glacial Heart when killing a monster.",
+    "bonus": "(function (x,y) {$n$tx.sub_element.water += 2;$n$tx.sub_race.undead += 2;$n$tx.magic_add_element.water += 2; });"
+  },
+  "Papare": {
+    "id": 152,
+    "desc": "AGI +1, reduces after-cast delay by 3%",
+    "bonus": "(function (x,y) {$n$tx.agi += 1;$n$tx.delay_rate += 3; });"
+  },
+  "Phreeoni": {
+    "id": 153,
+    "desc": "HIT+5, Increase Physical and Magical damage against Earth element monsters by 3%",
+    "bonus": "(function (x,y) {$n$tx.hit += 5;$n$tx.sub_race.brute += 3;$n$tx.magic_add_element.earth += 3; });"
+  },
+  "Gloom Under Night": {
+    "id": 154,
+    "desc": "MATK +1%, Increase Physical and Magical damage against Fire and Ghost element monsters by 2%",
+    "bonus": "(function (x,y) {$n$tx.matk_rate += 1;$n$tx.sub_race.plant += 2;$n$tx.sub_race.angel += 2;$n$tx.magic_add_element.fire += 2;$n$tx.magic_add_element.ghost += 2; });"
+  },
+  "Blue Moon Loli Ruri": {
+    "id": 155,
+    "desc": "MHP +3%, adds chance of auto casting Level 2",
+    "bonus": "(function (x,y) {$n$tx.max_hp_rate += 3; });"
+  },
+  "Ghost Quve": {
+    "id": 156,
+    "desc": "Perfect Dodge +1, AGI +2, Shadow element resistance increased by 2%",
+    "bonus": "(function (x,y) {$n$tx.agi += 2;$n$tx.perfect_dodge += 1;$n$tx.sub_element.shadow += 2; });"
+  },
+  "Grote": {
+    "id": 157,
+    "desc": "DEF +1, VIT +2, Shadow element resistance increased by 2%",
+    "bonus": "(function (x,y) {$n$tx.vit += 2;$n$tx.def += 1;$n$tx.sub_element.shadow += 2; });"
+  },
+  "Garling Lude": {
+    "id": 158,
+    "desc": "MHP +250, ASDP +2%, MDEF+1, Ghost element resistance increased by 2%",
+    "bonus": "(function (x,y) {$n$tx.aspd_rate += 2;$n$tx.max_hp += 250;$n$tx.mdef += 1;$n$tx.sub_element.ghost += 2; });"
+  },
+  "Wandering Duck Doll": {
+    "id": 159,
+    "desc": "AGI +2, DEX+1",
+    "bonus": "(function (x,y) {$n$tx.agi += 2;$n$tx.dex += 1; });"
+  },
+  "Deviruchiling": {
+    "id": 160,
+    "desc": "Shadow element resistance increased by 3%",
+    "bonus": "(function (x,y) {$n$tx.sub_element.shadow += 3; });"
+  },
+  "Capoo": {
+    "id": 161,
+    "desc": "AGI +2, ASPD +2%",
+    "bonus": "(function (x,y) {$n$tx.agi += 2;$n$tx.aspd_rate += 2; });"
+  },
+  "Boiled Rice": {
+    "id": 162,
+    "desc": "Adds a chance to drop Rice Ball when killing Fish race monsters, Increase resistance to Water Property attacks by 2%",
+    "bonus": "(function (x,y) {$n$tx.sub_element.water += 2; });"
+  },
+  "Shellfish": {
+    "id": 163,
+    "desc": "Adds a chance to drop Fresh Fish when killing Fish race monsters, Increase resistance to Water Property attacks by 2%",
+    "bonus": "(function (x,y) {$n$tx.sub_element.water += 2; });"
+  },
+  "Volcaring": {
+    "id": 164,
+    "desc": "VIT +1, Increase Physical and Magical damage against Fire element monsters by 3%",
+    "bonus": "(function (x,y) {$n$tx.vit += 1;$n$tx.sub_race.plant += 3;$n$tx.magic_add_element.fire += 3; });"
+  },
+  "Menblatt": {
+    "id": 165,
+    "desc": "VIT +2, Increase Physical and Magical damage against Wind element monsters by 2%",
+    "bonus": "(function (x,y) {$n$tx.vit += 1;$n$tx.sub_race.insect += 2;$n$tx.magic_add_element.wind += 2; });"
+  },
+  "Chimera Litus": {
+    "id": 166,
+    "desc": "Increases duration of Stat foods by 25%",
+    "bonus": ""
+  },
+  "Firewind Kite": {
+    "id": 167,
+    "desc": "Increase Physical and Magical damage against Fire and Wind element monsters by 2%",
+    "bonus": "(function (x,y) {$n$tx.sub_race.plant += 2;$n$tx.magic_add_element.fire += 2;$n$tx.sub_race.insect += 2;$n$tx.magic_add_element.wind += 2; });"
+  },
+  "Omega Cleaner": {
+    "id": 168,
+    "desc": "HIT +5, FLEE +3, DEX +1, ASPD +2%",
+    "bonus": "(function (x,y) {$n$tx.hit += 5;$n$tx.flee += 3;$n$tx.dex += 1;$n$tx.aspd_rate += 2; });"
+  },
+  "Empathizer": {
+    "id": 169,
+    "desc": "VIT +2, MATK +2%, Increases magical damage to DemiHuman monsters by 2%",
+    "bonus": "(function (x,y) {$n$tx.vit += 2;$n$tx.matk_rate += 2;$n$tx.magic_add_race.demi-human += 2; });"
+  },
+  "Child Admin Beta": {
+    "id": 170,
+    "desc": "DEX +1, AGI +2, INT +2, Increases effectiveness of Heal, Sanctuary and Potion Pitcher by 5%",
+    "bonus": "(function (x,y) {$n$tx.dex += 1;$n$tx.agi += 2;$n$tx.int += 2;$n$tx.heal_power.all += 5;$n$tx.heal_power.potion_pitcher += 5;$n$tx.heal_power.sanctuary += 5; });"
+  },
+  "Creeper": {
+    "id": 171,
+    "desc": "STR +2, VIT +2, Wind element resistance increased by 2%",
+    "bonus": "(function (x,y) {$n$tx.str += 2;$n$tx.vit += 2;$n$tx.sub_element.wind += 2; });"
+  }
+}

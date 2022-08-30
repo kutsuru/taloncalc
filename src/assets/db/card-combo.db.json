@@ -1,0 +1,399 @@
+{
+  "1": {
+    "id": 429,
+    "bonus": "(function (x,y) {$n$tx.atk += 20;$n$tx.luk += 3; });",
+    "description": "[2 or more Injustice cards don't make you get more % of Sonic Blows being cast or give more atk/luk]",
+    "combo_cards_id": [235, 306],
+    "combo_cards_name": ["Injustice", "Zherlthsh"]
+  },
+  "2": {
+    "id": 430,
+    "bonus": "",
+    "description": "Frost Diver chance Increases to 30%",
+    "combo_cards_id": [349, 305],
+    "combo_cards_name": ["Garm", "Garm Baby"]
+  },
+  "3": {
+    "id": 431,
+    "bonus": "(function (x,y) {$n$tx.sub_race.undead += 30; });",
+    "description": "Adds 30% chance of gaining [Raw Fish] item each time a [Fish] race monster is killed",
+    "combo_cards_id": [254, 259, 356],
+    "combo_cards_name": ["Shell Fish", "Crab", "Aster"]
+  },
+  "4": {
+    "id": 432,
+    "bonus": "(function (x,y) {$n$tx.def += 3;$n$tx.mdef += 3; });",
+    "description": "",
+    "combo_cards_id": [229, 280, 352],
+    "combo_cards_name": ["Alarm", "Clock", "Punk"]
+  },
+  "5": {
+    "id": 433,
+    "bonus": "(function (x,y) {$n$tx.int += 4;$n$tx.vit += 4;$n$tx.hp_recovery_rate += 30;$n$tx.sp_recovery_rate += 30; });",
+    "description": "",
+    "combo_cards_id": [291, 234],
+    "combo_cards_name": ["Succubus", "Incubus"]
+  },
+  "6": {
+    "id": 434,
+    "bonus": "(function (x,y) {$n$tx.cast_rate += -5;$n$tx.max_hp_rate += 20;$n$tx.max_sp_rate += 20; });",
+    "description": "",
+    "combo_cards_id": [322, 320],
+    "combo_cards_name": ["Dark Lord", "Dark Illusion"]
+  },
+  "7": {
+    "id": 435,
+    "bonus": "",
+    "description": "<b>STR + 3</b>",
+    "combo_cards_id": [273, 98],
+    "combo_cards_name": ["Cramp", "Tarou"]
+  },
+  "8": {
+    "id": 436,
+    "bonus": "(function (x,y) {$n$tx.def += 3;$n$tx.vit += 3; });",
+    "description": "",
+    "combo_cards_id": [274, 73],
+    "combo_cards_name": ["Grand Peco", "Peco Peco"]
+  },
+  "9": {
+    "id": 437,
+    "bonus": "(function (x,y) {$n$tx.perfect_hit_rate += 20; });",
+    "description": "",
+    "combo_cards_id": [245, 40],
+    "combo_cards_name": ["Ancient Mummy", "Mummy"]
+  },
+  "10": {
+    "id": 438,
+    "bonus": "(function (x,y) {$n$tx.add_effect_when_hit.sleep += 6; });",
+    "description": "",
+    "combo_cards_id": [9, 308],
+    "combo_cards_name": ["Skeleton", "Skeleton Prisoner"]
+  },
+  "11": {
+    "id": 439,
+    "bonus": "(function (x,y) {$n$tx.add_effect_when_hit.blind += 6; });",
+    "description": "",
+    "combo_cards_id": [58, 276],
+    "combo_cards_name": ["Bigfoot", "Grizzly"]
+  },
+  "12": {
+    "id": 440,
+    "bonus": "(function (x,y) {$n$tx.add_effect_when_hit.curse += 6; });",
+    "description": "",
+    "combo_cards_id": [50, 344],
+    "combo_cards_name": ["Nightmare", "Nightmare Terror"]
+  },
+  "13": {
+    "id": 441,
+    "bonus": "(function (x,y) {$n$tx.all_stats += 1; });",
+    "description": "",
+    "combo_cards_id": [125, 370, 393],
+    "combo_cards_name": ["Munak", "Bongun", "Hyegun"]
+  },
+  "14": {
+    "id": 442,
+    "bonus": "(function (x,y) {$n$tx.flee += 18; });",
+    "description": "",
+    "combo_cards_id": [294, 10],
+    "combo_cards_name": ["Vagabond Wolf", "Wolf"]
+  },
+  "15": {
+    "id": 443,
+    "bonus": "",
+    "description": "TalonRO: nothing",
+    "combo_cards_id": [338, 72],
+    "combo_cards_name": ["Toad", "Roda Frog"]
+  },
+  "16": {
+    "id": 446,
+    "bonus": "(function (x,y) {$n$tx.atk += 10;$n$tx.long_atk_def += 10;$n$tx.add_size.medium += 5;$n$tx.add_size.large += 5; });",
+    "description": "",
+    "combo_cards_id": [444, 445],
+    "combo_cards_name": ["Khalitzburg Knight", "White Knight"]
+  },
+  "17": {
+    "id": 448,
+    "bonus": "(function (x,y) {$n$tx.max_hp += 300;$n$tx.max_sp += 60; });",
+    "description": "",
+    "combo_cards_id": [218, 212],
+    "combo_cards_name": ["Lude", "Quve"]
+  },
+  "18": {
+    "id": 449,
+    "bonus": "(function (x,y) {$n$tx.autospell += 86; });",
+    "description": "",
+    "combo_cards_id": [248, 247],
+    "combo_cards_name": ["Owl Baron", "Owl Duke"]
+  },
+  "19": {
+    "id": 450,
+    "bonus": "(function (x,y) {$n$tx.str += 10;$n$tx.max_hp_rate += 20;$n$tx.hp_recovery_rate += 50;$n$tx.autospell += 87; });",
+    "description": "5% chance of the Red Potion item dropping when killing a monster<BR><b>[Swordman Class]</b><br>+50% HP restoration with Red Potion, Yellow potion, and White Potion",
+    "combo_cards_id": [223, 317, 347, 354, 362],
+    "combo_cards_name": [
+      "Assaulter",
+      "Solider",
+      "Permeter",
+      "Heater",
+      "Freezer"
+    ]
+  },
+  "20": {
+    "id": 451,
+    "bonus": "(function (x,y) {$n$tx.str += 5;$n$tx.agi += 5;$n$tx.aspd_rate += 5; });",
+    "description": "Move Speed +5%<BR>Disables the auto casting of Snatch and the SP drain<BR><b>[Thief Class]</b><br>Removes the consumption of gemstones from skills that usually would",
+    "combo_cards_id": [233, 295, 391, 395, 260],
+    "combo_cards_name": [
+      "The Paper",
+      "Wanderer",
+      "Wild Rose",
+      "Dancing Dragon",
+      "Shinobi"
+    ]
+  },
+  "21": {
+    "id": 452,
+    "bonus": "(function (x,y) {$n$tx.vit += 10;$n$tx.cast_rate += -10; });",
+    "description": "SP Cost -10%<BR><b>[Acolyte Class]</b><br>-30% damage from Demon and Undead race<BR>+5% experience from Demon and Undead race monsters",
+    "combo_cards_id": [253, 383, 307, 301, 270],
+    "combo_cards_name": [
+      "Seal",
+      "Rideword",
+      "Enchanted Peach Tree",
+      "Geographer",
+      "Cookie"
+    ]
+  },
+  "22": {
+    "id": 453,
+    "bonus": "(function (x,y) {$n$tx.long_atk_rate += 20;$n$tx.agi += 5;$n$tx.dex += 3;$n$tx.perfect_hit_rate += 20; });",
+    "description": "<b>[Archer Class]</b><br>10% chance of inflicting Coma on Brute race<BR>+5% experience from Brute race monsters",
+    "combo_cards_id": [279, 224, 340, 351, 531],
+    "combo_cards_name": [
+      "Cruiser",
+      "Anolian",
+      "Dragon Tail",
+      "Merman",
+      "Nepenthes"
+    ]
+  },
+  "23": {
+    "id": 454,
+    "bonus": "(function (x,y) {$n$tx.max_hp += 500;$n$tx.def += 5;$n$tx.mdef += 5;$n$tx.skill_atk.Fire Bolt += 10;$n$tx.skill_atk.Cold Bolt += 10;$n$tx.skill_atk.Lightning Bolt += 10; });",
+    "description": "<b>[Mage Class]</b><br>Magic Attack +3%, Cast Time -15%",
+    "combo_cards_id": [337, 358, 220, 346, 379, 350],
+    "combo_cards_name": [
+      "Evil Nymph",
+      "Parasite",
+      "Loli Ruri",
+      "Harpy",
+      "Miyabi Doll",
+      "Bloody Butterfly"
+    ]
+  },
+  "24": {
+    "id": 455,
+    "bonus": "(function (x,y) {$n$tx.luk += 10;$n$tx.skill_atk.Mammonite += 20; });",
+    "description": "1 SP regained with each ATK based attack instead of draining SP<BR><b>[Merchant Class]</b><br>0.05% chance of [Old Purple Box] item dropping when killing a monster<BR>20% chance of reflecting the damage received from a targetted magical attack",
+    "combo_cards_id": [326, 376, 281, 388, 216],
+    "combo_cards_name": [
+      "Zipper Bear",
+      "Myst Case",
+      "Baby Leopard",
+      "Raggler",
+      "Hylozoist"
+    ]
+  },
+  "25": {
+    "id": 456,
+    "bonus": "(function (x,y) {$n$tx.str += 1;$n$tx.int += 1;$n$tx.def += 2;$n$tx.sp_recovery_rate += 10;$n$tx.cast_rate += -10;$n$tx.skill_atk.Shield Chain += 10;$n$tx.skill_atk.Sacrifice += 10; });",
+    "description": "<b>[Crusader Class]</b><br>Makes the armor Holy element",
+    "combo_cards_id": [190, 347, 354, 362],
+    "combo_cards_name": ["Archdam", "Permeter", "Heater", "Freezer"]
+  },
+  "26": {
+    "id": 457,
+    "bonus": "(function (x,y) {$n$tx.str += 6;$n$tx.agi += 4;$n$tx.skill_atk.Back Stab += 10; });",
+    "description": "5% chance of casting level 5 Divest Armor when doing a ATK based attack<BR><b>[Rogue Class]</b><br>SP Cost -20%, Disables the auto casting of Snatch",
+    "combo_cards_id": [413, 113, 295, 391, 260],
+    "combo_cards_name": [
+      "Wikebine Tres",
+      "Stainer",
+      "Wanderer",
+      "Wild Rose",
+      "Shinobi"
+    ]
+  },
+  "27": {
+    "id": 458,
+    "bonus": "(function (x,y) {$n$tx.str += 3;$n$tx.atk += 25;$n$tx.max_sp += 80;$n$tx.skill_atk.Asura Strike += 10;$n$tx.skill_atk.Asura Strike [Max SP-1] += 10;$n$tx.autospell += 88; });",
+    "description": "<b>[Monk Class]</b><br>SP Cost -10%, Skill casts cannot be interrupted (except in WoE)",
+    "combo_cards_id": [253, 383, 181, 270],
+    "combo_cards_name": ["Seal", "Rideword", "Waste Stove", "Cookie"]
+  },
+  "28": {
+    "id": 459,
+    "bonus": "(function (x,y) {$n$tx.dex += 5;$n$tx.skill_atk.Musical Strike += 10;$n$tx.skill_atk.Throw Arrow += 10;$n$tx.skill_atk.Arrow Vulcan += 5; });",
+    "description": "<b>[Bard/Dancer Class]</b><br>5% chance of casting level 5 Tarot Card of Fate when receiving ATK based damage",
+    "combo_cards_id": [279, 408, 224, 340, 230],
+    "combo_cards_name": [
+      "Cruiser",
+      "Green Ferus",
+      "Anolian",
+      "Dragon Tail",
+      "Alligator"
+    ]
+  },
+  "29": {
+    "id": 460,
+    "bonus": "(function (x,y) {$n$tx.int += 3;$n$tx.skill_atk.Thunder Storm += 10;$n$tx.skill_atk.Heaven's Drive += 10; });",
+    "description": "<b>[Sage Class]</b><br>Cast Time -20%<BR>5% chance of reflecting the damage received from a targetted magical attack<br>Adds a 1% chance of gaining [Red Gemstone] or [Yellow Gemstone] item each time a monster is killed",
+    "combo_cards_id": [337, 193, 346, 379, 350],
+    "combo_cards_name": [
+      "Evil Nymph",
+      "Yellow Novus",
+      "Harpy",
+      "Miyabi Doll",
+      "Bloody Butterfly"
+    ]
+  },
+  "30": {
+    "id": 461,
+    "bonus": "(function (x,y) {$n$tx.str += 4;$n$tx.max_hp_rate += 7;$n$tx.max_sp_rate += 7;$n$tx.skill_atk.Mammonite += 20; });",
+    "description": "Disables the SP drain<BR><b>[Alchemist Class]</b><br>1% chance of casting [Adrenaline Rush] when doing an ATK based attack<BR>0.1% chance of [Stem] item dropping when killing a monster<BR>0.03% chance of [Coating Bottle] item dropping when killing a monster",
+    "combo_cards_id": [326, 175, 281, 388, 104],
+    "combo_cards_name": [
+      "Zipper Bear",
+      "Holden",
+      "Baby Leopard",
+      "Raggler",
+      "Muka"
+    ]
+  },
+  "31": {
+    "id": 496,
+    "bonus": "",
+    "description": "Recover 2SP each time you kill a monster with a ATK based attack",
+    "combo_cards_id": [485, 494],
+    "combo_cards_name": ["Zombie Slaughter", "Ragged Zombie"]
+  },
+  "32": {
+    "id": 548,
+    "bonus": "(function (x,y) {$n$tx.add_element.earth += 5;$n$tx.add_element.water += 5;$n$tx.ignore_mdef_race.brute += 20;$n$tx.ignore_mdef_race.undead += 20; });",
+    "description": "",
+    "combo_cards_id": [542, 543],
+    "combo_cards_name": ["Nightmare Arclouze", "Nightmare Mimic"]
+  },
+  "33": {
+    "id": 549,
+    "bonus": "(function (x,y) {$n$tx.add_element.earth += 5;$n$tx.add_element.water += 5;$n$tx.short_atk_ele_rate.earth += 30;$n$tx.short_atk_ele_rate.water += 30; });",
+    "description": "",
+    "combo_cards_id": [542, 544],
+    "combo_cards_name": ["Nightmare Arclouze", "Nightmare Minorous"]
+  },
+  "34": {
+    "id": 550,
+    "bonus": "(function (x,y) {$n$tx.res_effect.sleep += 10;$n$tx.sub_element.neutral += 5;$n$tx.add_effect_when_hit.sleep += 2; });",
+    "description": "",
+    "combo_cards_id": [545, 546],
+    "combo_cards_name": ["Nightmare Mummy", "Nightmare Ancient Mummy"]
+  },
+  "35": {
+    "id": 575,
+    "bonus": "(function (x,y) {$n$tx.dex += 6;$n$tx.max_sp += 100; });",
+    "description": "Increase SP Consumption of skills by 10%",
+    "combo_cards_id": [568, 148],
+    "combo_cards_name": ["Iara", "Obeaune"]
+  },
+  "36": {
+    "id": 576,
+    "bonus": "(function (x,y) {$n$tx.cast_rate += -10; });",
+    "description": "",
+    "combo_cards_id": [501, 579],
+    "combo_cards_name": ["Entweihen Crothen", "Naght Sieger"]
+  },
+  "37": {
+    "id": 577,
+    "bonus": "(function (x,y) {$n$tx.max_hp_rate += -10;$n$tx.max_sp_rate += -10;$n$tx.cast_rate += 5; });",
+    "description": "",
+    "combo_cards_id": [501, 320],
+    "combo_cards_name": ["Entweihen Crothen", "Dark Illusion"]
+  },
+  "38": {
+    "id": 580,
+    "bonus": "",
+    "description": "Add a 3% chance of auto casting level 3 [Deluge] on the user when attacking normally.",
+    "combo_cards_id": [512, 513],
+    "combo_cards_name": ["Phylla", "Rhyncho"]
+  },
+  "39": {
+    "id": 584,
+    "bonus": "(function (x,y) {$n$tx.aspd_rate += 10; });",
+    "description": "Double the Duration of Isilla's Cast Reduction and Flee Boost.<br/>Vanberk not equipped & Vanilla Mode: Long Range Resist + 10%.",
+    "combo_cards_id": [583, 472],
+    "combo_cards_name": ["Aunoe", "Isilla"]
+  },
+  "40": {
+    "id": 586,
+    "bonus": "(function (x,y) {$n$tx.aspd_rate += 10; });",
+    "description": "Triple the Duration and Double the Chance of Vanberk's CRIT Boost.<br/>Isilla not equipped & Vanilla Mode: Long Range Resist + 10%.",
+    "combo_cards_id": [585, 471],
+    "combo_cards_name": ["Fanat", "Vanberk"]
+  },
+  "41": {
+    "id": 588,
+    "bonus": "(function (x,y) {$n$tx.aspd_rate += 10;$n$tx.dex += 3; });",
+    "description": "",
+    "combo_cards_id": [587, 411],
+    "combo_cards_name": ["Beholder Master", "Beholder"]
+  },
+  "42": {
+    "id": 589,
+    "bonus": "(function (x,y) {$n$tx.add_element.shadow += 15; });",
+    "description": "",
+    "combo_cards_id": [587, 468],
+    "combo_cards_name": ["Beholder Master", "Seeker"]
+  },
+  "43": {
+    "id": 596,
+    "bonus": "",
+    "description": "[Vanilla Mode]<br/>Cast Time - 30%",
+    "combo_cards_id": [595, 190],
+    "combo_cards_name": ["Zakudam", "Archdam"]
+  },
+  "44": {
+    "id": 598,
+    "bonus": "(function (x,y) {$n$tx.atk += 25;$n$tx.res_effect.freeze += 50; });",
+    "description": "[Knight, Blacksmith, Assassin][Vanilla Mode]<br/>Horn Card Not Equipped: Long Range Resist + 20%",
+    "combo_cards_id": [597, 184],
+    "combo_cards_name": ["Cobalt Mineral", "Mineral"]
+  },
+  "45": {
+    "id": 600,
+    "bonus": "(function (x,y) {$n$tx.max_hp_rate += 5;$n$tx.res_effect.freeze += 50; });",
+    "description": "[If Apocalypse Card Equipped on Meteor Plate]<br/>Gain protection from the Freeze status.",
+    "combo_cards_id": [599, 225],
+    "combo_cards_name": ["Hell Apocalypse", "Apocalypse"]
+  },
+  "46": {
+    "id": 608,
+    "bonus": "(function (x,y) {$n$tx.skill_atk.Mist Slash += 65; });",
+    "description": "[Mist Slash] HIT Rate + 50%.",
+    "combo_cards_id": [607, 591],
+    "combo_cards_name": ["Cenere", "Naga"]
+  },
+  "47": {
+    "id": 628,
+    "bonus": "",
+    "description": "<b>[PvM Only]</b><br>[Poem of Bragi] Aftercast Rate + 1% for each equipped Alphoccio Card.",
+    "combo_cards_id": [620, 627],
+    "combo_cards_name": ["Alphoccio", "Clown Alphoccio"]
+  },
+  "48": {
+    "id": 630,
+    "bonus": "",
+    "description": "[Bard] [A Whistle] Flee Rate + 10%.<br>[Dancer] [Service for You] SP Rate + 5%.",
+    "combo_cards_id": [621, 620],
+    "combo_cards_name": ["Trentini", "Alphoccio"]
+  }
+}

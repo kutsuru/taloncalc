@@ -1,0 +1,882 @@
+{
+  "Meat": {
+    "gid": 517,
+    "weight": 2,
+    "min_hp": 0,
+    "min_sp": 70,
+    "max_hp": 0,
+    "max_sp": 100,
+    "is_vanilla_pvp": false,
+    "is_vanilla_pvm": false
+  },
+  "Grape Juice": {
+    "gid": 533,
+    "weight": 0.5,
+    "min_hp": 15,
+    "min_sp": 0,
+    "max_hp": 25,
+    "max_sp": 0,
+    "is_vanilla_pvp": false,
+    "is_vanilla_pvm": false
+  },
+  "Condensed White Potion": {
+    "gid": 547,
+    "weight": 1,
+    "min_hp": 0,
+    "min_sp": 325,
+    "max_hp": 0,
+    "max_sp": 405,
+    "is_vanilla_pvp": false,
+    "is_vanilla_pvm": false
+  },
+  "Condensed Yellow Potion": {
+    "gid": 546,
+    "weight": 3,
+    "min_hp": 0,
+    "min_sp": 175,
+    "max_hp": 0,
+    "max_sp": 235,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Condensed Red Potion": {
+    "gid": 545,
+    "weight": 2,
+    "min_hp": 0,
+    "min_sp": 45,
+    "max_hp": 0,
+    "max_sp": 65,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "WoE White Potion": {
+    "gid": 11503,
+    "weight": 3,
+    "min_hp": 0,
+    "min_sp": 400,
+    "max_hp": 0,
+    "max_sp": 500,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "WoE Blue Potion": {
+    "gid": 11503,
+    "weight": 8,
+    "min_hp": 50,
+    "min_sp": 0,
+    "max_hp": 70,
+    "max_sp": 0,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Piece of Cake": {
+    "gid": 539,
+    "weight": 1,
+    "min_hp": 0,
+    "min_sp": 270,
+    "max_hp": 0,
+    "max_sp": 330,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Strawberry": {
+    "gid": 578,
+    "weight": 2,
+    "min_hp": 16,
+    "min_sp": 0,
+    "max_hp": 28,
+    "max_sp": 0,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Orange": {
+    "gid": 582,
+    "weight": 2,
+    "min_hp": 0,
+    "min_sp": 10,
+    "max_hp": 0,
+    "max_sp": 20,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Blue Potion": {
+    "gid": 505,
+    "weight": 15,
+    "min_hp": 40,
+    "min_sp": 0,
+    "max_hp": 60,
+    "max_sp": 0,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "White Potion": {
+    "gid": 504,
+    "weight": 15,
+    "min_hp": 0,
+    "min_sp": 325,
+    "max_hp": 0,
+    "max_sp": 405,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Yellow Potion": {
+    "gid": 503,
+    "weight": 13,
+    "min_hp": 0,
+    "min_sp": 175,
+    "max_hp": 0,
+    "max_sp": 235,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Orange Potion": {
+    "gid": 502,
+    "weight": 10,
+    "min_hp": 0,
+    "min_sp": 105,
+    "max_hp": 0,
+    "max_sp": 145,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Red Potion": {
+    "gid": 501,
+    "weight": 7,
+    "min_hp": 0,
+    "min_sp": 45,
+    "max_hp": 0,
+    "max_sp": 65,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Red Herb": {
+    "gid": 507,
+    "weight": 3,
+    "min_hp": 0,
+    "min_sp": 18,
+    "max_hp": 0,
+    "max_sp": 28,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Yellow Herb": {
+    "gid": 508,
+    "weight": 5,
+    "min_hp": 0,
+    "min_sp": 38,
+    "max_hp": 0,
+    "max_sp": 58,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "White Herb": {
+    "gid": 509,
+    "weight": 7,
+    "min_hp": 0,
+    "min_sp": 75,
+    "max_hp": 0,
+    "max_sp": 115,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Blue Herb": {
+    "gid": 510,
+    "weight": 7,
+    "min_hp": 15,
+    "min_sp": 0,
+    "max_hp": 30,
+    "max_sp": 0,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Apple": {
+    "gid": 512,
+    "weight": 2,
+    "min_hp": 0,
+    "min_sp": 16,
+    "max_hp": 0,
+    "max_sp": 22,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Banana": {
+    "gid": 513,
+    "weight": 2,
+    "min_hp": 0,
+    "min_sp": 17,
+    "max_hp": 0,
+    "max_sp": 21,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Grape": {
+    "gid": 514,
+    "weight": 0.1,
+    "min_hp": 10,
+    "min_sp": 0,
+    "max_hp": 15,
+    "max_sp": 0,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Carrot": {
+    "gid": 515,
+    "weight": 2,
+    "min_hp": 0,
+    "min_sp": 18,
+    "max_hp": 0,
+    "max_sp": 20,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Potato": {
+    "gid": 516,
+    "weight": 2,
+    "min_hp": 0,
+    "min_sp": 15,
+    "max_hp": 0,
+    "max_sp": 23,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Honey": {
+    "gid": 518,
+    "weight": 10,
+    "min_hp": 0,
+    "min_sp": 70,
+    "max_hp": 0,
+    "max_sp": 100,
+    "is_vanilla_pvp": false,
+    "is_vanilla_pvm": false
+  },
+  "Milk": {
+    "gid": 519,
+    "weight": 3,
+    "min_hp": 0,
+    "min_sp": 27,
+    "max_hp": 0,
+    "max_sp": 37,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Hinalle Leaflet": {
+    "gid": 520,
+    "weight": 1,
+    "min_hp": 0,
+    "min_sp": 175,
+    "max_hp": 0,
+    "max_sp": 235,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Aloe Leaflet": {
+    "gid": 521,
+    "weight": 2,
+    "min_hp": 0,
+    "min_sp": 325,
+    "max_hp": 0,
+    "max_sp": 405,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Mastela Fruit": {
+    "gid": 522,
+    "weight": 3,
+    "min_hp": 0,
+    "min_sp": 400,
+    "max_hp": 0,
+    "max_sp": 600,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Royal Jelly": {
+    "gid": 526,
+    "weight": 15,
+    "min_hp": 0,
+    "min_sp": 325,
+    "max_hp": 0,
+    "max_sp": 405,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Monster's Feed": {
+    "gid": 528,
+    "weight": 15,
+    "min_hp": 0,
+    "min_sp": 72,
+    "max_hp": 0,
+    "max_sp": 108,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Candy": {
+    "gid": 529,
+    "weight": 3,
+    "min_hp": 0,
+    "min_sp": 45,
+    "max_hp": 0,
+    "max_sp": 65,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Candy Cane": {
+    "gid": 530,
+    "weight": 4,
+    "min_hp": 0,
+    "min_sp": 105,
+    "max_hp": 0,
+    "max_sp": 145,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Apple Juice": {
+    "gid": 531,
+    "weight": 4,
+    "min_hp": 0,
+    "min_sp": 25,
+    "max_hp": 0,
+    "max_sp": 35,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Banana Juice": {
+    "gid": 532,
+    "weight": 4,
+    "min_hp": 0,
+    "min_sp": 26,
+    "max_hp": 0,
+    "max_sp": 34,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Carrot Juice": {
+    "gid": 534,
+    "weight": 4,
+    "min_hp": 0,
+    "min_sp": 27,
+    "max_hp": 0,
+    "max_sp": 33,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Ice Cream": {
+    "gid": 536,
+    "weight": 8,
+    "min_hp": 0,
+    "min_sp": 105,
+    "max_hp": 0,
+    "max_sp": 145,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Pet Food": {
+    "gid": 537,
+    "weight": 1,
+    "min_hp": 0,
+    "min_sp": 50,
+    "max_hp": 0,
+    "max_sp": 90,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Well-baked Cookie": {
+    "gid": 538,
+    "weight": 3,
+    "min_hp": 0,
+    "min_sp": 160,
+    "max_hp": 0,
+    "max_sp": 200,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Falcon Food": {
+    "gid": 540,
+    "weight": 5,
+    "min_hp": 0,
+    "min_sp": 185,
+    "max_hp": 0,
+    "max_sp": 225,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "PecoPeco Food": {
+    "gid": 541,
+    "weight": 5,
+    "min_hp": 0,
+    "min_sp": 325,
+    "max_hp": 0,
+    "max_sp": 405,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Fortune Cookie": {
+    "gid": 542,
+    "weight": 0,
+    "min_hp": 0,
+    "min_sp": 105,
+    "max_hp": 0,
+    "max_sp": 145,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Raw Fish": {
+    "gid": 544,
+    "weight": 3,
+    "min_hp": 0,
+    "min_sp": 25,
+    "max_hp": 0,
+    "max_sp": 60,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Cheese": {
+    "gid": 548,
+    "weight": 5,
+    "min_hp": 10,
+    "min_sp": 0,
+    "max_hp": 15,
+    "max_sp": 0,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Yam": {
+    "gid": 549,
+    "weight": 8,
+    "min_hp": 0,
+    "min_sp": 50,
+    "max_hp": 0,
+    "max_sp": 100,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Rice Cake": {
+    "gid": 550,
+    "weight": 1,
+    "min_hp": 0,
+    "min_sp": 10,
+    "max_hp": 0,
+    "max_sp": 15,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Sushi": {
+    "gid": 551,
+    "weight": 5,
+    "min_hp": 0,
+    "min_sp": 50,
+    "max_hp": 0,
+    "max_sp": 60,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Ketupat": {
+    "gid": 552,
+    "weight": 1,
+    "min_hp": 0,
+    "min_sp": 70,
+    "max_hp": 0,
+    "max_sp": 90,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Bao": {
+    "gid": 553,
+    "weight": 5,
+    "min_hp": 0,
+    "min_sp": 35,
+    "max_hp": 0,
+    "max_sp": 70,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Mochi": {
+    "gid": 554,
+    "weight": 8,
+    "min_hp": 0,
+    "min_sp": 105,
+    "max_hp": 0,
+    "max_sp": 145,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Traditional Rice Cake": {
+    "gid": 555,
+    "weight": 2,
+    "min_hp": 0,
+    "min_sp": 105,
+    "max_hp": 0,
+    "max_sp": 145,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Rice Cake Stick": {
+    "gid": 556,
+    "weight": 1,
+    "min_hp": 0,
+    "min_sp": 20,
+    "max_hp": 0,
+    "max_sp": 25,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Neatly Sliced Rice Cake": {
+    "gid": 557,
+    "weight": 1,
+    "min_hp": 0,
+    "min_sp": 25,
+    "max_hp": 0,
+    "max_sp": 30,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Doublecrust Swiss Fondue": {
+    "gid": 563,
+    "weight": 15,
+    "min_hp": 0,
+    "min_sp": 375,
+    "max_hp": 0,
+    "max_sp": 445,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Vita500": {
+    "gid": 565,
+    "weight": 10,
+    "min_hp": 0,
+    "min_sp": 142,
+    "max_hp": 0,
+    "max_sp": 274,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Tom Yum Goong": {
+    "gid": 566,
+    "weight": 15,
+    "min_hp": 0,
+    "min_sp": 244,
+    "max_hp": 0,
+    "max_sp": 350,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Shrimp": {
+    "gid": 567,
+    "weight": 4,
+    "min_hp": 0,
+    "min_sp": 117,
+    "max_hp": 0,
+    "max_sp": 192,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Lemon": {
+    "gid": 568,
+    "weight": 4,
+    "min_hp": 10,
+    "min_sp": 0,
+    "max_hp": 20,
+    "max_sp": 0,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Novice Potion": {
+    "gid": 569,
+    "weight": 1,
+    "min_hp": 0,
+    "min_sp": 22,
+    "max_hp": 0,
+    "max_sp": 33,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Lucky Candy": {
+    "gid": 570,
+    "weight": 3,
+    "min_hp": 0,
+    "min_sp": 45,
+    "max_hp": 0,
+    "max_sp": 65,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Lucky Candy Cane": {
+    "gid": 571,
+    "weight": 4,
+    "min_hp": 0,
+    "min_sp": 105,
+    "max_hp": 0,
+    "max_sp": 145,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Lucky Cookie": {
+    "gid": 572,
+    "weight": 3,
+    "min_hp": 0,
+    "min_sp": 160,
+    "max_hp": 0,
+    "max_sp": 200,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Chocolate Drink": {
+    "gid": 573,
+    "weight": 15,
+    "min_hp": 0,
+    "min_sp": 330,
+    "max_hp": 0,
+    "max_sp": 410,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Egg": {
+    "gid": 574,
+    "weight": 3,
+    "min_hp": 0,
+    "min_sp": 33,
+    "max_hp": 0,
+    "max_sp": 42,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "2nd Anniversary Cake": {
+    "gid": 575,
+    "weight": 10,
+    "min_hp": 0,
+    "min_sp": 270,
+    "max_hp": 0,
+    "max_sp": 330,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Prickly Fruit": {
+    "gid": 576,
+    "weight": 6,
+    "min_hp": 0,
+    "min_sp": 150,
+    "max_hp": 0,
+    "max_sp": 300,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Bag of Grain": {
+    "gid": 577,
+    "weight": 2,
+    "min_hp": 0,
+    "min_sp": 60,
+    "max_hp": 0,
+    "max_sp": 70,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Fresh Fish": {
+    "gid": 579,
+    "weight": 2,
+    "min_hp": 0,
+    "min_sp": 100,
+    "max_hp": 0,
+    "max_sp": 150,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Bread": {
+    "gid": 580,
+    "weight": 2,
+    "min_hp": 0,
+    "min_sp": 50,
+    "max_hp": 0,
+    "max_sp": 90,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Edible Mushroom": {
+    "gid": 581,
+    "weight": 2,
+    "min_hp": 0,
+    "min_sp": 20,
+    "max_hp": 0,
+    "max_sp": 30,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Ketupat Sayur": {
+    "gid": 583,
+    "weight": 15,
+    "min_hp": 0,
+    "min_sp": 325,
+    "max_hp": 0,
+    "max_sp": 405,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Fish Cake Soup": {
+    "gid": 584,
+    "weight": 6,
+    "min_hp": 0,
+    "min_sp": 40,
+    "max_hp": 0,
+    "max_sp": 70,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Brusti": {
+    "gid": 585,
+    "weight": 4,
+    "min_hp": 0,
+    "min_sp": 15,
+    "max_hp": 0,
+    "max_sp": 20,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Mother's Cake": {
+    "gid": 586,
+    "weight": 10,
+    "min_hp": 0,
+    "min_sp": 325,
+    "max_hp": 0,
+    "max_sp": 405,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Red Prickly Fruit": {
+    "gid": 587,
+    "weight": 6,
+    "min_hp": 0,
+    "min_sp": 270,
+    "max_hp": 0,
+    "max_sp": 330,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Spaghetti": {
+    "gid": 588,
+    "weight": 10,
+    "min_hp": 0,
+    "min_sp": 40,
+    "max_hp": 0,
+    "max_sp": 70,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Pizza": {
+    "gid": 589,
+    "weight": 15,
+    "min_hp": 0,
+    "min_sp": 375,
+    "max_hp": 0,
+    "max_sp": 445,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Pretzel": {
+    "gid": 590,
+    "weight": 2,
+    "min_hp": 0,
+    "min_sp": 50,
+    "max_hp": 0,
+    "max_sp": 90,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Caviar Pancake": {
+    "gid": 591,
+    "weight": 15,
+    "min_hp": 0,
+    "min_sp": 325,
+    "max_hp": 0,
+    "max_sp": 405,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Jam Pancake": {
+    "gid": 592,
+    "weight": 15,
+    "min_hp": 0,
+    "min_sp": 325,
+    "max_hp": 0,
+    "max_sp": 405,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Honey Pancake": {
+    "gid": 593,
+    "weight": 15,
+    "min_hp": 0,
+    "min_sp": 325,
+    "max_hp": 0,
+    "max_sp": 405,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Sour-Cream Pancake": {
+    "gid": 594,
+    "weight": 15,
+    "min_hp": 0,
+    "min_sp": 325,
+    "max_hp": 0,
+    "max_sp": 405,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Mushroom Pancake": {
+    "gid": 595,
+    "weight": 15,
+    "min_hp": 0,
+    "min_sp": 325,
+    "max_hp": 0,
+    "max_sp": 405,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Cute Strawberry-Choco": {
+    "gid": 596,
+    "weight": 10,
+    "min_hp": 1,
+    "min_sp": 0,
+    "max_hp": 100,
+    "max_sp": 0,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Lovely Choco-Tart": {
+    "gid": 597,
+    "weight": 10,
+    "min_hp": 0,
+    "min_sp": 10,
+    "max_hp": 0,
+    "max_sp": 400,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Light Red Potion": {
+    "gid": 598,
+    "weight": 1,
+    "min_hp": 0,
+    "min_sp": 45,
+    "max_hp": 0,
+    "max_sp": 65,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Light Orange Potion": {
+    "gid": 599,
+    "weight": 1,
+    "min_hp": 0,
+    "min_sp": 105,
+    "max_hp": 0,
+    "max_sp": 145,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  },
+  "Beef Toast": {
+    "gid": 11519,
+    "weight": 4,
+    "min_hp": 0,
+    "min_sp": 170,
+    "max_hp": 0,
+    "max_sp": 250,
+    "is_vanilla_pvp": true,
+    "is_vanilla_pvm": true
+  }
+}

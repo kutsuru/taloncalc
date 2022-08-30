@@ -1,0 +1,933 @@
+{
+  "1": {
+    "id": 737,
+    "bonus": "(function (x,y) {$n$tx.max_hp += 300;$n$tx.matk_rate += -5; });",
+    "combo_items_id": [436, 475],
+    "combo_items_name": ["Survivor's Manteau", "Survivor's Rod [1] (DEX)"]
+  },
+  "2": {
+    "id": 738,
+    "bonus": "(function (x,y) {$n$tx.agi += 5;$n$tx.flee += 10; });",
+    "combo_items_id": [288, 699],
+    "combo_items_name": ["Pantie", "Undershirt"]
+  },
+  "3": {
+    "id": 739,
+    "bonus": "(function (x,y) {$n$tx.max_hp += 300;$n$tx.sp_cost_reduction_rate += -20; });",
+    "combo_items_id": [300, 724],
+    "combo_items_name": ["Ninja Suit", "Shinobi Sash"]
+  },
+  "4": {
+    "id": 740,
+    "bonus": "(function (x,y) {$n$tx.atk += 50;$n$tx.skill_atk.Skel Prisoner += 20;$n$tx.skill_atk.Zombie Prisoner += 20; });",
+    "combo_items_id": [323, 725],
+    "combo_items_name": ["Shackles", "Bloodied Shackle Ball"]
+  },
+  "5": {
+    "id": 741,
+    "bonus": "(function (x,y) {$n$tx.max_hp += 150;$n$tx.def += 5; });",
+    "combo_items_id": [298, 726],
+    "combo_items_name": ["Padded Armor", "Armor Charm"]
+  },
+  "6": {
+    "id": 742,
+    "bonus": "(function (x,y) {$n$tx.str += 2;$n$tx.def += 5;$n$tx.mdef += 5; });",
+    "combo_items_id": [684, 661, 691],
+    "combo_items_name": ["Odin's Blessing", "Magni's Cap", "Stone Buckler"]
+  },
+  "7": {
+    "id": 743,
+    "bonus": "(function (x,y) {$n$tx.agi += 3;$n$tx.max_hp_rate += 5;$n$tx.max_sp_rate += 5; });",
+    "combo_items_id": [684, 703, 712],
+    "combo_items_name": ["Odin's Blessing", "Falcon Muffler", "Fricco's Shoes"]
+  },
+  "8": {
+    "id": 744,
+    "bonus": "(function (x,y) {$n$tx.vit += 5;$n$tx.hp_recovery_rate += 10;$n$tx.sp_recovery_rate += 10; });",
+    "combo_items_id": [684, 704, 713],
+    "combo_items_name": ["Odin's Blessing", "Vali's Manteau", "Vidar's Boots"]
+  },
+  "9": {
+    "id": 745,
+    "bonus": "(function (x,y) {$n$tx.vit += 5;$n$tx.max_hp_rate += 15;$n$tx.max_sp_rate += 5;$n$tx.def += 5;$n$tx.mdef += 15;$n$tx.sub_element.water += 10;$n$tx.sub_element.earth += 10;$n$tx.sub_element.fire += 10;$n$tx.sub_element.wind += 10; });",
+    "combo_items_id": [667, 685, 702, 711],
+    "combo_items_name": [
+      "Goibne's Helm",
+      "Goibne's Armor",
+      "Goibne's Spaulders",
+      "Goibne's Greaves"
+    ]
+  },
+  "10": {
+    "id": 746,
+    "bonus": "(function (x,y) {$n$tx.str += 2;$n$tx.luk += 9;$n$tx.atk += 18;$n$tx.crit += 13;$n$tx.perfect_dodge += 13; });",
+    "combo_items_id": [666, 701, 721, 722],
+    "combo_items_name": [
+      "Morrigane's Helm",
+      "Morrigane's Manteau",
+      "Morrigane's Belt",
+      "Morrigane's Pendant"
+    ]
+  },
+  "11": {
+    "id": 747,
+    "bonus": "(function (x,y) {$n$tx.int += 5;$n$tx.mdef += 11;$n$tx.max_sp_rate += 20;$n$tx.cast_rate += 25; });",
+    "combo_items_id": [665, 700, 719, 720],
+    "combo_items_name": [
+      "Morpheus's Hood",
+      "Morpheus's Shawl",
+      "Morpheus's Ring",
+      "Morpheus's Bracelet"
+    ]
+  },
+  "12": {
+    "id": 748,
+    "bonus": "(function (x,y) {$n$tx.max_hp += 900;$n$tx.max_sp += 100; });",
+    "combo_items_id": [664, 683, 690, 698, 710],
+    "combo_items_name": [
+      "Angel's Kiss",
+      "Angelic Protection",
+      "Angelic Guard",
+      "Angelic Cardigan",
+      "Angel's Reincarnation"
+    ]
+  },
+  "13": {
+    "id": 749,
+    "bonus": "(function (x,y) {$n$tx.all_stats += 1; });",
+    "combo_items_id": [534, 535, 536, 1425],
+    "combo_items_name": [
+      "Valkyrja's Armor",
+      "Valkyrja's Manteau",
+      "Valkyrja's Shoes",
+      "Minor Valkyrie Helm"
+    ]
+  },
+  "14": {
+    "id": 750,
+    "bonus": "(function (x,y) {$n$tx.matk_rate += 6;$n$tx.dex += 2; });",
+    "combo_items_id": [727, 88],
+    "combo_items_name": ["Spiritual Ring", "Soul Staff"]
+  },
+  "15": {
+    "id": 751,
+    "bonus": "(function (x,y) {$n$tx.sp_recovery_rate += 9;$n$tx.skill_atk.Magnus Exorcismus += 30;$n$tx.skill_atk.Heal += 50; });",
+    "combo_items_id": [1367, 329],
+    "combo_items_name": ["Spiritual Ring [Rental]", "Clip"]
+  },
+  "16": {
+    "id": 752,
+    "bonus": "(function (x,y) {$n$tx.cast_rate += -10; });",
+    "combo_items_id": [694, 732],
+    "combo_items_name": ["Orlean's Server", "Orlean's Gloves"]
+  },
+  "17": {
+    "id": 753,
+    "bonus": "(function (x,y) {$n$tx.aspd_rate += 10;$n$tx.reflect_short_weapon_damage += 5; });",
+    "combo_items_id": [695, 733],
+    "combo_items_name": ["Thorn Shield", "Horn of the Buffalo"]
+  },
+  "18": {
+    "id": 754,
+    "bonus": "(function (x,y) {$n$tx.max_hp_rate += 10;$n$tx.hp_recovery_rate += 5; });",
+    "combo_items_id": [716, 706],
+    "combo_items_name": ["Tidal Shoes", "Wool Scarf"]
+  },
+  "19": {
+    "id": 755,
+    "bonus": "(function (x,y) {$n$tx.add_race.dragon += 5; });",
+    "combo_items_id": [705, 405],
+    "combo_items_name": ["Dragon's Breath", "Dragon Slayer"]
+  },
+  "20": {
+    "id": 756,
+    "bonus": "(function (x,y) {$n$tx.flee += 10; });",
+    "combo_items_id": [707, 717],
+    "combo_items_name": ["Crest of the Rider", "Black Leather Boots"]
+  },
+  "21": {
+    "id": 757,
+    "bonus": "(function (x,y) {$n$tx.dex += 2;$n$tx.matk_rate += 10;$n$tx.add_element.water += 10;$n$tx.add_element.holy += 10; });",
+    "combo_items_id": [727, 647],
+    "combo_items_name": ["Spiritual Ring", "Divine Cross"]
+  },
+  "22": {
+    "id": 763,
+    "bonus": "",
+    "combo_items_id": [478, 697],
+    "combo_items_name": ["Wing Staff", "Eagle Wing"]
+  },
+  "23": {
+    "id": 764,
+    "bonus": "(function (x,y) {$n$tx.def += 2;$n$tx.mdef += 5; });",
+    "combo_items_id": [684, 663, 692],
+    "combo_items_name": [
+      "Odin's Blessing",
+      "Frigg's Circlet",
+      "Valkyrja's Shield"
+    ]
+  },
+  "24": {
+    "id": 765,
+    "bonus": "",
+    "combo_items_id": [684, 662],
+    "combo_items_name": ["Odin's Blessing", "Ulle's Cap"]
+  },
+  "25": {
+    "id": 766,
+    "bonus": "",
+    "combo_items_id": [619, 731],
+    "combo_items_name": ["Phantom Spear", "Seal of Red Silk"]
+  },
+  "26": {
+    "id": 767,
+    "bonus": "",
+    "combo_items_id": [616, 692],
+    "combo_items_name": ["Long Horn", "Valkyrja's Shield"]
+  },
+  "27": {
+    "id": 768,
+    "bonus": "(function (x,y) {$n$tx.autospell += 42;$n$tx.autospell += 43;$n$tx.autospell += 44;$n$tx.autospell += 45;$n$tx.autospell += 46; });",
+    "combo_items_id": [728, 729],
+    "combo_items_name": ["Ring of Flame Lord", "Ring of Resonance"]
+  },
+  "28": {
+    "id": 814,
+    "bonus": "(function (x,y) {$n$tx.int += 2;$n$tx.luk += 2;$n$tx.flee += 5; });",
+    "combo_items_id": [813, 808],
+    "combo_items_name": ["Angeling Hairpin", "Angel's Dress"]
+  },
+  "29": {
+    "id": 818,
+    "bonus": "(function (x,y) {$n$tx.max_sp += 20;$n$tx.hit += 10;$n$tx.max_hp_rate += 5;$n$tx.add_size.large += 30; });",
+    "combo_items_id": [816, 817],
+    "combo_items_name": ["Desert Twilight", "Desert Wind"]
+  },
+  "30": {
+    "id": 824,
+    "bonus": "(function (x,y) {$n$tx.int += 4;$n$tx.mdef += 8;$n$tx.max_sp_rate += 10; });",
+    "combo_items_id": [823, 292],
+    "combo_items_name": ["Ancient Magic", "Mage Coat"]
+  },
+  "31": {
+    "id": 854,
+    "bonus": "(function (x,y) {$n$tx.add_class.all += 3;$n$tx.matk_rate += 3; });",
+    "combo_items_id": [829, 844],
+    "combo_items_name": ["Diablos Robe", "Diablos Ring"]
+  },
+  "32": {
+    "id": 855,
+    "bonus": "(function (x,y) {$n$tx.def += 2;$n$tx.add_class.all += 4; });",
+    "combo_items_id": [992, 616],
+    "combo_items_name": ["Tournament Shield", "Long Horn"]
+  },
+  "33": {
+    "id": 856,
+    "bonus": "(function (x,y) {$n$tx.skill_atk.Magnus Exorcismus += 20;$n$tx.autospell += 50; });",
+    "combo_items_id": [863, 831],
+    "combo_items_name": ["Holy Stick", "Sacred Scripture"]
+  },
+  "34": {
+    "id": 857,
+    "bonus": "(function (x,y) {$n$tx.max_hp_rate += 6; });",
+    "combo_items_id": [835, 836],
+    "combo_items_name": ["Diablos Manteau", "Diablos Boots"]
+  },
+  "35": {
+    "id": 858,
+    "bonus": "(function (x,y) {$n$tx.int += 5;$n$tx.max_hp += 700;$n$tx.aspd_rate += 5; });",
+    "combo_items_id": [823, 838, 837],
+    "combo_items_name": ["Ancient Magic", "Pocket Watch", "Librarian Gloves"]
+  },
+  "36": {
+    "id": 860,
+    "bonus": "(function (x,y) {$n$tx.matk_rate += 7;$n$tx.hp_recovery_rate += 15;$n$tx.sp_recovery_rate += 15; });",
+    "combo_items_id": [251, 307, 838],
+    "combo_items_name": ["Monocle", "Memory Book", "Pocket Watch"]
+  },
+  "37": {
+    "id": 861,
+    "bonus": "(function (x,y) {$n$tx.dex += 1;$n$tx.max_sp += 50;$n$tx.sp_recovery_rate += 10; });",
+    "combo_items_id": [521, 839],
+    "combo_items_name": ["Luna Bow", "Lunatic Brooch"]
+  },
+  "38": {
+    "id": 862,
+    "bonus": "",
+    "combo_items_id": [841, 842],
+    "combo_items_name": ["Feather of Icarus", "Renown Archer's Scarf"]
+  },
+  "39": {
+    "id": 971,
+    "bonus": "(function (x,y) {$n$tx.vit += 3;$n$tx.max_hp_rate += 12;$n$tx.add_element.neutral += -300;$n$tx.add_element.water += -300;$n$tx.add_element.earth += -300;$n$tx.add_element.fire += -300;$n$tx.add_element.wind += -300;$n$tx.add_element.poison += -300;$n$tx.add_element.holy += -300;$n$tx.add_element.ghost += -300;$n$tx.add_element.undead += -300; });",
+    "combo_items_id": [958, 965, 968],
+    "combo_items_name": [
+      "Assaulter Plate",
+      "Captain's Manteau",
+      "Battle Greaves"
+    ]
+  },
+  "40": {
+    "id": 972,
+    "bonus": "(function (x,y) {$n$tx.str += 3;$n$tx.max_hp_rate += 12;$n$tx.heal_power.potion_pitcher += 10;$n$tx.skill_atk.Mammonite += 20;$n$tx.add_element.neutral += -300;$n$tx.add_element.water += -300;$n$tx.add_element.earth += -300;$n$tx.add_element.fire += -300;$n$tx.add_element.wind += -300;$n$tx.add_element.poison += -300;$n$tx.add_element.holy += -300;$n$tx.add_element.ghost += -300;$n$tx.add_element.undead += -300;$n$tx.is_unbreakable += 1; });",
+    "combo_items_id": [959, 965, 968],
+    "combo_items_name": [
+      "Elite Engineer Armor",
+      "Captain's Manteau",
+      "Battle Greaves"
+    ]
+  },
+  "41": {
+    "id": 973,
+    "bonus": "(function (x,y) {$n$tx.agi += 3;$n$tx.max_hp_rate += 12;$n$tx.aspd_rate += 5;$n$tx.crit += 5;$n$tx.add_element.neutral += -300;$n$tx.add_element.water += -300;$n$tx.add_element.earth += -300;$n$tx.add_element.fire += -300;$n$tx.add_element.wind += -300;$n$tx.add_element.poison += -300;$n$tx.add_element.holy += -300;$n$tx.add_element.ghost += -300;$n$tx.add_element.undead += -300; });",
+    "combo_items_id": [960, 965, 968],
+    "combo_items_name": ["Assassin Robe", "Captain's Manteau", "Battle Greaves"]
+  },
+  "42": {
+    "id": 974,
+    "bonus": "(function (x,y) {$n$tx.int += 3;$n$tx.max_hp_rate += 12;$n$tx.res_effect.stun += 20;$n$tx.add_element.neutral += -300;$n$tx.add_element.water += -300;$n$tx.add_element.earth += -300;$n$tx.add_element.fire += -300;$n$tx.add_element.wind += -300;$n$tx.add_element.poison += -300;$n$tx.add_element.holy += -300;$n$tx.add_element.ghost += -300;$n$tx.add_element.undead += -300; });",
+    "combo_items_id": [961, 966, 969],
+    "combo_items_name": [
+      "Warlock's Battle Robe",
+      "Commander's Manteau",
+      "Combat Boots"
+    ]
+  },
+  "43": {
+    "id": 975,
+    "bonus": "(function (x,y) {$n$tx.int += 3;$n$tx.max_hp_rate += 12;$n$tx.skill_cast_rate.Holy Light += 50;$n$tx.heal_power.all += 10;$n$tx.heal_power.sanctuary += 10;$n$tx.add_element.neutral += -300;$n$tx.add_element.water += -300;$n$tx.add_element.earth += -300;$n$tx.add_element.fire += -300;$n$tx.add_element.wind += -300;$n$tx.add_element.poison += -300;$n$tx.add_element.holy += -300;$n$tx.add_element.ghost += -300;$n$tx.add_element.undead += -300; });",
+    "combo_items_id": [962, 966, 969],
+    "combo_items_name": ["Medic's Robe", "Commander's Manteau", "Combat Boots"]
+  },
+  "44": {
+    "id": 976,
+    "bonus": "(function (x,y) {$n$tx.dex += 3;$n$tx.max_hp_rate += 12;$n$tx.long_atk_def += 10;$n$tx.delay_rate += 25;$n$tx.add_element.neutral += -300;$n$tx.add_element.water += -300;$n$tx.add_element.earth += -300;$n$tx.add_element.fire += -300;$n$tx.add_element.wind += -300;$n$tx.add_element.poison += -300;$n$tx.add_element.holy += -300;$n$tx.add_element.ghost += -300;$n$tx.add_element.undead += -300; });",
+    "combo_items_id": [963, 966, 969],
+    "combo_items_name": [
+      "Elite Archer Suit",
+      "Commander's Manteau",
+      "Combat Boots"
+    ]
+  },
+  "45": {
+    "id": 977,
+    "bonus": "(function (x,y) {$n$tx.dex += 3;$n$tx.max_hp_rate += 12;$n$tx.long_atk_def += 10;$n$tx.delay_rate += 25;$n$tx.add_element.neutral += -300;$n$tx.add_element.water += -300;$n$tx.add_element.earth += -300;$n$tx.add_element.fire += -300;$n$tx.add_element.wind += -300;$n$tx.add_element.poison += -300;$n$tx.add_element.holy += -300;$n$tx.add_element.ghost += -300;$n$tx.add_element.undead += -300; });",
+    "combo_items_id": [964, 967, 970],
+    "combo_items_name": [
+      "Elite Shooter Suit",
+      "Sheriff's Manteau",
+      "Battle Boots"
+    ]
+  },
+  "46": {
+    "id": 995,
+    "bonus": "(function (x,y) {$n$tx.add_effect.blind += 5; });",
+    "combo_items_id": [718, 994],
+    "combo_items_name": ["Shadow Walk", "Shadow Guard"]
+  },
+  "47": {
+    "id": 999,
+    "bonus": "(function (x,y) {$n$tx.max_hp_rate += 7;$n$tx.max_sp_rate += 7;$n$tx.cast_rate += -3;$n$tx.delay_rate += 15; });",
+    "combo_items_id": [987, 998, 1001],
+    "combo_items_name": ["Sprint Mail", "Sprint Shoes", "Sprint Ring"]
+  },
+  "48": {
+    "id": 1004,
+    "bonus": "(function (x,y) {$n$tx.add_size.medium += 8; });",
+    "combo_items_id": [442, 1003],
+    "combo_items_name": ["Thief Ring", "Cold Heart"]
+  },
+  "49": {
+    "id": 1006,
+    "bonus": "(function (x,y) {$n$tx.add_size.large += 8; });",
+    "combo_items_id": [442, 1005],
+    "combo_items_name": ["Thief Ring", "Black Cat"]
+  },
+  "50": {
+    "id": 1008,
+    "bonus": "(function (x,y) {$n$tx.atk += 25;$n$tx.add_effect.curse += 2; });",
+    "combo_items_id": [946, 1007],
+    "combo_items_name": ["Cursed Lyre", "Cursed Star"]
+  },
+  "51": {
+    "id": 1010,
+    "bonus": "(function (x,y) {$n$tx.perfect_dodge += 5; });",
+    "combo_items_id": [990, 1009],
+    "combo_items_name": ["Refined Tights", "Linen Glove"]
+  },
+  "52": {
+    "id": 1017,
+    "bonus": "(function (x,y) {$n$tx.max_hp_rate += 20;$n$tx.max_sp_rate += 10; });",
+    "combo_items_id": [1012, 1013, 1014, 1015],
+    "combo_items_name": [
+      "Buwaya Skin Clothes",
+      "Kalasag",
+      "Nightmare Bangungot Boots",
+      "Bakonawa Scale Armor"
+    ]
+  },
+  "53": {
+    "id": 1042,
+    "bonus": "(function (x,y) {$n$tx.dex += 2;$n$tx.int += 2;$n$tx.sp_recovery_rate += 5; });",
+    "combo_items_id": [198, 1041],
+    "combo_items_name": ["Magician Hat", "Gentleman Staff"]
+  },
+  "54": {
+    "id": 1053,
+    "bonus": "(function (x,y) {$n$tx.matk_rate += 10;$n$tx.int += 5;$n$tx.add_element.ghost += 10; });",
+    "combo_items_id": [1050, 1051, 1052],
+    "combo_items_name": [
+      "Dark Knight Mask A",
+      "Dark Knight Belt A",
+      "Dark Knight Glove A"
+    ]
+  },
+  "55": {
+    "id": 1058,
+    "bonus": "(function (x,y) {$n$tx.max_hp += 300;$n$tx.matk_rate += 5;$n$tx.sub_element.neutral += 5; });",
+    "combo_items_id": [1055, 1056, 1057],
+    "combo_items_name": ["Shaman's Coif", "Shaman Ring", "Shaman Earring"]
+  },
+  "56": {
+    "id": 1114,
+    "bonus": "(function (x,y) {$n$tx.add_class.all += 5;$n$tx.matk_rate += 5;$n$tx.heal_power.all += 3;$n$tx.heal_power.potion_pitcher += 3;$n$tx.heal_power.sanctuary += 3;$n$tx.res_effect.freeze += 100; });",
+    "combo_items_id": [1104, 1107, 1110],
+    "combo_items_name": ["Glorious Suit", "Glorious Shoes", "Glorious Muffler"]
+  },
+  "57": {
+    "id": 1115,
+    "bonus": "(function (x,y) {$n$tx.add_class.all += 5;$n$tx.matk_rate += 3;$n$tx.heal_power.all += 5;$n$tx.heal_power.potion_pitcher += 5;$n$tx.heal_power.sanctuary += 5; });",
+    "combo_items_id": [1111, 978],
+    "combo_items_name": ["Glorious Ring", "Medal of Honor (Swordman)"]
+  },
+  "58": {
+    "id": 1134,
+    "bonus": "(function (x,y) {$n$tx.add_class.all += 2; });",
+    "combo_items_id": [1133, 1660],
+    "combo_items_name": ["Evolved Demon Student Hat", "Blue Pencil In Mouth"]
+  },
+  "59": {
+    "id": 1202,
+    "bonus": "(function (x,y) {$n$tx.aspd_rate += 3;$n$tx.cast_rate += 3; });",
+    "combo_items_id": [247, 1182],
+    "combo_items_name": ["Blush", "Neck Tie"]
+  },
+  "60": {
+    "id": 1203,
+    "bonus": "(function (x,y) {$n$tx.agi += 5;$n$tx.flee += 15; });",
+    "combo_items_id": [1189, 1192],
+    "combo_items_name": ["Dragon Vest", "Dragon Manteau"]
+  },
+  "61": {
+    "id": 1236,
+    "bonus": "(function (x,y) {$n$tx.int += 1; });",
+    "combo_items_id": [1235, 274],
+    "combo_items_name": ["Sakura Coronet", "Romantic Flower"]
+  },
+  "62": {
+    "id": 1237,
+    "bonus": "(function (x,y) {$n$tx.dex += 1; });",
+    "combo_items_id": [1235, 794],
+    "combo_items_name": ["Sakura Coronet", "White Petal"]
+  },
+  "63": {
+    "id": 1238,
+    "bonus": "(function (x,y) {$n$tx.str += 1; });",
+    "combo_items_id": [1235, 276],
+    "combo_items_name": ["Sakura Coronet", "Romantic Leaf"]
+  },
+  "64": {
+    "id": 1249,
+    "bonus": "",
+    "combo_items_id": [251, 1248],
+    "combo_items_name": ["Monocle", "Anniversary Star Hat"]
+  },
+  "65": {
+    "id": 1257,
+    "bonus": "",
+    "combo_items_id": [1255, 271],
+    "combo_items_name": ["White Feather", "Pipe"]
+  },
+  "66": {
+    "id": 1311,
+    "bonus": "(function (x,y) {$n$tx.matk_rate += 10;$n$tx.int += 5;$n$tx.add_element.ghost += 10; });",
+    "combo_items_id": [1306, 1309, 1310],
+    "combo_items_name": [
+      "Dark Knight Mask B",
+      "Dark Knight Belt B",
+      "Dark Knight Glove B"
+    ]
+  },
+  "67": {
+    "id": 1392,
+    "bonus": "(function (x,y) {$n$tx.sub_element.neutral += 25;$n$tx.matk_rate += 5; });",
+    "combo_items_id": [1365, 475],
+    "combo_items_name": [
+      "Survivor's Manteau [Rental]",
+      "Survivor's Rod [1] (DEX)"
+    ]
+  },
+  "68": {
+    "id": 1409,
+    "bonus": "(function (x,y) {$n$tx.cast_rate += -5; });",
+    "combo_items_id": [1407, 1408],
+    "combo_items_name": ["Love Piece", "Heart Wing Hairband"]
+  },
+  "69": {
+    "id": 1418,
+    "bonus": "",
+    "combo_items_id": [1416, 1417],
+    "combo_items_name": ["Special Carrot In Mouth", "Sheila Hairnet"]
+  },
+  "70": {
+    "id": 1421,
+    "bonus": "(function (x,y) {$n$tx.dex += 2;$n$tx.def += 2; });",
+    "combo_items_id": [1319, 368],
+    "combo_items_name": ["Well-Chewed Pencil", "Model Training Hat"]
+  },
+  "71": {
+    "id": 1431,
+    "bonus": "(function (x,y) {$n$tx.ignore_mdef_class.boss += 2; });",
+    "combo_items_id": [1430, 1228],
+    "combo_items_name": ["Magical Booster", "Southern Cross"]
+  },
+  "72": {
+    "id": 1432,
+    "bonus": "",
+    "combo_items_id": [1430, 645],
+    "combo_items_name": ["Magical Booster", "Staff of Piercing"]
+  },
+  "73": {
+    "id": 1433,
+    "bonus": "",
+    "combo_items_id": [1430, 473],
+    "combo_items_name": ["Magical Booster", "Hypnotist's Staff"]
+  },
+  "74": {
+    "id": 1452,
+    "bonus": "(function (x,y) {$n$tx.add_element.ghost += 9; });",
+    "combo_items_id": [1234, 146],
+    "combo_items_name": ["Devil Whisper", "Heart Hairpin"]
+  },
+  "75": {
+    "id": 1453,
+    "bonus": "(function (x,y) {$n$tx.add_element.holy += 9; });",
+    "combo_items_id": [1234, 151],
+    "combo_items_name": ["Devil Whisper", "Crescent Hairpin"]
+  },
+  "76": {
+    "id": 1461,
+    "bonus": "(function (x,y) {$n$tx.skill_atk.Grand Cross += 20; });",
+    "combo_items_id": [1459, 1460],
+    "combo_items_name": ["Imperial Guard", "Imperial Spear"]
+  },
+  "77": {
+    "id": 1464,
+    "bonus": "(function (x,y) {$n$tx.matk += 5;$n$tx.hit += 5; });",
+    "combo_items_id": [1005, 1463],
+    "combo_items_name": ["Black Cat", "Black Wing"]
+  },
+  "78": {
+    "id": 1471,
+    "bonus": "",
+    "combo_items_id": [1470, 730],
+    "combo_items_name": ["Wunderkammer", "Lesser Elemental Ring"]
+  },
+  "79": {
+    "id": 1476,
+    "bonus": "(function (x,y) {$n$tx.skill_atk.Grand Cross += 5; });",
+    "combo_items_id": [1459, 1460, 1475],
+    "combo_items_name": ["Imperial Guard", "Imperial Spear", "Imperial Feather"]
+  },
+  "80": {
+    "id": 1489,
+    "bonus": "",
+    "combo_items_id": [1488, 1174],
+    "combo_items_name": ["Little Feather Hat", "Falken Blitz"]
+  },
+  "81": {
+    "id": 1494,
+    "bonus": "",
+    "combo_items_id": [1493, 271],
+    "combo_items_name": ["Ultimate Ascended Black Dragon Hat", "Pipe"]
+  },
+  "82": {
+    "id": 1510,
+    "bonus": "(function (x,y) {$n$tx.autospell += 121; });",
+    "combo_items_id": [1508, 1509],
+    "combo_items_name": ["Mental Stick", "Telekinetic Orb"]
+  },
+  "83": {
+    "id": 1514,
+    "bonus": "",
+    "combo_items_id": [1513, 610],
+    "combo_items_name": ["Green Surgical Gown", "Mes"]
+  },
+  "84": {
+    "id": 1518,
+    "bonus": "(function (x,y) {$n$tx.flee += -20;$n$tx.atk += 25;$n$tx.skill_atk.Sonic Blow += 25;$n$tx.skill_atk.Sonic Blow [Soul Linked] += 25; });",
+    "combo_items_id": [1517, 1175],
+    "combo_items_name": ["Assassin's Glove", "Krishna"]
+  },
+  "85": {
+    "id": 1519,
+    "bonus": "(function (x,y) {$n$tx.crit += 2;$n$tx.max_hp_rate += -10;$n$tx.critical_atk_rate += 20; });",
+    "combo_items_id": [1517, 1176],
+    "combo_items_name": ["Assassin's Glove", "Chakram"]
+  },
+  "86": {
+    "id": 1521,
+    "bonus": "",
+    "combo_items_id": [1520, 1169],
+    "combo_items_name": ["Geffenia Water Book", "Lacrima Stick"]
+  },
+  "87": {
+    "id": 1524,
+    "bonus": "(function (x,y) {$n$tx.aspd_rate += 9;$n$tx.aspd += 1; });",
+    "combo_items_id": [1523, 377],
+    "combo_items_name": ["Evil Mask", "Succubus Horn"]
+  },
+  "88": {
+    "id": 1525,
+    "bonus": "(function (x,y) {$n$tx.aspd_rate += 9;$n$tx.aspd += 1; });",
+    "combo_items_id": [1523, 374],
+    "combo_items_name": ["Evil Mask", "Incubus Horn"]
+  },
+  "89": {
+    "id": 1537,
+    "bonus": "(function (x,y) {$n$tx.flee += 5; });",
+    "combo_items_id": [1535, 1536],
+    "combo_items_name": ["Beach Manteau", "Beach Sandals"]
+  },
+  "90": {
+    "id": 1554,
+    "bonus": "(function (x,y) {$n$tx.critical_add_race.fish += 10; });",
+    "combo_items_id": [1553, 1550],
+    "combo_items_name": ["Aegir Helm", "Aegir Shoes"]
+  },
+  "91": {
+    "id": 1555,
+    "bonus": "(function (x,y) {$n$tx.add_item_heal_rate += [544, 5, 1];$n$tx.add_item_heal_rate += [551, 5, 1]; });",
+    "combo_items_id": [1553, 1551],
+    "combo_items_name": ["Aegir Helm", "Aegir Cloak"]
+  },
+  "92": {
+    "id": 1556,
+    "bonus": "(function (x,y) {$n$tx.add_element.poison += 10; });",
+    "combo_items_id": [1553, 1552],
+    "combo_items_name": ["Aegir Helm", "Aegir Armor"]
+  },
+  "93": {
+    "id": 1557,
+    "bonus": "(function (x,y) {$n$tx.max_hp += 1000;$n$tx.max_sp += 100;$n$tx.exp_add_race.fish += 20;$n$tx.add_race.fish += 50;$n$tx.magic_add_race.fish += 50;$n$tx.sub_element.water += 30; });",
+    "combo_items_id": [1550, 1551, 1552, 1553],
+    "combo_items_name": [
+      "Aegir Shoes",
+      "Aegir Cloak",
+      "Aegir Armor",
+      "Aegir Helm"
+    ]
+  },
+  "94": {
+    "id": 1621,
+    "bonus": "",
+    "combo_items_id": [1620, 936],
+    "combo_items_name": ["Entweihen Hairband", "Dark Thorn Staff"]
+  },
+  "95": {
+    "id": 1634,
+    "bonus": "(function (x,y) {$n$tx.atk += 10; });",
+    "combo_items_id": [1629, 1631],
+    "combo_items_name": ["Advanced Angel's Kiss", "Advanced Angelic Cardigan"]
+  },
+  "96": {
+    "id": 1635,
+    "bonus": "(function (x,y) {$n$tx.matk_rate += 5; });",
+    "combo_items_id": [1630, 1629],
+    "combo_items_name": [
+      "Advanced Angel's Reincarnation",
+      "Advanced Angel's Kiss"
+    ]
+  },
+  "97": {
+    "id": 1636,
+    "bonus": "(function (x,y) {$n$tx.agi += 5;$n$tx.flee += 10; });",
+    "combo_items_id": [1631, 1633],
+    "combo_items_name": [
+      "Advanced Angelic Cardigan",
+      "Advanced Angelic Protection"
+    ]
+  },
+  "98": {
+    "id": 1637,
+    "bonus": "(function (x,y) {$n$tx.all_stats += 2; });",
+    "combo_items_id": [1632, 1630],
+    "combo_items_name": [
+      "Advanced Angelic Guard",
+      "Advanced Angel's Reincarnation"
+    ]
+  },
+  "99": {
+    "id": 1638,
+    "bonus": "(function (x,y) {$n$tx.sub_element.neutral += 5; });",
+    "combo_items_id": [1633, 1631],
+    "combo_items_name": [
+      "Advanced Angelic Protection",
+      "Advanced Angelic Cardigan"
+    ]
+  },
+  "100": {
+    "id": 1639,
+    "bonus": "(function (x,y) {$n$tx.max_hp += 900;$n$tx.max_sp += 100;$n$tx.autospell += 131; });",
+    "combo_items_id": [1633, 1630, 1632, 1631, 1629],
+    "combo_items_name": [
+      "Advanced Angelic Protection",
+      "Advanced Angel's Reincarnation",
+      "Advanced Angelic Guard",
+      "Advanced Angelic Cardigan",
+      "Advanced Angel's Kiss"
+    ]
+  },
+  "101": {
+    "id": 1669,
+    "bonus": "(function (x,y) {$n$tx.heal_power.all += 1;$n$tx.heal_power.sanctuary += 1; });",
+    "combo_items_id": [1667, 644],
+    "combo_items_name": ["Love Guard", "Staff of Recovery"]
+  },
+  "102": {
+    "id": 1670,
+    "bonus": "(function (x,y) {$n$tx.heal_power.all += 2;$n$tx.heal_power.sanctuary += 2; });",
+    "combo_items_id": [1667, 863],
+    "combo_items_name": ["Love Guard", "Holy Stick"]
+  },
+  "103": {
+    "id": 1684,
+    "bonus": "(function (x,y) {$n$tx.aspd_rate += 3; });",
+    "combo_items_id": [1213, 1683],
+    "combo_items_name": ["Scuba Mask", "Oxygen Bottle"]
+  },
+  "104": {
+    "id": 1685,
+    "bonus": "(function (x,y) {$n$tx.perfect_dodge += 5; });",
+    "combo_items_id": [1213, 1682],
+    "combo_items_name": ["Scuba Mask", "Surfer Swimsuit"]
+  },
+  "105": {
+    "id": 1686,
+    "bonus": "(function (x,y) {$n$tx.exp_add_race.formless += 10;$n$tx.exp_add_race.fish += 10;$n$tx.sub_race.undead += 5;$n$tx.sub_race.plant += 5;$n$tx.magic_add_element.water += 5;$n$tx.magic_add_element.fire += 5; });",
+    "combo_items_id": [1213, 1682, 1683],
+    "combo_items_name": ["Scuba Mask", "Surfer Swimsuit", "Oxygen Bottle"]
+  },
+  "106": {
+    "id": 1691,
+    "bonus": "",
+    "combo_items_id": [1689, 1690],
+    "combo_items_name": ["Prison Uniform", "Thief Handcuff"]
+  },
+  "107": {
+    "id": 1692,
+    "bonus": "(function (x,y) {$n$tx.str += 5; });",
+    "combo_items_id": [1690, 725],
+    "combo_items_name": ["Thief Handcuff", "Bloodied Shackle Ball"]
+  },
+  "108": {
+    "id": 1693,
+    "bonus": "",
+    "combo_items_id": [1690, 323],
+    "combo_items_name": ["Thief Handcuff", "Shackles"]
+  },
+  "109": {
+    "id": 1694,
+    "bonus": "(function (x,y) {$n$tx.dex += 5;$n$tx.flee += 5;$n$tx.max_hp_rate += 5;$n$tx.sub_element.shadow += 10;$n$tx.sub_element.ghost += 10;$n$tx.sub_element.undead += 10;$n$tx.exp_add_race.undead += 10;$n$tx.exp_add_race.demon += 10; });",
+    "combo_items_id": [1689, 1690, 725, 323],
+    "combo_items_name": [
+      "Prison Uniform",
+      "Thief Handcuff",
+      "Bloodied Shackle Ball",
+      "Shackles"
+    ]
+  },
+  "110": {
+    "id": 1698,
+    "bonus": "(function (x,y) {$n$tx.dex += 3;$n$tx.heal_power.all += 10;$n$tx.heal_power.potion_pitcher += 10;$n$tx.heal_power.sanctuary += 10; });",
+    "combo_items_id": [1697, 1000],
+    "combo_items_name": ["Rose of Eden", "Angelic Ring"]
+  },
+  "111": {
+    "id": 1701,
+    "bonus": "(function (x,y) {$n$tx.skill_cast_rate.Meteor Assault += 30; });",
+    "combo_items_id": [1699, 1700],
+    "combo_items_name": ["Enforcer Cape", "Enforcer Shoes"]
+  },
+  "112": {
+    "id": 1703,
+    "bonus": "(function (x,y) {$n$tx.max_hp_rate += 8;$n$tx.max_sp_rate += 8;$n$tx.cast_rate += -9; });",
+    "combo_items_id": [1702, 1001, 987, 998],
+    "combo_items_name": [
+      "Sprint Glove",
+      "Sprint Ring",
+      "Sprint Mail",
+      "Sprint Shoes"
+    ]
+  },
+  "113": {
+    "id": 1716,
+    "bonus": "(function (x,y) {$n$tx.str += 1;$n$tx.add_class.all += 5; });",
+    "combo_items_id": [1715, 381],
+    "combo_items_name": ["Pitch Dark Evil Druid Hat", "Evil Wing Ears"]
+  },
+  "114": {
+    "id": 1717,
+    "bonus": "(function (x,y) {$n$tx.str += 1;$n$tx.aspd_rate += 3; });",
+    "combo_items_id": [1715, 385],
+    "combo_items_name": ["Pitch Dark Evil Druid Hat", "Angel Wing Ears"]
+  },
+  "115": {
+    "id": 1718,
+    "bonus": "(function (x,y) {$n$tx.agi += 1;$n$tx.flee += 5; });",
+    "combo_items_id": [1715, 805],
+    "combo_items_name": ["Pitch Dark Evil Druid Hat", "Peco-Peco Ears"]
+  },
+  "116": {
+    "id": 1719,
+    "bonus": "(function (x,y) {$n$tx.int += 1;$n$tx.matk_rate += 2; });",
+    "combo_items_id": [1715, 887],
+    "combo_items_name": ["Pitch Dark Evil Druid Hat", "Black Framed Glasses"]
+  },
+  "117": {
+    "id": 1720,
+    "bonus": "(function (x,y) {$n$tx.dex += 1;$n$tx.flee += 5; });",
+    "combo_items_id": [1715, 643],
+    "combo_items_name": ["Pitch Dark Evil Druid Hat", "Dark Blinder"]
+  },
+  "118": {
+    "id": 1727,
+    "bonus": "(function (x,y) {$n$tx.max_hp += 100; });",
+    "combo_items_id": [1725, 1726],
+    "combo_items_name": ["Bankruptcy Hat", "Bankruptcy Mask"]
+  },
+  "119": {
+    "id": 1731,
+    "bonus": "(function (x,y) {$n$tx.max_sp_rate += 10; });",
+    "combo_items_id": [1728, 1730],
+    "combo_items_name": ["Antonio's Coat", "Red Stocking Boots"]
+  },
+  "120": {
+    "id": 1732,
+    "bonus": "(function (x,y) {$n$tx.aspd_rate += 3; });",
+    "combo_items_id": [1728, 1729],
+    "combo_items_name": ["Antonio's Coat", "Antonio's Red Bag"]
+  },
+  "121": {
+    "id": 1733,
+    "bonus": "(function (x,y) {$n$tx.exp_add_race.demi-human += 10;$n$tx.exp_add_race.angel += 10;$n$tx.res_effect.freeze += 10;$n$tx.enable_skill += 23; });",
+    "combo_items_id": [1728, 1729, 1730],
+    "combo_items_name": [
+      "Antonio's Coat",
+      "Antonio's Red Bag",
+      "Red Stocking Boots"
+    ]
+  },
+  "122": {
+    "id": 1737,
+    "bonus": "(function (x,y) {$n$tx.flee += 20;$n$tx.enable_skill += 61; });",
+    "combo_items_id": [1736, 1240],
+    "combo_items_name": ["Empty Liquor Bottle", "Beer Hat"]
+  },
+  "123": {
+    "id": 1740,
+    "bonus": "(function (x,y) {$n$tx.heal_power.all += 5;$n$tx.heal_power.potion_pitcher += 5;$n$tx.heal_power.sanctuary += 5; });",
+    "combo_items_id": [1739, 781],
+    "combo_items_name": ["Preschool Hat", "Bunny Slipper"]
+  },
+  "124": {
+    "id": 1742,
+    "bonus": "(function (x,y) {$n$tx.sp_cost_reduction_rate += -5; });",
+    "combo_items_id": [1741, 1414],
+    "combo_items_name": ["Rose Casquette", "Rose Of Crimson"]
+  },
+  "125": {
+    "id": 1758,
+    "bonus": "(function (x,y) {$n$tx.sp_cost_reduction_rate += -3; });",
+    "combo_items_id": [1757, 253],
+    "combo_items_name": ["Skull Cap", "Elven Ears"]
+  },
+  "126": {
+    "id": 1759,
+    "bonus": "(function (x,y) {$n$tx.matk_rate += 2; });",
+    "combo_items_id": [1757, 89],
+    "combo_items_name": ["Skull Cap", "Evil Bone Wand"]
+  },
+  "127": {
+    "id": 1760,
+    "bonus": "(function (x,y) {$n$tx.matk_rate += 2; });",
+    "combo_items_id": [1757, 936],
+    "combo_items_name": ["Skull Cap", "Dark Thorn Staff"]
+  },
+  "128": {
+    "id": 1769,
+    "bonus": "(function (x,y) {$n$tx.res_effect.freeze += -20; });",
+    "combo_items_id": [1682, 1729],
+    "combo_items_name": ["Surfer Swimsuit", "Antonio's Red Bag"]
+  },
+  "129": {
+    "id": 1780,
+    "bonus": "(function (x,y) {$n$tx.max_hp += 300;$n$tx.sp_cost_reduction_rate += -20; });",
+    "combo_items_id": [1774, 724],
+    "combo_items_name": ["Special Ninja Suit", "Shinobi Sash"]
+  },
+  "130": {
+    "id": 1781,
+    "bonus": "(function (x,y) {$n$tx.max_hp += 300;$n$tx.sp_cost_reduction_rate += -20; });",
+    "combo_items_id": [1775, 724],
+    "combo_items_name": ["Ninja Scale Armor", "Shinobi Sash"]
+  },
+  "131": {
+    "id": 1782,
+    "bonus": "(function (x,y) {$n$tx.max_hp += 300;$n$tx.sp_cost_reduction_rate += -20; });",
+    "combo_items_id": [1776, 724],
+    "combo_items_name": ["Tenebris Latitantes", "Shinobi Sash"]
+  },
+  "132": {
+    "id": 1804,
+    "bonus": "(function (x,y) {$n$tx.max_hp += 300; });",
+    "combo_items_id": [1802, 1803],
+    "combo_items_name": ["Rebellion Scarf", "Mob Scarf"]
+  },
+  "133": {
+    "id": 1821,
+    "bonus": "",
+    "combo_items_id": [939, 1819],
+    "combo_items_name": ["Elemental Sword", "Elemental Boots"]
+  },
+  "134": {
+    "id": 1822,
+    "bonus": "(function (x,y) {$n$tx.int += 3;$n$tx.dex += 5; });",
+    "combo_items_id": [1820, 1824],
+    "combo_items_name": ["Snake Encyclopedia", "Evil Snake Lord Hat"]
+  },
+  "135": {
+    "id": 1823,
+    "bonus": "(function (x,y) {$n$tx.int += 3;$n$tx.dex += 5; });",
+    "combo_items_id": [1820, 1267],
+    "combo_items_name": ["Snake Encyclopedia", "White Snake Hat"]
+  },
+  "136": {
+    "id": 1825,
+    "bonus": "(function (x,y) {$n$tx.int += 2; });",
+    "combo_items_id": [1818, 522],
+    "combo_items_name": ["Invective Robe", "Heavenly Maiden Robe"]
+  },
+  "137": {
+    "id": 1826,
+    "bonus": "(function (x,y) {$n$tx.sub_element.neutral += 15; });",
+    "combo_items_id": [1818, 704],
+    "combo_items_name": ["Invective Robe", "Vali's Manteau"]
+  },
+  "138": {
+    "id": 1827,
+    "bonus": "",
+    "combo_items_id": [1818, 315],
+    "combo_items_name": ["Invective Robe", "Ancient Cape"]
+  }
+}
