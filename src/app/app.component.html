@@ -1,6 +1,10 @@
 <mat-toolbar>
   <img src="/assets/img/ttcalc_logo.png" id="toolbar-logo" />
   <div id="ttToolbarMenu" fxLayout="row" fxLayoutAlign="end stretch">
+    <button mat-raised-button (click)="themer.setTheme(theme)" *ngFor="let theme of themer.themes"
+      [color]="themer.activeTheme.name == theme.name ? 'accent' : ''">
+      Theme: {{theme.name}}
+    </button>
     <mat-nav-list fxLayout="row">
       <a mat-list-item fxFlex="initial" routerLink="/pvm">
         <span mat-line>PVM</span>
