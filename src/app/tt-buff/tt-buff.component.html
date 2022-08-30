@@ -1,0 +1,40 @@
+<mat-card>
+  <mat-card-title-group>
+    <mat-card-title>Buffs Selection</mat-card-title>
+    <tt-collapse-button [container]="buffSelection"> </tt-collapse-button>
+  </mat-card-title-group>
+  <mat-card-content tt-collapse-container #buffSelection>
+    <div
+      fxLayout="column"
+      fxLayoutGap="32px"
+      *ngFor="let buff of ttSessionInfoService.buffSkills | keyvalue"
+      [ngSwitch]="buff.value['type']"
+    >
+      <ng-template ngSwitchCase="list">
+        <mat-form-field>
+          <mat-label>{{ buff.key }}</mat-label>
+          <mat-select
+            [(value)]="ttSessionInfoService.sessionInfo['activeBuff'][buff.key]"
+            (selectionChange)="ttSessionInfoService.updateSessionInfo()"
+          >
+            <mat-option
+              *ngFor="let skillLv of buff | lvarray: buff.value['maxLevel']"
+              [value]="skillLv"
+            >
+              {{ skillLv }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-template>
+      <ng-template ngSwitchCase="check">
+        <mat-checkbox
+          class="buff-check"
+          [(ngModel)]="ttSessionInfoService.sessionInfo['activeBuff'][buff.key]"
+          (change)="ttSessionInfoService.updateSessionInfo()"
+        >
+          {{ buff.key }}
+        </mat-checkbox>
+      </ng-template>
+    </div>
+  </mat-card-content>
+</mat-card>

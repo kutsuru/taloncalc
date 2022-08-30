@@ -1,0 +1,25 @@
+mat-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  z-index: 100;
+}
+#main-content {
+  padding-top: 64px;
+}
+#toolbar-logo {
+  height: 48px;
+}
+#ttToolbarMenu {
+  flex: 1;
+  .mat-list-item:hover {
+    color: #f9b233;
+  }
+  .mat-list-item {
+    color: #ffffff;
+  }
+  .mat-line {
+    font-weight: lighter;
+  }
+}

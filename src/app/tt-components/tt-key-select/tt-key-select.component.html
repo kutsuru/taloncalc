@@ -1,0 +1,14 @@
+<mat-form-field class="tt-key-select">
+  <mat-label>{{ name }}</mat-label>
+  <mat-select
+    [(value)]="_serviceData[key]"
+    (selectionChange)="onSelectionChange($event)"
+  >
+    <mat-option *ngIf="defaultValue" [value]="defaultValue">
+      {{ defaultValue }}
+    </mat-option>
+    <mat-option *ngFor="let item of data" [value]="item">
+      {{ item }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

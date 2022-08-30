@@ -1,0 +1,77 @@
+<h2 mat-dialog-title>Monster selection for battle simulation</h2>
+<mat-dialog-content>
+  <p>
+    <mat-form-field class="mob-select">
+      <mat-label>Monster Selection</mat-label>
+      <mat-select [(value)]="selectedMob" (selectionChange)="onMobSelection()">
+        <mat-option *ngFor="let item of mobKeys" [value]="item">
+          {{ item }}
+        </mat-option>
+      </mat-select> </mat-form-field
+    ><br />
+    <mat-checkbox
+      class="filter-check"
+      [(ngModel)]="isNormalClassFilter"
+      (change)="applyFilter()"
+      >Normal</mat-checkbox
+    >
+    <mat-checkbox
+      class="filter-check"
+      [(ngModel)]="isMvPFilter"
+      (change)="applyFilter()"
+      >MvP</mat-checkbox
+    >
+    <mat-checkbox
+      class="filter-check"
+      [(ngModel)]="isBossClassFilter"
+      (change)="applyFilter()"
+      >Boss</mat-checkbox
+    >
+    <br />
+    <mat-form-field class="element-select">
+      <mat-label>Element Filter</mat-label>
+      <mat-select [(value)]="elementFilter" (selectionChange)="applyFilter()">
+        <mat-option *ngFor="let item of elements" [value]="item">
+          {{ item }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="size-select">
+      <mat-label>Size Filter</mat-label>
+      <mat-select [(value)]="sizeFilter" (selectionChange)="applyFilter()">
+        <mat-option *ngFor="let item of sizes" [value]="item">
+          {{ item }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="race-select">
+      <mat-label>Race Filter</mat-label>
+      <mat-select [(value)]="raceFilter" (selectionChange)="applyFilter()">
+        <mat-option *ngFor="let item of races" [value]="item">
+          {{ item }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="region-select">
+      <mat-label>Region Filter</mat-label>
+      <mat-select [(value)]="regionFilter" (selectionChange)="applyFilter()">
+        <mat-option *ngFor="let item of regions" [value]="item">
+          {{ item }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+  <img
+    src="https://static.divine-pride.net/images/mobs/png/{{
+      selectedMobId
+    }}.png"
+    alt="image"
+  />
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-stroked-button mat-dialog-close color="warn">Cancel</button>
+  <button mat-stroked-button [mat-dialog-close]="selectedMob" color="primary">
+    Okay
+  </button>
+</mat-dialog-actions>

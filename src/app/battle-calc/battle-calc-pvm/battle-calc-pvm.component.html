@@ -1,0 +1,92 @@
+<mat-card>
+  <mat-card-title>
+    {{ targetName }}
+    <button mat-icon-button (click)="changeTarget()">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <img
+      src="https://static.divine-pride.net/images/mobs/png/{{ targetId }}.png"
+      alt="image"
+    />
+  </mat-card-title>
+  <mat-card-content>
+    <mat-form-field>
+      <mat-label>HP</mat-label>
+      <input matInput [value]="targetInfo['hp']" readonly />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Physical Defense</mat-label>
+      <input matInput [value]="targetInfo['def']" readonly />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Magical Defense</mat-label>
+      <input matInput [value]="targetInfo['mdef']" readonly />
+    </mat-form-field>
+    <br />
+    <mat-form-field class="skill-select">
+      <mat-label>Skill Selection</mat-label>
+      <mat-select
+        [(value)]="selectedSkill"
+        (selectionChange)="onSkillSelection()"
+      >
+        <mat-option
+          *ngFor="let item of ttSessionInfo.activeSkills | keyvalue"
+          [value]="item.key"
+        >
+          {{ item.key }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="selectedSkillLvs.length" class="skill-lv-select">
+      <mat-label>Skill Lv</mat-label>
+      <mat-select
+        [(value)]="selectedSkillLv"
+        (selectionChange)="updateBattleSimulation()"
+      >
+        <mat-option *ngFor="let item of selectedSkillLvs" [value]="item">
+          {{ item }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="currentAmmoType" class="ammo-select">
+      <mat-label>Ammunition Selection</mat-label>
+      <mat-select
+        [(value)]="selectedAmmo"
+        (selectionChange)="updateBattleSimulation()"
+      >
+        <mat-option
+          *ngFor="let item of ttCore.ammoDb[currentAmmoType] | keyvalue"
+          [value]="item.value"
+        >
+          {{ item.key }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="Endow-select">
+      <mat-label>Endow Selection</mat-label>
+      <mat-select
+        [(value)]="selectedEndow"
+        (selectionChange)="updateBattleSimulation()"
+      >
+        <mat-option *ngFor="let item of endows" [value]="item">
+          {{ item }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Minimum Damage</mat-label>
+      <input matInput [value]="minDamage" readonly />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Maximum Damage</mat-label>
+      <input matInput [value]="maxDamage" readonly />
+    </mat-form-field>
+  </mat-card-content>
+  <button mat-icon-button (click)="refresh()" class="refresh-btn">
+    <mat-icon>refresh</mat-icon>
+  </button>
+  <button mat-icon-button (click)="close()" color="warn" class="close-btn">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-card>

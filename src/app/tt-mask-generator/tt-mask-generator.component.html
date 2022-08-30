@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-title-group>
+    <mat-card-title>Mask Generator</mat-card-title>
+    <tt-collapse-button [container]="maskGenerator"> </tt-collapse-button>
+  </mat-card-title-group>
+  <mat-card-content tt-collapse-container #maskGenerator
+    ><mat-form-field>
+      <mat-label>Job Mask</mat-label>
+      <input matInput [value]="maskDisplay" readonly />
+    </mat-form-field>
+
+    <mat-grid-list cols="4" rowHeight="30">
+      <mat-grid-tile
+        *ngFor="let item of selectedClasses | keyvalue: unsorted"
+        class="mat-grid-tile"
+      >
+        <mat-checkbox
+          class="job-check"
+          [(ngModel)]="selectedClasses[item.key]['checked']"
+          (change)="updateMask(item.key, item.value['info'])"
+          >{{ item.key }}</mat-checkbox
+        >
+        <span class="flex-expand"></span>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>

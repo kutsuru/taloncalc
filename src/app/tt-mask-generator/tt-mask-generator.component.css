@@ -1,0 +1,14 @@
+.grid-list-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  background: #fff;
+  text-decoration: none;
+  padding: 4px;
+  width: calc(100% - 10px);
+}
+
+.flex-expand {
+  flex: 1 1 auto;
+}

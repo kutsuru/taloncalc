@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <img src="{{ appLogoData }}" id="toolbar-logo" />
+  <div id="ttToolbarMenu" fxLayout="row" fxLayoutAlign="end stretch">
+    <mat-nav-list fxLayout="row">
+      <a mat-list-item fxFlex="initial" routerLink="/pvm">
+        <span mat-line>PVM</span>
+        <mat-icon>expand_more</mat-icon>
+      </a>
+      <a mat-list-item fxFlex="initial" routerLink="/changelog">
+        <span mat-line>Changelog</span>
+        <mat-icon>expand_more</mat-icon>
+      </a>
+      <a mat-list-item fxFlex="initial" routerLink="/request">
+        <span mat-line>DB-Request</span>
+        <mat-icon>expand_more</mat-icon>
+      </a>
+    </mat-nav-list>
+  </div>
+</mat-toolbar>
+<div id="main-content">
+  <router-outlet></router-outlet>
+</div>
+<tt-page-loader></tt-page-loader>

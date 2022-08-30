@@ -1,0 +1,35 @@
+.refine-select {
+  width: 10px;
+}
+
+.mid-hg-select {
+  margin-left: 90px;
+}
+.low-hg-select {
+  margin-left: 90px;
+}
+
+.vanilla-mode-radio-button {
+  margin-right: 20px;
+}
+
+/* new drawer styles */
+$toolbar-height: 64px;
+.drawer-container {
+  position: absolute;
+  top: $toolbar-height;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.drawer-sidenav {
+  position: fixed;
+  right: 0;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 16px;
+}
+.drawer-content {
+  padding: 10px;
+}

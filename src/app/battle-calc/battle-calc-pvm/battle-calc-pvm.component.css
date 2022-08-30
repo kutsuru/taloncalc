@@ -1,0 +1,17 @@
+:host {
+  padding: 5px;
+}
+mat-card-content {
+  margin-top: 20px !important;
+}
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.refresh-btn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  color: rgb(47, 255, 99);
+}
