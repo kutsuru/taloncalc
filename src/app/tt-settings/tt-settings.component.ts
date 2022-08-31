@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSelectionListChange } from '@angular/material/list';
 import { TTThemerService } from '../tt-themer/tt-themer.service';
+import { PopupSetting, TtSettingsService } from './tt-settings.service';
 
 @Component({
   selector: 'tt-settings',
@@ -9,8 +11,14 @@ import { TTThemerService } from '../tt-themer/tt-themer.service';
 export class TtSettingsComponent implements OnInit {
   showSettings: boolean = false;
 
-  constructor(public themer:TTThemerService) { }
+  constructor(protected themer:TTThemerService, protected ttSettings: TtSettingsService) { }
 
   ngOnInit(): void {
+  }
+
+  changePopupSetting(ev: MatSelectionListChange){
+    const popupName = ev.options[0].value as keyof PopupSetting;
+    // this.ttSettings.popup[popupName] = ev.options[0].selected;
+    this.ttSettings.setPopup(popupName, ev.options[0].selected);
   }
 }

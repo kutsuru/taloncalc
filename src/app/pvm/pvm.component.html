@@ -1,30 +1,19 @@
 <!-- define popup somewhere outside the main layout/container -->
 <tt-popup-group>
-  <tt-popup #pop1>Popup Nr.1</tt-popup>
-  <tt-popup #pop2>Popup Nr.2<br />With some more text</tt-popup>
-  <tt-popup #pop3
-    >Popup Nr.3<br /><br /><br /><br /><br />With EEEEEEEEEEEEEEEEEVVVVVVVVVVEN
-    more text</tt-popup
-  >
-  <tt-popup #pop4>
-    Popup Nr.4<br />
-    <div>A</div>
-    <div>VERY</div>
-    <br /><br /><br /><br /><br /><br /><br />
-    <div>High</div>
-    <div>POPPPUUUUUUUUUUPPPPPPPPPPPPPPPPPPPPP</div>
+  <tt-popup #popStatsInfo>
+    I'll show you all the stats later...maybe<br>lets see....
+  </tt-popup>
+  <tt-popup #popBuffs>
+    <tt-buff></tt-buff>
   </tt-popup>
 </tt-popup-group>
 <!-- main layout / content -->
 <div class="drawer-container">
   <div class="drawer-sidenav">
     <div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="none center">
-      <tt-popup-button [popup]="pop1" icon="add">Button 1</tt-popup-button>
-      <tt-popup-button [popup]="pop2" icon="remove">Button 2</tt-popup-button>
-      <tt-popup-button [popup]="pop3" icon="expand_more"
-        >Button 3</tt-popup-button
-      >
-      <tt-popup-button [popup]="pop4">Button 4</tt-popup-button>
+      <!-- REAL -->
+      <tt-popup-button *ngIf="ttSettings.popup.statsInfo" [popup]="popStatsInfo" icon="info"></tt-popup-button>
+      <tt-popup-button *ngIf="ttSettings.popup.buffs" [popup]="popBuffs" icon="auto_awesome"></tt-popup-button>
     </div>
   </div>
   <div class="drawer-content" fxLayout="column" fxLayoutGap="10px">
@@ -154,7 +143,7 @@
     </mat-card>
 
     <!-- stats info calc -->
-    <mat-card>
+    <mat-card *ngIf="!ttSettings.popup.statsInfo">
       <mat-card-title-group>
         <mat-card-title>StatsInfo</mat-card-title>
         <tt-collapse-button [container]="statsInfoContent"></tt-collapse-button>
@@ -210,7 +199,7 @@
     </mat-card>
 
     <!-- buffs calc -->
-    <tt-buff></tt-buff>
+    <tt-buff *ngIf="!ttSettings.popup.buffs"></tt-buff>
     <!-- passive calc -->
     <tt-passive></tt-passive>
 

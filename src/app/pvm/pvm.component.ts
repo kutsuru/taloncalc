@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ContentChild, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 import { TTSessionInfoService } from '../core/tt-session-info.service';
 import { TTCoreService } from '../core/tt-core.service';
 import { TtPageLoaderService } from '../tt-page-loader/tt-page-loader.service';
+import { TtSettingsService } from '../tt-settings/tt-settings.service';
+import { Subscription } from 'rxjs';
+import { TtPopupGroupComponent } from '../tt-popup/tt-popup-group.component';
 
 @Component({
   selector: 'app-pvm',
   templateUrl: './pvm.component.html',
   styleUrls: ['./pvm.component.scss'],
 })
-export class PvmComponent implements OnInit {
+export class PvmComponent implements OnInit,OnDestroy {
   longText = `Fixme`;
 
   debugMsg = '....';
@@ -71,10 +74,14 @@ export class PvmComponent implements OnInit {
   protected accessoryKeys: string[] | null;
   protected aspdPotionKeys: string[] | null;
 
+  private settingsPopupSub!: Subscription;
+  @ViewChild(TtPopupGroupComponent) popupGroup!: TtPopupGroupComponent;
+
   constructor(
     protected ttCore: TTCoreService,
     protected ttSessionInfoService: TTSessionInfoService,
-    private ttLoaderService: TtPageLoaderService
+    private ttLoaderService: TtPageLoaderService,
+    protected ttSettings: TtSettingsService
   ) {
     this.classKeys = ['Novice'];
     this.armorKeys = null;
@@ -88,11 +95,19 @@ export class PvmComponent implements OnInit {
     this.accessoryKeys = null;
     this.aspdPotionKeys = null;
   }
+  ngOnDestroy(): void {
+    this.settingsPopupSub.unsubscribe();
+  }
 
   ngOnInit() {
     this.ttCore.initializeCore().subscribe((_) => {
       this.initClassSelection();
     });
+
+    this.settingsPopupSub = this.ttSettings.popupChanged$.subscribe( (val) => {
+      /* close all popups */
+      this.popupGroup.closeAll();
+    })
   }
 
   initClassSelection() {

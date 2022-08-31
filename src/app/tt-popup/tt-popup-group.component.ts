@@ -72,4 +72,10 @@ export class TtPopupGroupComponent implements AfterViewInit, OnInit, OnDestroy {
       });
     });
   }
+
+  closeAll(){
+    this.popupChilds.forEach((pop) => {
+      pop.setOpen(false);
+    })
+  }
 }
