@@ -1,0 +1,28 @@
+mat-icon:hover{
+    /* FIX: refer to accent color of the active theme */
+    color: red;
+}
+
+.settings-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+.settings-backdrop{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    pointer-events: auto;;
+}
+.settings-content{
+    position: absolute;
+    pointer-events: auto;
+    right: 24px;
+    top: 56px;
+}

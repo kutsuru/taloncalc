@@ -1,15 +1,7 @@
 <mat-toolbar>
   <img src="/assets/img/ttcalc_logo.png" id="toolbar-logo" />
   <div id="ttToolbarMenu" fxLayout="row" fxLayoutAlign="end center">
-    <button mat-icon-button [matMenuTriggerFor]="themeMenu">
-      <mat-icon>palette</mat-icon>
-    </button>
-    <mat-menu #themeMenu>
-      <button mat-menu-item *ngFor="let theme of themer.themes" (click)="themer.setTheme(theme)">
-        <mat-icon [style.visibility]="(themer.activeTheme$ | async)?.name == theme.name ? 'unset' : 'hidden'">check</mat-icon>
-        <span>{{theme.name}}</span>
-      </button>
-    </mat-menu>
+    <!-- navigation links -->
     <mat-nav-list fxLayout="row">
       <a mat-list-item fxFlex="initial" routerLink="/pvm">
         <span mat-line>PVM</span>
@@ -24,6 +16,8 @@
         <mat-icon>expand_more</mat-icon>
       </a>
     </mat-nav-list>
+    <!-- settings -->
+    <tt-settings></tt-settings>
   </div>
 </mat-toolbar>
 <div id="main-content">

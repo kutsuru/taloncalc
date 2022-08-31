@@ -1,0 +1,24 @@
+<!-- trigger element -->
+<button mat-icon-button (click)="showSettings=true">
+    <mat-icon>settings</mat-icon>
+</button>
+<!-- overlay -->
+<div class="settings-overlay" [style.display]="showSettings ? 'block' : 'none'">
+    <!-- backdrop -->
+    <div class="settings-backdrop" (click)="showSettings=false"></div>
+    <!-- content -->
+    <div class="settings-content">
+        <mat-card>
+            <mat-action-list dense>
+                <h2 matSubheader>Theme</h2>
+                <button mat-list-item *ngFor="let theme of themer.themes" (click)="themer.setTheme(theme)">
+                    <mat-icon matListIcon
+                        [style.visibility]="(themer.activeTheme$ | async)?.name == theme.name ? 'unset' : 'hidden'">
+                        check
+                    </mat-icon>
+                    <span matLine>{{theme.name}}</span>
+                </button>
+            </mat-action-list>
+        </mat-card>
+    </div>
+</div>

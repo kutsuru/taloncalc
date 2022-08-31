@@ -27,6 +27,7 @@ import { TtValueInfo } from './tt-food/tt-value-info.pipe';
 import { TtPassiveComponent } from './tt-passive/tt-passive.component';
 import { TtBuffComponent } from './tt-buff/tt-buff.component';
 import { TtLvArrayPipe, TtRangePipe } from './tt-buff/tt-lv-array.pipe';
+import { TtSettingsComponent } from './tt-settings/tt-settings.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { TtLvArrayPipe, TtRangePipe } from './tt-buff/tt-lv-array.pipe';
     TtBuffComponent,
     TtLvArrayPipe,
     TtRangePipe,
+    TtSettingsComponent
   ],
   imports: [
     BrowserModule,
