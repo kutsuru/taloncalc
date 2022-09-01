@@ -1,12 +1,10 @@
+/* toolbar */
 mat-toolbar {
   position: fixed;
   top: 0;
   left: 0;
   background-color: rgba($color: #000000, $alpha: 0.5);
   z-index: 100;
-}
-#main-content {
-  padding-top: 64px;
 }
 #toolbar-logo {
   height: 48px;
@@ -22,4 +20,38 @@ mat-toolbar {
   .mat-line {
     font-weight: lighter;
   }
+}
+/* drawer / layout */
+$toolbar-height: 64px;
+.drawer-content {
+  position: absolute;
+  top: $toolbar-height;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+}
+.drawer-sidenav {
+  position: fixed;
+  right: 0;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 16px;
+}
+
+/* rest */
+.refine-select {
+  width: 10px;
+}
+
+.mid-hg-select {
+  margin-left: 90px;
+}
+.low-hg-select {
+  margin-left: 90px;
+}
+
+.vanilla-mode-radio-button {
+  margin-right: 20px;
 }

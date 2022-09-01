@@ -1,26 +1,302 @@
+<!-- header / toolbar -->
 <mat-toolbar>
   <img src="/assets/img/ttcalc_logo.png" id="toolbar-logo" />
   <div id="ttToolbarMenu" fxLayout="row" fxLayoutAlign="end center">
-    <!-- navigation links -->
-    <mat-nav-list fxLayout="row">
-      <a mat-list-item fxFlex="initial" routerLink="/pvm">
-        <span mat-line>PVM</span>
-        <mat-icon>expand_more</mat-icon>
-      </a>
-      <a mat-list-item fxFlex="initial" routerLink="/changelog">
-        <span mat-line>Changelog</span>
-        <mat-icon>expand_more</mat-icon>
-      </a>
-      <a mat-list-item fxFlex="initial" routerLink="/request">
-        <span mat-line>DB-Request</span>
-        <mat-icon>expand_more</mat-icon>
-      </a>
-    </mat-nav-list>
-    <!-- settings -->
+    <!-- FIXME: settings needs to be in sidenav -->
     <tt-settings></tt-settings>
   </div>
 </mat-toolbar>
-<div id="main-content">
-  <router-outlet></router-outlet>
+<!-- main content -->
+<div class="drawer-content" fxLayout="column" fxLayoutGap="10px">
+  <mat-card>
+    <mat-card-title-group>
+      <mat-card-title>Builder Loader / Selecter</mat-card-title>
+      <tt-collapse-button [container]="loaderContant"></tt-collapse-button>
+    </mat-card-title-group>
+    <mat-card-content tt-collapse-container #loaderContant>
+      {{ longText }}
+    </mat-card-content>
+  </mat-card>
+
+  <!-- stats calc -->
+  <mat-card>
+    <mat-card-title-group>
+      <mat-card-title>Stats</mat-card-title>
+      <tt-collapse-button [container]="statsContent"> </tt-collapse-button>
+    </mat-card-title-group>
+    <mat-card-content tt-collapse-container #statsContent>
+      <tt-key-select name="Class" [data]="classKeys" [key]="'class'" (selectionChange)="onClassChange()">
+      </tt-key-select>
+      <mat-checkbox class="baby-class-check" [(ngModel)]="isBabyClassChecked" (change)="initClassSelection()">Baby Class
+      </mat-checkbox>
+      <p>
+        <tt-list-select class="base-lv-select" name="BaseLv" [data]="maxStats" [displaySuffix]="false" [key]="'baseLv'"
+          [keyPath]="''" (selectionChange)="onBaseLvChange($event)"></tt-list-select>
+        <tt-list-select class="job-lv-select" name="JobLv" [data]="maxStats" [flag]="hasJobLvLimit" [max]="maxJobLv"
+          [displaySuffix]="false" [key]="'jobLv'" [keyPath]="''" (selectionChange)="onJobLvChange($event)">
+        </tt-list-select>
+      </p>
+      <p>
+        <tt-list-select class="str-select" name="STR" [data]="maxStats" [flag]="isBabyClassChecked" [max]="80"
+          [key]="'str'" [key2]="'scStrFood'" [displaySuffix]="true" (selectionChange)="onStatChange($event)">
+        </tt-list-select>
+        <tt-list-select class="agi-select" name="AGI" [data]="maxStats" [flag]="isBabyClassChecked" [max]="80"
+          [key]="'agi'" [key2]="'scAgiFood'" (selectionChange)="onStatChange($event)"></tt-list-select>
+        <tt-list-select class="vit-select" name="VIT" [data]="maxStats" [flag]="isBabyClassChecked" [max]="80"
+          [key]="'vit'" [key2]="'scVitFood'" [keyPath]="'baseStats'" (selectionChange)="onStatChange($event)">
+        </tt-list-select>
+        <tt-list-select class="int-select" name="INT" [data]="maxStats" [flag]="isBabyClassChecked" [max]="80"
+          [key]="'int'" [key2]="'scIntFood'" (selectionChange)="onStatChange($event)"></tt-list-select>
+        <tt-list-select class="dex-select" name="DEX" [data]="maxStats" [flag]="isBabyClassChecked" [max]="80"
+          [key]="'dex'" [key2]="'scDexFood'" (selectionChange)="onStatChange($event)"></tt-list-select>
+        <tt-list-select class="luk-select" name="LUK" [data]="maxStats" [flag]="isBabyClassChecked" [max]="80"
+          [key]="'luk'" [key2]="'scLukFood'" (selectionChange)="onStatChange($event)"></tt-list-select>
+      </p>
+      <tt-key-select class="aspd-potion-select" name="Attack Speed Potion" [data]="aspdPotionKeys" [key]="'aspdPotion'"
+        (selectionChange)="onAspdPotionChange()"></tt-key-select>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- stats info calc -->
+  <mat-card *ngIf="!ttSettings.popup.statsInfo">
+    <mat-card-title-group>
+      <mat-card-title>StatsInfo</mat-card-title>
+      <tt-collapse-button [container]="statsInfoContent"></tt-collapse-button>
+    </mat-card-title-group>
+    <mat-card-content tt-collapse-container #statsInfoContent>
+      <div>
+        <mat-form-field>
+          <mat-label>HP</mat-label>
+          <input matInput [value]="ttSessionInfoService.maxHp" readonly />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>SP</mat-label>
+          <input matInput [value]="ttSessionInfoService.maxSp" readonly />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Hit</mat-label>
+          <input matInput [value]="ttSessionInfoService.hit" readonly />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Flee</mat-label>
+          <input matInput [value]="ttSessionInfoService.flee" readonly />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Perfect Dodge</mat-label>
+          <input matInput [value]="ttSessionInfoService.perfectDodge" readonly />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Critical Rate</mat-label>
+          <input matInput [value]="ttSessionInfoService.crit" readonly />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Attack Speed</mat-label>
+          <input matInput [value]="ttSessionInfoService.aspd" readonly />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Atk</mat-label>
+          <input matInput [value]="ttSessionInfoService.atk" readonly />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>minMatk</mat-label>
+          <input matInput [value]="ttSessionInfoService.minMatk" readonly />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>maxMatk</mat-label>
+          <input matInput [value]="ttSessionInfoService.maxMatk" readonly />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- buffs calc -->
+  <tt-buff *ngIf="!ttSettings.popup.buffs"></tt-buff>
+  <!-- passive calc -->
+  <tt-passive></tt-passive>
+
+  <!-- equips calc -->
+  <mat-card>
+    <mat-card-title-group>
+      <mat-card-title>Equips</mat-card-title>
+      <tt-collapse-button [container]="equipsContent"> </tt-collapse-button>
+    </mat-card-title-group>
+    <mat-card-content tt-collapse-container #equipsContent>
+      <div>
+        <mat-radio-group class="vanilla-mode-radio-group" [(ngModel)]="ttSessionInfoService.sessionInfo['vanillaMode']"
+          (change)="updateEquipmentList()">
+          <mat-radio-button class="vanilla-mode-radio-button" *ngFor="let mode of vanillaMode" [value]="mode">
+            {{ mode }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <tt-key-select class="weapon-type-select" name="Weapon Type" [data]="compatibleWeaponTypes"
+        [key]="'rightHandType'" [keyPath]="'equip'" (selectionChange)="onWeaponTypeChange($event)"></tt-key-select>
+      <tt-key-select *ngIf="!isTwoHanded" class="lh-type-select" name="Left Hand Type" [data]="compatibleLeftHandTypes"
+        [key]="'leftHandType'" [keyPath]="'equip'" (selectionChange)="onLeftHandTypeChange($event)"></tt-key-select>
+      <div>
+        <tt-list-select class="refine-select" name="+" [data]="maxRefines" [key]="'upperHg'" [keyPath]="'refine'"
+          [displayPrefix]="true" [displaySuffix]="false"></tt-list-select>
+        <tt-key-select class="upper-hg-select" name="Upper Headgear" [data]="upperHgKeys" [key]="'upperHg'"
+          [keyPath]="'equip'" (selectionChange)="onUpperHgChange($event)"></tt-key-select>
+        <mat-form-field>
+          <mat-label>Upper Headgear Card</mat-label>
+          <mat-select [(value)]="ttSessionInfoService.sessionInfo['card']['upperHg']"
+            (selectionChange)="ttSessionInfoService.updateSessionInfo()">
+            <mat-option *ngFor="let card of ttCore.headgearCardDb | keyvalue" [value]="card.key">
+              {{ card.key }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br />
+        <tt-key-select class="mid-hg-select" name="Mid Headgear" [data]="middleHgKeys" [key]="'middleHg'"
+          [keyPath]="'equip'" (selectionChange)="onMiddleHgChange($event)"></tt-key-select>
+        <mat-form-field>
+          <mat-label>Middle Headgear Card</mat-label>
+          <mat-select [(value)]="ttSessionInfoService.sessionInfo['card']['middleHg']"
+            (selectionChange)="ttSessionInfoService.updateSessionInfo()">
+            <mat-option *ngFor="let card of ttCore.headgearCardDb | keyvalue" [value]="card.key">
+              {{ card.key }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field><br />
+        <tt-key-select class="low-hg-select" name="Lower Headgear" [data]="lowerHgKeys" [key]="'lowerHg'"
+          [keyPath]="'equip'" (selectionChange)="onLowerHgChange($event)"></tt-key-select><br />
+        <tt-list-select class="refine-select" name="+" [data]="maxRefines" [key]="'armor'" [keyPath]="'refine'"
+          [displayPrefix]="true" [displaySuffix]="false"></tt-list-select>
+        <tt-key-select class="armor-select" name="Armor" [data]="armorKeys" [key]="'armor'" [keyPath]="'equip'"
+          (selectionChange)="ttSessionInfoService.updateSessionInfo()"></tt-key-select>
+        <mat-form-field>
+          <mat-label>Armor Card</mat-label>
+          <mat-select [(value)]="ttSessionInfoService.sessionInfo['card']['armor']"
+            (selectionChange)="ttSessionInfoService.updateSessionInfo()">
+            <mat-option *ngFor="let card of ttCore.armorCardDb | keyvalue" [value]="card.key">
+              {{ card.key }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field><br />
+        <tt-list-select class="refine-select" name="+" [data]="maxRefines" [key]="'rightHand'" [keyPath]="'refine'"
+          [displayPrefix]="true" [displaySuffix]="false"></tt-list-select>
+        <tt-key-select class="rh-select" name="Weapon" [data]="weaponKeys" [key]="'rightHand'" [keyPath]="'equip'"
+          (selectionChange)="onWeaponChange($event)"></tt-key-select>
+        <div *ngFor="let i of rightHandSlots | range: rightHandSlots">
+          <mat-form-field>
+            <mat-label>Right Hand Card #{{ i }}</mat-label>
+            <mat-select [(value)]="
+                ttSessionInfoService.sessionInfo['card']['rightHand'][i]
+              " (selectionChange)="ttSessionInfoService.updateSessionInfo()">
+              <mat-option *ngFor="let card of ttCore.weaponCardDb | keyvalue" [value]="card.key">
+                {{ card.key }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <br />
+        <div *ngIf="!isTwoHanded">
+          <tt-list-select class="refine-select" name="+" [data]="maxRefines" [key]="'leftHand'" [keyPath]="'refine'"
+            [displayPrefix]="true" [displaySuffix]="false"></tt-list-select>
+          <tt-key-select class="lh-select" name="{{ leftHandSelectorName }}" [data]="leftHandKeys" [key]="'leftHand'"
+            [keyPath]="'equip'" (selectionChange)="onLeftHandChange($event)"></tt-key-select>
+          <div *ngFor="let i of leftHandSlots | range: leftHandSlots">
+            <mat-form-field>
+              <mat-label>Left Hand Card #{{ i }}</mat-label>
+              <mat-select [(value)]="
+                  ttSessionInfoService.sessionInfo['card']['leftHand'][i]
+                " (selectionChange)="ttSessionInfoService.updateSessionInfo()">
+                <mat-option *ngFor="let card of ttCore.weaponCardDb | keyvalue" [value]="card.key">
+                  {{ card.key }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <tt-list-select class="refine-select" name="+" [data]="maxRefines" [key]="'garment'" [keyPath]="'refine'"
+          [displayPrefix]="true" [displaySuffix]="false"></tt-list-select>
+        <tt-key-select class="garment-select" name="Garment" [data]="garmentKeys" [key]="'garment'" [keyPath]="'equip'"
+          (selectionChange)="onGarmentChange($event)"></tt-key-select>
+        <mat-form-field>
+          <mat-label>Garment Card</mat-label>
+          <mat-select [(value)]="ttSessionInfoService.sessionInfo['card']['garment']"
+            (selectionChange)="ttSessionInfoService.updateSessionInfo()">
+            <mat-option *ngFor="let card of ttCore.garmentCardDb | keyvalue" [value]="card.key">
+              {{ card.key }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field><br />
+        <tt-list-select class="refine-select" name="+" [data]="maxRefines" [key]="'shoes'" [keyPath]="'refine'"
+          [displayPrefix]="true" [displaySuffix]="false"></tt-list-select>
+        <tt-key-select class="shoes-select" name="Shoes" [data]="shoesKeys" [key]="'shoes'" [keyPath]="'equip'"
+          (selectionChange)="onShoesChange($event)"></tt-key-select>
+        <mat-form-field>
+          <mat-label>Shoes Card</mat-label>
+          <mat-select [(value)]="ttSessionInfoService.sessionInfo['card']['shoes']"
+            (selectionChange)="ttSessionInfoService.updateSessionInfo()">
+            <mat-option *ngFor="let card of ttCore.shoesCardDb | keyvalue" [value]="card.key">
+              {{ card.key }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field><br />
+        <tt-key-select class="rh-acc-select" name="Accessory" [data]="accessoryKeys" [key]="'rhAccessory'"
+          [keyPath]="'equip'" (selectionChange)="onRHAccessoryChange($event)"></tt-key-select>
+        <mat-form-field>
+          <mat-label>Right Hand Accessory Card</mat-label>
+          <mat-select [(value)]="
+              ttSessionInfoService.sessionInfo['card']['rhAccessory']
+            " (selectionChange)="ttSessionInfoService.updateSessionInfo()">
+            <mat-option *ngFor="let card of ttCore.accessoryCardDb | keyvalue" [value]="card.key">
+              {{ card.key }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field><br />
+        <tt-key-select class="lh-acc-select" name="Accessory" [data]="accessoryKeys" [key]="'lhAccessory'"
+          [keyPath]="'equip'" (selectionChange)="onLHAccessoryChange($event)"></tt-key-select>
+        <mat-form-field>
+          <mat-label>Left Hand Accessory Card</mat-label>
+          <mat-select [(value)]="
+              ttSessionInfoService.sessionInfo['card']['lhAccessory']
+            " (selectionChange)="ttSessionInfoService.updateSessionInfo()">
+            <mat-option *ngFor="let card of ttCore.accessoryCardDb | keyvalue" [value]="card.key">
+              {{ card.key }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- battle calc -->
+  <mat-card>
+    <mat-card-title-group>
+      <mat-card-title>Battle calculation</mat-card-title>
+      <tt-collapse-button [container]="battleContant"> </tt-collapse-button>
+    </mat-card-title-group>
+    <mat-card-content tt-collapse-container #battleContant>
+      <battle-calc></battle-calc>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- food -->
+  <tt-food></tt-food>
+  <!-- mask generator -->
+  <tt-mask-generator></tt-mask-generator>
+  Status <b>{{ debugMsg }}</b><br />
+  <button mat-raised-button (click)="debug()">Init the CORE</button>
 </div>
+<!-- sidenav -->
+<div class="drawer-sidenav">
+  <div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="none center">
+    <tt-popup-button *ngIf="ttSettings.popup.statsInfo" [popup]="popStatsInfo" icon="info"></tt-popup-button>
+    <tt-popup-button *ngIf="ttSettings.popup.buffs" [popup]="popBuffs" icon="auto_awesome"></tt-popup-button>
+  </div>
+</div>
+<!-- page loader -->
 <tt-page-loader></tt-page-loader>
+<!-- popups -->
+<tt-popup-group>
+  <tt-popup #popStatsInfo>
+    I'll show you all the stats later...maybe<br>lets see....
+  </tt-popup>
+  <tt-popup #popBuffs>
+    <tt-buff></tt-buff>
+  </tt-popup>
+</tt-popup-group>

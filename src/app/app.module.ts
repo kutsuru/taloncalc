@@ -53,7 +53,7 @@ import { TtSettingsComponent } from './tt-settings/tt-settings.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    // AppRoutingModule,  /* FIXME: will be needed for URL-parser */
     BrowserAnimationsModule,
     FlexLayoutModule,
     MaterialModule,
