@@ -1,10 +1,7 @@
 <!-- header / toolbar -->
 <mat-toolbar>
   <img src="/assets/img/ttcalc_logo.png" id="toolbar-logo" />
-  <div id="ttToolbarMenu" fxLayout="row" fxLayoutAlign="end center">
-    <!-- FIXME: settings needs to be in sidenav -->
-    <tt-settings></tt-settings>
-  </div>
+  <div id="ttToolbarMenu" fxLayout="row" fxLayoutAlign="end center"></div>
 </mat-toolbar>
 <!-- main content -->
 <div class="drawer-content" fxLayout="column" fxLayoutGap="10px">
@@ -285,6 +282,11 @@
 <!-- sidenav -->
 <div class="drawer-sidenav">
   <div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="none center">
+    <!-- static buttons -->
+    <button mat-mini-fab (click)="ttSettings.showSettings()">
+      <mat-icon>settings</mat-icon>
+    </button>
+    <!-- dynamic buttons for popups -->
     <tt-popup-button *ngIf="ttSettings.popup.statsInfo" [popup]="popStatsInfo" icon="info"></tt-popup-button>
     <tt-popup-button *ngIf="ttSettings.popup.buffs" [popup]="popBuffs" icon="auto_awesome"></tt-popup-button>
   </div>
@@ -300,3 +302,5 @@
     <tt-buff></tt-buff>
   </tt-popup>
 </tt-popup-group>
+<!-- settings -->
+<tt-settings></tt-settings>

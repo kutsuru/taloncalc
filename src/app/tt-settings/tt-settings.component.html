@@ -1,11 +1,6 @@
-<!-- trigger element -->
-<button mat-icon-button (click)="showSettings=true">
-    <mat-icon>settings</mat-icon>
-</button>
-<!-- overlay -->
-<div class="settings-overlay" [style.display]="showSettings ? 'block' : 'none'">
+<div class="settings-overlay" [style.display]="(ttSettings.showSettings$ | async) ? 'block' : 'none'">
     <!-- backdrop -->
-    <div class="settings-backdrop" (click)="showSettings=false"></div>
+    <div class="settings-backdrop" (click)="ttSettings.hideSettings()"></div>
     <!-- content -->
     <div class="settings-content">
         <mat-card>
@@ -19,7 +14,7 @@
                     <span matLine>{{theme.name}}</span>
                 </button>
             </mat-action-list>
-            
+
             <mat-selection-list dense (selectionChange)="changePopupSetting($event)">
                 <h2 matSubheader>Display as Popup</h2>
                 <mat-list-option [selected]="ttSettings.popup.statsInfo" value="statsInfo">Stats Info</mat-list-option>

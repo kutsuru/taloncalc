@@ -9,16 +9,18 @@ import { PopupSetting, TtSettingsService } from './tt-settings.service';
   styleUrls: ['./tt-settings.component.scss']
 })
 export class TtSettingsComponent implements OnInit {
-  showSettings: boolean = false;
+  constructor(
+    protected themer:TTThemerService,
+    protected ttSettings: TtSettingsService
+    ) { 
 
-  constructor(protected themer:TTThemerService, protected ttSettings: TtSettingsService) { }
+    }
 
   ngOnInit(): void {
   }
 
   changePopupSetting(ev: MatSelectionListChange){
     const popupName = ev.options[0].value as keyof PopupSetting;
-    // this.ttSettings.popup[popupName] = ev.options[0].selected;
     this.ttSettings.setPopup(popupName, ev.options[0].selected);
   }
 }
