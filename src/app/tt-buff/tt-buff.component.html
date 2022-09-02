@@ -1,7 +1,7 @@
 <mat-card>
-  <mat-card-title-group>
+  <mat-card-title-group [collapseTriggerFor]="buffSelection">
     <mat-card-title>Buffs Selection</mat-card-title>
-    <tt-collapse-button [container]="buffSelection"> </tt-collapse-button>
+    <tt-collapse-indicator [container]="buffSelection"> </tt-collapse-indicator>
   </mat-card-title-group>
   <mat-card-content tt-collapse-container #buffSelection>
     <div

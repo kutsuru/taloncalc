@@ -13,6 +13,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   exports: [
@@ -29,7 +30,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatDialogModule,
     MatGridListModule,
     MatRadioModule,
-    MatMenuModule
+    MatMenuModule,
+    MatRippleModule
   ],
 })
 export class MaterialModule { }

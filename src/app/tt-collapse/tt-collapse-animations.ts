@@ -12,9 +12,9 @@ const DEFAULT_ANIMATION = '250ms cubic-bezier(0.4,0.0,0.2,1)';
 
 export const ttCollapseAnimations: {
   containerExpansion: AnimationTriggerMetadata;
-  buttonRotate: AnimationTriggerMetadata;
+  indicatorRotate: AnimationTriggerMetadata;
 } = {
-  buttonRotate: trigger('buttonRotate', [
+  indicatorRotate: trigger('buttonRotate', [
     state(
       'open, open-instant',
       style({

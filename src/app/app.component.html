@@ -5,10 +5,11 @@
 </mat-toolbar>
 <!-- main content -->
 <div class="drawer-content" fxLayout="column" fxLayoutGap="10px">
+  <!-- build loader -->
   <mat-card>
-    <mat-card-title-group>
+    <mat-card-title-group [collapseTriggerFor]="loaderContant">
       <mat-card-title>Builder Loader / Selecter</mat-card-title>
-      <tt-collapse-button [container]="loaderContant"></tt-collapse-button>
+      <tt-collapse-indicator [container]="loaderContant"></tt-collapse-indicator>
     </mat-card-title-group>
     <mat-card-content tt-collapse-container #loaderContant>
       {{ longText }}
@@ -17,9 +18,9 @@
 
   <!-- stats calc -->
   <mat-card>
-    <mat-card-title-group>
+    <mat-card-title-group [collapseTriggerFor]="statsContent">
       <mat-card-title>Stats</mat-card-title>
-      <tt-collapse-button [container]="statsContent"> </tt-collapse-button>
+      <tt-collapse-indicator [container]="statsContent"></tt-collapse-indicator>
     </mat-card-title-group>
     <mat-card-content tt-collapse-container #statsContent>
       <tt-key-select name="Class" [data]="classKeys" [key]="'class'" (selectionChange)="onClassChange()">
@@ -56,9 +57,9 @@
 
   <!-- stats info calc -->
   <mat-card *ngIf="!ttSettings.popup.statsInfo">
-    <mat-card-title-group>
+    <mat-card-title-group [collapseTriggerFor]="statsInfoContent">
       <mat-card-title>StatsInfo</mat-card-title>
-      <tt-collapse-button [container]="statsInfoContent"></tt-collapse-button>
+      <tt-collapse-indicator [container]="statsInfoContent"></tt-collapse-indicator>
     </mat-card-title-group>
     <mat-card-content tt-collapse-container #statsInfoContent>
       <div>
@@ -113,9 +114,9 @@
 
   <!-- equips calc -->
   <mat-card>
-    <mat-card-title-group>
+    <mat-card-title-group [collapseTriggerFor]="equipsContent">
       <mat-card-title>Equips</mat-card-title>
-      <tt-collapse-button [container]="equipsContent"> </tt-collapse-button>
+      <tt-collapse-indicator [container]="equipsContent"> </tt-collapse-indicator>
     </mat-card-title-group>
     <mat-card-content tt-collapse-container #equipsContent>
       <div>
@@ -263,9 +264,9 @@
 
   <!-- battle calc -->
   <mat-card>
-    <mat-card-title-group>
+    <mat-card-title-group [collapseTriggerFor]="battleContant">
       <mat-card-title>Battle calculation</mat-card-title>
-      <tt-collapse-button [container]="battleContant"> </tt-collapse-button>
+      <tt-collapse-indicator [container]="battleContant"> </tt-collapse-indicator>
     </mat-card-title-group>
     <mat-card-content tt-collapse-container #battleContant>
       <battle-calc></battle-calc>

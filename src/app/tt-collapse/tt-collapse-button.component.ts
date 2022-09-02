@@ -7,7 +7,7 @@ import { TtCollapseContainerComponent } from './tt-collapse-container.component'
   template: `<button mat-icon-button (click)="container.toggle()" [@buttonRotate]="container.animationState">
       <mat-icon>expand_more</mat-icon>
     </button>`,
-  animations: [ttCollapseAnimations.buttonRotate],
+  animations: [ttCollapseAnimations.indicatorRotate],
 })
 export class TtCollapseButtonComponent implements OnInit {
   constructor() {}

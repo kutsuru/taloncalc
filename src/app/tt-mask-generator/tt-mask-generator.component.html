@@ -1,7 +1,7 @@
 <mat-card>
-  <mat-card-title-group>
+  <mat-card-title-group [collapseTriggerFor]="maskGenerator">
     <mat-card-title>Mask Generator</mat-card-title>
-    <tt-collapse-button [container]="maskGenerator"> </tt-collapse-button>
+    <tt-collapse-indicator [container]="maskGenerator"> </tt-collapse-indicator>
   </mat-card-title-group>
   <mat-card-content tt-collapse-container #maskGenerator
     ><mat-form-field>

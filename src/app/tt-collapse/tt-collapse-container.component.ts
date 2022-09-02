@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ttCollapseAnimations } from './tt-collapse-animations';
 
+type ANIMATION_STATES = 'open' | 'close' | 'open-instant';
+
 @Component({
   selector: '[tt-collapse-container]',
   template: '<ng-content></ng-content>',
@@ -12,10 +14,11 @@ import { ttCollapseAnimations } from './tt-collapse-animations';
 export class TtCollapseContainerComponent implements OnInit {
   /* attributes */
   private _isCollapsed: boolean = false;
-  private _animationState: 'open' | 'close' | 'open-instant' = 'open';
   private _enableAnimation: boolean = true;
+  
+  private _animationState: ANIMATION_STATES =  'open';
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {}
 
@@ -23,7 +26,7 @@ export class TtCollapseContainerComponent implements OnInit {
   get isCollapsed(): boolean {
     return this._isCollapsed;
   }
-  get animationState() {
+  get animationState(){
     return this._animationState;
   }
 
