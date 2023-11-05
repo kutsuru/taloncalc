@@ -1,0 +1,110 @@
+<mat-card>
+    <mat-card-title-group [collapseTriggerFor]="statsContent">
+        <mat-card-title>Stats</mat-card-title>
+        <tt-collapse-indicator [container]="statsContent"></tt-collapse-indicator>
+    </mat-card-title-group>
+    <mat-card-content tt-collapse-container #statsContent>
+        <!-- Job class -->
+        <mat-form-field>
+            <mat-label>Class</mat-label>
+            <mat-select (selectionChange)="onClassChange($event)" [(value)]="selectedClassName">
+                <mat-option *ngFor="let class of jobClasses" [value]="class">
+                    {{ class }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-checkbox ([ngModel])="babyClass" (change)="onBabyClassChange($event)">Baby Class?</mat-checkbox>
+        <!-- Levels -->
+        <p>
+            <mat-form-field class="tt-stats-statField">
+                <mat-label>Base Level</mat-label>
+                <mat-select [(value)]="baseLevel" (selectionChange)="onLevelChange($event)">
+                    <ng-container *ngFor="let level of maxStats">
+                        <mat-option [value]="level" *ngIf="level <= baseLvlMax">
+                            {{ level }}
+                        </mat-option>
+                    </ng-container>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="tt-stats-statField">
+                <mat-label>Job Level</mat-label>
+                <mat-select [(value)]="jobLevel" (selectionChange)="onLevelChange($event)">
+                    <ng-container *ngFor="let level of maxStats">
+                        <mat-option [value]="level" *ngIf="level <= jobLvlMax">
+                            {{ level }}
+                        </mat-option>
+                    </ng-container>
+                </mat-select>
+            </mat-form-field>
+        </p>
+        <!-- Stats -->
+        <p>
+            <mat-form-field class="tt-stats-statField">
+                <mat-label>STR</mat-label>
+                <mat-select [(value)]="str" (selectionChange)="onStatChange($event)">
+                    <mat-select-trigger>
+                        {{str}} + {{strBonus}}
+                    </mat-select-trigger>
+                    <ng-container *ngFor="let stat of maxStats">
+                        <mat-option [value]="stat">{{stat}}</mat-option>
+                    </ng-container>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="tt-stats-statField">
+                <mat-label>AGI</mat-label>
+                <mat-select [(value)]="agi" (selectionChange)="onStatChange($event)">
+                    <mat-select-trigger>
+                        {{agi}} + {{agiBonus}}
+                    </mat-select-trigger>
+                    <ng-container *ngFor="let stat of maxStats">
+                        <mat-option [value]="stat">{{stat}}</mat-option>
+                    </ng-container>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="tt-stats-statField">
+                <mat-label>VIT</mat-label>
+                <mat-select [(value)]="vit" (selectionChange)="onStatChange($event)">
+                    <mat-select-trigger>
+                        {{vit}} + {{vitBonus}}
+                    </mat-select-trigger>
+                    <ng-container *ngFor="let stat of maxStats">
+                        <mat-option [value]="stat">{{stat}}</mat-option>
+                    </ng-container>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="tt-stats-statField">
+                <mat-label>INT</mat-label>
+                <mat-select [(value)]="int" (selectionChange)="onStatChange($event)">
+                    <mat-select-trigger>
+                        {{int}} + {{intBonus}}
+                    </mat-select-trigger>
+                    <ng-container *ngFor="let stat of maxStats">
+                        <mat-option [value]="stat">{{stat}}</mat-option>
+                    </ng-container>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="tt-stats-statField">
+                <mat-label>DEX</mat-label>
+                <mat-select [(value)]="dex" (selectionChange)="onStatChange($event)">
+                    <mat-select-trigger>
+                        {{dex}} + {{dexBonus}}
+                    </mat-select-trigger>
+                    <ng-container *ngFor="let stat of maxStats">
+                        <mat-option [value]="stat">{{stat}}</mat-option>
+                    </ng-container>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="tt-stats-statField">
+                <mat-label>LUK</mat-label>
+                <mat-select [(value)]="luk" (selectionChange)="onStatChange($event)">
+                    <mat-select-trigger>
+                        {{luk}} + {{lukBonus}}
+                    </mat-select-trigger>
+                    <ng-container *ngFor="let stat of maxStats">
+                        <mat-option [value]="stat">{{stat}}</mat-option>
+                    </ng-container>
+                </mat-select>
+            </mat-form-field>
+        </p>
+    </mat-card-content>
+</mat-card>

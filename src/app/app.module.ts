@@ -28,6 +28,8 @@ import { TtPassiveComponent } from './tt-passive/tt-passive.component';
 import { TtBuffComponent } from './tt-buff/tt-buff.component';
 import { TtLvArrayPipe, TtRangePipe } from './tt-buff/tt-lv-array.pipe';
 import { TtSettingsComponent } from './tt-settings/tt-settings.component';
+import { TtStatsComponent } from './tt-stats/tt-stats.component';
+import { TtStatsInfoComponent } from './tt-stats-info/tt-stats-info.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { TtSettingsComponent } from './tt-settings/tt-settings.component';
     TtBuffComponent,
     TtLvArrayPipe,
     TtRangePipe,
-    TtSettingsComponent
+    TtSettingsComponent,
+    TtStatsComponent,
+    TtStatsInfoComponent
   ],
   imports: [
     BrowserModule,

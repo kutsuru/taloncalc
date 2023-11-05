@@ -1,0 +1,48 @@
+<mat-card>
+    <mat-card-title-group [collapseTriggerFor]="statsInfoContent">
+        <mat-card-title>Stats Info</mat-card-title>
+        <tt-collapse-indicator [container]="statsInfoContent"></tt-collapse-indicator>
+    </mat-card-title-group>
+    <mat-card-content tt-collapse-container #statsInfoContent>
+        <mat-form-field>
+            <mat-label>HP</mat-label>
+            <input matInput [value]="statsInfo.maxHp" readonly />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>SP</mat-label>
+            <input matInput [value]="statsInfo.maxSp" readonly />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Hit</mat-label>
+            <input matInput [value]="statsInfo.hit" readonly />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Flee</mat-label>
+            <input matInput [value]="statsInfo.flee" readonly />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Perfect Dodge</mat-label>
+            <input matInput [value]="statsInfo.perfectDodge" readonly />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Critical Rate</mat-label>
+            <input matInput [value]="statsInfo.crit" readonly />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Attack Speed</mat-label>
+            <input matInput [value]="statsInfo.aspd" readonly />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Atk</mat-label>
+            <input matInput [value]="statsInfo.atk" readonly />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>minMatk</mat-label>
+            <input matInput [value]="statsInfo.minMatk" readonly />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>maxMatk</mat-label>
+            <input matInput [value]="statsInfo.maxMatk" readonly />
+        </mat-form-field>
+    </mat-card-content>
+</mat-card>

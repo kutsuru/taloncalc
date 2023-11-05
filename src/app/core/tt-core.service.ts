@@ -2,12 +2,16 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, delay, forkJoin, Observable, of } from 'rxjs';
 import { ItemDbService } from './item-db.service';
 import { JobDbService } from './job-db.service';
-import { DictDb, ItemDB, JobDB, NestedDictDb } from './models';
+import { DictDb, ItemDB, JobDB, JobDB_V2, NestedDictDb } from './models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TTCoreService {
+  /* statics */
+  static MAX_LVL: number = 99;
+
+  /* databases */
   private _mobDb: DictDb;
   private _jobDb: DictDb;
   private _cardDb: DictDb;
@@ -33,14 +37,21 @@ export class TTCoreService {
   private _weaponDb: NestedDictDb;
   private _headgearDb: NestedDictDb;
 
+  /* V2 databases */
+  private _jobDb2: JobDB_V2;
+
   private _battleCalcTargets: BehaviorSubject<Array<string>>;
   readonly battleCalcTargets: Observable<Array<string>>;
+
+  private _loaded: BehaviorSubject<boolean>;
+  public loaded$: Observable<boolean>;
 
   constructor(
     private jobDbService: JobDbService,
     private itemDbService: ItemDbService
   ) {
     this._jobDb = {};
+    this._jobDb2 = {};
     this._mobDb = {};
     this._foodDb = {};
     this._ammoDb = {};
@@ -66,6 +77,9 @@ export class TTCoreService {
 
     this._battleCalcTargets = new BehaviorSubject<Array<string>>([]);
     this.battleCalcTargets = this._battleCalcTargets.asObservable();
+
+    this._loaded = new BehaviorSubject<boolean>(false);
+    this.loaded$ = this._loaded.asObservable();
   }
 
   initializeCore() {
@@ -87,7 +101,7 @@ export class TTCoreService {
         this.itemDbService.loadDatabase('assets/db/skill.db.json'),
         this.itemDbService.loadDatabase('assets/db/ammo.db.json'),
         this.itemDbService.loadDatabase('assets/db/card.db.json'),
-        of({ name: 'Fake', value: 'Data' }).pipe(delay(2500)),
+        of({ name: 'Fake', value: 'Data' }).pipe(delay(100)),
       ]).subscribe((dbResp) => {
         this._jobDb = dbResp[0] as DictDb;
         this._shoesDb = dbResp[1] as DictDb;
@@ -105,6 +119,9 @@ export class TTCoreService {
         this._ammoDb = dbResp[13] as DictDb;
         this._cardDb = dbResp[14] as DictDb;
 
+        /* V2 databases */
+        this._jobDb2 = dbResp[0];
+
         /* emit fake data for the battle calc */
         //this._battleCalcTargets.next(['GM Kutsuru', 'GM Johnny']);
 
@@ -114,6 +131,9 @@ export class TTCoreService {
 
         /* return somehting for the "base" call */
         observer.next(true);
+
+        /* update the laoded stat */
+        this._loaded.next(true);
       });
     });
     return res;
@@ -141,6 +161,9 @@ export class TTCoreService {
 
   public get jobDb() {
     return this._jobDb;
+  }
+  public get jobDbV2() {
+    return this._jobDb2
   }
   public get shoesDb() {
     return this._shoesDb;
