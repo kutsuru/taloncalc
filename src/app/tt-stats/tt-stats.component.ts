@@ -60,12 +60,12 @@ export class TtStatsComponent implements OnInit {
       this.dex = info.baseStats.dex;
       this.luk = info.baseStats.luk;
       /* bonus stats */
-      this.strBonus = info.activeBonus.stats.str;
-      this.agiBonus = info.activeBonus.stats.agi;
-      this.intBonus = info.activeBonus.stats.int;
-      this.vitBonus = info.activeBonus.stats.vit;
-      this.dexBonus = info.activeBonus.stats.dex;
-      this.lukBonus = info.activeBonus.stats.luk;
+      this.strBonus = info.activeBonus.str;
+      this.agiBonus = info.activeBonus.agi;
+      this.intBonus = info.activeBonus.int;
+      this.vitBonus = info.activeBonus.vit;
+      this.dexBonus = info.activeBonus.dex;
+      this.lukBonus = info.activeBonus.luk;
 
       /* trigger render */
       this.ref.markForCheck();
