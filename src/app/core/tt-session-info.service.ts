@@ -800,7 +800,7 @@ export class TTSessionInfoService {
     ) {
       let rhBonus: string =
         this.ttCore.weaponDb[this._sessionInfo['equip']['rightHandType']][
-          this._sessionInfo['equip']['rightHand']
+        this._sessionInfo['equip']['rightHand']
         ]['bonus'];
       if (rhBonus) eval(rhBonus)(this._sessionInfo['activeBonus']);
     }
@@ -815,7 +815,7 @@ export class TTSessionInfoService {
       if (this._isDualWielding)
         lhBonus =
           this.ttCore.weaponDb[this._sessionInfo['equip']['leftHandType']][
-            this._sessionInfo['equip']['leftHand']
+          this._sessionInfo['equip']['leftHand']
           ]['bonus'];
       else
         lhBonus =
@@ -834,7 +834,7 @@ export class TTSessionInfoService {
     if (this._sessionInfo['equip']['middleHg']) {
       this.evalBonus(
         this.ttCore.headgearDb['Middle'][
-          this._sessionInfo['equip']['middleHg']
+        this._sessionInfo['equip']['middleHg']
         ],
         this._sessionInfo['activeBonus']
       );
@@ -914,13 +914,13 @@ export class TTSessionInfoService {
 
     maxHpSp = Math.floor(
       valueTable[this._sessionInfo['baseLv'] - 1] *
-        (1 + stat / 100) *
-        (this._jobInfo['isTrans'] ? 1.25 : 1)
+      (1 + stat / 100) *
+      (this._jobInfo['isTrans'] ? 1.25 : 1)
     );
     maxHpSp += this._sessionInfo['activeBonus']['max' + key];
     maxHpSp = Math.floor(
       maxHpSp *
-        (1 + this._sessionInfo['activeBonus']['max' + key + 'Rate'] / 100)
+      (1 + this._sessionInfo['activeBonus']['max' + key + 'Rate'] / 100)
     );
 
     return maxHpSp;
@@ -937,9 +937,9 @@ export class TTSessionInfoService {
   private computeCriticalRate() {
     this._crit = Math.floor(
       1 +
-        this._luk / 3 +
-        this._sessionInfo['activeBonus']['crit'] +
-        this._sessionInfo['activeBonus']['scIncCrit']
+      this._luk / 3 +
+      this._sessionInfo['activeBonus']['crit'] +
+      this._sessionInfo['activeBonus']['scIncCrit']
     );
   }
 
@@ -958,9 +958,9 @@ export class TTSessionInfoService {
       attackMotion = Math.floor(
         (attackMotion +
           this._jobInfo['baseAspd'][
-            this._sessionInfo['equip']['leftHandType']
+          this._sessionInfo['equip']['leftHandType']
           ]) *
-          0.7
+        0.7
       );
 
     attackMotion =
@@ -983,9 +983,9 @@ export class TTSessionInfoService {
   private computePerfectDodge() {
     this._perfectDodge = Math.floor(
       1 +
-        this._luk * 0.1 +
-        this._sessionInfo['activeBonus']['perfectDodge'] +
-        this._sessionInfo['activeBonus']['scPdFood']
+      this._luk * 0.1 +
+      this._sessionInfo['activeBonus']['perfectDodge'] +
+      this._sessionInfo['activeBonus']['scPdFood']
     );
   }
 
@@ -1020,7 +1020,7 @@ export class TTSessionInfoService {
     if (rhWeaponType && this._sessionInfo['equip']['rightHand'])
       rhWeaponAtk =
         this.ttCore.weaponDb[rhWeaponType][
-          this._sessionInfo['equip']['rightHand']
+        this._sessionInfo['equip']['rightHand']
         ]['attack'];
 
     // Update left hand information
@@ -1029,7 +1029,7 @@ export class TTSessionInfoService {
     if (this._isDualWielding && this._sessionInfo['equip']['leftHand'])
       lhWeaponAtk =
         this.ttCore.weaponDb[lhWeaponType][
-          this._sessionInfo['equip']['leftHand']
+        this._sessionInfo['equip']['leftHand']
         ]['attack'];
 
     // but SC_INCATKRATE is also applied on weapon attack
@@ -1050,15 +1050,15 @@ export class TTSessionInfoService {
     let dint = this._int * this._int;
     this._minMatk = Math.floor(
       this._int +
-        dint / 49 +
-        this._sessionInfo['activeBonus']['matk'] +
-        this._sessionInfo['activeBonus']['scMatkPotion']
+      dint / 49 +
+      this._sessionInfo['activeBonus']['matk'] +
+      this._sessionInfo['activeBonus']['scMatkPotion']
     );
     this._maxMatk = Math.floor(
       this._int +
-        dint / 25 +
-        this._sessionInfo['activeBonus']['matk'] +
-        this._sessionInfo['activeBonus']['scMatkPotion']
+      dint / 25 +
+      this._sessionInfo['activeBonus']['matk'] +
+      this._sessionInfo['activeBonus']['scMatkPotion']
     );
 
     this._minMatk = Math.floor(

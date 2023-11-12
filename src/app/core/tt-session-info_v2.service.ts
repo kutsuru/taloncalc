@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { BaseStatsNames, JobDB_V2, JobDbEntry, SessionInfoV2 } from "./models";
+import { ActiveFood, Armor, BaseStatsNames, Card, Food, FoodDB_V2, FoodStatsNames, FoodStatsObj, Item, ItemLocations, JobDB_V2, JobDbEntry, ObjWithKeyString, SessionCard, SessionInfoV2, Weapon } from "./models";
 import { TTCoreService } from "./tt-core.service";
 import { BehaviorSubject, Observable, distinctUntilChanged } from "rxjs";
 
@@ -37,6 +37,8 @@ export class TTSessionInfoV2Service {
         jobLevel: 1,
         baseLevelMax: TTCoreService.MAX_LVL,
         jobLevelMax: 10,
+        weaponAtk: 0,
+        ammoType: '',
         baseStats: {
             str: 1,
             agi: 1,
@@ -45,16 +47,6 @@ export class TTSessionInfoV2Service {
             dex: 1,
             luk: 1
         },
-        maxHp: 1,
-        maxSp: 0,
-        hit: 0,
-        flee: 0,
-        perfectDodge: 0,
-        crit: 0,
-        aspd: 0,
-        atk: 0,
-        minMatk: 0,
-        maxMatk: 0,
         activeBonus: {
             str: 0,
             agi: 0,
@@ -478,6 +470,114 @@ export class TTSessionInfoV2Service {
         },
         activeStatus: {
             Sprint: 0
+        },
+        equip: {
+            upperHg: '',
+            middleHg: '',
+            lowerHg: '',
+            armor: '',
+            rightHand: 'Unarmed',
+            rightHandType: 'Unarmed',
+            leftHand: 'Unarmed',
+            leftHandType: 'Unarmed',
+            garment: '',
+            shoes: '',
+            rhAccessory: '',
+            lhAccessory: '',
+        },
+        card: {
+            upperHg: '',
+            middleHg: '',
+            armor: '',
+            rightHand: ['', '', '', ''],
+            leftHand: ['', '', '', ''],
+            garment: '',
+            shoes: '',
+            rhAccessory: '',
+            lhAccessory: '',
+        },
+        enchant: {
+            middleHg: [],
+            armor: [],
+            rightHand: [],
+            leftHand: [],
+            garment: [],
+            shoes: [],
+            rhAccessory: [],
+            lhAccessory: [],
+        },
+        activeFood: {
+            Stats: {
+                STR: 'STR+0',
+                AGI: 'AGI+0',
+                VIT: 'VIT+0',
+                INT: 'INT+0',
+                DEX: 'DEX+0',
+                LUK: 'LUK+0',
+            },
+            'New World': {
+                'Rune Strawberry Cake': false,
+                'Schwartzwald Pine Jubilee': false,
+                'Arunafeltz Desert Sandwich': false,
+                "Manuk's Sturdiness": false,
+                "Manuk's Faith": false,
+                "Manuk's Will": false,
+                "Pinguicula's Fruit Jam": false,
+                "Cornus' Tear": false,
+                "Luciola's Honey Jam": false,
+            },
+            BG: {
+                'Military Ration B': false,
+                'Military Ration C': false,
+                'Tasty Pink Ration': false,
+                'Tasty White Ration': false,
+            },
+            'Summer Cocktails': {
+                "Venatu's Beep": false,
+                "Old Dracula's Mix": false,
+                'Spammers Heaven': false,
+                "Myst Case's Surprise": false,
+                'Seductive Bathory': false,
+                "Sting's Slap": false,
+                'Blossoming Geographer': false,
+                'Drip of Yggdrasil': false,
+                'Moscow Headless Mule': false,
+                "Bobo's Boba": false,
+                "Wolfchev's Nightcap": false,
+                "Chepet's Match": false,
+                "Dullahan's Ale": false,
+                "Sippin' Galapago": false,
+                "Sleeper's Dream": false,
+                "Mobster's Paradise": false,
+            },
+            Misc: {
+                Abrasive: false,
+                'Buche de Noël': false,
+                'Guarana Candy': false,
+                'Greater Agimat of Ancient Spirit': false,
+                'Box of Resentment': false,
+                'Box of Drowsiness': false,
+                'Sesame Pastry': false,
+                'Honey Pastry': false,
+                'Rainbow Cake': false,
+            },
+            Resistance: {
+                'Coldproof Potion': false,
+                'Earthproof Potion': false,
+                'Fireproof Potion': false,
+                'Thunderproof Potion': false,
+            },
+            Eclage: {
+                'Snow Flip': false,
+                'Peony Mommy': false,
+                'Slapping Herb': false,
+                'Yggdrasil Dust': false,
+            },
+            Eden: {
+                'Rough Energy Crystal': false,
+                'Purified Energy Crystal': false,
+                'High Energy Crystal': false,
+            }
         }
     }
     private _sessionInfo: BehaviorSubject<SessionInfoV2>;
@@ -511,6 +611,7 @@ export class TTSessionInfoV2Service {
         this.core.loaded$.pipe(distinctUntilChanged()).subscribe((_) => {
             if (_) {
                 this._jobClass = this.core.jobDbV2[Object.keys(this.core.jobDbV2)[0]];
+                this.updateSessionInfo();
             }
         });
     }
@@ -534,25 +635,25 @@ export class TTSessionInfoV2Service {
     private updateSessionInfo() {
         this.resetBonus();
         this.updateClassSpecificData();
-        // this.updateBonus(); // TODO
-        // this.updateFoodBonus(); // TODO
+        this.updateBonus();
+        this.updateFoodBonus();
         this.updateStats();
 
         /* HP / SP */
-        this._sessionInfoData.maxHp = this.computeHpSp(this._vit, "HP");
-        this._sessionInfoData.maxSp = this.computeHpSp(this._int, "SP");
+        this._maxHp = this.computeHpSp(this._vit, "HP");
+        this._maxSp = this.computeHpSp(this._int, "SP");
 
-        // this.computeAttackSpeed();   // TODO
+        this.computeAttackSpeed();
 
         // All weapons with ammunitions are considered as DEX type
-        // let isDexBased: boolean = this._sessionInfo['ammoType'] != '';   // TODO
+        let isDexBased: boolean = this._sessionInfoData.ammoType != '';   // TODO
 
-        // this.computeHit(); // TODO
-        // this.computeFlee(); // TODO
-        // this.computePerfectDodge(); // TODO
-        // this.computeAtk(isDexBased); // TODO
-        // this.computeMatk(); // TODO
-        // this.computeCriticalRate(); // TODO
+        this.computeHit();
+        this.computeFlee();
+        this.computePerfectDodge();
+        this.computeAtk(isDexBased);
+        this.computeMatk();
+        this.computeCriticalRate();
 
         /* publish data */
         this._sessionInfo.next(this._sessionInfoData);
@@ -627,6 +728,233 @@ export class TTSessionInfoV2Service {
         this.resetObject(this._sessionInfoData.activeBonus, 0);
         this.resetObject(this._sessionInfoData.activeStatus, 0);
     }
+    private updateBonus() {
+        // Retrieve bonus from equipment
+        if (
+            this._sessionInfoData.equip.rightHandType &&
+            this._sessionInfoData.equip.rightHand
+        ) {
+            let rhBonus: string = this.core.weaponDbV2[this._sessionInfoData.equip.rightHandType][this._sessionInfoData.equip.rightHand].bonus;
+            if (rhBonus) eval(rhBonus)(this._sessionInfoData.activeBonus);
+        }
+
+        if (
+            this._sessionInfoData.equip.leftHandType &&
+            this._sessionInfoData.equip.leftHand &&
+            'Unarmed' != this._sessionInfoData.equip.leftHand
+        ) {
+            let lhBonus: string = '';
+
+            if (this._isDualWielding)
+                lhBonus = this.core.weaponDbV2[this._sessionInfoData.equip.leftHandType][this._sessionInfoData.equip.leftHand].bonus;
+            else
+                lhBonus = this.core.shieldDbV2[this._sessionInfoData.equip.leftHand].bonus;
+
+            if (lhBonus) eval(lhBonus)(this._sessionInfoData.activeBonus);
+        }
+
+        if (this._sessionInfoData.equip.upperHg) {
+            this.evalBonus(this.core.headgearDbV2.Upper[this._sessionInfoData.equip.upperHg]);
+        }
+
+        if (this._sessionInfoData.equip.middleHg) {
+            this.evalBonus(this.core.headgearDbV2.Middle[this._sessionInfoData.equip.middleHg]);
+        }
+
+        if (this._sessionInfoData.equip.lowerHg) {
+            this.evalBonus(this.core.headgearDbV2.Lower[this._sessionInfoData.equip.lowerHg]);
+        }
+
+        if (this._sessionInfoData.equip.armor) {
+            this.evalBonus(this.core.armorDbV2[this._sessionInfoData.equip.armor]);
+        }
+
+        if (this._sessionInfoData.equip.garment) {
+            this.evalBonus(this.core.garmentDbV2[this._sessionInfoData.equip.garment]);
+        }
+
+        if (this._sessionInfoData.equip.shoes) {
+            this.evalBonus(this.core.shoesDbV2[this._sessionInfoData.equip.shoes]);
+        }
+
+        if (this._sessionInfoData.equip.rhAccessory) {
+            this.evalBonus(this.core.accessoryDbV2[this._sessionInfoData.equip.rhAccessory]);
+        }
+
+        if (this._sessionInfoData.equip.lhAccessory) {
+            this.evalBonus(this.core.accessoryDbV2[this._sessionInfoData.equip.lhAccessory]);
+        }
+
+        // Apply skill bonus which are ignoring cards/enchants bonus
+
+        // Retrieve bonus from cards
+        for (let location in this._sessionInfoData.card) {
+            let locationKey = location as keyof SessionCard;
+            if (
+                typeof this._sessionInfoData.card[locationKey] === 'string' &&
+                this._sessionInfoData.card[locationKey]
+            )
+                this.evalBonus(this.core.cardDbV2[this._sessionInfoData.card[locationKey] as string]);
+            else {
+                for (let card of this._sessionInfoData.card[locationKey]) {
+                    if (card)
+                        this.evalBonus(this.core.cardDbV2[card]);
+                }
+            }
+        }
+
+        // TODO: Retrieve bonus from enchants
+    }
+    private updateFoodBonus() {
+        for (let category in this._sessionInfoData.activeFood) {
+            let catKey = category as keyof ActiveFood;
+            for (let foodKey in this._sessionInfoData.activeFood[catKey]) {
+                let foodName: string;
+                let foodInfo: Food;
+                // TODO: how ti make this more universal?
+                if (catKey === "Stats") {
+                    let foodNameKey = foodKey as keyof FoodStatsObj<string>;
+                    /* its a STATS food */
+                    foodName = this._sessionInfoData.activeFood[catKey][foodNameKey] as string;
+                    foodInfo = this.core.foodDbV2.Stats[foodNameKey][foodName];
+                }
+                else {
+                    /* it a regular food */
+                    foodName = foodKey;
+                    let foodDbCat = <ObjWithKeyString<Food>>this.core.foodDbV2[catKey];
+                    foodInfo = foodDbCat[foodName];
+                }
+
+                this.evalBonus(foodInfo);
+            }
+        }
+    }
+    private computeAttackSpeed() {
+        let asdpRate = 1000 - this._sessionInfoData.activeBonus.aspdRate * 10;
+
+        // Consider aspd potion and increase aspd rate status change
+        asdpRate -=
+            this._sessionInfoData.activeBonus.scAspdPotion -
+            this._sessionInfoData.activeBonus.scIncAspdRate;
+
+        let attackMotion = this._jobClass.baseAspd[this._sessionInfoData.equip.rightHandType];
+
+        if (this._isDualWielding)
+            attackMotion = Math.floor(
+                (attackMotion + this._jobClass.baseAspd[this._sessionInfoData.equip.leftHandType]) * 0.7
+            );
+
+        attackMotion =
+            attackMotion -
+            Math.floor((attackMotion * (4 * this._agi + this._dex)) / 1000);
+        attackMotion = attackMotion - this._sessionInfoData.activeBonus.aspd * 10;
+
+        attackMotion = Math.floor((attackMotion * asdpRate) / 1000);
+        this._aspd = Math.min(Math.floor((2000 - attackMotion) / 10), 190);
+    }
+    private computeHit() {
+        this._hit =
+            this._sessionInfoData.baseLevel +
+            this._dex +
+            this._sessionInfoData.activeBonus.flee +
+            this._sessionInfoData.activeBonus.scHitFood;
+    }
+    private computeFlee() {
+        this._flee =
+            this._sessionInfoData.baseLevel +
+            this._agi +
+            this._sessionInfoData.activeBonus.flee +
+            this._sessionInfoData.activeBonus.scFleeFood;
+    }
+    private computePerfectDodge() {
+        this._perfectDodge = Math.floor(
+            1 +
+            this._luk * 0.1 +
+            this._sessionInfoData.activeBonus.perfectDodge +
+            this._sessionInfoData.activeBonus.scPdFood
+        );
+    }
+    private computeAtk(isDexBased: boolean) {
+        this._baseAtk = 0;
+        let datk = 0;
+
+        if (isDexBased) {
+            datk = Math.floor(this._dex / 10) * Math.floor(this._dex / 10);
+            this._baseAtk =
+                this._dex +
+                datk +
+                Math.floor(this._str / 5) +
+                Math.floor(this._luk / 5);
+        } else {
+            datk = Math.floor(this._str / 10) * Math.floor(this._str / 10);
+            this._baseAtk =
+                this._str +
+                datk +
+                Math.floor(this._dex / 5) +
+                Math.floor(this._luk / 5);
+        }
+
+        // SC_INCATKRATE is applied on base attack
+        this._baseAtk +=
+            this._sessionInfoData.activeBonus.atk +
+            this._sessionInfoData.activeBonus.scAtkPotion +
+            this._sessionInfoData.activeBonus.scIncAtkRate;
+
+        let rhWeaponAtk: number = 0;
+        let rhWeaponType = this._sessionInfoData.equip.rightHandType;
+        if (rhWeaponType && this._sessionInfoData.equip.rightHand)
+            rhWeaponAtk = this.core.weaponDbV2[rhWeaponType][this._sessionInfoData.equip.rightHand].attack;
+
+        // Update left hand information
+        let lhWeaponAtk: number = 0;
+        let lhWeaponType = this._sessionInfoData.equip.leftHandType;
+        if (this._isDualWielding && this._sessionInfoData.equip.leftHand)
+            lhWeaponAtk = this.core.weaponDbV2[lhWeaponType][this._sessionInfoData.equip.leftHand].attack;
+
+        // but SC_INCATKRATE is also applied on weapon attack
+
+        this._sessionInfoData.weaponAtk =
+            rhWeaponAtk +
+            lhWeaponAtk +
+            this._sessionInfoData.activeBonus.scIncAtkRate;
+        this._atk = this._baseAtk + this._sessionInfoData.weaponAtk;
+
+        // FIXME: Manage
+
+        // FIXME: Manage Concentration
+
+        // FIXME: Manage bAtkRate
+    }
+    private computeMatk() {
+        let dint = this._int * this._int;
+        this._minMatk = Math.floor(
+            this._int +
+            dint / 49 +
+            this._sessionInfoData.activeBonus.matk +
+            this._sessionInfoData.activeBonus.scMatkPotion
+        );
+        this._maxMatk = Math.floor(
+            this._int +
+            dint / 25 +
+            this._sessionInfoData.activeBonus.matk +
+            this._sessionInfoData.activeBonus.scMatkPotion
+        );
+
+        this._minMatk = Math.floor(
+            this._minMatk * (1 + this._sessionInfoData.activeBonus.matkRate / 100)
+        );
+        this._maxMatk = Math.floor(
+            this._maxMatk * (1 + this._sessionInfoData.activeBonus.matkRate / 100)
+        );
+    }
+    private computeCriticalRate() {
+        this._crit = Math.floor(
+            1 +
+            this._luk / 3 +
+            this._sessionInfoData.activeBonus.crit +
+            this._sessionInfoData.activeBonus.scIncCrit
+        );
+    }
 
     /*** utiles (private) ***/
     private resetObject(obj: any, value: any) {
@@ -642,6 +970,11 @@ export class TTSessionInfoV2Service {
             }
         }
     }
+    private evalBonus(item: { bonus: string }): void {
+        let bonus: string = item.bonus;
+        if (bonus) eval(bonus)(this._sessionInfoData.activeBonus);
+    }
+
     /*** GETer ***/
     public get str(): number {
         return this._str;

@@ -24,6 +24,26 @@ export type BaseStatsNames = "str" | "agi" | "vit" | "int" | "dex" | "luk";
 export type BaseStats = {
   [key in BaseStatsNames]: number
 }
+export type ItemLocations = "upperHg" | "middleHg" | "lowerHg" | "armor" | "rightHand" | "leftHand" | "garment" | "shoes" | "rhAccessory" | "lhAccessory";
+export type Item = {
+  id: number,
+  gid: number[],
+  slots: number | string,
+  weight: number,
+  job: string,
+  requiredLv: number,
+  location: ItemLocations,
+  description: string,
+  isSqi: boolean,
+  bonus: string,
+  hasCombo: boolean,
+  combosId: number[],
+  isVanillaPvp: boolean,
+  isVanillaPvm: boolean
+}
+export type ObjWithKeyString<T> = {
+  [key: string]: T
+}
 
 /***************/
 /*** JOB DB  ***/
@@ -43,6 +63,101 @@ export interface JobDbEntry {
 }
 export type JobDB_V2 = {
   [key: string]: JobDbEntry
+}
+/******************/
+/*** WEAPON DB  ***/
+type WeaponTypes =
+  "Dagger" |
+  "Sword" |
+  "Two-handed Sword" |
+  "Spear" |
+  "Two-handed Spear" |
+  "One-handed Axe" |
+  "Two-handed Axe" |
+  "Mace" |
+  "Staff" |
+  "Bow" |
+  "Katar" |
+  "Book" |
+  "Knuckles" |
+  "Instrument" |
+  "Whip" |
+  "Shuriken" |
+  "Revolver" |
+  "Rifle" |
+  "Shotgun" |
+  "Gatling Gun" |
+  "Grenade Launcher" |
+  "Unarmed";
+export type Weapon = Item & {
+  weaponType: string,
+  weaponLv: number,
+  attack: number
+}
+export type WeaponDB_V2 = {
+  [key in WeaponTypes]: {
+    [key: string]: Weapon
+  }
+}
+/*****************/
+/*** ARMOR DB  ***/
+export type Armor = Item & {
+  defense: number
+}
+export type ArmorDB_V2 = {
+  [key: string]: Armor
+}
+/********************/
+/*** Headgear DB  ***/
+type HeadgearPosition = "Upper" | "Middle" | "Lower";
+export type Headgear = Armor & {
+  headgearPosition: HeadgearPosition
+}
+export type HeadgearDB_V2 = {
+  [key in HeadgearPosition]: {
+    [key: string]: Headgear
+  }
+}
+/****************/
+/*** CARD DB  ***/
+type CardLocations = "weapon" | "headgear" | "garment" | "shoes" | "accessory" | "armor" | "shield";
+export type Card = {
+  id: number,
+  gid: number,
+  location: CardLocations,
+  description: string,
+  hasCombo: boolean,
+  combosId: number[],
+  isVanillaPvp: boolean,
+  isVanillaPvm: boolean,
+  bonus: string
+}
+export type CardDB_V2 = {
+  [key: string]: Card
+}
+/****************/
+/*** FOOD DB  ***/
+export type Food = {
+  gid: number,
+  duration: number,
+  dispelOnDeath: boolean,
+  name: string,
+  bonus: string
+}
+export type FoodStatsNames = "STR" | "AGI" | "VIT" | "INT" | "DEX" | "LUK";
+export type FoodStatsObj<T> = {
+  [key in FoodStatsNames]: T
+}
+export type FoodDB_V2 = {
+  Stats: FoodStatsObj<ObjWithKeyString<Food>>,
+  "New World": ObjWithKeyString<Food>
+  BG: ObjWithKeyString<Food>,
+  "Summer Cocktails": ObjWithKeyString<Food>,
+  Misc: ObjWithKeyString<Food>,
+  Resistance: ObjWithKeyString<Food>,
+  Eclage: ObjWithKeyString<Food>,
+  Eden: ObjWithKeyString<Food>,
+  "Apsd Potion": ObjWithKeyString<Food>
 }
 
 /********************/
@@ -462,6 +577,29 @@ export type ActiveBonus = BaseStats & {
   scIncAspdRate: number,
   scIncreaseAgi: number,
 }
+type SessionEquipBase<T> = {
+  [key in ItemLocations]: T
+}
+type SessionEquip = SessionEquipBase<string> & {
+  rightHandType: WeaponTypes,
+  leftHandType: WeaponTypes,
+}
+export type SessionCard = Omit<SessionEquipBase<string>, "rightHand" | "leftHand" | "lowerHg"> & {
+  rightHand: string[],
+  leftHand: string[]
+}
+type SessionEntchant = Omit<SessionEquipBase<string[]>, "upperHg" | "lowerHg">
+
+export type ActiveFood = {
+  Stats: FoodStatsObj<string>,
+  "New World": ObjWithKeyString<boolean>
+  BG: ObjWithKeyString<boolean>,
+  "Summer Cocktails": ObjWithKeyString<boolean>,
+  Misc: ObjWithKeyString<boolean>,
+  Resistance: ObjWithKeyString<boolean>,
+  Eclage: ObjWithKeyString<boolean>,
+  Eden: ObjWithKeyString<boolean>,
+}
 export type SessionInfoV2 = {
   /* levels */
   baseLevel: number,
@@ -472,19 +610,16 @@ export type SessionInfoV2 = {
   baseStats: {
     [key in BaseStatsNames]: number
   };
-  maxHp: number;
-  maxSp: number;
-  hit: number;
-  flee: number;
-  perfectDodge: number;
-  crit: number;
-  aspd: number;
-  atk: number;
-  minMatk: number;
-  maxMatk: number;
+  weaponAtk: number;
+  ammoType: string;
   /* active stuff */
   activeBonus: ActiveBonus;
   activeStatus: {
     Sprint: number
-  }
+  };
+  activeFood: ActiveFood;
+  /* gear stuff */
+  equip: SessionEquip;
+  card: SessionCard;
+  enchant: SessionEntchant;
 }

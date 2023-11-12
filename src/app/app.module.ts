@@ -30,6 +30,7 @@ import { TtLvArrayPipe, TtRangePipe } from './tt-buff/tt-lv-array.pipe';
 import { TtSettingsComponent } from './tt-settings/tt-settings.component';
 import { TtStatsComponent } from './tt-stats/tt-stats.component';
 import { TtStatsInfoComponent } from './tt-stats-info/tt-stats-info.component';
+import { TtEquipComponent } from './tt-equip/tt-equip.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { TtStatsInfoComponent } from './tt-stats-info/tt-stats-info.component';
     TtRangePipe,
     TtSettingsComponent,
     TtStatsComponent,
-    TtStatsInfoComponent
+    TtStatsInfoComponent,
+    TtEquipComponent
   ],
   imports: [
     BrowserModule,

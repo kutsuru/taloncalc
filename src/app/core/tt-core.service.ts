@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, delay, forkJoin, Observable, of } from 'rxjs';
-import { ItemDbService } from './item-db.service';
-import { JobDbService } from './job-db.service';
-import { DictDb, ItemDB, JobDB, JobDB_V2, NestedDictDb } from './models';
+import { BehaviorSubject, delay, forkJoin, Observable, of, retry } from 'rxjs';
+import { JsonDbService } from './json-db.service';
+import { Armor, ArmorDB_V2, CardDB_V2, DictDb, FoodDB_V2, HeadgearDB_V2, ItemDB, JobDB, JobDB_V2, NestedDictDb, WeaponDB_V2 } from './models';
 
 @Injectable({
   providedIn: 'root',
@@ -39,6 +38,15 @@ export class TTCoreService {
 
   /* V2 databases */
   private _jobDb2: JobDB_V2;
+  private _weaponDb2: WeaponDB_V2;
+  private _shieldDb2: ArmorDB_V2;
+  private _headgearDb2: HeadgearDB_V2;
+  private _armorDb2: ArmorDB_V2;
+  private _garmentDb2: ArmorDB_V2;
+  private _shoesDb2: ArmorDB_V2;
+  private _accessoryDb2: ArmorDB_V2;
+  private _cardDb2: CardDB_V2;
+  private _foodDb2: FoodDB_V2;
 
   private _battleCalcTargets: BehaviorSubject<Array<string>>;
   readonly battleCalcTargets: Observable<Array<string>>;
@@ -47,11 +55,9 @@ export class TTCoreService {
   public loaded$: Observable<boolean>;
 
   constructor(
-    private jobDbService: JobDbService,
-    private itemDbService: ItemDbService
+    private jsonDbService: JsonDbService
   ) {
     this._jobDb = {};
-    this._jobDb2 = {};
     this._mobDb = {};
     this._foodDb = {};
     this._ammoDb = {};
@@ -75,6 +81,62 @@ export class TTCoreService {
     this._headgearCardDb = {};
     this._accessoryCardDb = {};
 
+    /* V2 DBs */
+    this._jobDb2 = {};
+    this._weaponDb2 = {
+      "Gatling Gun": {},
+      "Grenade Launcher": {},
+      "One-handed Axe": {},
+      "Two-handed Axe": {},
+      "Two-handed Spear": {},
+      "Two-handed Sword": {},
+      "Book": {},
+      Bow: {},
+      Dagger: {},
+      Instrument: {},
+      Katar: {},
+      Knuckles: {},
+      Mace: {},
+      Revolver: {},
+      Rifle: {},
+      Shotgun: {},
+      Shuriken: {},
+      Spear: {},
+      Staff: {},
+      Sword: {},
+      Unarmed: {},
+      Whip: {}
+    };
+    this._shieldDb2 = {};
+    this._headgearDb2 = {
+      Lower: {},
+      Middle: {},
+      Upper: {}
+    }
+    this._armorDb2 = {};
+    this._garmentDb2 = {};
+    this._shoesDb2 = {};
+    this._accessoryDb2 = {};
+    this._cardDb2 = {};
+    this._foodDb2 = {
+      "Apsd Potion": {},
+      "New World": {},
+      "Summer Cocktails": {},
+      BG: {},
+      Eclage: {},
+      Eden: {},
+      Misc: {},
+      Resistance: {},
+      Stats: {
+        AGI: {},
+        DEX: {},
+        INT: {},
+        LUK: {},
+        STR: {},
+        VIT: {}
+      }
+    };
+
     this._battleCalcTargets = new BehaviorSubject<Array<string>>([]);
     this.battleCalcTargets = this._battleCalcTargets.asObservable();
 
@@ -86,21 +148,21 @@ export class TTCoreService {
     /* this part is completely async */
     let res = new Observable<boolean>((observer) => {
       forkJoin([
-        this.jobDbService.loadDatabase(),
-        this.itemDbService.loadDatabase('assets/db/shoes.db.json'),
-        this.itemDbService.loadDatabase('assets/db/armor.db.json'),
-        this.itemDbService.loadDatabase('assets/db/shield.db.json'),
-        this.itemDbService.loadDatabase('assets/db/weapon.db.json'),
-        this.itemDbService.loadDatabase('assets/db/garment.db.json'),
-        this.itemDbService.loadDatabase('assets/db/headgear.db.json'),
-        this.itemDbService.loadDatabase('assets/db/accessory.db.json'),
-        this.itemDbService.loadDatabase('assets/db/weapon-type.db.json'),
-        this.itemDbService.loadDatabase('assets/db/element.db.json'),
-        this.itemDbService.loadDatabase('assets/db/food.db.json'),
-        this.itemDbService.loadDatabase('assets/db/mob.db.json'),
-        this.itemDbService.loadDatabase('assets/db/skill.db.json'),
-        this.itemDbService.loadDatabase('assets/db/ammo.db.json'),
-        this.itemDbService.loadDatabase('assets/db/card.db.json'),
+        this.jsonDbService.loadDatabase('assets/db/job.db.json'),
+        this.jsonDbService.loadDatabase('assets/db/shoes.db.json'),
+        this.jsonDbService.loadDatabase('assets/db/armor.db.json'),
+        this.jsonDbService.loadDatabase('assets/db/shield.db.json'),
+        this.jsonDbService.loadDatabase('assets/db/weapon.db.json'),
+        this.jsonDbService.loadDatabase('assets/db/garment.db.json'),
+        this.jsonDbService.loadDatabase('assets/db/headgear.db.json'),
+        this.jsonDbService.loadDatabase('assets/db/accessory.db.json'),
+        this.jsonDbService.loadDatabase('assets/db/weapon-type.db.json'),
+        this.jsonDbService.loadDatabase('assets/db/element.db.json'),
+        this.jsonDbService.loadDatabase('assets/db/food.db.json'),
+        this.jsonDbService.loadDatabase('assets/db/mob.db.json'),
+        this.jsonDbService.loadDatabase('assets/db/skill.db.json'),
+        this.jsonDbService.loadDatabase('assets/db/ammo.db.json'),
+        this.jsonDbService.loadDatabase('assets/db/card.db.json'),
         of({ name: 'Fake', value: 'Data' }).pipe(delay(100)),
       ]).subscribe((dbResp) => {
         this._jobDb = dbResp[0] as DictDb;
@@ -120,7 +182,16 @@ export class TTCoreService {
         this._cardDb = dbResp[14] as DictDb;
 
         /* V2 databases */
-        this._jobDb2 = dbResp[0];
+        this._jobDb2 = dbResp[0] as JobDB_V2;
+        this._weaponDb2 = dbResp[4] as WeaponDB_V2;
+        this._shieldDb2 = dbResp[3] as ArmorDB_V2;
+        this._headgearDb2 = dbResp[6] as HeadgearDB_V2;
+        this._armorDb2 = dbResp[2] as ArmorDB_V2;
+        this._garmentDb2 = dbResp[5] as ArmorDB_V2;
+        this._shoesDb2 = dbResp[1] as ArmorDB_V2;
+        this._accessoryDb2 = dbResp[7] as ArmorDB_V2;
+        this._cardDb2 = dbResp[14] as CardDB_V2;
+        this._foodDb2 = dbResp[10] as FoodDB_V2;
 
         /* emit fake data for the battle calc */
         //this._battleCalcTargets.next(['GM Kutsuru', 'GM Johnny']);
@@ -161,9 +232,6 @@ export class TTCoreService {
 
   public get jobDb() {
     return this._jobDb;
-  }
-  public get jobDbV2() {
-    return this._jobDb2
   }
   public get shoesDb() {
     return this._shoesDb;
@@ -227,5 +295,36 @@ export class TTCoreService {
   }
   public get accessoryCardDb() {
     return this._accessoryCardDb;
+  }
+  /* DB V2 */
+  public get jobDbV2() {
+    return this._jobDb2
+  }
+  public get weaponDbV2(){
+    return this._weaponDb2;
+  }
+  public get shieldDbV2(){
+    return this._shieldDb2;
+  }
+  public get headgearDbV2() {
+    return this._headgearDb2;
+  }
+  public get armorDbV2(){
+    return this._armorDb2;
+  }
+  public get garmentDbV2() {
+    return this._garmentDb2;
+  }
+  public get shoesDbV2() {
+    return this._shoesDb2;
+  }
+  public get accessoryDbV2() {
+    return this._accessoryDb2;
+  }
+  public get cardDbV2() {
+    return this._cardDb2;
+  }
+  public get foodDbV2() {
+    return this._foodDb2;
   }
 }
