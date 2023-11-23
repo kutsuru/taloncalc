@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ang-mat-basic:build:production"
+              "buildTarget": "ang-mat-basic:build:production"
             },
             "development": {
-              "browserTarget": "ang-mat-basic:build:development"
+              "buildTarget": "ang-mat-basic:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ang-mat-basic:build"
+            "buildTarget": "ang-mat-basic:build"
           }
         },
         "test": {

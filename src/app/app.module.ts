@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { TtCollapseModule } from './tt-collapse/tt-collapse.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { ChangelogComponent } from './changelog/changelog.component';
 import { PvmComponent } from './pvm/pvm.component';
 import { DbRequestComponent } from './db-request/db-request.component';
@@ -63,7 +62,6 @@ import { TtSimpleSelectComponent } from './tt-simple-select/tt-simple-select.com
     BrowserModule,
     // AppRoutingModule,  /* FIXME: will be needed for URL-parser */
     BrowserAnimationsModule,
-    FlexLayoutModule,
     MaterialModule,
     TtCollapseModule,
     HttpClientModule,

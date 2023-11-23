@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSelectionListChange } from '@angular/material/list';
+import { MatLegacySelectionListChange as MatSelectionListChange } from '@angular/material/legacy-list';
 import { TTThemerService } from '../tt-themer/tt-themer.service';
 import { PopupSetting, TtSettingsService } from './tt-settings.service';
 

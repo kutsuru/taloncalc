@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MatSelectChange } from '@angular/material/select';
+import { MatLegacySelectChange as MatSelectChange } from '@angular/material/legacy-select';
 import { Subscription } from 'rxjs';
 import { TTCoreService } from './core/tt-core.service';
 import { TTSessionInfoService } from './core/tt-session-info.service';

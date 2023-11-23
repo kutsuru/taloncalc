@@ -75,9 +75,9 @@ export class TTSessionInfoV2Service {
     }
 
     /*** public methods ***/
-    eventFilter(...args: SessionChangeEvent[]) {
+    eventFilter(...events: SessionChangeEvent[]) {
         return filter<SessionInfoV2>((val) => {
-            if (args.includes(val.changeEvent)) {
+            if (events.includes(val.changeEvent)) {
                 return true;
             }
             else {

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TtCollapseContainerComponent } from './tt-collapse-container.component';
 import { TtCollapseButtonComponent } from './tt-collapse-button.component';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
 import { TtCollapseTriggerDirective } from './tt-collapse-trigger.directive';
 import { TtCollapseIndicactorComponent } from './tt-collapse-indicator.component';
 

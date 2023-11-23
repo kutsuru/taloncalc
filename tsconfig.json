@@ -20,7 +20,6 @@
     "lib": ["es2020", "dom"]
   },
   "angularCompilerOptions": {
-    "enableIvy": true,
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
   }

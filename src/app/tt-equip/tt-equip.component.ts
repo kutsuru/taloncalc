@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Item, ItemLocations, JobDbEntry, SessionChangeEvent, SessionEquip, SessionEquipBase, SessionInfoV2, VANILLA_MODES, WeaponType, WeaponTypeLeft } from '../core/models';
 import { TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
-import { MatSelectChange } from '@angular/material/select';
+import { MatLegacySelectChange as MatSelectChange } from '@angular/material/legacy-select';
 import { TTCoreService } from '../core/tt-core.service';
 
 @Component({
@@ -56,15 +56,16 @@ export class TtEquipComponent implements OnInit {
       )
       .subscribe((info) => {
         this.jobClass = this.sessionInfo.jobClass;
-        if (this.jobClass) {
-          this.equipMask = Number(this.jobClass.mask);
-        }
+        
         /* set refines */
         this.refines = { ...info.refine };
         /* set gears */
         // TODO
-        /* update gears */
-        this.updateEquipData();
+        /* update gears, but only when job class has changed*/
+        if (Number(this.jobClass.mask) != this.equipMask) {
+          this.equipMask = Number(this.jobClass.mask);
+          this.updateEquipData();
+        }
       });
   }
 

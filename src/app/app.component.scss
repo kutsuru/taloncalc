@@ -30,6 +30,9 @@ $toolbar-height: 64px;
   right: 0;
   bottom: 0;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .drawer-sidenav {
   position: fixed;
