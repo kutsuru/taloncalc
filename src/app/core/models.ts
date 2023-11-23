@@ -44,6 +44,8 @@ export type Item = {
 export type ObjWithKeyString<T> = {
   [key: string]: T
 }
+export type VanillaMode = 'Unrestricted' | 'PvM Vanilla' | 'PvP Vanilla';
+export const VANILLA_MODES: VanillaMode[] = ['PvM Vanilla', 'PvP Vanilla', "Unrestricted"];
 
 /***************/
 /*** JOB DB  ***/
@@ -51,7 +53,7 @@ export interface JobDbEntry {
   isTrans: boolean,
   maxJobLv: number,
   mask: string,
-  compatibleWeapons: string[],
+  compatibleWeapons: WeaponType[],
   hpTable: number[],
   spTable: number[],
   baseAspd: {
@@ -66,7 +68,7 @@ export type JobDB_V2 = {
 }
 /******************/
 /*** WEAPON DB  ***/
-type WeaponTypes =
+export type WeaponType =
   "Dagger" |
   "Sword" |
   "Two-handed Sword" |
@@ -89,13 +91,14 @@ type WeaponTypes =
   "Gatling Gun" |
   "Grenade Launcher" |
   "Unarmed";
+export type WeaponTypeLeft = WeaponType | 'Shield';
 export type Weapon = Item & {
   weaponType: string,
   weaponLv: number,
   attack: number
 }
 export type WeaponDB_V2 = {
-  [key in WeaponTypes]: {
+  [key in WeaponType]: {
     [key: string]: Weapon
   }
 }
@@ -577,12 +580,12 @@ export type ActiveBonus = BaseStats & {
   scIncAspdRate: number,
   scIncreaseAgi: number,
 }
-type SessionEquipBase<T> = {
+export type SessionEquipBase<T> = {
   [key in ItemLocations]: T
 }
-type SessionEquip = SessionEquipBase<string> & {
-  rightHandType: WeaponTypes,
-  leftHandType: WeaponTypes,
+export type SessionEquip = SessionEquipBase<string> & {
+  rightHandType: WeaponType,
+  leftHandType: WeaponType,
 }
 export type SessionCard = Omit<SessionEquipBase<string>, "rightHand" | "leftHand" | "lowerHg"> & {
   rightHand: string[],
@@ -600,18 +603,32 @@ export type ActiveFood = {
   Eclage: ObjWithKeyString<boolean>,
   Eden: ObjWithKeyString<boolean>,
 }
+
+export enum SessionChangeEvent {
+  INIT = 0,
+  CLASS, 
+  LEVEL,
+  BASE_STATS,
+  REFINE,
+  EQUIP,
+}
+
 export type SessionInfoV2 = {
+  changeEvent: SessionChangeEvent;
   /* levels */
-  baseLevel: number,
-  jobLevel: number,
+  baseLevel: number;
+  jobLevel: number;
   baseLevelMax: number;
-  jobLevelMax: number;
+  jobLevelMax: number; 
+
   /* stats */
   baseStats: {
     [key in BaseStatsNames]: number
   };
+  /* general */
   weaponAtk: number;
   ammoType: string;
+  vanillaMode: VanillaMode;
   /* active stuff */
   activeBonus: ActiveBonus;
   activeStatus: {
@@ -620,6 +637,7 @@ export type SessionInfoV2 = {
   activeFood: ActiveFood;
   /* gear stuff */
   equip: SessionEquip;
+  refine: SessionEquipBase<number>;
   card: SessionCard;
   enchant: SessionEntchant;
 }

@@ -31,6 +31,7 @@ import { TtSettingsComponent } from './tt-settings/tt-settings.component';
 import { TtStatsComponent } from './tt-stats/tt-stats.component';
 import { TtStatsInfoComponent } from './tt-stats-info/tt-stats-info.component';
 import { TtEquipComponent } from './tt-equip/tt-equip.component';
+import { TtSimpleSelectComponent } from './tt-simple-select/tt-simple-select.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { TtEquipComponent } from './tt-equip/tt-equip.component';
     TtSettingsComponent,
     TtStatsComponent,
     TtStatsInfoComponent,
-    TtEquipComponent
+    TtEquipComponent,
+    TtSimpleSelectComponent
   ],
   imports: [
     BrowserModule,

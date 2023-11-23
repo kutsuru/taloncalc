@@ -3,7 +3,7 @@ import { TTCoreService } from '../core/tt-core.service';
 import { MatSelectChange } from '@angular/material/select';
 import { distinctUntilChanged } from 'rxjs';
 import { MatCheckboxChange } from '@angular/material/checkbox';
-import { JobDbEntry } from '../core/models';
+import { JobDbEntry, SessionChangeEvent } from '../core/models';
 import { TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
 
 @Component({
@@ -45,31 +45,40 @@ export class TtStatsComponent implements OnInit {
 
   ngOnInit(): void {
     /* subscribe to session data */
-    this.sessionInfo.sessionInfo$.subscribe((info) => {
-      /* levles */
-      this.jobLevel = info.jobLevel;
-      this.baseLevel = info.baseLevel;
-      this.baseLvlMax = info.baseLevelMax;
-      this.jobLvlMax = info.jobLevelMax;
-      if (this.jobLevel > this.jobLvlMax) this.jobLevel = this.jobLvlMax;
-      /* stats */
-      this.str = info.baseStats.str;
-      this.agi = info.baseStats.agi;
-      this.int = info.baseStats.int;
-      this.vit = info.baseStats.vit;
-      this.dex = info.baseStats.dex;
-      this.luk = info.baseStats.luk;
-      /* bonus stats */
-      this.strBonus = info.activeBonus.str;
-      this.agiBonus = info.activeBonus.agi;
-      this.intBonus = info.activeBonus.int;
-      this.vitBonus = info.activeBonus.vit;
-      this.dexBonus = info.activeBonus.dex;
-      this.lukBonus = info.activeBonus.luk;
+    this.sessionInfo.sessionInfo$
+      .pipe(
+        this.sessionInfo.eventFilter(
+          SessionChangeEvent.BASE_STATS,
+          SessionChangeEvent.CLASS,
+          SessionChangeEvent.INIT,
+          SessionChangeEvent.LEVEL
+        )
+      )
+      .subscribe((info) => {
+        /* levles */
+        this.jobLevel = info.jobLevel;
+        this.baseLevel = info.baseLevel;
+        this.baseLvlMax = info.baseLevelMax;
+        this.jobLvlMax = info.jobLevelMax;
+        if (this.jobLevel > this.jobLvlMax) this.jobLevel = this.jobLvlMax;
+        /* stats */
+        this.str = info.baseStats.str;
+        this.agi = info.baseStats.agi;
+        this.int = info.baseStats.int;
+        this.vit = info.baseStats.vit;
+        this.dex = info.baseStats.dex;
+        this.luk = info.baseStats.luk;
+        /* bonus stats */
+        this.strBonus = info.activeBonus.str;
+        this.agiBonus = info.activeBonus.agi;
+        this.intBonus = info.activeBonus.int;
+        this.vitBonus = info.activeBonus.vit;
+        this.dexBonus = info.activeBonus.dex;
+        this.lukBonus = info.activeBonus.luk;
 
-      /* trigger render */
-      this.ref.markForCheck();
-    });
+        /* trigger render */
+        this.ref.markForCheck();
+      });
     /* subscribe to core data */
     this.core.loaded$.pipe(distinctUntilChanged()).subscribe((_) => {
       if (_) {

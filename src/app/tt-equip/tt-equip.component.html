@@ -1,1 +1,41 @@
-<p>tt-equip works!</p>
+<mat-card>
+    <mat-card-title-group [collapseTriggerFor]="equipsContent2">
+        <mat-card-title>Equips</mat-card-title>
+        <tt-collapse-indicator [container]="equipsContent2">ö</tt-collapse-indicator>
+    </mat-card-title-group>
+    <mat-card-content tt-collapse-container #equipsContent2>
+        <!-- Vanilla Mode -->
+        <div>
+            <mat-radio-group>
+                <mat-radio-button *ngFor="let mode of vanillaModes" [value]="mode">
+                    {{mode}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <!-- Weapon Type (Left/Right)-->
+        <div>
+            <tt-simple-select [value]="weaponTypeInit" [values]="jobClass?.compatibleWeapons"
+                (change)="changeEquip('rightHandType', $event.value)">Weapon Type</tt-simple-select>
+            <tt-simple-select [value]="weaponTypeInit" [values]="compatibleLeftHandTypes"
+                (change)="changeEquip('leftHandType', $event.value)">Left Hand Type</tt-simple-select>
+        </div>
+        <!-- Upper Headgear -->
+        <div>
+            <tt-simple-select prefix="+" [values]="maxRefines" (change)="changeRefine('upperHg', $event.value)"
+                [(value)]="refines.upperHg">+</tt-simple-select>
+            <tt-simple-select [values]="upperHgs" (change)="changeEquip('upperHg', $event.value)">Upper
+                Headgear</tt-simple-select>
+        </div>
+        <!-- Middle Headgear -->
+        <div>
+            <tt-simple-select [values]="middleHgs" (change)="changeEquip('middleHg', $event.value)">Middle
+                Headgear</tt-simple-select>
+        </div>
+        <!-- Lower Headgear -->
+        <div>
+            <tt-simple-select [values]="lowerHgs" (change)="changeEquip('lowerHg', $event.value)">Lower
+                Headgear</tt-simple-select>
+        </div>
+        <!-- Armor -->
+    </mat-card-content>
+</mat-card>

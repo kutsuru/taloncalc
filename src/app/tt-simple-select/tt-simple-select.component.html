@@ -1,0 +1,11 @@
+<mat-form-field>
+  <mat-label><ng-content></ng-content></mat-label>
+  <mat-select (selectionChange)="onSelectionChange($event)" [(value)]="value">
+    <mat-select-trigger>
+      <span *ngIf="prefix">{{prefix}} </span>{{value}}
+    </mat-select-trigger>
+    <mat-option *ngFor="let entry of selectData" [value]="entry.value">
+      {{entry.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

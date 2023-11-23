@@ -1,13 +1,15 @@
 import { Injectable } from "@angular/core";
-import { ActiveFood, Armor, BaseStatsNames, Card, Food, FoodDB_V2, FoodStatsNames, FoodStatsObj, Item, ItemLocations, JobDB_V2, JobDbEntry, ObjWithKeyString, SessionCard, SessionInfoV2, Weapon } from "./models";
+import { ActiveFood, Armor, BaseStatsNames, Card, Food, FoodDB_V2, FoodStatsNames, FoodStatsObj, Item, ItemLocations, JobDB_V2, JobDbEntry, ObjWithKeyString, SessionCard, SessionChangeEvent, SessionEquip, SessionEquipBase, SessionInfoV2, Weapon, WeaponType, WeaponTypeLeft } from "./models";
 import { TTCoreService } from "./tt-core.service";
-import { BehaviorSubject, Observable, distinctUntilChanged } from "rxjs";
+import { BehaviorSubject, Observable, debounceTime, distinctUntilChanged, filter } from "rxjs";
+import { SESSION_INFO_DEFAULT } from "./session-info-default";
 
 @Injectable({
     providedIn: 'root',
 })
 export class TTSessionInfoV2Service {
     /* DB object of current selected class */
+    private _jobClassName!: string;
     private _jobClass!: JobDbEntry;
 
     /* main stats */
@@ -32,554 +34,7 @@ export class TTSessionInfoV2Service {
     private _isDualWielding: boolean;
 
     /* session info for current build */
-    private _sessionInfoData: SessionInfoV2 = {
-        baseLevel: 1,
-        jobLevel: 1,
-        baseLevelMax: TTCoreService.MAX_LVL,
-        jobLevelMax: 10,
-        weaponAtk: 0,
-        ammoType: '',
-        baseStats: {
-            str: 1,
-            agi: 1,
-            vit: 1,
-            int: 1,
-            dex: 1,
-            luk: 1
-        },
-        activeBonus: {
-            str: 0,
-            agi: 0,
-            vit: 0,
-            int: 0,
-            dex: 0,
-            luk: 0,
-            allStats: 0,
-            hit: 0,
-            perfectHitRate: 0,
-            flee: 0,
-            crit: 0,
-            criticalAtkRate: 0,
-            perfectDodge: 0,
-            aspd: 0,
-            aspdRate: 0,
-            maxHp: 0,
-            maxSp: 0,
-            maxHpRate: 0,
-            maxSpRate: 0,
-            matk: 0,
-            matkRate: 0,
-            atk: 0,
-            atkRate: 0,
-            shortAtkRate: 0,
-            longAtkRate: 0,
-            longAtkDef: 0,
-            def: 0,
-            defRate: 0,
-            nearAtkDef: 0,
-            magicAtkDef: 0,
-            miscAtkDef: 0,
-            defRatioAtkClass: 0,
-            mdef: 0,
-            armorElement: 0,
-            weaponElement: 0,
-            ignoreDefClass: {
-                all: 0,
-                normal: 0,
-                boss: 0,
-                guardian: 0,
-            },
-            ignoreMdefClass: {
-                all: 0,
-                normal: 0,
-                boss: 0,
-                guardian: 0,
-            },
-            ignoreDefRace: {
-                formless: 0,
-                undead: 0,
-                brute: 0,
-                plant: 0,
-                insect: 0,
-                fish: 0,
-                demon: 0,
-                demiHuman: 0,
-                angel: 0,
-                dragon: 0,
-            },
-            ignoreMdefRace: {
-                formless: 0,
-                undead: 0,
-                brute: 0,
-                plant: 0,
-                insect: 0,
-                fish: 0,
-                demon: 0,
-                demiHuman: 0,
-                angel: 0,
-                dragon: 0,
-            },
-            ignoreDefElement: {
-                neutral: 0,
-                water: 0,
-                earth: 0,
-                fire: 0,
-                wind: 0,
-                poison: 0,
-                holy: 0,
-                shadow: 0,
-                ghost: 0,
-                undead: 0,
-            },
-            ignoreMdefElement: {
-                neutral: 0,
-                water: 0,
-                earth: 0,
-                fire: 0,
-                wind: 0,
-                poison: 0,
-                holy: 0,
-                shadow: 0,
-                ghost: 0,
-                undead: 0,
-            },
-            addClass: {
-                all: 0,
-                normal: 0,
-                boss: 0,
-                guardian: 0,
-            },
-            magicAddClass: {
-                all: 0,
-                normal: 0,
-                boss: 0,
-                guardian: 0,
-            },
-            expAddClass: {
-                all: 0,
-                normal: 0,
-                boss: 0,
-                guardian: 0,
-            },
-            subClass: {
-                all: 0,
-                normal: 0,
-                boss: 0,
-                guardian: 0,
-            },
-            addSize: {
-                small: 0,
-                medium: 0,
-                large: 0,
-            },
-            subSize: {
-                small: 0,
-                medium: 0,
-                large: 0,
-            },
-            addRace: {
-                formless: 0,
-                undead: 0,
-                brute: 0,
-                plant: 0,
-                insect: 0,
-                fish: 0,
-                demon: 0,
-                demiHuman: 0,
-                angel: 0,
-                dragon: 0,
-            },
-            magicAddRace: {
-                formless: 0,
-                undead: 0,
-                brute: 0,
-                plant: 0,
-                insect: 0,
-                fish: 0,
-                demon: 0,
-                demiHuman: 0,
-                angel: 0,
-                dragon: 0,
-            },
-            addRace2: {
-                goblin: 0,
-                golem: 0,
-                orc: 0,
-                kobold: 0,
-                manuk: 0,
-                splendide: 0,
-                biolab: 0,
-                kiel: 0,
-                juperos: 0,
-            },
-            magicAddRace2: {
-                goblin: 0,
-                golem: 0,
-                orc: 0,
-                kobold: 0,
-                manuk: 0,
-                splendide: 0,
-                biolab: 0,
-                kiel: 0,
-                juperos: 0,
-            },
-            subRace2: {
-                goblin: 0,
-                golem: 0,
-                orc: 0,
-                kobold: 0,
-                manuk: 0,
-                splendide: 0,
-                biolab: 0,
-                kiel: 0,
-                juperos: 0,
-            },
-            criticalAddRace: {
-                formless: 0,
-                undead: 0,
-                brute: 0,
-                plant: 0,
-                insect: 0,
-                fish: 0,
-                demon: 0,
-                demiHuman: 0,
-                angel: 0,
-                dragon: 0,
-            },
-            criticalAtkRateRace: {
-                formless: 0,
-                undead: 0,
-                brute: 0,
-                plant: 0,
-                insect: 0,
-                fish: 0,
-                demon: 0,
-                demiHuman: 0,
-                angel: 0,
-                dragon: 0,
-            },
-            expAddRace: {
-                formless: 0,
-                undead: 0,
-                brute: 0,
-                plant: 0,
-                insect: 0,
-                fish: 0,
-                demon: 0,
-                demiHuman: 0,
-                angel: 0,
-                dragon: 0,
-            },
-            subRace: {
-                formless: 0,
-                undead: 0,
-                brute: 0,
-                plant: 0,
-                insect: 0,
-                fish: 0,
-                demon: 0,
-                demiHuman: 0,
-                angel: 0,
-                dragon: 0,
-            },
-            addElement: {
-                neutral: 0,
-                water: 0,
-                earth: 0,
-                fire: 0,
-                wind: 0,
-                poison: 0,
-                holy: 0,
-                shadow: 0,
-                ghost: 0,
-                undead: 0,
-            },
-            magicAddElement: {
-                neutral: 0,
-                water: 0,
-                earth: 0,
-                fire: 0,
-                wind: 0,
-                poison: 0,
-                holy: 0,
-                shadow: 0,
-                ghost: 0,
-                undead: 0,
-            },
-            magicElementRate: {
-                neutral: 0,
-                water: 0,
-                earth: 0,
-                fire: 0,
-                wind: 0,
-                poison: 0,
-                holy: 0,
-                shadow: 0,
-                ghost: 0,
-                undead: 0,
-            },
-            expAddElement: {
-                neutral: 0,
-                water: 0,
-                earth: 0,
-                fire: 0,
-                wind: 0,
-                poison: 0,
-                holy: 0,
-                shadow: 0,
-                ghost: 0,
-                undead: 0,
-            },
-            subElement: {
-                neutral: 0,
-                water: 0,
-                earth: 0,
-                fire: 0,
-                wind: 0,
-                poison: 0,
-                holy: 0,
-                shadow: 0,
-                ghost: 0,
-                undead: 0,
-            },
-            subDefElement: {
-                neutral: 0,
-                water: 0,
-                earth: 0,
-                fire: 0,
-                wind: 0,
-                poison: 0,
-                holy: 0,
-                shadow: 0,
-                ghost: 0,
-                undead: 0,
-            },
-            addEffect: {
-                poison: 0,
-                stun: 0,
-                freeze: 0,
-                curse: 0,
-                blind: 0,
-                sleep: 0,
-                silence: 0,
-                confusion: 0,
-                bleeding: 0,
-                stone: 0,
-            },
-            magicAddEffect: {
-                poison: 0,
-                stun: 0,
-                freeze: 0,
-                curse: 0,
-                blind: 0,
-                sleep: 0,
-                silence: 0,
-                confusion: 0,
-                bleeding: 0,
-                stone: 0,
-            },
-            addEffectWhenHit: {
-                poison: 0,
-                stun: 0,
-                freeze: 0,
-                curse: 0,
-                blind: 0,
-                sleep: 0,
-                silence: 0,
-                confusion: 0,
-                bleeding: 0,
-                stone: 0,
-            },
-            resEffect: {
-                poison: 0,
-                stun: 0,
-                freeze: 0,
-                curse: 0,
-                blind: 0,
-                sleep: 0,
-                silence: 0,
-                confusion: 0,
-                bleeding: 0,
-                stone: 0,
-            },
-            breakArmorRate: 0,
-            breakWeaponRate: 0,
-            reflectShortWeaponDamage: 0,
-            spCostReductionRate: 0,
-            hpDrainRate: {
-                chance: 0,
-                value: 0,
-            },
-            spDrainRate: {
-                chance: 0,
-                value: 0,
-            },
-            hpRecoveryRate: 0,
-            spRecoveryRate: 0,
-            castRate: 0,
-            castDelay: 0,
-            healPower: {
-                all: 0,
-                heal: 0,
-                sanctuary: 0,
-                potionPitcher: 0,
-                slimPotionPitcher: 0,
-            },
-            healPower2: {
-                all: 0,
-                heal: 0,
-                sanctuary: 0,
-                potionPitcher: 0,
-                slimPotionPitcher: 0,
-            },
-            addGlobalItemHealRate: 0,
-            addGlobalSpItemHealRate: 0,
-            addItemHealRate: {},
-            addItemGlobalHealRate: {},
-            allowsRefine: true,
-            isUnbreakable: false,
-            addMonster: {},
-            addDefMonster: {},
-            skillAtk: {},
-            autospell: {},
-            enableSkill: {},
-            skillCastRate: {},
-            skillCastDelay: {},
-            scPdFood: 0,
-            scStrFood: 0,
-            scAgiFood: 0,
-            scVitFood: 0,
-            scIntFood: 0,
-            scDexFood: 0,
-            scLukFood: 0,
-            scHitFood: 0,
-            scIncCrit: 0,
-            scDefRate: 0,
-            scMdefRate: 0,
-            scCastRate: 0,
-            scFleeFood: 0,
-            scExpBoost: 0,
-            scJexpBoost: 0,
-            scAtkPotion: 0,
-            scMatkPotion: 0,
-            scAspdPotion: 0,
-            scIncAtkRate: 0,
-            scIncMatkRate: 0,
-            scIncAspdRate: 0,
-            scIncreaseAgi: 0,
-        },
-        activeStatus: {
-            Sprint: 0
-        },
-        equip: {
-            upperHg: '',
-            middleHg: '',
-            lowerHg: '',
-            armor: '',
-            rightHand: 'Unarmed',
-            rightHandType: 'Unarmed',
-            leftHand: 'Unarmed',
-            leftHandType: 'Unarmed',
-            garment: '',
-            shoes: '',
-            rhAccessory: '',
-            lhAccessory: '',
-        },
-        card: {
-            upperHg: '',
-            middleHg: '',
-            armor: '',
-            rightHand: ['', '', '', ''],
-            leftHand: ['', '', '', ''],
-            garment: '',
-            shoes: '',
-            rhAccessory: '',
-            lhAccessory: '',
-        },
-        enchant: {
-            middleHg: [],
-            armor: [],
-            rightHand: [],
-            leftHand: [],
-            garment: [],
-            shoes: [],
-            rhAccessory: [],
-            lhAccessory: [],
-        },
-        activeFood: {
-            Stats: {
-                STR: 'STR+0',
-                AGI: 'AGI+0',
-                VIT: 'VIT+0',
-                INT: 'INT+0',
-                DEX: 'DEX+0',
-                LUK: 'LUK+0',
-            },
-            'New World': {
-                'Rune Strawberry Cake': false,
-                'Schwartzwald Pine Jubilee': false,
-                'Arunafeltz Desert Sandwich': false,
-                "Manuk's Sturdiness": false,
-                "Manuk's Faith": false,
-                "Manuk's Will": false,
-                "Pinguicula's Fruit Jam": false,
-                "Cornus' Tear": false,
-                "Luciola's Honey Jam": false,
-            },
-            BG: {
-                'Military Ration B': false,
-                'Military Ration C': false,
-                'Tasty Pink Ration': false,
-                'Tasty White Ration': false,
-            },
-            'Summer Cocktails': {
-                "Venatu's Beep": false,
-                "Old Dracula's Mix": false,
-                'Spammers Heaven': false,
-                "Myst Case's Surprise": false,
-                'Seductive Bathory': false,
-                "Sting's Slap": false,
-                'Blossoming Geographer': false,
-                'Drip of Yggdrasil': false,
-                'Moscow Headless Mule': false,
-                "Bobo's Boba": false,
-                "Wolfchev's Nightcap": false,
-                "Chepet's Match": false,
-                "Dullahan's Ale": false,
-                "Sippin' Galapago": false,
-                "Sleeper's Dream": false,
-                "Mobster's Paradise": false,
-            },
-            Misc: {
-                Abrasive: false,
-                'Buche de Noël': false,
-                'Guarana Candy': false,
-                'Greater Agimat of Ancient Spirit': false,
-                'Box of Resentment': false,
-                'Box of Drowsiness': false,
-                'Sesame Pastry': false,
-                'Honey Pastry': false,
-                'Rainbow Cake': false,
-            },
-            Resistance: {
-                'Coldproof Potion': false,
-                'Earthproof Potion': false,
-                'Fireproof Potion': false,
-                'Thunderproof Potion': false,
-            },
-            Eclage: {
-                'Snow Flip': false,
-                'Peony Mommy': false,
-                'Slapping Herb': false,
-                'Yggdrasil Dust': false,
-            },
-            Eden: {
-                'Rough Energy Crystal': false,
-                'Purified Energy Crystal': false,
-                'High Energy Crystal': false,
-            }
-        }
-    }
+    private _sessionInfoData: SessionInfoV2 = SESSION_INFO_DEFAULT;
     private _sessionInfo: BehaviorSubject<SessionInfoV2>;
     public sessionInfo$: Observable<SessionInfoV2>;
 
@@ -605,34 +60,92 @@ export class TTSessionInfoV2Service {
         this._isDualWielding = false;
 
         this._sessionInfo = new BehaviorSubject<SessionInfoV2>(this._sessionInfoData);
-        this.sessionInfo$ = this._sessionInfo.asObservable();
+        /* create a debounce obs:
+        only publish data, if 100ms after the intial publish no new data appeared */
+        this.sessionInfo$ = this._sessionInfo.asObservable().pipe(debounceTime(100));
 
         /* wait until core is loaded */
         this.core.loaded$.pipe(distinctUntilChanged()).subscribe((_) => {
             if (_) {
-                this._jobClass = this.core.jobDbV2[Object.keys(this.core.jobDbV2)[0]];
-                this.updateSessionInfo();
+                this._jobClassName = Object.keys(this.core.jobDbV2)[0];
+                this._jobClass = this.core.jobDbV2[this._jobClassName];
+                this.updateSessionInfo(SessionChangeEvent.INIT);
             }
         });
     }
 
     /*** public methods ***/
+    eventFilter(...args: SessionChangeEvent[]) {
+        return filter<SessionInfoV2>((val) => {
+            if (args.includes(val.changeEvent)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        })
+    }
+
+    /*** public methods (Session info change events) ***/
     changeClass(className: keyof JobDB_V2) {
+        this._jobClassName = <string>className;
         this._jobClass = this.core.jobDbV2[className];
-        this.updateSessionInfo();
+        this.updateSessionInfo(SessionChangeEvent.CLASS);
     }
     changeLevel(baseLvl: number, jobLvl: number) {
         this._sessionInfoData.baseLevel = baseLvl;
         this._sessionInfoData.jobLevel = jobLvl;
-        this.updateSessionInfo();
+        this.updateSessionInfo(SessionChangeEvent.LEVEL);
     }
     changeBaseStats(stats: { [key in BaseStatsNames]: number }) {
         this._sessionInfoData.baseStats = { ...stats };
-        this.updateSessionInfo();
+        this.updateSessionInfo(SessionChangeEvent.BASE_STATS);
+    }
+    changeRefine(equip: ItemLocations, refine: number) {
+        this._sessionInfoData.refine[equip] = refine;
+        this.updateSessionInfo(SessionChangeEvent.REFINE);
+    }
+    changeRefines(refines: SessionEquipBase<number>) {
+        this._sessionInfoData.refine = { ...refines };
+        this.updateSessionInfo(SessionChangeEvent.REFINE);
+    }
+    changeEquip(equipLocation: keyof SessionEquip, equip: string | WeaponType) {
+        if (
+            (equipLocation === 'leftHandType') ||
+            (equipLocation === 'rightHandType')
+        ) {
+            this._sessionInfoData.equip[equipLocation] = equip as WeaponType;
+            /* reset weapon */
+            if (equipLocation === 'leftHandType') {
+                if (equip === 'Unarmed') {
+                    /* reset to Unarmed */
+                    this._sessionInfoData.equip.leftHand = 'Unarmed';
+                }
+                else {
+                    /* reset to "None" */
+                    this._sessionInfoData.equip.leftHand = '';
+                }
+            }
+            else {
+                if (equip === 'Unarmed') {
+                    /* reset to Unarmed */
+                    this._sessionInfoData.equip.rightHand = 'Unarmed';
+                }
+                else {
+                    /* reset to "None" */
+                    this._sessionInfoData.equip.rightHand = '';
+                }
+            }
+        }
+        else {
+            this._sessionInfoData.equip[equipLocation] = equip;
+        }
+        this.updateSessionInfo(SessionChangeEvent.EQUIP);
     }
 
     /*** private methods ***/
-    private updateSessionInfo() {
+    private updateSessionInfo(event: SessionChangeEvent) {
+        this._sessionInfoData.changeEvent = event;
         this.resetBonus();
         this.updateClassSpecificData();
         this.updateBonus();
@@ -1029,5 +542,11 @@ export class TTSessionInfoV2Service {
     }
     public get isDualWielding(): boolean {
         return this._isDualWielding;
+    }
+    public get jobClass(): JobDbEntry {
+        return this._jobClass;
+    }
+    public get jobClassName(): string {
+        return this._jobClassName;
     }
 }
