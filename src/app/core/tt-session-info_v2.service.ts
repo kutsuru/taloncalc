@@ -258,7 +258,7 @@ export class TTSessionInfoV2Service {
         ) {
             let lhBonus: string = '';
 
-            if (this._isDualWielding)
+            if (this._isDualWielding && this._sessionInfoData.equip.leftHandType !== 'Shield')
                 lhBonus = this.core.weaponDbV2[this._sessionInfoData.equip.leftHandType][this._sessionInfoData.equip.leftHand].bonus;
             else
                 lhBonus = this.core.shieldDbV2[this._sessionInfoData.equip.leftHand].bonus;
@@ -421,7 +421,7 @@ export class TTSessionInfoV2Service {
         // Update left hand information
         let lhWeaponAtk: number = 0;
         let lhWeaponType = this._sessionInfoData.equip.leftHandType;
-        if (this._isDualWielding && this._sessionInfoData.equip.leftHand)
+        if (this._isDualWielding && this._sessionInfoData.equip.leftHand && (lhWeaponType !== 'Shield'))
             lhWeaponAtk = this.core.weaponDbV2[lhWeaponType][this._sessionInfoData.equip.leftHand].attack;
 
         // but SC_INCATKRATE is also applied on weapon attack

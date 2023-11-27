@@ -42,18 +42,20 @@ export class TtSimpleSelectComponent implements OnInit, OnChanges {
 
   createEntryList() {
     let res: ListEntry[] = [];
-    for (let i = 0; i < this.values.length; i++) {
-      if (i < this.names.length) {
-        res.push({
-          value: this.values[i],
-          name: this.names[i]
-        });
-      }
-      else {
-        res.push({
-          value: this.values[i],
-          name: `${this.values[i]}`
-        });
+    if (this.values) {
+      for (let i = 0; i < this.values.length; i++) {
+        if (i < this.names.length) {
+          res.push({
+            value: this.values[i],
+            name: this.names[i]
+          });
+        }
+        else {
+          res.push({
+            value: this.values[i],
+            name: `${this.values[i]}`
+          });
+        }
       }
     }
     this.selectData = res;

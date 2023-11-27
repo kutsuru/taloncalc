@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Item, ItemLocations, JobDbEntry, SessionChangeEvent, SessionEquip, SessionEquipBase, SessionInfoV2, VANILLA_MODES, WeaponType, WeaponTypeLeft } from '../core/models';
+import { Item, ItemLocations, JobDbEntry, SessionChangeEvent, SessionEquip, SessionEquipBase, VANILLA_MODES, WeaponType, WeaponTypeLeft } from '../core/models';
 import { TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
-import { MatLegacySelectChange as MatSelectChange } from '@angular/material/legacy-select';
 import { TTCoreService } from '../core/tt-core.service';
 
 @Component({
@@ -26,6 +25,29 @@ export class TtEquipComponent implements OnInit {
   upperHgs: string[] = [];
   middleHgs: string[] = [];
   lowerHgs: string[] = [];
+  armors: string[] = [];
+  weapons: string[] = [];
+  leftHands: string[] = []; // Shield or Weapon (for Assa)
+  garments: string[] = [];
+  shoes: string[] = [];
+  accessories: string[] = [];
+
+  /* gear values */
+  gears: SessionEquip = {
+    armor: '',
+    garment: '',
+    leftHand: '',
+    leftHandType: 'Unarmed',
+    rightHandType: 'Unarmed',
+    lhAccessory: '',
+    lowerHg: '',
+    middleHg: '',
+    rhAccessory: '',
+    rightHand: '',
+    shoes: '',
+    upperHg: ''
+  }
+
   /* refines */
   refines: SessionEquipBase<number> = {
     armor: 0,
@@ -51,20 +73,23 @@ export class TtEquipComponent implements OnInit {
         this.sessionInfo.eventFilter(
           SessionChangeEvent.INIT,
           SessionChangeEvent.CLASS,
-          SessionChangeEvent.EQUIP
+          SessionChangeEvent.EQUIP,
+          SessionChangeEvent.REFINE
         )
       )
       .subscribe((info) => {
         this.jobClass = this.sessionInfo.jobClass;
-        
+
         /* set refines */
         this.refines = { ...info.refine };
         /* set gears */
-        // TODO
+        this.gears = { ...info.equip }
         /* update gears, but only when job class has changed*/
-        if (Number(this.jobClass.mask) != this.equipMask) {
-          this.equipMask = Number(this.jobClass.mask);
-          this.updateEquipData();
+        if (this.jobClass) {
+          if (Number(this.jobClass.mask) != this.equipMask) {
+            this.equipMask = Number(this.jobClass.mask);
+            this.updateEquipData();
+          }
         }
       });
   }
@@ -73,8 +98,21 @@ export class TtEquipComponent implements OnInit {
   public changeRefine(equip: ItemLocations, refine: number) {
     this.sessionInfo.changeRefine(equip, refine);
   }
-  public changeEquip(equipLocation: keyof SessionEquip, equip: string | WeaponType){
+
+  public changeEquip(equipLocation: keyof SessionEquip, equip: string | WeaponType) {
     this.sessionInfo.changeEquip(equipLocation, equip);
+  }
+
+  public changeLeftHandType(newType: WeaponType) {
+    this.gears.leftHandType = newType;
+    this.updateLeftHandData(true);
+    this.changeEquip('leftHandType', newType);
+  }
+  // weapon == Right Hand
+  public changeWeaponType(newType: WeaponType) {
+    this.gears.rightHandType = newType;
+    this.updateWeaponData(true);
+    this.changeEquip('rightHandType', newType);
   }
 
   /* private functions */
@@ -92,9 +130,38 @@ export class TtEquipComponent implements OnInit {
     this.upperHgs = this.filterGear(this.core.headgearDbV2.Upper);
     this.middleHgs = this.filterGear(this.core.headgearDbV2.Middle);
     this.lowerHgs = this.filterGear(this.core.headgearDbV2.Lower);
+    /* armor */
+    this.armors = this.filterGear(this.core.armorDbV2);
+    /* weapons */
+    this.updateWeaponData();
+    /* left hand (shield or weapon) */
+    this.updateLeftHandData();
+    /* garments */
+    this.garments = this.filterGear(this.core.garmentDbV2);
+    /* shoes */
+    this.shoes = this.filterGear(this.core.shoesDbV2);
+    /* accessories */
+    this.accessories = this.filterGear(this.core.accessoryDbV2);
 
     /* update dom */
     this.ref.markForCheck();
+  }
+
+  private updateWeaponData(publish: boolean = false) {
+    this.weapons = this.filterGear(this.core.weaponDbV2[this.gears.rightHandType]);
+    // TODO: Update to first value in list
+    if (publish) this.ref.markForCheck();
+  }
+
+  private updateLeftHandData(publish: boolean = false) {
+    if (this.gears.leftHandType === 'Shield') {
+      this.leftHands = this.filterGear(this.core.shieldDbV2);
+    }
+    else {
+      this.leftHands = this.filterGear(this.core.weaponDbV2[this.gears.leftHandType]);
+    }
+    // TODO: Update to first value in list
+    if (publish) this.ref.markForCheck();
   }
 
   private filterGear(data: { [key: string]: Item }): string[] {

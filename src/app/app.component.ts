@@ -7,6 +7,7 @@ import { TtPageLoaderService } from './tt-page-loader/tt-page-loader.service';
 import { TtPopupGroupComponent } from './tt-popup/tt-popup-group.component';
 import { TtSettingsService } from './tt-settings/tt-settings.service';
 import { TTThemerService } from './tt-themer/tt-themer.service';
+import { TTSessionInfoV2Service } from './core/tt-session-info_v2.service';
 
 @Component({
   selector: 'app-root',
@@ -82,7 +83,8 @@ export class AppComponent implements OnInit, OnDestroy {
     protected ttCore: TTCoreService,
     protected ttSessionInfoService: TTSessionInfoService,
     private ttLoaderService: TtPageLoaderService,
-    protected ttSettings: TtSettingsService
+    protected ttSettings: TtSettingsService,
+    private session: TTSessionInfoV2Service
   ) {
     this.classKeys = ['Novice'];
     this.armorKeys = null;
@@ -127,13 +129,14 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   debug() {
-    this.debugMsg = 'Start Loading Core Service...';
-    this.ttLoaderService.enable();
-    this.ttCore.initializeCore().subscribe((_) => {
-      this.debugMsg = 'Service loaded';
-      this.ttLoaderService.disable();
-      this.initClassSelection();
-    });
+    // this.debugMsg = 'Start Loading Core Service...';
+    // this.ttLoaderService.enable();
+    // this.ttCore.initializeCore().subscribe((_) => {
+    //   this.debugMsg = 'Service loaded';
+    //   this.ttLoaderService.disable();
+    //   this.initClassSelection();
+    // });
+    this.session.changeEquip('armor', 'Aegir Armor');
   }
 
   updateEquipmentList() {

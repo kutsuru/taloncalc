@@ -14,28 +14,74 @@
         </div>
         <!-- Weapon Type (Left/Right)-->
         <div>
-            <tt-simple-select [value]="weaponTypeInit" [values]="jobClass?.compatibleWeapons"
-                (change)="changeEquip('rightHandType', $event.value)">Weapon Type</tt-simple-select>
-            <tt-simple-select [value]="weaponTypeInit" [values]="compatibleLeftHandTypes"
-                (change)="changeEquip('leftHandType', $event.value)">Left Hand Type</tt-simple-select>
+            <tt-simple-select [(value)]="gears.rightHandType" [values]="jobClass?.compatibleWeapons"
+                (change)="changeWeaponType($event.value)">Weapon Type</tt-simple-select>
+            <tt-simple-select [(value)]="gears.leftHandType" [values]="compatibleLeftHandTypes"
+                (change)="changeLeftHandType($event.value)">Left Hand Type</tt-simple-select>
         </div>
         <!-- Upper Headgear -->
         <div>
             <tt-simple-select prefix="+" [values]="maxRefines" (change)="changeRefine('upperHg', $event.value)"
                 [(value)]="refines.upperHg">+</tt-simple-select>
-            <tt-simple-select [values]="upperHgs" (change)="changeEquip('upperHg', $event.value)">Upper
+            <tt-simple-select [values]="upperHgs" (change)="changeEquip('upperHg', $event.value)"
+                [(value)]="gears.upperHg">Upper
                 Headgear</tt-simple-select>
         </div>
         <!-- Middle Headgear -->
         <div>
-            <tt-simple-select [values]="middleHgs" (change)="changeEquip('middleHg', $event.value)">Middle
+            <tt-simple-select [values]="middleHgs" (change)="changeEquip('middleHg', $event.value)"
+                [(value)]="gears.middleHg">Middle
                 Headgear</tt-simple-select>
         </div>
         <!-- Lower Headgear -->
         <div>
-            <tt-simple-select [values]="lowerHgs" (change)="changeEquip('lowerHg', $event.value)">Lower
+            <tt-simple-select [values]="lowerHgs" (change)="changeEquip('lowerHg', $event.value)"
+                [(value)]="gears.lowerHg">Lower
                 Headgear</tt-simple-select>
         </div>
         <!-- Armor -->
+        <div>
+            <tt-simple-select prefix="+" [values]="maxRefines" [(value)]="refines.armor"
+                (change)="changeRefine('armor', $event.value)">+</tt-simple-select>
+            <tt-simple-select [values]="armors" (change)="changeEquip('armor', $event.value)"
+                [(value)]="gears.armor">Armor</tt-simple-select>
+        </div>
+        <!-- Weapon -->
+        <div>
+            <tt-simple-select prefix="+" [values]="maxRefines" [(value)]="refines.rightHand"
+                (change)="changeRefine('rightHand', $event.value)">+</tt-simple-select>
+            <tt-simple-select [values]="weapons" (change)="changeEquip('rightHand', $event.value)"
+                [(value)]="gears.rightHand">Weapon</tt-simple-select>
+        </div>
+        <!-- Left Hand / Shield -->
+        <div>
+            <tt-simple-select prefix="+" [values]="maxRefines" [(value)]="refines.leftHand"
+                (change)="changeRefine('leftHand', $event.value)">+</tt-simple-select>
+            <tt-simple-select [values]="leftHands" (change)="changeEquip('leftHand', $event.value)"
+                [(value)]="gears.leftHand">{{gears.leftHandType}}</tt-simple-select>
+        </div>
+        <!-- Garment -->
+        <div>
+            <tt-simple-select prefix="+" [values]="maxRefines" [(value)]="refines.garment"
+                (change)="changeRefine('garment', $event.value)">+</tt-simple-select>
+            <tt-simple-select [values]="garments" (change)="changeEquip('garment', $event.value)"
+                [(value)]="gears.garment">Garment</tt-simple-select>
+        </div>
+        <!-- Shoes -->
+        <div>
+            <tt-simple-select prefix="+" [values]="maxRefines" [(value)]="refines.shoes"
+                (change)="changeRefine('shoes', $event.value)">+</tt-simple-select>
+            <tt-simple-select [values]="shoes" (change)="changeEquip('shoes', $event.value)"
+                [(value)]="gears.shoes">Shoes</tt-simple-select>
+        </div>
+        <!-- Accessorys -->
+        <div>
+            <tt-simple-select [values]="accessories" (change)="changeEquip('rhAccessory', $event.value)"
+                [(value)]="gears.rhAccessory">Accessory
+                (Right)</tt-simple-select>
+            <tt-simple-select [values]="accessories" (change)="changeEquip('lhAccessory', $event.value)"
+                [(value)]="gears.lhAccessory">Accessory
+                (Left)</tt-simple-select>
+        </div>
     </mat-card-content>
 </mat-card>

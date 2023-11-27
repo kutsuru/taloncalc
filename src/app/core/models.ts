@@ -585,7 +585,7 @@ export type SessionEquipBase<T> = {
 }
 export type SessionEquip = SessionEquipBase<string> & {
   rightHandType: WeaponType,
-  leftHandType: WeaponType,
+  leftHandType: WeaponTypeLeft
 }
 export type SessionCard = Omit<SessionEquipBase<string>, "rightHand" | "leftHand" | "lowerHg"> & {
   rightHand: string[],
