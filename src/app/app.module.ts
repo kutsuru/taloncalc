@@ -23,14 +23,16 @@ import { TTPopupModule } from './tt-popup/tt-popup.module';
 import { TtMaskGeneratorComponent } from './tt-mask-generator/tt-mask-generator.component';
 import { TtFoodComponent } from './tt-food/tt-food.component';
 import { TtValueInfo } from './tt-food/tt-value-info.pipe';
-import { TtPassiveComponent } from './tt-passive/tt-passive.component';
-import { TtBuffComponent } from './tt-buff/tt-buff.component';
-import { TtLvArrayPipe, TtRangePipe } from './tt-buff/tt-lv-array.pipe';
+import { TtPassiveComponentOld } from './tt-passive__old/tt-passive.component';
+import { TtBuffComponentOld } from './tt-buff__old/tt-buff.component';
+import { TtLvArrayPipe, TtRangePipe } from './tt-buff__old/tt-lv-array.pipe';
 import { TtSettingsComponent } from './tt-settings/tt-settings.component';
 import { TtStatsComponent } from './tt-stats/tt-stats.component';
 import { TtStatsInfoComponent } from './tt-stats-info/tt-stats-info.component';
 import { TtEquipComponent } from './tt-equip/tt-equip.component';
 import { TtSimpleSelectComponent } from './tt-simple-select/tt-simple-select.component';
+import { TtBuffComponent } from './tt-buff/tt-buff.component';
+import { TtPassiveComponent } from './tt-passive/tt-passive.component';
 
 @NgModule({
   declarations: [
@@ -48,15 +50,17 @@ import { TtSimpleSelectComponent } from './tt-simple-select/tt-simple-select.com
     TtMaskGeneratorComponent,
     TtFoodComponent,
     TtValueInfo,
-    TtPassiveComponent,
-    TtBuffComponent,
+    TtPassiveComponentOld,
+    TtBuffComponentOld,
     TtLvArrayPipe,
     TtRangePipe,
     TtSettingsComponent,
     TtStatsComponent,
     TtStatsInfoComponent,
     TtEquipComponent,
-    TtSimpleSelectComponent
+    TtSimpleSelectComponent,
+    TtBuffComponent,
+    TtPassiveComponent
   ],
   imports: [
     BrowserModule,

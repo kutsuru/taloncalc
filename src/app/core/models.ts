@@ -162,6 +162,42 @@ export type FoodDB_V2 = {
   Eden: ObjWithKeyString<Food>,
   "Apsd Potion": ObjWithKeyString<Food>
 }
+/*****************/
+/*** SKILL DB  ***/
+export type Skill = {
+  id: number,
+  maxLevel: number,
+  spCost: number[],
+  element: string,
+  hits: number,
+  ratio: string,
+  motion_delay: number,
+  forced_motion: number,
+  castTime: string,
+  allows_modifiers: boolean,
+  isCritical: boolean,
+  damageTick: number,
+  ignoreDefense: boolean,
+  ignoreElement: boolean,
+  isRangeAttack: boolean,
+  isMagicAttack: boolean,
+  isMeleeAttack: boolean,
+  isMultiHits: boolean,
+  duration: number,
+  isConsideredAsSingleHit: boolean,
+  enableMasteries: boolean,
+  ignoreOffensiveStatus : boolean,
+  hasPerfectHit: boolean,
+  usesAmmos: boolean,
+  isActive: boolean,
+  isPassive: boolean,
+  isBuff: boolean,
+  job: string,
+  type?: string,
+}
+export type SkillDB_V2 = {
+  [key: string]: Skill
+}
 
 /********************/
 /*** Session Info ***/
@@ -606,11 +642,12 @@ export type ActiveFood = {
 
 export enum SessionChangeEvent {
   INIT = 0,
-  CLASS, 
+  CLASS,
   LEVEL,
   BASE_STATS,
   REFINE,
   EQUIP,
+  VANILLA_MODE
 }
 
 export type SessionInfoV2 = {
@@ -619,7 +656,7 @@ export type SessionInfoV2 = {
   baseLevel: number;
   jobLevel: number;
   baseLevelMax: number;
-  jobLevelMax: number; 
+  jobLevelMax: number;
 
   /* stats */
   baseStats: {

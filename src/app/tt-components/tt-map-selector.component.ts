@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatLegacySelectChange as MatSelectChange } from '@angular/material/legacy-select';
+import { MatSelectChange } from '@angular/material/select';
 import { KeyValue } from '../core/filtered-key-value.pipe';
 import { DictDb } from '../core/models';
 
@@ -15,7 +15,7 @@ import { DictDb } from '../core/models';
         </mat-option>
     </mat-select>
   </mat-form-field>`,
-  styles: [`.mat-form-field { margin:4px } `],
+  styles: [`.mat-mdc-form-field { margin:4px } `],
 })
 export class TtMapSelectorComponent {
   

@@ -1,21 +1,23 @@
-<mat-tab-group>
-  <mat-tab label="PvM">
-    <div fxLayout="row wrap">
-      <battle-calc-pvm
-        fxFlex="nogrow"
-        *ngFor="let calc of battleCalcLst; let i = index"
-        (onClose)="closeBattleDetail(calc.id)"
-        [target]="calc.target"
-        @insertCalcTrigger
-        style="overflow: hidden"
-      >
-      </battle-calc-pvm>
-      <div fxFlex="100px" fxLayout="row" fxLayoutAlign="center center">
-        <button mat-fab color="primary" (click)="createBattleDetail()">
-          <mat-icon>add</mat-icon>
-        </button>
-      </div>
-    </div>
-  </mat-tab>
-  <mat-tab label="PvP">Player battle </mat-tab>
-</mat-tab-group>
+<mat-card>
+  <mat-card-header [collapseTriggerFor]="battleContant" class="space-between">
+    <mat-card-title>Battle calculation</mat-card-title>
+    <tt-collapse-indicator [container]="battleContant"> </tt-collapse-indicator>
+  </mat-card-header>
+  <mat-card-content tt-collapse-container #battleContant>
+    <mat-tab-group>
+      <mat-tab label="PvM">
+        <div fxLayout="row wrap">
+          <battle-calc-pvm fxFlex="nogrow" *ngFor="let calc of battleCalcLst; let i = index"
+            (onClose)="closeBattleDetail(calc.id)" [target]="calc.target" @insertCalcTrigger style="overflow: hidden">
+          </battle-calc-pvm>
+          <div fxFlex="100px" fxLayout="row" fxLayoutAlign="center center">
+            <button mat-fab color="primary" (click)="createBattleDetail()">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="PvP">Player battle </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

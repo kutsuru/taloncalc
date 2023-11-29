@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="drawer-content" fxLayout="column" fxLayoutGap="10px">
-    <mat-card>
+    <mat-card appearance="outlined">
       <mat-card-title-group>
         <mat-card-title>Builder Loader / Selecter</mat-card-title>
         <tt-collapse-button [container]="loaderContant"></tt-collapse-button>
@@ -28,7 +28,7 @@
     </mat-card>
 
     <!-- stats calc -->
-    <mat-card>
+    <mat-card appearance="outlined">
       <mat-card-title-group>
         <mat-card-title>Stats</mat-card-title>
         <tt-collapse-button [container]="statsContent"> </tt-collapse-button>
@@ -143,7 +143,7 @@
     </mat-card>
 
     <!-- stats info calc -->
-    <mat-card *ngIf="!ttSettings.popup.statsInfo">
+    <mat-card appearance="outlined" *ngIf="!ttSettings.popup.statsInfo">
       <mat-card-title-group>
         <mat-card-title>StatsInfo</mat-card-title>
         <tt-collapse-button [container]="statsInfoContent"></tt-collapse-button>
@@ -201,10 +201,10 @@
     <!-- buffs calc -->
     <tt-buff *ngIf="!ttSettings.popup.buffs"></tt-buff>
     <!-- passive calc -->
-    <tt-passive></tt-passive>
+    <tt-passive-old></tt-passive-old>
 
     <!-- equips calc -->
-    <mat-card>
+    <mat-card appearance="outlined">
       <mat-card-title-group>
         <mat-card-title>Equips</mat-card-title>
         <tt-collapse-button [container]="equipsContent"> </tt-collapse-button>
@@ -526,13 +526,13 @@
     </mat-card>
 
     <!-- battle calc -->
-    <mat-card>
+    <mat-card appearance="outlined">
       <mat-card-title-group>
         <mat-card-title>Battle calculation</mat-card-title>
         <tt-collapse-button [container]="battleContant"> </tt-collapse-button>
       </mat-card-title-group>
       <mat-card-content tt-collapse-container #battleContant>
-        <battle-calc></battle-calc>
+        <tt-battle-calc></tt-battle-calc>
       </mat-card-content>
     </mat-card>
 

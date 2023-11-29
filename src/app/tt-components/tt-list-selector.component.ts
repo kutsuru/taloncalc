@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatLegacySelectChange as MatSelectChange } from '@angular/material/legacy-select';
+import { MatSelectChange } from '@angular/material/select';
 import { TTSessionInfoService } from '../core/tt-session-info.service';
 
 // [formControl]="selectorControl"
@@ -21,7 +21,7 @@ import { TTSessionInfoService } from '../core/tt-session-info.service';
         </mat-option>
     </mat-select>
   </mat-form-field>`,
-  styles: [`.mat-form-field { width:80px; margin:4px }`],
+  styles: [`.mat-mdc-form-field { width:80px; margin:4px }`],
 })
 export class TtListSelectorComponent implements OnInit {
   protected _serviceData: any;

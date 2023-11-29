@@ -4,22 +4,25 @@
     <!-- content -->
     <div class="settings-content">
         <mat-card>
-            <mat-action-list dense>
-                <h2 matSubheader>Theme</h2>
-                <button mat-list-item *ngFor="let theme of themer.themes" (click)="themer.setTheme(theme)">
-                    <mat-icon matListIcon
-                        [style.visibility]="(themer.activeTheme$ | async)?.name == theme.name ? 'unset' : 'hidden'">
-                        check
-                    </mat-icon>
-                    <span matLine>{{theme.name}}</span>
-                </button>
-            </mat-action-list>
+            <mat-card-content>
+                <mat-action-list dense>
+                    <h2 matSubheader>Theme</h2>
+                    <button mat-list-item *ngFor="let theme of themer.themes" (click)="themer.setTheme(theme)">
+                        <mat-icon matListIcon
+                            [style.visibility]="(themer.activeTheme$ | async)?.name == theme.name ? 'unset' : 'hidden'">
+                            check
+                        </mat-icon>
+                        <span matLine>{{theme.name}}</span>
+                    </button>
+                </mat-action-list>
 
-            <mat-selection-list dense (selectionChange)="changePopupSetting($event)">
-                <h2 matSubheader>Display as Popup</h2>
-                <mat-list-option [selected]="ttSettings.popup.statsInfo" value="statsInfo">Stats Info</mat-list-option>
-                <mat-list-option [selected]="ttSettings.popup.buffs" value="buffs">Buffs Selection</mat-list-option>
-            </mat-selection-list>
+                <mat-selection-list dense (selectionChange)="changePopupSetting($event)">
+                    <h2 matSubheader>Display as Popup</h2>
+                    <mat-list-option [selected]="ttSettings.popup.statsInfo" value="statsInfo">Stats
+                        Info</mat-list-option>
+                    <mat-list-option [selected]="ttSettings.popup.buffs" value="buffs">Buffs Selection</mat-list-option>
+                </mat-selection-list>
+            </mat-card-content>
         </mat-card>
     </div>
 </div>

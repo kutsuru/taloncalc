@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, delay, forkJoin, Observable, of, retry } from 'rxjs';
 import { JsonDbService } from './json-db.service';
-import { Armor, ArmorDB_V2, CardDB_V2, DictDb, FoodDB_V2, HeadgearDB_V2, ItemDB, JobDB, JobDB_V2, NestedDictDb, WeaponDB_V2 } from './models';
+import { Armor, ArmorDB_V2, CardDB_V2, DictDb, FoodDB_V2, HeadgearDB_V2, ItemDB, JobDB, JobDB_V2, NestedDictDb, SkillDB_V2, WeaponDB_V2 } from './models';
 
 @Injectable({
   providedIn: 'root',
@@ -47,6 +47,7 @@ export class TTCoreService {
   private _accessoryDb2: ArmorDB_V2;
   private _cardDb2: CardDB_V2;
   private _foodDb2: FoodDB_V2;
+  private _skillDb2: SkillDB_V2;
 
   private _battleCalcTargets: BehaviorSubject<Array<string>>;
   readonly battleCalcTargets: Observable<Array<string>>;
@@ -136,6 +137,7 @@ export class TTCoreService {
         VIT: {}
       }
     };
+    this._skillDb2 = {};
 
     this._battleCalcTargets = new BehaviorSubject<Array<string>>([]);
     this.battleCalcTargets = this._battleCalcTargets.asObservable();
@@ -192,6 +194,7 @@ export class TTCoreService {
         this._accessoryDb2 = dbResp[7] as ArmorDB_V2;
         this._cardDb2 = dbResp[14] as CardDB_V2;
         this._foodDb2 = dbResp[10] as FoodDB_V2;
+        this._skillDb2 = dbResp[12] as SkillDB_V2;
 
         /* emit fake data for the battle calc */
         //this._battleCalcTargets.next(['GM Kutsuru', 'GM Johnny']);
@@ -326,5 +329,8 @@ export class TTCoreService {
   }
   public get foodDbV2() {
     return this._foodDb2;
+  }
+  public get skillDbV2(){
+    return this._skillDb2;
   }
 }

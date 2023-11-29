@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { TTSessionInfoService } from '../core/tt-session-info.service';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { SkillList, TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
 
 @Component({
   selector: 'tt-passive',
   templateUrl: './tt-passive.component.html',
-  styleUrls: ['./tt-passive.component.css'],
+  styleUrl: './tt-passive.component.scss'
 })
-export class TtPassiveComponent implements OnInit {
-  constructor(protected ttSessionInfoService: TTSessionInfoService) {}
+export class TtPassiveComponent {
+  passiveSkills$: Observable<SkillList>;
 
-  ngOnInit() {}
+  constructor(private sessionInfo: TTSessionInfoV2Service){
+    this.passiveSkills$ = sessionInfo.passiveSkills$.asObservable();
+  }
 }

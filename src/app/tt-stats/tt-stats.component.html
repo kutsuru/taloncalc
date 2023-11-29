@@ -1,8 +1,8 @@
 <mat-card>
-    <mat-card-title-group [collapseTriggerFor]="statsContent">
+    <mat-card-header [collapseTriggerFor]="statsContent" class="space-between">
         <mat-card-title>Stats</mat-card-title>
         <tt-collapse-indicator [container]="statsContent"></tt-collapse-indicator>
-    </mat-card-title-group>
+    </mat-card-header>
     <mat-card-content tt-collapse-container #statsContent>
         <!-- Job class -->
         <mat-form-field>

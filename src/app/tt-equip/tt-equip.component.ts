@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Item, ItemLocations, JobDbEntry, SessionChangeEvent, SessionEquip, SessionEquipBase, VANILLA_MODES, WeaponType, WeaponTypeLeft } from '../core/models';
+import { Item, ItemLocations, JobDbEntry, SessionChangeEvent, SessionEquip, SessionEquipBase, VANILLA_MODES, VanillaMode, WeaponType, WeaponTypeLeft } from '../core/models';
 import { TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
 import { TTCoreService } from '../core/tt-core.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'tt-equip',
@@ -12,10 +13,10 @@ import { TTCoreService } from '../core/tt-core.service';
 export class TtEquipComponent implements OnInit {
   /* general */
   vanillaModes = Array.from(VANILLA_MODES);
+  vanillaMode = new FormControl<VanillaMode>('Unrestricted');
 
   /* session info data */
   jobClass: JobDbEntry | undefined;
-  weaponTypeInit: WeaponType = 'Unarmed';  // TODO: only for init value currently?
   compatibleLeftHandTypes: WeaponTypeLeft[] = [];
   equipMask: number = 0xfffffff;
 
@@ -84,6 +85,8 @@ export class TtEquipComponent implements OnInit {
         this.refines = { ...info.refine };
         /* set gears */
         this.gears = { ...info.equip }
+        /* other stuff */
+        this.vanillaMode.patchValue(info.vanillaMode);
         /* update gears, but only when job class has changed*/
         if (this.jobClass) {
           if (Number(this.jobClass.mask) != this.equipMask) {
@@ -113,6 +116,10 @@ export class TtEquipComponent implements OnInit {
     this.gears.rightHandType = newType;
     this.updateWeaponData(true);
     this.changeEquip('rightHandType', newType);
+  }
+  
+  public changeVanillaMode(mode: VanillaMode){
+    this.sessionInfo.changeVanillaMode(mode);
   }
 
   /* private functions */

@@ -11,10 +11,10 @@ mat-toolbar {
 }
 #ttToolbarMenu {
   flex: 1;
-  .mat-list-item:hover {
+  .mat-mdc-list-item:hover {
     color: #f9b233;
   }
-  .mat-list-item {
+  .mat-mdc-list-item {
     color: #ffffff;
   }
   .mat-line {

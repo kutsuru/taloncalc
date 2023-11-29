@@ -1,8 +1,12 @@
 import { Injectable } from "@angular/core";
-import { ActiveFood, Armor, BaseStatsNames, Card, Food, FoodDB_V2, FoodStatsNames, FoodStatsObj, Item, ItemLocations, JobDB_V2, JobDbEntry, ObjWithKeyString, SessionCard, SessionChangeEvent, SessionEquip, SessionEquipBase, SessionInfoV2, Weapon, WeaponType, WeaponTypeLeft } from "./models";
+import { ActiveFood, Armor, BaseStatsNames, Card, Food, FoodDB_V2, FoodStatsNames, FoodStatsObj, Item, ItemLocations, JobDB_V2, JobDbEntry, ObjWithKeyString, SessionCard, SessionChangeEvent, SessionEquip, SessionEquipBase, SessionInfoV2, Skill, VanillaMode, Weapon, WeaponType, WeaponTypeLeft } from "./models";
 import { TTCoreService } from "./tt-core.service";
 import { BehaviorSubject, Observable, debounceTime, distinctUntilChanged, filter } from "rxjs";
 import { SESSION_INFO_DEFAULT } from "./session-info-default";
+
+export type SkillList = {
+    [key: string]: Skill
+};
 
 @Injectable({
     providedIn: 'root',
@@ -30,8 +34,15 @@ export class TTSessionInfoV2Service {
     private _maxMatk: number;
     private _baseAtk: number;
     private _perfectDodge: number;
-
     private _isDualWielding: boolean;
+
+    /* skills */
+    private _buffSkills: SkillList;
+    private _activeSkills: SkillList;
+    private _passiveSkills: SkillList;
+    public buffSkills$: BehaviorSubject<SkillList>;
+    public activeSkills$: BehaviorSubject<SkillList>;
+    public passiveSkills$: BehaviorSubject<SkillList>;
 
     /* session info for current build */
     private _sessionInfoData: SessionInfoV2 = SESSION_INFO_DEFAULT;
@@ -56,8 +67,14 @@ export class TTSessionInfoV2Service {
         this._maxMatk = 0;
         this._baseAtk = 0;
         this._perfectDodge = 0;
-
         this._isDualWielding = false;
+
+        this._buffSkills = {};
+        this._activeSkills = {};
+        this._passiveSkills = {};
+        this.buffSkills$ = new BehaviorSubject({});
+        this.activeSkills$ = new BehaviorSubject({});
+        this.passiveSkills$ = new BehaviorSubject({});
 
         this._sessionInfo = new BehaviorSubject<SessionInfoV2>(this._sessionInfoData);
         /* create a debounce obs:
@@ -142,6 +159,10 @@ export class TTSessionInfoV2Service {
         }
         this.updateSessionInfo(SessionChangeEvent.EQUIP);
     }
+    changeVanillaMode(mode: VanillaMode) {
+        this._sessionInfoData.vanillaMode = mode;
+        this.updateSessionInfo(SessionChangeEvent.VANILLA_MODE);
+    }
 
     /*** private methods ***/
     private updateSessionInfo(event: SessionChangeEvent) {
@@ -170,6 +191,9 @@ export class TTSessionInfoV2Service {
 
         /* publish data */
         this._sessionInfo.next(this._sessionInfoData);
+        this.buffSkills$.next(this._buffSkills);
+        this.activeSkills$.next(this._activeSkills);
+        this.passiveSkills$.next(this._passiveSkills);
     }
     private updateClassSpecificData() {
         /* reset max levels */
@@ -185,6 +209,27 @@ export class TTSessionInfoV2Service {
                     return sum;
                 }
             }, 0);
+        }
+        /* skills */
+        // clean up
+        this._buffSkills = {};
+        this._activeSkills = {};
+        this._passiveSkills = {};
+        if (this._jobClass) {
+            let jobMask = Number(this._jobClass.mask);
+            for (let skillName in this.core.skillDbV2) {
+                let skill = this.core.skillDbV2[skillName];
+                let skillMatchJob = (Number(skill.job) & jobMask) === jobMask;
+                if (skill.isBuff) {
+                    this._buffSkills[skillName] = skill;
+                }
+                else if (skill.isActive && skillMatchJob) {
+                    this._activeSkills[skillName] = skill;
+                }
+                else if (skill.isPassive && skillMatchJob) {
+                    this._passiveSkills[skillName] = skill;
+                }
+            }
         }
     }
     private updateStats() {

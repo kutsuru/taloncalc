@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 import { SelectBattleTargetComponent } from './select-battle-target/select-battle-target.component';
 import { TTCoreService } from '../core/tt-core.service';
 import { Subscription } from 'rxjs';
@@ -12,23 +12,19 @@ interface BattleCardInfo {
 }
 
 @Component({
-  selector: 'battle-calc',
+  selector: 'tt-battle-calc',
   templateUrl: './battle-calc.component.html',
   styleUrls: ['./battle-calc.component.scss'],
   animations: [
     trigger('insertCalcTrigger', [
       transition(':enter', [
-        style({
-          opacity: 0,
-        }),
-        animate(
-          '250ms',
-          style({
-            opacity: 1,
-          })
+        style({ opacity: 0 }),
+        animate('250ms', style({ opacity: 1 })
         ),
       ]),
-      transition(':leave', [animate('100ms', style({ opacity: 0 }))]),
+      transition(':leave', [
+        animate('100ms', style({ opacity: 0 }))
+      ]),
     ]),
   ],
 })
@@ -41,7 +37,7 @@ export class BattleCalcComponent implements OnInit, OnDestroy {
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
     private ttCore: TTCoreService
-  ) {}
+  ) { }
   ngOnDestroy(): void {
     this.coreTargetSub.unsubscribe();
   }

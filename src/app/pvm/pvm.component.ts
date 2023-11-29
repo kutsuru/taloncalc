@@ -1,5 +1,5 @@
 import { Component, ContentChild, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MatLegacySelectChange as MatSelectChange } from '@angular/material/legacy-select';
+import { MatSelectChange } from '@angular/material/select';
 import { TTSessionInfoService } from '../core/tt-session-info.service';
 import { TTCoreService } from '../core/tt-core.service';
 import { TtPageLoaderService } from '../tt-page-loader/tt-page-loader.service';

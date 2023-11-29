@@ -734,9 +734,9 @@ export class TTSessionInfoService {
       // FIXME: Manage autospell in active skills
     }
 
-    console.log(this._buffSkills);
-    console.log(this._activeSkills);
-    console.log(this._passiveSkills);
+    // console.log(this._buffSkills);
+    // console.log(this._activeSkills);
+    // console.log(this._passiveSkills);
   }
 
   public updateSessionInfo(): void {

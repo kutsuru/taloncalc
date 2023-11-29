@@ -1,13 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { TTSessionInfoService } from '../core/tt-session-info.service';
+import { CommonModule } from '@angular/common';
+import { SkillList, TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
+import { SessionChangeEvent } from '../core/models';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'tt-buff',
   templateUrl: './tt-buff.component.html',
-  styleUrls: ['./tt-buff.component.css'],
+  styleUrl: './tt-buff.component.scss'
 })
 export class TtBuffComponent implements OnInit {
-  constructor(protected ttSessionInfoService: TTSessionInfoService) {}
 
-  ngOnInit() {}
+  buffSkills$: Observable<SkillList>;
+
+
+  constructor(private sessionInfo: TTSessionInfoV2Service) { 
+    this.buffSkills$ = sessionInfo.buffSkills$.asObservable();
+  }
+
+  ngOnInit(): void {
+    this.sessionInfo.sessionInfo$
+      .pipe(
+        this.sessionInfo.eventFilter(
+          SessionChangeEvent.CLASS,
+          SessionChangeEvent.INIT)
+      )
+      .subscribe((info) => {
+        
+      });
+  }
 }

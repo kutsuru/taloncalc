@@ -1,12 +1,12 @@
 <mat-card>
-    <mat-card-title-group [collapseTriggerFor]="equipsContent2">
+    <mat-card-header [collapseTriggerFor]="equipsContent2" class="space-between">
         <mat-card-title>Equips</mat-card-title>
         <tt-collapse-indicator [container]="equipsContent2">ö</tt-collapse-indicator>
-    </mat-card-title-group>
+    </mat-card-header>
     <mat-card-content tt-collapse-container #equipsContent2>
         <!-- Vanilla Mode -->
         <div>
-            <mat-radio-group>
+            <mat-radio-group [formControl]="vanillaMode" (change)="changeVanillaMode($event.value)">
                 <mat-radio-button *ngFor="let mode of vanillaModes" [value]="mode">
                     {{mode}}
                 </mat-radio-button>

@@ -7,10 +7,10 @@
 <div class="drawer-content">
   <!-- build loader -->
   <mat-card>
-    <mat-card-title-group [collapseTriggerFor]="loaderContant">
+    <mat-card-header [collapseTriggerFor]="loaderContant" class="space-between">
       <mat-card-title>Builder Loader / Selecter</mat-card-title>
       <tt-collapse-indicator [container]="loaderContant"></tt-collapse-indicator>
-    </mat-card-title-group>
+    </mat-card-header>
     <mat-card-content tt-collapse-container #loaderContant>
       {{ longText }}
     </mat-card-content>
@@ -23,18 +23,16 @@
   <!-- stats info (V2) -->
   <tt-stats-info></tt-stats-info>
   <!-- buffs calc (V2) -->
-  <div>
-    TODO: Buffs
-  </div>
+  <tt-buff></tt-buff>
   <!-- passive calc (V2) -->
-  <div>
-    TODO: Passive
-  </div>
+  <tt-passive></tt-passive>
   <!-- equips calc (V2) -->
   <tt-equip></tt-equip>
+  <!-- battle calc (V1.5) -->
+  <tt-battle-calc></tt-battle-calc>
   <!-- ####################### V2 END ####################### -->
   <!-- stats calc -->
-  <mat-card>
+  <mat-card appearance="outlined">
     <mat-card-title-group [collapseTriggerFor]="statsContent">
       <mat-card-title>Stats</mat-card-title>
       <tt-collapse-indicator [container]="statsContent"></tt-collapse-indicator>
@@ -73,7 +71,7 @@
   </mat-card>
 
   <!-- stats info calc -->
-  <mat-card *ngIf="!ttSettings.popup.statsInfo">
+  <mat-card appearance="outlined" *ngIf="!ttSettings.popup.statsInfo">
     <mat-card-title-group [collapseTriggerFor]="statsInfoContent">
       <mat-card-title>StatsInfo</mat-card-title>
       <tt-collapse-indicator [container]="statsInfoContent"></tt-collapse-indicator>
@@ -125,12 +123,12 @@
   </mat-card>
 
   <!-- buffs calc -->
-  <tt-buff *ngIf="!ttSettings.popup.buffs"></tt-buff>
+  <tt-buff-old *ngIf="!ttSettings.popup.buffs"></tt-buff-old>
   <!-- passive calc -->
-  <tt-passive></tt-passive>
+  <tt-passive-old></tt-passive-old>
 
   <!-- equips calc -->
-  <mat-card>
+  <mat-card appearance="outlined">
     <mat-card-title-group [collapseTriggerFor]="equipsContent">
       <mat-card-title>Equips</mat-card-title>
       <tt-collapse-indicator [container]="equipsContent"> </tt-collapse-indicator>
@@ -280,15 +278,10 @@
   </mat-card>
 
   <!-- battle calc -->
-  <mat-card>
-    <mat-card-title-group [collapseTriggerFor]="battleContant">
-      <mat-card-title>Battle calculation</mat-card-title>
-      <tt-collapse-indicator [container]="battleContant"> </tt-collapse-indicator>
-    </mat-card-title-group>
-    <mat-card-content tt-collapse-container #battleContant>
-      <battle-calc></battle-calc>
-    </mat-card-content>
-  </mat-card>
+  <div>
+    BATTLE CALC ALREADY MOVED
+  </div>
+
 
   <!-- food -->
   <tt-food></tt-food>
@@ -317,7 +310,7 @@
     I'll show you all the stats later...maybe<br>lets see....
   </tt-popup>
   <tt-popup #popBuffs>
-    <tt-buff></tt-buff>
+    <tt-buff-old></tt-buff-old>
   </tt-popup>
 </tt-popup-group>
 <!-- settings -->
