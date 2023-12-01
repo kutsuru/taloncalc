@@ -33,6 +33,8 @@ import { TtEquipComponent } from './tt-equip/tt-equip.component';
 import { TtSimpleSelectComponent } from './tt-simple-select/tt-simple-select.component';
 import { TtBuffComponent } from './tt-buff/tt-buff.component';
 import { TtPassiveComponent } from './tt-passive/tt-passive.component';
+import { TtCardSlotComponent } from './tt-card-slot/tt-card-slot.component';
+import { TtCardSelectComponent } from './tt-card-slot/tt-card-select.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { TtPassiveComponent } from './tt-passive/tt-passive.component';
     TtEquipComponent,
     TtSimpleSelectComponent,
     TtBuffComponent,
-    TtPassiveComponent
+    TtPassiveComponent,
+    TtCardSlotComponent,
+    TtCardSelectComponent
   ],
   imports: [
     BrowserModule,

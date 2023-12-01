@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Item, ItemLocations, JobDbEntry, SessionChangeEvent, SessionEquip, SessionEquipBase, VANILLA_MODES, VanillaMode, WeaponType, WeaponTypeLeft } from '../core/models';
+import { Item, ItemLocations, JobDbEntry, SessionCard, SessionChangeEvent, SessionEquip, SessionEquipBase, VANILLA_MODES, VanillaMode, WeaponType, WeaponTypeLeft } from '../core/models';
 import { TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
 import { TTCoreService } from '../core/tt-core.service';
 import { FormControl } from '@angular/forms';
@@ -8,7 +8,7 @@ import { FormControl } from '@angular/forms';
   selector: 'tt-equip',
   templateUrl: './tt-equip.component.html',
   styleUrls: ['./tt-equip.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TtEquipComponent implements OnInit {
   /* general */
@@ -45,6 +45,17 @@ export class TtEquipComponent implements OnInit {
     middleHg: '',
     rhAccessory: '',
     rightHand: '',
+    shoes: '',
+    upperHg: ''
+  }
+  cards: SessionCard = {
+    armor: '',
+    garment: '',
+    leftHand: [],
+    lhAccessory: '',
+    middleHg: '',
+    rhAccessory: '',
+    rightHand: [],
     shoes: '',
     upperHg: ''
   }
@@ -85,6 +96,8 @@ export class TtEquipComponent implements OnInit {
         this.refines = { ...info.refine };
         /* set gears */
         this.gears = { ...info.equip }
+        this.cards.lhAccessory = "String";
+        this.cards.rhAccessory = "Zerom";
         /* other stuff */
         this.vanillaMode.patchValue(info.vanillaMode);
         /* update gears, but only when job class has changed*/
@@ -151,13 +164,13 @@ export class TtEquipComponent implements OnInit {
     this.accessories = this.filterGear(this.core.accessoryDbV2);
 
     /* update dom */
-    this.ref.markForCheck();
+    // this.ref.markForCheck();
   }
 
   private updateWeaponData(publish: boolean = false) {
     this.weapons = this.filterGear(this.core.weaponDbV2[this.gears.rightHandType]);
     // TODO: Update to first value in list
-    if (publish) this.ref.markForCheck();
+    // if (publish) this.ref.markForCheck();
   }
 
   private updateLeftHandData(publish: boolean = false) {
@@ -168,7 +181,7 @@ export class TtEquipComponent implements OnInit {
       this.leftHands = this.filterGear(this.core.weaponDbV2[this.gears.leftHandType]);
     }
     // TODO: Update to first value in list
-    if (publish) this.ref.markForCheck();
+    // if (publish) this.ref.markForCheck();
   }
 
   private filterGear(data: { [key: string]: Item }): string[] {

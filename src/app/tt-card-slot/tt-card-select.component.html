@@ -1,0 +1,9 @@
+<h3 mat-dialog-title>Select Card</h3>
+<div mat-dialog-content>
+    <tt-simple-select [(value)]="selectedCard" [values]="cards">Card for {{data.location}}</tt-simple-select>
+</div>
+<div mat-dialog-actions>
+    <button mat-stroked-button color="primary" [mat-dialog-close]="selectedCard">Select</button>
+    <button mat-stroked-button color="warn" [mat-dialog-close]="''">Delete / Unset</button>
+    <button mat-stroked-button [mat-dialog-close]="undefined">Cancel</button>
+</div>

@@ -14,6 +14,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRippleModule } from '@angular/material/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   exports: [
@@ -31,7 +32,8 @@ import { MatRippleModule } from '@angular/material/core';
     MatGridListModule,
     MatRadioModule,
     MatMenuModule,
-    MatRippleModule
+    MatRippleModule,
+    MatTooltipModule
   ],
 })
 export class MaterialModule { }

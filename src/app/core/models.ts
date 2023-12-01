@@ -123,7 +123,7 @@ export type HeadgearDB_V2 = {
 }
 /****************/
 /*** CARD DB  ***/
-type CardLocations = "weapon" | "headgear" | "garment" | "shoes" | "accessory" | "armor" | "shield";
+export type CardLocations = "weapon" | "headgear" | "garment" | "shoes" | "accessory" | "armor" | "shield";
 export type Card = {
   id: number,
   gid: number,
