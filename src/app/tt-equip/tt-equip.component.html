@@ -26,14 +26,16 @@
             <tt-simple-select [values]="upperHgs" (change)="changeEquip('upperHg', $event.value)"
                 [(value)]="gears.upperHg">Upper
                 Headgear</tt-simple-select>
-            <tt-card-slot location="headgear"></tt-card-slot>
+            <tt-card-slot location="headgear" [(card)]="cards.upperHg"
+                (changed)="changeCard('upperHg', $event)"></tt-card-slot>
         </div>
         <!-- Middle Headgear -->
         <div>
             <tt-simple-select [values]="middleHgs" (change)="changeEquip('middleHg', $event.value)"
                 [(value)]="gears.middleHg">Middle
                 Headgear</tt-simple-select>
-            <tt-card-slot location="headgear"></tt-card-slot>
+            <tt-card-slot location="headgear" [(card)]="cards.middleHg"
+                (changed)="changeCard('middleHg', $event)"></tt-card-slot>
         </div>
         <!-- Lower Headgear -->
         <div>
@@ -47,7 +49,8 @@
                 (change)="changeRefine('armor', $event.value)">+</tt-simple-select>
             <tt-simple-select [values]="armors" (change)="changeEquip('armor', $event.value)"
                 [(value)]="gears.armor">Armor</tt-simple-select>
-            <tt-card-slot location="armor"></tt-card-slot>
+            <tt-card-slot location="armor" [(card)]="cards.armor"
+                (changed)="changeCard('armor', $event)"></tt-card-slot>
         </div>
         <!-- Weapon -->
         <div>
@@ -55,6 +58,10 @@
                 (change)="changeRefine('rightHand', $event.value)">+</tt-simple-select>
             <tt-simple-select [values]="weapons" (change)="changeEquip('rightHand', $event.value)"
                 [(value)]="gears.rightHand">Weapon</tt-simple-select>
+            @for (cardSlot of cards.rightHand; track $index) {
+            <tt-card-slot location="weapon" [(card)]="cards.rightHand[$index]"
+                (changed)="changeCard('rightHand', $event, $index)"></tt-card-slot>
+            }
         </div>
         <!-- Left Hand / Shield -->
         <div>
@@ -62,6 +69,9 @@
                 (change)="changeRefine('leftHand', $event.value)">+</tt-simple-select>
             <tt-simple-select [values]="leftHands" (change)="changeEquip('leftHand', $event.value)"
                 [(value)]="gears.leftHand">{{gears.leftHandType}}</tt-simple-select>
+            @for (cardSlot of cards.leftHand; track $index) {
+            <tt-card-slot [location]="leftHandCardLocation" [(card)]="cards.leftHand[$index]" (changed)="changeCard('leftHand', $event, $index)"></tt-card-slot>
+            }
         </div>
         <!-- Garment -->
         <div>
@@ -69,7 +79,8 @@
                 (change)="changeRefine('garment', $event.value)">+</tt-simple-select>
             <tt-simple-select [values]="garments" (change)="changeEquip('garment', $event.value)"
                 [(value)]="gears.garment">Garment</tt-simple-select>
-            <tt-card-slot location="garment"></tt-card-slot>
+            <tt-card-slot location="garment" [(card)]="cards.garment"
+                (changed)="changeCard('garment', $event)"></tt-card-slot>
         </div>
         <!-- Shoes -->
         <div>
@@ -77,18 +88,21 @@
                 (change)="changeRefine('shoes', $event.value)">+</tt-simple-select>
             <tt-simple-select [values]="shoes" (change)="changeEquip('shoes', $event.value)"
                 [(value)]="gears.shoes">Shoes</tt-simple-select>
-            <tt-card-slot location="shoes"></tt-card-slot>
+            <tt-card-slot location="shoes" [(card)]="cards.shoes"
+                (changed)="changeCard('shoes', $event)"></tt-card-slot>
         </div>
         <!-- Accessorys -->
         <div>
             <tt-simple-select [values]="accessories" (change)="changeEquip('rhAccessory', $event.value)"
                 [(value)]="gears.rhAccessory">Accessory
                 (Right)</tt-simple-select>
-            <tt-card-slot location="accessory" [(card)]="cards.rhAccessory"></tt-card-slot>
+            <tt-card-slot location="accessory" [(card)]="cards.rhAccessory"
+                (changed)="changeCard('rhAccessory', $event)"></tt-card-slot>
             <tt-simple-select [values]="accessories" (change)="changeEquip('lhAccessory', $event.value)"
                 [(value)]="gears.lhAccessory">Accessory
                 (Left)</tt-simple-select>
-            <tt-card-slot location="accessory" [(card)]="cards.lhAccessory"></tt-card-slot>
+            <tt-card-slot location="accessory" [(card)]="cards.lhAccessory"
+                (changed)="changeCard('lhAccessory', $event)"></tt-card-slot>
         </div>
     </mat-card-content>
 </mat-card>

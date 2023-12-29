@@ -1,15 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { SelectBattleTargetComponent } from './select-battle-target/select-battle-target.component';
-import { TTCoreService } from '../core/tt-core.service';
-import { Subscription } from 'rxjs';
-
-interface BattleCardInfo {
-  id: number;
-  target: string;
-}
+import { Observable } from 'rxjs';
+import { BattleCalcInfo } from '../core/models';
+import { TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
 
 @Component({
   selector: 'tt-battle-calc',
@@ -28,58 +23,24 @@ interface BattleCardInfo {
     ]),
   ],
 })
-export class BattleCalcComponent implements OnInit, OnDestroy {
-  private _detailId: number = 1;
-  protected battleCalcLst: BattleCardInfo[] = [];
-  private coreTargetSub!: Subscription;
+export class BattleCalcComponent {
+  public battleCalcPVM$: Observable<BattleCalcInfo[]>;
 
-  constructor(
-    private snackBar: MatSnackBar,
-    private dialog: MatDialog,
-    private ttCore: TTCoreService
-  ) { }
-  ngOnDestroy(): void {
-    this.coreTargetSub.unsubscribe();
+  constructor(private dialog: MatDialog, private sessionInfo: TTSessionInfoV2Service) {
+    this.battleCalcPVM$ = this.sessionInfo.battleCalcPVM$;
   }
-
-  ngOnInit(): void {
-    /* subscripe for battle calc target of the core serivce, to always re-init the battle cards if new target got loaded (e.g. by selection a saved build) */
-    this.coreTargetSub = this.ttCore.battleCalcTargets.subscribe(
-      (newTargets) => {
-        console.log(newTargets);
-        this.battleCalcLst = newTargets.map((target) => {
-          return {
-            id: this.createDetailId(),
-            target: target,
-          };
-        });
-      }
-    );
-  }
-
-  private createDetailId(): number {
-    return this._detailId++;
-  }
-  createBattleDetail() {
-    console.log('createBattleDetail');
+  createBattleDetailPVM() {
     const diaRef = this.dialog.open(SelectBattleTargetComponent);
     diaRef.afterClosed().subscribe((selectedTarget) => {
       if (selectedTarget) {
-        this.battleCalcLst.push({
-          id: this.createDetailId(),
-          target: selectedTarget,
-        });
+        this.sessionInfo.addBattleCalcPVM(selectedTarget);
       }
     });
   }
-  closeBattleDetail(id?: number) {
-    if (id) {
-      let idx = this.battleCalcLst.findIndex((val, idx) => val.id == id);
-      if (idx >= 0) {
-        this.battleCalcLst.splice(idx, 1);
-      }
-    } else {
-      this.battleCalcLst.pop();
-    }
+  closeBattleDetailPVM(id: number) {
+    this.sessionInfo.removeBattleCalcPVM(id);
+  }
+  updateBattleDetailPVMTarget(id: number, target: string) {
+    this.sessionInfo.updateBattleCalcPVM(id, target);
   }
 }

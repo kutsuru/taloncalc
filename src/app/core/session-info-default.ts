@@ -8,7 +8,6 @@ export const SESSION_INFO_DEFAULT: SessionInfoV2 = {
     baseLevelMax: TTCoreService.MAX_LVL,
     jobLevelMax: 10,
     weaponAtk: 0,
-    ammoType: '',
     vanillaMode: 'Unrestricted',
     baseStats: {
         str: 1,
@@ -440,7 +439,9 @@ export const SESSION_INFO_DEFAULT: SessionInfoV2 = {
         scIncreaseAgi: 0,
     },
     activeStatus: {
-        Sprint: 0
+        Sprint: 0,
+        "Lex Aeterna": 0,
+        Eska: 0
     },
     equip: {
         upperHg: '',
@@ -561,5 +562,43 @@ export const SESSION_INFO_DEFAULT: SessionInfoV2 = {
             'Purified Energy Crystal': false,
             'High Energy Crystal': false,
         }
+    },
+    passiveSkill: {
+        Dragonology: 0,
+        'Cavalier Mastery': 0,
+        'Fighting Chant': 0,
+        'Sword Mastery': 0,
+        'Two-handed Sword Mastery': 0,
+        'Spear Mastery': 0,
+        'Axe Mastery': 0,
+        'Katar Mastery': 0,
+        'Advanced Katar Mastery': 0,
+        'Advanced Book': 0,
+        'Musical Lesson': 0,
+        'Dance Lesson': 0,
+        'Iron Hand': 0,
+        'Throw Shuriken': 0,
+        'Sonic Acceleration': 0,
+        'Sprint Unarmed': 0,
+        'Demon Bane': 0,
+        'Beast Bane': 0,
+        'Steel Crow': 0,
+        'Weaponry Research': 0,
+        'Hilt Binding': 0,
+        'Triple Action': 0,
+        'Hunter Link': 0,
+        'Crusader Link': 0,
+        'Assassin Link': 0,
+    },
+    activeBuff: {
+        isMaximizePowerActive: false,
+        'Active Spheres': 0,
+        'Aura Blade': 0,
+        'Magnum Break': 0,
+        'Endless Deadly Poison': 0,
+        'True Sight': 0,
+        Deluge: 0,
+        Volcano: 0,
+        'Violent Gale': 0,
     }
 }

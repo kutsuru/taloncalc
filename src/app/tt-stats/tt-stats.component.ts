@@ -47,12 +47,7 @@ export class TtStatsComponent implements OnInit {
     /* subscribe to session data */
     this.sessionInfo.sessionInfo$
       .pipe(
-        this.sessionInfo.eventFilter(
-          SessionChangeEvent.BASE_STATS,
-          SessionChangeEvent.CLASS,
-          SessionChangeEvent.INIT,
-          SessionChangeEvent.LEVEL
-        )
+        this.sessionInfo.eventFilterExcept(SessionChangeEvent.VANILLA_MODE)
       )
       .subscribe((info) => {
         /* levles */

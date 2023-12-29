@@ -4,7 +4,7 @@ import { TTCoreService } from './tt-core.service';
 import { TTSessionInfoService } from './tt-session-info.service';
 
 @Injectable()
-export class TTBattleSessionService {
+export class TTBattleSessionServiceOld {
   private _si: SessionInfo;
   private _ammo: any | null;
   private _result: any;

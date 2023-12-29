@@ -1,0 +1,14 @@
+<mat-card>
+    <mat-card-header>
+        <img mat-card-avatar src="https://static.divine-pride.net/images/mobs/png/{{targetId}}.png">
+        <mat-card-title class="target-title">{{targetName}}</mat-card-title>
+        <button mat-icon-button (click)="changeTarget()"><mat-icon>edit</mat-icon></button>
+        <span class="filler">&nbsp;</span>
+        <button mat-icon-button (click)="close()"><mat-icon>close</mat-icon></button>
+    </mat-card-header>
+    <mat-card-content>
+        HP: {{targetInfo?.hp}}<br>
+        DEF: {{defReduc}} (Original: {{targetInfo?.def}})<br>
+        MDEF: {{mdefReduc}} (Original: {{targetInfo?.mdef}})
+    </mat-card-content>
+</mat-card>

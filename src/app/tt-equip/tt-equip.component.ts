@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Item, ItemLocations, JobDbEntry, SessionCard, SessionChangeEvent, SessionEquip, SessionEquipBase, VANILLA_MODES, VanillaMode, WeaponType, WeaponTypeLeft } from '../core/models';
+import { CardLocations, Item, ItemLocations, JobDbEntry, SessionCard, SessionChangeEvent, SessionEquip, SessionEquipBase, VANILLA_MODES, VanillaMode, WeaponType, WeaponTypeLeft } from '../core/models';
 import { TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
 import { TTCoreService } from '../core/tt-core.service';
 import { FormControl } from '@angular/forms';
@@ -59,6 +59,7 @@ export class TtEquipComponent implements OnInit {
     shoes: '',
     upperHg: ''
   }
+  leftHandCardLocation: CardLocations = 'shield';
 
   /* refines */
   refines: SessionEquipBase<number> = {
@@ -86,7 +87,8 @@ export class TtEquipComponent implements OnInit {
           SessionChangeEvent.INIT,
           SessionChangeEvent.CLASS,
           SessionChangeEvent.EQUIP,
-          SessionChangeEvent.REFINE
+          SessionChangeEvent.REFINE,
+          SessionChangeEvent.CARD
         )
       )
       .subscribe((info) => {
@@ -96,8 +98,18 @@ export class TtEquipComponent implements OnInit {
         this.refines = { ...info.refine };
         /* set gears */
         this.gears = { ...info.equip }
-        this.cards.lhAccessory = "String";
-        this.cards.rhAccessory = "Zerom";
+        /* set cards */
+        this.cards = {
+          armor: info.card.armor,
+          garment: info.card.garment,
+          lhAccessory: info.card.lhAccessory,
+          middleHg: info.card.middleHg,
+          rhAccessory: info.card.rhAccessory,
+          shoes: info.card.shoes,
+          upperHg: info.card.upperHg,
+          leftHand: Object.assign([], info.card.leftHand),
+          rightHand: Object.assign([], info.card.rightHand)
+        }
         /* other stuff */
         this.vanillaMode.patchValue(info.vanillaMode);
         /* update gears, but only when job class has changed*/
@@ -130,9 +142,12 @@ export class TtEquipComponent implements OnInit {
     this.updateWeaponData(true);
     this.changeEquip('rightHandType', newType);
   }
-  
-  public changeVanillaMode(mode: VanillaMode){
+
+  public changeVanillaMode(mode: VanillaMode) {
     this.sessionInfo.changeVanillaMode(mode);
+  }
+  public changeCard(cardLocation: keyof SessionCard, card: string, slot?: number){
+    this.sessionInfo.changeCard(cardLocation, card, slot);
   }
 
   /* private functions */
@@ -176,9 +191,11 @@ export class TtEquipComponent implements OnInit {
   private updateLeftHandData(publish: boolean = false) {
     if (this.gears.leftHandType === 'Shield') {
       this.leftHands = this.filterGear(this.core.shieldDbV2);
+      this.leftHandCardLocation = 'shield';
     }
     else {
       this.leftHands = this.filterGear(this.core.weaponDbV2[this.gears.leftHandType]);
+      this.leftHandCardLocation = 'weapon';
     }
     // TODO: Update to first value in list
     // if (publish) this.ref.markForCheck();

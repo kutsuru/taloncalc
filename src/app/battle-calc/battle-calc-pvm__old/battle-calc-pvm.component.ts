@@ -7,17 +7,17 @@ import {
   Output,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { TTBattleSessionService } from '../../core/tt-battle-session.service';
+import { TTBattleSessionServiceOld } from '../../core/tt-battle-session.service.old';
 import { TTCoreService } from '../../core/tt-core.service';
 import { TTSessionInfoService } from '../../core/tt-session-info.service';
 import { SelectBattleTargetComponent } from '../select-battle-target/select-battle-target.component';
 
 @Component({
-  selector: 'battle-calc-pvm',
+  selector: 'battle-calc-pvm-old',
   templateUrl: 'battle-calc-pvm.component.html',
   styleUrls: ['battle-calc-pvm.component.scss'],
 })
-export class BattleCalcPvmComponent implements OnInit, OnDestroy {
+export class BattleCalcPvmComponentOld implements OnInit, OnDestroy {
   protected minDamage: number = 0;
   protected maxDamage: number = 0;
   protected targetInfo: any = null;
@@ -50,27 +50,20 @@ export class BattleCalcPvmComponent implements OnInit, OnDestroy {
   protected selectedSkillLvs: number[] = [];
 
   private _jobMask: number = 0xffffff;
-  private _ttBattleSession: TTBattleSessionService;
+  private _ttBattleSession: TTBattleSessionServiceOld;
 
   @Output() onClose: EventEmitter<boolean> = new EventEmitter();
   @Input('target') targetName: string = '';
 
-  constructor(
-    private dialog: MatDialog,
-    protected ttCore: TTCoreService,
-    protected ttSessionInfo: TTSessionInfoService
-  ) {
-    this._ttBattleSession = new TTBattleSessionService(
-      ttCore,
-      ttSessionInfo
-    );
+  constructor(private dialog: MatDialog, protected ttCore: TTCoreService, protected ttSessionInfo: TTSessionInfoService) {
+    this._ttBattleSession = new TTBattleSessionServiceOld(ttCore, ttSessionInfo);
   }
 
   ngOnInit(): void {
     this.onClassChange();
     this.updateTargetCard();
   }
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void { }
 
   close() {
     this.onClose.emit(true);
@@ -110,30 +103,30 @@ export class BattleCalcPvmComponent implements OnInit, OnDestroy {
           : 'normal';
         let mdefReduction =
           this.ttSessionInfo.sessionInfo['activeBonus']['ignoreMdefClass'][
-            'all'
+          'all'
           ] +
           this.ttSessionInfo.sessionInfo['activeBonus']['ignoreMdefClass'][
-            this.targetClass
+          this.targetClass
           ] +
           this.ttSessionInfo.sessionInfo['activeBonus']['ignoreMdefRace'][
-            this.targetInfo['race']
+          this.targetInfo['race']
           ] +
           this.ttSessionInfo.sessionInfo['activeBonus']['ignoreMdefElement'][
-            this.targetInfo['element']
+          this.targetInfo['element']
           ];
 
         let defReduction =
           this.ttSessionInfo.sessionInfo['activeBonus']['ignoreDefClass'][
-            'all'
+          'all'
           ] +
           this.ttSessionInfo.sessionInfo['activeBonus']['ignoreDefClass'][
-            this.targetClass
+          this.targetClass
           ] +
           this.ttSessionInfo.sessionInfo['activeBonus']['ignoreDefRace'][
-            this.targetInfo['race']
+          this.targetInfo['race']
           ] +
           this.ttSessionInfo.sessionInfo['activeBonus']['ignoreDefElement'][
-            this.targetInfo['element']
+          this.targetInfo['element']
           ];
 
         // FIXME: ceil/floor usage ?

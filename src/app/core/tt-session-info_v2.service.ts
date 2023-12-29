@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ActiveFood, Armor, BaseStatsNames, Card, Food, FoodDB_V2, FoodStatsNames, FoodStatsObj, Item, ItemLocations, JobDB_V2, JobDbEntry, ObjWithKeyString, SessionCard, SessionChangeEvent, SessionEquip, SessionEquipBase, SessionInfoV2, Skill, VanillaMode, Weapon, WeaponType, WeaponTypeLeft } from "./models";
+import { ActiveFood, Armor, BaseStatsNames, BattleCalcInfo, Card, Food, FoodDB_V2, FoodStatsNames, FoodStatsObj, Item, ItemLocations, JobDB_V2, JobDbEntry, ObjWithKeyString, MobRace, SessionCard, SessionChangeEvent, SessionEquip, SessionEquipBase, SessionInfoV2, Skill, VanillaMode, Weapon, WeaponType, WeaponTypeLeft, Element } from "./models";
 import { TTCoreService } from "./tt-core.service";
 import { BehaviorSubject, Observable, debounceTime, distinctUntilChanged, filter } from "rxjs";
 import { SESSION_INFO_DEFAULT } from "./session-info-default";
@@ -49,6 +49,16 @@ export class TTSessionInfoV2Service {
     private _sessionInfo: BehaviorSubject<SessionInfoV2>;
     public sessionInfo$: Observable<SessionInfoV2>;
 
+    /* battle calcs */
+    private _battleCalcID: number;
+    private _battleCalcPVMData: BattleCalcInfo[];
+    private _battleCalcPVM: BehaviorSubject<BattleCalcInfo[]>;
+    public battleCalcPVM$: Observable<BattleCalcInfo[]>;
+
+    /* chaches */
+    private _rightHandLast: string;
+    private _leftHandLast: string;
+
     constructor(private core: TTCoreService) {
         this._str = 0;
         this._agi = 0;
@@ -81,12 +91,34 @@ export class TTSessionInfoV2Service {
         only publish data, if 100ms after the intial publish no new data appeared */
         this.sessionInfo$ = this._sessionInfo.asObservable().pipe(debounceTime(100));
 
+        this._battleCalcID = 1;
+        this._battleCalcPVMData = [];
+        this._battleCalcPVM = new BehaviorSubject<BattleCalcInfo[]>(this._battleCalcPVMData);
+        this.battleCalcPVM$ = this._battleCalcPVM.asObservable();
+
+        /* init chaches */
+        this._rightHandLast = '_';
+        this._leftHandLast = '_';
+
         /* wait until core is loaded */
         this.core.loaded$.pipe(distinctUntilChanged()).subscribe((_) => {
             if (_) {
                 this._jobClassName = Object.keys(this.core.jobDbV2)[0];
                 this._jobClass = this.core.jobDbV2[this._jobClassName];
                 this.updateSessionInfo(SessionChangeEvent.INIT);
+
+                /* DEBUG TODO */
+                this._battleCalcPVMData.push(
+                    {
+                        id: this.getBattleCalcID(),
+                        target: 'Valkyrie Randgris'
+                    },
+                    {
+                        id: this.getBattleCalcID(),
+                        target: 'Hardrock Mammoth'
+                    }
+                );
+                this._battleCalcPVM.next(this._battleCalcPVMData);
             }
         });
     }
@@ -101,6 +133,53 @@ export class TTSessionInfoV2Service {
                 return false;
             }
         })
+    }
+    eventFilterExcept(...events: SessionChangeEvent[]) {
+        return filter<SessionInfoV2>((val) => {
+            if (events.includes(val.changeEvent)) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        })
+    }
+    addBattleCalcPVM(target: string) {
+        this._battleCalcPVMData.push({
+            id: this.getBattleCalcID(),
+            target: target
+        });
+        this._battleCalcPVM.next(this._battleCalcPVMData);
+    }
+    removeBattleCalcPVM(id: number) {
+        let idx = this._battleCalcPVMData.findIndex((val, idx) => val.id === id);
+        if (idx >= 0) {
+            this._battleCalcPVMData.splice(idx, 1);
+            this._battleCalcPVM.next(this._battleCalcPVMData);
+        }
+    }
+    updateBattleCalcPVM(id: number, target: string) {
+        let idx = this._battleCalcPVMData.findIndex((val, idx) => val.id === id);
+        if (idx >= 0) {
+            this._battleCalcPVMData[idx].target = target;
+            this._battleCalcPVM.next(this._battleCalcPVMData);
+        }
+    }
+    getDefReduction(targetClass: 'boss' | 'normal', race: MobRace, element: Element): number {
+        return (
+            this._sessionInfoData.activeBonus.ignoreDefClass.all +
+            this._sessionInfoData.activeBonus.ignoreDefClass[targetClass] +
+            this._sessionInfoData.activeBonus.ignoreDefRace[race] +
+            this._sessionInfoData.activeBonus.ignoreDefElement[element]
+        );
+    }
+    getMdefReduction(targetClass: 'boss' | 'normal', race: MobRace, element: Element): number {
+        return (
+            this._sessionInfoData.activeBonus.ignoreMdefClass.all +
+            this._sessionInfoData.activeBonus.ignoreMdefClass[targetClass] +
+            this._sessionInfoData.activeBonus.ignoreMdefRace[race] +
+            this._sessionInfoData.activeBonus.ignoreMdefElement[element]
+        );
     }
 
     /*** public methods (Session info change events) ***/
@@ -127,10 +206,8 @@ export class TTSessionInfoV2Service {
         this.updateSessionInfo(SessionChangeEvent.REFINE);
     }
     changeEquip(equipLocation: keyof SessionEquip, equip: string | WeaponType) {
-        if (
-            (equipLocation === 'leftHandType') ||
-            (equipLocation === 'rightHandType')
-        ) {
+        /* change gear */
+        if ((equipLocation === 'leftHandType') || (equipLocation === 'rightHandType')) {
             this._sessionInfoData.equip[equipLocation] = equip as WeaponType;
             /* reset weapon */
             if (equipLocation === 'leftHandType') {
@@ -142,8 +219,14 @@ export class TTSessionInfoV2Service {
                     /* reset to "None" */
                     this._sessionInfoData.equip.leftHand = '';
                 }
+                this._leftHandLast = '_';   // trigger hand slots reset
+                /* reset current card in when switchting to shield */
+                if (equip === 'Shield') {
+                    this._sessionInfoData.card.leftHand = [''];
+                }
             }
             else {
+                /* right hand type */
                 if (equip === 'Unarmed') {
                     /* reset to Unarmed */
                     this._sessionInfoData.equip.rightHand = 'Unarmed';
@@ -157,11 +240,24 @@ export class TTSessionInfoV2Service {
         else {
             this._sessionInfoData.equip[equipLocation] = equip;
         }
+        /* update session */
         this.updateSessionInfo(SessionChangeEvent.EQUIP);
     }
     changeVanillaMode(mode: VanillaMode) {
         this._sessionInfoData.vanillaMode = mode;
         this.updateSessionInfo(SessionChangeEvent.VANILLA_MODE);
+    }
+    changeCard(cardLocation: keyof SessionCard, card: string, slot: number = -1) {
+        if ((cardLocation === 'leftHand' || cardLocation === 'rightHand')) {
+            // TODO: check if array is already fine or idx is not to big
+            if (slot >= 0) {
+                this._sessionInfoData.card[cardLocation][slot] = card;
+            }
+        }
+        else {
+            this._sessionInfoData.card[cardLocation] = card;
+        }
+        this.updateSessionInfo(SessionChangeEvent.CARD);
     }
 
     /*** private methods ***/
@@ -169,7 +265,8 @@ export class TTSessionInfoV2Service {
         this._sessionInfoData.changeEvent = event;
         this.resetBonus();
         this.updateClassSpecificData();
-        this.updateBonus();
+        this.updateHandSlots();
+        this.updateEquipBonus();
         this.updateFoodBonus();
         this.updateStats();
 
@@ -180,7 +277,7 @@ export class TTSessionInfoV2Service {
         this.computeAttackSpeed();
 
         // All weapons with ammunitions are considered as DEX type
-        let isDexBased: boolean = this._sessionInfoData.ammoType != '';   // TODO
+        let isDexBased: boolean = this._sessionInfoData.ammoType !== undefined;   // TODO
 
         this.computeHit();
         this.computeFlee();
@@ -286,8 +383,16 @@ export class TTSessionInfoV2Service {
         this.resetObject(this._sessionInfoData.activeBonus, 0);
         this.resetObject(this._sessionInfoData.activeStatus, 0);
     }
-    private updateBonus() {
+    private updateEquipBonus() {
         // Retrieve bonus from equipment
+        // define dual wielding
+        if (this._sessionInfoData.equip.leftHandType === 'Shield' || this._sessionInfoData.equip.leftHandType === 'Unarmed') {
+            this._isDualWielding = false;
+        }
+        else {
+            this._isDualWielding = true;
+        }
+        // weapon / right hand
         if (
             this._sessionInfoData.equip.rightHandType &&
             this._sessionInfoData.equip.rightHand
@@ -348,15 +453,14 @@ export class TTSessionInfoV2Service {
         // Retrieve bonus from cards
         for (let location in this._sessionInfoData.card) {
             let locationKey = location as keyof SessionCard;
-            if (
-                typeof this._sessionInfoData.card[locationKey] === 'string' &&
-                this._sessionInfoData.card[locationKey]
-            )
+            if (typeof this._sessionInfoData.card[locationKey] === 'string' && this._sessionInfoData.card[locationKey]) {
                 this.evalBonus(this.core.cardDbV2[this._sessionInfoData.card[locationKey] as string]);
+            }
             else {
                 for (let card of this._sessionInfoData.card[locationKey]) {
-                    if (card)
+                    if (card) {
                         this.evalBonus(this.core.cardDbV2[card]);
+                    }
                 }
             }
         }
@@ -378,11 +482,16 @@ export class TTSessionInfoV2Service {
                 }
                 else {
                     /* it a regular food */
-                    foodName = foodKey;
-                    let foodDbCat = <ObjWithKeyString<Food>>this.core.foodDbV2[catKey];
-                    foodInfo = foodDbCat[foodName];
+                    if (this._sessionInfoData.activeFood[catKey][foodKey]) {
+                        foodName = foodKey;
+                        let foodDbCat = <ObjWithKeyString<Food>>this.core.foodDbV2[catKey];
+                        foodInfo = foodDbCat[foodName];
+                    }
+                    else {
+                        /* food not active */
+                        break;
+                    }
                 }
-
                 this.evalBonus(foodInfo);
             }
         }
@@ -513,6 +622,71 @@ export class TTSessionInfoV2Service {
             this._sessionInfoData.activeBonus.scIncCrit
         );
     }
+    private updateHandSlots() {
+        /* update card slots on weapon */
+        if (this._sessionInfoData.equip.rightHand) {
+            if (this._sessionInfoData.equip.rightHand != this._rightHandLast) {
+                let weap = this.core.weaponDbV2[this._sessionInfoData.equip.rightHandType][this._sessionInfoData.equip.rightHand];
+                // this._sessionInfoData.card.rightHand = Array.from({ length: weap.slots as number }, (_) => '');
+                let diffOfCards = (weap.slots as number) - this._sessionInfoData.card.rightHand.length;
+                if (diffOfCards > 0) {
+                    /* add more slots */
+                    this._sessionInfoData.card.rightHand.push(...Array.from({ length: diffOfCards }, (_) => ''));
+                }
+                else if (diffOfCards === 0) {
+                    /* no diffrence */
+                }
+                else {
+                    /* remove slots */
+                    this._sessionInfoData.card.rightHand = this._sessionInfoData.card.rightHand.slice(0, diffOfCards);
+                }
+
+                // save value
+                this._rightHandLast = this._sessionInfoData.equip.rightHand
+            }
+        }
+        else {
+            this._sessionInfoData.card.rightHand = [];
+        }
+        /* update card slots on left hand (waepon or shield) */
+        if (this._leftHandLast !== this._sessionInfoData.equip.leftHand) {
+            // TODO: avoid change if shield is and was selected?
+            let diffOfCards = 0;
+            switch (this._sessionInfoData.equip.leftHandType) {
+                case 'Shield':
+                    diffOfCards = 1 - this._sessionInfoData.card.leftHand.length; // only 1 slot
+                    break;
+                case 'Unarmed':
+                    diffOfCards = - this._sessionInfoData.card.leftHand.length; // remove all
+                    break;
+                default:
+                    /* weapon */
+                    let weap = this.core.weaponDbV2[this._sessionInfoData.equip.leftHandType][this._sessionInfoData.equip.leftHand];
+                    if (weap) {
+                        diffOfCards = (weap.slots as number) - this._sessionInfoData.card.leftHand.length;
+                    }
+                    else {
+                        diffOfCards = - this._sessionInfoData.card.leftHand.length; // remove all
+                    }
+                    break;
+            }
+            if (diffOfCards > 0) {
+                /* add more slots */
+                this._sessionInfoData.card.leftHand.push(...Array.from({ length: diffOfCards }, (_) => ''));
+            }
+            else if (diffOfCards === 0) {
+                /* no diffrence */
+            }
+            else {
+                /* remove slots */
+                this._sessionInfoData.card.leftHand = this._sessionInfoData.card.leftHand.slice(0, diffOfCards);
+            }
+
+            // save value
+            this._leftHandLast = this._sessionInfoData.equip.leftHand;
+        }
+
+    }
 
     /*** utiles (private) ***/
     private resetObject(obj: any, value: any) {
@@ -531,6 +705,9 @@ export class TTSessionInfoV2Service {
     private evalBonus(item: { bonus: string }): void {
         let bonus: string = item.bonus;
         if (bonus) eval(bonus)(this._sessionInfoData.activeBonus);
+    }
+    private getBattleCalcID() {
+        return this._battleCalcID++;
     }
 
     /*** GETer ***/

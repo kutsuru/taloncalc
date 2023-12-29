@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, delay, forkJoin, Observable, of, retry } from 'rxjs';
 import { JsonDbService } from './json-db.service';
-import { Armor, ArmorDB_V2, CardDB_V2, DictDb, FoodDB_V2, HeadgearDB_V2, ItemDB, JobDB, JobDB_V2, NestedDictDb, SkillDB_V2, WeaponDB_V2 } from './models';
+import { AmmoDB_V2, Armor, ArmorDB_V2, CardDB_V2, DictDb, ElementDB_V2, FoodDB_V2, HeadgearDB_V2, ItemDB, JobDB, JobDB_V2, MobDB_V2, NestedDictDb, SkillDB_V2, WeaponDB_V2, WeaponTypeDB_V2 } from './models';
 
 @Injectable({
   providedIn: 'root',
@@ -48,9 +48,10 @@ export class TTCoreService {
   private _cardDb2: CardDB_V2;
   private _foodDb2: FoodDB_V2;
   private _skillDb2: SkillDB_V2;
-
-  private _battleCalcTargets: BehaviorSubject<Array<string>>;
-  readonly battleCalcTargets: Observable<Array<string>>;
+  private _mobDb2: MobDB_V2;
+  private _weaponTypeDb2!: WeaponTypeDB_V2;
+  private _ammoDb2: AmmoDB_V2;
+  private _elementDb2!: ElementDB_V2;
 
   private _loaded: BehaviorSubject<boolean>;
   public loaded$: Observable<boolean>;
@@ -138,9 +139,16 @@ export class TTCoreService {
       }
     };
     this._skillDb2 = {};
-
-    this._battleCalcTargets = new BehaviorSubject<Array<string>>([]);
-    this.battleCalcTargets = this._battleCalcTargets.asObservable();
+    this._mobDb2 = {};
+    //this._weaponTypeDb2 = {}; // TODO: needs to be fixed or can be ignored?
+    this._ammoDb2 = {
+      arrow: {},
+      bullet: {},
+      grenade: {},
+      kunai: {},
+      shuriken: {}
+    };
+    // this._elementDb2 = {}; // TODO: needs to be fixed or can be ignored?
 
     this._loaded = new BehaviorSubject<boolean>(false);
     this.loaded$ = this._loaded.asObservable();
@@ -195,9 +203,10 @@ export class TTCoreService {
         this._cardDb2 = dbResp[14] as CardDB_V2;
         this._foodDb2 = dbResp[10] as FoodDB_V2;
         this._skillDb2 = dbResp[12] as SkillDB_V2;
-
-        /* emit fake data for the battle calc */
-        //this._battleCalcTargets.next(['GM Kutsuru', 'GM Johnny']);
+        this._mobDb2 = dbResp[11] as MobDB_V2;
+        this._weaponTypeDb2 = dbResp[8] as WeaponTypeDB_V2;
+        this._ammoDb2 = dbResp[13] as AmmoDB_V2;
+        this._elementDb2 = dbResp[9] as ElementDB_V2;
 
         // split cardDb into each location
         // FIXME: split at db level instead ?
@@ -303,16 +312,16 @@ export class TTCoreService {
   public get jobDbV2() {
     return this._jobDb2
   }
-  public get weaponDbV2(){
+  public get weaponDbV2() {
     return this._weaponDb2;
   }
-  public get shieldDbV2(){
+  public get shieldDbV2() {
     return this._shieldDb2;
   }
   public get headgearDbV2() {
     return this._headgearDb2;
   }
-  public get armorDbV2(){
+  public get armorDbV2() {
     return this._armorDb2;
   }
   public get garmentDbV2() {
@@ -330,7 +339,19 @@ export class TTCoreService {
   public get foodDbV2() {
     return this._foodDb2;
   }
-  public get skillDbV2(){
+  public get skillDbV2() {
     return this._skillDb2;
+  }
+  public get mobDbV2() {
+    return this._mobDb2;
+  }
+  public get waeponTypeDbV2() {
+    return this._weaponTypeDb2;
+  }
+  public get ammoDbV2() {
+    return this._ammoDb2;
+  }
+  public get elementDbV2(){
+    return this._elementDb2;
   }
 }

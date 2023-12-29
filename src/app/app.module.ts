@@ -17,14 +17,11 @@ import { TtListSelectorComponent } from './tt-components/tt-list-selector.compon
 import { FilteredKeyValuePipe } from './core/filtered-key-value.pipe';
 import { TtKeySelectComponent } from './tt-components/tt-key-select/tt-key-select.component';
 import { BattleCalcComponent } from './battle-calc/battle-calc.component';
-import { BattleCalcPvmComponent } from './battle-calc/battle-calc-pvm/battle-calc-pvm.component';
 import { SelectBattleTargetComponent } from './battle-calc/select-battle-target/select-battle-target.component';
 import { TTPopupModule } from './tt-popup/tt-popup.module';
 import { TtMaskGeneratorComponent } from './tt-mask-generator/tt-mask-generator.component';
 import { TtFoodComponent } from './tt-food/tt-food.component';
 import { TtValueInfo } from './tt-food/tt-value-info.pipe';
-import { TtPassiveComponentOld } from './tt-passive__old/tt-passive.component';
-import { TtBuffComponentOld } from './tt-buff__old/tt-buff.component';
 import { TtLvArrayPipe, TtRangePipe } from './tt-buff__old/tt-lv-array.pipe';
 import { TtSettingsComponent } from './tt-settings/tt-settings.component';
 import { TtStatsComponent } from './tt-stats/tt-stats.component';
@@ -35,6 +32,9 @@ import { TtBuffComponent } from './tt-buff/tt-buff.component';
 import { TtPassiveComponent } from './tt-passive/tt-passive.component';
 import { TtCardSlotComponent } from './tt-card-slot/tt-card-slot.component';
 import { TtCardSelectComponent } from './tt-card-slot/tt-card-select.component';
+import { BattleCalcPvmComponent } from './battle-calc-pvm/battle-calc-pvm.component';
+import { TtBuffComponentOld } from './tt-buff__old/tt-buff.component';
+import { TtPassiveComponentOld } from './tt-passive__old/tt-passive.component';
 
 @NgModule({
   declarations: [
@@ -47,13 +47,10 @@ import { TtCardSelectComponent } from './tt-card-slot/tt-card-select.component';
     TtKeySelectComponent,
     FilteredKeyValuePipe,
     BattleCalcComponent,
-    BattleCalcPvmComponent,
     SelectBattleTargetComponent,
     TtMaskGeneratorComponent,
     TtFoodComponent,
     TtValueInfo,
-    TtPassiveComponentOld,
-    TtBuffComponentOld,
     TtLvArrayPipe,
     TtRangePipe,
     TtSettingsComponent,
@@ -64,7 +61,11 @@ import { TtCardSelectComponent } from './tt-card-slot/tt-card-select.component';
     TtBuffComponent,
     TtPassiveComponent,
     TtCardSlotComponent,
-    TtCardSelectComponent
+    TtCardSelectComponent,
+    BattleCalcPvmComponent,
+    // OLD
+    TtBuffComponentOld,
+    TtPassiveComponentOld,
   ],
   imports: [
     BrowserModule,

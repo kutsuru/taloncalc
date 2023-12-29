@@ -17,18 +17,26 @@ export class TtCardSlotComponent implements OnInit, OnChanges {
   @Input() card: string = '';
   @Output() cardChange = new EventEmitter<string>();
   @Input() location: CardLocations = 'armor';
+  @Output() changed = new EventEmitter<string>();
 
   imgPath: CARD_IMG = CARD_IMG.UNSET;
 
   constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.setUnset(this.card);
+    if (this.card) {
+      this.imgPath = CARD_IMG.SET;
+    }
+    else {
+      this.imgPath = CARD_IMG.UNSET;
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['card']) {
-      this.setUnset(changes['card'].currentValue);
+      if (changes['card'].currentValue != changes['card'].previousValue && !changes['card'].firstChange) {
+        this.setUnset(changes['card'].currentValue);
+      }
     }
   }
 
@@ -60,5 +68,6 @@ export class TtCardSlotComponent implements OnInit, OnChanges {
       this.imgPath = CARD_IMG.UNSET;
     }
     this.cardChange.emit(card);
+    this.changed.emit(card);
   }
 }

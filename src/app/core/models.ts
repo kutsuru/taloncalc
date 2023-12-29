@@ -46,6 +46,11 @@ export type ObjWithKeyString<T> = {
 }
 export type VanillaMode = 'Unrestricted' | 'PvM Vanilla' | 'PvP Vanilla';
 export const VANILLA_MODES: VanillaMode[] = ['PvM Vanilla', 'PvP Vanilla', "Unrestricted"];
+export type MobRace = "formless" | "undead" | "brute" | "plant" | "insect" | "fish" | "demon" | "demiHuman" | "angel" | "dragon";
+export type MobRace2 = "goblin" | "golem" | "orc" | "kobold" | "manuk" | "splendide" | "biolab" | "kiel" | "juperos";
+export type Element = "neutral" | "water" | "earth" | "fire" | "wind" | "poison" | "holy" | "shadow" | "ghost" | "undead";
+export type MobSize = "small" | "medium" | "large";
+export type MobClass = "all" | "normal" | "boss" | "guardian";
 
 /***************/
 /*** JOB DB  ***/
@@ -93,7 +98,7 @@ export type WeaponType =
   "Unarmed";
 export type WeaponTypeLeft = WeaponType | 'Shield';
 export type Weapon = Item & {
-  weaponType: string,
+  weaponType: WeaponType,
   weaponLv: number,
   attack: number
 }
@@ -164,11 +169,12 @@ export type FoodDB_V2 = {
 }
 /*****************/
 /*** SKILL DB  ***/
+export type SkillElement = Element | "weapon";
 export type Skill = {
   id: number,
   maxLevel: number,
   spCost: number[],
-  element: string,
+  element: SkillElement,  // TODO: in DB File the elements are numbers instead of strings
   hits: number,
   ratio: string,
   motion_delay: number,
@@ -186,7 +192,7 @@ export type Skill = {
   duration: number,
   isConsideredAsSingleHit: boolean,
   enableMasteries: boolean,
-  ignoreOffensiveStatus : boolean,
+  ignoreOffensiveStatus: boolean,
   hasPerfectHit: boolean,
   usesAmmos: boolean,
   isActive: boolean,
@@ -197,6 +203,78 @@ export type Skill = {
 }
 export type SkillDB_V2 = {
   [key: string]: Skill
+}
+/***************/
+/*** MOB DB  ***/
+export type Mob = {
+  id: number,
+  mid: number,
+  race: MobRace,
+  race2: MobRace2,
+  element: Element,
+  elementLv: number,
+  size: MobSize,
+  lv: number,
+  hp: number,
+  def: number,
+  mdef: number,
+  minAtk: number,
+  maxAtk: number,
+  agi: number,
+  vit: number,
+  int: number,
+  dex: number,
+  luk: number,
+  baseExp: number,
+  jobExp: number,
+  isRange: boolean,
+  mode: {
+    isBoss: boolean,
+    isMvP: boolean,
+    ignoreMeleeDamage: boolean,
+    ignoreRangeDamage: boolean,
+    ignoreMagicDamage: boolean,
+    ignoreMiscDamage: boolean,
+    hasStatusImmunity: boolean,
+    hasSkillImmunity: boolean
+  },
+  region: string[]
+}
+export type MobDB_V2 = {
+  [key: string]: Mob
+}
+/***********************/
+/*** WAEPON-TYPE DB  ***/
+export type WeaponTypeEntry = {
+  id: number,
+  sizeModifier: {
+    [key in MobSize]: number
+  },
+  isTwoHanded: boolean,
+  ammoType?: AmmoType
+}
+export type WeaponTypeDB_V2 = {
+  [key in WeaponType]: WeaponTypeEntry
+}
+/*****************/
+/*** AMMO DB  ***/
+export type AmmoType = "arrow" | "bullet" | "grenade" | "shuriken" | "kunai";
+export type Ammo = {
+  attack: number,
+  element: Element,
+  bonus?: string
+}
+export type AmmoDB_V2 = {
+  [key in AmmoType]: {
+    [key: string]: Ammo
+  }
+}
+/******************/
+/*** ELEMENT DB ***/
+export type ElementDB_V2 = {
+  [key in Element]: {
+    [key in Element]: number[]
+  }
 }
 
 /********************/
@@ -232,275 +310,85 @@ export type ActiveBonus = BaseStats & {
   armorElement: number,
   weaponElement: number,
   ignoreDefClass: {
-    all: number,
-    normal: number,
-    boss: number,
-    guardian: number,
+    [key in MobClass]: number
   },
   ignoreMdefClass: {
-    all: number,
-    normal: number,
-    boss: number,
-    guardian: number,
+    [key in MobClass]: number
   },
   ignoreDefRace: {
-    formless: number,
-    undead: number,
-    brute: number,
-    plant: number,
-    insect: number,
-    fish: number,
-    demon: number,
-    demiHuman: number,
-    angel: number,
-    dragon: number,
+    [key in MobRace]: number
   },
   ignoreMdefRace: {
-    formless: number,
-    undead: number,
-    brute: number,
-    plant: number,
-    insect: number,
-    fish: number,
-    demon: number,
-    demiHuman: number,
-    angel: number,
-    dragon: number,
-  },
+    [key in MobRace]: number
+  }
   ignoreDefElement: {
-    neutral: number,
-    water: number,
-    earth: number,
-    fire: number,
-    wind: number,
-    poison: number,
-    holy: number,
-    shadow: number,
-    ghost: number,
-    undead: number,
+    [key in Element]: number
   },
   ignoreMdefElement: {
-    neutral: number,
-    water: number,
-    earth: number,
-    fire: number,
-    wind: number,
-    poison: number,
-    holy: number,
-    shadow: number,
-    ghost: number,
-    undead: number,
+    [key in Element]: number
   },
   addClass: {
-    all: number,
-    normal: number,
-    boss: number,
-    guardian: number,
+    [key in MobClass]: number
   },
   magicAddClass: {
-    all: number,
-    normal: number,
-    boss: number,
-    guardian: number,
+    [key in MobClass]: number
   },
   expAddClass: {
-    all: number,
-    normal: number,
-    boss: number,
-    guardian: number,
+    [key in MobClass]: number
   },
   subClass: {
-    all: number,
-    normal: number,
-    boss: number,
-    guardian: number,
+    [key in MobClass]: number
   },
   addSize: {
-    small: number,
-    medium: number,
-    large: number,
+    [key in MobSize]: number;
   },
   subSize: {
-    small: number,
-    medium: number,
-    large: number,
+    [key in MobSize]: number;
   },
   addRace: {
-    formless: number,
-    undead: number,
-    brute: number,
-    plant: number,
-    insect: number,
-    fish: number,
-    demon: number,
-    demiHuman: number,
-    angel: number,
-    dragon: number,
+    [key in MobRace]: number
   },
   magicAddRace: {
-    formless: number,
-    undead: number,
-    brute: number,
-    plant: number,
-    insect: number,
-    fish: number,
-    demon: number,
-    demiHuman: number,
-    angel: number,
-    dragon: number,
+    [key in MobRace]: number
   },
   addRace2: {
-    goblin: number,
-    golem: number,
-    orc: number,
-    kobold: number,
-    manuk: number,
-    splendide: number,
-    biolab: number,
-    kiel: number,
-    juperos: number,
+    [key in MobRace2]: number
   },
   magicAddRace2: {
-    goblin: number,
-    golem: number,
-    orc: number,
-    kobold: number,
-    manuk: number,
-    splendide: number,
-    biolab: number,
-    kiel: number,
-    juperos: number,
+    [key in MobRace2]: number
   },
   subRace2: {
-    goblin: number,
-    golem: number,
-    orc: number,
-    kobold: number,
-    manuk: number,
-    splendide: number,
-    biolab: number,
-    kiel: number,
-    juperos: number,
+    [key in MobRace2]: number
   },
   criticalAddRace: {
-    formless: number,
-    undead: number,
-    brute: number,
-    plant: number,
-    insect: number,
-    fish: number,
-    demon: number,
-    demiHuman: number,
-    angel: number,
-    dragon: number,
+    [key in MobRace]: number
   },
   criticalAtkRateRace: {
-    formless: number,
-    undead: number,
-    brute: number,
-    plant: number,
-    insect: number,
-    fish: number,
-    demon: number,
-    demiHuman: number,
-    angel: number,
-    dragon: number,
+    [key in MobRace]: number
   },
   expAddRace: {
-    formless: number,
-    undead: number,
-    brute: number,
-    plant: number,
-    insect: number,
-    fish: number,
-    demon: number,
-    demiHuman: number,
-    angel: number,
-    dragon: number,
+    [key in MobRace]: number
   },
   subRace: {
-    formless: number,
-    undead: number,
-    brute: number,
-    plant: number,
-    insect: number,
-    fish: number,
-    demon: number,
-    demiHuman: number,
-    angel: number,
-    dragon: number,
+    [key in MobRace]: number
   },
   addElement: {
-    neutral: number,
-    water: number,
-    earth: number,
-    fire: number,
-    wind: number,
-    poison: number,
-    holy: number,
-    shadow: number,
-    ghost: number,
-    undead: number,
+    [key in Element]: number
   },
   magicAddElement: {
-    neutral: number,
-    water: number,
-    earth: number,
-    fire: number,
-    wind: number,
-    poison: number,
-    holy: number,
-    shadow: number,
-    ghost: number,
-    undead: number,
+    [key in Element]: number
   },
   magicElementRate: {
-    neutral: number,
-    water: number,
-    earth: number,
-    fire: number,
-    wind: number,
-    poison: number,
-    holy: number,
-    shadow: number,
-    ghost: number,
-    undead: number,
+    [key in Element]: number
   },
   expAddElement: {
-    neutral: number,
-    water: number,
-    earth: number,
-    fire: number,
-    wind: number,
-    poison: number,
-    holy: number,
-    shadow: number,
-    ghost: number,
-    undead: number,
+    [key in Element]: number
   },
   subElement: {
-    neutral: number,
-    water: number,
-    earth: number,
-    fire: number,
-    wind: number,
-    poison: number,
-    holy: number,
-    shadow: number,
-    ghost: number,
-    undead: number,
+    [key in Element]: number
   },
   subDefElement: {
-    neutral: number,
-    water: number,
-    earth: number,
-    fire: number,
-    wind: number,
-    poison: number,
-    holy: number,
-    shadow: number,
-    ghost: number,
-    undead: number,
+    [key in Element]: number
   },
   addEffect: {
     poison: number,
@@ -647,7 +535,8 @@ export enum SessionChangeEvent {
   BASE_STATS,
   REFINE,
   EQUIP,
-  VANILLA_MODE
+  VANILLA_MODE,
+  CARD
 }
 
 export type SessionInfoV2 = {
@@ -664,17 +553,40 @@ export type SessionInfoV2 = {
   };
   /* general */
   weaponAtk: number;
-  ammoType: string;
+  ammoType?: AmmoType;
   vanillaMode: VanillaMode;
   /* active stuff */
   activeBonus: ActiveBonus;
   activeStatus: {
-    Sprint: number
+    Sprint: number,
+    Eska: number,
+    "Lex Aeterna": number
   };
   activeFood: ActiveFood;
+  passiveSkill: {
+    [key: string]: number
+  },
+  activeBuff: {
+    isMaximizePowerActive: boolean,
+    'Active Spheres': number;
+    'Aura Blade': number;
+    'Magnum Break': number;
+    'Endless Deadly Poison': number;
+    'True Sight': number;
+    Deluge: number;
+    Volcano: number;
+    'Violent Gale': number;
+  },
   /* gear stuff */
   equip: SessionEquip;
   refine: SessionEquipBase<number>;
   card: SessionCard;
   enchant: SessionEntchant;
+}
+
+/*******************/
+/*** Battle Calc ***/
+export type BattleCalcInfo = {
+  id: number,
+  target: string
 }

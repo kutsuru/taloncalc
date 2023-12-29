@@ -6,12 +6,13 @@
   <mat-card-content tt-collapse-container #battleContant>
     <mat-tab-group>
       <mat-tab label="PvM">
-        <div fxLayout="row wrap">
-          <battle-calc-pvm fxFlex="nogrow" *ngFor="let calc of battleCalcLst; let i = index"
-            (onClose)="closeBattleDetail(calc.id)" [target]="calc.target" @insertCalcTrigger style="overflow: hidden">
+        <div style="display: flex; flex-wrap: wrap;">
+          <battle-calc-pvm *ngFor="let calc of (battleCalcPVM$ | async); let i = index"
+            (onClose)="closeBattleDetailPVM(calc.id)" (onTargetChange)="updateBattleDetailPVMTarget(calc.id, $event)"
+            [target]="calc.target" @insertCalcTrigger style="overflow: hidden">
           </battle-calc-pvm>
-          <div fxFlex="100px" fxLayout="row" fxLayoutAlign="center center">
-            <button mat-fab color="primary" (click)="createBattleDetail()">
+          <div style="display: flex; align-items: center;">
+            <button mat-fab color="primary" (click)="createBattleDetailPVM()">
               <mat-icon>add</mat-icon>
             </button>
           </div>
