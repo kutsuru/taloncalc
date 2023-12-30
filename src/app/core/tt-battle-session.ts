@@ -1,10 +1,10 @@
 import { Ammo, Armor, DictDb, Element, Mob, MobClass, SessionInfo, SessionInfoV2, Skill, SkillElement, Weapon, WeaponType, WeaponTypeLeft } from './models';
 import { TTCoreService } from './tt-core.service';
 import { SkillList, TTSessionInfoV2Service } from './tt-session-info_v2.service';
-import { BehaviorSubject, Observable, firstValueFrom } from 'rxjs';
-import { MOB_SIZE_MODIFIER } from './utils';
+import { BehaviorSubject, Observable, firstValueFrom, race } from 'rxjs';
+import { MOB_SIZE_MODIFIER, WEAPON_ELE } from './utils';
 
-type BattleSessionResult = {
+export type BattleSessionResult = {
   castTime: number,
   hitRatio: number,
   castDelay: number,
@@ -481,7 +481,9 @@ export class TTBattleSession {
         criticalModifier += this._si.activeBonus.criticalAtkRate;
 
       // bAddRace2 - damage modifier against dedicated monster race
-      let race2Modifier = 100 + this._si.activeBonus.addRace2[this._target.race2];
+      let race2Modifier = 100;
+      if (this._target.race2)
+        race2Modifier += this._si.activeBonus.addRace2[this._target.race2];
 
       let advKatarMastery = 100;
       if (
@@ -803,20 +805,14 @@ export class TTBattleSession {
     let aoeDamageBonus = [100, 110, 114, 117, 119, 120];
 
     if (!this._activeSkill.ignoreElement) {
-      console.log(this.core.elementDbV2);
-
       activeElement = this._activeSkill.element;
 
-      console.log(`Weapong Ele: ${this._si.activeBonus.weaponElement}`);
       if ('weapon' === activeElement) {
         if (this._appliedEndow) activeElement = this._appliedEndow;
         else if (this._ammo) activeElement = this._ammo.element;
-        //else activeElement = this._rhWeapon['element']; // TODO: Where to find that
+        else activeElement = WEAPON_ELE[this._si.activeBonus.weaponElement];
       }
 
-      console.log('Element Modifer');
-      console.log(activeElement);
-      console.log(this.core.elementDbV2[this._target.element][activeElement as Element]);
       let elementModifier: number = this.core.elementDbV2[this._target.element][activeElement as Element][this._target.elementLv - 1];
       elementRatio *= Math.max(elementModifier, 0);
     }
@@ -843,16 +839,12 @@ export class TTBattleSession {
     return this.applyDamageModifier(damage, elementRatio);
   }
 
-  private applyAdditionalElementDamage(
-    damage: number[],
-    baseAtk: number
-  ): number[] {
+  private applyAdditionalElementDamage(damage: number[], baseAtk: number): number[] {
     let additionalDamage = [0, 0];
 
     if (this._si.activeBuff['Magnum Break']) {
       // Apply Magnum Break#7 SC_WATK_ELEMENT damage bonus
-      let fireLv1Ratio =
-        this.core.elementDbV2.fire[this._target.element][this._target.elementLv - 1];
+      let fireLv1Ratio = this.core.elementDbV2.fire[this._target.element][this._target.elementLv - 1];
 
       additionalDamage = this.applyDamageModifier(
         this.calcBaseAtk(baseAtk, false, false, false),
@@ -863,7 +855,6 @@ export class TTBattleSession {
         100 * Math.max(fireLv1Ratio, 0)
       ); // With fire property
     }
-
     return damage.map(function (x, idx) {
       return x + additionalDamage[idx];
     });
@@ -1223,7 +1214,7 @@ export class TTBattleSession {
     console.log('before: calcPhysicalAttackDamage');
     console.log(damage);
 
-    if (this._activeSkill['isMagicAttack'])
+    if (this._activeSkill.isMagicAttack)
       damage = this.calcMagicalAttackDamage(damage);
     else
       damage = this.calcPhysicalAttackDamage(isCriticalAttack, isDualWielding);
@@ -1360,13 +1351,10 @@ export class TTBattleSession {
       'Unarmed' == this._rhWeapon.weaponType
     )
       damage = damage.map((x) => x + 10 * this._si.activeStatus.Sprint);
-
     // Refine bonus for Shield Chain#324 and Shield Boomerang#159#384
     if ([159, 324, 385].findIndex((x) => x == this._activeSkill.id) > -1)
       damage = damage.map((x) => x + this._si.refine.leftHand * 10);
-
     damage = this.applyPhysicalDamageModifiers(damage, isCriticalAttack);
-
     // Soul Breaker#263 misc damage part based on source INT
     if (263 == this._activeSkill.id) {
       damage = damage.map((x) => x + 500 + 5 * this._activeSkillLv * this._int);

@@ -7,7 +7,7 @@
       "Unarmed",
       "Dagger",
       "Sword",
-      "Axe",
+      "One-handed Axe",
       "Mace",
       "2hMace",
       "Staff",
@@ -34,7 +34,7 @@
       "Unarmed": 500,
       "Dagger": 650,
       "Sword": 700,
-      "Axe": 800,
+      "One-handed Axe": 800,
       "Mace": 700,
       "2hMace": 700,
       "Staff": 650,
@@ -60,7 +60,7 @@
       "Two-handed Sword",
       "Spear",
       "Two-handed Spear",
-      "Axe",
+      "One-handed Axe",
       "Two-handed Axe",
       "Mace",
       "2hMace"
@@ -91,7 +91,7 @@
       "Two-handed Sword": 600,
       "Spear": 650,
       "Two-handed Spear": 700,
-      "Axe": 700,
+      "One-handed Axe": 700,
       "Two-handed Axe": 750,
       "Mace": 650,
       "2hMace": 700
@@ -232,7 +232,7 @@
       "Unarmed",
       "Dagger",
       "Sword",
-      "Axe",
+      "One-handed Axe",
       "Two-handed Axe",
       "Mace",
       "2hMace"
@@ -260,7 +260,7 @@
       "Unarmed": 400,
       "Dagger": 600,
       "Sword": 700,
-      "Axe": 700,
+      "One-handed Axe": 700,
       "Two-handed Axe": 750,
       "Mace": 700,
       "2hMace": 700
@@ -278,7 +278,7 @@
     "isTrans": false,
     "maxJobLv": 50,
     "mask": "0x2000001",
-    "compatibleWeapons": ["Unarmed", "Dagger", "Sword", "Axe", "Bow"],
+    "compatibleWeapons": ["Unarmed", "Dagger", "Sword", "One-handed Axe", "Bow"],
     "hpTable": [
       40, 46, 53, 60, 68, 76, 85, 94, 104, 114, 125, 136, 148, 160, 173, 186,
       200, 214, 229, 244, 260, 276, 293, 310, 328, 346, 365, 384, 404, 424, 445,
@@ -302,7 +302,7 @@
       "Unarmed": 400,
       "Dagger": 500,
       "Sword": 650,
-      "Axe": 800,
+      "One-handed Axe": 800,
       "Bow": 800
     },
     "jobBonus": {
@@ -325,7 +325,7 @@
       "Two-handed Sword",
       "Spear",
       "Two-handed Spear",
-      "Axe",
+      "One-handed Axe",
       "Two-handed Axe",
       "Mace",
       "2hMace"
@@ -356,7 +356,7 @@
       "Two-handed Sword": 550,
       "Spear": 600,
       "Two-handed Spear": 600,
-      "Axe": 700,
+      "One-handed Axe": 700,
       "Two-handed Axe": 700,
       "Mace": 650,
       "2hMace": 700
@@ -465,7 +465,7 @@
       "Unarmed",
       "Dagger",
       "Sword",
-      "Axe",
+      "One-handed Axe",
       "Two-handed Axe",
       "Mace",
       "2hMace"
@@ -493,7 +493,7 @@
       "Unarmed": 400,
       "Dagger": 600,
       "Sword": 650,
-      "Axe": 650,
+      "One-handed Axe": 650,
       "Two-handed Axe": 650,
       "Mace": 675,
       "2hMace": 675
@@ -545,7 +545,7 @@
     "isTrans": false,
     "maxJobLv": 50,
     "mask": "0x4000001",
-    "compatibleWeapons": ["Unarmed", "Dagger", "Sword", "Axe", "Katar"],
+    "compatibleWeapons": ["Unarmed", "Dagger", "Sword", "One-handed Axe", "Katar"],
     "hpTable": [
       40, 47, 55, 64, 75, 87, 100, 114, 129, 145, 162, 180, 199, 219, 241, 264,
       288, 313, 339, 366, 394, 423, 453, 484, 517, 551, 586, 622, 659, 697, 736,
@@ -569,7 +569,7 @@
       "Unarmed": 400,
       "Dagger": 500,
       "Sword": 650,
-      "Axe": 800,
+      "One-handed Axe": 800,
       "Katar": 500
     },
     "jobBonus": {
@@ -592,7 +592,7 @@
       "Two-handed Sword",
       "Spear",
       "Two-handed Spear",
-      "Axe",
+      "One-handed Axe",
       "Two-handed Axe",
       "Mace",
       "2hMace"
@@ -623,7 +623,7 @@
       "Two-handed Sword": 550,
       "Spear": 600,
       "Two-handed Spear": 600,
-      "Axe": 700,
+      "One-handed Axe": 700,
       "Two-handed Axe": 700,
       "Mace": 650,
       "2hMace": 700
@@ -646,7 +646,7 @@
       "Mace",
       "2hMace",
       "Staff",
-      "Knuckle",
+      "Knuckles",
       "Two-handed Staff"
     ],
     "hpTable": [
@@ -673,7 +673,7 @@
       "Mace": 575,
       "2hMace": 575,
       "Staff": 575,
-      "Knuckle": 475,
+      "Knuckles": 475,
       "Two-handed Staff": 575
     },
     "jobBonus": {
@@ -773,7 +773,7 @@
       "Unarmed",
       "Dagger",
       "Sword",
-      "Axe",
+      "One-handed Axe",
       "Two-handed Axe",
       "Mace",
       "2hMace"
@@ -801,7 +801,7 @@
       "Unarmed": 400,
       "Dagger": 550,
       "Sword": 575,
-      "Axe": 675,
+      "One-handed Axe": 675,
       "Two-handed Axe": 700,
       "Mace": 650,
       "2hMace": 650
@@ -896,7 +896,7 @@
       "Unarmed",
       "Dagger",
       "Sword",
-      "Axe",
+      "One-handed Axe",
       "Mace",
       "2hMace",
       "Staff",
@@ -923,7 +923,7 @@
       "Unarmed": 500,
       "Dagger": 650,
       "Sword": 700,
-      "Axe": 800,
+      "One-handed Axe": 800,
       "Mace": 700,
       "2hMace": 700,
       "Staff": 650,
@@ -1028,7 +1028,7 @@
       "Unarmed",
       "Dagger",
       "Sword",
-      "Axe",
+      "One-handed Axe",
       "Mace",
       "2hMace",
       "Staff",
@@ -1055,7 +1055,7 @@
       "Unarmed": 500,
       "Dagger": 650,
       "Sword": 700,
-      "Axe": 800,
+      "One-handed Axe": 800,
       "Mace": 700,
       "2hMace": 700,
       "Staff": 650,
@@ -1081,7 +1081,7 @@
       "Two-handed Sword",
       "Spear",
       "Two-handed Spear",
-      "Axe",
+      "One-handed Axe",
       "Two-handed Axe",
       "Mace",
       "2hMace"
@@ -1112,7 +1112,7 @@
       "Two-handed Sword": 600,
       "Spear": 650,
       "Two-handed Spear": 700,
-      "Axe": 700,
+      "One-handed Axe": 700,
       "Two-handed Axe": 750,
       "Mace": 650,
       "2hMace": 700
@@ -1253,7 +1253,7 @@
       "Unarmed",
       "Dagger",
       "Sword",
-      "Axe",
+      "One-handed Axe",
       "Two-handed Axe",
       "Mace",
       "2hMace"
@@ -1281,7 +1281,7 @@
       "Unarmed": 400,
       "Dagger": 600,
       "Sword": 700,
-      "Axe": 700,
+      "One-handed Axe": 700,
       "Two-handed Axe": 750,
       "Mace": 700,
       "2hMace": 700
@@ -1299,7 +1299,7 @@
     "isTrans": true,
     "maxJobLv": 50,
     "mask": "0x2000002",
-    "compatibleWeapons": ["Unarmed", "Dagger", "Sword", "Axe", "Bow"],
+    "compatibleWeapons": ["Unarmed", "Dagger", "Sword", "One-handed Axe", "Bow"],
     "hpTable": [
       40, 46, 53, 60, 68, 76, 85, 94, 104, 114, 125, 136, 148, 160, 173, 186,
       200, 214, 229, 244, 260, 276, 293, 310, 328, 346, 365, 384, 404, 424, 445,
@@ -1323,7 +1323,7 @@
       "Unarmed": 400,
       "Dagger": 500,
       "Sword": 650,
-      "Axe": 800,
+      "One-handed Axe": 800,
       "Bow": 800
     },
     "jobBonus": {
@@ -1346,7 +1346,7 @@
       "Two-handed Sword",
       "Spear",
       "Two-handed Spear",
-      "Axe",
+      "One-handed Axe",
       "Two-handed Axe",
       "Mace",
       "2hMace"
@@ -1377,7 +1377,7 @@
       "Two-handed Sword": 550,
       "Spear": 600,
       "Two-handed Spear": 600,
-      "Axe": 700,
+      "One-handed Axe": 700,
       "Two-handed Axe": 700,
       "Mace": 650,
       "2hMace": 700
@@ -1486,7 +1486,7 @@
       "Unarmed",
       "Dagger",
       "Sword",
-      "Axe",
+      "One-handed Axe",
       "Two-handed Axe",
       "Mace",
       "2hMace"
@@ -1514,7 +1514,7 @@
       "Unarmed": 400,
       "Dagger": 600,
       "Sword": 650,
-      "Axe": 650,
+      "One-handed Axe": 650,
       "Two-handed Axe": 650,
       "Mace": 675,
       "2hMace": 675
@@ -1566,7 +1566,7 @@
     "isTrans": true,
     "maxJobLv": 70,
     "mask": "0x4000002",
-    "compatibleWeapons": ["Unarmed", "Dagger", "Sword", "Axe", "Katar"],
+    "compatibleWeapons": ["Unarmed", "Dagger", "Sword", "One-handed Axe", "Katar"],
     "hpTable": [
       40, 47, 55, 64, 75, 87, 100, 114, 129, 145, 162, 180, 199, 219, 241, 264,
       288, 313, 339, 366, 394, 423, 453, 484, 517, 551, 586, 622, 659, 697, 736,
@@ -1590,7 +1590,7 @@
       "Unarmed": 400,
       "Dagger": 500,
       "Sword": 650,
-      "Axe": 800,
+      "One-handed Axe": 800,
       "Katar": 500
     },
     "jobBonus": {
@@ -1613,7 +1613,7 @@
       "Two-handed Sword",
       "Spear",
       "Two-handed Spear",
-      "Axe",
+      "One-handed Axe",
       "Two-handed Axe",
       "Mace",
       "2hMace"
@@ -1644,7 +1644,7 @@
       "Two-handed Sword": 550,
       "Spear": 600,
       "Two-handed Spear": 600,
-      "Axe": 700,
+      "One-handed Axe": 700,
       "Two-handed Axe": 700,
       "Mace": 650,
       "2hMace": 700
@@ -1667,7 +1667,7 @@
       "Mace",
       "2hMace",
       "Staff",
-      "Knuckle",
+      "Knuckles",
       "Two-handed Staff"
     ],
     "hpTable": [
@@ -1694,7 +1694,7 @@
       "Mace": 575,
       "2hMace": 575,
       "Staff": 575,
-      "Knuckle": 475,
+      "Knuckles": 475,
       "Two-handed Staff": 575
     },
     "jobBonus": {
@@ -1794,7 +1794,7 @@
       "Unarmed",
       "Dagger",
       "Sword",
-      "Axe",
+      "One-handed Axe",
       "Two-handed Axe",
       "Mace",
       "2hMace"
@@ -1822,7 +1822,7 @@
       "Unarmed": 400,
       "Dagger": 550,
       "Sword": 575,
-      "Axe": 675,
+      "One-handed Axe": 675,
       "Two-handed Axe": 700,
       "Mace": 650,
       "2hMace": 650

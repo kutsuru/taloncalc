@@ -4,8 +4,15 @@
     <mat-select-trigger>
       <span *ngIf="prefix">{{prefix}} </span>{{value}}
     </mat-select-trigger>
-    <mat-option *ngFor="let entry of selectData" [value]="entry.value">
+    <!-- <cdk-virtual-scroll-viewport appendOnly itemSize="20" [ngStyle]="{height: '200px'}">
+      <mat-option *cdkVirtualFor="let entry of selectData" [value]="entry.value">
+        {{entry.name}}
+      </mat-option>
+    </cdk-virtual-scroll-viewport> -->
+    @for (entry of selectData; track $index) {
+    <mat-option [value]="entry.value">
       {{entry.name}}
     </mat-option>
+    }
   </mat-select>
 </mat-form-field>

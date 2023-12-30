@@ -139,14 +139,14 @@ export class TtEquipComponent implements OnInit {
   // weapon == Right Hand
   public changeWeaponType(newType: WeaponType) {
     this.gears.rightHandType = newType;
-    this.updateWeaponData(true);
     this.changeEquip('rightHandType', newType);
+    this.updateWeaponData(true);
   }
 
   public changeVanillaMode(mode: VanillaMode) {
     this.sessionInfo.changeVanillaMode(mode);
   }
-  public changeCard(cardLocation: keyof SessionCard, card: string, slot?: number){
+  public changeCard(cardLocation: keyof SessionCard, card: string, slot?: number) {
     this.sessionInfo.changeCard(cardLocation, card, slot);
   }
 
@@ -184,7 +184,10 @@ export class TtEquipComponent implements OnInit {
 
   private updateWeaponData(publish: boolean = false) {
     this.weapons = this.filterGear(this.core.weaponDbV2[this.gears.rightHandType]);
+
     // TODO: Update to first value in list
+    this.gears.rightHand = this.weapons[0];
+    this.sessionInfo.changeEquip("rightHand", this.gears.rightHand);
     // if (publish) this.ref.markForCheck();
   }
 

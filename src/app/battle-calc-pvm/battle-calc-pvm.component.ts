@@ -1,19 +1,19 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TTCoreService } from '../core/tt-core.service';
 import { MatDialog } from '@angular/material/dialog';
 import { SelectBattleTargetComponent } from '../battle-calc/select-battle-target/select-battle-target.component';
 import { Ammo, Element, Mob, SessionChangeEvent } from '../core/models';
 import { TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
-import { TTBattleSession } from '../core/tt-battle-session';
-import { firstValueFrom } from 'rxjs';
+import { BattleSessionResult, TTBattleSession } from '../core/tt-battle-session';
+import { Subscription, firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'battle-calc-pvm',
   templateUrl: './battle-calc-pvm.component.html',
   styleUrl: './battle-calc-pvm.component.scss'
 })
-export class BattleCalcPvmComponent implements OnInit {
+export class BattleCalcPvmComponent implements OnInit, OnDestroy {
   /* In- / Outputs */
   @Input('target') targetName: string = '';
   @Output() onClose: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -25,6 +25,8 @@ export class BattleCalcPvmComponent implements OnInit {
   public defReduc: number = 0;
   public mdefReduc: number = 0;
 
+  public battleResult: BattleSessionResult;
+
   public selectedSkill: string = 'Basic Attack';
   public selectedSkillLv: number = 0;
   public selectedAmmo: string | undefined;
@@ -32,18 +34,39 @@ export class BattleCalcPvmComponent implements OnInit {
 
   private battleSession: TTBattleSession;
 
+  private battleSessionSub!: Subscription;
+  private sessionInfoSub!: Subscription;
+
   constructor(private core: TTCoreService, private dialog: MatDialog, private session: TTSessionInfoV2Service) {
     this.battleSession = new TTBattleSession(core, session);
+    this.battleResult = {
+      castTime: 0,
+      hitRatio: 0,
+      castDelay: 0,
+      minDamage: 0,
+      maxDamage: 0,
+      minNbHits: 0,
+      maxNbHits: 0,
+      critChance: 0,
+      critDamage: 0,
+      dodgeRatio: 0,
+      battleDuration: 0,
+    }
+  }
+  ngOnDestroy(): void {
+    if (this.battleSessionSub) this.battleSessionSub.unsubscribe();
+    if (this.sessionInfoSub) this.sessionInfoSub.unsubscribe();
   }
 
   /* public */
   ngOnInit(): void {
     // watch for result of battle
-    this.battleSession.result$.subscribe((res) => {
-      console.log(res);
+    this.battleSessionSub = this.battleSession.result$.subscribe((res) => {
+      this.battleResult = { ...res };
     });
+
     // watch for update of the session
-    this.session.sessionInfo$
+    this.sessionInfoSub = this.session.sessionInfo$
       .pipe(
         this.session.eventFilterExcept(SessionChangeEvent.VANILLA_MODE)
       )
