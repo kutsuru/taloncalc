@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { TTCoreService } from '../core/tt-core.service';
 import { MatSelectChange } from '@angular/material/select';
-import { distinctUntilChanged } from 'rxjs';
+import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { JobDbEntry, SessionChangeEvent } from '../core/models';
 import { TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
-
-// TODO: DEBOUNCE trigger of update session info
+import { debounce } from '../core/utils';
 
 @Component({
   selector: 'tt-stats',
@@ -43,7 +42,32 @@ export class TtStatsComponent implements OnInit {
   public luk: number = 1;
   public lukBonus: number = 0;
 
-  constructor(private core: TTCoreService, private sessionInfo: TTSessionInfoV2Service, private ref: ChangeDetectorRef) { }
+  /* debounced functions */
+  public updateStats: () => void;
+  public updateClass: (className: string) => void;
+  public updateLevel: () => void;
+
+  constructor(private core: TTCoreService, private sessionInfo: TTSessionInfoV2Service, private ref: ChangeDetectorRef) {
+    /* create debounced update stats function */
+    this.updateStats = debounce(() => {
+      this.sessionInfo.changeBaseStats({
+        str: this.str,
+        agi: this.agi,
+        dex: this.dex,
+        int: this.int,
+        luk: this.luk,
+        vit: this.vit
+      });
+    }, 100);
+    /* create debounced update class function */
+    this.updateClass = debounce((className: string) => {
+      this.sessionInfo.changeClass(className);
+    }, 100);
+    /* create debounced update level function */
+    this.updateLevel = debounce(() => {
+      this.sessionInfo.changeLevel(this.baseLevel, this.jobLevel);
+    }, 100)
+  }
 
   ngOnInit(): void {
     /* subscribe to session data */
@@ -94,7 +118,8 @@ export class TtStatsComponent implements OnInit {
   onClassChange(ev: MatSelectChange) {
     this.selectedClassName = ev.value;
     this._selectedClass = this.core.jobDbV2[ev.value];
-    this.sessionInfo.changeClass(ev.value);
+    /* trigger class change */
+    this.updateClass(ev.value);
   }
 
   onBabyClassChange(ev: MatCheckboxChange) {
@@ -113,20 +138,5 @@ export class TtStatsComponent implements OnInit {
       /* load all classes */
       this.jobClasses = this._jobClassesAll;
     }
-  }
-
-  onLevelChange(ev: MatSelectChange) {
-    this.sessionInfo.changeLevel(this.baseLevel, this.jobLevel);
-  }
-
-  onStatChange(ev: MatSelectChange) {
-    this.sessionInfo.changeBaseStats({
-      str: this.str,
-      agi: this.agi,
-      dex: this.dex,
-      int: this.int,
-      luk: this.luk,
-      vit: this.vit
-    });
   }
 }

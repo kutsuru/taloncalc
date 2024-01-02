@@ -9,3 +9,17 @@ export const MOB_SIZE_MODIFIER: { [key in MobSize]: number } = {
 
 /*** map waepon element to Element (string) */
 export const WEAPON_ELE: Element[] = ["neutral", "water", "earth", "fire", "wind", "poison", "holy", "shadow", "ghost", "undead"];
+
+/*** create a debounced function ***/
+export const debounce = <F extends (...args: Parameters<F>) => void>(callback: F, time: number) => {
+    let timeout: ReturnType<typeof setTimeout> | undefined;
+
+    const debounced = (...args: Parameters<F>) => {
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+        timeout = setTimeout(() => callback(...args), time);
+    };
+
+    return debounced;
+}

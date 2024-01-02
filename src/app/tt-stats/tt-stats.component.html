@@ -18,7 +18,7 @@
         <p>
             <mat-form-field class="tt-stats-statField">
                 <mat-label>Base Level</mat-label>
-                <mat-select [(value)]="baseLevel" (selectionChange)="onLevelChange($event)">
+                <mat-select [(value)]="baseLevel" (selectionChange)="updateLevel()">
                     <ng-container *ngFor="let level of maxStats">
                         <mat-option [value]="level" *ngIf="level <= baseLvlMax">
                             {{ level }}
@@ -28,7 +28,7 @@
             </mat-form-field>
             <mat-form-field class="tt-stats-statField">
                 <mat-label>Job Level</mat-label>
-                <mat-select [(value)]="jobLevel" (selectionChange)="onLevelChange($event)">
+                <mat-select [(value)]="jobLevel" (selectionChange)="updateLevel()">
                     <ng-container *ngFor="let level of maxStats">
                         <mat-option [value]="level" *ngIf="level <= jobLvlMax">
                             {{ level }}
@@ -41,7 +41,7 @@
         <p>
             <mat-form-field class="tt-stats-statField">
                 <mat-label>STR</mat-label>
-                <mat-select [(value)]="str" (selectionChange)="onStatChange($event)">
+                <mat-select [(value)]="str" (selectionChange)="updateStats()">
                     <mat-select-trigger>
                         {{str}} + {{strBonus}}
                     </mat-select-trigger>
@@ -52,7 +52,7 @@
             </mat-form-field>
             <mat-form-field class="tt-stats-statField">
                 <mat-label>AGI</mat-label>
-                <mat-select [(value)]="agi" (selectionChange)="onStatChange($event)">
+                <mat-select [(value)]="agi" (selectionChange)="updateStats()">
                     <mat-select-trigger>
                         {{agi}} + {{agiBonus}}
                     </mat-select-trigger>
@@ -63,7 +63,7 @@
             </mat-form-field>
             <mat-form-field class="tt-stats-statField">
                 <mat-label>VIT</mat-label>
-                <mat-select [(value)]="vit" (selectionChange)="onStatChange($event)">
+                <mat-select [(value)]="vit" (selectionChange)="updateStats()">
                     <mat-select-trigger>
                         {{vit}} + {{vitBonus}}
                     </mat-select-trigger>
@@ -74,7 +74,7 @@
             </mat-form-field>
             <mat-form-field class="tt-stats-statField">
                 <mat-label>INT</mat-label>
-                <mat-select [(value)]="int" (selectionChange)="onStatChange($event)">
+                <mat-select [(value)]="int" (selectionChange)="updateStats()">
                     <mat-select-trigger>
                         {{int}} + {{intBonus}}
                     </mat-select-trigger>
@@ -85,7 +85,7 @@
             </mat-form-field>
             <mat-form-field class="tt-stats-statField">
                 <mat-label>DEX</mat-label>
-                <mat-select [(value)]="dex" (selectionChange)="onStatChange($event)">
+                <mat-select [(value)]="dex" (selectionChange)="updateStats()">
                     <mat-select-trigger>
                         {{dex}} + {{dexBonus}}
                     </mat-select-trigger>
@@ -96,7 +96,7 @@
             </mat-form-field>
             <mat-form-field class="tt-stats-statField">
                 <mat-label>LUK</mat-label>
-                <mat-select [(value)]="luk" (selectionChange)="onStatChange($event)">
+                <mat-select [(value)]="luk" (selectionChange)="updateStats()">
                     <mat-select-trigger>
                         {{luk}} + {{lukBonus}}
                     </mat-select-trigger>
