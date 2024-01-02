@@ -97,7 +97,8 @@ export class TTBattleSession {
 
     this._target = target;
     this._targetClass = target.mode.isBoss ? 'boss' : 'normal'; // TODO: is this right? when guardian?
-    this._si = await firstValueFrom(this.session.sessionInfo$);
+    let siMsg = await firstValueFrom(this.session.sessionInfo$);
+    this._si = siMsg.data;
 
     // FIXME: Factorize through session information as already required for atk display
     // Update right hand weapon information

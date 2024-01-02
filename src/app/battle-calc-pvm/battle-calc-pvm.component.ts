@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { TTCoreService } from '../core/tt-core.service';
 import { MatDialog } from '@angular/material/dialog';
 import { SelectBattleTargetComponent } from '../battle-calc/select-battle-target/select-battle-target.component';
-import { Ammo, Element, Mob, SessionChangeEvent } from '../core/models';
-import { TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
+import { Ammo, Element, Mob, SessionChangeEvent, Skill } from '../core/models';
+import { SkillList, TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
 import { BattleSessionResult, TTBattleSession } from '../core/tt-battle-session';
 import { Subscription, firstValueFrom } from 'rxjs';
 
@@ -27,8 +27,11 @@ export class BattleCalcPvmComponent implements OnInit, OnDestroy {
 
   public battleResult: BattleSessionResult;
 
-  public selectedSkill: string = 'Basic Attack';
+  public skillLst: SkillList = {};
+  public selectedSkill: Skill | undefined;
+  public selectedSkillName: string = 'Basic Attack';
   public selectedSkillLv: number = 0;
+
   public selectedAmmo: string | undefined;
   public selectedEndow: Element | 'none' = 'none';
 
@@ -36,6 +39,7 @@ export class BattleCalcPvmComponent implements OnInit, OnDestroy {
 
   private battleSessionSub!: Subscription;
   private sessionInfoSub!: Subscription;
+  private activeSkillsSub!: Subscription;
 
   constructor(private core: TTCoreService, private dialog: MatDialog, private session: TTSessionInfoV2Service) {
     this.battleSession = new TTBattleSession(core, session);
@@ -56,6 +60,7 @@ export class BattleCalcPvmComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.battleSessionSub) this.battleSessionSub.unsubscribe();
     if (this.sessionInfoSub) this.sessionInfoSub.unsubscribe();
+    if (this.activeSkillsSub) this.activeSkillsSub.unsubscribe();
   }
 
   /* public */
@@ -70,9 +75,18 @@ export class BattleCalcPvmComponent implements OnInit, OnDestroy {
       .pipe(
         this.session.eventFilterExcept(SessionChangeEvent.VANILLA_MODE)
       )
-      .subscribe((info) => {
+      .subscribe(async (infoMsg) => {
         /* something got changed, update the battle calc */
         // because it gets pushed with a initial value, no need to do the calcs two times
+
+        if (infoMsg.event === SessionChangeEvent.INIT || infoMsg.event === SessionChangeEvent.CLASS) {
+          /* update the skill list */
+          this.skillLst = await firstValueFrom(this.session.activeSkills$);
+          this.selectedSkillName = Object.keys(this.skillLst)[0];
+          this.selectedSkill = this.skillLst[this.selectedSkillName];
+          this.selectedSkillLv = 0;
+        }
+        /* update data */
         this.updateTargetData();
         this.updateBattleSimulation();
       });
@@ -93,6 +107,12 @@ export class BattleCalcPvmComponent implements OnInit, OnDestroy {
         this.updateBattleSimulation();
       }
     })
+  }
+
+  changeSkill(name: string) {
+    this.selectedSkill = this.skillLst[name];
+    // reset selected Level
+    this.selectedSkillLv = 0;
   }
 
   /* private */
@@ -119,13 +139,12 @@ export class BattleCalcPvmComponent implements OnInit, OnDestroy {
   }
 
   private async updateBattleSimulation() {
-    if (this.targetName) {
+    if (this.targetName && this.selectedSkill) {
       // TODO: make this changes checks when selection changes
-      let si = await firstValueFrom(this.session.sessionInfo$);
-      let skill = this.core.skillDbV2[this.selectedSkill];
+      let siMsg = await firstValueFrom(this.session.sessionInfo$);
       let ammo: Ammo | undefined = undefined;
-      if (this.selectedAmmo && si.ammoType) {
-        ammo = this.core.ammoDbV2[si.ammoType][this.selectedAmmo];
+      if (this.selectedAmmo && siMsg.data.ammoType) {
+        ammo = this.core.ammoDbV2[siMsg.data.ammoType][this.selectedAmmo];
       }
       let endow: Element | undefined = undefined;
       if (this.selectedEndow !== 'none') {
@@ -133,8 +152,8 @@ export class BattleCalcPvmComponent implements OnInit, OnDestroy {
       }
 
       // init the sesscion class
-      await this.battleSession.init(this.targetInfo!, skill, this.selectedSkillLv, ammo, endow);
-      // start the simulation
+      await this.battleSession.init(this.targetInfo!, this.selectedSkill, this.selectedSkillLv, ammo, endow);
+      // TODO: start the simulation
       this.battleSession.simulate();
     }
   }

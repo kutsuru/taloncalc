@@ -22,7 +22,7 @@ import { TTPopupModule } from './tt-popup/tt-popup.module';
 import { TtMaskGeneratorComponent } from './tt-mask-generator/tt-mask-generator.component';
 import { TtFoodComponent } from './tt-food/tt-food.component';
 import { TtValueInfo } from './tt-food/tt-value-info.pipe';
-import { TtLvArrayPipe, TtRangePipe } from './tt-buff__old/tt-lv-array.pipe';
+import { TtLvArrayPipe, TtRangePipe } from './core/tt-lv-array.pipe';
 import { TtSettingsComponent } from './tt-settings/tt-settings.component';
 import { TtStatsComponent } from './tt-stats/tt-stats.component';
 import { TtStatsInfoComponent } from './tt-stats-info/tt-stats-info.component';
@@ -79,7 +79,7 @@ import { TtPassiveComponentOld } from './tt-passive__old/tt-passive.component';
     ReactiveFormsModule,
     TTPopupModule,
   ],
-  providers: [FilteredKeyValuePipe],
+  providers: [FilteredKeyValuePipe, TtLvArrayPipe],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

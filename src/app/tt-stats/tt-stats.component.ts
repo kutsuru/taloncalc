@@ -6,6 +6,8 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 import { JobDbEntry, SessionChangeEvent } from '../core/models';
 import { TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
 
+// TODO: DEBOUNCE trigger of update session info
+
 @Component({
   selector: 'tt-stats',
   templateUrl: './tt-stats.component.html',
@@ -51,25 +53,25 @@ export class TtStatsComponent implements OnInit {
       )
       .subscribe((info) => {
         /* levles */
-        this.jobLevel = info.jobLevel;
-        this.baseLevel = info.baseLevel;
-        this.baseLvlMax = info.baseLevelMax;
-        this.jobLvlMax = info.jobLevelMax;
+        this.jobLevel = info.data.jobLevel;
+        this.baseLevel = info.data.baseLevel;
+        this.baseLvlMax = info.data.baseLevelMax;
+        this.jobLvlMax = info.data.jobLevelMax;
         if (this.jobLevel > this.jobLvlMax) this.jobLevel = this.jobLvlMax;
         /* stats */
-        this.str = info.baseStats.str;
-        this.agi = info.baseStats.agi;
-        this.int = info.baseStats.int;
-        this.vit = info.baseStats.vit;
-        this.dex = info.baseStats.dex;
-        this.luk = info.baseStats.luk;
+        this.str = info.data.baseStats.str;
+        this.agi = info.data.baseStats.agi;
+        this.int = info.data.baseStats.int;
+        this.vit = info.data.baseStats.vit;
+        this.dex = info.data.baseStats.dex;
+        this.luk = info.data.baseStats.luk;
         /* bonus stats */
-        this.strBonus = info.activeBonus.str;
-        this.agiBonus = info.activeBonus.agi;
-        this.intBonus = info.activeBonus.int;
-        this.vitBonus = info.activeBonus.vit;
-        this.dexBonus = info.activeBonus.dex;
-        this.lukBonus = info.activeBonus.luk;
+        this.strBonus = info.data.activeBonus.str;
+        this.agiBonus = info.data.activeBonus.agi;
+        this.intBonus = info.data.activeBonus.int;
+        this.vitBonus = info.data.activeBonus.vit;
+        this.dexBonus = info.data.activeBonus.dex;
+        this.lukBonus = info.data.activeBonus.luk;
 
         /* trigger render */
         this.ref.markForCheck();

@@ -740,6 +740,7 @@ export class TTSessionInfoService {
   }
 
   public updateSessionInfo(): void {
+    console.log(this._sessionInfo["activeBuff"]);
     this.resetBonus();
     this.computeClassJobBonus();
     this.updateBonus();

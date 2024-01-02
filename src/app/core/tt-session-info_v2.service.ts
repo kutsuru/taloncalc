@@ -1,12 +1,16 @@
 import { Injectable } from "@angular/core";
 import { ActiveFood, Armor, BaseStatsNames, BattleCalcInfo, Card, Food, FoodDB_V2, FoodStatsNames, FoodStatsObj, Item, ItemLocations, JobDB_V2, JobDbEntry, ObjWithKeyString, MobRace, SessionCard, SessionChangeEvent, SessionEquip, SessionEquipBase, SessionInfoV2, Skill, VanillaMode, Weapon, WeaponType, WeaponTypeLeft, Element } from "./models";
 import { TTCoreService } from "./tt-core.service";
-import { BehaviorSubject, Observable, debounceTime, distinctUntilChanged, filter } from "rxjs";
+import { BehaviorSubject, Observable, Subject, debounceTime, distinctUntilChanged, filter } from "rxjs";
 import { SESSION_INFO_DEFAULT } from "./session-info-default";
 
 export type SkillList = {
     [key: string]: Skill
 };
+export type SessionInfoMsg = {
+    event: SessionChangeEvent,
+    data: SessionInfoV2
+}
 
 @Injectable({
     providedIn: 'root',
@@ -40,14 +44,17 @@ export class TTSessionInfoV2Service {
     private _buffSkills: SkillList;
     private _activeSkills: SkillList;
     private _passiveSkills: SkillList;
-    public buffSkills$: BehaviorSubject<SkillList>;
-    public activeSkills$: BehaviorSubject<SkillList>;
-    public passiveSkills$: BehaviorSubject<SkillList>;
+    private _buffSkills$: BehaviorSubject<SkillList>;
+    private _activeSkills$: BehaviorSubject<SkillList>;
+    private _passiveSkills$: BehaviorSubject<SkillList>;
+    public buffSkills$: Observable<SkillList>;
+    public activeSkills$: Observable<SkillList>;
+    public passiveSkills$: Observable<SkillList>;
 
     /* session info for current build */
     private _sessionInfoData: SessionInfoV2 = SESSION_INFO_DEFAULT;
-    private _sessionInfo: BehaviorSubject<SessionInfoV2>;
-    public sessionInfo$: Observable<SessionInfoV2>;
+    private _sessionInfo: BehaviorSubject<SessionInfoMsg>;
+    public sessionInfo$: Observable<SessionInfoMsg>;
 
     /* battle calcs */
     private _battleCalcID: number;
@@ -82,14 +89,20 @@ export class TTSessionInfoV2Service {
         this._buffSkills = {};
         this._activeSkills = {};
         this._passiveSkills = {};
-        this.buffSkills$ = new BehaviorSubject({});
-        this.activeSkills$ = new BehaviorSubject({});
-        this.passiveSkills$ = new BehaviorSubject({});
+        this._buffSkills$ = new BehaviorSubject({});
+        this._activeSkills$ = new BehaviorSubject({});
+        this._passiveSkills$ = new BehaviorSubject({});
 
-        this._sessionInfo = new BehaviorSubject<SessionInfoV2>(this._sessionInfoData);
-        /* create a debounce obs:
-        only publish data, if 100ms after the intial publish no new data appeared */
-        this.sessionInfo$ = this._sessionInfo.asObservable().pipe(debounceTime(100));
+        this._sessionInfo = new BehaviorSubject<SessionInfoMsg>({
+            event: SessionChangeEvent.INIT,
+            data: this._sessionInfoData
+        });
+
+        /* create observabel */
+        this.sessionInfo$ = this._sessionInfo.asObservable();
+        this.buffSkills$ = this._buffSkills$.asObservable();
+        this.activeSkills$ = this._activeSkills$.asObservable();
+        this.passiveSkills$ = this._passiveSkills$.asObservable();
 
         this._battleCalcID = 1;
         this._battleCalcPVMData = [];
@@ -99,6 +112,12 @@ export class TTSessionInfoV2Service {
         /* init chaches */
         this._rightHandLast = '_';
         this._leftHandLast = '_';
+
+        /* subscripe to trigger event which debounce the calcuation / publish until a specific time */
+        // this._triggerSessionInfoCalc.asObservable().pipe(debounceTime(1000)).subscribe((_) => {
+        //     /* now trigger the calcuation */
+        //     this.calcSessionInfo();
+        // });
 
         /* wait until core is loaded */
         this.core.loaded$.pipe(distinctUntilChanged()).subscribe((_) => {
@@ -125,8 +144,8 @@ export class TTSessionInfoV2Service {
 
     /*** public methods ***/
     eventFilter(...events: SessionChangeEvent[]) {
-        return filter<SessionInfoV2>((val) => {
-            if (events.includes(val.changeEvent)) {
+        return filter<SessionInfoMsg>((val) => {
+            if (events.includes(val.event)) {
                 return true;
             }
             else {
@@ -135,14 +154,14 @@ export class TTSessionInfoV2Service {
         })
     }
     eventFilterExcept(...events: SessionChangeEvent[]) {
-        return filter<SessionInfoV2>((val) => {
-            if (events.includes(val.changeEvent)) {
+        return filter<SessionInfoMsg>((val) => {
+            if (events.includes(val.event)) {
                 return false;
             }
             else {
                 return true;
             }
-        })
+        });
     }
     addBattleCalcPVM(target: string) {
         this._battleCalcPVMData.push({
@@ -259,10 +278,17 @@ export class TTSessionInfoV2Service {
         }
         this.updateSessionInfo(SessionChangeEvent.CARD);
     }
+    changeActiveBuff(skillName: string, value: boolean | number) {
+        this._sessionInfoData.activeBuff[skillName] = value;
+        this.updateSessionInfo(SessionChangeEvent.ACTIVE_BUFF);
+    }
+    changePassiveBuff(skillName: string, value: number) {
+        this._sessionInfoData.passiveSkill[skillName] = value;
+        this.updateSessionInfo(SessionChangeEvent.PASSIVE_SKILL);
+    }
 
     /*** private methods ***/
     private updateSessionInfo(event: SessionChangeEvent) {
-        this._sessionInfoData.changeEvent = event;
         this.resetBonus();
         this.updateClassSpecificData();
         this.updateHandSlots();
@@ -287,10 +313,13 @@ export class TTSessionInfoV2Service {
         this.computeCriticalRate();
 
         /* publish data */
-        this._sessionInfo.next(this._sessionInfoData);
-        this.buffSkills$.next(this._buffSkills);
-        this.activeSkills$.next(this._activeSkills);
-        this.passiveSkills$.next(this._passiveSkills);
+        this._buffSkills$.next(this._buffSkills);
+        this._activeSkills$.next(this._activeSkills);
+        this._passiveSkills$.next(this._passiveSkills);
+        this._sessionInfo.next({
+            event: event,
+            data: this._sessionInfoData
+        });
     }
     private updateClassSpecificData() {
         /* reset max levels */

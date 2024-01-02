@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TtLvArrayPipe implements PipeTransform {
   transform(value: any, maxLv: number): any {
-    return Array.from({ length: maxLv }, (_, i) => i + 1);
+    return Array.from({ length: maxLv + 1 }, (_, i) => i);
   }
 }
 

@@ -11,6 +11,10 @@ export class TtPassiveComponent {
   passiveSkills$: Observable<SkillList>;
 
   constructor(private sessionInfo: TTSessionInfoV2Service){
-    this.passiveSkills$ = sessionInfo.passiveSkills$.asObservable();
+    this.passiveSkills$ = sessionInfo.passiveSkills$;
+  }
+
+  changePassiveValue(skillName: string, value: number){
+    this.sessionInfo.changePassiveBuff(skillName, value);
   }
 }

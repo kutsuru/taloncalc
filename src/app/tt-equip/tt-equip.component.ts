@@ -95,23 +95,23 @@ export class TtEquipComponent implements OnInit {
         this.jobClass = this.sessionInfo.jobClass;
 
         /* set refines */
-        this.refines = { ...info.refine };
+        this.refines = { ...info.data.refine };
         /* set gears */
-        this.gears = { ...info.equip }
+        this.gears = { ...info.data.equip }
         /* set cards */
         this.cards = {
-          armor: info.card.armor,
-          garment: info.card.garment,
-          lhAccessory: info.card.lhAccessory,
-          middleHg: info.card.middleHg,
-          rhAccessory: info.card.rhAccessory,
-          shoes: info.card.shoes,
-          upperHg: info.card.upperHg,
-          leftHand: Object.assign([], info.card.leftHand),
-          rightHand: Object.assign([], info.card.rightHand)
+          armor: info.data.card.armor,
+          garment: info.data.card.garment,
+          lhAccessory: info.data.card.lhAccessory,
+          middleHg: info.data.card.middleHg,
+          rhAccessory: info.data.card.rhAccessory,
+          shoes: info.data.card.shoes,
+          upperHg: info.data.card.upperHg,
+          leftHand: Object.assign([], info.data.card.leftHand),
+          rightHand: Object.assign([], info.data.card.rightHand)
         }
         /* other stuff */
-        this.vanillaMode.patchValue(info.vanillaMode);
+        this.vanillaMode.patchValue(info.data.vanillaMode);
         /* update gears, but only when job class has changed*/
         if (this.jobClass) {
           if (Number(this.jobClass.mask) != this.equipMask) {
@@ -185,7 +185,6 @@ export class TtEquipComponent implements OnInit {
   private updateWeaponData(publish: boolean = false) {
     this.weapons = this.filterGear(this.core.weaponDbV2[this.gears.rightHandType]);
 
-    // TODO: Update to first value in list
     this.gears.rightHand = this.weapons[0];
     this.sessionInfo.changeEquip("rightHand", this.gears.rightHand);
     // if (publish) this.ref.markForCheck();
@@ -200,7 +199,6 @@ export class TtEquipComponent implements OnInit {
       this.leftHands = this.filterGear(this.core.weaponDbV2[this.gears.leftHandType]);
       this.leftHandCardLocation = 'weapon';
     }
-    // TODO: Update to first value in list
     // if (publish) this.ref.markForCheck();
   }
 

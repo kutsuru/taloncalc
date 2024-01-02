@@ -5,7 +5,23 @@
     </mat-card-header>
     <mat-card-content tt-collapse-container #buffs>
         @for (skillEntry of (buffSkills$ | async) | keyvalue; track $index) {
-        <p>{{skillEntry.key}}</p>
+            <div>
+            @switch (skillEntry.value.type) {
+                @case ("list") {
+                    <mat-form-field>
+                        <mat-label>{{skillEntry.key}}</mat-label>
+                        <mat-select (selectionChange)="changeBuffValue(skillEntry.key, $event.value)">
+                            @for(skillLvl of skillEntry | lvarray: skillEntry.value.maxLevel; track $index){
+                                <mat-option [value]="skillLvl">{{skillLvl}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                }
+                @case ("check") {
+                    <mat-checkbox (change)="changeBuffValue(skillEntry.key, $event.checked)">{{skillEntry.key}}</mat-checkbox>
+                }
+            }
+            </div>
         }
     </mat-card-content>
 </mat-card>

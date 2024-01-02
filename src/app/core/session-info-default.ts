@@ -2,7 +2,6 @@ import { SessionChangeEvent, SessionInfoV2 } from "./models";
 import { TTCoreService } from "./tt-core.service";
 
 export const SESSION_INFO_DEFAULT: SessionInfoV2 = {
-    changeEvent: SessionChangeEvent.INIT,
     baseLevel: 1,
     jobLevel: 1,
     baseLevelMax: TTCoreService.MAX_LVL,

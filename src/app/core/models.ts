@@ -536,11 +536,12 @@ export enum SessionChangeEvent {
   REFINE,
   EQUIP,
   VANILLA_MODE,
-  CARD
+  CARD,
+  ACTIVE_BUFF,
+  PASSIVE_SKILL
 }
 
 export type SessionInfoV2 = {
-  changeEvent: SessionChangeEvent;
   /* levels */
   baseLevel: number;
   jobLevel: number;
@@ -576,6 +577,7 @@ export type SessionInfoV2 = {
     Deluge: number;
     Volcano: number;
     'Violent Gale': number;
+    [key: string]: number | boolean
   },
   /* gear stuff */
   equip: SessionEquip;

@@ -5,7 +5,16 @@
     </mat-card-header>
     <mat-card-content tt-collapse-container #passiveSkills>
         @for (skillEntry of (passiveSkills$ | async) | keyvalue; track $index) {
-            <p>{{skillEntry.key}}</p>
+        <div>
+            <mat-form-field>
+                <mat-label>{{skillEntry.key}}<i>(Missing type)</i></mat-label>
+                <mat-select (selectionChange)="changePassiveValue(skillEntry.key, $event.value)">
+                    @for (skillLvl of skillEntry | lvarray: skillEntry.value.maxLevel; track $index) {
+                    <mat-option [value]="skillLvl">{{skillLvl}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
         }
     </mat-card-content>
 </mat-card>

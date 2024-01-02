@@ -4,6 +4,11 @@ import { SkillList, TTSessionInfoV2Service } from '../core/tt-session-info_v2.se
 import { SessionChangeEvent } from '../core/models';
 import { Observable } from 'rxjs';
 
+type BuffSkill = {
+  type: 'list' | 'check',
+  maxLevel: number
+}
+
 @Component({
   selector: 'tt-buff',
   templateUrl: './tt-buff.component.html',
@@ -13,9 +18,8 @@ export class TtBuffComponent implements OnInit {
 
   buffSkills$: Observable<SkillList>;
 
-
   constructor(private sessionInfo: TTSessionInfoV2Service) { 
-    this.buffSkills$ = sessionInfo.buffSkills$.asObservable();
+    this.buffSkills$ = sessionInfo.buffSkills$;
   }
 
   ngOnInit(): void {
@@ -26,7 +30,12 @@ export class TtBuffComponent implements OnInit {
           SessionChangeEvent.INIT)
       )
       .subscribe((info) => {
-        
       });
+
+      // TODO: Watch for changes in Buff skills for buff values
+  }
+
+  changeBuffValue(skillName: string, value: boolean | number){
+    this.sessionInfo.changeActiveBuff(skillName, value);
   }
 }
