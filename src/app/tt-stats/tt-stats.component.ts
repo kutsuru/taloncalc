@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { TTCoreService } from '../core/tt-core.service';
 import { MatSelectChange } from '@angular/material/select';
-import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs';
 import { MatCheckboxChange } from '@angular/material/checkbox';
-import { JobDbEntry, SessionChangeEvent } from '../core/models';
+import { SessionChangeEvent } from '../core/models';
 import { TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
 import { debounce } from '../core/utils';
 
@@ -19,7 +19,6 @@ export class TtStatsComponent implements OnInit {
   public jobClasses: string[] = [];
   public selectedClassName: string = "";
   public babyClass: boolean = false;
-  private _selectedClass: JobDbEntry | undefined;
 
   /* levels */
   public maxStats: number[] = Array.from({ length: TTCoreService.MAX_LVL }, (_, i) => i + 1);
@@ -76,6 +75,8 @@ export class TtStatsComponent implements OnInit {
         this.sessionInfo.eventFilterExcept(SessionChangeEvent.VANILLA_MODE)
       )
       .subscribe((info) => {
+        /* job class */
+        this.selectedClassName = this.sessionInfo.jobClassName;
         /* levles */
         this.jobLevel = info.data.jobLevel;
         this.baseLevel = info.data.baseLevel;
@@ -104,10 +105,10 @@ export class TtStatsComponent implements OnInit {
     this.core.loaded$.pipe(distinctUntilChanged()).subscribe((_) => {
       if (_) {
         /* create class name list */
-        this._jobClassesAll = Object.keys(this.core.jobDb);
+        this._jobClassesAll = Object.keys(this.core.jobDbV2);
+        this._jobClassesAll = this._jobClassesAll.sort();
         this.jobClasses = this._jobClassesAll;
-        this.selectedClassName = this.jobClasses[0];
-        this._selectedClass = this.core.jobDbV2[this.selectedClassName];
+        this.selectedClassName = "Novice"; // Init always with Novice
         /* trigger render */
         this.ref.markForCheck();
       }
@@ -117,7 +118,6 @@ export class TtStatsComponent implements OnInit {
   /* event observer */
   onClassChange(ev: MatSelectChange) {
     this.selectedClassName = ev.value;
-    this._selectedClass = this.core.jobDbV2[ev.value];
     /* trigger class change */
     this.updateClass(ev.value);
   }
@@ -131,7 +131,7 @@ export class TtStatsComponent implements OnInit {
           res.push(job);
         }
       }
-      this.jobClasses = res;
+      this.jobClasses = res.sort();
       /* TODO: check if selected class is still in the list */
     }
     else {
