@@ -6,7 +6,6 @@
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-@include mat.all-component-typographies();
 @include mat.core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
@@ -18,40 +17,35 @@ $ang-mat-basic-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 // The warn palette is optional (defaults to red).
 $ang-mat-basic-warn: mat.define-palette(mat.$red-palette);
 
+// Typo
+$my-typography: mat.define-typography-config();
+@include mat.typography-hierarchy($my-typography);
+
 // Define light theme (default theme)
-$ang-mat-basic-theme: mat.define-light-theme(
-  (
-    color: (
-      primary: $ang-mat-basic-primary,
-      accent: $ang-mat-basic-accent,
-      warn: $ang-mat-basic-warn,
-    ),
-  )
-);
+$ang-mat-basic-theme: mat.define-light-theme((color: (primary: $ang-mat-basic-primary,
+        accent: $ang-mat-basic-accent,
+        warn: $ang-mat-basic-warn,
+      ),
+      typography: $my-typography,
+    ));
 
 // define dark theme
 $dark-prim: mat.define-palette(mat.$pink-palette);
 $dark-acc: mat.define-palette(mat.$blue-grey-palette);
-$dark-theme: mat.define-dark-theme(
-  (
-    color: (
-      primary: $dark-prim,
-      accent: $dark-acc,
-    ),
-  )
-);
+$dark-theme: mat.define-dark-theme((color: (primary: $dark-prim,
+        accent: $dark-acc,
+      ),
+      typography: $my-typography,
+    ));
 
 // define fun theme
 $fun-prim: mat.define-palette(mat.$deep-purple-palette);
-$fun-acc:  mat.define-palette(mat.$amber-palette, A200, A100, A400);
-$fun-theme: mat.define-dark-theme(
-  (
-    color: (
-      primary: $fun-prim,
-      accent: $fun-acc,
-    ),
-  )
-);
+$fun-acc: mat.define-palette(mat.$amber-palette, A200, A100, A400);
+$fun-theme: mat.define-dark-theme((color: (primary: $fun-prim,
+        accent: $fun-acc,
+      ),
+      typography: $my-typography,
+    ));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -63,8 +57,9 @@ $fun-theme: mat.define-dark-theme(
 .dark-theme {
   @include mat.all-component-colors($dark-theme);
 }
+
 // create class for fun theme
-.fun-theme{
+.fun-theme {
   @include mat.all-component-colors($fun-theme);
 }
 
@@ -74,16 +69,18 @@ html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 /* mat card */
-.space-between{
+.space-between {
   display: flex;
   justify-content: space-between;
 }
-.filler{
+
+.filler {
   flex: 1 0 auto;
 }
