@@ -91,12 +91,12 @@ export class TtStatsComponent implements OnInit {
         this.dex = info.data.baseStats.dex;
         this.luk = info.data.baseStats.luk;
         /* bonus stats */
-        this.strBonus = info.data.activeBonus.str;
-        this.agiBonus = info.data.activeBonus.agi;
-        this.intBonus = info.data.activeBonus.int;
-        this.vitBonus = info.data.activeBonus.vit;
-        this.dexBonus = info.data.activeBonus.dex;
-        this.lukBonus = info.data.activeBonus.luk;
+        this.strBonus = info.data.activeBonus.str + info.data.activeBonus.scStrFood;
+        this.agiBonus = info.data.activeBonus.agi + info.data.activeBonus.scAgiFood;
+        this.intBonus = info.data.activeBonus.int + info.data.activeBonus.scIntFood;
+        this.vitBonus = info.data.activeBonus.vit + info.data.activeBonus.scVitFood;
+        this.dexBonus = info.data.activeBonus.dex + info.data.activeBonus.scDexFood;
+        this.lukBonus = info.data.activeBonus.luk + info.data.activeBonus.scLukFood;
 
         /* trigger render */
         this.ref.markForCheck();

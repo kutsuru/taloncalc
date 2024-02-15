@@ -17,7 +17,8 @@
     "importHelpers": true,
     "target": "es2020",
     "module": "es2020",
-    "lib": ["es2020", "dom"]
+    "lib": ["es2020", "dom"],
+    "noImplicitAny": false  // TODO: might be removable, but helps in database access
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

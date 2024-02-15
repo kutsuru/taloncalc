@@ -19,6 +19,7 @@ export class BattleCalcPvmComponent implements OnInit, OnDestroy {
   @Output() onClose: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() onTargetChange: EventEmitter<string> = new EventEmitter<string>();
 
+  private _initDone: boolean = false;
   public targetId: number = 1002; // Default is Poring
   public targetInfo: Mob | undefined;
 
@@ -78,13 +79,14 @@ export class BattleCalcPvmComponent implements OnInit, OnDestroy {
       .subscribe(async (infoMsg) => {
         /* something got changed, update the battle calc */
         // because it gets pushed with a initial value, no need to do the calcs two times
-
-        if (infoMsg.event === SessionChangeEvent.INIT || infoMsg.event === SessionChangeEvent.CLASS) {
+        if (infoMsg.event === SessionChangeEvent.INIT || infoMsg.event === SessionChangeEvent.CLASS || !this._initDone) {
           /* update the skill list */
           this.skillLst = await firstValueFrom(this.session.activeSkills$);
           this.selectedSkillName = Object.keys(this.skillLst)[0];
           this.selectedSkill = this.skillLst[this.selectedSkillName];
           this.selectedSkillLv = 0;
+
+          this._initDone = true;
         }
         /* update data */
         this.updateTargetData();
@@ -113,6 +115,7 @@ export class BattleCalcPvmComponent implements OnInit, OnDestroy {
     this.selectedSkill = this.skillLst[name];
     // reset selected Level
     this.selectedSkillLv = 0;
+    this.updateBattleSimulation();
   }
 
   /* private */
@@ -138,7 +141,7 @@ export class BattleCalcPvmComponent implements OnInit, OnDestroy {
     }
   }
 
-  private async updateBattleSimulation() {
+  public async updateBattleSimulation() {
     if (this.targetName && this.selectedSkill) {
       // TODO: make this changes checks when selection changes
       let siMsg = await firstValueFrom(this.session.sessionInfo$);
@@ -154,7 +157,7 @@ export class BattleCalcPvmComponent implements OnInit, OnDestroy {
       // init the sesscion class
       await this.battleSession.init(this.targetInfo!, this.selectedSkill, this.selectedSkillLv, ammo, endow);
       // TODO: start the simulation
-      this.battleSession.simulate();
+      //this.battleSession.simulate();
     }
   }
 }

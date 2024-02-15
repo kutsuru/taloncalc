@@ -1,0 +1,61 @@
+<mat-card appearance="outlined">
+  <mat-card-title-group [collapseTriggerFor]="foodSelection">
+    <mat-card-title>Food Selection</mat-card-title>
+    <tt-collapse-indicator [container]="foodSelection"> </tt-collapse-indicator>
+  </mat-card-title-group>
+  <mat-card-content tt-collapse-container #foodSelection>
+    <mat-tab-group>
+      <span></span>
+      <mat-tab label="Stats">
+        <mat-form-field
+          *ngFor="let stat of ttCore.foodDb['Stats'] | keyvalue: unsorted"
+          class="food-select"
+        >
+          <mat-label>{{ stat.key }}</mat-label>
+          <mat-select
+            [(value)]="sessionInfo['activeFood']['Stats'][stat.key]"
+            (selectionChange)="this.ttSessionInfoService.updateSessionInfo()"
+          >
+            <mat-option
+              *ngFor="let food of stat.value | keyvalue: unsorted"
+              [value]="food.key"
+            >
+              {{ food.key }} :
+              <img
+                class="food-icon"
+                with="25"
+                height="25"
+                src="https://www.divine-pride.net/img/items/collection/kROS/{{
+                  food.value | valueinfo: 'gid'
+                }}"
+              />
+              {{ food.value | valueinfo: 'name' }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-tab>
+      <mat-tab *ngFor="let category of foodCategoryKeys" label="{{ category }}">
+        <div
+          fxLayout="column"
+          fxLayoutGap="32px"
+          *ngFor="let food of ttCore.foodDb[category] | keyvalue"
+        >
+          <mat-checkbox
+            class="food-check"
+            [(ngModel)]="sessionInfo['activeFood'][category][food.key]"
+            (change)="this.ttSessionInfoService.updateSessionInfo()"
+            ><img
+              class="food-icon"
+              with="25"
+              height="25"
+              src="https://www.divine-pride.net/img/items/collection/kROS/{{
+                food.value | valueinfo: 'gid'
+              }}"
+            />
+            {{ food.key }} [ {{ food.value | valueinfo: 'description' }} ]
+          </mat-checkbox>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

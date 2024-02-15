@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ActiveFood, Armor, BaseStatsNames, BattleCalcInfo, Card, Food, FoodDB_V2, FoodStatsNames, FoodStatsObj, Item, ItemLocations, JobDB_V2, JobDbEntry, ObjWithKeyString, MobRace, SessionCard, SessionChangeEvent, SessionEquip, SessionEquipBase, SessionInfoV2, Skill, VanillaMode, Weapon, WeaponType, WeaponTypeLeft, Element } from "./models";
+import { ActiveFood, Armor, BaseStatsNames, BattleCalcInfo, Card, Food, FoodDB_V2, FoodStatsNames, FoodStatsObj, Item, ItemLocations, JobDB_V2, JobDbEntry, ObjWithKeyString, MobRace, SessionCard, SessionChangeEvent, SessionEquip, SessionEquipBase, SessionInfoV2, Skill, VanillaMode, Weapon, WeaponType, WeaponTypeLeft, Element, FoodBase } from "./models";
 import { TTCoreService } from "./tt-core.service";
 import { BehaviorSubject, Observable, Subject, debounceTime, distinctUntilChanged, filter } from "rxjs";
 import { SESSION_INFO_DEFAULT } from "./session-info-default";
@@ -112,12 +112,6 @@ export class TTSessionInfoV2Service {
         /* init chaches */
         this._rightHandLast = '_';
         this._leftHandLast = '_';
-
-        /* subscripe to trigger event which debounce the calcuation / publish until a specific time */
-        // this._triggerSessionInfoCalc.asObservable().pipe(debounceTime(1000)).subscribe((_) => {
-        //     /* now trigger the calcuation */
-        //     this.calcSessionInfo();
-        // });
 
         /* wait until core is loaded */
         this.core.loaded$.pipe(distinctUntilChanged()).subscribe((_) => {
@@ -286,6 +280,10 @@ export class TTSessionInfoV2Service {
         this._sessionInfoData.passiveSkill[skillName] = value;
         this.updateSessionInfo(SessionChangeEvent.PASSIVE_SKILL);
     }
+    changeFood() {
+        // TODO: change direct session info changes of the component
+        this.updateSessionInfo(SessionChangeEvent.FOOD);
+    }
 
     /*** private methods ***/
     private updateSessionInfo(event: SessionChangeEvent) {
@@ -295,6 +293,7 @@ export class TTSessionInfoV2Service {
         this.updateEquipBonus();
         this.updateFoodBonus();
         this.updateStats();
+        this.updateSkillBonus();    // TODO: Is this correct here?
 
         /* HP / SP */
         this._maxHp = this.computeHpSp(this._vit, "HP");
@@ -501,7 +500,7 @@ export class TTSessionInfoV2Service {
             let catKey = category as keyof ActiveFood;
             for (let foodKey in this._sessionInfoData.activeFood[catKey]) {
                 let foodName: string;
-                let foodInfo: Food;
+                let foodInfo: FoodBase;
                 // TODO: how ti make this more universal?
                 if (catKey === "Stats") {
                     let foodNameKey = foodKey as keyof FoodStatsObj<string>;
@@ -515,10 +514,11 @@ export class TTSessionInfoV2Service {
                         foodName = foodKey;
                         let foodDbCat = <ObjWithKeyString<Food>>this.core.foodDbV2[catKey];
                         foodInfo = foodDbCat[foodName];
+
                     }
                     else {
                         /* food not active */
-                        break;
+                        continue;
                     }
                 }
                 this.evalBonus(foodInfo);
@@ -715,6 +715,20 @@ export class TTSessionInfoV2Service {
             this._leftHandLast = this._sessionInfoData.equip.leftHand;
         }
 
+    }
+    private updateSkillBonus() {
+        /* active buffs */
+        for (let buffName in this._sessionInfoData.activeBuff) {
+            let buffValue = this._sessionInfoData.activeBuff[buffName];
+            let skill = this.core.skillDbV2[buffName];
+            if(typeof buffValue === 'number'){
+                /* skill with level */
+            }
+            else{
+                /* true / false skill */
+            }
+        }
+        /* passive skills */
     }
 
     /*** utiles (private) ***/

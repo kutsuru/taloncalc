@@ -145,19 +145,24 @@ export type CardDB_V2 = {
 }
 /****************/
 /*** FOOD DB  ***/
-export type Food = {
+export type FoodBase = {
   gid: number,
   duration: number,
   dispelOnDeath: boolean,
-  name: string,
   bonus: string
+}
+export type StatFood = FoodBase & {
+  name: string
+}
+export type Food = FoodBase & {
+  description: string
 }
 export type FoodStatsNames = "STR" | "AGI" | "VIT" | "INT" | "DEX" | "LUK";
 export type FoodStatsObj<T> = {
   [key in FoodStatsNames]: T
 }
 export type FoodDB_V2 = {
-  Stats: FoodStatsObj<ObjWithKeyString<Food>>,
+  Stats: FoodStatsObj<ObjWithKeyString<StatFood>>,
   "New World": ObjWithKeyString<Food>
   BG: ObjWithKeyString<Food>,
   "Summer Cocktails": ObjWithKeyString<Food>,
@@ -538,7 +543,8 @@ export enum SessionChangeEvent {
   VANILLA_MODE,
   CARD,
   ACTIVE_BUFF,
-  PASSIVE_SKILL
+  PASSIVE_SKILL,
+  FOOD
 }
 
 export type SessionInfoV2 = {

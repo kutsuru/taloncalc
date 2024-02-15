@@ -20,8 +20,8 @@ import { BattleCalcComponent } from './battle-calc/battle-calc.component';
 import { SelectBattleTargetComponent } from './battle-calc/select-battle-target/select-battle-target.component';
 import { TTPopupModule } from './tt-popup/tt-popup.module';
 import { TtMaskGeneratorComponent } from './tt-mask-generator/tt-mask-generator.component';
-import { TtFoodComponent } from './tt-food/tt-food.component';
-import { TtValueInfo } from './tt-food/tt-value-info.pipe';
+import { TtFoodComponentOld } from './tt-food__old/tt-food.component';
+import { TtValueInfo } from './tt-food__old/tt-value-info.pipe';
 import { TtLvArrayPipe, TtRangePipe } from './core/tt-lv-array.pipe';
 import { TtSettingsComponent } from './tt-settings/tt-settings.component';
 import { TtStatsComponent } from './tt-stats/tt-stats.component';
@@ -35,6 +35,7 @@ import { TtCardSelectComponent } from './tt-card-slot/tt-card-select.component';
 import { BattleCalcPvmComponent } from './battle-calc-pvm/battle-calc-pvm.component';
 import { TtBuffComponentOld } from './tt-buff__old/tt-buff.component';
 import { TtPassiveComponentOld } from './tt-passive__old/tt-passive.component';
+import { TtFoodComponent } from './tt-food/tt-food.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,6 @@ import { TtPassiveComponentOld } from './tt-passive__old/tt-passive.component';
     BattleCalcComponent,
     SelectBattleTargetComponent,
     TtMaskGeneratorComponent,
-    TtFoodComponent,
     TtValueInfo,
     TtLvArrayPipe,
     TtRangePipe,
@@ -63,9 +63,11 @@ import { TtPassiveComponentOld } from './tt-passive__old/tt-passive.component';
     TtCardSlotComponent,
     TtCardSelectComponent,
     BattleCalcPvmComponent,
+    TtFoodComponent,
     // OLD
     TtBuffComponentOld,
     TtPassiveComponentOld,
+    TtFoodComponentOld,
   ],
   imports: [
     BrowserModule,
@@ -77,7 +79,7 @@ import { TtPassiveComponentOld } from './tt-passive__old/tt-passive.component';
     TtPageLoaderModule,
     FormsModule,
     ReactiveFormsModule,
-    TTPopupModule,
+    TTPopupModule
   ],
   providers: [FilteredKeyValuePipe, TtLvArrayPipe],
   bootstrap: [AppComponent],

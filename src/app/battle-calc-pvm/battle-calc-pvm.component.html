@@ -22,7 +22,7 @@
         <br>
         <mat-form-field>
             <mat-label>Skill Level</mat-label>
-            <mat-select [(value)]="selectedSkillLv">
+            <mat-select [(value)]="selectedSkillLv" (selectionChange)="updateBattleSimulation()">
                 @for (skillLvl of selectedSkill | lvarray: selectedSkill?.maxLevel; track $index) {
                     <mat-option [value]="skillLvl">{{skillLvl}}</mat-option>
                 }

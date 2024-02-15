@@ -465,7 +465,7 @@ export class AppComponent implements OnInit, OnDestroy {
     vanillaFlag: boolean = false,
     sort: boolean = true
   ): string[] => {
-    let keys = [];
+    let keys: any[] = [];
     if (input) {
       for (let key in input)
         if (!filter || filter(input[key], valueFilter, vanillaFlag))

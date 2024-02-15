@@ -40,7 +40,7 @@ export class TtStatsInfoComponent implements OnInit {
   ngOnInit(): void {
     this.sessionInfo.sessionInfo$.subscribe((info) => {
       /* session got changes, get new data from session service */
-      this.statsInfo = { 
+      this.statsInfo = {
         aspd: this.sessionInfo.aspd,
         atk: this.sessionInfo.atk,
         crit: this.sessionInfo.crit,
@@ -51,7 +51,7 @@ export class TtStatsInfoComponent implements OnInit {
         maxSp: this.sessionInfo.maxSp,
         minMatk: this.sessionInfo.minMatk,
         perfectDodge: this.sessionInfo.perfectDodge
-       };
+      };
       this.ref.markForCheck();
     })
   }

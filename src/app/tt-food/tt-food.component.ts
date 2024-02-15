@@ -1,50 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { DictDb } from '../core/models';
+import { TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
+import { filter } from 'rxjs';
 import { TTCoreService } from '../core/tt-core.service';
-import { TTSessionInfoService } from '../core/tt-session-info.service';
-export interface KeyValue {
-  key: string;
-  value: any;
-}
+import { ActiveFood, Food, FoodDB_V2, FoodStatsObj, ObjWithKeyString, StatFood } from '../core/models';
+import { SESSION_INFO_DEFAULT } from '../core/session-info-default';
+
 @Component({
   selector: 'tt-food',
   templateUrl: './tt-food.component.html',
-  styleUrls: ['./tt-food.component.css'],
+  styleUrl: './tt-food.component.scss'
 })
 export class TtFoodComponent implements OnInit {
-  protected foodCategoryKVs: { key: string; value: any }[];
-  protected foodCategoryKeys: string[] = [];
-  protected sessionInfo: DictDb;
+  protected statFoods!: FoodStatsObj<ObjWithKeyString<StatFood>>;
+  protected otherFoods: { [key: string]: ObjWithKeyString<Food> } = {};
+  // TODO: connection between session info data and this data should be removed
+  protected activeFoods: ActiveFood = { ...SESSION_INFO_DEFAULT.activeFood };
 
-  constructor(
-    protected ttCore: TTCoreService,
-    protected ttSessionInfoService: TTSessionInfoService
-  ) {
-    this.sessionInfo = this.ttSessionInfoService.sessionInfo;
-    this.foodCategoryKVs = [];
-  }
+  constructor(private sessionInfo: TTSessionInfoV2Service, private core: TTCoreService) { }
 
-  ngOnInit() {
-    this.ttCore.initializeCore().subscribe((_) => {
-      this.populateFoodComponent();
+  ngOnInit(): void {
+    this.core.loaded$.pipe(filter((_) => _)).subscribe((_) => {
+      /* only get called when core init. is true */
+      // get stat foods
+      this.statFoods = this.core.foodDbV2.Stats;
+      // get all the other foods
+      for (let foodCat in this.core.foodDbV2) {
+        if (foodCat !== 'Stats' && foodCat !== 'Aspd Potion') {
+          this.otherFoods[foodCat] = <ObjWithKeyString<Food>>this.core.foodDbV2[foodCat as keyof FoodDB_V2];
+        }
+      }
     });
   }
 
-  populateFoodComponent() {
-    this.foodCategoryKeys = [];
-    this.foodCategoryKVs = [];
-    for (let category in this.ttCore.foodDb) {
-      if ('Stats' != category && 'Aspd Potion' != category) {
-        this.foodCategoryKeys.push(category);
-        this.foodCategoryKVs.push({
-          key: category,
-          value: this.ttCore.foodDb[category],
-        });
-      }
-    }
-  }
-
-  unsorted(a: any, b: any): number {
-    return 0;
+  foodChanged() {
+    this.sessionInfo.changeFood();
   }
 }
