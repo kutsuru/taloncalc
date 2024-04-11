@@ -1,9 +1,8 @@
 <mat-card appearance="outlined">
-  <mat-card-title-group [collapseTriggerFor]="maskGenerator">
+  <mat-card-title-group>
     <mat-card-title>Mask Generator</mat-card-title>
-    <tt-collapse-indicator [container]="maskGenerator"> </tt-collapse-indicator>
   </mat-card-title-group>
-  <mat-card-content tt-collapse-container #maskGenerator
+  <mat-card-content #maskGenerator
     ><mat-form-field>
       <mat-label>Job Mask</mat-label>
       <input matInput [value]="maskDisplay" readonly />

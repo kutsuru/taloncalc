@@ -42,6 +42,11 @@ $toolbar-height: 64px;
   transform: translateY(-50%);
   margin-right: 16px;
 }
+.sidenav-content{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
 /* rest */
 .refine-select {

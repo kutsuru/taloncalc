@@ -5924,7 +5924,7 @@
     "spCost": [1],
     "element": 0,
     "hits": 1,
-    "ratio": "(function (skill_lv, misc) { return 1 + Math.floor(7 + misc - 1) / 10); });",
+    "ratio": "(function (skill_lv, misc) { return 1 + Math.floor(7 + (misc - 1) / 10); });",
     "motion_delay": 0,
     "forced_motion": 0,
     "castTime": "(function (global_cast_time, skill_lv, misc) { return  (4.5 - 0.5 * skill_lv) * global_cast_time; });",

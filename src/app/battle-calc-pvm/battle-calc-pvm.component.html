@@ -1,9 +1,12 @@
-<mat-card>
+<mat-card class="battle-calc-pvm-card">
     <mat-card-header>
         <img mat-card-avatar src="https://static.divine-pride.net/images/mobs/png/{{targetId}}.png">
         <mat-card-title class="target-title">{{targetName}}</mat-card-title>
         <button mat-icon-button (click)="changeTarget()"><mat-icon>edit</mat-icon></button>
         <span class="filler">&nbsp;</span>
+        @if (!autoRefresh) {
+        <button mat-icon-button color="accent" (click)="refresh()"><mat-icon>refresh</mat-icon></button>
+        }
         <button mat-icon-button (click)="close()"><mat-icon>close</mat-icon></button>
     </mat-card-header>
     <mat-card-content>
@@ -24,7 +27,7 @@
             <mat-label>Skill Level</mat-label>
             <mat-select [(value)]="selectedSkillLv" (selectionChange)="updateBattleSimulation()">
                 @for (skillLvl of selectedSkill | lvarray: selectedSkill?.maxLevel; track $index) {
-                    <mat-option [value]="skillLvl">{{skillLvl}}</mat-option>
+                <mat-option [value]="skillLvl">{{skillLvl}}</mat-option>
                 }
             </mat-select>
         </mat-form-field>
@@ -32,4 +35,8 @@
         Min-Damage: {{battleResult.minDamage}}<br>
         Max-Damage: {{battleResult.maxDamage}}
     </mat-card-content>
+    <mat-card-actions align="end">
+        <mat-slide-toggle [(ngModel)]="autoRefresh" (change)="changeAutoRefresh($event.checked)">Auto.
+            Refresh</mat-slide-toggle>
+    </mat-card-actions>
 </mat-card>

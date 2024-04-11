@@ -4,6 +4,7 @@ import { filter } from 'rxjs';
 import { TTCoreService } from '../core/tt-core.service';
 import { ActiveFood, Food, FoodDB_V2, FoodStatsObj, ObjWithKeyString, StatFood } from '../core/models';
 import { SESSION_INFO_DEFAULT } from '../core/session-info-default';
+import { KeyValue } from '@angular/common';
 
 @Component({
   selector: 'tt-food',
@@ -34,5 +35,9 @@ export class TtFoodComponent implements OnInit {
 
   foodChanged() {
     this.sessionInfo.changeFood();
+  }
+
+  originalOrder(a: any, b: any): number {
+    return 0;
   }
 }

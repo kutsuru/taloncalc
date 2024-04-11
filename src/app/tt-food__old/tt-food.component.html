@@ -1,9 +1,8 @@
 <mat-card appearance="outlined">
-  <mat-card-title-group [collapseTriggerFor]="foodSelection">
+  <mat-card-title-group>
     <mat-card-title>Food Selection</mat-card-title>
-    <tt-collapse-indicator [container]="foodSelection"> </tt-collapse-indicator>
   </mat-card-title-group>
-  <mat-card-content tt-collapse-container #foodSelection>
+  <mat-card-content #foodSelection>
     <mat-tab-group>
       <span></span>
       <mat-tab label="Stats">

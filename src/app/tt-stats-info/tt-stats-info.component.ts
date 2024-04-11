@@ -2,16 +2,16 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
 
 type StatsInfoData = {
-  maxHp: number;
-  maxSp: number;
-  hit: number;
-  flee: number;
-  perfectDodge: number;
-  crit: number;
-  aspd: number;
-  atk: number;
-  minMatk: number;
-  maxMatk: number;
+  "HP": number;
+  "SP": number;
+  "Hit": number;
+  "Flee": number;
+  "Perfect Dodge": number;
+  "Critical Rate": number;
+  "Attack Speed": number;
+  "Atk": number;
+  "Min-MAtk": number;
+  "Max-MAtk": number;
 }
 
 @Component({
@@ -23,16 +23,16 @@ type StatsInfoData = {
 export class TtStatsInfoComponent implements OnInit {
 
   public statsInfo: StatsInfoData = {
-    aspd: 0,
-    atk: 0,
-    crit: 0,
-    flee: 0,
-    hit: 0,
-    maxHp: 0,
-    maxMatk: 0,
-    maxSp: 0,
-    minMatk: 0,
-    perfectDodge: 0
+    "HP": 0,
+    "SP": 0,
+    "Hit": 0,
+    "Flee": 0,
+    "Perfect Dodge": 0,
+    "Critical Rate": 0,
+    "Attack Speed": 0,
+    "Atk": 0,
+    "Min-MAtk": 0,
+    "Max-MAtk": 0
   };
 
   constructor(private sessionInfo: TTSessionInfoV2Service, private ref: ChangeDetectorRef) { }
@@ -41,16 +41,16 @@ export class TtStatsInfoComponent implements OnInit {
     this.sessionInfo.sessionInfo$.subscribe((info) => {
       /* session got changes, get new data from session service */
       this.statsInfo = {
-        aspd: this.sessionInfo.aspd,
-        atk: this.sessionInfo.atk,
-        crit: this.sessionInfo.crit,
-        flee: this.sessionInfo.flee,
-        hit: this.sessionInfo.hit,
-        maxHp: this.sessionInfo.maxHp,
-        maxMatk: this.sessionInfo.maxMatk,
-        maxSp: this.sessionInfo.maxSp,
-        minMatk: this.sessionInfo.minMatk,
-        perfectDodge: this.sessionInfo.perfectDodge
+        "Attack Speed": this.sessionInfo.aspd,
+        "Atk": this.sessionInfo.atk,
+        "Critical Rate": this.sessionInfo.crit,
+        "Flee": this.sessionInfo.flee,
+        "Hit": this.sessionInfo.hit,
+        "HP": this.sessionInfo.maxHp,
+        "Max-MAtk": this.sessionInfo.maxMatk,
+        "SP": this.sessionInfo.maxSp,
+        "Min-MAtk": this.sessionInfo.minMatk,
+        "Perfect Dodge": this.sessionInfo.perfectDodge
       };
       this.ref.markForCheck();
     })

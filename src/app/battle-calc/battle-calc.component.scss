@@ -1,0 +1,26 @@
+/* PVM */
+.pvm-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pvm-content {
+    overflow: hidden;
+    flex: 1 1 50%
+}
+
+.pvm-add-btn {
+    display: flex;
+    align-items: center;
+    flex: 1 1 50%;
+    justify-content: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+// change mobile stlye
+@media screen and (max-width:1024px) {
+    .pvm-content {
+        flex: 1 1 100%;
+    }
+}   

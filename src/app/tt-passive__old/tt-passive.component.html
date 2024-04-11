@@ -1,9 +1,8 @@
 <mat-card appearance="outlined">
-  <mat-card-title-group [collapseTriggerFor]="passiveSelection">
+  <mat-card-title-group>
     <mat-card-title>Passive Selection</mat-card-title>
-    <tt-collapse-indicator [container]="passiveSelection"> </tt-collapse-indicator>
   </mat-card-title-group>
-  <mat-card-content tt-collapse-container #passiveSelection>
+  <mat-card-content #passiveSelection>
     <div
       fxLayout="column"
       fxLayoutGap="32px"

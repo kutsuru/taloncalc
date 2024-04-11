@@ -19,6 +19,9 @@ export class BattleCalcPvmComponent implements OnInit, OnDestroy {
   @Output() onClose: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() onTargetChange: EventEmitter<string> = new EventEmitter<string>();
 
+  protected autoRefresh: boolean = true;
+  protected className!: string;
+
   private _initDone: boolean = false;
   public targetId: number = 1002; // Default is Poring
   public targetInfo: Mob | undefined;
@@ -78,19 +81,18 @@ export class BattleCalcPvmComponent implements OnInit, OnDestroy {
       )
       .subscribe(async (infoMsg) => {
         /* something got changed, update the battle calc */
-        // because it gets pushed with a initial value, no need to do the calcs two times
-        if (infoMsg.event === SessionChangeEvent.INIT || infoMsg.event === SessionChangeEvent.CLASS || !this._initDone) {
-          /* update the skill list */
-          this.skillLst = await firstValueFrom(this.session.activeSkills$);
-          this.selectedSkillName = Object.keys(this.skillLst)[0];
-          this.selectedSkill = this.skillLst[this.selectedSkillName];
-          this.selectedSkillLv = 0;
+        if (this.autoRefresh) {
+          // because it gets pushed with a initial value, no need to do the calcs two times
+          if (infoMsg.event === SessionChangeEvent.INIT || infoMsg.event === SessionChangeEvent.CLASS || !this._initDone) {
+            /* update the skill list */
+            this.updateClassData(true);
 
-          this._initDone = true;
+            this._initDone = true;
+          }
+          /* update data */
+          this.updateTargetData();
+          this.updateBattleSimulation();
         }
-        /* update data */
-        this.updateTargetData();
-        this.updateBattleSimulation();
       });
   }
 
@@ -118,8 +120,24 @@ export class BattleCalcPvmComponent implements OnInit, OnDestroy {
     this.updateBattleSimulation();
   }
 
-  /* private */
-  async updateTargetData() {
+  changeAutoRefresh(onOff: boolean) {
+    if (onOff) {
+      /* changed to auto. refresh */
+      this.updateClassData();
+
+      // update calc
+      this.updateTargetData();
+      this.updateBattleSimulation();
+    }
+  }
+
+  refresh() {
+    this.updateClassData();
+    this.updateTargetData();
+    this.updateBattleSimulation();
+  }
+
+  private async updateTargetData() {
     if (this.targetName) {
       this.targetInfo = this.core.mobDbV2[this.targetName];
       this.targetId = this.targetInfo.mid;
@@ -157,7 +175,19 @@ export class BattleCalcPvmComponent implements OnInit, OnDestroy {
       // init the sesscion class
       await this.battleSession.init(this.targetInfo!, this.selectedSkill, this.selectedSkillLv, ammo, endow);
       // TODO: start the simulation
-      //this.battleSession.simulate();
+      this.battleSession.simulate();
+    }
+  }
+
+  private async updateClassData(force: boolean = false) {
+    // check if class has changed
+    if ((this.className !== this.session.jobClassName) || force) {
+      /* update skill list */
+      this.skillLst = await firstValueFrom(this.session.activeSkills$);
+      this.selectedSkillName = Object.keys(this.skillLst)[0];
+      this.selectedSkill = this.skillLst[this.selectedSkillName];
+      this.selectedSkillLv = 0;
+      this.className = this.session.jobClassName;
     }
   }
 }

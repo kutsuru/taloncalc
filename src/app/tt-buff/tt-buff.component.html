@@ -1,27 +1,19 @@
-<mat-card>
-    <mat-card-header [collapseTriggerFor]="buffs" class="space-between">
-        <mat-card-title>Buffs Selection</mat-card-title>
-        <tt-collapse-indicator [container]="buffs"></tt-collapse-indicator>
-    </mat-card-header>
-    <mat-card-content tt-collapse-container #buffs>
-        @for (skillEntry of (buffSkills$ | async) | keyvalue; track $index) {
-            <div>
-            @switch (skillEntry.value.type) {
-                @case ("list") {
-                    <mat-form-field>
-                        <mat-label>{{skillEntry.key}}</mat-label>
-                        <mat-select (selectionChange)="changeBuffValue(skillEntry.key, $event.value)">
-                            @for(skillLvl of skillEntry | lvarray: skillEntry.value.maxLevel; track $index){
-                                <mat-option [value]="skillLvl">{{skillLvl}}</mat-option>
-                            }
-                        </mat-select>
-                    </mat-form-field>
-                }
-                @case ("check") {
-                    <mat-checkbox (change)="changeBuffValue(skillEntry.key, $event.checked)">{{skillEntry.key}}</mat-checkbox>
-                }
+@for (skillEntry of (buffSkills$ | async) | keyvalue; track $index) {
+<div>
+    @switch (skillEntry.value.type) {
+    @case ("list") {
+    <mat-form-field>
+        <mat-label>{{skillEntry.key}}</mat-label>
+        <mat-select (selectionChange)="changeBuffValue(skillEntry.key, $event.value)">
+            @for(skillLvl of skillEntry | lvarray: skillEntry.value.maxLevel; track $index){
+            <mat-option [value]="skillLvl">{{skillLvl}}</mat-option>
             }
-            </div>
-        }
-    </mat-card-content>
-</mat-card>
+        </mat-select>
+    </mat-form-field>
+    }
+    @case ("check") {
+    <mat-checkbox (change)="changeBuffValue(skillEntry.key, $event.checked)">{{skillEntry.key}}</mat-checkbox>
+    }
+    }
+</div>
+}

@@ -1,24 +1,16 @@
-<mat-card>
-  <mat-card-header [collapseTriggerFor]="battleContant" class="space-between">
-    <mat-card-title>Battle calculation</mat-card-title>
-    <tt-collapse-indicator [container]="battleContant"> </tt-collapse-indicator>
-  </mat-card-header>
-  <mat-card-content tt-collapse-container #battleContant>
-    <mat-tab-group>
-      <mat-tab label="PvM">
-        <div style="display: flex; flex-wrap: wrap;">
-          <battle-calc-pvm *ngFor="let calc of (battleCalcPVM$ | async); let i = index"
-            (onClose)="closeBattleDetailPVM(calc.id)" (onTargetChange)="updateBattleDetailPVMTarget(calc.id, $event)"
-            [target]="calc.target" @insertCalcTrigger style="overflow: hidden">
-          </battle-calc-pvm>
-          <div style="display: flex; align-items: center;">
-            <button mat-fab color="primary" (click)="createBattleDetailPVM()">
-              <mat-icon>add</mat-icon>
-            </button>
-          </div>
-        </div>
-      </mat-tab>
-      <mat-tab label="PvP">Player battle </mat-tab>
-    </mat-tab-group>
-  </mat-card-content>
-</mat-card>
+<mat-tab-group>
+  <mat-tab label="PvM">
+    <div class="pvm-container">
+      <battle-calc-pvm *ngFor="let calc of (battleCalcPVM$ | async); let i = index"
+        (onClose)="closeBattleDetailPVM(calc.id)" (onTargetChange)="updateBattleDetailPVMTarget(calc.id, $event)"
+        [target]="calc.target" @insertCalcTrigger class="pvm-content">
+      </battle-calc-pvm>
+      <div class="pvm-add-btn">
+        <button mat-fab color="primary" (click)="createBattleDetailPVM()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="PvP">Player battle </mat-tab>
+</mat-tab-group>

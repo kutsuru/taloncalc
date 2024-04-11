@@ -813,6 +813,10 @@ export class TTBattleSession {
         else if (this._ammo) activeElement = this._ammo.element;
         else activeElement = WEAPON_ELE[this._si.activeBonus.weaponElement];
       }
+      else{
+        /* convert element number to text */
+        activeElement = WEAPON_ELE[activeElement];
+      }
 
       let elementModifier: number = this.core.elementDbV2[this._target.element][activeElement as Element][this._target.elementLv - 1];
       elementRatio *= Math.max(elementModifier, 0);

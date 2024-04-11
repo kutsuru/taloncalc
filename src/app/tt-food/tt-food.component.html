@@ -1,38 +1,37 @@
-<mat-card>
-    <mat-card-header [collapseTriggerFor]="foodsContent" class="space-between">
-        <mat-card-title>Food Selection</mat-card-title>
-        <tt-collapse-indicator [container]="foodsContent"></tt-collapse-indicator>
-    </mat-card-header>
-    <mat-card-content #foodsContent tt-collapse-container>
-
-        <mat-tab-group>
-            <!-- Stat Foods -->
-            <mat-tab label="Stats">
-                @for (statFoodCat of statFoods|keyvalue; track $index) {
-                <div>
-                    <mat-form-field>
-                        <mat-label>{{statFoodCat.key}}</mat-label>
-                        <mat-select [(value)]="activeFoods.Stats[statFoodCat.key]" (selectionChange)="foodChanged()">
-                            @for (statFood of statFoodCat.value|keyvalue; track $index) {
-                            <mat-option [value]="statFood.key">{{statFood.key}}: {{statFood.value.name}}</mat-option>
-                            }
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                }
-            </mat-tab>
-            <!-- Other Food -->
-            @for (foodCat of otherFoods|keyvalue; track $index) {
-            <mat-tab [label]="foodCat.key">
-                @for (food of foodCat.value|keyvalue; track $index) {
-                <div>
-                    <mat-checkbox [(ngModel)]="activeFoods[foodCat.key][food.key]" (change)="foodChanged()"><img
-                            [src]="'https://talontales.com/panel/data/items/icons/' + food.value.gid + '.png'" />{{food.key}}
-                        [{{food.value.description}}]</mat-checkbox>
-                </div>
-                }
-            </mat-tab>
-            }
-        </mat-tab-group>
-    </mat-card-content>
-</mat-card>
+<mat-tab-group>
+    <!-- Stat Foods -->
+    <mat-tab label="Stats">
+        @for (statFoodCat of statFoods|keyvalue; track $index) {
+        <div>
+            <mat-form-field>
+                <mat-label>{{statFoodCat.key}}</mat-label>
+                <mat-select [(value)]="activeFoods.Stats[statFoodCat.key]" (selectionChange)="foodChanged()">
+                    @for (statFood of statFoodCat.value|keyvalue: originalOrder; track $index) {
+                    <mat-option [value]="statFood.key">
+                        @if($index != 0){
+                        <img [src]="'https://talontales.com/panel/data/items/icons/' + statFood.value.gid + '.png'" />
+                        {{statFood.key}}: {{statFood.value.name}}
+                        }
+                        @else {
+                        None
+                        }
+                    </mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+        }
+    </mat-tab>
+    <!-- Other Food -->
+    @for (foodCat of otherFoods|keyvalue; track $index) {
+    <mat-tab [label]="foodCat.key">
+        @for (food of foodCat.value|keyvalue; track $index) {
+        <div>
+            <mat-checkbox [(ngModel)]="activeFoods[foodCat.key][food.key]" (change)="foodChanged()"><img
+                    [src]="'https://talontales.com/panel/data/items/icons/' + food.value.gid + '.png'" />{{food.key}}
+                [{{food.value.description}}]</mat-checkbox>
+        </div>
+        }
+    </mat-tab>
+    }
+</mat-tab-group>
