@@ -107,7 +107,7 @@ export class TTBattleSessionService {
     let damage: number[] = [];
     if (this._target && this._activeSkill) {
       damage = this.calcAttackDamage(false, false);
-      let critDamage = this.calcAttackDamage(true, false);
+      //let critDamage = this.calcAttackDamage(true, false);
     }
     // FIXME, manage dual wielding
     return damage;
@@ -759,7 +759,7 @@ export class TTBattleSessionService {
     return this.applyDamageModifier(damage, skillModifier);
   }
 
-  private applyMagicalSkillDamageRatio(damage: number[]): number[] {
+  private applyMagicalSkillDamageRatio(damage: number[], skill_id: number): number[] {
     // FIXME
     // Skill damage bonus - bSkillAtk
     // FIXME: same modifier than for physical damage, merge ?
@@ -939,7 +939,7 @@ export class TTBattleSessionService {
 
     // Magical Bullet#423
     if (423 == this._activeSkill['id'])
-      misc_damage_bonus = [this._si['minMatk'], this._si['maxMatk']];
+      misc_damage_bonus = [this.ttSessionInfoService.minMatk, this.ttSessionInfoService.maxMatk];
 
     return [damage[0] + misc_damage_bonus[0], damage[1] + misc_damage_bonus[1]];
   }
@@ -1057,8 +1057,8 @@ export class TTBattleSessionService {
     return damage;
   }
 
-  private applyMagicalDefenseReduction(damage: number[]): number[] {
-    if (!this._activeSkill['ignoreDefense']) {
+  private applyMagicalDefenseReduction(damage: number[], ignoreDefense: boolean): number[] {
+    if (!ignoreDefense) {
       let mdef2 = this._target['int'] + Math.floor(this._target['vit'] / 2); // FIXME include mdef2 in mobdb ?
 
       // mdef reduction already applied on target mdef
@@ -1077,8 +1077,8 @@ export class TTBattleSessionService {
 
   private calcMagicalAttackDamage(damage: number[]): number[] {
     // Initialize damage list with min matk and max matk used for status display
-    damage[0] = this._si['minMatk'];
-    damage[1] = this._si['maxMatk'];
+    damage[0] = this.ttSessionInfoService.minMatk;
+    damage[1] = this.ttSessionInfoService.maxMatk;
 
     if (122 == this._activeSkill['id'])
       // Fire Pillar#122
@@ -1117,10 +1117,8 @@ export class TTBattleSessionService {
 
     let skillRatio: number = this.retrieveSkillRatio();
     damage = this.applyDamageModifier(damage, skillRatio);
-    damage = this.applyMagicalSkillDamageRatio(this._activeSkill['id']);
-    damage = this.applyMagicalDefenseReduction(
-      this._activeSkill['ignoreDefense']
-    );
+    damage = this.applyMagicalSkillDamageRatio(damage, this._activeSkill['id']);
+    damage = this.applyMagicalDefenseReduction(damage, this._activeSkill['ignoreDefense']);
 
     // Manage Grand & Dark Cross
     if (162 == this._activeSkill['id']) {
@@ -1223,10 +1221,19 @@ export class TTBattleSessionService {
       damage = this.calcPhysicalAttackDamage(isCriticalAttack, isDualWielding);
     console.log('after: calcPhysicalAttackDamage');
     console.log(damage);
+
+    // Retrieve skill hits number
+    let misc_flag: number | null = null;
+    let hits_info: number | string =  this._activeSkill['hits'];
+    let hits: number = 1;
+
+    if (typeof(hits_info) === 'string')
+      hits = eval(hits_info)(this._activeSkillLv, misc_flag);
+    else
+      hits = hits_info;
+
     damage = damage.map((x) => {
-      return this._activeSkill['isConsideredAsSingleHit']
-        ? x - (x % this._activeSkill['hits'])
-        : x * this._activeSkill['hits'];
+      return this._activeSkill['isConsideredAsSingleHit'] ? x - (x % hits) : x * hits;
     });
 
     // Lex Aeterna
