@@ -50,8 +50,8 @@ export const SESSION_INFO_DEFAULT: SessionInfoV2 = {
         miscAtkDef: 0,
         defRatioAtkClass: 0,
         mdef: 0,
-        armorElement: 0,
-        weaponElement: 0,
+        armorElement: "neutral",
+        weaponElement: "neutral",
         ignoreDefClass: {
             all: 0,
             normal: 0,

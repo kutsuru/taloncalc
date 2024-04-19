@@ -163,8 +163,8 @@ export class TTSessionInfoService {
         miscAtkDef: 0,
         defRatioAtkClass: 0,
         mdef: 0,
-        armorElement: 0,
-        weaponElement: 0,
+        armorElement: 'neutral',
+        weaponElement: 'neutral',
         ignoreDefClass: {
           all: 0,
           normal: 0,
@@ -784,11 +784,14 @@ export class TTSessionInfoService {
 
     for (let obj of bonusObjects) {
       for (let key in obj) {
-        if (typeof obj[key] == 'number') {
+        if (typeof obj[key] === 'number')
           obj[key] = 0;
-        } else {
+        else if (obj[key] === Element) // FIXME: Does not work that way, requires a dedicated function
+          obj[key] = 'neutral';
+        else if (typeof obj[key] === 'object')
           bonusObjects.push(obj[key]);
-        }
+        else
+          obj[key] = undefined;
       }
     }
   }

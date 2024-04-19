@@ -312,8 +312,8 @@ export type ActiveBonus = BaseStats & {
   miscAtkDef: number,
   defRatioAtkClass: number,
   mdef: number,
-  armorElement: number,
-  weaponElement: number,
+  armorElement: Element,
+  weaponElement: Element,
   ignoreDefClass: {
     [key in MobClass]: number
   },
