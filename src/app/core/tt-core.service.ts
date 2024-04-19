@@ -105,6 +105,7 @@ export class TTCoreService {
       Shuriken: {},
       Spear: {},
       Staff: {},
+      "Two-handed Staff": {},
       Sword: {},
       Unarmed: {},
       Whip: {}

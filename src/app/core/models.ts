@@ -83,6 +83,7 @@ export type WeaponType =
   "Two-handed Axe" |
   "Mace" |
   "Staff" |
+  "Two-handed Staff" |
   "Bow" |
   "Katar" |
   "Book" |
