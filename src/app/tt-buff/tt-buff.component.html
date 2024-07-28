@@ -2,7 +2,7 @@
 <div>
     @switch (skillEntry.value.type) {
     @case ("list") {
-    <mat-form-field>
+    <mat-form-field  subscriptSizing="dynamic">
         <mat-label>{{skillEntry.key}}</mat-label>
         <mat-select (selectionChange)="changeBuffValue(skillEntry.key, $event.value)">
             @for(skillLvl of skillEntry | lvarray: skillEntry.value.maxLevel; track $index){

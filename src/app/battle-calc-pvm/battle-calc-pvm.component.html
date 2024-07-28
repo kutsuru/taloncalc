@@ -14,7 +14,7 @@
         DEF: {{defReduc}} (Original: {{targetInfo?.def}})<br>
         MDEF: {{mdefReduc}} (Original: {{targetInfo?.mdef}})<br>
         <hr>
-        <mat-form-field>
+        <mat-form-field subscriptSizing="dynamic">
             <mat-label>Attack Skill</mat-label>
             <mat-select [(value)]="selectedSkillName" (selectionChange)="changeSkill($event.value)">
                 @for (skill of skillLst| keyvalue; track $index) {
@@ -23,7 +23,7 @@
             </mat-select>
         </mat-form-field>
         <br>
-        <mat-form-field>
+        <mat-form-field subscriptSizing="dynamic">
             <mat-label>Skill Level</mat-label>
             <mat-select [(value)]="selectedSkillLv" (selectionChange)="updateBattleSimulation()">
                 @for (skillLvl of selectedSkill | lvarray: selectedSkill?.maxLevel; track $index) {

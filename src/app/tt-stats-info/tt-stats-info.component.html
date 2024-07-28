@@ -1,5 +1,5 @@
 @for(stat of statsInfo|keyvalue; track $index){
-<mat-form-field class="stats-info-field" appearance="outline">
+<mat-form-field class="stats-info-field" appearance="outline" subscriptSizing="dynamic">
     <mat-label>{{stat.key}}</mat-label>
     <input matInput [value]="stat.value" readonly />
 </mat-form-field>

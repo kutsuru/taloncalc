@@ -1,5 +1,5 @@
 <!-- Job class -->
-<mat-form-field>
+<mat-form-field subscriptSizing="dynamic">
     <mat-label>Class</mat-label>
     <mat-select (selectionChange)="onClassChange($event)" [(value)]="selectedClassName">
         <mat-option *ngFor="let class of jobClasses" [value]="class">
@@ -10,7 +10,7 @@
 <mat-checkbox ([ngModel])="babyClass" (change)="onBabyClassChange($event)">Baby Class?</mat-checkbox>
 <!-- Levels -->
 <p>
-    <mat-form-field class="tt-stats-statField">
+    <mat-form-field class="tt-stats-statField" subscriptSizing="dynamic">
         <mat-label>Base Level</mat-label>
         <mat-select [(value)]="baseLevel" (selectionChange)="updateLevel()">
             <ng-container *ngFor="let level of maxStats">
@@ -20,7 +20,7 @@
             </ng-container>
         </mat-select>
     </mat-form-field>
-    <mat-form-field class="tt-stats-statField">
+    <mat-form-field class="tt-stats-statField" subscriptSizing="dynamic">
         <mat-label>Job Level</mat-label>
         <mat-select [(value)]="jobLevel" (selectionChange)="updateLevel()">
             <ng-container *ngFor="let level of maxStats">

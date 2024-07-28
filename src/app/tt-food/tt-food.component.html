@@ -3,7 +3,7 @@
     <mat-tab label="Stats">
         @for (statFoodCat of statFoods|keyvalue; track $index) {
         <div>
-            <mat-form-field>
+            <mat-form-field subscriptSizing="dynamic">
                 <mat-label>{{statFoodCat.key}}</mat-label>
                 <mat-select [(value)]="activeFoods.Stats[statFoodCat.key]" (selectionChange)="foodChanged()">
                     @for (statFood of statFoodCat.value|keyvalue: originalOrder; track $index) {
