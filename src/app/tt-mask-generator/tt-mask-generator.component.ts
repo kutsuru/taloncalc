@@ -5,7 +5,7 @@ import { MatCard, MatCardTitleGroup, MatCardTitle, MatCardContent } from '@angul
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatGridList, MatGridTile } from '@angular/material/grid-list';
-import { NgFor, KeyValuePipe } from '@angular/common';
+import { KeyValuePipe } from '@angular/common';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 
@@ -14,20 +14,19 @@ import { FormsModule } from '@angular/forms';
     templateUrl: './tt-mask-generator.component.html',
     styleUrls: ['./tt-mask-generator.component.css'],
     imports: [
-        MatCard,
-        MatCardTitleGroup,
-        MatCardTitle,
-        MatCardContent,
-        MatFormField,
-        MatLabel,
-        MatInput,
-        MatGridList,
-        NgFor,
-        MatGridTile,
-        MatCheckbox,
-        FormsModule,
-        KeyValuePipe,
-    ]
+    MatCard,
+    MatCardTitleGroup,
+    MatCardTitle,
+    MatCardContent,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    MatGridList,
+    MatGridTile,
+    MatCheckbox,
+    FormsModule,
+    KeyValuePipe
+]
 })
 export class TtMaskGeneratorComponent implements OnInit {
   protected cols = 1;

@@ -29,48 +29,60 @@
         [(value)]="selectedSkill"
         (selectionChange)="onSkillSelection()"
       >
-        <mat-option
-          *ngFor="let item of ttSessionInfo.activeSkills | keyvalue"
+        @for (item of ttSessionInfo.activeSkills | keyvalue; track item) {
+<mat-option
+         
           [value]="item.key"
         >
           {{ item.key }}
         </mat-option>
+}
       </mat-select>
     </mat-form-field>
-    <mat-form-field *ngIf="selectedSkillLvs.length" class="skill-lv-select">
+    @if (selectedSkillLvs.length) {
+<mat-form-field class="skill-lv-select">
       <mat-label>Skill Lv</mat-label>
       <mat-select
         [(value)]="selectedSkillLv"
         (selectionChange)="updateBattleSimulation()"
       >
-        <mat-option *ngFor="let item of selectedSkillLvs" [value]="item">
+        @for (item of selectedSkillLvs; track item) {
+<mat-option [value]="item">
           {{ item }}
         </mat-option>
+}
       </mat-select>
     </mat-form-field>
-    <mat-form-field *ngIf="currentAmmoType" class="ammo-select">
+}
+    @if (currentAmmoType) {
+<mat-form-field class="ammo-select">
       <mat-label>Ammunition Selection</mat-label>
       <mat-select
         [(value)]="selectedAmmo"
         (selectionChange)="updateBattleSimulation()"
       >
-        <mat-option
-          *ngFor="let item of ttCore.ammoDb[currentAmmoType] | keyvalue"
+        @for (item of ttCore.ammoDb[currentAmmoType] | keyvalue; track item) {
+<mat-option
+         
           [value]="item.value"
         >
           {{ item.key }}
         </mat-option>
+}
       </mat-select>
     </mat-form-field>
+}
     <mat-form-field class="Endow-select">
       <mat-label>Endow Selection</mat-label>
       <mat-select
         [(value)]="selectedEndow"
         (selectionChange)="updateBattleSimulation()"
       >
-        <mat-option *ngFor="let item of endows" [value]="item">
+        @for (item of endows; track item) {
+<mat-option [value]="item">
           {{ item }}
         </mat-option>
+}
       </mat-select>
     </mat-form-field>
     <br />

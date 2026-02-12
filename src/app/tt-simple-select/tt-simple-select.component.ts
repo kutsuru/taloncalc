@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { MatSelectChange, MatSelect, MatSelectTrigger } from '@angular/material/select';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { NgIf } from '@angular/common';
+
 import { MatOption } from '@angular/material/core';
 
 type ListEntry = {
@@ -13,7 +13,7 @@ type ListEntry = {
     selector: 'tt-simple-select',
     templateUrl: './tt-simple-select.component.html',
     styleUrls: ['./tt-simple-select.component.scss'],
-    imports: [MatFormField, MatLabel, MatSelect, MatSelectTrigger, NgIf, MatOption]
+    imports: [MatFormField, MatLabel, MatSelect, MatSelectTrigger, MatOption]
 })
 export class TtSimpleSelectComponent implements OnInit, OnChanges {
   /* components data */

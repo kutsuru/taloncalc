@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TtPageLoaderService } from './tt-page-loader.service';
-import { NgIf, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
@@ -9,10 +9,9 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
     templateUrl: 'tt-page-loader.component.html',
     styleUrls: ['tt-page-loader.component.scss'],
     imports: [
-        NgIf,
-        MatProgressSpinner,
-        AsyncPipe,
-    ]
+    MatProgressSpinner,
+    AsyncPipe
+]
 })
 export class TtPageLoaderComponent {
   showLoader$: Observable<boolean>;

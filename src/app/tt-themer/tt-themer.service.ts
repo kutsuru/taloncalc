@@ -1,5 +1,5 @@
-import { DOCUMENT } from "@angular/common";
-import { Inject, Injectable, OnInit } from "@angular/core";
+
+import { Inject, Injectable, OnInit, DOCUMENT } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 
 interface TTTheme {

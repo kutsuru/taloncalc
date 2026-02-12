@@ -4,11 +4,15 @@
     [(value)]="_serviceData[key]"
     (selectionChange)="onSelectionChange($event)"
   >
-    <mat-option *ngIf="defaultValue" [value]="defaultValue">
+    @if (defaultValue) {
+<mat-option [value]="defaultValue">
       {{ defaultValue }}
     </mat-option>
-    <mat-option *ngFor="let item of data" [value]="item">
+}
+    @for (item of data; track item) {
+<mat-option [value]="item">
       {{ item }}
     </mat-option>
+}
   </mat-select>
 </mat-form-field>

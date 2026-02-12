@@ -7,7 +7,7 @@ import { SessionChangeEvent } from '../core/models';
 import { TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
 import { debounce } from '../core/utils';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { NgFor, NgIf } from '@angular/common';
+
 import { MatOption } from '@angular/material/core';
 
 @Component({
@@ -15,7 +15,7 @@ import { MatOption } from '@angular/material/core';
     templateUrl: './tt-stats.component.html',
     styleUrls: ['./tt-stats.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [MatFormField, MatLabel, MatSelect, NgFor, MatOption, MatCheckbox, NgIf, MatSelectTrigger]
+    imports: [MatFormField, MatLabel, MatSelect, MatOption, MatCheckbox, MatSelectTrigger]
 })
 export class TtStatsComponent implements OnInit {
   /* classes */

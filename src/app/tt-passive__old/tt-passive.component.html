@@ -3,13 +3,16 @@
     <mat-card-title>Passive Selection</mat-card-title>
   </mat-card-title-group>
   <mat-card-content #passiveSelection>
-    <div
+    @for (passive of ttSessionInfoService.passiveSkills | keyvalue; track passive) {
+<div
       fxLayout="column"
       fxLayoutGap="32px"
-      *ngFor="let passive of ttSessionInfoService.passiveSkills | keyvalue"
-      [ngSwitch]="passive.value['maxLevel']"
+     
+     
     >
-      <ng-template ngSwitchDefault>
+@switch (passive.value['maxLevel']) {
+      @default {
+
         <mat-form-field>
           <mat-label>{{ passive.key }}</mat-label>
           <mat-select
@@ -18,18 +21,23 @@
             "
             (selectionChange)="ttSessionInfoService.updateSessionInfo()"
           >
-            <mat-option
-              *ngFor="
-                let skillLv of passive | lvarray: passive.value['maxLevel']
-              "
+            @for (
+                skillLv of passive | lvarray: passive.value['maxLevel']
+              ; track 
+                skillLv) {
+<mat-option
+             
               [value]="skillLv"
             >
               {{ skillLv }}
             </mat-option>
+}
           </mat-select>
         </mat-form-field>
-      </ng-template>
-      <ng-template ngSwitchCase="1">
+      
+}
+      @case (1) {
+
         <mat-checkbox
           class="passive-check"
           [(ngModel)]="
@@ -39,7 +47,10 @@
         >
           {{ passive.key }}
         </mat-checkbox>
-      </ng-template>
-    </div>
+      
+}
+    }
+</div>
+}
   </mat-card-content>
 </mat-card>

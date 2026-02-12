@@ -1,10 +1,12 @@
 <mat-tab-group>
   <mat-tab label="PvM">
     <div class="pvm-container">
-      <battle-calc-pvm *ngFor="let calc of (battleCalcPVM$ | async); let i = index"
+      @for (calc of (battleCalcPVM$ | async); track calc; let i = $index) {
+<battle-calc-pvm
         (onClose)="closeBattleDetailPVM(calc.id)" (onTargetChange)="updateBattleDetailPVMTarget(calc.id, $event)"
         [target]="calc.target" @insertCalcTrigger class="pvm-content">
       </battle-calc-pvm>
+}
       <div class="pvm-add-btn">
         <button mat-fab color="primary" (click)="createBattleDetailPVM()">
           <mat-icon>add</mat-icon>

@@ -4,7 +4,7 @@ import { TTCoreService } from '../core/tt-core.service';
 import { TTSessionInfoService } from '../core/tt-session-info.service';
 import { MatCard, MatCardTitleGroup, MatCardTitle, MatCardContent } from '@angular/material/card';
 import { MatTabGroup, MatTab } from '@angular/material/tabs';
-import { NgFor, KeyValuePipe } from '@angular/common';
+import { KeyValuePipe } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
@@ -21,22 +21,21 @@ export interface KeyValue {
     styleUrls: ['./tt-food.component.css'],
     standalone: true,
     imports: [
-        MatCard,
-        MatCardTitleGroup,
-        MatCardTitle,
-        MatCardContent,
-        MatTabGroup,
-        MatTab,
-        NgFor,
-        MatFormField,
-        MatLabel,
-        MatSelect,
-        MatOption,
-        MatCheckbox,
-        FormsModule,
-        KeyValuePipe,
-        TtValueInfo,
-    ],
+    MatCard,
+    MatCardTitleGroup,
+    MatCardTitle,
+    MatCardContent,
+    MatTabGroup,
+    MatTab,
+    MatFormField,
+    MatLabel,
+    MatSelect,
+    MatOption,
+    MatCheckbox,
+    FormsModule,
+    KeyValuePipe,
+    TtValueInfo
+],
 })
 export class TtFoodComponentOld implements OnInit {
   protected foodCategoryKVs: { key: string; value: any }[];

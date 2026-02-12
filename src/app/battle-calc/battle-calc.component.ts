@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { BattleCalcInfo } from '../core/models';
 import { TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
 import { MatTabGroup, MatTab } from '@angular/material/tabs';
-import { NgFor, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { BattleCalcPvmComponent } from '../battle-calc-pvm/battle-calc-pvm.component';
 import { MatFabButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -27,14 +27,13 @@ import { MatIcon } from '@angular/material/icon';
         ]),
     ],
     imports: [
-        MatTabGroup,
-        MatTab,
-        NgFor,
-        BattleCalcPvmComponent,
-        MatFabButton,
-        MatIcon,
-        AsyncPipe,
-    ]
+    MatTabGroup,
+    MatTab,
+    BattleCalcPvmComponent,
+    MatFabButton,
+    MatIcon,
+    AsyncPipe
+]
 })
 export class BattleCalcComponent {
   public battleCalcPVM$: Observable<BattleCalcInfo[]>;

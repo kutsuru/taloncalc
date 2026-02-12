@@ -4,7 +4,7 @@ import { TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
 import { TTCoreService } from '../core/tt-core.service';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioGroup, MatRadioButton } from '@angular/material/radio';
-import { NgFor } from '@angular/common';
+
 import { TtSimpleSelectComponent } from '../tt-simple-select/tt-simple-select.component';
 import { TtCardSlotComponent } from '../tt-card-slot/tt-card-slot.component';
 
@@ -13,14 +13,13 @@ import { TtCardSlotComponent } from '../tt-card-slot/tt-card-slot.component';
     templateUrl: './tt-equip.component.html',
     styleUrls: ['./tt-equip.component.scss'],
     imports: [
-        MatRadioGroup,
-        FormsModule,
-        ReactiveFormsModule,
-        NgFor,
-        MatRadioButton,
-        TtSimpleSelectComponent,
-        TtCardSlotComponent,
-    ]
+    MatRadioGroup,
+    FormsModule,
+    ReactiveFormsModule,
+    MatRadioButton,
+    TtSimpleSelectComponent,
+    TtCardSlotComponent
+]
 })
 export class TtEquipComponent implements OnInit {
   /* general */

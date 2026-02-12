@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatSelectChange, MatSelect } from '@angular/material/select';
 import { TTSessionInfoService } from '../../core/tt-session-info.service';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatOption } from '@angular/material/core';
 
 @Component({
@@ -11,13 +11,11 @@ import { MatOption } from '@angular/material/core';
     styleUrls: ['./tt-key-select.component.css'],
     standalone: true,
     imports: [
-        MatFormField,
-        MatLabel,
-        MatSelect,
-        NgIf,
-        MatOption,
-        NgFor,
-    ],
+    MatFormField,
+    MatLabel,
+    MatSelect,
+    MatOption
+],
 })
 export class TtKeySelectComponent implements OnInit {
   protected _serviceData: any;

@@ -4,7 +4,7 @@ import { TTCoreService } from '../../core/tt-core.service';
 import { MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatSelect } from '@angular/material/select';
-import { NgFor } from '@angular/common';
+
 import { MatOption } from '@angular/material/core';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
@@ -15,19 +15,18 @@ import { MatButton } from '@angular/material/button';
     templateUrl: './select-battle-target.component.html',
     styleUrls: ['./select-battle-target.component.css'],
     imports: [
-        MatDialogTitle,
-        MatDialogContent,
-        MatFormField,
-        MatLabel,
-        MatSelect,
-        NgFor,
-        MatOption,
-        MatCheckbox,
-        FormsModule,
-        MatDialogActions,
-        MatButton,
-        MatDialogClose,
-    ]
+    MatDialogTitle,
+    MatDialogContent,
+    MatFormField,
+    MatLabel,
+    MatSelect,
+    MatOption,
+    MatCheckbox,
+    FormsModule,
+    MatDialogActions,
+    MatButton,
+    MatDialogClose
+]
 })
 export class SelectBattleTargetComponent implements OnInit {
   protected mobKeys: string[] = [];

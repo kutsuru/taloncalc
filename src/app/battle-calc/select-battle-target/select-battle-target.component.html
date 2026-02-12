@@ -4,9 +4,11 @@
     <mat-form-field class="mob-select">
       <mat-label>Monster Selection</mat-label>
       <mat-select [(value)]="selectedMob" (selectionChange)="onMobSelection()">
-        <mat-option *ngFor="let item of mobKeys" [value]="item">
+        @for (item of mobKeys; track item) {
+<mat-option [value]="item">
           {{ item }}
         </mat-option>
+}
       </mat-select> </mat-form-field
     ><br />
     <mat-checkbox
@@ -31,33 +33,41 @@
     <mat-form-field class="element-select">
       <mat-label>Element Filter</mat-label>
       <mat-select [(value)]="elementFilter" (selectionChange)="applyFilter()">
-        <mat-option *ngFor="let item of elements" [value]="item">
+        @for (item of elements; track item) {
+<mat-option [value]="item">
           {{ item }}
         </mat-option>
+}
       </mat-select>
     </mat-form-field>
     <mat-form-field class="size-select">
       <mat-label>Size Filter</mat-label>
       <mat-select [(value)]="sizeFilter" (selectionChange)="applyFilter()">
-        <mat-option *ngFor="let item of sizes" [value]="item">
+        @for (item of sizes; track item) {
+<mat-option [value]="item">
           {{ item }}
         </mat-option>
+}
       </mat-select>
     </mat-form-field>
     <mat-form-field class="race-select">
       <mat-label>Race Filter</mat-label>
       <mat-select [(value)]="raceFilter" (selectionChange)="applyFilter()">
-        <mat-option *ngFor="let item of races" [value]="item">
+        @for (item of races; track item) {
+<mat-option [value]="item">
           {{ item }}
         </mat-option>
+}
       </mat-select>
     </mat-form-field>
     <mat-form-field class="region-select">
       <mat-label>Region Filter</mat-label>
       <mat-select [(value)]="regionFilter" (selectionChange)="applyFilter()">
-        <mat-option *ngFor="let item of regions" [value]="item">
+        @for (item of regions; track item) {
+<mat-option [value]="item">
           {{ item }}
         </mat-option>
+}
       </mat-select>
     </mat-form-field>
   </p>

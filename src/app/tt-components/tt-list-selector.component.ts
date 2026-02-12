@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatSelectChange, MatSelect, MatSelectTrigger } from '@angular/material/select';
 import { TTSessionInfoService } from '../core/tt-session-info.service';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { NgIf, NgFor, NgStyle } from '@angular/common';
+import { NgStyle } from '@angular/common';
 import { MatOption } from '@angular/material/core';
 
 // [formControl]="selectorControl"
@@ -14,28 +14,32 @@ import { MatOption } from '@angular/material/core';
     <mat-label>{{ name }}</mat-label>
       <mat-select [(value)]="_serviceData[key]" (selectionChange)="onSelectionChange($event)">
         <mat-select-trigger>
-          <span *ngIf="displayPrefix">+ </span>
+          @if (displayPrefix) {
+<span>+ </span>
+}
           {{ _serviceData[key] }}
-          <span *ngIf="displaySuffix && _serviceBonusData"> + {{ _serviceBonusData[key] + _serviceBonusData[key2]}}</span>
+          @if (displaySuffix && _serviceBonusData) {
+<span> + {{ _serviceBonusData[key] + _serviceBonusData[key2]}}</span>
+}
         </mat-select-trigger>
-        <mat-option *ngFor="let item of data" [value]="item"
+        @for (item of data; track item) {
+<mat-option [value]="item"
         [ngStyle]="{ display : hasLimit && item > maxValue ? 'none' : 'block' }">
           {{ item }} 
         </mat-option>
+}
     </mat-select>
   </mat-form-field>`,
     styles: [`.mat-mdc-form-field { width:80px; margin:4px }`],
     standalone: true,
     imports: [
-        MatFormField,
-        MatLabel,
-        MatSelect,
-        MatSelectTrigger,
-        NgIf,
-        NgFor,
-        MatOption,
-        NgStyle,
-    ],
+    MatFormField,
+    MatLabel,
+    MatSelect,
+    MatSelectTrigger,
+    MatOption,
+    NgStyle
+],
 })
 export class TtListSelectorComponent implements OnInit {
   protected _serviceData: any;

@@ -20,7 +20,7 @@ import { TtFoodComponent } from './tt-food/tt-food.component';
 import { TtMaskGeneratorComponent } from './tt-mask-generator/tt-mask-generator.component';
 import { MatButton, MatMiniFabButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { NgIf } from '@angular/common';
+
 import { TTPopupButtonComponent } from './tt-popup/tt-popup-button.component';
 import { TtPageLoaderComponent } from './tt-page-loader/tt-page-loader.component';
 import { TtPopupComponent } from './tt-popup/tt-popup.component';
@@ -31,26 +31,25 @@ import { TtSettingsComponent } from './tt-settings/tt-settings.component';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     imports: [
-        MatToolbar,
-        TtCardComponent,
-        TtStatsComponent,
-        TtStatsInfoComponent,
-        TtBuffComponent,
-        TtPassiveComponent,
-        TtEquipComponent,
-        BattleCalcComponent,
-        TtFoodComponent,
-        TtMaskGeneratorComponent,
-        MatButton,
-        MatMiniFabButton,
-        MatIcon,
-        NgIf,
-        TTPopupButtonComponent,
-        TtPageLoaderComponent,
-        TtPopupGroupComponent,
-        TtPopupComponent,
-        TtSettingsComponent,
-    ]
+    MatToolbar,
+    TtCardComponent,
+    TtStatsComponent,
+    TtStatsInfoComponent,
+    TtBuffComponent,
+    TtPassiveComponent,
+    TtEquipComponent,
+    BattleCalcComponent,
+    TtFoodComponent,
+    TtMaskGeneratorComponent,
+    MatButton,
+    MatMiniFabButton,
+    MatIcon,
+    TTPopupButtonComponent,
+    TtPageLoaderComponent,
+    TtPopupGroupComponent,
+    TtPopupComponent,
+    TtSettingsComponent
+]
 })
 export class AppComponent implements OnInit, OnDestroy {
   longText = `Fixme`;

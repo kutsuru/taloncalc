@@ -7,13 +7,15 @@
             <mat-card-content>
                 <mat-action-list dense>
                     <h2 matSubheader>Theme</h2>
-                    <button mat-list-item *ngFor="let theme of themer.themes" (click)="themer.setTheme(theme)">
+                    @for (theme of themer.themes; track theme) {
+<button mat-list-item (click)="themer.setTheme(theme)">
                         <mat-icon matListIcon
                             [style.visibility]="(themer.activeTheme$ | async)?.name == theme.name ? 'unset' : 'hidden'">
                             check
                         </mat-icon>
                         <span matLine>{{theme.name}}</span>
                     </button>
+}
                 </mat-action-list>
 
                 <mat-selection-list dense (selectionChange)="changePopupSetting($event)">

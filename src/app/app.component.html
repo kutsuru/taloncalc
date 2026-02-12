@@ -66,8 +66,12 @@
       <mat-icon>settings</mat-icon>
     </button>
     <!-- dynamic buttons for popups -->
-    <tt-popup-button *ngIf="ttSettings.popup.statsInfo" [popup]="popStatsInfo" icon="info"></tt-popup-button>
-    <tt-popup-button *ngIf="ttSettings.popup.buffs" [popup]="popBuffs" icon="auto_awesome"></tt-popup-button>
+    @if (ttSettings.popup.statsInfo) {
+<tt-popup-button [popup]="popStatsInfo" icon="info"></tt-popup-button>
+}
+    @if (ttSettings.popup.buffs) {
+<tt-popup-button [popup]="popBuffs" icon="auto_awesome"></tt-popup-button>
+}
   </div>
 </div>
 <!-- page loader -->

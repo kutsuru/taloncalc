@@ -6,8 +6,9 @@
     <mat-tab-group>
       <span></span>
       <mat-tab label="Stats">
-        <mat-form-field
-          *ngFor="let stat of ttCore.foodDb['Stats'] | keyvalue: unsorted"
+        @for (stat of ttCore.foodDb['Stats'] | keyvalue: unsorted; track stat) {
+<mat-form-field
+         
           class="food-select"
         >
           <mat-label>{{ stat.key }}</mat-label>
@@ -15,8 +16,9 @@
             [(value)]="sessionInfo['activeFood']['Stats'][stat.key]"
             (selectionChange)="this.ttSessionInfoService.updateSessionInfo()"
           >
-            <mat-option
-              *ngFor="let food of stat.value | keyvalue: unsorted"
+            @for (food of stat.value | keyvalue: unsorted; track food) {
+<mat-option
+             
               [value]="food.key"
             >
               {{ food.key }} :
@@ -30,14 +32,18 @@
               />
               {{ food.value | valueinfo: 'name' }}
             </mat-option>
+}
           </mat-select>
         </mat-form-field>
+}
       </mat-tab>
-      <mat-tab *ngFor="let category of foodCategoryKeys" label="{{ category }}">
-        <div
+      @for (category of foodCategoryKeys; track category) {
+<mat-tab label="{{ category }}">
+        @for (food of ttCore.foodDb[category] | keyvalue; track food) {
+<div
           fxLayout="column"
           fxLayoutGap="32px"
-          *ngFor="let food of ttCore.foodDb[category] | keyvalue"
+         
         >
           <mat-checkbox
             class="food-check"
@@ -54,7 +60,9 @@
             {{ food.key }} [ {{ food.value | valueinfo: 'description' }} ]
           </mat-checkbox>
         </div>
+}
       </mat-tab>
+}
     </mat-tab-group>
   </mat-card-content>
 </mat-card>

@@ -9,8 +9,9 @@
     </mat-form-field>
 
     <mat-grid-list cols="4" rowHeight="30">
-      <mat-grid-tile
-        *ngFor="let item of selectedClasses | keyvalue: unsorted"
+      @for (item of selectedClasses | keyvalue: unsorted; track item) {
+<mat-grid-tile
+       
         class="mat-grid-tile"
       >
         <mat-checkbox
@@ -21,6 +22,7 @@
         >
         <span class="flex-expand"></span>
       </mat-grid-tile>
+}
     </mat-grid-list>
   </mat-card-content>
 </mat-card>

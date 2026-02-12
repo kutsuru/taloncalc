@@ -3,7 +3,7 @@ import { MatSelectionListChange, MatActionList, MatListSubheaderCssMatStyler, Ma
 import { TTThemerService } from '../tt-themer/tt-themer.service';
 import { PopupSetting, TtSettingsService } from './tt-settings.service';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { NgFor, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { MatLine } from '@angular/material/core';
 
@@ -11,7 +11,7 @@ import { MatLine } from '@angular/material/core';
     selector: 'tt-settings',
     templateUrl: './tt-settings.component.html',
     styleUrls: ['./tt-settings.component.scss'],
-    imports: [MatCard, MatCardContent, MatActionList, MatListSubheaderCssMatStyler, NgFor, MatListItem, MatIcon, MatLine, MatSelectionList, MatListOption, AsyncPipe]
+    imports: [MatCard, MatCardContent, MatActionList, MatListSubheaderCssMatStyler, MatListItem, MatIcon, MatLine, MatSelectionList, MatListOption, AsyncPipe]
 })
 export class TtSettingsComponent implements OnInit {
   constructor(

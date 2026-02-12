@@ -1,13 +1,12 @@
 import { Component, input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
     selector: 'tt-card',
     imports: [
-        CommonModule,
-        MatExpansionModule
-    ],
+    MatExpansionModule
+],
     templateUrl: './tt-card.component.html',
     styleUrl: './tt-card.component.scss'
 })

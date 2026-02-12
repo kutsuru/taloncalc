@@ -1,9 +1,11 @@
 <!-- Vanilla Mode -->
 <div>
     <mat-radio-group [formControl]="vanillaMode" (change)="changeVanillaMode($event.value)">
-        <mat-radio-button *ngFor="let mode of vanillaModes" [value]="mode">
+        @for (mode of vanillaModes; track mode) {
+<mat-radio-button [value]="mode">
             {{mode}}
         </mat-radio-button>
+}
     </mat-radio-group>
 </div>
 <!-- Weapon Type (Left/Right)-->

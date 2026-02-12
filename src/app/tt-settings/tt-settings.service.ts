@@ -1,6 +1,6 @@
 import { TemplatePortal } from "@angular/cdk/portal";
-import { DOCUMENT } from "@angular/common";
-import { EventEmitter, Inject, Injectable } from "@angular/core";
+
+import { EventEmitter, Inject, Injectable, DOCUMENT } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 
 export interface PopupSetting {
