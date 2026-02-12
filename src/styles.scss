@@ -11,18 +11,18 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$ang-mat-basic-primary: mat.define-palette(mat.$indigo-palette);
-$ang-mat-basic-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$ang-mat-basic-primary: mat.m2-define-palette(mat.$m2-indigo-palette);
+$ang-mat-basic-accent: mat.m2-define-palette(mat.$m2-pink-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$ang-mat-basic-warn: mat.define-palette(mat.$red-palette);
+$ang-mat-basic-warn: mat.m2-define-palette(mat.$m2-red-palette);
 
 // Typo
-$my-typography: mat.define-typography-config();
+$my-typography: mat.m2-define-typography-config();
 @include mat.typography-hierarchy($my-typography);
 
 // Define light theme (default theme)
-$ang-mat-basic-theme: mat.define-light-theme((color: (primary: $ang-mat-basic-primary,
+$ang-mat-basic-theme: mat.m2-define-light-theme((color: (primary: $ang-mat-basic-primary,
         accent: $ang-mat-basic-accent,
         warn: $ang-mat-basic-warn,
       ),
@@ -30,18 +30,18 @@ $ang-mat-basic-theme: mat.define-light-theme((color: (primary: $ang-mat-basic-pr
     ));
 
 // define dark theme
-$dark-prim: mat.define-palette(mat.$pink-palette);
-$dark-acc: mat.define-palette(mat.$blue-grey-palette);
-$dark-theme: mat.define-dark-theme((color: (primary: $dark-prim,
+$dark-prim: mat.m2-define-palette(mat.$m2-pink-palette);
+$dark-acc: mat.m2-define-palette(mat.$m2-blue-grey-palette);
+$dark-theme: mat.m2-define-dark-theme((color: (primary: $dark-prim,
         accent: $dark-acc,
       ),
       typography: $my-typography,
     ));
 
 // define fun theme
-$fun-prim: mat.define-palette(mat.$deep-purple-palette);
-$fun-acc: mat.define-palette(mat.$amber-palette, A200, A100, A400);
-$fun-theme: mat.define-dark-theme((color: (primary: $fun-prim,
+$fun-prim: mat.m2-define-palette(mat.$m2-deep-purple-palette);
+$fun-acc: mat.m2-define-palette(mat.$m2-amber-palette, A200, A100, A400);
+$fun-theme: mat.m2-define-dark-theme((color: (primary: $fun-prim,
         accent: $fun-acc,
       ),
       typography: $my-typography,
