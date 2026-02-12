@@ -1,4 +1,4 @@
-import { enableProdMode, provideZoneChangeDetection } from '@angular/core';
+import { enableProdMode, provideZonelessChangeDetection } from '@angular/core';
 
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { bootstrapApplication } from '@angular/platform-browser';
@@ -15,9 +15,12 @@ if (environment.production) {
 }
 
 bootstrapApplication(AppComponent, {
-    providers: [
-    provideZoneChangeDetection(),FilteredKeyValuePipe, TtLvArrayPipe, provideHttpClient(withInterceptorsFromDi()),
+  providers: [
+    provideZonelessChangeDetection(),
+    FilteredKeyValuePipe,
+    TtLvArrayPipe,
+    provideHttpClient(withInterceptorsFromDi()),
     provideAnimations()
-]
+  ]
 })
   .catch((err) => console.error(err));
