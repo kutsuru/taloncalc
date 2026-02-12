@@ -21,7 +21,6 @@ import { TtLvArrayPipe } from '../core/tt-lv-array.pipe';
     selector: 'battle-calc-pvm',
     templateUrl: './battle-calc-pvm.component.html',
     styleUrl: './battle-calc-pvm.component.scss',
-    standalone: true,
     imports: [MatCard, MatCardHeader, MatCardAvatar, MatCardTitle, MatIconButton, MatIcon, MatCardContent, MatFormField, MatLabel, MatSelect, MatOption, MatCardActions, MatSlideToggle, FormsModule, KeyValuePipe, TtLvArrayPipe]
 })
 export class BattleCalcPvmComponent implements OnInit, OnDestroy {

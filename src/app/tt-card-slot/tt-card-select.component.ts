@@ -13,7 +13,6 @@ export type CARD_SELECT_INPUT = {
 @Component({
     selector: 'tt-card-select',
     templateUrl: 'tt-card-select.component.html',
-    standalone: true,
     imports: [MatDialogTitle, MatDialogContent, TtSimpleSelectComponent, MatDialogActions, MatButton, MatDialogClose]
 })
 export class TtCardSelectComponent implements OnInit {

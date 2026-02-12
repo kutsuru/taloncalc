@@ -6,8 +6,7 @@ import { MatIcon } from '@angular/material/icon';
 @Component({
     selector: 'tt-popup-button',
     templateUrl: 'tt-popup-button.component.html',
-    standalone: true,
-    imports: [MatMiniFabButton, MatIcon],
+    imports: [MatMiniFabButton, MatIcon]
 })
 export class TTPopupButtonComponent implements OnInit {
   @Input() popup!: TtPopupComponent;

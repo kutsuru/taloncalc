@@ -13,7 +13,6 @@ type ListEntry = {
     selector: 'tt-simple-select',
     templateUrl: './tt-simple-select.component.html',
     styleUrls: ['./tt-simple-select.component.scss'],
-    standalone: true,
     imports: [MatFormField, MatLabel, MatSelect, MatSelectTrigger, NgIf, MatOption]
 })
 export class TtSimpleSelectComponent implements OnInit, OnChanges {

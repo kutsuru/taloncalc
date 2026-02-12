@@ -22,7 +22,6 @@ type StatsInfoData = {
     templateUrl: './tt-stats-info.component.html',
     styleUrls: ['./tt-stats-info.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [MatFormField, MatLabel, MatInput, KeyValuePipe]
 })
 export class TtStatsInfoComponent implements OnInit {

@@ -18,7 +18,6 @@ type BuffSkill = {
     selector: 'tt-buff',
     templateUrl: './tt-buff.component.html',
     styleUrl: './tt-buff.component.scss',
-    standalone: true,
     imports: [MatFormField, MatLabel, MatSelect, MatOption, MatCheckbox, AsyncPipe, KeyValuePipe, TtLvArrayPipe]
 })
 export class TtBuffComponent implements OnInit {

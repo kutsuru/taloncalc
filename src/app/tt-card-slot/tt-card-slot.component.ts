@@ -13,7 +13,6 @@ enum CARD_IMG {
     selector: 'tt-card-slot',
     templateUrl: './tt-card-slot.component.html',
     styleUrl: './tt-card-slot.component.scss',
-    standalone: true,
     imports: [MatTooltip]
 })
 export class TtCardSlotComponent implements OnInit, OnChanges {

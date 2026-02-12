@@ -15,7 +15,6 @@ import { MatOption } from '@angular/material/core';
     templateUrl: './tt-stats.component.html',
     styleUrls: ['./tt-stats.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [MatFormField, MatLabel, MatSelect, NgFor, MatOption, MatCheckbox, NgIf, MatSelectTrigger]
 })
 export class TtStatsComponent implements OnInit {

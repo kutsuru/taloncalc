@@ -8,12 +8,11 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
     selector: 'tt-page-loader',
     templateUrl: 'tt-page-loader.component.html',
     styleUrls: ['tt-page-loader.component.scss'],
-    standalone: true,
     imports: [
         NgIf,
         MatProgressSpinner,
         AsyncPipe,
-    ],
+    ]
 })
 export class TtPageLoaderComponent {
   showLoader$: Observable<boolean>;

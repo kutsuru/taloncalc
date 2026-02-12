@@ -11,7 +11,6 @@ import { TtLvArrayPipe } from '../core/tt-lv-array.pipe';
     selector: 'tt-passive',
     templateUrl: './tt-passive.component.html',
     styleUrl: './tt-passive.component.scss',
-    standalone: true,
     imports: [MatFormField, MatLabel, MatSelect, MatOption, AsyncPipe, KeyValuePipe, TtLvArrayPipe]
 })
 export class TtPassiveComponent {

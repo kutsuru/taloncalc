@@ -14,7 +14,6 @@ import { MatButton } from '@angular/material/button';
     selector: 'select-battle-target',
     templateUrl: './select-battle-target.component.html',
     styleUrls: ['./select-battle-target.component.css'],
-    standalone: true,
     imports: [
         MatDialogTitle,
         MatDialogContent,
@@ -28,7 +27,7 @@ import { MatButton } from '@angular/material/button';
         MatDialogActions,
         MatButton,
         MatDialogClose,
-    ],
+    ]
 })
 export class SelectBattleTargetComponent implements OnInit {
   protected mobKeys: string[] = [];

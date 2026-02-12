@@ -12,7 +12,6 @@ import { TtCardSlotComponent } from '../tt-card-slot/tt-card-slot.component';
     selector: 'tt-equip',
     templateUrl: './tt-equip.component.html',
     styleUrls: ['./tt-equip.component.scss'],
-    standalone: true,
     imports: [
         MatRadioGroup,
         FormsModule,
@@ -21,7 +20,7 @@ import { TtCardSlotComponent } from '../tt-card-slot/tt-card-slot.component';
         MatRadioButton,
         TtSimpleSelectComponent,
         TtCardSlotComponent,
-    ],
+    ]
 })
 export class TtEquipComponent implements OnInit {
   /* general */

@@ -11,7 +11,6 @@ import { MatLine } from '@angular/material/core';
     selector: 'tt-settings',
     templateUrl: './tt-settings.component.html',
     styleUrls: ['./tt-settings.component.scss'],
-    standalone: true,
     imports: [MatCard, MatCardContent, MatActionList, MatListSubheaderCssMatStyler, NgFor, MatListItem, MatIcon, MatLine, MatSelectionList, MatListOption, AsyncPipe]
 })
 export class TtSettingsComponent implements OnInit {

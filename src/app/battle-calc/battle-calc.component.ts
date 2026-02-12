@@ -26,7 +26,6 @@ import { MatIcon } from '@angular/material/icon';
             ]),
         ]),
     ],
-    standalone: true,
     imports: [
         MatTabGroup,
         MatTab,
@@ -35,7 +34,7 @@ import { MatIcon } from '@angular/material/icon';
         MatFabButton,
         MatIcon,
         AsyncPipe,
-    ],
+    ]
 })
 export class BattleCalcComponent {
   public battleCalcPVM$: Observable<BattleCalcInfo[]>;

@@ -16,7 +16,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'tt-food',
     templateUrl: './tt-food.component.html',
     styleUrl: './tt-food.component.scss',
-    standalone: true,
     imports: [MatTabGroup, MatTab, MatFormField, MatLabel, MatSelect, MatOption, MatCheckbox, FormsModule, KeyValuePipe]
 })
 export class TtFoodComponent implements OnInit {

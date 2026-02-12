@@ -30,7 +30,6 @@ import { TtSettingsComponent } from './tt-settings/tt-settings.component';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    standalone: true,
     imports: [
         MatToolbar,
         TtCardComponent,
@@ -51,7 +50,7 @@ import { TtSettingsComponent } from './tt-settings/tt-settings.component';
         TtPopupGroupComponent,
         TtPopupComponent,
         TtSettingsComponent,
-    ],
+    ]
 })
 export class AppComponent implements OnInit, OnDestroy {
   longText = `Fixme`;

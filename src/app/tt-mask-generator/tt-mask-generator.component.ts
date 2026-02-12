@@ -13,7 +13,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'tt-mask-generator',
     templateUrl: './tt-mask-generator.component.html',
     styleUrls: ['./tt-mask-generator.component.css'],
-    standalone: true,
     imports: [
         MatCard,
         MatCardTitleGroup,
@@ -28,7 +27,7 @@ import { FormsModule } from '@angular/forms';
         MatCheckbox,
         FormsModule,
         KeyValuePipe,
-    ],
+    ]
 })
 export class TtMaskGeneratorComponent implements OnInit {
   protected cols = 1;
