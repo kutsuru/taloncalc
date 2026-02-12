@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'lvarray',
+    name: 'lvarray',
+    standalone: true,
 })
 export class TtLvArrayPipe implements PipeTransform {
   transform(value: any, maxLv: number): any {
@@ -10,7 +11,8 @@ export class TtLvArrayPipe implements PipeTransform {
 }
 
 @Pipe({
-  name: 'range',
+    name: 'range',
+    standalone: true,
 })
 export class TtRangePipe implements PipeTransform {
   transform(value: any, range: number): any {

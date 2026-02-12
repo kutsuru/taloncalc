@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { KeyValuePipe } from '@angular/common';
 
 type StatsInfoData = {
   "HP": number;
@@ -15,10 +18,12 @@ type StatsInfoData = {
 }
 
 @Component({
-  selector: 'tt-stats-info',
-  templateUrl: './tt-stats-info.component.html',
-  styleUrls: ['./tt-stats-info.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'tt-stats-info',
+    templateUrl: './tt-stats-info.component.html',
+    styleUrls: ['./tt-stats-info.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [MatFormField, MatLabel, MatInput, KeyValuePipe]
 })
 export class TtStatsInfoComponent implements OnInit {
 

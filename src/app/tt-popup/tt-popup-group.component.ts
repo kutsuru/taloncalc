@@ -11,8 +11,9 @@ import { Subject, takeUntil } from 'rxjs';
 import { TtPopupComponent } from './tt-popup.component';
 
 @Component({
-  selector: 'tt-popup-group',
-  template: '<ng-content></ng-content>',
+    selector: 'tt-popup-group',
+    template: '<ng-content></ng-content>',
+    standalone: true,
 })
 export class TtPopupGroupComponent implements AfterViewInit, OnInit, OnDestroy {
   /* event emitter */

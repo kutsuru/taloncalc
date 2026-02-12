@@ -5,9 +5,8 @@ import { TtPageLoaderComponent } from './tt-page-loader.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
-  imports: [CommonModule, MatProgressSpinnerModule],
-  declarations: [TtPageLoaderComponent],
-  providers: [TtPageLoaderService],
-  exports: [TtPageLoaderComponent],
+    imports: [CommonModule, MatProgressSpinnerModule, TtPageLoaderComponent],
+    providers: [TtPageLoaderService],
+    exports: [TtPageLoaderComponent],
 })
 export class TtPageLoaderModule { }

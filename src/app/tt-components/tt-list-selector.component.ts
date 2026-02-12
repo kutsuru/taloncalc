@@ -1,12 +1,15 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatSelectChange } from '@angular/material/select';
+import { MatSelectChange, MatSelect, MatSelectTrigger } from '@angular/material/select';
 import { TTSessionInfoService } from '../core/tt-session-info.service';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { NgIf, NgFor, NgStyle } from '@angular/common';
+import { MatOption } from '@angular/material/core';
 
 // [formControl]="selectorControl"
 @Component({
-  selector: 'tt-list-select',
-  template: `
+    selector: 'tt-list-select',
+    template: `
   <mat-form-field class="stat">
     <mat-label>{{ name }}</mat-label>
       <mat-select [(value)]="_serviceData[key]" (selectionChange)="onSelectionChange($event)">
@@ -21,7 +24,18 @@ import { TTSessionInfoService } from '../core/tt-session-info.service';
         </mat-option>
     </mat-select>
   </mat-form-field>`,
-  styles: [`.mat-mdc-form-field { width:80px; margin:4px }`],
+    styles: [`.mat-mdc-form-field { width:80px; margin:4px }`],
+    standalone: true,
+    imports: [
+        MatFormField,
+        MatLabel,
+        MatSelect,
+        MatSelectTrigger,
+        NgIf,
+        NgFor,
+        MatOption,
+        NgStyle,
+    ],
 })
 export class TtListSelectorComponent implements OnInit {
   protected _serviceData: any;

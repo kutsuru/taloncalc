@@ -16,7 +16,8 @@ function makeKeyValuePair<K, V>(key: K, value: V): KeyValue<K, V> {
   return { key: key, value: value };
 }
 @Pipe({
-  name: 'jobfilter',
+    name: 'jobfilter',
+    standalone: true,
 })
 export class FilteredKeyValuePipe implements PipeTransform {
   private keyValues: Array<KeyValue<string, any>> = [];

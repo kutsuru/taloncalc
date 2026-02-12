@@ -4,12 +4,20 @@ import { filter } from 'rxjs';
 import { TTCoreService } from '../core/tt-core.service';
 import { ActiveFood, Food, FoodDB_V2, FoodStatsObj, ObjWithKeyString, StatFood } from '../core/models';
 import { SESSION_INFO_DEFAULT } from '../core/session-info-default';
-import { KeyValue } from '@angular/common';
+import { KeyValue, KeyValuePipe } from '@angular/common';
+import { MatTabGroup, MatTab } from '@angular/material/tabs';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'tt-food',
-  templateUrl: './tt-food.component.html',
-  styleUrl: './tt-food.component.scss'
+    selector: 'tt-food',
+    templateUrl: './tt-food.component.html',
+    styleUrl: './tt-food.component.scss',
+    standalone: true,
+    imports: [MatTabGroup, MatTab, MatFormField, MatLabel, MatSelect, MatOption, MatCheckbox, FormsModule, KeyValuePipe]
 })
 export class TtFoodComponent implements OnInit {
   protected statFoods!: FoodStatsObj<ObjWithKeyString<StatFood>>;

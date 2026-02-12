@@ -1,11 +1,15 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatSelectChange } from '@angular/material/select';
+import { MatSelectChange, MatSelect } from '@angular/material/select';
 import { KeyValue } from '../core/filtered-key-value.pipe';
 import { DictDb } from '../core/models';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { NgFor } from '@angular/common';
+import { MatOption } from '@angular/material/core';
 
 @Component({
-  selector: 'tt-map-select',
-  template: `
+    selector: 'tt-map-select',
+    template: `
   <mat-form-field>
     <mat-label>{{ selector_name }}</mat-label>
       <mat-select [(ngModel)]="selection" 
@@ -15,7 +19,16 @@ import { DictDb } from '../core/models';
         </mat-option>
     </mat-select>
   </mat-form-field>`,
-  styles: [`.mat-mdc-form-field { margin:4px } `],
+    styles: [`.mat-mdc-form-field { margin:4px } `],
+    standalone: true,
+    imports: [
+        MatFormField,
+        MatLabel,
+        MatSelect,
+        FormsModule,
+        NgFor,
+        MatOption,
+    ],
 })
 export class TtMapSelectorComponent {
   

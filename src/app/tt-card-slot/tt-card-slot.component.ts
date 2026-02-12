@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output, OnChanges, SimpleChange
 import { CardLocations } from '../core/models';
 import { MatDialog } from '@angular/material/dialog';
 import { CARD_SELECT_INPUT, TtCardSelectComponent } from './tt-card-select.component';
+import { MatTooltip } from '@angular/material/tooltip';
 
 enum CARD_IMG {
   SET = '/assets/img/card_set.png/',
@@ -9,9 +10,11 @@ enum CARD_IMG {
 }
 
 @Component({
-  selector: 'tt-card-slot',
-  templateUrl: './tt-card-slot.component.html',
-  styleUrl: './tt-card-slot.component.scss'
+    selector: 'tt-card-slot',
+    templateUrl: './tt-card-slot.component.html',
+    styleUrl: './tt-card-slot.component.scss',
+    standalone: true,
+    imports: [MatTooltip]
 })
 export class TtCardSlotComponent implements OnInit, OnChanges {
   @Input() card: string = '';

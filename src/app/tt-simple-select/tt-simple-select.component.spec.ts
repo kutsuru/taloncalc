@@ -8,8 +8,8 @@ describe('TtSimpleSelectComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TtSimpleSelectComponent ]
-    })
+    imports: [TtSimpleSelectComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(TtSimpleSelectComponent);

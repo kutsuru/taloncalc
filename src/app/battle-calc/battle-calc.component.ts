@@ -5,23 +5,37 @@ import { SelectBattleTargetComponent } from './select-battle-target/select-battl
 import { Observable } from 'rxjs';
 import { BattleCalcInfo } from '../core/models';
 import { TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
+import { MatTabGroup, MatTab } from '@angular/material/tabs';
+import { NgFor, AsyncPipe } from '@angular/common';
+import { BattleCalcPvmComponent } from '../battle-calc-pvm/battle-calc-pvm.component';
+import { MatFabButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
-  selector: 'tt-battle-calc',
-  templateUrl: './battle-calc.component.html',
-  styleUrls: ['./battle-calc.component.scss'],
-  animations: [
-    trigger('insertCalcTrigger', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate('250ms', style({ opacity: 1 })
-        ),
-      ]),
-      transition(':leave', [
-        animate('100ms', style({ opacity: 0 }))
-      ]),
-    ]),
-  ],
+    selector: 'tt-battle-calc',
+    templateUrl: './battle-calc.component.html',
+    styleUrls: ['./battle-calc.component.scss'],
+    animations: [
+        trigger('insertCalcTrigger', [
+            transition(':enter', [
+                style({ opacity: 0 }),
+                animate('250ms', style({ opacity: 1 })),
+            ]),
+            transition(':leave', [
+                animate('100ms', style({ opacity: 0 }))
+            ]),
+        ]),
+    ],
+    standalone: true,
+    imports: [
+        MatTabGroup,
+        MatTab,
+        NgFor,
+        BattleCalcPvmComponent,
+        MatFabButton,
+        MatIcon,
+        AsyncPipe,
+    ],
 })
 export class BattleCalcComponent {
   public battleCalcPVM$: Observable<BattleCalcInfo[]>;

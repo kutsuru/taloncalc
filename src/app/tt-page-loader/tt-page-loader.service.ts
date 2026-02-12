@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class TtPageLoaderService {
   private _counter: number = 0;
   private _show: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);

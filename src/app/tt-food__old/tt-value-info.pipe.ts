@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'valueinfo',
+    name: 'valueinfo',
+    standalone: true,
 })
 export class TtValueInfo implements PipeTransform {
   transform(value: any, key: string): string {

@@ -1,11 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { DictDb } from '../core/models';
 import { TTCoreService } from '../core/tt-core.service';
+import { MatCard, MatCardTitleGroup, MatCardTitle, MatCardContent } from '@angular/material/card';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatGridList, MatGridTile } from '@angular/material/grid-list';
+import { NgFor, KeyValuePipe } from '@angular/common';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'tt-mask-generator',
-  templateUrl: './tt-mask-generator.component.html',
-  styleUrls: ['./tt-mask-generator.component.css'],
+    selector: 'tt-mask-generator',
+    templateUrl: './tt-mask-generator.component.html',
+    styleUrls: ['./tt-mask-generator.component.css'],
+    standalone: true,
+    imports: [
+        MatCard,
+        MatCardTitleGroup,
+        MatCardTitle,
+        MatCardContent,
+        MatFormField,
+        MatLabel,
+        MatInput,
+        MatGridList,
+        NgFor,
+        MatGridTile,
+        MatCheckbox,
+        FormsModule,
+        KeyValuePipe,
+    ],
 })
 export class TtMaskGeneratorComponent implements OnInit {
   protected cols = 1;

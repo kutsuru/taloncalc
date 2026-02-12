@@ -1,13 +1,23 @@
 import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { AppModule } from './app/app.module';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { FilteredKeyValuePipe } from './app/core/filtered-key-value.pipe';
+import { TtLvArrayPipe } from './app/core/tt-lv-array.pipe';
 import { environment } from './environments/environment';
+
+
+import { AppComponent } from './app/app.component';
 
 if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
+bootstrapApplication(AppComponent, {
+    providers: [
+    FilteredKeyValuePipe, TtLvArrayPipe, provideHttpClient(withInterceptorsFromDi()),
+    provideAnimations()
+]
+})
   .catch((err) => console.error(err));

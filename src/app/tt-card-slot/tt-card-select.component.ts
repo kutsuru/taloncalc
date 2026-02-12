@@ -1,7 +1,9 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { CardLocations } from "../core/models";
-import { MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { MAT_DIALOG_DATA, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from "@angular/material/dialog";
 import { TTCoreService } from "../core/tt-core.service";
+import { TtSimpleSelectComponent } from "../tt-simple-select/tt-simple-select.component";
+import { MatButton } from "@angular/material/button";
 
 export type CARD_SELECT_INPUT = {
     location: CardLocations,
@@ -10,7 +12,9 @@ export type CARD_SELECT_INPUT = {
 
 @Component({
     selector: 'tt-card-select',
-    templateUrl: 'tt-card-select.component.html'
+    templateUrl: 'tt-card-select.component.html',
+    standalone: true,
+    imports: [MatDialogTitle, MatDialogContent, TtSimpleSelectComponent, MatDialogActions, MatButton, MatDialogClose]
 })
 export class TtCardSelectComponent implements OnInit {
     cards: string[] = [];

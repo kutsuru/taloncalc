@@ -1,11 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { ConnectableObservable } from 'rxjs';
 import { TTCoreService } from '../../core/tt-core.service';
+import { MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
+import { NgFor } from '@angular/common';
+import { MatOption } from '@angular/material/core';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { FormsModule } from '@angular/forms';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-  selector: 'select-battle-target',
-  templateUrl: './select-battle-target.component.html',
-  styleUrls: ['./select-battle-target.component.css'],
+    selector: 'select-battle-target',
+    templateUrl: './select-battle-target.component.html',
+    styleUrls: ['./select-battle-target.component.css'],
+    standalone: true,
+    imports: [
+        MatDialogTitle,
+        MatDialogContent,
+        MatFormField,
+        MatLabel,
+        MatSelect,
+        NgFor,
+        MatOption,
+        MatCheckbox,
+        FormsModule,
+        MatDialogActions,
+        MatButton,
+        MatDialogClose,
+    ],
 })
 export class SelectBattleTargetComponent implements OnInit {
   protected mobKeys: string[] = [];

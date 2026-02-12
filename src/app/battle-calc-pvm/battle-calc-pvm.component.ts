@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, KeyValuePipe } from '@angular/common';
 import { TTCoreService } from '../core/tt-core.service';
 import { MatDialog } from '@angular/material/dialog';
 import { SelectBattleTargetComponent } from '../battle-calc/select-battle-target/select-battle-target.component';
@@ -7,11 +7,22 @@ import { Ammo, Element, Mob, SessionChangeEvent, Skill } from '../core/models';
 import { SkillList, TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
 import { BattleSessionResult, TTBattleSession } from '../core/tt-battle-session';
 import { Subscription, firstValueFrom } from 'rxjs';
+import { MatCard, MatCardHeader, MatCardAvatar, MatCardTitle, MatCardContent, MatCardActions } from '@angular/material/card';
+import { MatIconButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
+import { FormsModule } from '@angular/forms';
+import { TtLvArrayPipe } from '../core/tt-lv-array.pipe';
 
 @Component({
-  selector: 'battle-calc-pvm',
-  templateUrl: './battle-calc-pvm.component.html',
-  styleUrl: './battle-calc-pvm.component.scss'
+    selector: 'battle-calc-pvm',
+    templateUrl: './battle-calc-pvm.component.html',
+    styleUrl: './battle-calc-pvm.component.scss',
+    standalone: true,
+    imports: [MatCard, MatCardHeader, MatCardAvatar, MatCardTitle, MatIconButton, MatIcon, MatCardContent, MatFormField, MatLabel, MatSelect, MatOption, MatCardActions, MatSlideToggle, FormsModule, KeyValuePipe, TtLvArrayPipe]
 })
 export class BattleCalcPvmComponent implements OnInit, OnDestroy {
   /* In- / Outputs */

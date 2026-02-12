@@ -8,11 +8,50 @@ import { TtPopupGroupComponent } from './tt-popup/tt-popup-group.component';
 import { TtSettingsService } from './tt-settings/tt-settings.service';
 import { TTThemerService } from './tt-themer/tt-themer.service';
 import { TTSessionInfoV2Service } from './core/tt-session-info_v2.service';
+import { MatToolbar } from '@angular/material/toolbar';
+import { TtCardComponent } from './tt-card/tt-card.component';
+import { TtStatsComponent } from './tt-stats/tt-stats.component';
+import { TtStatsInfoComponent } from './tt-stats-info/tt-stats-info.component';
+import { TtBuffComponent } from './tt-buff/tt-buff.component';
+import { TtPassiveComponent } from './tt-passive/tt-passive.component';
+import { TtEquipComponent } from './tt-equip/tt-equip.component';
+import { BattleCalcComponent } from './battle-calc/battle-calc.component';
+import { TtFoodComponent } from './tt-food/tt-food.component';
+import { TtMaskGeneratorComponent } from './tt-mask-generator/tt-mask-generator.component';
+import { MatButton, MatMiniFabButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { NgIf } from '@angular/common';
+import { TTPopupButtonComponent } from './tt-popup/tt-popup-button.component';
+import { TtPageLoaderComponent } from './tt-page-loader/tt-page-loader.component';
+import { TtPopupComponent } from './tt-popup/tt-popup.component';
+import { TtSettingsComponent } from './tt-settings/tt-settings.component';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    standalone: true,
+    imports: [
+        MatToolbar,
+        TtCardComponent,
+        TtStatsComponent,
+        TtStatsInfoComponent,
+        TtBuffComponent,
+        TtPassiveComponent,
+        TtEquipComponent,
+        BattleCalcComponent,
+        TtFoodComponent,
+        TtMaskGeneratorComponent,
+        MatButton,
+        MatMiniFabButton,
+        MatIcon,
+        NgIf,
+        TTPopupButtonComponent,
+        TtPageLoaderComponent,
+        TtPopupGroupComponent,
+        TtPopupComponent,
+        TtSettingsComponent,
+    ],
 })
 export class AppComponent implements OnInit, OnDestroy {
   longText = `Fixme`;

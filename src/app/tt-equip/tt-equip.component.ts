@@ -2,13 +2,26 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { CardLocations, Item, ItemLocations, JobDbEntry, SessionCard, SessionChangeEvent, SessionEquip, SessionEquipBase, VANILLA_MODES, VanillaMode, WeaponType, WeaponTypeLeft } from '../core/models';
 import { TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
 import { TTCoreService } from '../core/tt-core.service';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatRadioGroup, MatRadioButton } from '@angular/material/radio';
+import { NgFor } from '@angular/common';
+import { TtSimpleSelectComponent } from '../tt-simple-select/tt-simple-select.component';
+import { TtCardSlotComponent } from '../tt-card-slot/tt-card-slot.component';
 
 @Component({
-  selector: 'tt-equip',
-  templateUrl: './tt-equip.component.html',
-  styleUrls: ['./tt-equip.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'tt-equip',
+    templateUrl: './tt-equip.component.html',
+    styleUrls: ['./tt-equip.component.scss'],
+    standalone: true,
+    imports: [
+        MatRadioGroup,
+        FormsModule,
+        ReactiveFormsModule,
+        NgFor,
+        MatRadioButton,
+        TtSimpleSelectComponent,
+        TtCardSlotComponent,
+    ],
 })
 export class TtEquipComponent implements OnInit {
   /* general */

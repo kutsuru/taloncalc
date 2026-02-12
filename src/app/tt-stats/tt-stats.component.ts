@@ -1,17 +1,22 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { TTCoreService } from '../core/tt-core.service';
-import { MatSelectChange } from '@angular/material/select';
+import { MatSelectChange, MatSelect, MatSelectTrigger } from '@angular/material/select';
 import { distinctUntilChanged } from 'rxjs';
-import { MatCheckboxChange } from '@angular/material/checkbox';
+import { MatCheckboxChange, MatCheckbox } from '@angular/material/checkbox';
 import { SessionChangeEvent } from '../core/models';
 import { TTSessionInfoV2Service } from '../core/tt-session-info_v2.service';
 import { debounce } from '../core/utils';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { NgFor, NgIf } from '@angular/common';
+import { MatOption } from '@angular/material/core';
 
 @Component({
-  selector: 'tt-stats',
-  templateUrl: './tt-stats.component.html',
-  styleUrls: ['./tt-stats.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'tt-stats',
+    templateUrl: './tt-stats.component.html',
+    styleUrls: ['./tt-stats.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [MatFormField, MatLabel, MatSelect, NgFor, MatOption, MatCheckbox, NgIf, MatSelectTrigger]
 })
 export class TtStatsComponent implements OnInit {
   /* classes */

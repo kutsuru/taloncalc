@@ -12,33 +12,28 @@ type PopupAnimationStates = 'open' | 'closed';
 
 /* class / component */
 @Component({
-  selector: 'tt-popup',
-  templateUrl: 'tt-popup.component.html',
-  styleUrls: ['tt-popup.component.scss'],
-  animations: [
-    trigger('slideInOut', [
-      state(
-        'closed',
-        style({
-          left: '100%',
-          opacity: '0',
-          visibility: 'hidden',
-        })
-      ),
-      state(
-        'open',
-        style({
-          left: '50%',
-          opacity: '1',
-          visibility: 'unset',
-        })
-      ),
-      transition('open <=> closed', animate('1000ms ease-in-out')),
-    ]),
-  ],
-  host: {
-    '[@slideInOut]': 'animationState',
-  },
+    selector: 'tt-popup',
+    templateUrl: 'tt-popup.component.html',
+    styleUrls: ['tt-popup.component.scss'],
+    animations: [
+        trigger('slideInOut', [
+            state('closed', style({
+                left: '100%',
+                opacity: '0',
+                visibility: 'hidden',
+            })),
+            state('open', style({
+                left: '50%',
+                opacity: '1',
+                visibility: 'unset',
+            })),
+            transition('open <=> closed', animate('1000ms ease-in-out')),
+        ]),
+    ],
+    host: {
+        '[@slideInOut]': 'animationState',
+    },
+    standalone: true,
 })
 export class TtPopupComponent implements OnDestroy {
   /* Icon name for the button to open the popup (material icon font) */
