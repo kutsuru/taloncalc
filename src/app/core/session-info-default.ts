@@ -1,5 +1,16 @@
-import { SessionChangeEvent, SessionInfoV2 } from "./models";
+import { SessionInfoV2 } from "./models";
 import { TTCoreService } from "./tt-core.service";
+import { SessionBonus } from "./tt-session-info.v3.service";
+
+export const BONUS_DEFAULT: SessionBonus = {
+    agi: 1,
+    dex: 1,
+    int: 1,
+    luk: 1,
+    str: 1,
+    vit: 1,
+    debug: 'DEBUG'
+}
 
 export const SESSION_INFO_DEFAULT: SessionInfoV2 = {
     baseLevel: 1,
@@ -443,18 +454,18 @@ export const SESSION_INFO_DEFAULT: SessionInfoV2 = {
         Eska: 0
     },
     equip: {
-        upperHg: '',
-        middleHg: '',
-        lowerHg: '',
-        armor: '',
+        upperHg: '(No Upper Headgear)',
+        middleHg: '(No Middle Headgear)',
+        lowerHg: '(No Lower Headgear)',
+        armor: '(No Armor)',
         rightHand: 'Unarmed',
         rightHandType: 'Unarmed',
         leftHand: 'Unarmed',
         leftHandType: 'Unarmed',
-        garment: '',
-        shoes: '',
-        rhAccessory: '',
-        lhAccessory: '',
+        garment: '(No Garment)',
+        shoes: '(No Footgear)',
+        rhAccessory: '(No Accessory)',
+        lhAccessory: '(No Accessory)',
     },
     refine: {
         armor: 0,

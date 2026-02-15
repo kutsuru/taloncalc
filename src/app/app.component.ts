@@ -1,30 +1,30 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
 import { MatSelectChange } from '@angular/material/select';
+import { MatToolbar } from '@angular/material/toolbar';
 import { Subscription } from 'rxjs';
 import { TTCoreService } from './core/tt-core.service';
 import { TTSessionInfoService } from './core/tt-session-info.service';
+import { TTSessionInfoV2Service } from './core/tt-session-info_v2.service';
+import { TtBuffComponent } from './tt-buff/tt-buff.component';
+import { TtCardComponent } from './tt-card/tt-card.component';
+import { TtMaskGeneratorComponent } from './tt-mask-generator/tt-mask-generator.component';
 import { TtPageLoaderService } from './tt-page-loader/tt-page-loader.service';
 import { TtPopupGroupComponent } from './tt-popup/tt-popup-group.component';
 import { TtSettingsService } from './tt-settings/tt-settings.service';
-import { TTThemerService } from './tt-themer/tt-themer.service';
-import { TTSessionInfoV2Service } from './core/tt-session-info_v2.service';
-import { MatToolbar } from '@angular/material/toolbar';
-import { TtCardComponent } from './tt-card/tt-card.component';
-import { TtStatsComponent } from './tt-stats/tt-stats.component';
 import { TtStatsInfoComponent } from './tt-stats-info/tt-stats-info.component';
-import { TtBuffComponent } from './tt-buff/tt-buff.component';
-import { TtPassiveComponent } from './tt-passive/tt-passive.component';
-import { TtEquipComponent } from './tt-equip/tt-equip.component';
-import { BattleCalcComponent } from './battle-calc/battle-calc.component';
-import { TtFoodComponent } from './tt-food/tt-food.component';
-import { TtMaskGeneratorComponent } from './tt-mask-generator/tt-mask-generator.component';
-import { MatButton, MatMiniFabButton } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
+import { TTThemerService } from './tt-themer/tt-themer.service';
 
-import { TTPopupButtonComponent } from './tt-popup/tt-popup-button.component';
+import { JsonPipe } from '@angular/common';
+import { TTSessionInfoV3Service } from './core/tt-session-info.v3.service';
+import { TtEquipV3Component } from "./tt-equip-v3/tt-equip-v3.component";
 import { TtPageLoaderComponent } from './tt-page-loader/tt-page-loader.component';
+import { TTPopupButtonComponent } from './tt-popup/tt-popup-button.component';
 import { TtPopupComponent } from './tt-popup/tt-popup.component';
 import { TtSettingsComponent } from './tt-settings/tt-settings.component';
+import { TtStatsInfoV3Component } from './tt-stats-info-v3/tt-stats-info-v3.component';
+import { TtStatsV3Component } from './tt-stats-v3/tt-stats-v3.component';
 
 @Component({
     selector: 'app-root',
@@ -33,28 +33,26 @@ import { TtSettingsComponent } from './tt-settings/tt-settings.component';
     imports: [
     MatToolbar,
     TtCardComponent,
-    TtStatsComponent,
     TtStatsInfoComponent,
     TtBuffComponent,
-    TtPassiveComponent,
-    TtEquipComponent,
-    BattleCalcComponent,
-    TtFoodComponent,
     TtMaskGeneratorComponent,
-    MatButton,
     MatMiniFabButton,
     MatIcon,
     TTPopupButtonComponent,
     TtPageLoaderComponent,
     TtPopupGroupComponent,
     TtPopupComponent,
-    TtSettingsComponent
+    TtSettingsComponent,
+    TtStatsV3Component,
+    JsonPipe,
+    TtStatsInfoV3Component,
+    TtEquipV3Component
 ]
 })
 export class AppComponent implements OnInit, OnDestroy {
+  readonly se = inject(TTSessionInfoV3Service);
   longText = `Fixme`;
 
-  debugMsg = '....';
 
   isTwoHanded: boolean = false;
   hasJobLvLimit: boolean = false;
@@ -163,17 +161,6 @@ export class AppComponent implements OnInit, OnDestroy {
     // In case trans class was selected and baby class is activated
     // FIXME? Reset existing filtering on class
     this.onClassChange();
-  }
-
-  debug() {
-    // this.debugMsg = 'Start Loading Core Service...';
-    // this.ttLoaderService.enable();
-    // this.ttCore.initializeCore().subscribe((_) => {
-    //   this.debugMsg = 'Service loaded';
-    //   this.ttLoaderService.disable();
-    //   this.initClassSelection();
-    // });
-    this.session.changeEquip('armor', 'Aegir Armor');
   }
 
   updateEquipmentList() {

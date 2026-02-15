@@ -9,6 +9,7 @@ import { environment } from './environments/environment';
 
 
 import { AppComponent } from './app/app.component';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 if (environment.production) {
   enableProdMode();
@@ -20,7 +21,8 @@ bootstrapApplication(AppComponent, {
     FilteredKeyValuePipe,
     TtLvArrayPipe,
     provideHttpClient(withInterceptorsFromDi()),
-    provideAnimations()
+    provideAnimations(),
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }
   ]
 })
   .catch((err) => console.error(err));

@@ -708,7 +708,7 @@ export class TTSessionInfoService {
   }
 
   public updateClassSkillInfo(): void {
-    console.log('Update Skill Infos', this._jobInfo);
+    // console.log('Update Skill Infos', this._jobInfo);
 
     this._buffSkills = {};
     this._activeSkills = {};

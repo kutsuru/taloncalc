@@ -1,0 +1,103 @@
+<!-- Left & right hand -->
+<div>
+    <mat-form-field>
+        <mat-label>Waepon Type</mat-label>
+        <mat-select [formControl]="gears.controls.rightHandType">
+            @for (wT of weaponTypes(); track $index) {
+            <mat-option [value]="wT"> {{wT}} </mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Left Hand</mat-label>
+        <mat-select [formControl]="gears.controls.leftHandType">
+            @for (wT of leftHandTypes(); track $index) {
+            <mat-option [value]="wT"> {{wT}} </mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+</div>
+<div>
+    <!-- headgears -->
+    <mat-form-field>
+        <mat-select [formControl]="gears.controls.upperHg">
+            @for (hg of upperHgList(); track $index) {
+            <mat-option [value]="hg"> {{hg}} </mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select [formControl]="gears.controls.middleHg">
+            @for (hg of middleHgList(); track $index) {
+            <mat-option [value]="hg"> {{hg}} </mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select [formControl]="gears.controls.lowerHg">
+            @for (hg of lowerHgList(); track $index) {
+            <mat-option [value]="hg"> {{hg}} </mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+</div>
+<div>
+    <!-- Arms -->
+    <!-- Weapon -->
+    <mat-form-field>
+        <mat-select [formControl]="gears.controls.rightHand">
+            @for (w of weaponList(); track $index) {
+            <mat-option [value]="w"> {{w}} </mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <!-- Left-Hand / Shield -->
+    <mat-form-field>
+        <mat-select [formControl]="gears.controls.leftHand">
+            @for (lh of leftHandList(); track $index) {
+            <mat-option [value]="lh"> {{lh}} </mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+</div>
+<div>
+    <!-- Armors -->
+    <mat-form-field>
+        <mat-select [formControl]="gears.controls.armor">
+            @for (a of armorList(); track $index) {
+            <mat-option [value]="a"> {{a}} </mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select [formControl]="gears.controls.garment">
+            @for (gar of garmentList(); track $index) {
+            <mat-option [value]="gar"> {{gar}} </mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select [formControl]="gears.controls.shoes">
+            @for (sh of shoeList(); track $index) {
+            <mat-option [value]="sh"> {{sh}} </mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+</div>
+<div>
+    <!-- Accessory -->
+    <mat-form-field>
+        <mat-select [formControl]="gears.controls.rhAccessory">
+            @for (acc of accessorieList(); track $index) {
+            <mat-option [value]="acc"> {{acc}} </mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select [formControl]="gears.controls.lhAccessory">
+            @for (acc of accessorieList(); track $index) {
+            <mat-option [value]="acc"> {{acc}} </mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+</div>

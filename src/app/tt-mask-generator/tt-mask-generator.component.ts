@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { DictDb } from '../core/models';
 import { TTCoreService } from '../core/tt-core.service';
 import { MatCard, MatCardTitleGroup, MatCardTitle, MatCardContent } from '@angular/material/card';
@@ -8,12 +8,13 @@ import { MatGridList, MatGridTile } from '@angular/material/grid-list';
 import { KeyValuePipe } from '@angular/common';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
-    selector: 'tt-mask-generator',
-    templateUrl: './tt-mask-generator.component.html',
-    styleUrls: ['./tt-mask-generator.component.css'],
-    imports: [
+  selector: 'tt-mask-generator',
+  templateUrl: './tt-mask-generator.component.html',
+  styleUrls: ['./tt-mask-generator.component.css'],
+  imports: [
     MatCard,
     MatCardTitleGroup,
     MatCardTitle,
@@ -26,9 +27,10 @@ import { FormsModule } from '@angular/forms';
     MatCheckbox,
     FormsModule,
     KeyValuePipe
-]
+  ]
 })
-export class TtMaskGeneratorComponent implements OnInit {
+export class TtMaskGeneratorComponent {
+  private readonly _ttCore = inject(TTCoreService);
   protected cols = 1;
 
   protected mask: number;
@@ -38,12 +40,12 @@ export class TtMaskGeneratorComponent implements OnInit {
     this.mask = 0x0;
     this.maskDisplay = '';
     this.selectedClasses = {};
-  }
 
-  ngOnInit() {
-    this.ttCore.initializeCore().subscribe((_) => {
-      this.initClassSelection();
-    });
+    this._ttCore.loaded$.pipe(takeUntilDestroyed()).subscribe((_) => {
+      if (_) {
+        this.initClassSelection();
+      }
+    })
   }
 
   initClassSelection() {

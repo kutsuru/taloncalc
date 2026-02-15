@@ -1,0 +1,98 @@
+<!-- class -->
+<mat-form-field appearance="outline">
+    <mat-label>Class</mat-label>
+    <mat-select [formControl]="selectedJob">
+        @for(class of jobClasses; track class) {
+        <mat-option [value]="class">{{class}}</mat-option>
+        }
+    </mat-select>
+</mat-form-field>
+<!-- levels -->
+<mat-form-field appearance="outline" class="levels">
+    <mat-label>Base Level</mat-label>
+    <mat-select [formControl]="levels.controls.base">
+        @for(level of maxStats; track $index){
+        @if(level <= session.levelMax().base){ <mat-option [value]="level">{{level}}</mat-option>
+            }
+            }
+    </mat-select>
+</mat-form-field>
+<mat-form-field appearance="outline" class="levels">
+    <mat-label>Job Level</mat-label>
+    <mat-select [formControl]="levels.controls.job">
+        @for(level of maxStats; track $index){
+        @if(level <= session.levelMax().job){ <mat-option [value]="level">{{level}}</mat-option>
+            }
+            }
+    </mat-select>
+</mat-form-field>
+<!-- stats -->
+<br>
+<mat-form-field appearance="outline" class="stats" subscriptSizing="dynamic">
+    <mat-label>STR</mat-label>
+    <mat-select [formControl]="baseStats.controls.str">
+        <mat-select-trigger>
+            {{baseStats.controls.str.value}} + {{strBonus()}}
+        </mat-select-trigger>
+        @for (stat of maxStats; track $index) {
+        <mat-option [value]="stat">{{stat}}</mat-option>
+        }
+    </mat-select>
+</mat-form-field>
+<mat-form-field appearance="outline" class="stats" subscriptSizing="dynamic">
+    <mat-label>AGI</mat-label>
+    <mat-select [formControl]="baseStats.controls.agi">
+        <mat-select-trigger>
+            {{baseStats.controls.agi.value}} + {{agiBonus()}}
+        </mat-select-trigger>
+        @for (stat of maxStats; track $index) {
+        <mat-option [value]="stat">{{stat}}</mat-option>
+        }
+    </mat-select>
+</mat-form-field>
+<mat-form-field appearance="outline" class="stats" subscriptSizing="dynamic">
+    <mat-label>VIT</mat-label>
+    <mat-select [formControl]="baseStats.controls.vit">
+        <mat-select-trigger>
+            {{baseStats.controls.vit.value}} + {{vitBonus()}}
+        </mat-select-trigger>
+        @for (stat of maxStats; track $index) {
+        <mat-option [value]="stat">{{stat}}</mat-option>
+        }
+    </mat-select>
+</mat-form-field>
+<mat-form-field appearance="outline" class="stats" subscriptSizing="dynamic">
+    <mat-label>INT</mat-label>
+    <mat-select [formControl]="baseStats.controls.int">
+        <mat-select-trigger>
+            {{baseStats.controls.int.value}} + {{intBonus()}}
+        </mat-select-trigger>
+        @for (stat of maxStats; track $index) {
+        <mat-option [value]="stat">{{stat}}</mat-option>
+        }
+    </mat-select>
+</mat-form-field>
+<mat-form-field appearance="outline" class="stats" subscriptSizing="dynamic">
+    <mat-label>DEX</mat-label>
+    <mat-select [formControl]="baseStats.controls.dex">
+        <mat-select-trigger>
+            {{baseStats.controls.dex.value}} + {{dexBonus()}}
+        </mat-select-trigger>
+        @for (stat of maxStats; track $index) {
+        <mat-option [value]="stat">{{stat}}</mat-option>
+        }
+    </mat-select>
+</mat-form-field>
+<mat-form-field appearance="outline" class="stats" subscriptSizing="dynamic">
+    <mat-label>LUK</mat-label>
+    <mat-select [formControl]="baseStats.controls.luk">
+        <mat-select-trigger>
+            {{baseStats.controls.luk.value}} + {{lukBonus()}}
+        </mat-select-trigger>
+        @for (stat of maxStats; track $index) {
+        <mat-option [value]="stat">{{stat}}</mat-option>
+        }
+    </mat-select>
+</mat-form-field>
+<!-- class img -->
+<class-avatar />
