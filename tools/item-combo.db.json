@@ -1,0 +1,2573 @@
+[
+    {
+        "items": [
+            1166,
+            2527
+        ],
+        "effect": "bonus2 bAddRace,RC_Dragon,5;"
+    },
+    {
+        "items": [
+            1219,
+            5782
+        ],
+        "effect": "bonus2 bAddClass,Class_All,5;"
+    },
+    {
+        "items": [
+            1220,
+            5782
+        ],
+        "effect": "bonus2 bAddClass,Class_All,5;"
+    },
+    {
+        "items": [
+            1221,
+            5782
+        ],
+        "effect": "bonus2 bAddClass,Class_All,5;"
+    },
+    {
+        "items": [
+            1284,
+            2892
+        ],
+        "effect": "bonus2 bSkillAtk,\"AS_SONICBLOW\",25; bonus bBaseAtk,25; bonus bFlee,-20;"
+    },
+    {
+        "items": [
+            1285,
+            2892
+        ],
+        "effect": "bonus bCritAtkRate,20; bonus bCritical,2; bonus bMaxHPRate,-10;"
+    },
+    {
+        "items": [
+            1407,
+            5782
+        ],
+        "effect": "bonus2 bAddClass,Class_All,5;"
+    },
+    {
+        "items": [
+            1408,
+            5782
+        ],
+        "effect": "bonus2 bAddClass,Class_All,5;"
+    },
+    {
+        "items": [
+            1409,
+            5782
+        ],
+        "effect": "bonus2 bAddClass,Class_All,5;"
+    },
+    {
+        "items": [
+            1420,
+            2115
+        ],
+        "effect": "bonus3 bAutoSpellWhenHit,\"HP_ASSUMPTIO\",2,5;"
+    },
+    {
+        "items": [
+            1420,
+            2133
+        ],
+        "effect": "bonus2 bAddClass,Class_All,4; bonus bDef,2;"
+    },
+    {
+        "items": [
+            1421,
+            2133
+        ],
+        "effect": "bonus2 bAddClass,Class_All,4; bonus bDef,2;"
+    },
+    {
+        "items": [
+            1422,
+            2133
+        ],
+        "effect": "bonus2 bAddClass,Class_All,4; bonus bDef,2;"
+    },
+    {
+        "items": [
+            1428,
+            2115
+        ],
+        "effect": "bonus3 bAutoSpellWhenHit,\"HP_ASSUMPTIO\",2,5;"
+    },
+    {
+        "items": [
+            1433,
+            2153
+        ],
+        "effect": "bonus2 bSkillAtk,\"CR_GRANDCROSS\",20;"
+    },
+    {
+        "items": [
+            1433,
+            2153,
+            18823
+        ],
+        "effect": "bonus2 bSkillAtk,\"CR_GRANDCROSS\",5;"
+    },
+    {
+        "items": [
+            1472,
+            2677
+        ],
+        "effect": "bonus bMatkRate,6; bonus bDex,2; bonus bCastrate,-getequiprefinerycnt(EQI_HAND_R);"
+    },
+    {
+        "items": [
+            1472,
+            2711
+        ],
+        "effect": "bonus bMatkRate,6; bonus bDex,2; bonus bCastrate,-getequiprefinerycnt(EQI_HAND_R);"
+    },
+    {
+        "items": [
+            1473,
+            2677
+        ],
+        "effect": "bonus bMatkRate,6; bonus bDex,2; bonus bCastrate,-getequiprefinerycnt(EQI_HAND_R);"
+    },
+    {
+        "items": [
+            1473,
+            2711
+        ],
+        "effect": "bonus bMatkRate,6; bonus bDex,2; bonus bCastrate,-getequiprefinerycnt(EQI_HAND_R);"
+    },
+    {
+        "items": [
+            1474,
+            2527
+        ],
+        "effect": "bonus2 bAddRace,RC_Dragon,5;"
+    },
+    {
+        "items": [
+            1477,
+            2700
+        ],
+        "effect": "bonus2 bResEff,Eff_Confusion,9500;"
+    },
+    {
+        "items": [
+            1479,
+            2700
+        ],
+        "effect": "bonus2 bResEff,Eff_Confusion,9500;"
+    },
+    {
+        "items": [
+            1535,
+            4361
+        ],
+        "effect": "bonus bBreakArmorRate,900; bonus bBreakWeaponRate,900;"
+    },
+    {
+        "items": [
+            1572,
+            2716,
+            2717
+        ],
+        "effect": "bonus bInt,5; bonus bMaxHP,700; bonus bAspdRate,5;"
+    },
+    {
+        "items": [
+            1573,
+            2334
+        ],
+        "effect": "bonus bMdef,8; bonus bMaxSPRate,10; bonus bInt,4;"
+    },
+    {
+        "items": [
+            1573,
+            2372
+        ],
+        "effect": "bonus bMdef,8; bonus bMaxSPRate,10; bonus bInt,4;"
+    },
+    {
+        "items": [
+            1573,
+            2716,
+            2717
+        ],
+        "effect": "bonus bInt,5; bonus bMaxHP,700; bonus bAspdRate,5;"
+    },
+    {
+        "items": [
+            1615,
+            18539
+        ],
+        "effect": "bonus bMatkRate,2;"
+    },
+    {
+        "items": [
+            1616,
+            2515
+        ],
+        "effect": "bonus bSpeedRate,25;"
+    },
+    {
+        "items": [
+            1618,
+            2509
+        ],
+        "effect": "bonus bMaxHP,300; bonus bMatkRate,min(5, getequiprefinerycnt(EQI_HAND_R)-5); bonus2 bSubEle,Ele_Neutral,min(30, getequiprefinerycnt(EQI_GARMENT)*3);"
+    },
+    {
+        "items": [
+            1618,
+            2535
+        ],
+        "effect": "bonus bMatkRate,5; bonus2 bSubEle,Ele_Neutral,25;"
+    },
+    {
+        "items": [
+            1620,
+            2509
+        ],
+        "effect": "bonus bMaxHP,300; bonus bMatkRate,min(5, getequiprefinerycnt(EQI_HAND_R)-5); bonus2 bSubEle,Ele_Neutral,min(30, getequiprefinerycnt(EQI_GARMENT)*3);"
+    },
+    {
+        "items": [
+            1620,
+            2535
+        ],
+        "effect": "bonus bMatkRate,5; bonus2 bSubEle,Ele_Neutral,25;"
+    },
+    {
+        "items": [
+            1622,
+            18720
+        ],
+        "effect": "bonus bMatk,getequiprefinerycnt(EQI_HAND_R)*4; if(getequiprefinerycnt(EQI_HAND_R)>=10) { bonus bMatk,25; bonus bDelayRate,-10;"
+    },
+    {
+        "items": [
+            1625,
+            18542
+        ],
+        "effect": "bonus2 bSkillHeal,\"AL_HEAL\",1; bonus2 bSkillHeal,\"PR_SANCTUARY\",1; bonus2 bSkillHeal,\"AM_POTIONPITCHER\",1;"
+    },
+    {
+        "items": [
+            1626,
+            18720
+        ],
+        "effect": "bonus bMatk,getequiprefinerycnt(EQI_HAND_R)*3; if(getequiprefinerycnt(EQI_HAND_R)>=10) { bonus bMatk,25; bonus bCastrate,-10;"
+    },
+    {
+        "items": [
+            1629,
+            5045
+        ],
+        "effect": "bonus bDex,2; bonus bInt,2; bonus bSPrecovRate,5; bonus bMatkRate,getequiprefinerycnt(EQI_HAND_R);"
+    },
+    {
+        "items": [
+            1631,
+            2129
+        ],
+        "effect": "bonus2 bSkillAtk,\"PR_MAGNUS\",20; bonus3 bAutoSpellWhenHit,\"PR_TURNUNDEAD\",1,20;"
+    },
+    {
+        "items": [
+            1631,
+            18542
+        ],
+        "effect": "bonus2 bSkillHeal,\"AL_HEAL\",2; bonus2 bSkillHeal,\"PR_SANCTUARY\",2; bonus2 bSkillHeal,\"AM_POTIONPITCHER\",2;"
+    },
+    {
+        "items": [
+            1636,
+            18804
+        ],
+        "effect": "bonus bMatk,((getequiprefinerycnt(EQI_HAND_R)-4)/2)*10;"
+    },
+    {
+        "items": [
+            1636,
+            18539
+        ],
+        "effect": "bonus bMatkRate,2;"
+    },
+    {
+        "items": [
+            1646,
+            2161
+        ],
+        "effect": "bonus2 bCastRate,\"WZ_STORMGUST\",-(getequiprefinerycnt(EQI_HAND_L)*2);"
+    },
+    {
+        "items": [
+            1654,
+            2853
+        ],
+        "effect": "if ( !isequipped(30336) ) { bonus2 bSkillAtk,\"MG_FIREBALL\",200; bonus2 bSkillSplashRange,\"MG_FIREBALL\",1;"
+    },
+    {
+        "items": [
+            1654,
+            30336
+        ],
+        "effect": "bonus2 bSkillAtk,\"MG_FIREBALL\",200; bonus2 bSkillSplashRange,\"MG_FIREBALL\",1;"
+    },
+    {
+        "items": [
+            1718,
+            1774
+        ],
+        "effect": "bonus bLongAtkRate,50;"
+    },
+    {
+        "items": [
+            1723,
+            2718
+        ],
+        "effect": "bonus bDex,1; bonus bMaxSP,50; bonus bSPrecovRate,10;"
+    },
+    {
+        "items": [
+            1726,
+            1774
+        ],
+        "effect": "bonus bLongAtkRate,50;"
+    },
+    {
+        "items": [
+            1730,
+            1752
+        ],
+        "effect": "bonus bLongAtkRate,25;"
+    },
+    {
+        "items": [
+            1731,
+            1754
+        ],
+        "effect": "bonus bLongAtkRate,25;"
+    },
+    {
+        "items": [
+            1732,
+            1756
+        ],
+        "effect": "bonus bLongAtkRate,25; bonus2 bAddEff,Eff_Stone,1000;"
+    },
+    {
+        "items": [
+            1733,
+            1755
+        ],
+        "effect": "bonus bLongAtkRate,25; bonus3 bAutoSpell,\"NJ_HUUJIN\",5,100; if(readparam(bInt)>39) bonus3 bAutoSpell,\"NJ_HUUJIN\",5,200;"
+    },
+    {
+        "items": [
+            1734,
+            1753
+        ],
+        "effect": "bonus bLongAtkRate,50;"
+    },
+    {
+        "items": [
+            1741,
+            2748
+        ],
+        "effect": "bonus bBaseAtk,25; bonus3 bAddEff,Eff_Curse,200,ATF_WEAPON|ATF_LONG|ATF_TARGET;"
+    },
+    {
+        "items": [
+            1747,
+            1773
+        ],
+        "effect": "bonus bLongAtkRate,50;"
+    },
+    {
+        "items": [
+            1749,
+            18541
+        ],
+        "effect": "bonus2 bCastrate,\"SN_SHARPSHOOTING\",15;"
+    },
+    {
+        "items": [
+            1764,
+            18541
+        ],
+        "effect": "bonus bCritAtkRate,5;"
+    },
+    {
+        "items": [
+            2001,
+            2677
+        ],
+        "effect": "bonus bMatkRate,10; bonus bDex,2; bonus2 bSubRace,RC_Demon,10; bonus2 bSubRace,RC_Undead,10;"
+    },
+    {
+        "items": [
+            2001,
+            2711
+        ],
+        "effect": "bonus bMatkRate,10; bonus bDex,2; bonus2 bSubRace,RC_Demon,10; bonus2 bSubRace,RC_Undead,10;"
+    },
+    {
+        "items": [
+            2109,
+            2239,
+            2717
+        ],
+        "effect": "bonus bHPrecovRate,15; bonus bSPrecovRate,15; bonus bMatkRate,7;"
+    },
+    {
+        "items": [
+            2114,
+            2353,
+            5122
+        ],
+        "effect": "bonus bStr,2; bonus bDef,5; bonus bMdef,5; if(BaseClass==Job_Swordman) bonus bDef,6;"
+    },
+    {
+        "items": [
+            2115,
+            2353,
+            5124
+        ],
+        "effect": "bonus bDef,2-getequiprefinerycnt(EQI_HAND_L)-getequiprefinerycnt(EQI_HEAD_TOP); bonus bMdef,5+getequiprefinerycnt(EQI_HAND_L)+getequiprefinerycnt(EQI_HEAD_TOP);"
+    },
+    {
+        "items": [
+            2116,
+            2355,
+            2420,
+            2521,
+            5125
+        ],
+        "effect": "bonus bMaxHP,900; bonus bMaxSP,100; bonus3 bAutoSpellWhenHit,\"HP_ASSUMPTIO\",1,30;"
+    },
+    {
+        "items": [
+            2121,
+            2239,
+            2717
+        ],
+        "effect": "bonus bHPrecovRate,15; bonus bSPrecovRate,15; bonus bMatkRate,7;"
+    },
+    {
+        "items": [
+            2123,
+            2701
+        ],
+        "effect": "bonus bCastrate,-10;"
+    },
+    {
+        "items": [
+            2124,
+            2702
+        ],
+        "effect": "bonus bAspdRate,10; bonus bShortWeaponDamageReturn,5;"
+    },
+    {
+        "items": [
+            2125,
+            5782
+        ],
+        "effect": "bonus bDef,2; bonus bNearAtkDef,5; bonus bLongAtkDef,5;"
+    },
+    {
+        "items": [
+            2135,
+            2426
+        ],
+        "effect": "bonus2 bAddEff,Eff_Blind,500; autobonus \"{ bonus bFlee,20;"
+    },
+    {
+        "items": [
+            2137,
+            2353,
+            5124
+        ],
+        "effect": "bonus bDef,2-getequiprefinerycnt(EQI_HAND_L)-getequiprefinerycnt(EQI_HEAD_TOP); bonus bMdef,5+getequiprefinerycnt(EQI_HAND_L)+getequiprefinerycnt(EQI_HEAD_TOP);"
+    },
+    {
+        "items": [
+            2169,
+            2491,
+            2590,
+            15051
+        ],
+        "effect": "bonus bMaxHPrate,20; bonus bMaxSPrate,10; bonus2 bAddRace2,RC2_MALAYA,30;"
+    },
+    {
+        "items": [
+            2171,
+            15056
+        ],
+        "effect": "bonus bAspdRate,getequiprefinerycnt(EQI_HAND_L);"
+    },
+    {
+        "items": [
+            2172,
+            15054
+        ],
+        "effect": "bonus bAspdRate,getequiprefinerycnt(EQI_HAND_L);"
+    },
+    {
+        "items": [
+            2173,
+            15055
+        ],
+        "effect": "bonus bAspdRate,getequiprefinerycnt(EQI_HAND_L);"
+    },
+    {
+        "items": [
+            2183,
+            22015
+        ],
+        "effect": "bonus bAllStats,2;"
+    },
+    {
+        "items": [
+            2183,
+            15068,
+            18776,
+            21001,
+            22015
+        ],
+        "effect": "bonus bMaxHP,900; bonus bMaxSP,100; bonus3 bAutoSpellWhenHit,\"HP_ASSUMPTIO\",2,30;"
+    },
+    {
+        "items": [
+            2192,
+            2743
+        ],
+        "effect": "bonus bHealPower,10; if(getmapflag(strcharinfo(3),mf_vanilla)) bonus bDex,2; else bonus bDex,3;"
+    },
+    {
+        "items": [
+            2239,
+            5670
+        ],
+        "effect": "bonus3 bAutoSpell,\"TF_STEAL\",1,10;"
+    },
+    {
+        "items": [
+            2239,
+            18866
+        ],
+        "effect": "bonus5 bAutoSpell,\"HW_MAGICPOWER\",2,5,BF_MAGIC,0;"
+    },
+    {
+        "items": [
+            2265,
+            20100
+        ],
+        "effect": "bonus3 bAutoSpell,\"AL_BLESSING\",5,20;"
+    },
+    {
+        "items": [
+            2268,
+            18573
+        ],
+        "effect": "if(getequiprefinerycnt(EQI_HEAD_TOP)>=7) { bonus bHit,1; bonus bMaxHPRate,2;"
+    },
+    {
+        "items": [
+            2268,
+            20057
+        ],
+        "effect": "bonus3 bAutoSpell,\"NPC_DRAGONFEAR\",1,5;"
+    },
+    {
+        "items": [
+            2269,
+            5768
+        ],
+        "effect": "bonus bInt,1; if(getequiprefinerycnt(EQI_HEAD_TOP) > 7) bonus bMaxSPrate,getequiprefinerycnt(EQI_HEAD_TOP);"
+    },
+    {
+        "items": [
+            2269,
+            5781
+        ],
+        "effect": "bonus bMaxSP,30; bonus bInt,1;"
+    },
+    {
+        "items": [
+            2269,
+            5786
+        ],
+        "effect": "bonus bMatkRate,2;"
+    },
+    {
+        "items": [
+            2270,
+            5768
+        ],
+        "effect": "bonus bStr,1; if(getequiprefinerycnt(EQI_HEAD_TOP) > 3) bonus bMaxSP,5*getequiprefinerycnt(EQI_HEAD_TOP);"
+    },
+    {
+        "items": [
+            2270,
+            5781
+        ],
+        "effect": "bonus bFlee,2; bonus bLuk,1;"
+    },
+    {
+        "items": [
+            2270,
+            5786
+        ],
+        "effect": "bonus2 bAddClass,Class_All,2;"
+    },
+    {
+        "items": [
+            2270,
+            20100
+        ],
+        "effect": "bonus3 bAutoSpellWhenHit,\"HP_ASSUMPTIO\",1,10;"
+    },
+    {
+        "items": [
+            2286,
+            18539
+        ],
+        "effect": "bonus bUseSPrate,-3;"
+    },
+    {
+        "items": [
+            2312,
+            2656
+        ],
+        "effect": "bonus bDef,5; bonus bMaxHP,150;"
+    },
+    {
+        "items": [
+            2313,
+            2656
+        ],
+        "effect": "bonus bDef,5; bonus bMaxHP,150;"
+    },
+    {
+        "items": [
+            2337,
+            2654
+        ],
+        "effect": "bonus bUseSPrate,-20; bonus bMaxHP,300;"
+    },
+    {
+        "items": [
+            2337,
+            28485
+        ],
+        "effect": "bonus bUseSPrate,-20; bonus bMaxHP,300;"
+    },
+    {
+        "items": [
+            2339,
+            2522
+        ],
+        "effect": "bonus bAgi,5; bonus bFlee,10;"
+    },
+    {
+        "items": [
+            2339,
+            2523
+        ],
+        "effect": "bonus bAgi,5; bonus bFlee,10;"
+    },
+    {
+        "items": [
+            2353,
+            2417,
+            2516
+        ],
+        "effect": "bonus bAgi,3; bonus bMaxHPrate,5; bonus bMaxSPrate,5;"
+    },
+    {
+        "items": [
+            2353,
+            2418,
+            2517
+        ],
+        "effect": "bonus bVit,5; bonus bHPrecovRate,10; bonus bSPrecovRate,10;"
+    },
+    {
+        "items": [
+            2353,
+            5123
+        ],
+        "effect": "if(readparam(bDex)>69) bonus bUseSPrate,-10;"
+    },
+    {
+        "items": [
+            2353,
+            5493
+        ],
+        "effect": "if(readparam(bDex)>69) bonus bUseSPrate,-10;"
+    },
+    {
+        "items": [
+            2354,
+            2419,
+            2520,
+            5128
+        ],
+        "effect": "bonus bVit,5; bonus bMaxHPrate,15; bonus bMaxSPrate,5; bonus bDef,5; bonus bMdef,15; bonus2 bSubEle,Ele_Water,10; bonus2 bSubEle,Ele_Earth,10; bonus2 bSubEle,Ele_Fire,10; bonus2 bSubEle,Ele_Wind,10;"
+    },
+    {
+        "items": [
+            2357,
+            2421,
+            2524,
+            5171
+        ],
+        "effect": "bonus bAllStats,1;"
+    },
+    {
+        "items": [
+            2357,
+            2421,
+            2524,
+            8553
+        ],
+        "effect": "bonus bAllStats,1;"
+    },
+    {
+        "items": [
+            2358,
+            5153
+        ],
+        "effect": "bonus bLuk,6; bonus bFlee,5; bonus bInt,2;"
+    },
+    {
+        "items": [
+            2359,
+            2654
+        ],
+        "effect": "bonus bUseSPrate,-20; bonus bMaxHP,300;"
+    },
+    {
+        "items": [
+            2359,
+            28485
+        ],
+        "effect": "bonus bUseSPrate,-20; bonus bMaxHP,300;"
+    },
+    {
+        "items": [
+            2369,
+            2428,
+            2533,
+            5306
+        ],
+        "effect": "bonus2 bSubRace,RC_DemiHuman,10; bonus2 bSubRace,RC_Player_Human,10; bonus bMaxHPrate,20; bonus2 bResEff,Eff_Freeze,10000; skill \"WZ_FROSTNOVA\",10;"
+    },
+    {
+        "items": [
+            2371,
+            2522
+        ],
+        "effect": "bonus bAgi,5; bonus bFlee,10;"
+    },
+    {
+        "items": [
+            2371,
+            2523
+        ],
+        "effect": "bonus bAgi,5; bonus bFlee,10;"
+    },
+    {
+        "items": [
+            2374,
+            2729
+        ],
+        "effect": "bonus2 bAddClass,Class_All,3; bonus bMatkRate,3;"
+    },
+    {
+        "items": [
+            2375,
+            2729
+        ],
+        "effect": "bonus2 bAddClass,Class_All,3; bonus bMatkRate,3;"
+    },
+    {
+        "items": [
+            2376,
+            2435,
+            2538
+        ],
+        "effect": "if(!callfunc(\"F_Map_VS\")) { bonus2 bSubRace,RC_All,-300; bonus2 bSubRace,RC_DemiHuman,300; bonus2 bSubRace,RC_Player_Human,300;"
+    },
+    {
+        "items": [
+            2377,
+            2435,
+            2538
+        ],
+        "effect": "if(!callfunc(\"F_Map_VS\")) { bonus2 bSubRace,RC_All,-300; bonus2 bSubRace,RC_DemiHuman,300; bonus2 bSubRace,RC_Player_Human,300;"
+    },
+    {
+        "items": [
+            2378,
+            2435,
+            2538
+        ],
+        "effect": "if(!callfunc(\"F_Map_VS\")) { bonus2 bSubRace,RC_All,-300; bonus2 bSubRace,RC_DemiHuman,300; bonus2 bSubRace,RC_Player_Human,300;"
+    },
+    {
+        "items": [
+            2379,
+            2436,
+            2539
+        ],
+        "effect": "if(!callfunc(\"F_Map_VS\")) { bonus2 bSubRace,RC_All,-300; bonus2 bSubRace,RC_DemiHuman,300; bonus2 bSubRace,RC_Player_Human,300;"
+    },
+    {
+        "items": [
+            2380,
+            2436,
+            2539
+        ],
+        "effect": "if(!callfunc(\"F_Map_VS\")) { bonus2 bSubRace,RC_All,-300; bonus2 bSubRace,RC_DemiHuman,300; bonus2 bSubRace,RC_Player_Human,300;"
+    },
+    {
+        "items": [
+            2381,
+            2436,
+            2539
+        ],
+        "effect": "if(!callfunc(\"F_Map_VS\")) { bonus2 bSubRace,RC_All,-300; bonus2 bSubRace,RC_DemiHuman,300; bonus2 bSubRace,RC_Player_Human,300;"
+    },
+    {
+        "items": [
+            2382,
+            2437,
+            2540
+        ],
+        "effect": "if(!callfunc(\"F_Map_VS\")) { bonus2 bSubRace,RC_All,-300; bonus2 bSubRace,RC_DemiHuman,300; bonus2 bSubRace,RC_Player_Human,300;"
+    },
+    {
+        "items": [
+            2387,
+            2440,
+            2744
+        ],
+        "effect": "bonus bMaxHPrate,7; bonus bMaxSPrate,7; bonus bCastrate,-3; bonus bDelayrate,-15;"
+    },
+    {
+        "items": [
+            2387,
+            2440,
+            2744,
+            2935
+        ],
+        "effect": "bonus bMaxHPrate,8; bonus bMaxSPrate,8; bonus bCastrate,-9; bonus bSpeedRate,25;"
+    },
+    {
+        "items": [
+            2390,
+            2749
+        ],
+        "effect": "bonus bFlee2,5;"
+    },
+    {
+        "items": [
+            2394,
+            2444,
+            2549
+        ],
+        "effect": "bonus2 bAddClass,Class_All,5; bonus bMatkRate,5; bonus2 bResEff,Eff_Freeze,10000; bonus2 bSkillHeal2,\"AM_POTIONPITCHER\",3; bonus2 bSkillHeal2,\"AL_HEAL\",3; bonus2 bSkillHeal2,\"PR_SANCTUARY\",3;"
+    },
+    {
+        "items": [
+            2399,
+            2553
+        ],
+        "effect": "bonus bAgi,5; bonus bFlee,15;"
+    },
+    {
+        "items": [
+            2408,
+            2655
+        ],
+        "effect": "bonus bBaseAtk,50; bonus2 bAddDefMonster,1196,20; bonus2 bAddDefMonster,1197,20;"
+    },
+    {
+        "items": [
+            2408,
+            21137
+        ],
+        "effect": "bonus bMaxSPrate,getequiprefinerycnt(EQI_SHOES);"
+    },
+    {
+        "items": [
+            2408,
+            2655,
+            21136,
+            21137
+        ],
+        "effect": "bonus2 bExpAddRace,RC_Undead,10; bonus2 bExpAddRace,RC_Demon,10; bonus2 bSubEle,Ele_Dark,10; bonus2 bSubEle,Ele_Undead,10; bonus2 bSubEle,Ele_Ghost,10; bonus bMaxHPrate,5; bonus bFlee,5; bonus bDex,5; bonus bNoCastCancel;"
+    },
+    {
+        "items": [
+            2415,
+            18860
+        ],
+        "effect": "if(getequiprefinerycnt(EQI_HEAD_TOP) >= 6) { bonus2 bSkillHeal,\"AL_HEAL\",5; bonus2 bSkillHeal,\"PR_SANCTUARY\",5; bonus2 bSkillHeal,\"AM_POTIONPITCHER\",5; if(BaseLevel < 80) bonus bSpeedRate,25;"
+    },
+    {
+        "items": [
+            2424,
+            2528
+        ],
+        "effect": "bonus bHPrecovRate,5; bonus bMaxHPrate,10;"
+    },
+    {
+        "items": [
+            2425,
+            2529
+        ],
+        "effect": "bonus bFlee,10;"
+    },
+    {
+        "items": [
+            2425,
+            2530
+        ],
+        "effect": "bonus bFlee,10;"
+    },
+    {
+        "items": [
+            2425,
+            2551
+        ],
+        "effect": "bonus bFlee,10;"
+    },
+    {
+        "items": [
+            2433,
+            2537
+        ],
+        "effect": "bonus bMaxHPRate,6;"
+    },
+    {
+        "items": [
+            2434,
+            2529
+        ],
+        "effect": "bonus bFlee,10;"
+    },
+    {
+        "items": [
+            2434,
+            2530
+        ],
+        "effect": "bonus bFlee,10;"
+    },
+    {
+        "items": [
+            2434,
+            2551
+        ],
+        "effect": "bonus bFlee,10;"
+    },
+    {
+        "items": [
+            2441,
+            2546
+        ],
+        "effect": "bonus bFlee,5;"
+    },
+    {
+        "items": [
+            2474,
+            19026
+        ],
+        "effect": "bonus2 bCriticalAddRace,RC_Fish,(10+getequiprefinerycnt(EQI_SHOES));"
+    },
+    {
+        "items": [
+            2474,
+            2592,
+            4386,
+            15138,
+            19026
+        ],
+        "effect": "bonus2 bResEff,Eff_Freeze,5000;"
+    },
+    {
+        "items": [
+            2474,
+            2592,
+            15138,
+            19026
+        ],
+        "effect": "bonus bMaxHP,1000; bonus bMaxSP,100; bonus2 bExpAddRace,RC_Fish,20; bonus2 bAddRace,RC_Fish,50; bonus2 bMagicAddRace,RC_Fish,50; bonus2 bSubEle,Ele_Water,30;"
+    },
+    {
+        "items": [
+            2507,
+            21847
+        ],
+        "effect": "if (BaseClass != Job_Hunter) { bonus bAspdRate,5; bonus bAgi,getequiprefinerycnt(EQI_GARMENT)/2;"
+    },
+    {
+        "items": [
+            2513,
+            21847
+        ],
+        "effect": "bonus bInt,2; bonus bMdef,getequiprefinerycnt(EQI_GARMENT)/2; bonus bMatk,3*getequiprefinerycnt(EQI_GARMENT);"
+    },
+    {
+        "items": [
+            2517,
+            21847
+        ],
+        "effect": "bonus bVit,getequiprefinerycnt(EQI_GARMENT); bonus2 bSubEle,Ele_Water,15; bonus2 bSubEle,Ele_Earth,15; bonus2 bSubEle,Ele_Fire,15; bonus2 bSubEle,Ele_Wind,15; bonus2 bSubEle,Ele_Poison,15; bonus2 bSubEle,Ele_Holy,15; bonus2 bSubEle,Ele_Dark,15; bonus2 bSubEle,Ele_Ghost,15; bonus2 bSubEle,Ele_Undead,15;"
+    },
+    {
+        "items": [
+            2518,
+            2648,
+            2649,
+            5126
+        ],
+        "effect": "bonus bInt,5; bonus bMdef,11; bonus bMaxSPrate,20; bonus bNoCastCancel; bonus bCastrate,25;"
+    },
+    {
+        "items": [
+            2519,
+            2650,
+            2651,
+            5127
+        ],
+        "effect": "bonus bStr,2; bonus bLuk,9; bonus bCritical,13; bonus bBaseAtk,18; bonus bFlee2,13;"
+    },
+    {
+        "items": [
+            2525,
+            21847
+        ],
+        "effect": "if (BaseClass != Job_Hunter) { bonus bAspdRate,5; bonus bAgi,getequiprefinerycnt(EQI_GARMENT)/2;"
+    },
+    {
+        "items": [
+            2527,
+            13001
+        ],
+        "effect": "bonus2 bAddRace,RC_Dragon,5;"
+    },
+    {
+        "items": [
+            2592,
+            19026
+        ],
+        "effect": "set .@r,getequiprefinerycnt(EQI_GARMENT); bonus2 bSPGainRace,RC_Fish,10; bonus3 bAddMonsterDropItem,551,RC_Fish,(5+.@r); bonus3 bAddMonsterDropItem,544,RC_Fish,(5+.@r); bonus2 bAddItemHealRate,551,5; bonus2 bAddItemHealRate,544,5; bonus bHPrecovRate,(5+.@r);"
+    },
+    {
+        "items": [
+            2607,
+            2677
+        ],
+        "effect": "bonus2 bSkillAtk,\"AL_HEAL\",50; bonus2 bSkillAtk,\"PR_MAGNUS\",30; bonus bSPrecovRate,9;"
+    },
+    {
+        "items": [
+            2607,
+            2711
+        ],
+        "effect": "bonus2 bSkillAtk,\"AL_HEAL\",50; bonus2 bSkillAtk,\"PR_MAGNUS\",30; bonus bSPrecovRate,9;"
+    },
+    {
+        "items": [
+            2607,
+            2786
+        ],
+        "effect": "bonus2 bSkillAtk,\"AL_HEAL\",50; bonus2 bSkillAtk,\"PR_MAGNUS\",30; bonus bSPrecovRate,9;"
+    },
+    {
+        "items": [
+            2608,
+            2677
+        ],
+        "effect": "bonus2 bSkillAtk,\"AL_HEAL\",50; bonus2 bSkillAtk,\"PR_MAGNUS\",30; bonus bSPrecovRate,9;"
+    },
+    {
+        "items": [
+            2608,
+            2711
+        ],
+        "effect": "bonus2 bSkillAtk,\"AL_HEAL\",50; bonus2 bSkillAtk,\"PR_MAGNUS\",30; bonus bSPrecovRate,9;"
+    },
+    {
+        "items": [
+            2608,
+            2786
+        ],
+        "effect": "bonus2 bSkillAtk,\"AL_HEAL\",50; bonus2 bSkillAtk,\"PR_MAGNUS\",30; bonus bSPrecovRate,9;"
+    },
+    {
+        "items": [
+            2620,
+            2746
+        ],
+        "effect": "bonus2 bAddSize,Size_Medium,8; bonus bAspdRate,getequiprefinerycnt(EQI_HAND_R)/2;"
+    },
+    {
+        "items": [
+            2620,
+            2747
+        ],
+        "effect": "bonus2 bAddSize,Size_Large,8; bonus bHit,getequiprefinerycnt(EQI_HAND_R)/2; bonus bCastrate,-getequiprefinerycnt(EQI_HAND_R)/2;"
+    },
+    {
+        "items": [
+            2626,
+            2677
+        ],
+        "effect": "bonus2 bSkillAtk,\"AL_HEAL\",50; bonus2 bSkillAtk,\"PR_MAGNUS\",30; bonus bSPrecovRate,9;"
+    },
+    {
+        "items": [
+            2626,
+            2711
+        ],
+        "effect": "bonus2 bSkillAtk,\"AL_HEAL\",50; bonus2 bSkillAtk,\"PR_MAGNUS\",30; bonus bSPrecovRate,9;"
+    },
+    {
+        "items": [
+            2626,
+            2786
+        ],
+        "effect": "bonus2 bSkillAtk,\"AL_HEAL\",50; bonus2 bSkillAtk,\"PR_MAGNUS\",30; bonus bSPrecovRate,9;"
+    },
+    {
+        "items": [
+            2654,
+            15056
+        ],
+        "effect": "bonus bUseSPrate,-20; bonus bMaxHP,300;"
+    },
+    {
+        "items": [
+            2654,
+            15054
+        ],
+        "effect": "bonus bUseSPrate,-20; bonus bMaxHP,300;"
+    },
+    {
+        "items": [
+            2654,
+            15055
+        ],
+        "effect": "bonus bUseSPrate,-20; bonus bMaxHP,300;"
+    },
+    {
+        "items": [
+            2654,
+            28485
+        ],
+        "effect": "bonus bUseSPrate,20; bonus bMaxHP,-300;"
+    },
+    {
+        "items": [
+            2655,
+            24113
+        ],
+        "effect": "bonus bBaseAtk,50; bonus2 bAddDefMonster,1196,20; bonus2 bAddDefMonster,1197,20;"
+    },
+    {
+        "items": [
+            2655,
+            21137
+        ],
+        "effect": "bonus bStr,5;"
+    },
+    {
+        "items": [
+            2655,
+            21136,
+            21137,
+            24113
+        ],
+        "effect": "bonus2 bExpAddRace,RC_Undead,10; bonus2 bExpAddRace,RC_Demon,10; bonus2 bSubEle,Ele_Dark,10; bonus2 bSubEle,Ele_Undead,10; bonus2 bSubEle,Ele_Ghost,10; bonus bMaxHPrate,5; bonus bFlee,5; bonus bDex,5; bonus bNoCastCancel;"
+    },
+    {
+        "items": [
+            2678,
+            2679
+        ],
+        "effect": "bonus4 bAutoSpell,\"MO_EXTREMITYFIST\",1,3,1; bonus3 bAutoSpell,\"PR_LEXAETERNA\",1,20; bonus3 bAutoSpell,\"AS_SONICBLOW\",5,50; bonus3 bAutoSpell,\"MO_INVESTIGATE\",5,20; bonus3 bAutoSpell,\"ASC_METEORASSAULT\",2,50;"
+    },
+    {
+        "items": [
+            2680,
+            18575
+        ],
+        "effect": "bonus3 bAutoSpell,\"BS_WEAPONPERFECT\",2,50;"
+    },
+    {
+        "items": [
+            2720,
+            2772
+        ],
+        "effect": "bonus2 bAddClass,Class_All,5; bonus bMatkRate,3; bonus bHealPower,5;"
+    },
+    {
+        "items": [
+            2721,
+            2772
+        ],
+        "effect": "bonus2 bAddClass,Class_All,5; bonus bMatkRate,3; bonus bHealPower,5;"
+    },
+    {
+        "items": [
+            2722,
+            2772
+        ],
+        "effect": "bonus2 bAddClass,Class_All,5; bonus bMatkRate,3; bonus bHealPower,5;"
+    },
+    {
+        "items": [
+            2723,
+            2772
+        ],
+        "effect": "bonus2 bAddClass,Class_All,5; bonus bMatkRate,3; bonus bHealPower,5;"
+    },
+    {
+        "items": [
+            2724,
+            2772
+        ],
+        "effect": "bonus2 bAddClass,Class_All,5; bonus bMatkRate,3; bonus bHealPower,5;"
+    },
+    {
+        "items": [
+            2725,
+            2772
+        ],
+        "effect": "bonus2 bAddClass,Class_All,5; bonus bMatkRate,3; bonus bHealPower,5;"
+    },
+    {
+        "items": [
+            2726,
+            2727
+        ],
+        "effect": "bonus bUseSPrate,-25;"
+    },
+    {
+        "items": [
+            2733,
+            2772
+        ],
+        "effect": "bonus2 bAddClass,Class_All,5; bonus bMatkRate,3; bonus bHealPower,5;"
+    },
+    {
+        "items": [
+            2747,
+            13061
+        ],
+        "effect": "bonus bHit,5; bonus bMatk,5; bonus bUseSPrate,-5;"
+    },
+    {
+        "items": [
+            2772,
+            30358
+        ],
+        "effect": "bonus2 bAddClass,Class_All,5; bonus bMatkRate,5; bonus bHealPower2,10;"
+    },
+    {
+        "items": [
+            2777,
+            2778,
+            5479
+        ],
+        "effect": "bonus bMaxHP,300; bonus bMatkRate,5; bonus2 bSubEle,Ele_Neutral,5;"
+    },
+    {
+        "items": [
+            2779,
+            2780,
+            5482
+        ],
+        "effect": "bonus bMatkRate,10; bonus bInt,5; bonus2 bSubRace,RC_Angel,10;"
+    },
+    {
+        "items": [
+            2779,
+            2780,
+            5577
+        ],
+        "effect": "bonus bMatkRate,10; bonus bInt,5; bonus2 bSubRace,RC_Angel,10;"
+    },
+    {
+        "items": [
+            2853,
+            30334
+        ],
+        "effect": "if ( !isequipped(30336) ) { bonus2 bSkillAtk,\"MG_FIREBALL\",200; bonus2 bSkillSplashRange,\"MG_FIREBALL\",1;"
+    },
+    {
+        "items": [
+            4001,
+            4197
+        ],
+        "effect": "bonus bFlee,18;"
+    },
+    {
+        "items": [
+            4006,
+            4266
+        ],
+        "effect": "bonus bFlee,18;"
+    },
+    {
+        "items": [
+            4009,
+            4179
+        ],
+        "effect": "bonus bFlee,18;"
+    },
+    {
+        "items": [
+            4021,
+            4211
+        ],
+        "effect": "bonus bFlee,18;"
+    },
+    {
+        "items": [
+            4025,
+            4222
+        ],
+        "effect": "bonus2 bAddEffWhenHit,Eff_Sleep,600;"
+    },
+    {
+        "items": [
+            4028,
+            4296
+        ],
+        "effect": "bonus bStr,3;"
+    },
+    {
+        "items": [
+            4029,
+            4183
+        ],
+        "effect": "bonus bFlee,18;"
+    },
+    {
+        "items": [
+            4031,
+            4161
+        ],
+        "effect": "bonus bDef,3; bonus bVit,3;"
+    },
+    {
+        "items": [
+            4036,
+            4186,
+            4233,
+            4281,
+            4343
+        ],
+        "effect": "bonus bStr,4; bonus bMaxHPrate,7; bonus bMaxSPrate,7; bonus2 bSkillAtk,\"MC_MAMMONITE\",20; bonus bSPDrainValue,1; if(BaseJob==Job_Alchemist) { bonus3 bAutoSpell,\"BS_ADRENALINE\",1,10; bonus2 bAddMonsterDropItem,7139,3; bonus2 bAddMonsterDropItem,905,10;"
+    },
+    {
+        "items": [
+            4037,
+            21849
+        ],
+        "effect": ".@i = isequippedcnt(4037); bonus bBaseAtk,25*.@i; bonus2 bAddEff,Eff_Poison,500*.@i;"
+    },
+    {
+        "items": [
+            4039,
+            4210,
+            4230,
+            4257,
+            4348
+        ],
+        "effect": "bonus bStr,6; bonus bAgi,4; bonus2 bSkillAtk,\"RG_BACKSTAP\",10; if(getskilllv(\"RG_STRIPARMOR\")==5) bonus3 bAutoSpell,\"RG_STRIPARMOR\",5,50; if(BaseJob==Job_Rogue) { bonus bUseSPrate,-20; bonus3 bAutoSpell,\"RG_INTIMIDATE\",1,-20;"
+    },
+    {
+        "items": [
+            4062,
+            21849
+        ],
+        "effect": ".@i = isequippedcnt(4062); bonus2 bAddEle,Ele_Poison,5*.@i; bonus2 bIgnoreDefEleRate,Ele_Poison,15*.@i;"
+    },
+    {
+        "items": [
+            4074,
+            4162
+        ],
+        "effect": "bonus2 bAddEffWhenHit,Eff_Blind,600;"
+    },
+    {
+        "items": [
+            4090,
+            4212,
+            4328
+        ],
+        "effect": "bonus bAllStats,1;"
+    },
+    {
+        "items": [
+            4093,
+            27120
+        ],
+        "effect": "bonus bDex,6; bonus bMaxSP,100; bonus bUseSPrate,10;"
+    },
+    {
+        "items": [
+            4106,
+            4248
+        ],
+        "effect": "bonus bPerfectHitAddRate,20;"
+    },
+    {
+        "items": [
+            4117,
+            21849
+        ],
+        "effect": "bonus bBaseAtk,25*isequippedcnt(4117); if (!isequipped(5388)) bonus bDoubleRate,getequiprefinerycnt(EQI_HAND_R)*5-5;"
+    },
+    {
+        "items": [
+            4127,
+            4166
+        ],
+        "effect": "bonus2 bAddEffWhenHit,Eff_Curse,600;"
+    },
+    {
+        "items": [
+            4139,
+            18619
+        ],
+        "effect": "bonus3 bAutoSpell,\"TF_STEAL\",5,10;"
+    },
+    {
+        "items": [
+            4140,
+            18574
+        ],
+        "effect": "bonus2 bAddClass,Class_Boss,5; if(getequiprefinerycnt(EQI_HEAD_TOP)>=6) bonus2 bSubClass,Class_All,-getequiprefinerycnt(EQI_HEAD_TOP);"
+    },
+    {
+        "items": [
+            4153,
+            4247,
+            4273
+        ],
+        "effect": "bonus3 bAddMonsterDropItem,544,RC_Fish,3000; bonus2 bAddEle,Ele_Water,30;"
+    },
+    {
+        "items": [
+            4168,
+            4169
+        ],
+        "effect": "bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bCastrate,-5;"
+    },
+    {
+        "items": [
+            4169,
+            4451
+        ],
+        "effect": "bonus bMaxHPrate,-10; bonus bMaxSPrate,-10; bonus bCastrate,5;"
+    },
+    {
+        "items": [
+            4172,
+            4210,
+            4230,
+            4257,
+            4272
+        ],
+        "effect": "bonus bAgi,5; bonus bStr,5; bonus bAspdRate,5; bonus bSpeedRate,25; bonus bSPDrainValue,1; if(BaseClass==Job_Thief) bonus bNoGemStone;"
+    },
+    {
+        "items": [
+            4178,
+            4199,
+            4234,
+            4297,
+            4470
+        ],
+        "effect": "bonus bAgi,5; bonus bDex,3; bonus bLongAtkRate,20; bonus bPerfectHitAddRate,20; if(BaseClass==Job_Archer) { bonus2 bExpAddRace,RC_Brute,5; bonus2 bComaRace,RC_Brute,100;"
+    },
+    {
+        "items": [
+            4178,
+            4199,
+            4234,
+            4252,
+            4297
+        ],
+        "effect": "bonus bAgi,5; bonus bDex,3; bonus bLongAtkRate,20; bonus bPerfectHitAddRate,20; if(BaseClass==Job_Archer) { bonus2 bExpAddRace,RC_Brute,5; bonus2 bComaRace,RC_Brute,100;"
+    },
+    {
+        "items": [
+            4178,
+            4234,
+            4297,
+            4381,
+            4470
+        ],
+        "effect": "bonus bDex,5; bonus2 bSkillAtk,\"CG_ARROWVULCAN\",5; bonus2 bSkillAtk,\"DC_THROWARROW\",10; bonus2 bSkillAtk,\"BA_MUSICALSTRIKE\",10; if(BaseJob==Job_Bard||BaseJob==Job_Dancer) bonus3 bAutoSpellWhenHit,\"CG_TAROTCARD\",2,50;"
+    },
+    {
+        "items": [
+            4178,
+            4234,
+            4252,
+            4297,
+            4381
+        ],
+        "effect": "bonus bDex,5; bonus2 bSkillAtk,\"CG_ARROWVULCAN\",5; bonus2 bSkillAtk,\"DC_THROWARROW\",10; bonus2 bSkillAtk,\"BA_MUSICALSTRIKE\",10; if(BaseJob==Job_Bard||BaseJob==Job_Dancer) bonus3 bAutoSpellWhenHit,\"CG_TAROTCARD\",2,50;"
+    },
+    {
+        "items": [
+            4185,
+            4217,
+            4280,
+            4293,
+            4312
+        ],
+        "effect": "bonus bVit,10; bonus bCastrate,-10; bonus bUseSPRate,-10; if(BaseClass==Job_Acolyte) { bonus2 bExpAddRace,RC_Undead,5; bonus2 bExpAddRace,RC_Demon,5; bonus2 bSubRace,RC_Undead,30; bonus2 bSubRace,RC_Demon,30;"
+    },
+    {
+        "items": [
+            4185,
+            4293,
+            4312,
+            4332
+        ],
+        "effect": "bonus bStr,3; bonus bMaxSP,80; bonus bBaseAtk,25; bonus3 bAutoSpell,\"AL_CRUCIS\",5,10; bonus2 bSkillAtk,\"MO_EXTREMITYFIST\",10; if(BaseJob==Job_Monk) { bonus bUseSPrate,-10; bonus bNoCastCancel;"
+    },
+    {
+        "items": [
+            4186,
+            4206,
+            4233,
+            4281,
+            4321
+        ],
+        "effect": "bonus bLuk,10; bonus bSPDrainValue,2; bonus2 bSkillAtk,42,20; if(BaseClass==Job_Merchant) { bonus2 bAddMonsterDropItem,617,5; bonus bMagicDamageReturn,20;"
+    },
+    {
+        "items": [
+            4191,
+            4208,
+            4258,
+            4309,
+            4325,
+            4327
+        ],
+        "effect": "bonus bMaxHP,500; bonus bDef,5; bonus bMdef,5; bonus2 bSkillAtk,14,10; bonus2 bSkillAtk,19,10; bonus2 bSkillAtk,20,10; if(BaseClass==Job_Mage) { bonus bMatkRate,3; bonus bCastrate,-15;"
+    },
+    {
+        "items": [
+            4193,
+            4294
+        ],
+        "effect": "bonus bMaxHP,300; bonus bMaxSP,60;"
+    },
+    {
+        "items": [
+            4208,
+            4258,
+            4325,
+            4327,
+            4382
+        ],
+        "effect": "bonus bInt,3; bonus2 bSkillAtk,\"WZ_HEAVENDRIVE\",10; bonus2 bSkillAtk,\"MG_THUNDERSTORM\",10; if(BaseJob==Job_Sage) { bonus bMagicDamageReturn,20; bonus2 bAddMonsterDropItem,716,100; bonus2 bAddMonsterDropItem,715,100; bonus bCastrate,-20;"
+    },
+    {
+        "items": [
+            4218,
+            4269
+        ],
+        "effect": "bonus bHPrecovRate,30; bonus bSPrecovRate,30; bonus bVit,4; bonus bInt,4;"
+    },
+    {
+        "items": [
+            4220,
+            4246,
+            4311,
+            4319,
+            4331
+        ],
+        "effect": "bonus bStr,10; bonus bMaxHPrate,20; bonus bHPrecovRate,50; bonus3 bAutoSpell,\"BS_WEAPONPERFECT\",1,3; bonus2 bAddMonsterDropItem,501,500; if(BaseClass==Job_Swordman) bonus2 bAddItemGroupHealRate,IG_Potion,50;"
+    },
+    {
+        "items": [
+            4229,
+            4244,
+            4299,
+            4313
+        ],
+        "effect": "bonus bDef,3; bonus bMdef,3;"
+    },
+    {
+        "items": [
+            4236,
+            22071
+        ],
+        "effect": "bonus bStr,1; bonus bAgi,1; bonus bVit,1; bonus bInt,1; bonus bLuk,1;"
+    },
+    {
+        "items": [
+            4237,
+            4238
+        ],
+        "effect": "bonus3 bAutoSpell,\"MG_LIGHTNINGBOLT\",5,20;"
+    },
+    {
+        "items": [
+            4242,
+            4477
+        ],
+        "effect": "bonus bMaxHPRate,5; bonus2 bResEff,Eff_Freeze,5000; if (isequipped(2364)) bonus2 bResEff,Eff_Freeze,2000;"
+    },
+    {
+        "items": [
+            4268,
+            4277
+        ],
+        "effect": "bonus bBaseAtk,20; bonus bLuk,3;"
+    },
+    {
+        "items": [
+            4311,
+            4319,
+            4331,
+            4371
+        ],
+        "effect": "bonus bInt,1; bonus bStr,1; bonus bDef,2; bonus bSPrecovRate,10; bonus2 bSkillAtk,\"PA_SHIELDCHAIN\",10; bonus2 bSkillAtk,\"PA_SACRIFICE\",10; bonus bCastrate,-10; if(BaseJob==Job_Crusader) bonus bDefEle,Ele_Holy;"
+    },
+    {
+        "items": [
+            4323,
+            4324
+        ],
+        "effect": "bonus3 bAutoSpell,\"MG_FROSTDIVER\",3,250;"
+    },
+    {
+        "items": [
+            4326,
+            18727
+        ],
+        "effect": "if(getequiprefinerycnt(EQI_HEAD_TOP)>6) bonus2 bAddItemGroupHealRate,IG_Fish,50;"
+    },
+    {
+        "items": [
+            4339,
+            4475
+        ],
+        "effect": "bonus bBaseAtk,25; bonus2 bResEff,Eff_Freeze,5000; if (getmapflag(strcharinfo(3),mf_vanilla) && !isequipped(4045) && (BaseJob == Job_Knight || BaseJob == Job_Blacksmith || BaseJob == Job_Assassin)) bonus bLongAtkDef,20;"
+    },
+    {
+        "items": [
+            4356,
+            4466
+        ],
+        "effect": "bonus bAspdRate,10; bonus bDex,3;"
+    },
+    {
+        "items": [
+            4371,
+            4474
+        ],
+        "effect": "if (getmapflag(strcharinfo(3),mf_vanilla)) bonus bCastrate,-30;"
+    },
+    {
+        "items": [
+            4411,
+            4465
+        ],
+        "effect": "bonus bAspdRate,10; if (getmapflag(strcharinfo(3),mf_vanilla) && !isequipped(4412)) bonus bLongAtkDef,10;"
+    },
+    {
+        "items": [
+            4412,
+            4464
+        ],
+        "effect": "bonus bAspdRate,10; if (getmapflag(strcharinfo(3),mf_vanilla) && !isequipped(4411)) bonus bLongAtkDef,10;"
+    },
+    {
+        "items": [
+            4414,
+            4466
+        ],
+        "effect": "bonus2 bSubRace,RC_DemiHuman,15; bonus2 bSubRace,RC_Player_Human,15;"
+    },
+    {
+        "items": [
+            4435,
+            4436
+        ],
+        "effect": "bonus2 bSPGainRace,RC_DemiHuman,2; bonus2 bSPGainRace,RC_Player_Human,2;"
+    },
+    {
+        "items": [
+            4440,
+            4509
+        ],
+        "effect": "bonus2 bIgnoreMdefClassRate,Class_Normal,5; bonus2 bIgnoreMdefClassRate,Class_Boss,5;"
+    },
+    {
+        "items": [
+            4451,
+            4457
+        ],
+        "effect": "bonus bCastrate,-10;"
+    },
+    {
+        "items": [
+            4460,
+            4461
+        ],
+        "effect": "bonus4 bAutoSpell,\"SA_DELUGE\",3,30,0;"
+    },
+    {
+        "items": [
+            4560,
+            4567
+        ],
+        "effect": "bonus3 bSongDanceRate,\"BA_POEMBRAGI\",2,isequippedcnt(4567);"
+    },
+    {
+        "items": [
+            4567,
+            4573
+        ],
+        "effect": "if (BaseJob == Job_Bard) { bonus3 bSongDanceRate,\"BA_WHISTLE\",1,10;"
+    },
+    {
+        "items": [
+            4601,
+            27383
+        ],
+        "effect": "bonus bStr,5; bonus bHit,25; if (!callfunc(\"F_Map_VS\")) { bonus3 bAddEle,Ele_Ghost,25,BF_SHORT; bonus3 bAddEle,Ele_Neutral,15,BF_SHORT; bonus3 bSkillAddEle,\"WS_CARTTERMINATION\",Ele_Ghost,25; bonus3 bSkillAddEle,\"WS_CARTTERMINATION\",Ele_Neutral,15;"
+    },
+    {
+        "items": [
+            4603,
+            27382
+        ],
+        "effect": "bonus2 bMagicAddEle,Ele_Earth,10;"
+    },
+    {
+        "items": [
+            4608,
+            4609
+        ],
+        "effect": ".@r = getequiprefinerycnt(EQI_HAND_R); bonus bMdef,10; bonus2 bSubSize,Size_Medium,10; bonus2 bSubSize,Size_Large,10; bonus2 bAddSize,Size_Medium,.@r; bonus2 bAddSize,Size_Large,.@r;"
+    },
+    {
+        "items": [
+            4653,
+            4654
+        ],
+        "effect": "bonus2 bSubRace,RC_Brute,5; bonus2 bSubRace,RC_Undead,5; bonus2 bIgnoreMdefRaceRate,RC_Brute,20; bonus2 bIgnoreMdefRaceRate,RC_Undead,20;"
+    },
+    {
+        "items": [
+            4653,
+            4655
+        ],
+        "effect": "bonus2 bSubRace,RC_Brute,5; bonus2 bSubRace,RC_Undead,5; bonus2 bIgnoreDefRaceRate,RC_Brute,30; bonus2 bIgnoreDefRaceRate,RC_Undead,30;"
+    },
+    {
+        "items": [
+            4656,
+            4657
+        ],
+        "effect": "bonus2 bSubEle,Ele_Neutral,5; bonus2 bAddEffWhenHit,Eff_Sleep,200; bonus2 bResEff,Eff_Sleep,1000;"
+    },
+    {
+        "items": [
+            5040,
+            5442
+        ],
+        "effect": "bonus bAspdRate,3; bonus bCastrate,3;"
+    },
+    {
+        "items": [
+            5041,
+            18538
+        ],
+        "effect": "bonus2 bSubRace,RC_Angel,9;"
+    },
+    {
+        "items": [
+            5048,
+            18538
+        ],
+        "effect": "bonus2 bSubRace,RC_Demon,9;"
+    },
+    {
+        "items": [
+            5066,
+            18540
+        ],
+        "effect": "bonus bAspd,1; bonus bAspdRate,9; bonus2 bSPLossRate,3,2000;"
+    },
+    {
+        "items": [
+            5068,
+            21135
+        ],
+        "effect": "bonus bStr,1; bonus2 bAddClass,Class_All,5;"
+    },
+    {
+        "items": [
+            5070,
+            18576
+        ],
+        "effect": "bonus2 bSkillAtk,\"MO_TRIPLEATTACK\",5; bonus2 bSkillAtk,\"MO_COMBOFINISH\",5; bonus2 bSkillAtk,\"CH_TIGERFIST\",3; bonus2 bSkillAtk,\"CH_CHAINCRUSH\",3; bonus bUseSPrate,10; if(getequiprefinerycnt(EQI_HEAD_TOP)>=7) bonus bUseSPrate,-1; if(getequiprefinerycnt(EQI_HEAD_TOP)>=9) bonus bUseSPrate,-1;"
+    },
+    {
+        "items": [
+            5072,
+            18540
+        ],
+        "effect": "bonus bAspd,1; bonus bAspdRate,9; bonus2 bSPLossRate,3,2000;"
+    },
+    {
+        "items": [
+            5073,
+            5574
+        ],
+        "effect": "bonus bDex,2; bonus bDef,2;"
+    },
+    {
+        "items": [
+            5074,
+            21135
+        ],
+        "effect": "bonus bStr,1; bonus bAspdRate,3;"
+    },
+    {
+        "items": [
+            5104,
+            21135
+        ],
+        "effect": "bonus bDex,1; bonus bFlee,5;"
+    },
+    {
+        "items": [
+            5113,
+            20100
+        ],
+        "effect": "bonus3 bAutoSpell,\"PR_ASPERSIO\",1,10;"
+    },
+    {
+        "items": [
+            5206,
+            5768
+        ],
+        "effect": "bonus bDex,1; if(getequiprefinerycnt(EQI_HEAD_TOP) > 5) bonus bCastrate,-(getequiprefinerycnt(EQI_HEAD_TOP)/2);"
+    },
+    {
+        "items": [
+            5213,
+            18683
+        ],
+        "effect": "bonus3 bAutoSpellWhenHit,\"TK_HIGHJUMP\",1,10;"
+    },
+    {
+        "items": [
+            5358,
+            21135
+        ],
+        "effect": "bonus bAgi,1; bonus bFlee,5;"
+    },
+    {
+        "items": [
+            5364,
+            21849
+        ],
+        "effect": "bonus bInt,3; bonus bDex,5;"
+    },
+    {
+        "items": [
+            5388,
+            21849
+        ],
+        "effect": "bonus bDoubleRate,getequiprefinerycnt(EQI_HAND_R)*5-5;"
+    },
+    {
+        "items": [
+            5397,
+            21113
+        ],
+        "effect": "bonus bFlee2,5;"
+    },
+    {
+        "items": [
+            5397,
+            21114
+        ],
+        "effect": "bonus bAspdRate,3;"
+    },
+    {
+        "items": [
+            5397,
+            21113,
+            21114
+        ],
+        "effect": "bonus2 bExpAddRace,RC_Formless,10; bonus2 bExpAddRace,RC_Fish,10; bonus2 bAddEle,Ele_Fire,5; bonus2 bAddEle,Ele_Water,5; bonus2 bMagicAddEle,Ele_Fire,5; bonus2 bMagicAddEle,Ele_Water,5; bonus bNoCastCancel;"
+    },
+    {
+        "items": [
+            5401,
+            21135
+        ],
+        "effect": "bonus bInt,1; bonus bMatkRate,2;"
+    },
+    {
+        "items": [
+            5411,
+            21849
+        ],
+        "effect": "bonus bInt,3; bonus bDex,5;"
+    },
+    {
+        "items": [
+            5416,
+            16060
+        ],
+        "effect": "bonus bFlee,20; skill \"SM_MOVINGRECOVERY\",1;"
+    },
+    {
+        "items": [
+            5421,
+            18651
+        ],
+        "effect": "bonus bAspdRate,getequiprefinerycnt(EQI_HEAD_TOP)/2;"
+    },
+    {
+        "items": [
+            5548,
+            18803
+        ],
+        "effect": "bonus bUseSPrate,-5;"
+    },
+    {
+        "items": [
+            5672,
+            18720
+        ],
+        "effect": "if(getequiprefinerycnt(EQI_HEAD_TOP)>=7) { bonus2 bMagicAddClass,Class_Boss,4; bonus2 bSubClass,Class_Normal,-5;"
+    },
+    {
+        "items": [
+            8007,
+            21135
+        ],
+        "effect": "bonus bStr,1; bonus2 bAddClass,Class_All,5;"
+    },
+    {
+        "items": [
+            8008,
+            21135
+        ],
+        "effect": "bonus bStr,1; bonus bAspdRate,3;"
+    },
+    {
+        "items": [
+            8170,
+            21135
+        ],
+        "effect": "bonus bDex,1; bonus bFlee,5;"
+    },
+    {
+        "items": [
+            8214,
+            21135
+        ],
+        "effect": "bonus bInt,1; bonus bMatkRate,2;"
+    },
+    {
+        "items": [
+            8220,
+            21135
+        ],
+        "effect": "bonus bAgi,1; bonus bFlee,5;"
+    },
+    {
+        "items": [
+            13027,
+            15044
+        ],
+        "effect": "bonus3 bAddMonsterDropItem,929,RC_Brute,50+(getequiprefinerycnt(EQI_ARMOR)*5); bonus3 bAddMonsterDropItem,929,RC_DemiHuman,50+(getequiprefinerycnt(EQI_ARMOR)*5); bonus3 bAddMonsterDropItem,970,RC_Brute,10+getequiprefinerycnt(EQI_ARMOR); bonus3 bAddMonsterDropItem,970,RC_DemiHuman,10+getequiprefinerycnt(EQI_ARMOR);"
+    },
+    {
+        "items": [
+            13034,
+            13035
+        ],
+        "effect": "bonus bMaxSP,20; bonus bMaxHPRate,5; bonus bHit,10; bonus2 bAddSize,Size_Large,30; autobonus \"{ bonus bAspdRate,100;"
+    },
+    {
+        "items": [
+            13089,
+            13090
+        ],
+        "effect": "bonus2 bIgnoreDefRaceRate,RC_Insect,50; bonus2 bSkillAtk,\"ASC_BREAKER\",10;"
+    },
+    {
+        "items": [
+            13090,
+            32501
+        ],
+        "effect": "autobonus \"{ bonus2 bIgnoreDefRaceRate,RC_Insect,50; bonus2 bIgnoreMdefRaceRate,RC_Insect,30;"
+    },
+    {
+        "items": [
+            13206,
+            28202
+        ],
+        "effect": "bonus2 bAddEle,Ele_Neutral,40; bonus2 bIgnoreDefClassRate,Class_All,2*getequiprefinerycnt(EQI_HAND_R);"
+    },
+    {
+        "items": [
+            13203,
+            28202
+        ],
+        "effect": "bonus2 bAddEle,Ele_Neutral,40; bonus2 bIgnoreDefClassRate,Class_All,2*getequiprefinerycnt(EQI_HAND_R);"
+    },
+    {
+        "items": [
+            13207,
+            28202
+        ],
+        "effect": "bonus2 bAddEle,Ele_Neutral,40; bonus2 bIgnoreDefClassRate,Class_All,2*getequiprefinerycnt(EQI_HAND_R);"
+    },
+    {
+        "items": [
+            13204,
+            28202
+        ],
+        "effect": "bonus2 bAddEle,Ele_Neutral,40; bonus2 bIgnoreDefClassRate,Class_All,2*getequiprefinerycnt(EQI_HAND_R);"
+    },
+    {
+        "items": [
+            13205,
+            28202
+        ],
+        "effect": "bonus2 bAddEle,Ele_Neutral,40; bonus2 bIgnoreDefClassRate,Class_All,2*getequiprefinerycnt(EQI_HAND_R);"
+    },
+    {
+        "items": [
+            13255,
+            13314
+        ],
+        "effect": "bonus2 bSkillAtk,\"NJ_KUNAI\",50;"
+    },
+    {
+        "items": [
+            13256,
+            13313
+        ],
+        "effect": "bonus2 bSkillAtk,\"NJ_KUNAI\",50;"
+    },
+    {
+        "items": [
+            13257,
+            13315
+        ],
+        "effect": "bonus2 bSkillAtk,\"NJ_KUNAI\",50;"
+    },
+    {
+        "items": [
+            13258,
+            13321
+        ],
+        "effect": "bonus2 bSkillAtk,\"NJ_KUNAI\",50;"
+    },
+    {
+        "items": [
+            13414,
+            21848
+        ],
+        "effect": "if (getequipid(EQI_HAND_R) == 13414) bonus bAspdRate,getequiprefinerycnt(EQI_HAND_R)/2; else bonus bAspdRate,getequiprefinerycnt(EQI_HAND_L)/2; autobonus \"{ if (getequipid(EQI_HAND_R) == 13414) bonus bMatkRate,getequiprefinerycnt(EQI_HAND_R); else bonus bMatkRate,getequiprefinerycnt(EQI_HAND_L);"
+    },
+    {
+        "items": [
+            15054,
+            28485
+        ],
+        "effect": "bonus bUseSPrate,-20; bonus bMaxHP,300;"
+    },
+    {
+        "items": [
+            15055,
+            28485
+        ],
+        "effect": "bonus bUseSPrate,-20; bonus bMaxHP,300;"
+    },
+    {
+        "items": [
+            15056,
+            28485
+        ],
+        "effect": "bonus bUseSPrate,-20; bonus bMaxHP,300;"
+    },
+    {
+        "items": [
+            15068,
+            21001
+        ],
+        "effect": "bonus2 bSubEle,Ele_Neutral,5;"
+    },
+    {
+        "items": [
+            15138,
+            19026
+        ],
+        "effect": "bonus2 bSubRace,RC_Fish,(10+getequiprefinerycnt(EQI_ARMOR));"
+    },
+    {
+        "items": [
+            18510,
+            18511
+        ],
+        "effect": "bonus2 bAddRace,RC_Angel,3; bonus bMaxHPRate,2; bonus bMaxSPRate,1;"
+    },
+    {
+        "items": [
+            18563,
+            18564
+        ],
+        "effect": "bonus bCastrate,-5;"
+    },
+    {
+        "items": [
+            18698,
+            21355
+        ],
+        "effect": "bonus2 bAddItemSPHealRate,548,100;"
+    },
+    {
+        "items": [
+            18698,
+            21356
+        ],
+        "effect": "bonus2 bAddItemSPHealRate,548,100;"
+    },
+    {
+        "items": [
+            18776,
+            21001
+        ],
+        "effect": "bonus bBaseAtk,10;"
+    },
+    {
+        "items": [
+            18776,
+            22015
+        ],
+        "effect": "bonus bMatkRate,5;"
+    },
+    {
+        "items": [
+            18816,
+            18818
+        ],
+        "effect": "bonus bMatkRate,2;"
+    },
+    {
+        "items": [
+            18817,
+            18819
+        ],
+        "effect": "bonus2 bAddClass,Class_All,2;"
+    },
+    {
+        "items": [
+            18824,
+            18825
+        ],
+        "effect": "bonus bMaxHP,100; if(getequiprefinerycnt(EQI_HEAD_TOP)>2) bonus2 bSubEle,Ele_Neutral,getequiprefinerycnt(EQI_HEAD_TOP)-2;"
+    },
+    {
+        "items": [
+            21113,
+            21150
+        ],
+        "effect": "bonus2 bResEff,Eff_Freeze,-2000;"
+    },
+    {
+        "items": [
+            21136,
+            21137
+        ],
+        "effect": "bonus bBaseAtk,getequiprefinerycnt(EQI_ARMOR);"
+    },
+    {
+        "items": [
+            21137,
+            24113
+        ],
+        "effect": "bonus bMaxSPrate,getequiprefinerycnt(EQI_SHOES);"
+    },
+    {
+        "items": [
+            21148,
+            21149
+        ],
+        "effect": "bonus bMaxSPRate,10; bonus bFlee,getequiprefinerycnt(EQI_SHOES);"
+    },
+    {
+        "items": [
+            21148,
+            21149,
+            21150
+        ],
+        "effect": "bonus2 bExpAddRace,RC_DemiHuman,10; bonus2 bExpAddRace,RC_Angel,10; bonus2 bResEff,Eff_Freeze,1000; bonus2 bAddItemHealRate,529,100; bonus2 bAddItemHealRate,570,200; skill \"AL_TELEPORT\",1; bonus bNoCastCancel;"
+    },
+    {
+        "items": [
+            21149,
+            21150
+        ],
+        "effect": "bonus bAspdRate,3; bonus bHit,getequiprefinerycnt(EQI_GARMENT);"
+    },
+    {
+        "items": [
+            27163,
+            27165
+        ],
+        "effect": "bonus bInt,3; bonus bAspdRate,2; bonus bDelayRate,-5;"
+    },
+    {
+        "items": [
+            27164,
+            27166
+        ],
+        "effect": "bonus bMinMatk,25; bonus2 bAddRace2,RC2_FACEWORM,10; bonus2 bMagicAddRace2,RC2_FACEWORM,25;"
+    },
+    {
+        "items": [
+            27164,
+            27165
+        ],
+        "effect": "bonus bMinMatk,25; bonus2 bAddRace2,RC2_FACEWORM,10; bonus2 bMagicAddRace2,RC2_FACEWORM,25;"
+    },
+    {
+        "items": [
+            27166,
+            27167
+        ],
+        "effect": "bonus2 bMagicAddRace,RC_Insect,20;"
+    },
+    {
+        "items": [
+            21397,
+            21398
+        ],
+        "effect": "bonus2 bCastrate,\"ASC_METEORASSAULT\",-30; bonus2 bSkillDelayrate,\"ASC_METEORASSAULT\",-10;"
+    },
+    {
+        "items": [
+            22100,
+            32500
+        ],
+        "effect": "bonus bMaxHPrate,15; bonus bMaxSPrate,10;"
+    },
+    {
+        "items": [
+            22100,
+            32501
+        ],
+        "effect": "bonus bMaxHPrate,15; bonus bMaxSPrate,10;"
+    },
+    {
+        "items": [
+            22101,
+            32500
+        ],
+        "effect": "bonus bMaxHPrate,15; bonus bMaxSPrate,10;"
+    },
+    {
+        "items": [
+            22101,
+            32501
+        ],
+        "effect": "bonus bMaxHPrate,15; bonus bMaxSPrate,10;"
+    },
+    {
+        "items": [
+            22102,
+            32500
+        ],
+        "effect": "bonus bMaxHPrate,15; bonus bMaxSPrate,10;"
+    },
+    {
+        "items": [
+            22102,
+            32501
+        ],
+        "effect": "bonus bMaxHPrate,15; bonus bMaxSPrate,10;"
+    },
+    {
+        "items": [
+            22103,
+            32500
+        ],
+        "effect": "bonus bMaxHPrate,15; bonus bMaxSPrate,10;"
+    },
+    {
+        "items": [
+            22103,
+            32501
+        ],
+        "effect": "bonus bMaxHPrate,15; bonus bMaxSPrate,10;"
+    },
+    {
+        "items": [
+            22104,
+            32500
+        ],
+        "effect": "bonus bMaxHPrate,15; bonus bMaxSPrate,10;"
+    },
+    {
+        "items": [
+            22104,
+            32501
+        ],
+        "effect": "bonus bMaxHPrate,15; bonus bMaxSPrate,10;"
+    },
+    {
+        "items": [
+            22105,
+            32500
+        ],
+        "effect": "bonus bMaxHPrate,15; bonus bMaxSPrate,10;"
+    },
+    {
+        "items": [
+            22105,
+            32501
+        ],
+        "effect": "bonus bMaxHPrate,15; bonus bMaxSPrate,10;"
+    },
+    {
+        "items": [
+            28484,
+            28502
+        ],
+        "effect": "bonus bMaxHP,300; bonus bFlipCoinRate,100;"
+    },
+    {
+        "items": [
+            24001,
+            24002,
+            24004,
+            24006
+        ],
+        "effect": "bonus bAllStats,1; bonus2 bSubRace2,RC2_BOTNVALK,10;"
+    },
+    {
+        "items": [
+            24001,
+            24002,
+            24005,
+            24006
+        ],
+        "effect": "bonus bAllStats,1; bonus2 bSubRace2,RC2_BOTNVALK,10;"
+    },
+    {
+        "items": [
+            24001,
+            24002,
+            24004,
+            24007
+        ],
+        "effect": "bonus bAllStats,1; bonus2 bSubRace2,RC2_BOTNVALK,10;"
+    },
+    {
+        "items": [
+            24001,
+            24002,
+            24005,
+            24007
+        ],
+        "effect": "bonus bAllStats,1; bonus2 bSubRace2,RC2_BOTNVALK,10;"
+    },
+    {
+        "items": [
+            24001,
+            24003,
+            24004,
+            24006
+        ],
+        "effect": "bonus bAllStats,1; bonus2 bSubRace2,RC2_BOTNVALK,10;"
+    },
+    {
+        "items": [
+            24001,
+            24003,
+            24005,
+            24006
+        ],
+        "effect": "bonus bAllStats,1; bonus2 bSubRace2,RC2_BOTNVALK,10;"
+    },
+    {
+        "items": [
+            24001,
+            24003,
+            24004,
+            24007
+        ],
+        "effect": "bonus bAllStats,1; bonus2 bSubRace2,RC2_BOTNVALK,10;"
+    },
+    {
+        "items": [
+            24001,
+            24003,
+            24005,
+            24007
+        ],
+        "effect": "bonus bAllStats,1; bonus2 bSubRace2,RC2_BOTNVALK,10;"
+    },
+    {
+        "items": [
+            24002,
+            24004,
+            24006
+        ],
+        "effect": "bonus bAllStats,1; bonus2 bAddRace2,RC2_BOTNVALK,5;"
+    },
+    {
+        "items": [
+            24002,
+            24005,
+            24006
+        ],
+        "effect": "bonus bAllStats,1; bonus2 bAddRace2,RC2_BOTNVALK,5;"
+    },
+    {
+        "items": [
+            24002,
+            24004,
+            24007
+        ],
+        "effect": "bonus bAllStats,1; bonus2 bAddRace2,RC2_BOTNVALK,5;"
+    },
+    {
+        "items": [
+            24002,
+            24005,
+            24007
+        ],
+        "effect": "bonus bAllStats,1; bonus2 bAddRace2,RC2_BOTNVALK,5;"
+    },
+    {
+        "items": [
+            24003,
+            24004,
+            24006
+        ],
+        "effect": "bonus bAllStats,1; bonus2 bAddRace2,RC2_BOTNVALK,5;"
+    },
+    {
+        "items": [
+            24003,
+            24005,
+            24006
+        ],
+        "effect": "bonus bAllStats,1; bonus2 bAddRace2,RC2_BOTNVALK,5;"
+    },
+    {
+        "items": [
+            24003,
+            24004,
+            24007
+        ],
+        "effect": "bonus bAllStats,1; bonus2 bAddRace2,RC2_BOTNVALK,5;"
+    },
+    {
+        "items": [
+            24003,
+            24005,
+            24007
+        ],
+        "effect": "bonus bAllStats,1; bonus2 bAddRace2,RC2_BOTNVALK,5;"
+    },
+    {
+        "items": [
+            27381,
+            27388
+        ],
+        "effect": "bonus2 bSkillAtk,\"MG_SOULSTRIKE\",25; bonus2 bSkillIgnoreMdefRate,\"MG_SOULSTRIKE\",25;"
+    },
+    {
+        "items": [
+            27384,
+            27385
+        ],
+        "effect": ".@r = getequiprefinerycnt(EQI_HAND_R); bonus2 bSubSize,Size_Medium,10; bonus2 bSubSize,Size_Large,10; bonus2 bMagicAddSize,Size_Medium,.@r*2; bonus2 bMagicAddSize,Size_Large,.@r*2;"
+    },
+    {
+        "items": [
+            27386,
+            27387
+        ],
+        "effect": "bonus2 bAddRace,RC_Undead,10; bonus2 bMagicAddRace,RC_Undead,10; bonus2 bAddRace,RC_Demon,10; bonus2 bMagicAddRace,RC_Demon,10;"
+    },
+    {
+        "items": [
+            30334,
+            30336
+        ],
+        "effect": "bonus2 bSkillAtk,\"MG_FIREBALL\",200; bonus2 bSkillSplashRange,\"MG_FIREBALL\",1;"
+    },
+    {
+        "items": [
+            30338,
+            30339
+        ],
+        "effect": "bonus2 bResEff,Eff_Stun,3000; bonus bLongAtkDef,10; bonus2 bResEff,Eff_Freeze,5000;"
+    },
+    {
+        "items": [
+            30340,
+            30341,
+            30342
+        ],
+        "effect": "bonus2 bResEff,Eff_Freeze,10000; bonus bMaxHP,500; bonus2 bResEff,Eff_Stun,2000; skill \"AL_INCAGI\",1;"
+    },
+    {
+        "items": [
+            30355,
+            30356,
+            30357
+        ],
+        "effect": "if(!callfunc(\"F_Map_VS\")) { bonus2 bSubRace,RC_All,-300; bonus2 bSubRace,RC_Player_Human,300;"
+    },
+    {
+        "items": [
+            30359,
+            30360,
+            30361
+        ],
+        "effect": "if(!callfunc(\"F_Map_VS\")) { bonus2 bSubRace,RC_All,-300; bonus2 bSubRace,RC_Player_Human,300;"
+    },
+    {
+        "items": [
+            30362,
+            30363,
+            30364
+        ],
+        "effect": "if(!callfunc(\"F_Map_VS\")) { bonus2 bSubRace,RC_All,-300; bonus2 bSubRace,RC_Player_Human,300;"
+    }
+]
