@@ -6,8 +6,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { Item } from '../core/models';
 import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
 import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
-import { WeaponType, WeaponTypeLeft } from '../core/models.v3';
+import { DBItem, EquipLocation, WeaponType, WeaponTypeLeft } from '../core/models.v3';
 
+type GearItem = Pick<DBItem, 'ID' | 'name'>;
 @Component({
   selector: 'tt-equip-v3',
   imports: [MatFormFieldModule, ReactiveFormsModule, MatSelectModule],
@@ -23,18 +24,18 @@ export class TtEquipV3Component {
   /*** varbs ***/
   equipMask: Signal<number>;
   gears = new FormGroup({
-    armor: new FormControl('', { nonNullable: true }),
-    garment: new FormControl('', { nonNullable: true }),
-    leftHand: new FormControl('', { nonNullable: true }),
-    leftHandType: new FormControl<WeaponTypeLeft>('Shield', { nonNullable: true }),
-    rightHandType: new FormControl<WeaponType>('Dagger', { nonNullable: true }),  // DAGGER?!
-    lhAccessory: new FormControl('', { nonNullable: true }),
-    lowerHg: new FormControl('', { nonNullable: true }),
-    middleHg: new FormControl('', { nonNullable: true }),
-    rhAccessory: new FormControl('', { nonNullable: true }),
-    rightHand: new FormControl('', { nonNullable: true }),
-    shoes: new FormControl('', { nonNullable: true }),
-    upperHg: new FormControl('', { nonNullable: true })
+    armor: new FormControl(0, { nonNullable: true }),
+    garment: new FormControl(0, { nonNullable: true }),
+    leftHand: new FormControl(0, { nonNullable: true }),
+    leftHandType: new FormControl<WeaponTypeLeft>('Unarmed', { nonNullable: true }),
+    rightHandType: new FormControl<WeaponType>('Unarmed', { nonNullable: true }),
+    lhAccessory: new FormControl(0, { nonNullable: true }),
+    lowerHg: new FormControl(0, { nonNullable: true }),
+    middleHg: new FormControl(0, { nonNullable: true }),
+    rhAccessory: new FormControl(0, { nonNullable: true }),
+    rightHand: new FormControl(0, { nonNullable: true }),
+    shoes: new FormControl(0, { nonNullable: true }),
+    upperHg: new FormControl(0, { nonNullable: true })
   });
   rightHandLast = '';
   $weaponType: Signal<WeaponType>;
@@ -43,15 +44,15 @@ export class TtEquipV3Component {
   /*** gear lists ***/
   weaponTypes: Signal<WeaponType[]>;
   leftHandTypes: Signal<WeaponTypeLeft[]>;
-  upperHgList: Signal<string[]>;
-  middleHgList: Signal<string[]>;
-  lowerHgList: Signal<string[]>;
-  armorList: Signal<string[]>;
-  weaponList: Signal<string[]>;
-  leftHandList: Signal<string[]>; // Shield or Weapon (for Assa)
-  garmentList: Signal<string[]>;
-  shoeList: Signal<string[]>;
-  accessorieList: Signal<string[]>;
+  upperHgList: Signal<GearItem[]>;
+  middleHgList: Signal<GearItem[]>;
+  lowerHgList: Signal<GearItem[]>;
+  armorList: Signal<GearItem[]>;
+  weaponList: Signal<GearItem[]>;
+  leftHandList: Signal<GearItem[]>; // Shield or Weapon (for Assa)
+  garmentList: Signal<GearItem[]>;
+  shoesList: Signal<GearItem[]>;
+  accessorieList: Signal<GearItem[]>;
 
   constructor() {
     this.equipMask = computed(() => {
@@ -75,65 +76,62 @@ export class TtEquipV3Component {
     });
 
     this.leftHandTypes = computed(() => {
-      // const jobClassName = this._session.jobClassName();
-      // return untracked(() => {
-      //   const job = this._session.jobClass();
-      //   if (job && jobClassName && jobClassName.includes('Assassin')) {
-      //     return [...job.compatibleWeapons, 'Shield'];
-      //   }
-      //   else {
-      //     return ['Unarmed', 'Shield'];
-      //   }
-      // });
-      return [];
+      const jobClassName = this._session.jobClassName();
+      return untracked(() => {
+        const job = this._session.jobClass();
+        if (job && jobClassName && jobClassName.includes('Assassin')) {
+          return [...job.compatibleWeapons, 'Shield'];
+        }
+        else {
+          return ['Unarmed', 'Shield'];
+        }
+      });
     });
 
-    this.$leftHandType = toSignal(this.gears.controls.leftHandType.valueChanges, { initialValue: 'Shield' });
-    this.$weaponType = toSignal(this.gears.controls.rightHandType.valueChanges, { initialValue: 'Dagger' });
+    this.$leftHandType = toSignal(this.gears.controls.leftHandType.valueChanges, { initialValue: 'Unarmed' });
+    this.$weaponType = toSignal(this.gears.controls.rightHandType.valueChanges, { initialValue: 'Unarmed' });
 
     /* equip lists */
     this.upperHgList = computed(() => {
-      // return this._computeGearList(this._core.headgearDbV2.Upper);
-      return [];
+      return this._computeGearList(this._core.headgearDB, '(No Upper Headgear)', 'HeadgearUpper');
     });
     this.middleHgList = computed(() => {
-      // return this._computeGearList(this._core.headgearDbV2.Middle);
-      return [];
+      return this._computeGearList(this._core.headgearDB, '(No Middle Headgear)', 'HeadgearMiddle');
     });
     this.lowerHgList = computed(() => {
-      // return this._computeGearList(this._core.headgearDbV2.Lower);
-      return [];
+      return this._computeGearList(this._core.headgearDB, '(No Lower Headgear)', 'HeadgearLower');
     });
     this.armorList = computed(() => {
-      // return this._computeGearList(this._core.armorDbV2);
-      return [];
+      return this._computeGearList(this._core.armorDB, '(No Armor)');
     });
     this.garmentList = computed(() => {
-      // return this._computeGearList(this._core.garmentDbV2);
-      return [];
+      return this._computeGearList(this._core.garmentDB, '(No Garment)');
     });
-    this.shoeList = computed(() => {
-      // return this._computeGearList(this._core.shoesDbV2);
-      return [];
+    this.shoesList = computed(() => {
+      return this._computeGearList(this._core.shoesDB, '(No Shoes)');
     });
     this.accessorieList = computed(() => {
-      // return this._computeGearList(this._core.accessoryDbV2);
-      return [];
+      return this._computeGearList(this._core.accessoryDB, '(No Accessory)');
     });
     this.weaponList = computed(() => {
       const wT = this.$weaponType();
-      // return this._computeGearList(this._core.weaponDbV2[wT]);
-      return [];
+      if (wT === 'Unarmed') {
+        return [{
+          ID: 0,
+          name: '(Unarmed)'
+        }];
+      }
+      else {
+        return this._computeWeaponList(wT);
+      }
     });
     this.leftHandList = computed(() => {
       const leftHandType = this.$leftHandType();
       if (leftHandType === 'Shield') {
-        // return this._computeGearList(this._core.shieldDbV2);
-        return [];
+        return this._computeGearList(this._core.shieldDB, '(No Shield)');
       }
       else {
-        // return this._computeGearList(this._core.weaponDbV2[leftHandType]);
-        return [];
+        return this._computeWeaponList(leftHandType);
       }
     });
 
@@ -152,39 +150,68 @@ export class TtEquipV3Component {
 
     /* update gears in session on selection */
     this.gears.valueChanges.pipe(takeUntilDestroyed()).subscribe((value) => {
-      // this._session.equip.update(old => {
-      //   return { ...old, ...value };
-      // });
+      this._session.equip.update(old => {
+        return { ...old, ...value };
+      });
     });
 
     /* update right hand if list changed */
     effect(() => {
       // TODO: when class changes but still same left hand type is valid, do change selection
       const waepons = this.weaponList();
-      this.gears.controls.rightHand.setValue(waepons[0]);
+      this.gears.controls.rightHand.setValue(0);
     });
     /* update left hand if left hand list changes */
     effect(() => {
       // TODO: when class changes but still same left hand type is valid, do change selection
       const leftHands = this.leftHandList();
-      this.gears.controls.leftHand.setValue(leftHands[0]);
+      this.gears.controls.leftHand.setValue(0);
     });
   }
 
   /*** private function ***/
-  private _computeGearList(data: { [key: string]: Item }): string[] {
+  private _computeWeaponList(weaponType: WeaponType) {
     const equipMask = this.equipMask();
-    let res: string[] = [];
-
-    for (let dataKey in data) {
-      /* filter by mask */
-      let curEquipMask = Number(data[dataKey].job);
-      if ((curEquipMask & equipMask) == equipMask) {
-        res.push(dataKey);
+    const res: GearItem[] = [{
+      ID: 0,
+      name: '(Unarmed)'
+    }];
+    for (const [id, item] of this._core.weaponDB) {
+      if (item.subType !== weaponType) continue;
+      if (this._core.canWearItem(equipMask, item)) {
+        let name = item.name;
+        if (item.slots > 0) {
+          name += ` [${item.slots}]`;
+        }
+        res.push({
+          ID: id,
+          name
+        });
       }
     }
-    res.sort((a, b) => (a > b ? 1 : -1));
-
+    res.sort((a, b) => (a.name > b.name ? 1 : -1));
+    return res;
+  }
+  private _computeGearList(db: Map<number, DBItem>, noneName: string, location?: EquipLocation): GearItem[] {
+    const equipMask = this.equipMask();
+    const res: GearItem[] = [{
+      ID: 0,
+      name: noneName
+    }];
+    for (const [id, item] of db) {
+      if (location && item.location !== location) continue;
+      if (this._core.canWearItem(equipMask, item)) {
+        let name = item.name;
+        if (item.slots > 0) {
+          name += ` [${item.slots}]`;
+        }
+        res.push({
+          ID: id,
+          name
+        });
+      }
+    }
+    res.sort((a, b) => (a.name > b.name ? 1 : -1));
     return res;
   }
 }

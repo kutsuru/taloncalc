@@ -22,21 +22,21 @@
     <mat-form-field>
         <mat-select [formControl]="gears.controls.upperHg">
             @for (hg of upperHgList(); track $index) {
-            <mat-option [value]="hg"> {{hg}} </mat-option>
+            <mat-option [value]="hg.ID"> {{hg.name}} </mat-option>
             }
         </mat-select>
     </mat-form-field>
     <mat-form-field>
         <mat-select [formControl]="gears.controls.middleHg">
             @for (hg of middleHgList(); track $index) {
-            <mat-option [value]="hg"> {{hg}} </mat-option>
+            <mat-option [value]="hg.ID"> {{hg.name}} </mat-option>
             }
         </mat-select>
     </mat-form-field>
     <mat-form-field>
         <mat-select [formControl]="gears.controls.lowerHg">
             @for (hg of lowerHgList(); track $index) {
-            <mat-option [value]="hg"> {{hg}} </mat-option>
+            <mat-option [value]="hg.ID"> {{hg.name}} </mat-option>
             }
         </mat-select>
     </mat-form-field>
@@ -47,7 +47,7 @@
     <mat-form-field>
         <mat-select [formControl]="gears.controls.rightHand">
             @for (w of weaponList(); track $index) {
-            <mat-option [value]="w"> {{w}} </mat-option>
+            <mat-option [value]="w.ID"> {{w.name}} </mat-option>
             }
         </mat-select>
     </mat-form-field>
@@ -55,7 +55,7 @@
     <mat-form-field>
         <mat-select [formControl]="gears.controls.leftHand">
             @for (lh of leftHandList(); track $index) {
-            <mat-option [value]="lh"> {{lh}} </mat-option>
+            <mat-option [value]="lh.ID"> {{lh.name}} </mat-option>
             }
         </mat-select>
     </mat-form-field>
@@ -65,21 +65,21 @@
     <mat-form-field>
         <mat-select [formControl]="gears.controls.armor">
             @for (a of armorList(); track $index) {
-            <mat-option [value]="a"> {{a}} </mat-option>
+            <mat-option [value]="a.ID"> {{a.name}} </mat-option>
             }
         </mat-select>
     </mat-form-field>
     <mat-form-field>
         <mat-select [formControl]="gears.controls.garment">
             @for (gar of garmentList(); track $index) {
-            <mat-option [value]="gar"> {{gar}} </mat-option>
+            <mat-option [value]="gar.ID"> {{gar.name}} </mat-option>
             }
         </mat-select>
     </mat-form-field>
     <mat-form-field>
         <mat-select [formControl]="gears.controls.shoes">
-            @for (sh of shoeList(); track $index) {
-            <mat-option [value]="sh"> {{sh}} </mat-option>
+            @for (sh of shoesList(); track $index) {
+            <mat-option [value]="sh.ID"> {{sh.name}} </mat-option>
             }
         </mat-select>
     </mat-form-field>
@@ -89,14 +89,14 @@
     <mat-form-field>
         <mat-select [formControl]="gears.controls.rhAccessory">
             @for (acc of accessorieList(); track $index) {
-            <mat-option [value]="acc"> {{acc}} </mat-option>
+            <mat-option [value]="acc.ID"> {{acc.name}} </mat-option>
             }
         </mat-select>
     </mat-form-field>
     <mat-form-field>
         <mat-select [formControl]="gears.controls.lhAccessory">
             @for (acc of accessorieList(); track $index) {
-            <mat-option [value]="acc"> {{acc}} </mat-option>
+            <mat-option [value]="acc.ID"> {{acc.name}} </mat-option>
             }
         </mat-select>
     </mat-form-field>

@@ -37,7 +37,7 @@ export class TTCoreServiceV3 {
                 /* load assets */
                 forkJoin([
                     this._loadDB('assets/db/item.db.V3.json'),  // 0
-                    this._loadDB('assets/db/job.db.json'),      // 1
+                    this._loadDB('assets/db/job.db.V3.json'),   // 1
                 ])
                     .subscribe((dbRes) => {
                         let leftOverItems: DBItem[] = [];
@@ -102,6 +102,9 @@ export class TTCoreServiceV3 {
             }
         })
     }
+    public canWearItem(jobMask: number, item: DBItem): boolean {
+        return (Number(item.jobMask) & jobMask) == jobMask
+    }
 
     /*** private functions ***/
     private _loadDB(path: string) {
@@ -112,7 +115,7 @@ export class TTCoreServiceV3 {
     get $loaded() {
         return this._loaded.asReadonly();
     }
-    
+
     // derived
     get allJobNames() {
         return Array.from(this._jobDB.keys());
@@ -121,5 +124,29 @@ export class TTCoreServiceV3 {
     // pure
     get jobDB() {
         return this._jobDB;
+    }
+    get headgearDB() {
+        return this._headgearDB;
+    }
+    get armorDB() {
+        return this._armorDB;
+    }
+    get weaponDB() {
+        return this._waeponDB;
+    }
+    get shieldDB() {
+        return this._shieldDB;
+    }
+    get garmentDB() {
+        return this._garmentDB;
+    }
+    get shoesDB() {
+        return this._shoesDB;
+    }
+    get accessoryDB() {
+        return this._accessoryDB;
+    }
+    get cardDB() {
+        return this._cardDB;
     }
 }

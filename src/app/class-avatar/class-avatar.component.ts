@@ -28,7 +28,10 @@ export class ClassAvatarComponent {
   classImg = computed(() => {
     const className = this._session.jobClassName();
     let url: string;
-    if (className in MAPPING) {
+    if(className.length <= 0){
+      url =`${BASE_PATH}/Novice.png`;
+    }
+    else if (className in MAPPING) {
       url = `${BASE_PATH}/${MAPPING[className]}.png`;
     }
     else {

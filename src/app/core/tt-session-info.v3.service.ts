@@ -1,7 +1,6 @@
 /*** imports ***/
 import { computed, effect, inject, Injectable, Signal, signal, untracked, WritableSignal } from "@angular/core";
-import { SessionEquip } from "./models";
-import { BaseStatsAs, BaseStatsNames, DBJob } from "./models.v3";
+import { BaseStatsAs, BaseStatsNames, DBItem, DBJob, SessionEquip, WeaponTypeLeft } from "./models.v3";
 import { BONUS_DEFAULT, SESSION_INFO_DEFAULT } from "./session-info-default";
 import { TTCoreService } from "./tt-core.service";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
@@ -19,6 +18,20 @@ export type SessionBonus = BaseStatsAs<number> & {
 }
 
 /*** definitons ***/
+const SESSION_EQUIP_DEFAULT: SessionEquip = {
+    armor: 0,
+    garment: 0,
+    leftHand: 0,
+    leftHandType: 'Unarmed',
+    lowerHg: 0,
+    middleHg: 0,
+    rightHand: 0,
+    rightHandType: 'Unarmed',
+    rhAccessory: 0,
+    lhAccessory: 0,
+    shoes: 0,
+    upperHg: 0
+}
 
 /*** service ***/
 @Injectable({ providedIn: 'root' })
@@ -41,7 +54,7 @@ export class TTSessionInfoV3Service {
     baseStats: WritableSignal<BaseStatsAs<number>> = signal({ ...SESSION_INFO_DEFAULT.baseStats });
 
     /* total stats */
-    stats: Signal<BaseStatsAs<number>>;
+    totalStats: Signal<BaseStatsAs<number>>;
     /* secondory stats */
     atk: Signal<number>;
     hit: Signal<number>;
@@ -60,7 +73,7 @@ export class TTSessionInfoV3Service {
     bonus: Signal<SessionBonus>;
 
     /* equip */
-    equip: WritableSignal<SessionEquip> = signal({ ...SESSION_INFO_DEFAULT.equip });
+    equip: WritableSignal<SessionEquip> = signal({ ...SESSION_EQUIP_DEFAULT });
 
     constructor() {
         /* wait for core to be loaded */
@@ -76,7 +89,7 @@ export class TTSessionInfoV3Service {
             let newClass = this._core.jobDB.get(this.jobClassName());
             return newClass;
         });
-        this.stats = computed(() => {
+        this.totalStats = computed(() => {
             let bonus = this.bonus();
             let baseStats = this.baseStats();
 
@@ -159,68 +172,77 @@ export class TTSessionInfoV3Service {
             const job = this.jobClass();
             if (job) {
                 untracked(() => {
-                    // const equip = this.equip();
-                    // const jobMask = Number(job.mask);
-                    // let update = false;
-                    // // right hand type
-                    // if (!job.compatibleWeapons.includes(equip.rightHandType)) {
-                    //     equip.rightHandType = 'Unarmed';
-                    //     equip.rightHand = 'Unarmed'
-                    //     update = true;
-                    // }
-                    // // left hand type
-                    // const jobClassName = untracked(() => this.jobClassName());
-                    // let allowedLeftHandTypes: WeaponTypeLeft[] = ['Unarmed', 'Shield'];
-                    // if (jobClassName.includes('Assassin')) {
-                    //     allowedLeftHandTypes = [...job.compatibleWeapons, 'Shield'];
-                    // }
-                    // if (!allowedLeftHandTypes.includes(equip.leftHandType)) {
-                    //     equip.leftHandType = 'Unarmed';
-                    //     update = true;
-                    // }
-                    // // upper headgear
-                    // if (!this.canWearItem(jobMask, Number(this._core.headgearDbV2.Upper[equip.upperHg].job))) {
-                    //     equip.upperHg = SESSION_INFO_DEFAULT.equip.upperHg;
-                    //     update = true;
-                    // }
-                    // // middle headgear
-                    // if(!this.canWearItem(jobMask, Number(this._core.headgearDbV2.Middle[equip.middleHg].job))){
-                    //     equip.middleHg = SESSION_INFO_DEFAULT.equip.middleHg;
-                    //     update = true;
-                    // }
-                    // // lower headgear
-                    // if(!this.canWearItem(jobMask, Number(this._core.headgearDbV2.Lower[equip.lowerHg].job))){
-                    //     equip.middleHg = SESSION_INFO_DEFAULT.equip.lowerHg;
-                    //     update = true;
-                    // }
-                    // // armor
-                    // if(!this.canWearItem(jobMask, Number(this._core.armorDbV2[equip.armor].job))){
-                    //     equip.armor = SESSION_INFO_DEFAULT.equip.armor;
-                    //     update = true;
-                    // }
-                    // // garment
-                    // if(!this.canWearItem(jobMask, Number(this._core.garmentDbV2[equip.garment].job))){
-                    //     equip.garment = SESSION_INFO_DEFAULT.equip.garment;
-                    //     update = true
-                    // }
-                    // // shoes
-                    // if(!this.canWearItem(jobMask, Number(this._core.shoesDbV2[equip.shoes].job))){
-                    //     equip.shoes = SESSION_INFO_DEFAULT.equip.shoes;
-                    //     update = true;
-                    // }
-                    // // accessory
-                    // if(!this.canWearItem(jobMask, Number(this._core.accessoryDbV2[equip.rhAccessory].job))){
-                    //     equip.rhAccessory = SESSION_INFO_DEFAULT.equip.rhAccessory;
-                    //     update = true;
-                    // }
-                    // if(!this.canWearItem(jobMask, Number(this._core.accessoryDbV2[equip.lhAccessory].job))){
-                    //     equip.lhAccessory = SESSION_INFO_DEFAULT.equip.lhAccessory;
-                    //     update = true;
-                    // }
+                    const equip = this.equip();
+                    const jobMask = Number(job.mask);
+                    let update = false;
+                    // right hand type
+                    let wT = equip.rightHandType;
+                    if (wT === 'Unarmed' || !job.compatibleWeapons.includes(wT)) {
+                        equip.rightHandType = 'Unarmed';
+                        equip.rightHand = 0;
+                        update = true;
+                    }
+                    // left hand type
+                    const jobClassName = untracked(() => this.jobClassName());
+                    let allowedLeftHandTypes: WeaponTypeLeft[] = ['Unarmed', 'Shield'];
+                    if (jobClassName.includes('Assassin')) {
+                        allowedLeftHandTypes = [...job.compatibleWeapons, 'Shield'];
+                    }
+                    if (!allowedLeftHandTypes.includes(equip.leftHandType)) {
+                        equip.leftHandType = 'Unarmed';
+                        update = true;
+                    }
+                    // upper headgear
+                    let upperHg = this._core.headgearDB.get(equip.upperHg);
+                    if (!upperHg || !this._core.canWearItem(jobMask, upperHg)) {
+                        equip.upperHg = SESSION_EQUIP_DEFAULT.upperHg;
+                        update = true;
+                    }
+                    // middle headgear
+                    let middleHg = this._core.headgearDB.get(equip.middleHg);
+                    if (!middleHg || !this._core.canWearItem(jobMask, middleHg)) {
+                        equip.middleHg = SESSION_EQUIP_DEFAULT.middleHg
+                        update = true;
+                    }
+                    // lower headgear
+                    let lowerHg = this._core.headgearDB.get(equip.lowerHg);
+                    if (!lowerHg || !this._core.canWearItem(jobMask, lowerHg)) {
+                        equip.middleHg = SESSION_EQUIP_DEFAULT.lowerHg;
+                        update = true;
+                    }
+                    // armor
+                    let armor = this._core.armorDB.get(equip.armor);
+                    if (!armor || !this._core.canWearItem(jobMask, armor)) {
+                        equip.armor = SESSION_EQUIP_DEFAULT.armor;
+                        update = true;
+                    }
+                    // garment
+                    let gar = this._core.garmentDB.get(equip.garment);
+                    if (!gar || !this._core.canWearItem(jobMask, gar)) {
+                        equip.garment = SESSION_EQUIP_DEFAULT.garment;
+                        update = true
+                    }
+                    // shoes
+                    let shoes = this._core.shoesDB.get(equip.shoes);
+                    if (!shoes || !this._core.canWearItem(jobMask, shoes)) {
+                        equip.shoes = SESSION_EQUIP_DEFAULT.shoes;
+                        update = true;
+                    }
+                    // accessory
+                    let accR = this._core.accessoryDB.get(equip.rhAccessory);
+                    let accL = this._core.accessoryDB.get(equip.lhAccessory);
+                    if (!accR || !this._core.canWearItem(jobMask, accR)) {
+                        equip.rhAccessory = SESSION_EQUIP_DEFAULT.rhAccessory;
+                        update = true;
+                    }
+                    if (!accL || !this._core.canWearItem(jobMask, accL)) {
+                        equip.lhAccessory = SESSION_EQUIP_DEFAULT.lhAccessory;
+                        update = true;
+                    }
 
-                    // if (update) {
-                    //     this.equip.set({ ...equip });
-                    // }
+                    if (update) {
+                        this.equip.set({ ...equip });
+                    }
                 })
             }
         });
@@ -229,7 +251,7 @@ export class TTSessionInfoV3Service {
     /*** private functions ***/
     private _computeHpSp(mode: 'HP' | 'SP'): number {
         /* triggers */
-        const stats = this.stats();
+        const stats = this.totalStats();
         const level = this.level();
         const job = this.jobClass();
 
@@ -273,7 +295,7 @@ export class TTSessionInfoV3Service {
     }
     private _computeBaseAtk(): number {
         /* triggers */
-        const stats = this.stats();
+        const stats = this.totalStats();
 
         /* varbs */
         let baseAtk = 0;
@@ -341,7 +363,7 @@ export class TTSessionInfoV3Service {
     private _computeHit(): number {
         /* trigger */
         const level = this.level();
-        const stats = this.stats();
+        const stats = this.totalStats();
 
         /* varbs */
         let hit = level.base +
@@ -356,7 +378,7 @@ export class TTSessionInfoV3Service {
     private _computeFlee(): number {
         /* triggers */
         const level = this.level();
-        const stats = this.stats();
+        const stats = this.totalStats();
 
         /* varbs */
         let flee = level.base +
@@ -371,7 +393,7 @@ export class TTSessionInfoV3Service {
     private _computeAspd(): number {
         /* triggers */
         const job = this.jobClass();
-        const stats = this.stats();
+        const stats = this.totalStats();
 
         /* varbs */
         let aspd = 0;
@@ -406,7 +428,7 @@ export class TTSessionInfoV3Service {
     }
     private _computeCrit(): number {
         /* triggers */
-        const stats = this.stats();
+        const stats = this.totalStats();
 
         let crit = Math.floor(
             1 +
@@ -421,7 +443,7 @@ export class TTSessionInfoV3Service {
     }
     private _computePerfectDodge(): number {
         /* triggers */
-        const stats = this.stats();
+        const stats = this.totalStats();
 
         let pd = Math.floor(
             1 +
@@ -436,7 +458,7 @@ export class TTSessionInfoV3Service {
     }
     private _computeMatk(mode: 'MIN' | 'MAX'): number {
         /* triggers */
-        const stats = this.stats();
+        const stats = this.totalStats();
 
         const dInt = stats.int * stats.int;
 
@@ -462,10 +484,5 @@ export class TTSessionInfoV3Service {
         // );
 
         return matk;
-    }
-
-    /*** public functions ***/
-    public canWearItem(jobMask: number, itemMask: number): boolean {
-        return (itemMask & jobMask) == jobMask
     }
 }
