@@ -1,9 +1,10 @@
 /*** imports ***/
 import { computed, effect, inject, Injectable, Signal, signal, untracked, WritableSignal } from "@angular/core";
+import { SessionEquip } from "./models";
+import { BaseStatsAs, BaseStatsNames, DBJob } from "./models.v3";
+import { BONUS_DEFAULT, SESSION_INFO_DEFAULT } from "./session-info-default";
 import { TTCoreService } from "./tt-core.service";
-import { distinctUntilChanged } from "rxjs";
-import { BaseStatsNames, JobDbEntry, SessionEquip, WeaponTypeLeft } from "./models";
-import { SESSION_INFO_DEFAULT, BONUS_DEFAULT } from "./session-info-default";
+import { TTCoreServiceV3 } from "./tt-core.v3.service";
 
 /** Dependencies 
  * BaseStats        Pure-Stats without any bonus
@@ -13,7 +14,6 @@ import { SESSION_INFO_DEFAULT, BONUS_DEFAULT } from "./session-info-default";
 **/
 
 /*** types ***/
-export type BaseStatsAs<T> = { [key in BaseStatsNames]: T };
 export type SessionBonus = BaseStatsAs<number> & {
     debug: string
 }
@@ -24,11 +24,11 @@ export type SessionBonus = BaseStatsAs<number> & {
 @Injectable({ providedIn: 'root' })
 export class TTSessionInfoV3Service {
     /* injects */
-    private readonly _core = inject(TTCoreService);
+    private readonly _core = inject(TTCoreServiceV3);
 
     /* job data */
     jobClassName = signal('');
-    jobClass: Signal<JobDbEntry | undefined>;
+    jobClass: Signal<DBJob | undefined>;
 
     /* level */
     levelMax: Signal<{ base: number, job: number }>;
@@ -64,16 +64,16 @@ export class TTSessionInfoV3Service {
 
     constructor() {
         /* wait for core to be loaded */
-        this._core.loaded$.pipe(distinctUntilChanged()).subscribe((_) => {
-            if (_) {
-                /* set init values */
-                this.jobClassName.set(Object.keys(this._core.jobDbV2)[0]);
+        effect(() => {
+            if (this._core.$loaded()) {
+                const allJobs = this._core.allJobNames;
+                this.jobClassName.set(allJobs[0]);
             }
-        });
+        })
 
         /* create computed signals */
         this.jobClass = computed(() => {
-            let newClass = this._core.jobDbV2[this.jobClassName()];
+            let newClass = this._core.jobDB.get(this.jobClassName());
             return newClass;
         });
         this.stats = computed(() => {
@@ -159,68 +159,68 @@ export class TTSessionInfoV3Service {
             const job = this.jobClass();
             if (job) {
                 untracked(() => {
-                    const equip = this.equip();
-                    const jobMask = Number(job.mask);
-                    let update = false;
-                    // right hand type
-                    if (!job.compatibleWeapons.includes(equip.rightHandType)) {
-                        equip.rightHandType = 'Unarmed';
-                        equip.rightHand = 'Unarmed'
-                        update = true;
-                    }
-                    // left hand type
-                    const jobClassName = untracked(() => this.jobClassName());
-                    let allowedLeftHandTypes: WeaponTypeLeft[] = ['Unarmed', 'Shield'];
-                    if (jobClassName.includes('Assassin')) {
-                        allowedLeftHandTypes = [...job.compatibleWeapons, 'Shield'];
-                    }
-                    if (!allowedLeftHandTypes.includes(equip.leftHandType)) {
-                        equip.leftHandType = 'Unarmed';
-                        update = true;
-                    }
-                    // upper headgear
-                    if (!this.canWearItem(jobMask, Number(this._core.headgearDbV2.Upper[equip.upperHg].job))) {
-                        equip.upperHg = SESSION_INFO_DEFAULT.equip.upperHg;
-                        update = true;
-                    }
-                    // middle headgear
-                    if(!this.canWearItem(jobMask, Number(this._core.headgearDbV2.Middle[equip.middleHg].job))){
-                        equip.middleHg = SESSION_INFO_DEFAULT.equip.middleHg;
-                        update = true;
-                    }
-                    // lower headgear
-                    if(!this.canWearItem(jobMask, Number(this._core.headgearDbV2.Lower[equip.lowerHg].job))){
-                        equip.middleHg = SESSION_INFO_DEFAULT.equip.lowerHg;
-                        update = true;
-                    }
-                    // armor
-                    if(!this.canWearItem(jobMask, Number(this._core.armorDbV2[equip.armor].job))){
-                        equip.armor = SESSION_INFO_DEFAULT.equip.armor;
-                        update = true;
-                    }
-                    // garment
-                    if(!this.canWearItem(jobMask, Number(this._core.garmentDbV2[equip.garment].job))){
-                        equip.garment = SESSION_INFO_DEFAULT.equip.garment;
-                        update = true
-                    }
-                    // shoes
-                    if(!this.canWearItem(jobMask, Number(this._core.shoesDbV2[equip.shoes].job))){
-                        equip.shoes = SESSION_INFO_DEFAULT.equip.shoes;
-                        update = true;
-                    }
-                    // accessory
-                    if(!this.canWearItem(jobMask, Number(this._core.accessoryDbV2[equip.rhAccessory].job))){
-                        equip.rhAccessory = SESSION_INFO_DEFAULT.equip.rhAccessory;
-                        update = true;
-                    }
-                    if(!this.canWearItem(jobMask, Number(this._core.accessoryDbV2[equip.lhAccessory].job))){
-                        equip.lhAccessory = SESSION_INFO_DEFAULT.equip.lhAccessory;
-                        update = true;
-                    }
+                    // const equip = this.equip();
+                    // const jobMask = Number(job.mask);
+                    // let update = false;
+                    // // right hand type
+                    // if (!job.compatibleWeapons.includes(equip.rightHandType)) {
+                    //     equip.rightHandType = 'Unarmed';
+                    //     equip.rightHand = 'Unarmed'
+                    //     update = true;
+                    // }
+                    // // left hand type
+                    // const jobClassName = untracked(() => this.jobClassName());
+                    // let allowedLeftHandTypes: WeaponTypeLeft[] = ['Unarmed', 'Shield'];
+                    // if (jobClassName.includes('Assassin')) {
+                    //     allowedLeftHandTypes = [...job.compatibleWeapons, 'Shield'];
+                    // }
+                    // if (!allowedLeftHandTypes.includes(equip.leftHandType)) {
+                    //     equip.leftHandType = 'Unarmed';
+                    //     update = true;
+                    // }
+                    // // upper headgear
+                    // if (!this.canWearItem(jobMask, Number(this._core.headgearDbV2.Upper[equip.upperHg].job))) {
+                    //     equip.upperHg = SESSION_INFO_DEFAULT.equip.upperHg;
+                    //     update = true;
+                    // }
+                    // // middle headgear
+                    // if(!this.canWearItem(jobMask, Number(this._core.headgearDbV2.Middle[equip.middleHg].job))){
+                    //     equip.middleHg = SESSION_INFO_DEFAULT.equip.middleHg;
+                    //     update = true;
+                    // }
+                    // // lower headgear
+                    // if(!this.canWearItem(jobMask, Number(this._core.headgearDbV2.Lower[equip.lowerHg].job))){
+                    //     equip.middleHg = SESSION_INFO_DEFAULT.equip.lowerHg;
+                    //     update = true;
+                    // }
+                    // // armor
+                    // if(!this.canWearItem(jobMask, Number(this._core.armorDbV2[equip.armor].job))){
+                    //     equip.armor = SESSION_INFO_DEFAULT.equip.armor;
+                    //     update = true;
+                    // }
+                    // // garment
+                    // if(!this.canWearItem(jobMask, Number(this._core.garmentDbV2[equip.garment].job))){
+                    //     equip.garment = SESSION_INFO_DEFAULT.equip.garment;
+                    //     update = true
+                    // }
+                    // // shoes
+                    // if(!this.canWearItem(jobMask, Number(this._core.shoesDbV2[equip.shoes].job))){
+                    //     equip.shoes = SESSION_INFO_DEFAULT.equip.shoes;
+                    //     update = true;
+                    // }
+                    // // accessory
+                    // if(!this.canWearItem(jobMask, Number(this._core.accessoryDbV2[equip.rhAccessory].job))){
+                    //     equip.rhAccessory = SESSION_INFO_DEFAULT.equip.rhAccessory;
+                    //     update = true;
+                    // }
+                    // if(!this.canWearItem(jobMask, Number(this._core.accessoryDbV2[equip.lhAccessory].job))){
+                    //     equip.lhAccessory = SESSION_INFO_DEFAULT.equip.lhAccessory;
+                    //     update = true;
+                    // }
 
-                    if (update) {
-                        this.equip.set({ ...equip });
-                    }
+                    // if (update) {
+                    //     this.equip.set({ ...equip });
+                    // }
                 })
             }
         });

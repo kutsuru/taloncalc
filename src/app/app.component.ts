@@ -25,12 +25,13 @@ import { TtPopupComponent } from './tt-popup/tt-popup.component';
 import { TtSettingsComponent } from './tt-settings/tt-settings.component';
 import { TtStatsInfoV3Component } from './tt-stats-info-v3/tt-stats-info-v3.component';
 import { TtStatsV3Component } from './tt-stats-v3/tt-stats-v3.component';
+import { TTCoreServiceV3 } from './core/tt-core.v3.service';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    imports: [
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  imports: [
     MatToolbar,
     TtCardComponent,
     TtStatsInfoComponent,
@@ -47,10 +48,12 @@ import { TtStatsV3Component } from './tt-stats-v3/tt-stats-v3.component';
     JsonPipe,
     TtStatsInfoV3Component,
     TtEquipV3Component
-]
+  ]
 })
 export class AppComponent implements OnInit, OnDestroy {
   readonly se = inject(TTSessionInfoV3Service);
+  readonly ttCoreV3 = inject(TTCoreServiceV3);
+
   longText = `Fixme`;
 
 
@@ -148,7 +151,12 @@ export class AppComponent implements OnInit, OnDestroy {
       /* close all popups */
       this.popupGroup.closeAll();
       console.log(this.popupGroup);
-    })
+    });
+
+    this.ttCoreV3.initializeCore$().subscribe((_) => {
+      console.log('Core V3 laoded');
+    });
+
   }
 
   initClassSelection() {

@@ -5,7 +5,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { ClassAvatarComponent } from "../class-avatar/class-avatar.component";
 import { TTCoreService } from '../core/tt-core.service';
-import { BaseStatsAs, TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
+import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
+import { BaseStatsAs } from '../core/models.v3';
+import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
 
 @Component({
   selector: 'tt-stats-v3',
@@ -14,14 +16,14 @@ import { BaseStatsAs, TTSessionInfoV3Service } from '../core/tt-session-info.v3.
     MatSelectModule,
     ReactiveFormsModule,
     ClassAvatarComponent
-],
+  ],
   templateUrl: './tt-stats-v3.component.html',
   styleUrl: './tt-stats-v3.component.scss',
 })
 export class TtStatsV3Component {
   /* injects */
   readonly session = inject(TTSessionInfoV3Service);
-  private readonly _core = inject(TTCoreService);
+  private readonly _core = inject(TTCoreServiceV3);
 
   /* job */
   private _allJobs: string[] = [];
@@ -53,9 +55,9 @@ export class TtStatsV3Component {
 
   constructor() {
     /* core service */
-    this._core.loaded$.pipe(takeUntilDestroyed()).subscribe((_) => {
-      if (_) {
-        this._allJobs = Object.keys(this._core.jobDbV2);
+    effect(() => {
+      if (this._core.$loaded()) {
+        this._allJobs = this._core.allJobNames;
         this.jobClasses = this._allJobs;
       }
     });
