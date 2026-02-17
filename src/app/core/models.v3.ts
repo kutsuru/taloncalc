@@ -79,3 +79,6 @@ export type SessionEquip = SessionEquipBase<number> & {
   rightHandType: 'Unarmed' | WeaponType,
   leftHandType: 'Unarmed' | WeaponTypeLeft
 }
+export type SessionBonus = BaseStatsAs<number> & {
+    debug: string
+}

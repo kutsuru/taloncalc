@@ -57502,7 +57502,7 @@
   {
     "ID": 5013,
     "talonShop": 5000,
-    "name": "Lord Kaho's Horn",
+    "name": "- Lord Kaho's Horn",
     "npcBuy": 10,
     "weight": 10,
     "npcSell": 5,
@@ -105480,7 +105480,7 @@
   {
     "ID": 8048,
     "talonShop": 0,
-    "name": "Valkyrie Helm",
+    "name": "- Valkyrie Helm",
     "npcBuy": 10,
     "weight": 10,
     "npcSell": 5,

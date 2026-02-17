@@ -1,6 +1,6 @@
 import { SessionInfoV2 } from "./models";
+import { SessionBonus } from "./models.v3";
 import { TTCoreService } from "./tt-core.service";
-import { SessionBonus } from "./tt-session-info.v3.service";
 
 export const BONUS_DEFAULT: SessionBonus = {
     agi: 1,

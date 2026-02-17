@@ -1,9 +1,10 @@
 /*** imports ***/
 import { computed, effect, inject, Injectable, Signal, signal, untracked, WritableSignal } from "@angular/core";
-import { BaseStatsAs, BaseStatsNames, DBItem, DBJob, SessionEquip, WeaponTypeLeft } from "./models.v3";
+import { BaseStatsAs, BaseStatsNames, DBJob, SessionBonus, SessionEquip, WeaponTypeLeft } from "./models.v3";
 import { BONUS_DEFAULT, SESSION_INFO_DEFAULT } from "./session-info-default";
 import { TTCoreService } from "./tt-core.service";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
+import { TTBonusEngineService } from "./tt-bonus-engine.service";
 
 /** Dependencies 
  * BaseStats        Pure-Stats without any bonus
@@ -13,9 +14,7 @@ import { TTCoreServiceV3 } from "./tt-core.v3.service";
 **/
 
 /*** types ***/
-export type SessionBonus = BaseStatsAs<number> & {
-    debug: string
-}
+
 
 /*** definitons ***/
 const SESSION_EQUIP_DEFAULT: SessionEquip = {
@@ -38,6 +37,7 @@ const SESSION_EQUIP_DEFAULT: SessionEquip = {
 export class TTSessionInfoV3Service {
     /* injects */
     private readonly _core = inject(TTCoreServiceV3);
+    private readonly _bonusEngine = inject(TTBonusEngineService);
 
     /* job data */
     jobClassName = signal('');
@@ -127,32 +127,7 @@ export class TTSessionInfoV3Service {
             }
 
         });
-        this.bonus = computed(() => {
-            // TODO: 
-            let res: SessionBonus = {
-                ...BONUS_DEFAULT
-            };
-            // trigers
-            let jobClass = this.jobClass();
-            let level = this.level();
-
-            // job level stats bonus
-            if (jobClass) {
-                for (let stat in jobClass.jobBonus) {
-                    let bonus = jobClass.jobBonus[stat as BaseStatsNames].reduce((sum, bonusAt) => {
-                        if (bonusAt <= level.job) {
-                            return sum + 1;
-                        }
-                        else {
-                            return sum;
-                        }
-                    }, 0);
-                    res[stat] = bonus;
-                }
-            }
-
-            return res;
-        });
+        this.bonus = computed(() => this._computeBonus());
 
         this.maxHp = computed(() => this._computeHpSp('HP'));
         this.maxSp = computed(() => this._computeHpSp('SP'));
@@ -484,5 +459,39 @@ export class TTSessionInfoV3Service {
         // );
 
         return matk;
+    }
+    private _computeBonus() {
+        // TODO: 
+        let res: SessionBonus = {
+            ...BONUS_DEFAULT
+        };
+        // trigers
+        let jobClass = this.jobClass();
+        let level = this.level();
+        let equip = this.equip();
+
+        // job level stats bonus
+        if (jobClass) {
+            for (let stat in jobClass.jobBonus) {
+                let bonus = jobClass.jobBonus[stat as BaseStatsNames].reduce((sum, bonusAt) => {
+                    if (bonusAt <= level.job) {
+                        return sum + 1;
+                    }
+                    else {
+                        return sum;
+                    }
+                }, 0);
+                res[stat] = bonus;
+            }
+        }
+
+        /* equip bonus */
+        // headgear
+        let headgear = this._core.headgearDB.get(equip.upperHg);
+        if(headgear){
+            this._bonusEngine.applyBonus(res, headgear.itemScript)
+        }
+
+        return res;
     }
 }
