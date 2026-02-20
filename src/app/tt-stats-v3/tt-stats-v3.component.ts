@@ -31,7 +31,7 @@ export class TtStatsV3Component {
   selectedJob = new FormControl('', { nonNullable: true });
 
   /* levels */
-  maxStats: number[] = Array.from({ length: TTCoreService.MAX_LVL }, (_, i) => i + 1);
+  readonly maxStats: number[] = Array.from({ length: TTCoreService.MAX_LVL }, (_, i) => i + 1);
   levels = new FormGroup({
     base: new FormControl(0, { nonNullable: true }),
     job: new FormControl(0, { nonNullable: true })

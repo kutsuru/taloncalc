@@ -19,6 +19,14 @@
 </div>
 <div>
     <!-- headgears -->
+    <!-- Upper Hg -->
+    <mat-form-field class="refine-select">
+        <mat-select [formControl]="refines.controls.upperHg">
+            @for (ref of maxRefines; track $index) {
+            <mat-option [value]="ref">+{{ref}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
     <mat-form-field>
         <mat-select [formControl]="gears.controls.upperHg">
             @for (hg of upperHgList(); track $index) {
@@ -26,6 +34,8 @@
             }
         </mat-select>
     </mat-form-field>
+    <tt-card-slot-v3 [(cardId)]="debugCard"></tt-card-slot-v3>
+    <!-- Middle Hg -->
     <mat-form-field>
         <mat-select [formControl]="gears.controls.middleHg">
             @for (hg of middleHgList(); track $index) {
@@ -33,6 +43,7 @@
             }
         </mat-select>
     </mat-form-field>
+    <!-- Lower Hg -->
     <mat-form-field>
         <mat-select [formControl]="gears.controls.lowerHg">
             @for (hg of lowerHgList(); track $index) {
@@ -44,6 +55,13 @@
 <div>
     <!-- Arms -->
     <!-- Weapon -->
+    <mat-form-field class="refine-select">
+        <mat-select [formControl]="refines.controls.rightHand">
+            @for (ref of maxRefines; track $index) {
+            <mat-option [value]="ref">+{{ref}} </mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
     <mat-form-field>
         <mat-select [formControl]="gears.controls.rightHand">
             @for (w of weaponList(); track $index) {
@@ -52,6 +70,13 @@
         </mat-select>
     </mat-form-field>
     <!-- Left-Hand / Shield -->
+    <mat-form-field class="refine-select">
+        <mat-select [formControl]="refines.controls.leftHand">
+            @for (ref of maxRefines; track $index) {
+            <mat-option [value]="ref">+{{ref}} </mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
     <mat-form-field>
         <mat-select [formControl]="gears.controls.leftHand">
             @for (lh of leftHandList(); track $index) {
@@ -62,6 +87,13 @@
 </div>
 <div>
     <!-- Armors -->
+    <mat-form-field class="refine-select">
+        <mat-select [formControl]="refines.controls.armor">
+            @for (ref of maxRefines; track $index) {
+            <mat-option [value]="ref">+{{ref}} </mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
     <mat-form-field>
         <mat-select [formControl]="gears.controls.armor">
             @for (a of armorList(); track $index) {
@@ -69,10 +101,24 @@
             }
         </mat-select>
     </mat-form-field>
+    <mat-form-field class="refine-select">
+        <mat-select [formControl]="refines.controls.garment">
+            @for (ref of maxRefines; track $index) {
+            <mat-option [value]="ref">+{{ref}} </mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
     <mat-form-field>
         <mat-select [formControl]="gears.controls.garment">
             @for (gar of garmentList(); track $index) {
             <mat-option [value]="gar.ID"> {{gar.name}} </mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="refine-select">
+        <mat-select [formControl]="refines.controls.shoes">
+            @for (ref of maxRefines; track $index) {
+            <mat-option [value]="ref">+{{ref}} </mat-option>
             }
         </mat-select>
     </mat-form-field>

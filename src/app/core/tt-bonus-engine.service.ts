@@ -55,7 +55,7 @@ export class TTBonusEngineService {
     public applyBonus(session: SessionBonus, bonus: string) {
         let parser = new TTItemScriptParser(bonus);
         let bonusAST = parser.parse();
-        console.log(bonusAST);
+        // console.log(bonusAST);
         for (let node of bonusAST) {
             switch (node.type) {
                 case 'Command':

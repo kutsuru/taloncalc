@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, effect, inject, Signal, untracked } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, signal, Signal, untracked } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -6,12 +6,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { Item } from '../core/models';
 import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
 import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
-import { DBItem, EquipLocation, WeaponType, WeaponTypeLeft } from '../core/models.v3';
+import { DBItem, EquipLocation, RefineLocations, SessionEquip, WeaponType, WeaponTypeLeft } from '../core/models.v3';
+import { TtCardSlotV3Component } from "../tt-card-slot-v3/tt-card-slot-v3.component";
 
 type GearItem = Pick<DBItem, 'ID' | 'name'>;
 @Component({
   selector: 'tt-equip-v3',
-  imports: [MatFormFieldModule, ReactiveFormsModule, MatSelectModule],
+  imports: [MatFormFieldModule, ReactiveFormsModule, MatSelectModule, TtCardSlotV3Component],
   templateUrl: './tt-equip-v3.component.html',
   styleUrl: './tt-equip-v3.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -23,6 +24,7 @@ export class TtEquipV3Component {
 
   /*** varbs ***/
   equipMask: Signal<number>;
+  /* gear */
   gears = new FormGroup({
     armor: new FormControl(0, { nonNullable: true }),
     garment: new FormControl(0, { nonNullable: true }),
@@ -41,7 +43,22 @@ export class TtEquipV3Component {
   $weaponType: Signal<WeaponType>;
   $leftHandType: Signal<WeaponTypeLeft>;
 
-  /*** gear lists ***/
+  /* refines */
+  readonly maxRefine: number = 10;
+  readonly maxRefines = Array.from({ length: this.maxRefine + 1 }, (_, i) => i);
+  refines: FormGroup<Record<RefineLocations, FormControl<number>>> = new FormGroup({
+    armor: new FormControl(0, { nonNullable: true }),
+    garment: new FormControl(0, { nonNullable: true }),
+    leftHand: new FormControl(0, { nonNullable: true }),
+    rightHand: new FormControl(0, { nonNullable: true }),
+    shoes: new FormControl(0, { nonNullable: true }),
+    upperHg: new FormControl(0, { nonNullable: true }),
+  });
+
+  /* cards */
+  debugCard = signal(4140);
+
+  /* gear lists */
   weaponTypes: Signal<WeaponType[]>;
   leftHandTypes: Signal<WeaponTypeLeft[]>;
   upperHgList: Signal<GearItem[]>;
@@ -142,7 +159,6 @@ export class TtEquipV3Component {
       Object.entries(equips).forEach(([key, value]) => {
         const control = this.gears.get(key);
         if (control && control.value !== value) {
-          console.log(`${key} changed to ${value}`);
           control.setValue(value);  // TODO: , { emitEvent: false } to cancel loops in session?
         }
       });
@@ -166,6 +182,24 @@ export class TtEquipV3Component {
       // TODO: when class changes but still same left hand type is valid, do change selection
       const leftHands = this.leftHandList();
       this.gears.controls.leftHand.setValue(0);
+    });
+
+    /* update refines in session on selection */
+    this.refines.valueChanges.pipe(takeUntilDestroyed()).subscribe((value) => {
+      this._session.refines.update(old => {
+        return { ...old, ...value };
+      });
+    });
+    /* update refines (selection) based on session */
+    effect(() => {
+      const refines = this._session.refines();
+      Object.entries(refines).forEach(([key, value]) => {
+        const control = this.refines.get(key);
+        if (control && control.value !== value) {
+          console.log(`refine ${key} changed to ${value}`);
+          control.setValue(value);  // TODO: , { emitEvent: false } to cancel loops in session?
+        }
+      });
     });
   }
 

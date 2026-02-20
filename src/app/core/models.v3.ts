@@ -3,6 +3,7 @@
 export type BaseStatsNames = "str" | "agi" | "vit" | "int" | "dex" | "luk";
 export type BaseStatsAs<T> = { [key in BaseStatsNames]: T };
 export type ItemLocations = "upperHg" | "middleHg" | "lowerHg" | "armor" | "rightHand" | "leftHand" | "garment" | "shoes" | "rhAccessory" | "lhAccessory";
+export type RefineLocations = Exclude<ItemLocations, 'middleHg' | 'lowerHg' | 'rhAccessory' | 'lhAccessory'>;
 
 /*****************/
 /* Item Database */

@@ -1,6 +1,6 @@
 /*** imports ***/
 import { computed, effect, inject, Injectable, Signal, signal, untracked, WritableSignal } from "@angular/core";
-import { BaseStatsAs, BaseStatsNames, DBJob, SessionBonus, SessionEquip, WeaponTypeLeft } from "./models.v3";
+import { BaseStatsAs, BaseStatsNames, DBJob, ItemLocations, RefineLocations, SessionBonus, SessionEquip, WeaponTypeLeft } from "./models.v3";
 import { createEmptySessionBonus, SESSION_INFO_DEFAULT } from "./session-info-default";
 import { TTCoreService } from "./tt-core.service";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
@@ -8,7 +8,9 @@ import { TTBonusEngineService } from "./tt-bonus-engine.service";
 
 /** Dependencies 
  * BaseStats        Pure-Stats without any bonus
- * Bonus            f(BaseStats, Job, Equip)          
+ * Equip            Pure equip
+ * Refines          Pure refines
+ * Bonus            f(BaseStats, Job, Equip, Refines)          
  * TotalStats       f(BaseStats, Bonus)
  * "DerivedStats"   ATK/Flee/... f("all above")
 **/
@@ -74,6 +76,16 @@ export class TTSessionInfoV3Service {
 
     /* equip */
     equip: WritableSignal<SessionEquip> = signal({ ...SESSION_EQUIP_DEFAULT });
+
+    /* refines */
+    refines: WritableSignal<Record<RefineLocations, number>> = signal({
+        armor: 0,
+        garment: 0,
+        leftHand: 0,
+        rightHand: 0,
+        shoes: 0,
+        upperHg: 0
+    });
 
     constructor() {
         /* wait for core to be loaded */
@@ -467,6 +479,7 @@ export class TTSessionInfoV3Service {
         let level = this.level();
         let equip = this.equip();
         let baseStats = this.baseStats();
+        let refine4s = this.refines();
 
         // job level stats bonus
         if (jobClass) {
@@ -496,7 +509,6 @@ export class TTSessionInfoV3Service {
         /* debug */
         // console.log('Computing bonus');
         // console.log(res);
-
         return res;
     }
 }

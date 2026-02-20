@@ -156,7 +156,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.ttCoreV3.initializeCore$().subscribe((_) => {
       console.log('Core V3 laoded');
     });
-
   }
 
   initClassSelection() {
