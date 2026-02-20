@@ -2,14 +2,36 @@ import { SessionInfoV2 } from "./models";
 import { SessionBonus } from "./models.v3";
 import { TTCoreService } from "./tt-core.service";
 
-export const BONUS_DEFAULT: SessionBonus = {
-    agi: 1,
-    dex: 1,
-    int: 1,
-    luk: 1,
-    str: 1,
-    vit: 1,
-    debug: 'DEBUG'
+export function createEmptySessionBonus(): SessionBonus {
+    return {
+        stats: {
+            str: 0, agi: 0, vit: 0, int: 0, dex: 0, luk: 0,
+            maxHP: 0, maxSP: 0, maxHPRate: 0, maxSPRate: 0,
+            hpRegenRate: 0, spRegenRate: 0, hpRecoveryRate: 0, spRecoveryRate: 0,
+            atk: 0, atk2: 0, atkRate: 0, baseAtk: 0,
+            hit: 0, hitRate: 0, critical: 0, critRate: 0,
+            aspd: 0, aspdRate: 0, longAtkRate: 0, critAtkRate: 0,
+            atkEle: 0, atkRange: 0, splashRange: 0,
+            doubleRate: 0, doubleAddRate: 0, perfectHitRate: 0, perfectHit: 0,
+            matk: 0, matk2: 0, matkRate: 0,
+            variableCastrate: 0, fixedCastrate: 0, castrate: 0, delayrate: 0,
+            healPower: 0, healPower2: 0,
+            def: 0, def2: 0, defRate: 0, mdef: 0, mdef2: 0, mdefRate: 0,
+            defEle: 0, flee: 0, flee2: 0, fleeRate: 0, longAtkDef: 0,
+            res: 0, mres: 0, speed: 0,
+            hDrainRate: 0, sDrainRate: 0, hDrainValue: 0, sDrainValue: 0,
+            shortWeaponDamageReturn: 0, longWeaponDamageReturn: 0, magicDamageReturn: 0
+        },
+        // Mappings initialisieren wir als leere Objekte
+        addRace: {}, addEle: {}, addSize: {}, addClass: {}, addRace2: {},
+        magicAddRace: {}, magicAddEle: {}, magicAddSize: {}, magicAddClass: {},
+        subRace: {}, subEle: {}, subSize: {}, subClass: {}, subRace2: {},
+        ignoreDefRace: {}, ignoreDefClass: {}, ignoreMdefRace: {}, ignoreMdefClass: {},
+        skillAtk: {}, skillUseSP: {}, skillCooldown: {},
+        skillFixedCast: {}, skillVariableCast: {},
+        // Flags starten leer
+        flags: {}
+    };
 }
 
 export const SESSION_INFO_DEFAULT: SessionInfoV2 = {

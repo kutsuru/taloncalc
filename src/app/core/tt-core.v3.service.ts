@@ -14,7 +14,7 @@ export class TTCoreServiceV3 {
     private _loaded: WritableSignal<boolean> = signal(false);
 
     /* item databases */
-    private _itemDB: DBItem[] = []; // left over items
+    private _itemDB: Map<number, DBItem> = new Map();
     private _headgearDB: Map<number, DBItem> = new Map();
     private _armorDB: Map<number, DBItem> = new Map();
     private _waeponDB: Map<number, DBItem> = new Map();
@@ -39,10 +39,10 @@ export class TTCoreServiceV3 {
                     this._loadDB('assets/db/item.db.V3.json'),  // 0
                     this._loadDB('assets/db/job.db.V3.json'),   // 1
                 ])
-                    .subscribe((dbRes) => {
-                        let leftOverItems: DBItem[] = [];
-                        /* create sub sets of Database */
+                    .subscribe((dbRes) => { [];
+                        /* Item DB */
                         for (const item of dbRes[0] as DBItem[]) {
+                            this._itemDB.set(item.ID, item);
                             switch (item.type) {
                                 case 'Weapon One-Hand':
                                 case 'Weapon Two-Hand':
@@ -70,7 +70,6 @@ export class TTCoreServiceV3 {
                                             break;
                                         case 'Costume':
                                             // ignore?
-                                            leftOverItems.push(item);
                                             break;
                                         default:
                                             console.log(item);
@@ -80,18 +79,13 @@ export class TTCoreServiceV3 {
                                 case 'Card':
                                     this._cardDB.set(item.ID, item);
                                     break;
-                                default:
-                                    leftOverItems.push(item);
-                                    break;
                             }
                         }
 
+                        /* Job DB */
                         for (const jobName in dbRes[1] as Record<string, DBJob>) {
                             this._jobDB.set(jobName, dbRes[1][jobName]);
                         }
-
-                        /* save left overs */
-                        this._itemDB = leftOverItems;;
 
                         /* done */
                         this._loaded.set(true);
@@ -124,6 +118,9 @@ export class TTCoreServiceV3 {
     // pure
     get jobDB() {
         return this._jobDB;
+    }
+    get itemDB(){
+        return this._itemDB;
     }
     get headgearDB() {
         return this._headgearDB;

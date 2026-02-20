@@ -1,7 +1,7 @@
 /*** imports ***/
 import { computed, effect, inject, Injectable, Signal, signal, untracked, WritableSignal } from "@angular/core";
 import { BaseStatsAs, BaseStatsNames, DBJob, SessionBonus, SessionEquip, WeaponTypeLeft } from "./models.v3";
-import { BONUS_DEFAULT, SESSION_INFO_DEFAULT } from "./session-info-default";
+import { createEmptySessionBonus, SESSION_INFO_DEFAULT } from "./session-info-default";
 import { TTCoreService } from "./tt-core.service";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
 import { TTBonusEngineService } from "./tt-bonus-engine.service";
@@ -94,13 +94,13 @@ export class TTSessionInfoV3Service {
             let baseStats = this.baseStats();
 
             return {
-                agi: baseStats.agi + bonus.agi,
-                str: baseStats.str + bonus.str,
-                vit: baseStats.vit + bonus.vit,
-                int: baseStats.int + bonus.int,
-                dex: baseStats.dex + bonus.dex,
-                luk: baseStats.luk + bonus.luk
-            }
+                agi: baseStats.agi + bonus.stats.agi,
+                str: baseStats.str + bonus.stats.str,
+                vit: baseStats.vit + bonus.stats.vit,
+                int: baseStats.int + bonus.stats.int,
+                dex: baseStats.dex + bonus.stats.dex,
+                luk: baseStats.luk + bonus.stats.luk
+            };
         });
         this.levelMax = computed(() => {
             const jobClass = this.jobClass();
@@ -229,6 +229,7 @@ export class TTSessionInfoV3Service {
         const stats = this.totalStats();
         const level = this.level();
         const job = this.jobClass();
+        const bonus = this.bonus();
 
         if (job) {
             let maxHpSp: number = 0;
@@ -240,16 +241,14 @@ export class TTSessionInfoV3Service {
             if (mode === "HP") {
                 valueTable = job.hpTable;
                 stateValue = stats.vit;
-                // TODO
-                // maxHpSpBonus = this._sessionInfoData.activeBonus.maxHp;
-                // maxHpSpRateBonus = this._sessionInfoData.activeBonus.maxHpRate;
+                maxHpSpBonus = bonus.stats.maxHP;
+                maxHpSpRateBonus = bonus.stats.maxHPRate;
             }
             else {
                 valueTable = job.spTable
                 stateValue = stats.int;
-                // TODO
-                // maxHpSpBonus = this._sessionInfoData.activeBonus.maxSp;
-                // maxHpSpRateBonus = this._sessionInfoData.activeBonus.maxSpRate;
+                maxHpSpBonus = bonus.stats.maxSP
+                maxHpSpRateBonus = bonus.stats.maxSPRate;
             }
             /* calculate values */
             maxHpSp = Math.floor(
@@ -462,13 +461,12 @@ export class TTSessionInfoV3Service {
     }
     private _computeBonus() {
         // TODO: 
-        let res: SessionBonus = {
-            ...BONUS_DEFAULT
-        };
+        let res: SessionBonus = createEmptySessionBonus();
         // trigers
         let jobClass = this.jobClass();
         let level = this.level();
         let equip = this.equip();
+        let baseStats = this.baseStats();
 
         // job level stats bonus
         if (jobClass) {
@@ -486,11 +484,18 @@ export class TTSessionInfoV3Service {
         }
 
         /* equip bonus */
-        // headgear
-        let headgear = this._core.headgearDB.get(equip.upperHg);
-        if(headgear){
-            this._bonusEngine.applyBonus(res, headgear.itemScript)
+        for (let equipSlot in equip) {
+            if (equipSlot === 'leftHandType' || equipSlot === 'rightHandType') continue;
+            let itemId = equip[equipSlot as keyof SessionEquip] as number;
+            let item = this._core.itemDB.get(itemId);
+            if (item && item.itemScript) {
+                this._bonusEngine.applyBonus(res, item.itemScript);
+            }
         }
+
+        /* debug */
+        // console.log('Computing bonus');
+        // console.log(res);
 
         return res;
     }

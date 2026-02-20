@@ -46,12 +46,12 @@ export class TtStatsV3Component {
     dex: new FormControl(0, { nonNullable: true }),
     luk: new FormControl(0, { nonNullable: true })
   });
-  strBonus = computed(() => this.session.bonus().str);
-  agiBonus = computed(() => this.session.bonus().agi);
-  vitBonus = computed(() => this.session.bonus().vit);
-  intBonus = computed(() => this.session.bonus().int);
-  dexBonus = computed(() => this.session.bonus().dex);
-  lukBonus = computed(() => this.session.bonus().luk);
+  strBonus = computed(() => this.session.bonus().stats.str);
+  agiBonus = computed(() => this.session.bonus().stats.agi);
+  vitBonus = computed(() => this.session.bonus().stats.vit);
+  intBonus = computed(() => this.session.bonus().stats.int);
+  dexBonus = computed(() => this.session.bonus().stats.dex);
+  lukBonus = computed(() => this.session.bonus().stats.luk);
 
   constructor() {
     /* core service */

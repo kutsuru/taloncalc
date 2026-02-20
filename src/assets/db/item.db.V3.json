@@ -34502,7 +34502,7 @@
   {
     "ID": 2629,
     "talonShop": 0,
-    "name": "Megingjard",
+    "name": "- Megingjard",
     "npcBuy": 10,
     "weight": 300,
     "npcSell": 5,
@@ -34525,7 +34525,7 @@
   {
     "ID": 2630,
     "talonShop": 0,
-    "name": "Brisingamen",
+    "name": "- Brisingamen",
     "npcBuy": 10,
     "weight": 20,
     "npcSell": 5,

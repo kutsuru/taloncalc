@@ -79,6 +79,78 @@ export type SessionEquip = SessionEquipBase<number> & {
   rightHandType: 'Unarmed' | WeaponType,
   leftHandType: 'Unarmed' | WeaponTypeLeft
 }
-export type SessionBonus = BaseStatsAs<number> & {
-    debug: string
-}
+export type SessionBonus = {
+  /* numiercs sums or highest only */
+  stats: {
+    // base stats
+    str: number; agi: number; vit: number; int: number; dex: number; luk: number;
+
+    // Hp / Sp
+    maxHP: number; maxSP: number;
+    maxHPRate: number; maxSPRate: number;
+    hpRegenRate: number; spRegenRate: number;
+    hpRecoveryRate: number; spRecoveryRate: number;
+
+    // physical offensive
+    atk: number; atk2: number; atkRate: number; baseAtk: number;
+    hit: number; hitRate: number;
+    critical: number; critRate: number;
+    aspd: number; aspdRate: number;
+    longAtkRate: number; critAtkRate: number;
+    atkEle: number; atkRange: number; splashRange: number;
+    doubleRate: number; doubleAddRate: number;
+    perfectHitRate: number; perfectHit: number;
+
+    // magic offensive
+    matk: number; matk2: number; matkRate: number;
+    variableCastrate: number; fixedCastrate: number;
+    castrate: number; delayrate: number;
+    healPower: number; healPower2: number;
+
+    // def and resistance
+    def: number; def2: number; defRate: number;
+    mdef: number; mdef2: number; mdefRate: number;
+    defEle: number; flee: number; flee2: number; fleeRate: number;
+    longAtkDef: number; res: number; mres: number;
+
+    // Utility & Spezial
+    speed: number;
+    hDrainRate: number; sDrainRate: number;
+    hDrainValue: number; sDrainValue: number;
+    shortWeaponDamageReturn: number; longWeaponDamageReturn: number;
+    magicDamageReturn: number;
+  };
+
+  /* TODO: Mappings for bonus2 und bonus3 (Ziel-ID -> Wert) */
+  addRace: Record<string | number, number>;
+  addEle: Record<string | number, number>;
+  addSize: Record<string | number, number>;
+  addClass: Record<string | number, number>;
+  addRace2: Record<string | number, number>;
+
+  magicAddRace: Record<string | number, number>;
+  magicAddEle: Record<string | number, number>;
+  magicAddSize: Record<string | number, number>;
+  magicAddClass: Record<string | number, number>;
+
+  subRace: Record<string | number, number>;
+  subEle: Record<string | number, number>;
+  subSize: Record<string | number, number>;
+  subClass: Record<string | number, number>;
+  subRace2: Record<string | number, number>;
+
+  ignoreDefRace: Record<string | number, number>;
+  ignoreDefClass: Record<string | number, number>;
+  ignoreMdefRace: Record<string | number, number>;
+  ignoreMdefClass: Record<string | number, number>;
+
+  skillAtk: Record<string | number, number>;
+  skillUseSP: Record<string | number, number>;
+  skillCooldown: Record<string | number, number>;
+  skillFixedCast: Record<string | number, number>;
+  skillVariableCast: Record<string | number, number>;
+
+  /* flags */
+  // TOOD: predefine / fill?
+  flags: Record<string, boolean>;
+};
