@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, model, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, model, Signal } from '@angular/core';
 import { CardLocations, ItemSubType } from '../core/models.v3';
 import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
 import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
@@ -16,6 +16,7 @@ enum CARD_IMG {
   imports: [MatTooltipModule],
   templateUrl: './tt-card-slot-v3.component.html',
   styleUrl: './tt-card-slot-v3.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TtCardSlotV3Component {
   /* injects */

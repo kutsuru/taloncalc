@@ -1,6 +1,6 @@
 /*** imports ***/
 import { computed, effect, inject, Injectable, Signal, signal, untracked, WritableSignal } from "@angular/core";
-import { BaseStatsAs, BaseStatsNames, CardLocations, DBItemCombo, DBJob, ItemLocations, RefineLocations, SessionBonus, SessionEquip, WeaponTypeLeft } from "./models.v3";
+import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, CardLocations, DBItemCombo, DBJob, ItemLocations, RefineLocations, SessionBonus, SessionEquip, WeaponTypeLeft } from "./models.v3";
 import { createEmptySessionBonus, SESSION_INFO_DEFAULT } from "./session-info-default";
 import { TTCoreService } from "./tt-core.service";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
@@ -113,6 +113,20 @@ export class TTSessionInfoV3Service {
 
     /* item combos */
     itemCombos: Signal<DBItemCombo[]>;
+
+    /* battle calcs */
+    private _battleCalcID: number = 0; // for generating unique IDs for battle calcs
+    private _battleCalcsPVM: WritableSignal<BattleCalcEntry[]> = signal([
+        {
+            ID: this._getBattleCalcID(),
+            target: 1751
+        },
+        {
+            ID: this._getBattleCalcID(),
+            target: 1708
+        }
+    ]);
+    battleCalcsPVM = this._battleCalcsPVM.asReadonly();
 
     constructor() {
         /* wait for core to be loaded */
@@ -331,6 +345,19 @@ export class TTSessionInfoV3Service {
 
             return { ...cards };
         });
+    }
+    public addBattleCalcPVM(target: number) {
+        const newEntry: BattleCalcEntry = {
+            ID: this._getBattleCalcID(),
+            target: target
+        };
+        this._battleCalcsPVM.update(prev => [...prev, newEntry]);
+    }
+    public removeBattleCalcPVM(id: number) {
+        this._battleCalcsPVM.update(prev => prev.filter(e => e.ID !== id));    // TODO: does it trigger change detection if we filter the same array? or do we need to spread it like [...prev.filter(...)]?
+    }
+    public updateBattleCalcPVM(id: number, target: number) {
+        this._battleCalcsPVM.update(prev => prev.map(e => e.ID === id ? { ...e, target: target } : e));
     }
 
     /*** private functions ***/
@@ -689,5 +716,9 @@ export class TTSessionInfoV3Service {
         // console.log('Computing bonus');
         // console.log(res);
         return res;
+    }
+
+    private _getBattleCalcID(): number {
+        return this._battleCalcID++;
     }
 }

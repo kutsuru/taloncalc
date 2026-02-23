@@ -8,7 +8,7 @@
   <!-- build loader -->
   <tt-card expanded="false">
     <header>Build Loader / Selector</header>
-    {{longText}}
+    FIX ME
   </tt-card>
 
   <!-- ###################### V3 START ###################### -->
@@ -19,19 +19,24 @@
     {{se.equip()|json}}<br>
     {{se.refines()|json}}<br>
     {{se.cards()|json}}<br>
-    {{se.itemCombos()|json}}
+    {{se.itemCombos()|json}}<br>
+    <button (click)="debug()">Add rand BattleCalcPVM</button>
   </tt-card>
-  <tt-card>
+  <tt-card [expanded]="false">
     <header>Stats</header>
-    <tt-stats-v3></tt-stats-v3>
+    <tt-stats-v3 />
   </tt-card>
   <tt-card>
     <header>Stats Info</header>
-    <tt-stats-info-v3></tt-stats-info-v3>
+    <tt-stats-info-v3 />
+  </tt-card>
+  <tt-card [expanded]="false">
+    <header>Equipment</header>
+    <tt-equip-v3 />
   </tt-card>
   <tt-card>
-    <header>Equipment</header>
-    <tt-equip-v3></tt-equip-v3>
+    <header>Battle Calculation</header>
+    <tt-battle-calc-v3 />
   </tt-card>
   <!-- ###################### V2 START ###################### -->
   <!-- <tt-card>

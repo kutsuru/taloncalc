@@ -1,19 +1,17 @@
-import { ChangeDetectionStrategy, Component, computed, effect, inject, signal, Signal, untracked, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, Signal, untracked } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { Item } from '../core/models';
+import { DBItem, EquipLocation, RefineLocations, WeaponType, WeaponTypeLeft } from '../core/models.v3';
 import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
 import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
-import { CardLocations, DBItem, EquipLocation, ItemSubType, RefineLocations, SessionEquip, WeaponType, WeaponTypeLeft } from '../core/models.v3';
 import { TtCardSlotV3Component } from "../tt-card-slot-v3/tt-card-slot-v3.component";
-import { TtCardComponent } from "../tt-card/tt-card.component";
 
 type GearItem = Pick<DBItem, 'ID' | 'name'>;
 @Component({
   selector: 'tt-equip-v3',
-  imports: [MatFormFieldModule, ReactiveFormsModule, MatSelectModule, TtCardSlotV3Component, TtCardComponent],
+  imports: [MatFormFieldModule, ReactiveFormsModule, MatSelectModule, TtCardSlotV3Component],
   templateUrl: './tt-equip-v3.component.html',
   styleUrl: './tt-equip-v3.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

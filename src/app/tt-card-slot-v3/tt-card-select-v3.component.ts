@@ -1,4 +1,4 @@
-import { Component, computed, inject } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, inject } from "@angular/core";
 import { DBItem, ItemSubType } from "../core/models.v3";
 import { TTCoreServiceV3 } from "../core/tt-core.v3.service";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
@@ -16,7 +16,9 @@ export type CardSelectV3Input = {
 @Component({
     selector: 'tt-card-select-v3',
     templateUrl: './tt-card-select-v3.component.html',
-    imports: [MatDialogModule, MatFormFieldModule, ReactiveFormsModule, MatSelectModule, MatButtonModule]
+    styleUrl: './tt-card-select-v3.component.scss',
+    imports: [MatDialogModule, MatFormFieldModule, ReactiveFormsModule, MatSelectModule, MatButtonModule],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TtCardSelectV3Component {
     /* injects */

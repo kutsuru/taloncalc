@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable, signal, WritableSignal } from "@angular/core";
 import { forkJoin, Observable } from "rxjs";
-import { DBItem, DBItemCombo, DBJob } from "./models.v3";
+import { DBItem, DBItemCombo, DBJob, DBMob } from "./models.v3";
 
 const DB_PATH = 'assets/db/item.db.V3.json';
 
@@ -27,6 +27,7 @@ export class TTCoreServiceV3 {
 
     /* other databases */
     private _jobDB: Map<string, DBJob> = new Map();
+    private _mobDB: Map<number, DBMob> = new Map();
 
     /*** public functions ***/
     initializeCore$() {
@@ -40,6 +41,7 @@ export class TTCoreServiceV3 {
                     this._loadDB('assets/db/item.db.V3.json'),          // 0
                     this._loadDB('assets/db/job.db.V3.json'),           // 1
                     this._loadDB('assets/db/item-combo.db.V3.json'),    // 2
+                    this._loadDB('assets/db/mob.db.json'),              // 3
                 ])
                     .subscribe((dbRes) => {
                         /* Item DB */
@@ -91,6 +93,15 @@ export class TTCoreServiceV3 {
 
                         /* item Combo */
                         this._itemCombo = dbRes[2] as DBItemCombo[];
+
+                        /* Mob DB */
+                        const mobDbFromFile = dbRes[3] as Record<string, Omit<DBMob, 'name'>>;
+                        for(const mobName in mobDbFromFile) {
+                            this._mobDB.set(mobDbFromFile[mobName].mid, {
+                                ...mobDbFromFile[mobName],
+                                name: mobName
+                            });
+                        }
 
                         /* done */
                         this._loaded.set(true);
@@ -153,5 +164,8 @@ export class TTCoreServiceV3 {
     }
     get itemComboDB() {
         return this._itemCombo;
+    }
+    get mobDB() {
+        return this._mobDB;
     }
 }

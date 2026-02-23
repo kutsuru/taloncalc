@@ -1,7 +1,6 @@
 <h3 mat-dialog-title>Select Card for {{data.type}}</h3>
-<mat-dialog-content>
-    <mat-form-field>
-        <mat-label></mat-label>
+<mat-dialog-content class="content">
+    <mat-form-field subscriptSizing="dynamic">
         <mat-select [formControl]="cardForm" placeholder="Select a card">
             @for (card of cardList(); track $index) {
             <mat-option [value]="card.ID"> {{card.name}} </mat-option>

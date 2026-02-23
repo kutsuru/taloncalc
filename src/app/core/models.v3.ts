@@ -5,6 +5,10 @@ export type BaseStatsAs<T> = { [key in BaseStatsNames]: T };
 export type ItemLocations = "upperHg" | "middleHg" | "lowerHg" | "armor" | "rightHand" | "leftHand" | "garment" | "shoes" | "rhAccessory" | "lhAccessory";
 export type RefineLocations = Exclude<ItemLocations, 'middleHg' | 'lowerHg' | 'rhAccessory' | 'lhAccessory'>;
 export type CardLocations = Exclude<ItemLocations,'lowerHg'>;
+export type MobRace = "formless" | "undead" | "brute" | "plant" | "insect" | "fish" | "demon" | "demiHuman" | "angel" | "dragon";
+export type MobRace2 = "goblin" | "golem" | "orc" | "kobold" | "manuk" | "splendide" | "biolab" | "kiel" | "juperos";
+export type Element = "neutral" | "water" | "earth" | "fire" | "wind" | "poison" | "holy" | "shadow" | "ghost" | "undead";
+export type MobSize = "small" | "medium" | "large";
 
 /*****************/
 /* Item Database */
@@ -160,3 +164,47 @@ export type SessionBonus = {
   // TOOD: predefine / fill?
   flags: Record<string, boolean>;
 };
+
+/*******************/
+/*** Battle calc ***/
+export type BattleCalcEntry = {
+    ID: number;
+    target: number; // monster ID
+}
+/**************/
+/*** Mob DB ***/
+export type DBMob = {
+  id: number,
+  name: string,
+  mid: number,
+  race: MobRace,
+  race2: MobRace2,
+  element: Element,
+  elementLv: number,
+  size: MobSize,
+  lv: number,
+  hp: number,
+  def: number,
+  mdef: number,
+  minAtk: number,
+  maxAtk: number,
+  agi: number,
+  vit: number,
+  int: number,
+  dex: number,
+  luk: number,
+  baseExp: number,
+  jobExp: number,
+  isRange: boolean,
+  mode: {
+    isBoss: boolean,
+    isMvP: boolean,
+    ignoreMeleeDamage: boolean,
+    ignoreRangeDamage: boolean,
+    ignoreMagicDamage: boolean,
+    ignoreMiscDamage: boolean,
+    hasStatusImmunity: boolean,
+    hasSkillImmunity: boolean
+  },
+  region: string[]
+}

@@ -1,0 +1,24 @@
+@let targetData = target();
+@if(targetData){
+<mat-card>
+    <mat-card-header>
+        <mat-card-title-group>
+            <mat-card-title>{{targetData.name}}</mat-card-title>
+            <img mat-card-sm-image src="{{targetUrl()}}" />
+        </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+        HP: {{targetData.hp}}<br>
+        DEF: - (Original: {{targetData.def}})<br>
+        MDEF: - (Original: {{targetData.mdef}})
+        <div>
+            Debug
+            <button (click)="changeTarget()">Change Target</button>
+            <button (click)="close()">Close</button>
+        </div>
+    </mat-card-content>
+    <mat-card-actions align="end">
+        <mat-slide-toggle>Auto. Refresh</mat-slide-toggle>
+    </mat-card-actions>
+</mat-card>
+}
