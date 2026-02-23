@@ -1,24 +1,42 @@
 @let targetData = target();
 @if(targetData){
-<mat-card>
+<mat-card appearance="outlined">
     <mat-card-header>
         <mat-card-title-group>
             <mat-card-title>{{targetData.name}}</mat-card-title>
+            <mat-card-subtitle>
+                ID: {{targetData.mid}}
+                <a class="btn-link"
+                    [href]="'https://talontales.com/panel/?module=monster&action=view&id=' + targetData.mid"
+                    target="_blank">
+                    <mat-icon>open_in_new</mat-icon>
+                </a>
+            </mat-card-subtitle>
             <img mat-card-sm-image src="{{targetUrl()}}" />
         </mat-card-title-group>
     </mat-card-header>
     <mat-card-content>
-        HP: {{targetData.hp}}<br>
-        DEF: - (Original: {{targetData.def}})<br>
-        MDEF: - (Original: {{targetData.mdef}})
-        <div>
-            Debug
-            <button (click)="changeTarget()">Change Target</button>
-            <button (click)="close()">Close</button>
+        <div style="text-align: left;">Monster Stats</div>
+        <mat-divider />
+        <div class="basic-data">
+            <tt-value title="HP">{{targetData.hp|number}}</tt-value>
+            <tt-value title="Attack">{{targetData.minAtk}} ~ {{targetData.maxAtk}}</tt-value>
+            <tt-value title="DEF">{{targetData.def}}</tt-value>
+            <tt-value title="MDEF">{{targetData.mdef}}</tt-value>
+            <tt-value title="Race">{{targetData.race|titlecase}}</tt-value>
+            <tt-value title="Element">{{targetData.element|titlecase}} {{targetData.elementLv}}</tt-value>
         </div>
     </mat-card-content>
-    <mat-card-actions align="end">
-        <mat-slide-toggle>Auto. Refresh</mat-slide-toggle>
+    <mat-card-actions>
+        <button matButton (click)="changeTarget()">Change Mob</button>
+        <button matIconButton (click)="close()" matTooltip="Delete"><mat-icon>close</mat-icon></button>
+        <span class="filler"></span>
+        @if(!autoRefresh()){
+        <button matIconButton matTooltip="Refresh">
+            <mat-icon>refresh</mat-icon>
+        </button>
+        }
+        <mat-slide-toggle [(ngModel)]="autoRefresh">Auto. Refresh</mat-slide-toggle>
     </mat-card-actions>
 </mat-card>
 }

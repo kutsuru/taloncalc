@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Select a monster</h2>
+<mat-dialog-content>
+    <mat-form-field>
+        <mat-select [formControl]="selectedMob">
+            @for (mob of mobsAll(); track $index) {
+            <mat-option [value]="mob.mid">{{mob.name}} [{{mob.mid}}]</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button matButton [mat-dialog-close]="undefined">Cancel</button>
+    <button matButton [mat-dialog-close]="selectedMob.value" cdkFocusInitial>OK</button>
+</mat-dialog-actions>

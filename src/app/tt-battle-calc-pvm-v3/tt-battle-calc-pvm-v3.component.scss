@@ -1,0 +1,20 @@
+@use '@angular/material' as mat;
+
+.basic-data {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+}
+
+.btn-link {
+    display: inline-flex;
+    text-decoration: none;
+    color: var(--mat-sys-tertiary);
+    vertical-align: middle;
+
+    mat-icon {
+        width: 1.1em;
+        height: 1.1em;
+        font-size: 1.1em;
+    }
+}
