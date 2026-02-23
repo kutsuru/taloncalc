@@ -1,0 +1,16 @@
+<h3 mat-dialog-title>Select Card for {{data.type}}</h3>
+<mat-dialog-content>
+    <mat-form-field>
+        <mat-label></mat-label>
+        <mat-select [formControl]="cardForm" placeholder="Select a card">
+            @for (card of cardList(); track $index) {
+            <mat-option [value]="card.ID"> {{card.name}} </mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button matButton="outlined" (click)="selectCard()">Select</button>
+    <button matButton="outlined" (click)="unselectCard()">Clear / unselect</button>
+    <button matButton="outlined" [mat-dialog-close]="undefined">Cancel</button>
+</mat-dialog-actions>

@@ -34,8 +34,9 @@
             }
         </mat-select>
     </mat-form-field>
-    <tt-card-slot-v3 [(cardId)]="debugCard"></tt-card-slot-v3>
+    <tt-card-slot-v3 cardType="Headgear" cardLocation="upperHg" />
     <!-- Middle Hg -->
+    <br>
     <mat-form-field>
         <mat-select [formControl]="gears.controls.middleHg">
             @for (hg of middleHgList(); track $index) {
@@ -43,7 +44,9 @@
             }
         </mat-select>
     </mat-form-field>
+    <tt-card-slot-v3 cardType="Headgear" cardLocation="middleHg" />
     <!-- Lower Hg -->
+    <br>
     <mat-form-field>
         <mat-select [formControl]="gears.controls.lowerHg">
             @for (hg of lowerHgList(); track $index) {
@@ -69,7 +72,11 @@
             }
         </mat-select>
     </mat-form-field>
+    @for (slot of session.cards().rightHand; track $index) {
+    <tt-card-slot-v3 cardType="Weapon" cardLocation="rightHand" [cardSlot]="$index" />
+    }
     <!-- Left-Hand / Shield -->
+    <br>
     <mat-form-field class="refine-select">
         <mat-select [formControl]="refines.controls.leftHand">
             @for (ref of maxRefines; track $index) {
@@ -84,6 +91,9 @@
             }
         </mat-select>
     </mat-form-field>
+    @for (slot of session.cards().leftHand; track $index) {
+    <tt-card-slot-v3 [cardType]="$leftHandCardType()" cardLocation="leftHand" [cardSlot]="$index" />
+    }
 </div>
 <div>
     <!-- Armors -->
@@ -101,6 +111,9 @@
             }
         </mat-select>
     </mat-form-field>
+    <tt-card-slot-v3 cardType="Armor" cardLocation="armor" />
+
+    <br>
     <mat-form-field class="refine-select">
         <mat-select [formControl]="refines.controls.garment">
             @for (ref of maxRefines; track $index) {
@@ -115,6 +128,9 @@
             }
         </mat-select>
     </mat-form-field>
+    <tt-card-slot-v3 cardType="Garment" cardLocation="garment" />
+
+    <br>
     <mat-form-field class="refine-select">
         <mat-select [formControl]="refines.controls.shoes">
             @for (ref of maxRefines; track $index) {
@@ -129,6 +145,7 @@
             }
         </mat-select>
     </mat-form-field>
+    <tt-card-slot-v3 cardType="Shoes" cardLocation="shoes" />
 </div>
 <div>
     <!-- Accessory -->
@@ -139,6 +156,7 @@
             }
         </mat-select>
     </mat-form-field>
+    <tt-card-slot-v3 cardType="Accessory" cardLocation="rhAccessory" />
     <mat-form-field>
         <mat-select [formControl]="gears.controls.lhAccessory">
             @for (acc of accessorieList(); track $index) {
@@ -146,4 +164,5 @@
             }
         </mat-select>
     </mat-form-field>
+    <tt-card-slot-v3 cardType="Accessory" cardLocation="lhAccessory" />
 </div>

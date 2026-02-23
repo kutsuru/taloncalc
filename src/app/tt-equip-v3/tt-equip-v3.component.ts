@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, effect, inject, signal, Signal, untracked } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, signal, Signal, untracked, WritableSignal } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -6,13 +6,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { Item } from '../core/models';
 import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
 import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
-import { DBItem, EquipLocation, RefineLocations, SessionEquip, WeaponType, WeaponTypeLeft } from '../core/models.v3';
+import { CardLocations, DBItem, EquipLocation, ItemSubType, RefineLocations, SessionEquip, WeaponType, WeaponTypeLeft } from '../core/models.v3';
 import { TtCardSlotV3Component } from "../tt-card-slot-v3/tt-card-slot-v3.component";
+import { TtCardComponent } from "../tt-card/tt-card.component";
 
 type GearItem = Pick<DBItem, 'ID' | 'name'>;
 @Component({
   selector: 'tt-equip-v3',
-  imports: [MatFormFieldModule, ReactiveFormsModule, MatSelectModule, TtCardSlotV3Component],
+  imports: [MatFormFieldModule, ReactiveFormsModule, MatSelectModule, TtCardSlotV3Component, TtCardComponent],
   templateUrl: './tt-equip-v3.component.html',
   styleUrl: './tt-equip-v3.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -20,7 +21,7 @@ type GearItem = Pick<DBItem, 'ID' | 'name'>;
 export class TtEquipV3Component {
   /*** injects ***/
   private readonly _core = inject(TTCoreServiceV3);
-  private readonly _session = inject(TTSessionInfoV3Service);
+  readonly session = inject(TTSessionInfoV3Service);
 
   /*** varbs ***/
   equipMask: Signal<number>;
@@ -42,6 +43,7 @@ export class TtEquipV3Component {
   rightHandLast = '';
   $weaponType: Signal<WeaponType>;
   $leftHandType: Signal<WeaponTypeLeft>;
+  $leftHandCardType: Signal<'Shield' | 'Weapon'>;
 
   /* refines */
   readonly maxRefine: number = 10;
@@ -54,9 +56,6 @@ export class TtEquipV3Component {
     shoes: new FormControl(0, { nonNullable: true }),
     upperHg: new FormControl(0, { nonNullable: true }),
   });
-
-  /* cards */
-  debugCard = signal(4140);
 
   /* gear lists */
   weaponTypes: Signal<WeaponType[]>;
@@ -73,7 +72,7 @@ export class TtEquipV3Component {
 
   constructor() {
     this.equipMask = computed(() => {
-      const jobClass = this._session.jobClass();
+      const jobClass = this.session.jobClass();
       if (jobClass) {
         return Number(jobClass.mask);
       }
@@ -83,7 +82,7 @@ export class TtEquipV3Component {
     });
 
     this.weaponTypes = computed(() => {
-      const job = this._session.jobClass();
+      const job = this.session.jobClass();
       if (job) {
         return job.compatibleWeapons;
       }
@@ -93,9 +92,9 @@ export class TtEquipV3Component {
     });
 
     this.leftHandTypes = computed(() => {
-      const jobClassName = this._session.jobClassName();
+      const jobClassName = this.session.jobClassName();
       return untracked(() => {
-        const job = this._session.jobClass();
+        const job = this.session.jobClass();
         if (job && jobClassName && jobClassName.includes('Assassin')) {
           return [...job.compatibleWeapons, 'Shield'];
         }
@@ -107,6 +106,15 @@ export class TtEquipV3Component {
 
     this.$leftHandType = toSignal(this.gears.controls.leftHandType.valueChanges, { initialValue: 'Unarmed' });
     this.$weaponType = toSignal(this.gears.controls.rightHandType.valueChanges, { initialValue: 'Unarmed' });
+    this.$leftHandCardType = computed(() => {
+      const lhType = this.$leftHandType();
+      if (lhType === 'Shield' || lhType === 'Unarmed') {
+        return 'Shield';
+      }
+      else {
+        return 'Weapon';
+      }
+    });
 
     /* equip lists */
     this.upperHgList = computed(() => {
@@ -154,7 +162,7 @@ export class TtEquipV3Component {
 
     /* update gears based on equips from session */
     effect(() => {
-      const equips = this._session.equip();
+      const equips = this.session.equip();
       /* change gear only if changed */
       Object.entries(equips).forEach(([key, value]) => {
         const control = this.gears.get(key);
@@ -166,7 +174,7 @@ export class TtEquipV3Component {
 
     /* update gears in session on selection */
     this.gears.valueChanges.pipe(takeUntilDestroyed()).subscribe((value) => {
-      this._session.equip.update(old => {
+      this.session.equip.update(old => {
         return { ...old, ...value };
       });
     });
@@ -186,17 +194,16 @@ export class TtEquipV3Component {
 
     /* update refines in session on selection */
     this.refines.valueChanges.pipe(takeUntilDestroyed()).subscribe((value) => {
-      this._session.refines.update(old => {
+      this.session.refines.update(old => {
         return { ...old, ...value };
       });
     });
     /* update refines (selection) based on session */
     effect(() => {
-      const refines = this._session.refines();
+      const refines = this.session.refines();
       Object.entries(refines).forEach(([key, value]) => {
         const control = this.refines.get(key);
         if (control && control.value !== value) {
-          console.log(`refine ${key} changed to ${value}`);
           control.setValue(value);  // TODO: , { emitEvent: false } to cancel loops in session?
         }
       });

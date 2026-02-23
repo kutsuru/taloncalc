@@ -4,6 +4,7 @@ export type BaseStatsNames = "str" | "agi" | "vit" | "int" | "dex" | "luk";
 export type BaseStatsAs<T> = { [key in BaseStatsNames]: T };
 export type ItemLocations = "upperHg" | "middleHg" | "lowerHg" | "armor" | "rightHand" | "leftHand" | "garment" | "shoes" | "rhAccessory" | "lhAccessory";
 export type RefineLocations = Exclude<ItemLocations, 'middleHg' | 'lowerHg' | 'rhAccessory' | 'lhAccessory'>;
+export type CardLocations = Exclude<ItemLocations,'lowerHg'>;
 
 /*****************/
 /* Item Database */
@@ -52,6 +53,10 @@ export type DBItem = {
   type: ItemType,
   subType: ItemSubType,
   location: EquipLocation
+}
+export type DBItemCombo = {
+    items: number[];
+    effect: string;
 }
 
 /***************/

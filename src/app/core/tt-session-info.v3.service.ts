@@ -1,6 +1,6 @@
 /*** imports ***/
 import { computed, effect, inject, Injectable, Signal, signal, untracked, WritableSignal } from "@angular/core";
-import { BaseStatsAs, BaseStatsNames, DBJob, ItemLocations, RefineLocations, SessionBonus, SessionEquip, WeaponTypeLeft } from "./models.v3";
+import { BaseStatsAs, BaseStatsNames, CardLocations, DBItemCombo, DBJob, ItemLocations, RefineLocations, SessionBonus, SessionEquip, WeaponTypeLeft } from "./models.v3";
 import { createEmptySessionBonus, SESSION_INFO_DEFAULT } from "./session-info-default";
 import { TTCoreService } from "./tt-core.service";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
@@ -16,7 +16,17 @@ import { TTBonusEngineService } from "./tt-bonus-engine.service";
 **/
 
 /*** types ***/
-
+type CardState = {
+    armor: number;
+    garment: number;
+    leftHand: number[];
+    rightHand: number[];
+    shoes: number;
+    upperHg: number;
+    lhAccessory: number;
+    rhAccessory: number;
+    middleHg: number;
+};
 
 /*** definitons ***/
 const SESSION_EQUIP_DEFAULT: SessionEquip = {
@@ -87,6 +97,23 @@ export class TTSessionInfoV3Service {
         upperHg: 0
     });
 
+    /* cards */
+    private _cardsState: WritableSignal<CardState> = signal({
+        armor: 0,
+        garment: 0,
+        leftHand: [0],
+        rightHand: [0],
+        shoes: 0,
+        upperHg: 0,
+        lhAccessory: 0,
+        rhAccessory: 0,
+        middleHg: 0
+    });
+    cards = this._cardsState.asReadonly();
+
+    /* item combos */
+    itemCombos: Signal<DBItemCombo[]>;
+
     constructor() {
         /* wait for core to be loaded */
         effect(() => {
@@ -140,7 +167,7 @@ export class TTSessionInfoV3Service {
 
         });
         this.bonus = computed(() => this._computeBonus());
-
+        this.itemCombos = computed(() => this._computeItemCombos());
         this.maxHp = computed(() => this._computeHpSp('HP'));
         this.maxSp = computed(() => this._computeHpSp('SP'));
         this.baseAtk = computed(() => this._computeBaseAtk());
@@ -232,6 +259,77 @@ export class TTSessionInfoV3Service {
                     }
                 })
             }
+        });
+
+        // update card slots based on types & equip
+        effect(() => {
+            // TODO: only reduce card slots instead of restet-ing all?
+            const equip = this.equip();
+            const cards = untracked(() => this._cardsState());
+            const slotsLH = cards.leftHand.length;
+            const slotsRH = cards.rightHand.length;
+            let update = false;
+
+            /* left hand (type) */
+            if (equip.leftHandType === 'Shield') {
+                if (slotsLH != 1) {
+                    cards.leftHand = [0];
+                    update = true;
+                }
+            }
+            else {
+                const weapon = this._core.weaponDB.get(equip.leftHand);
+                if (weapon) {
+                    if (slotsLH !== weapon.slots) {
+                        cards.leftHand = new Array(weapon.slots).fill(0);
+                        update = true;
+                    }
+                }
+                else if (slotsLH !== 1) {
+                    cards.leftHand = [0];
+                    update = true;
+                }
+            }
+
+            /* right hand */
+            const weaponRH = this._core.weaponDB.get(equip.rightHand);
+            if (weaponRH) {
+                if (slotsRH !== weaponRH.slots) {
+                    cards.rightHand = new Array(weaponRH.slots).fill(0);
+                    update = true;
+                }
+            }
+            else if (slotsRH !== 1) {
+                /* reset to one slot TODO: or zero? */
+                cards.rightHand = [0];
+                update = true;
+            }
+
+            /* update */
+            if (update) {
+                this._cardsState.set({ ...cards });
+            }
+        });
+    }
+
+    /*** public functions ***/
+    public updateCard(key: keyof CardState, val: number, slot = -1) {
+        this._cardsState.update(cards => {
+            if (key === 'leftHand' || key === 'rightHand') {
+                if (slot >= 0) {
+                    let arr = cards[key];
+                    arr[slot] = val;
+                    cards[key] = [...arr];  // create new array to trigger change-detection
+                }
+                else {
+                    cards[key] = [val];
+                }
+            }
+            else {
+                cards[key] = val;
+            }
+
+            return { ...cards };
         });
     }
 
@@ -445,6 +543,7 @@ export class TTSessionInfoV3Service {
     private _computeMatk(mode: 'MIN' | 'MAX'): number {
         /* triggers */
         const stats = this.totalStats();
+        const bonus = this.bonus();
 
         const dInt = stats.int * stats.int;
 
@@ -457,29 +556,83 @@ export class TTSessionInfoV3Service {
         }
         let matk = Math.floor(
             stats.int +
-            dInt / factor
+            dInt / factor +
+            bonus.stats.matk
             // TODO
             //  +
-            // this._sessionInfo['activeBonus']['matk'] +
             // this._sessionInfo['activeBonus']['scMatkPotion']
         );
 
         // TODO
-        // matk = Math.floor(
-        //     matk * (1 + this._sessionInfo['activeBonus']['matkRate'] / 100)
-        // );
+        matk = Math.floor(
+            matk * (1 + bonus.stats.matkRate / 100)
+        );
 
         return matk;
     }
+    private _computeItemCombos(): DBItemCombo[] {
+        const res: DBItemCombo[] = [];
+        /* trigger */
+        const cards = this._cardsState();
+        const equip = this.equip();
+
+        /* create map with item ids and counter how many of each */
+        const itemCnt: Map<number, number> = new Map();
+        for (const cardSlot in cards) {
+            const card = cards[cardSlot as keyof CardState];
+            if (typeof card === 'number') {
+                if (card > 0) {
+                    itemCnt.set(card, (itemCnt.get(card) ?? 0) + 1);
+                }
+            }
+            else {
+                for (const cardId of card) {
+                    if (cardId > 0) {
+                        itemCnt.set(cardId, (itemCnt.get(cardId) ?? 0) + 1);
+                    }
+                }
+            }
+        }
+        for (const equipSlot in equip) {
+            if (equipSlot === 'leftHandType' || equipSlot === 'rightHandType') continue;
+            const itemId = equip[equipSlot as keyof SessionEquip] as number;
+            if (itemId > 0) {
+                itemCnt.set(itemId, (itemCnt.get(itemId) ?? 0) + 1);
+            }
+        }
+        /** loop over all combos and than check:
+         * - n = max("cnt of all needed items")
+         * - add combo n*times to list
+         */
+        for (const combo of this._core.itemComboDB) {
+            let amount = 0;
+            for (const itemId of combo.items) {
+                let curCnt = itemCnt.get(itemId) ?? 0;
+                if (curCnt === 0) {
+                    // item missing
+                    amount = 0;
+                    break;
+                }
+                if (curCnt > amount) amount = curCnt;
+            }
+            /* add combo to result */
+            for (let i = 0; i < amount; i++) {
+                res.push(combo); // TODO: or do we need spread operator?
+            }
+        }
+        return res;
+    }
+
     private _computeBonus() {
-        // TODO: 
         let res: SessionBonus = createEmptySessionBonus();
         // trigers
         let jobClass = this.jobClass();
         let level = this.level();
         let equip = this.equip();
         let baseStats = this.baseStats();
-        let refine4s = this.refines();
+        let refines = this.refines();
+        let cards = this._cardsState();
+        let combos = this.itemCombos();
 
         // job level stats bonus
         if (jobClass) {
@@ -492,7 +645,7 @@ export class TTSessionInfoV3Service {
                         return sum;
                     }
                 }, 0);
-                res[stat] = bonus;
+                res.stats[stat] = bonus;
             }
         }
 
@@ -504,6 +657,32 @@ export class TTSessionInfoV3Service {
             if (item && item.itemScript) {
                 this._bonusEngine.applyBonus(res, item.itemScript);
             }
+        }
+
+        /* card bonus */
+        for (let cardSlot in cards) {
+            const cardId = cards[cardSlot];
+            if (typeof cardId === 'number') {
+                /* single card */
+                const card = this._core.cardDB.get(cardId);
+                if (card && card.itemScript) {
+                    this._bonusEngine.applyBonus(res, card.itemScript);
+                }
+            }
+            else {
+                /* multiple cards */
+                for (const slotId of cardId as number[]) {
+                    const card = this._core.cardDB.get(slotId);
+                    if (card && card.itemScript) {
+                        this._bonusEngine.applyBonus(res, card.itemScript);
+                    }
+                }
+            }
+        }
+
+        /* combo bonus */
+        for (const combo of combos) {
+            if (combo.effect) this._bonusEngine.applyBonus(res, combo.effect);
         }
 
         /* debug */

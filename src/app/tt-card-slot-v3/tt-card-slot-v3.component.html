@@ -1,2 +1,1 @@
-<p>{{ cardName() }}</p>
-<button (click)="debug()">Select TG</button>
+<img [src]="cardImg()" class="ro-card" (click)="selectCard()" [matTooltip]="cardName()" />

@@ -95,7 +95,7 @@ export class TTBonusEngineService {
 
         /* numeric values */
         let val = Number(args[1]);
-        if (isNaN(val)) {
+        if (isNaN(val) || args.length > 2) {
             console.log("Complex values not supported yet", bonusType, args);
             return;
         }

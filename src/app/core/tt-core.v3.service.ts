@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable, signal, WritableSignal } from "@angular/core";
 import { forkJoin, Observable } from "rxjs";
-import { DBItem, DBJob } from "./models.v3";
+import { DBItem, DBItemCombo, DBJob } from "./models.v3";
 
 const DB_PATH = 'assets/db/item.db.V3.json';
 
@@ -23,6 +23,7 @@ export class TTCoreServiceV3 {
     private _shoesDB: Map<number, DBItem> = new Map();
     private _accessoryDB: Map<number, DBItem> = new Map();
     private _cardDB: Map<number, DBItem> = new Map();
+    private _itemCombo: DBItemCombo[] = [];
 
     /* other databases */
     private _jobDB: Map<string, DBJob> = new Map();
@@ -36,10 +37,11 @@ export class TTCoreServiceV3 {
             } else {
                 /* load assets */
                 forkJoin([
-                    this._loadDB('assets/db/item.db.V3.json'),  // 0
-                    this._loadDB('assets/db/job.db.V3.json'),   // 1
+                    this._loadDB('assets/db/item.db.V3.json'),          // 0
+                    this._loadDB('assets/db/job.db.V3.json'),           // 1
+                    this._loadDB('assets/db/item-combo.db.V3.json'),    // 2
                 ])
-                    .subscribe((dbRes) => { [];
+                    .subscribe((dbRes) => {
                         /* Item DB */
                         for (const item of dbRes[0] as DBItem[]) {
                             this._itemDB.set(item.ID, item);
@@ -87,6 +89,9 @@ export class TTCoreServiceV3 {
                             this._jobDB.set(jobName, dbRes[1][jobName]);
                         }
 
+                        /* item Combo */
+                        this._itemCombo = dbRes[2] as DBItemCombo[];
+
                         /* done */
                         this._loaded.set(true);
                         obs.next(true);
@@ -119,7 +124,7 @@ export class TTCoreServiceV3 {
     get jobDB() {
         return this._jobDB;
     }
-    get itemDB(){
+    get itemDB() {
         return this._itemDB;
     }
     get headgearDB() {
@@ -145,5 +150,8 @@ export class TTCoreServiceV3 {
     }
     get cardDB() {
         return this._cardDB;
+    }
+    get itemComboDB() {
+        return this._itemCombo;
     }
 }
