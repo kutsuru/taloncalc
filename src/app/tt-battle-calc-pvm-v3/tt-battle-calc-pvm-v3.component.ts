@@ -40,36 +40,13 @@ export class TtBattleCalcPvmV3Component implements OnDestroy {
   }
   /* injects */
   private readonly _core = inject(TTCoreServiceV3);
-  private readonly _session = inject(TTSessionInfoV3Service);
+  readonly session = inject(TTSessionInfoV3Service);
   private readonly _dialog = inject(MatDialog);
   readonly battleSession = inject(TTBattleSessionV3);
 
   /* inputs */
   calcID = input.required<number>();
   calcTarget = input.required<number>();
-
-  /* skill */
-  // TODO: move to session info for better performance?
-  // TODO: do we need avoid recalc when job changes?
-  skillList: Signal<DBSkill[]> = computed(() => { 
-    /* trigger */
-    const job = this._session.jobClass();
-
-    if (!job) return [];
-
-    const jobMask = Number(job.mask);
-    const skillList: DBSkill[] = [];
-    for (const [skillId, skill] of this._core.skillDB) {
-      if (
-        skill.isActive &&
-        (Number(skill.job) & jobMask) == jobMask
-      ) {
-        skillList.push(skill);
-      }
-    }
-
-    return skillList;
-  });
 
   /* varbs */
   target = computed(() => {
@@ -92,7 +69,7 @@ export class TtBattleCalcPvmV3Component implements OnDestroy {
       const autoRefresh = this.autoRefresh();
       this.target();
       /* session trigger */
-      this._session.totalStats();
+      this.session.totalStats();
 
       if (autoRefresh || manRefresh > 0) {
         /* recalc the data */
@@ -110,12 +87,12 @@ export class TtBattleCalcPvmV3Component implements OnDestroy {
     })
       .afterClosed().subscribe((newMobId) => {
         if (newMobId !== undefined) {
-          this._session.updateBattleCalcPVM(this.calcID(), newMobId);
+          this.session.updateBattleCalcPVM(this.calcID(), newMobId);
         }
       })
   }
   close() {
-    this._session.removeBattleCalcPVM(this.calcID());
+    this.session.removeBattleCalcPVM(this.calcID());
   }
   refresh() {
     this.refreshTrigger.update(x => x + 1);

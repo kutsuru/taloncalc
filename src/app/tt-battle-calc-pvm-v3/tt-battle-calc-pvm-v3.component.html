@@ -33,7 +33,7 @@
             <tt-value title="Max. Damage">{{battleSession.maxDamage()|number}}</tt-value>
         </div>
         <div>
-            @for (skill of skillList(); track $index) {
+            @for (skill of session.jobSkills(); track $index) {
             <p>{{skill.name}}</p>
             }
         </div>

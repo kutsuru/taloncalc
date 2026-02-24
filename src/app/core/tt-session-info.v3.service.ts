@@ -1,6 +1,6 @@
 /*** imports ***/
 import { computed, effect, inject, Injectable, Signal, signal, untracked, WritableSignal } from "@angular/core";
-import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, CardLocations, DBItemCombo, DBJob, ItemLocations, RefineLocations, SessionBonus, SessionEquip, WeaponTypeLeft } from "./models.v3";
+import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, CardLocations, DBItemCombo, DBJob, DBSkill, ItemLocations, RefineLocations, SessionBonus, SessionEquip, WeaponTypeLeft } from "./models.v3";
 import { createEmptySessionBonus, SESSION_INFO_DEFAULT } from "./session-info-default";
 import { TTCoreService } from "./tt-core.service";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
@@ -54,6 +54,7 @@ export class TTSessionInfoV3Service {
     /* job data */
     jobClassName = signal('');
     jobClass: Signal<DBJob | undefined>;
+    jobSkills: Signal<DBSkill[]>;
 
     /* level */
     levelMax: Signal<{ base: number, job: number }>;
@@ -144,6 +145,26 @@ export class TTSessionInfoV3Service {
         this.jobClass = computed(() => {
             let newClass = this._core.jobDB.get(this.jobClassName());
             return newClass;
+        })
+        this.jobSkills = computed(() => {
+            let job = this.jobClass();
+            if (job) {
+                const jobMask = Number(job.mask);
+                const skillList: DBSkill[] = [];
+                for (const [skillId, skill] of this._core.skillDB) {
+                    if (
+                        skill.isActive &&
+                        (Number(skill.job) & jobMask) == jobMask
+                    ) {
+                        skillList.push(skill);
+                    }
+                }
+
+                return skillList;
+            }
+            else {
+                return [];
+            }
         });
         this.totalStats = computed(() => {
             let bonus = this.bonus();
