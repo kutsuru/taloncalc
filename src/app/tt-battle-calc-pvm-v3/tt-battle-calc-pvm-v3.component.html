@@ -33,8 +33,23 @@
             <tt-value title="Max. Damage">{{battleSession.maxDamage()|number}}</tt-value>
         </div>
         <div>
-            @for (skill of session.jobSkills(); track $index) {
-            <p>{{skill.name}}</p>
+            <mat-form-field>
+                <mat-label>Skill</mat-label>
+                <mat-select [formControl]="skillID">
+                    @for (skill of session.jobSkills(); track $index) {
+                    <mat-option [value]="skill.id">{{skill.name}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            @if (skillHasLvl()) {
+            <mat-form-field>
+                <mat-label>Skill Level</mat-label>
+                <mat-select [formControl]="skillLvl">
+                    @for (lvl of skillLvlList(); track $index) {
+                    <mat-option [value]="lvl">{{lvl}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
             }
         </div>
     </mat-card-content>

@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable, signal, WritableSignal } from "@angular/core";
 import { forkJoin, Observable } from "rxjs";
-import { DBItem, DBItemCombo, DBJob, DBMob, DBSkill } from "./models.v3";
+import { DBItem, DBItemCombo, DBJob, DBMob, DBSkill, ElementDBV3 } from "./models.v3";
 
 const DB_PATH = 'assets/db/item.db.V3.json';
 
@@ -29,6 +29,7 @@ export class TTCoreServiceV3 {
     private _jobDB: Map<string, DBJob> = new Map();
     private _mobDB: Map<number, DBMob> = new Map();
     private _skillDB: Map<number, DBSkill> = new Map();
+    private _elementDB: ElementDBV3 = {} as any;    // FIXME: provide function for "target" "source" ele ...
 
     /*** public functions ***/
     initializeCore$() {
@@ -44,6 +45,7 @@ export class TTCoreServiceV3 {
                     this._loadDB('assets/db/item-combo.db.V3.json'),    // 2
                     this._loadDB('assets/db/mob.db.json'),              // 3
                     this._loadDB('assets/db/skill.db.json'),            // 4
+                    this._loadDB('assets/db/element.db.json'),          // 5
                 ])
                     .subscribe((dbRes) => {
                         /* Item DB */
@@ -115,6 +117,9 @@ export class TTCoreServiceV3 {
                             });
                         }
 
+                        /* Element DB */
+                        this._elementDB = dbRes[5] as ElementDBV3;
+
                         /* done */
                         this._loaded.set(true);
                         obs.next(true);
@@ -182,5 +187,8 @@ export class TTCoreServiceV3 {
     }
     get skillDB() {
         return this._skillDB;
+    }
+    get elementDb() {
+        return this._elementDB;
     }
 }

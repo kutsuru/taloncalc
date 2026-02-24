@@ -246,3 +246,11 @@ export type DBSkill = {
   job: string,
   type?: string,
 }
+
+/******************/
+/*** ELEMENT DB ***/
+export type ElementDBV3 = {
+  [key in Element]: {
+    [key in Element]: number[]
+  }
+}
