@@ -20,7 +20,8 @@ export function createEmptySessionBonus(): SessionBonus {
             defEle: 0, flee: 0, flee2: 0, fleeRate: 0, longAtkDef: 0,
             res: 0, mres: 0, speed: 0,
             hDrainRate: 0, sDrainRate: 0, hDrainValue: 0, sDrainValue: 0,
-            shortWeaponDamageReturn: 0, longWeaponDamageReturn: 0, magicDamageReturn: 0
+            shortWeaponDamageReturn: 0, longWeaponDamageReturn: 0, magicDamageReturn: 0,
+            scIncAtkRate: 0,
         },
         // Mappings initialisieren wir als leere Objekte
         addRace: {}, addEle: {}, addSize: {}, addClass: {}, addRace2: {},

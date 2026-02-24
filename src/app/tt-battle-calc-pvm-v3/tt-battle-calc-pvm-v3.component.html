@@ -26,13 +26,24 @@
             <tt-value title="Race">{{targetData.race|titlecase}}</tt-value>
             <tt-value title="Element">{{targetData.element|titlecase}} {{targetData.elementLv}}</tt-value>
         </div>
+        <div style="text-align: left;">Combat Results</div>
+        <mat-divider />
+        <div class="basic-data">
+            <tt-value title="Min. Damage">{{battleSession.minDamage()|number}}</tt-value>
+            <tt-value title="Max. Damage">{{battleSession.maxDamage()|number}}</tt-value>
+        </div>
+        <div>
+            @for (skill of skillList(); track $index) {
+            <p>{{skill.name}}</p>
+            }
+        </div>
     </mat-card-content>
     <mat-card-actions>
         <button matButton (click)="changeTarget()">Change Mob</button>
         <button matIconButton (click)="close()" matTooltip="Delete"><mat-icon>close</mat-icon></button>
         <span class="filler"></span>
         @if(!autoRefresh()){
-        <button matIconButton matTooltip="Refresh">
+        <button matIconButton matTooltip="Refresh" (click)="refresh()">
             <mat-icon>refresh</mat-icon>
         </button>
         }

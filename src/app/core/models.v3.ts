@@ -129,6 +129,7 @@ export type SessionBonus = {
     hDrainValue: number; sDrainValue: number;
     shortWeaponDamageReturn: number; longWeaponDamageReturn: number;
     magicDamageReturn: number;
+    scIncAtkRate: number;
   };
 
   /* TODO: Mappings for bonus2 und bonus3 (Ziel-ID -> Wert) */
@@ -171,6 +172,7 @@ export type BattleCalcEntry = {
     ID: number;
     target: number; // monster ID
 }
+
 /**************/
 /*** Mob DB ***/
 export type DBMob = {
@@ -207,4 +209,40 @@ export type DBMob = {
     hasSkillImmunity: boolean
   },
   region: string[]
+}
+
+/*****************/
+/*** SKILL DB  ***/
+export type SkillElement = Element | "weapon";
+export type DBSkill = {
+  name: string,
+  id: number,
+  maxLevel: number,
+  spCost: number[],
+  element: SkillElement,  // TODO: in DB File the elements are numbers instead of strings
+  hits: number,
+  ratio: string,
+  motion_delay: number,
+  forced_motion: number,
+  castTime: string,
+  allows_modifiers: boolean,
+  isCritical: boolean,
+  damageTick: number,
+  ignoreDefense: boolean,
+  ignoreElement: boolean,
+  isRangeAttack: boolean,
+  isMagicAttack: boolean,
+  isMeleeAttack: boolean,
+  isMultiHits: boolean,
+  duration: number,
+  isConsideredAsSingleHit: boolean,
+  enableMasteries: boolean,
+  ignoreOffensiveStatus: boolean,
+  hasPerfectHit: boolean,
+  usesAmmos: boolean,
+  isActive: boolean,
+  isPassive: boolean,
+  isBuff: boolean,
+  job: string,
+  type?: string,
 }

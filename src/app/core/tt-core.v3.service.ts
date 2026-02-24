@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable, signal, WritableSignal } from "@angular/core";
 import { forkJoin, Observable } from "rxjs";
-import { DBItem, DBItemCombo, DBJob, DBMob } from "./models.v3";
+import { DBItem, DBItemCombo, DBJob, DBMob, DBSkill } from "./models.v3";
 
 const DB_PATH = 'assets/db/item.db.V3.json';
 
@@ -28,6 +28,7 @@ export class TTCoreServiceV3 {
     /* other databases */
     private _jobDB: Map<string, DBJob> = new Map();
     private _mobDB: Map<number, DBMob> = new Map();
+    private _skillDB: Map<number, DBSkill> = new Map();
 
     /*** public functions ***/
     initializeCore$() {
@@ -42,6 +43,7 @@ export class TTCoreServiceV3 {
                     this._loadDB('assets/db/job.db.V3.json'),           // 1
                     this._loadDB('assets/db/item-combo.db.V3.json'),    // 2
                     this._loadDB('assets/db/mob.db.json'),              // 3
+                    this._loadDB('assets/db/skill.db.json'),            // 4
                 ])
                     .subscribe((dbRes) => {
                         /* Item DB */
@@ -100,6 +102,16 @@ export class TTCoreServiceV3 {
                             this._mobDB.set(mobDbFromFile[mobName].mid, {
                                 ...mobDbFromFile[mobName],
                                 name: mobName
+                            });
+                        }
+
+                        /* Skill DB */
+                        const skillDbFromFile = dbRes[4] as Record<string, Omit<DBSkill, 'name'>>;
+                        for(const skillName in skillDbFromFile) {
+                            const skill = skillDbFromFile[skillName];
+                            this._skillDB.set(skill.id, {
+                                ...skill,
+                                name: skillName
                             });
                         }
 
@@ -167,5 +179,8 @@ export class TTCoreServiceV3 {
     }
     get mobDB() {
         return this._mobDB;
+    }
+    get skillDB() {
+        return this._skillDB;
     }
 }

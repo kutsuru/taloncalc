@@ -76,13 +76,10 @@ export class AppComponent implements OnInit, OnDestroy {
       console.log(this.popupGroup);
     });
 
+    // FIXME: show loader
     this.ttCoreV3.initializeCore$().subscribe((_) => {
-      console.log('Core V3 laoded');
+      // done
     });
   }
 
-  debug(){
-    const target = Math.floor(Math.random() * 1000) + 1000;
-    this.se.addBattleCalcPVM(target);
-  }
 }

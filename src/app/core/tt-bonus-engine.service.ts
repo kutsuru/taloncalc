@@ -31,6 +31,11 @@ const transformKey = (key: string) => {
     return CANONICAL_KEYS[noramalized] || noramalized;
 };
 
+/**
+ * TODOS
+ * sc_start SC_INCATKRATE,1800000,5 -> add 5 to stats.scIncAtkRate
+ */
+
 /*** service ***/
 @Injectable({ providedIn: 'root' })
 export class TTBonusEngineService {

@@ -67,6 +67,7 @@ export class TTSessionInfoV3Service {
 
     /* total stats */
     totalStats: Signal<BaseStatsAs<number>>;
+
     /* secondory stats */
     atk: Signal<number>;
     hit: Signal<number>;
@@ -78,6 +79,7 @@ export class TTSessionInfoV3Service {
     matkMin: Signal<number>;
     matkMax: Signal<number>;
     baseAtk: Signal<number>;
+    weaponAtk: Signal<number>;
     perfectDodge: Signal<number>;
     // def: Signal<never>;
 
@@ -86,6 +88,7 @@ export class TTSessionInfoV3Service {
 
     /* equip */
     equip: WritableSignal<SessionEquip> = signal({ ...SESSION_EQUIP_DEFAULT });
+    isDualWielding: Signal<boolean>;
 
     /* refines */
     refines: WritableSignal<Record<RefineLocations, number>> = signal({
@@ -185,6 +188,7 @@ export class TTSessionInfoV3Service {
         this.maxHp = computed(() => this._computeHpSp('HP'));
         this.maxSp = computed(() => this._computeHpSp('SP'));
         this.baseAtk = computed(() => this._computeBaseAtk());
+        this.weaponAtk = computed(() => this._computeWeaponAtk());
         this.atk = computed(() => this._computeAtk());
         this.hit = computed(() => this._computeHit());
         this.flee = computed(() => this._computeFlee());
@@ -193,6 +197,16 @@ export class TTSessionInfoV3Service {
         this.perfectDodge = computed(() => this._computePerfectDodge());
         this.matkMin = computed(() => this._computeMatk('MIN'));
         this.matkMax = computed(() => this._computeMatk('MAX'));
+        this.isDualWielding = computed(() => {
+            const equip = this.equip();
+            if (equip.leftHandType === 'Shield' || equip.leftHandType === 'Unarmed') {
+                return false;
+            }
+            else {
+                return true;
+            }
+        });
+
 
         /* effects */
         // update equips if job class changes
@@ -407,6 +421,7 @@ export class TTSessionInfoV3Service {
     private _computeBaseAtk(): number {
         /* triggers */
         const stats = this.totalStats();
+        const bonus = this.bonus();
 
         /* varbs */
         let baseAtk = 0;
@@ -433,41 +448,50 @@ export class TTSessionInfoV3Service {
 
         // TODO
         // SC_INCATKRATE is applied on base attack
-        // baseAtk +=
-        //     this._sessionInfoData.activeBonus.atk +
-        //     this._sessionInfoData.activeBonus.scAtkPotion +
-        //     this._sessionInfoData.activeBonus.scIncAtkRate;
+        baseAtk +=
+            bonus.stats.baseAtk
+            //    + this._sessionInfoData.activeBonus.scAtkPotion
+            + bonus.stats.scIncAtkRate;
 
 
         return baseAtk;
     }
+    private _computeWeaponAtk(): number {
+        /* triggers */
+        const equip = this.equip();
+        const bonus = this.bonus();
+
+        // right hand
+        let rhWeaponAtk: number = 0;
+        const rhWeapon = this._core.weaponDB.get(equip.rightHand);
+        if (rhWeapon) {
+            rhWeaponAtk = rhWeapon.attack;
+        }
+
+        // left hand
+        let lhWeaponAtk: number = 0;
+        const lhWeapon = this._core.weaponDB.get(equip.leftHand);
+        if (lhWeapon) {
+            lhWeaponAtk = lhWeapon.attack;
+        }
+        // but SC_INCATKRATE is also applied on weapon attack
+
+        let weaponAtk = rhWeaponAtk + lhWeaponAtk + bonus.stats.scIncAtkRate;
+
+        return weaponAtk;
+    }
+
     private _computeAtk(): number {
         /* triggers */
         const baseAtk = this.baseAtk();
+        const weaponAtk = this.weaponAtk();
 
         /* varbs */
-        let atk = 0;
+        let atk = baseAtk + weaponAtk;
 
-        // TODO
-        // let rhWeaponAtk: number = 0;
-        // let rhWeaponType = this._sessionInfoData.equip.rightHandType;
-        // if (rhWeaponType && this._sessionInfoData.equip.rightHand)
-        //     rhWeaponAtk = this.core.weaponDbV2[rhWeaponType][this._sessionInfoData.equip.rightHand].attack;
-
-        // // Update left hand information
-        // let lhWeaponAtk: number = 0;
-        // let lhWeaponType = this._sessionInfoData.equip.leftHandType;
-        // if (this._isDualWielding && this._sessionInfoData.equip.leftHand && (lhWeaponType !== 'Shield'))
-        //     lhWeaponAtk = this.core.weaponDbV2[lhWeaponType][this._sessionInfoData.equip.leftHand].attack;
-
-        // // but SC_INCATKRATE is also applied on weapon attack
-
-        // this._sessionInfoData.weaponAtk =
-        //     rhWeaponAtk +
-        //     lhWeaponAtk +
-        //     this._sessionInfoData.activeBonus.scIncAtkRate;
-        // this._atk = baseAtk + this._sessionInfoData.weaponAtk;
-        atk = baseAtk;
+        // FIXME: Manage
+        // FIXME: Manage Concentration
+        // FIXME: Manage bAtkRate
 
         return atk;
     }
@@ -483,7 +507,7 @@ export class TTSessionInfoV3Service {
         // +
         // this._sessionInfoData.activeBonus.flee +
         // this._sessionInfoData.activeBonus.scHitFood;
-
+        // FIXME bonus.stats.hit
         return hit;
     }
     private _computeFlee(): number {
@@ -505,11 +529,12 @@ export class TTSessionInfoV3Service {
         /* triggers */
         const job = this.jobClass();
         const stats = this.totalStats();
+        const bonus = this.bonus();
+        const equip = this.equip();
 
         /* varbs */
         let aspd = 0;
-        // let asdpRate = 1000 - this._sessionInfoData.activeBonus.aspdRate * 10;
-        let aspdRate = 1000;
+        let aspdRate = 1000 - bonus.stats.aspdRate * 10;
         let attackMotion = 0;
 
         // TODO
@@ -519,17 +544,17 @@ export class TTSessionInfoV3Service {
         //     this._sessionInfoData.activeBonus.scIncAspdRate;
 
         if (job) {
-            // attackMotion = job.baseAspd[this._sessionInfoData.equip.rightHandType];
+            attackMotion = job.baseAspd[equip.rightHandType];
 
-            // if (this._isDualWielding)
-            //     attackMotion = Math.floor(
-            //         (attackMotion + this._jobClass.baseAspd[this._sessionInfoData.equip.leftHandType]) * 0.7
-            //     );
+            if (this.isDualWielding())
+                attackMotion = Math.floor(
+                    (attackMotion + job.baseAspd[equip.leftHandType]) * 0.7
+                );
 
-            // attackMotion =
-            //     attackMotion -
-            //     Math.floor((attackMotion * (4 * stats.agi + stats.dex)) / 1000);
-            // attackMotion = attackMotion - this._sessionInfoData.activeBonus.aspd * 10;
+            attackMotion =
+                attackMotion -
+                Math.floor((attackMotion * (4 * stats.agi + stats.dex)) / 1000);
+            attackMotion = attackMotion - bonus.stats.aspd * 10;
         }
 
         attackMotion = Math.floor((attackMotion * aspdRate) / 1000);
