@@ -1,0 +1,16 @@
+@for (passive of session.skillsPassive(); track $index) {
+@if(passive.maxLevel > 1){
+<mat-form-field>
+    <mat-label>{{passive.name}}</mat-label>
+    <mat-select [value]="passive.value" (selectionChange)="updateNumberValue(passive.id, $event.value)">
+        @for(lvl of passive.maxLevel|levelArray; track $index){
+        <mat-option [value]="lvl">{{lvl}}</mat-option>
+        }
+    </mat-select>
+</mat-form-field>
+}
+@else {
+<mat-slide-toggle [checked]="passive.value|booly"
+    (change)="updateBooleanValue(passive.id, $event.checked)">{{passive.name}}</mat-slide-toggle>
+}
+}

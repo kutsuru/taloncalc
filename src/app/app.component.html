@@ -13,7 +13,7 @@
 
   <!-- ###################### V3 START ###################### -->
   <!-- ####################### V3 END ####################### -->
-  <tt-card>
+  <tt-card [expanded]="false">
     <header>Debug</header>
     {{se.totalStats()|json}}<br>
     {{se.equip()|json}}<br>
@@ -21,7 +21,7 @@
     {{se.cards()|json}}<br>
     {{se.itemCombos()|json}}<br>
   </tt-card>
-  <tt-card [expanded]="false">
+  <tt-card>
     <header>Stats</header>
     <tt-stats-v3 />
   </tt-card>
@@ -33,7 +33,15 @@
     <header>Equipment</header>
     <tt-equip-v3 />
   </tt-card>
+  <tt-card [expanded]="false">
+    <header>Buffs</header>
+    <tt-buff-v3 />
+  </tt-card>
   <tt-card>
+    <header>Passive Skills</header>
+    <tt-passive-v3 />
+  </tt-card>
+  <tt-card [expanded]="false">
     <header>Battle Calculation</header>
     <tt-battle-calc-v3 />
   </tt-card>

@@ -4,11 +4,15 @@ export type BaseStatsNames = "str" | "agi" | "vit" | "int" | "dex" | "luk";
 export type BaseStatsAs<T> = { [key in BaseStatsNames]: T };
 export type ItemLocations = "upperHg" | "middleHg" | "lowerHg" | "armor" | "rightHand" | "leftHand" | "garment" | "shoes" | "rhAccessory" | "lhAccessory";
 export type RefineLocations = Exclude<ItemLocations, 'middleHg' | 'lowerHg' | 'rhAccessory' | 'lhAccessory'>;
-export type CardLocations = Exclude<ItemLocations,'lowerHg'>;
+export type CardLocations = Exclude<ItemLocations, 'lowerHg'>;
 export type MobRace = "formless" | "undead" | "brute" | "plant" | "insect" | "fish" | "demon" | "demiHuman" | "angel" | "dragon";
 export type MobRace2 = "goblin" | "golem" | "orc" | "kobold" | "manuk" | "splendide" | "biolab" | "kiel" | "juperos";
 export type Element = "neutral" | "water" | "earth" | "fire" | "wind" | "poison" | "holy" | "shadow" | "ghost" | "undead";
 export type MobSize = "small" | "medium" | "large";
+export type MobClass = "normal" | "boss" | "guardian" | "all";
+export type PartialRecord<K extends keyof any, T> = {
+  [P in K]?: T
+}
 
 /*****************/
 /* Item Database */
@@ -59,8 +63,8 @@ export type DBItem = {
   location: EquipLocation
 }
 export type DBItemCombo = {
-    items: number[];
-    effect: string;
+  items: number[];
+  effect: string;
 }
 
 /***************/
@@ -69,7 +73,7 @@ export type DBJob = {
   isTrans: boolean,
   maxJobLv: number,
   mask: string,
-  compatibleWeapons: WeaponType[],  // TODO: job.db.json types mapping
+  compatibleWeapons: WeaponType[],
   hpTable: number[],
   spTable: number[],
   baseAspd: {
@@ -132,17 +136,19 @@ export type SessionBonus = {
     scIncAtkRate: number;
   };
 
-  /* TODO: Mappings for bonus2 und bonus3 (Ziel-ID -> Wert) */
+  /* FIXME: Mappings for bonus2 und bonus3 (Ziel-ID -> Wert) */
   addRace: Record<string | number, number>;
   addEle: Record<string | number, number>;
   addSize: Record<string | number, number>;
   addClass: Record<string | number, number>;
   addRace2: Record<string | number, number>;
 
-  magicAddRace: Record<string | number, number>;
+  magicAddRace: PartialRecord<MobRace, number>;
+  magicAddRace2: PartialRecord<MobRace2, number>,
   magicAddEle: Record<string | number, number>;
   magicAddSize: Record<string | number, number>;
-  magicAddClass: Record<string | number, number>;
+  magicAddClass: PartialRecord<MobClass, number>;
+  magicAtkEle: Record<string | number, number>;
 
   subRace: Record<string | number, number>;
   subEle: Record<string | number, number>;
@@ -169,8 +175,8 @@ export type SessionBonus = {
 /*******************/
 /*** Battle calc ***/
 export type BattleCalcEntry = {
-    ID: number;
-    target: number; // monster ID
+  ID: number;
+  target: number; // monster ID
 }
 
 /**************/
@@ -214,12 +220,13 @@ export type DBMob = {
 /*****************/
 /*** SKILL DB  ***/
 export type SkillElement = Element | "weapon";
+export type SkillSubType = 'check' | 'list';
 export type DBSkill = {
   name: string,
   id: number,
   maxLevel: number,
   spCost: number[],
-  element: SkillElement,  // TODO: in DB File the elements are numbers instead of strings
+  element: SkillElement,  // FIXME: in DB File the elements are numbers instead of strings
   hits: number,
   ratio: string,
   motion_delay: number,
@@ -244,7 +251,11 @@ export type DBSkill = {
   isPassive: boolean,
   isBuff: boolean,
   job: string,
-  type?: string,
+  type?: SkillSubType
+}
+export type SkillBuff = Pick<DBSkill, 'id' | 'name' | 'maxLevel'> & {
+  value: number | boolean
+  type: SkillSubType
 }
 
 /******************/

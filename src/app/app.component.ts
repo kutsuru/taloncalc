@@ -24,6 +24,8 @@ import { TtPopupComponent } from './tt-popup/tt-popup.component';
 import { TtSettingsComponent } from './tt-settings/tt-settings.component';
 import { TtStatsInfoV3Component } from './tt-stats-info-v3/tt-stats-info-v3.component';
 import { TtStatsV3Component } from './tt-stats-v3/tt-stats-v3.component';
+import { TtBuffV3Component } from "./tt-buff-v3/tt-buff-v3.component";
+import { TtPassiveV3Component } from "./tt-passive-v3/tt-passive-v3.component";
 
 @Component({
   selector: 'app-root',
@@ -46,8 +48,10 @@ import { TtStatsV3Component } from './tt-stats-v3/tt-stats-v3.component';
     JsonPipe,
     TtStatsInfoV3Component,
     TtEquipV3Component,
-    TtBattleCalcV3Component
-  ]
+    TtBattleCalcV3Component,
+    TtBuffV3Component,
+    TtPassiveV3Component
+]
 })
 export class AppComponent implements OnInit, OnDestroy {
   readonly se = inject(TTSessionInfoV3Service);

@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable, signal, WritableSignal } from "@angular/core";
 import { forkJoin, Observable } from "rxjs";
-import { DBItem, DBItemCombo, DBJob, DBMob, DBSkill, ElementDBV3 } from "./models.v3";
+import { DBItem, DBItemCombo, DBJob, DBMob, DBSkill, ElementDBV3, MobClass } from "./models.v3";
 
 const DB_PATH = 'assets/db/item.db.V3.json';
 
@@ -44,7 +44,7 @@ export class TTCoreServiceV3 {
                     this._loadDB('assets/db/job.db.V3.json'),           // 1
                     this._loadDB('assets/db/item-combo.db.V3.json'),    // 2
                     this._loadDB('assets/db/mob.db.json'),              // 3
-                    this._loadDB('assets/db/skill.db.json'),            // 4
+                    this._loadDB('assets/db/skill.db.V3.json'),         // 4
                     this._loadDB('assets/db/element.db.json'),          // 5
                 ])
                     .subscribe((dbRes) => {
@@ -100,7 +100,7 @@ export class TTCoreServiceV3 {
 
                         /* Mob DB */
                         const mobDbFromFile = dbRes[3] as Record<string, Omit<DBMob, 'name'>>;
-                        for(const mobName in mobDbFromFile) {
+                        for (const mobName in mobDbFromFile) {
                             this._mobDB.set(mobDbFromFile[mobName].mid, {
                                 ...mobDbFromFile[mobName],
                                 name: mobName
@@ -109,7 +109,7 @@ export class TTCoreServiceV3 {
 
                         /* Skill DB */
                         const skillDbFromFile = dbRes[4] as Record<string, Omit<DBSkill, 'name'>>;
-                        for(const skillName in skillDbFromFile) {
+                        for (const skillName in skillDbFromFile) {
                             const skill = skillDbFromFile[skillName];
                             this._skillDB.set(skill.id, {
                                 ...skill,
@@ -131,6 +131,11 @@ export class TTCoreServiceV3 {
     }
     public canWearItem(jobMask: number, item: DBItem): boolean {
         return (Number(item.jobMask) & jobMask) == jobMask
+    }
+    public getMobClass(mob: DBMob): MobClass {
+        if (mob.mode.isBoss || mob.mode.isMvP) return 'boss';
+        // FIXME: guardian?
+        return 'normal';
     }
 
     /*** private functions ***/

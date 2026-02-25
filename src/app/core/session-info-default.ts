@@ -25,7 +25,7 @@ export function createEmptySessionBonus(): SessionBonus {
         },
         // Mappings initialisieren wir als leere Objekte
         addRace: {}, addEle: {}, addSize: {}, addClass: {}, addRace2: {},
-        magicAddRace: {}, magicAddEle: {}, magicAddSize: {}, magicAddClass: {},
+        magicAddRace: {}, magicAddRace2: {}, magicAddEle: {}, magicAddSize: {}, magicAddClass: {}, magicAtkEle: {},
         subRace: {}, subEle: {}, subSize: {}, subClass: {}, subRace2: {},
         ignoreDefRace: {}, ignoreDefClass: {}, ignoreMdefRace: {}, ignoreMdefClass: {},
         skillAtk: {}, skillUseSP: {}, skillCooldown: {},

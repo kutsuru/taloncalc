@@ -85,11 +85,12 @@ export class TTBattleSessionServiceV3 {
 
         console.log('after: calcPhysicalAttackDamage');
         console.log(damage);
-        damage = damage.map((x) => {
-            return this._skill!.isConsideredAsSingleHit
-                ? x - (x % this._skill!.hits)
-                : x * this._skill!.hits;
-        });
+        // FIXME: hits is sometimes a "script" solve this
+        // damage = damage.map((x) => {
+        //     return this._skill!.isConsideredAsSingleHit
+        //         ? x - (x % this._skill!.hits)
+        //         : x * this._skill!.hits;
+        // });
 
         // FIXME: Lex Aeterna
         // if (this._si['activeStatus']['Lex Aeterna']) {
@@ -117,6 +118,7 @@ export class TTBattleSessionServiceV3 {
     private _calcMagicalAttackDamage(damage: number[]): number[] {
         const statsTotal = this._session.totalStats();
         const level = this._session.level();
+        const passiveSkills = this._session.skillsPassive();
         // Initialize damage list with min matk and max matk used for status display
         damage[0] = this._session.matkMin();
         damage[1] = this._session.matkMax();
@@ -168,51 +170,57 @@ export class TTBattleSessionServiceV3 {
         if (162 == this._skill!.id) {
             // Grand Cross#162 FIXME Invalid result
             let physicalDamage = this._calcPhysicalAttackDamage(false, false);
-            damage = this.applyElementDamageRatio(
+            damage = this._applyElementDamageRatio(
                 damage.map((x, idx) => {
                     return Math.floor(
-                        ((x + physicalDamage[idx]) * (100 + 40 * this._activeSkillLv)) / 100
+                        ((x + physicalDamage[idx]) * (100 + 40 * this._skillLvl)) / 100
                     );
                 })
             );
-        } else damage = this.applyElementDamageRatio(damage);
+        }
+        else {
+            damage = this._applyElementDamageRatio(damage);
+        }
 
-        if (this._activeSkill['allowsModifiers']) {
+        if (this._skill!.allows_modifiers) {
             // MagicAddEle
             // Damage modifier on magic element
-            let elementModifier =
-                100 +
-                this._si['activeBonus']['magicElementRate'][
-                this._activeSkill['element']
-                ];
+            const magicAtkEle = this._bonus.magicAtkEle[this._skill!.element] ?? 0;
+            let elementModifier = 100 + magicAtkEle;
 
             // Damage modifier for monster element
-            elementModifier +=
-                this._si['activeBonus']['magicAddElement'][this._target['element']];
+            const magicAddEle = this._bonus.magicAddEle[this._target!.element] ?? 0;
+            elementModifier += magicAddEle;
 
             // Damage modifier for race - bMagicAddRace
             // Dragonology#234 - Increases Attack Power, MATK and DEF against Dragon type monsters by 4% per SkillLV
-            let dragonologyBonus =
-                'Dragon' === this._target['race']
-                    ? this._si['passiveSkill']['Dragonology'] * 4
+
+            const dragonologyBonus =
+                this._target!.race === 'dragon'
+                    ? this._session.getSkillLvlOfPassiveSkill(234) * 4
                     : 0;
+
+            const magicAddRace = this._bonus.magicAddRace[this._target!.race] ?? 0;
             let raceModifier =
                 100 +
-                this._si['activeBonus']['magicAddRace'][this._target['race']] +
+                magicAddRace +
                 dragonologyBonus;
 
             // Increases magical damage against bosstype monsters - bMagicAddClass,Class_Boss
+            const magicAddClassTarget = this._bonus.magicAddClass[this._core.getMobClass(this._target!)] ?? 0;
+            const magicAddClassAll = this._bonus.magicAddClass['all'] ?? 0;
             let classModifier =
                 100 +
-                this._si['activeBonus']['magicAddClass'][this._target['class']] +
-                this._si['activeBonus']['magicAddClass']['all'];
+                magicAddClassTarget +
+                magicAddClassAll;
 
             // bMagicAddSize - unused modifier
             // bMagicAddRace2
+            const magicAddRace2 = this._bonus.magicAddRace2[this._target!.race2] ?? 0;
             let magicAddRace2Modifier =
                 100 +
                 100 +
-                this._si['activeBonus']['magicAddRace2'][this._target['race2']];
+                magicAddRace2;
 
             // bAddMagicDamageClass - unused modifier
 
@@ -221,7 +229,7 @@ export class TTBattleSessionServiceV3 {
                     100) *
                 magicAddRace2Modifier;
 
-            damage = this.applyDamageModifier(damage, modifiers);
+            damage = this._applyDamageModifier(damage, modifiers);
         }
 
         return damage;

@@ -1,6 +1,6 @@
 /*** imports ***/
 import { computed, effect, inject, Injectable, Signal, signal, untracked, WritableSignal } from "@angular/core";
-import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, CardLocations, DBItemCombo, DBJob, DBSkill, ItemLocations, RefineLocations, SessionBonus, SessionEquip, WeaponTypeLeft } from "./models.v3";
+import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, CardLocations, DBItemCombo, DBJob, DBSkill, ItemLocations, RefineLocations, SessionBonus, SessionEquip, SkillBuff, WeaponTypeLeft } from "./models.v3";
 import { createEmptySessionBonus, SESSION_INFO_DEFAULT } from "./session-info-default";
 import { TTCoreService } from "./tt-core.service";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
@@ -54,7 +54,7 @@ export class TTSessionInfoV3Service {
     /* job data */
     jobClassName = signal('');
     jobClass: Signal<DBJob | undefined>;
-    jobSkills: Signal<DBSkill[]>;
+
 
     /* level */
     levelMax: Signal<{ base: number, job: number }>;
@@ -118,6 +118,13 @@ export class TTSessionInfoV3Service {
     /* item combos */
     itemCombos: Signal<DBItemCombo[]>;
 
+    /* skills */
+    skillsJob: Signal<DBSkill[]>;
+    private _skillsBuffState: WritableSignal<SkillBuff[]> = signal([]);
+    skillsBuff = this._skillsBuffState.asReadonly();
+    private _skillsPassiveState: WritableSignal<SkillBuff[]> = signal([]);
+    skillsPassive = this._skillsPassiveState.asReadonly();
+
     /* battle calcs */
     private _battleCalcID: number = 0; // for generating unique IDs for battle calcs
     private _battleCalcsPVM: WritableSignal<BattleCalcEntry[]> = signal([
@@ -146,7 +153,7 @@ export class TTSessionInfoV3Service {
             let newClass = this._core.jobDB.get(this.jobClassName());
             return newClass;
         })
-        this.jobSkills = computed(() => {
+        this.skillsJob = computed(() => {
             let job = this.jobClass();
             if (job) {
                 const jobMask = Number(job.mask);
@@ -359,6 +366,56 @@ export class TTSessionInfoV3Service {
                 this._cardsState.set({ ...cards });
             }
         });
+
+        // load and map buff skills
+        effect(() => {
+            this._core.$loaded();
+            const resBuff: SkillBuff[] = [];
+            for (const [skillID, skill] of this._core.skillDB) {
+                let value: number | boolean;
+                if (skill.isBuff && skill.type) {
+                    if (skill.type === 'check') {
+                        value = false;
+                    }
+                    else {
+                        value = 0;
+                    }
+                    resBuff.push({
+                        id: skill.id,
+                        maxLevel: skill.maxLevel,
+                        name: skill.name,
+                        value: value,
+                        type: skill.type
+                    });
+                }
+            }
+            this._skillsBuffState.set(resBuff);
+        });
+        // load and map passive skills
+        effect(() => {
+            this._core.$loaded();
+            const job = this.jobClass();
+            if (!job) return;
+            const jobMask = Number(job.mask);
+            const resPassive: SkillBuff[] = [];
+            for (const [skillID, skill] of this._core.skillDB) {
+                let value: number | boolean;
+                if (skill.isPassive) {
+                    /* passive skill */
+                    const skillMask = Number(skill.job);
+                    if ((skillMask & jobMask) === jobMask) {
+                        resPassive.push({
+                            id: skill.id,
+                            name: skill.name,
+                            maxLevel: skill.maxLevel,
+                            type: 'list',   // FIXME: allow boolean values somehow?
+                            value: 0
+                        });
+                    }
+                }
+            }
+            this._skillsPassiveState.set(resPassive);
+        });
     }
 
     /*** public functions ***/
@@ -393,6 +450,25 @@ export class TTSessionInfoV3Service {
     }
     public updateBattleCalcPVM(id: number, target: number) {
         this._battleCalcsPVM.update(prev => prev.map(e => e.ID === id ? { ...e, target: target } : e));
+    }
+    public updateSkillBuff(skillId: number, value: number | boolean) {
+        this._skillsBuffState.update(skills =>
+            skills.map(s => s.id === skillId ? { ...s, value: value } : s)
+        )
+    }
+    public updateSkillPassive(skillId: number, value: number) {
+        // all skils will be saved as numbers
+        this._skillsPassiveState.update(skills =>
+            skills.map(s => s.id === skillId ? { ...s, value: value } : s)
+        )
+    }
+    public getSkillLvlOfPassiveSkill(skillId: number): number {
+        let lvl = 0;
+        const skill = this._skillsPassiveState().find(_ => _.id === skillId);
+        if (skill) {
+            lvl = skill.value as number;    // FIXME: define passive skills always as numbers?
+        }
+        return lvl;
     }
 
     /*** private functions ***/
@@ -706,6 +782,8 @@ export class TTSessionInfoV3Service {
         let refines = this.refines();
         let cards = this._cardsState();
         let combos = this.itemCombos();
+        let skillsBuffs = this._skillsBuffState();
+        let skillsPassive = this._skillsPassiveState();
 
         // job level stats bonus
         if (jobClass) {
@@ -756,6 +834,19 @@ export class TTSessionInfoV3Service {
         /* combo bonus */
         for (const combo of combos) {
             if (combo.effect) this._bonusEngine.applyBonus(res, combo.effect);
+        }
+
+        /* buffs */
+        for (const buff of skillsBuffs) {
+            if (buff.value) {
+                // FIXME
+            }
+        }
+        /* passive skills */
+        for (const passive of skillsPassive) {
+            if (passive.value) {
+                // FIXME
+            }
         }
 
         /* debug */

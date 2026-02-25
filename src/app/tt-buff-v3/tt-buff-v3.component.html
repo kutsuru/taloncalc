@@ -1,0 +1,18 @@
+@for (buff of session.skillsBuff(); track $index) {
+@switch (buff.type) {
+@case('list'){
+<mat-form-field>
+    <mat-label>{{buff.name}}</mat-label>
+    <mat-select [value]="buff.value" (selectionChange)="updateBuffValue(buff.id, $event.value)">
+        @for(lvl of buff.maxLevel|levelArray; track $index){
+        <mat-option [value]="lvl">{{lvl}}</mat-option>
+        }
+    </mat-select>
+</mat-form-field>
+}
+@case('check'){
+<mat-slide-toggle [checked]="buff.value"
+    (change)="updateBuffValue(buff.id, $event.checked)">{{buff.name}}</mat-slide-toggle>
+}
+}
+}

@@ -80,12 +80,13 @@ export class TtBattleCalcPvmV3Component implements OnDestroy {
       // TODO: session changes??
       const manRefresh = this.refreshTrigger();
       const autoRefresh = this.autoRefresh();
-      this.target();
+      const target = this.target();
       /* session trigger */
       this.session.totalStats();
 
       if (autoRefresh || manRefresh > 0) {
         /* recalc untracked to avoid the effect being triggered by new session data inside the calc*/
+        this.battleSession.updateTarget(target);
         untracked(() => {
           this.battleSession.simulate();
         });
@@ -103,6 +104,9 @@ export class TtBattleCalcPvmV3Component implements OnDestroy {
       }
       // update battle session
       this.battleSession.updateSkill(newID, skill?.maxLevel ?? 0);
+      if (this.autoRefresh()) {
+        this.refresh();
+      }
     });
 
     /* update skill selection if job changes */
@@ -114,6 +118,9 @@ export class TtBattleCalcPvmV3Component implements OnDestroy {
     /* update skill level in battle session */
     this.skillLvl.valueChanges.subscribe((newLvl) => {
       this.battleSession.updateSkill(this.skillID.value, newLvl);
+      if (this.autoRefresh()) {
+        this.refresh();
+      }
     });
   }
 
