@@ -1,5 +1,5 @@
 import { DecimalPipe, TitleCasePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, effect, inject, input, OnDestroy, signal, untracked, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, input, linkedSignal, OnDestroy, signal, untracked, WritableSignal } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -71,7 +71,10 @@ export class TtBattleCalcPvmV3Component implements OnDestroy {
 
   /* refresh */
   autoRefresh = signal(false);
-  refreshTrigger = signal(0);
+  refreshTrigger = linkedSignal(() => {
+    this.autoRefresh();
+    return 0;
+  })
 
   constructor() {
     /* effect for retrigger battle calc */

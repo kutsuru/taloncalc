@@ -128,13 +128,17 @@ export class TTSessionInfoV3Service {
     /* battle calcs */
     private _battleCalcID: number = 0; // for generating unique IDs for battle calcs
     private _battleCalcsPVM: WritableSignal<BattleCalcEntry[]> = signal([
+        // {
+        //     ID: this._getBattleCalcID(),
+        //     target: 1751
+        // },
+        // {
+        //     ID: this._getBattleCalcID(),
+        //     target: 1708
+        // },
         {
             ID: this._getBattleCalcID(),
-            target: 1751
-        },
-        {
-            ID: this._getBattleCalcID(),
-            target: 1708
+            target: 1918
         }
     ]);
     battleCalcsPVM = this._battleCalcsPVM.asReadonly();
@@ -462,11 +466,24 @@ export class TTSessionInfoV3Service {
             skills.map(s => s.id === skillId ? { ...s, value: value } : s)
         )
     }
-    public getSkillLvlOfPassiveSkill(skillId: number): number {
+    public getSkillLvlOfSkillPassive(skillId: number): number {
         let lvl = 0;
         const skill = this._skillsPassiveState().find(_ => _.id === skillId);
         if (skill) {
             lvl = skill.value as number;    // FIXME: define passive skills always as numbers?
+        }
+        return lvl;
+    }
+    public getSkillLvlOfSkillBuff(skillId: number): number {
+        let lvl = 0;
+        const skill = this._skillsBuffState().find(_ => _.id === skillId);
+        if (skill) {
+            if (typeof skill.value === 'boolean') {
+                lvl = skill.value ? 1 : 0;
+            }
+            else {
+                lvl = skill.value;
+            }
         }
         return lvl;
     }

@@ -1,6 +1,7 @@
 import { SessionInfoV2 } from "./models";
 import { SessionBonus } from "./models.v3";
 import { TTCoreService } from "./tt-core.service";
+import { DefaultMap } from "./utils";
 
 export function createEmptySessionBonus(): SessionBonus {
     return {
@@ -24,8 +25,8 @@ export function createEmptySessionBonus(): SessionBonus {
             scIncAtkRate: 0,
         },
         // Mappings initialisieren wir als leere Objekte
-        addRace: {}, addEle: {}, addSize: {}, addClass: {}, addRace2: {},
-        magicAddRace: {}, magicAddRace2: {}, magicAddEle: {}, magicAddSize: {}, magicAddClass: {}, magicAtkEle: {},
+        addRace: new DefaultMap(0), addEle: new DefaultMap(0), addSize: new DefaultMap(0), addClass: new DefaultMap(0), addRace2: new DefaultMap(0),
+        magicAddRace: new DefaultMap(0), magicAddRace2: new DefaultMap(0), magicAddEle: new DefaultMap(0), magicAddSize: {}, magicAddClass: new DefaultMap(0), magicAtkEle: new DefaultMap(0),
         subRace: {}, subEle: {}, subSize: {}, subClass: {}, subRace2: {},
         ignoreDefRace: {}, ignoreDefClass: {}, ignoreMdefRace: {}, ignoreMdefClass: {},
         skillAtk: {}, skillUseSP: {}, skillCooldown: {},

@@ -23,3 +23,18 @@ export const debounce = <F extends (...args: Parameters<F>) => void>(callback: F
 
     return debounced;
 }
+
+/*** Map with default Value ***/
+export class DefaultMap<K, T> {
+    private _map: Map<K, T> = new Map();
+
+    constructor(private _default: T) { }
+
+    public get(key: K) {
+        return this._map.get(key) ?? this._default;
+    }
+    public set(key: K, value: T) {
+        this._map.set(key, value);
+        return this;    // FIXME: needed?
+    }
+}

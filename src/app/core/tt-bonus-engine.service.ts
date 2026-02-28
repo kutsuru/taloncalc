@@ -18,22 +18,34 @@ const BONUS_FLAGS = new Set([
     'unbreakableWeapon', 'unbreakableArmor', 'unbreakableHelm',
     'unbreakableShield', 'unbreakableGarment', 'unbreakableShoes',
     'noStun', 'noFreezing', 'noStone', 'noSleep', 'noConfusion',
-    'noCurse', 'noBlind', 'noPoison', 'noSilence', 'noBleeding'
+    'noCurse', 'noBlind', 'noPoison', 'noSilence', 'noBleeding',
+    'defRatioAtkClass'  // FIXME: handle for every class?
 ]);
 
 /*** helper functions ***/
 const transformKey = (key: string) => {
-    let noramalized = key.toLowerCase();
+    // let noramalized = key.toLowerCase();
+    // if (noramalized.startsWith('b')) {
+    //     noramalized = noramalized.substring(1);
+    // }
+    let noramalized = key;
     if (noramalized.startsWith('b')) {
+        /* bDefRate -> defRate */
         noramalized = noramalized.substring(1);
+        noramalized = noramalized.charAt(0).toLowerCase() + noramalized.substring(1);
     }
+    /* 
+    - fixed data will be mapped as [<key in lowercase>] : <key in session object> 
+    - if none is found, we just remove the leading "b"
+    */
 
-    return CANONICAL_KEYS[noramalized] || noramalized;
+    return CANONICAL_KEYS[noramalized.toLowerCase()] || noramalized;
 };
 
 /**
- * TODOS
+ * FIXME
  * sc_start SC_INCATKRATE,1800000,5 -> add 5 to stats.scIncAtkRate
+ * bonus bDefRatioAtkClass,c;   make use of c (class) parameter
  */
 
 /*** service ***/
@@ -60,7 +72,7 @@ export class TTBonusEngineService {
     public applyBonus(session: SessionBonus, bonus: string) {
         let parser = new TTItemScriptParser(bonus);
         let bonusAST = parser.parse();
-        console.log(bonusAST);
+        // console.log(bonusAST);
         for (let node of bonusAST) {
             switch (node.type) {
                 case 'Command':

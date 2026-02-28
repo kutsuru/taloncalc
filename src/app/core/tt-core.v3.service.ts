@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable, signal, WritableSignal } from "@angular/core";
 import { forkJoin, Observable } from "rxjs";
-import { DBItem, DBItemCombo, DBJob, DBMob, DBSkill, ElementDBV3, MobClass } from "./models.v3";
+import { AmmoType, DBAmmo, DBItem, DBItemCombo, DBJob, DBMob, DBSkill, DBWeaponType, ElementDBV3, MobClass, WeaponType } from "./models.v3";
 
 const DB_PATH = 'assets/db/item.db.V3.json';
 
@@ -30,6 +30,8 @@ export class TTCoreServiceV3 {
     private _mobDB: Map<number, DBMob> = new Map();
     private _skillDB: Map<number, DBSkill> = new Map();
     private _elementDB: ElementDBV3 = {} as any;    // FIXME: provide function for "target" "source" ele ...
+    private _weaponTypeDB: Map<WeaponType, DBWeaponType> = new Map();
+    private _ammoDB: Map<string, DBAmmo> = new Map();
 
     /*** public functions ***/
     initializeCore$() {
@@ -46,6 +48,8 @@ export class TTCoreServiceV3 {
                     this._loadDB('assets/db/mob.db.json'),              // 3
                     this._loadDB('assets/db/skill.db.V3.json'),         // 4
                     this._loadDB('assets/db/element.db.json'),          // 5
+                    this._loadDB('assets/db/weapon-type.db.V3.json'),      // 6
+                    this._loadDB('assets/db/ammo.db.json'),             // 7
                 ])
                     .subscribe((dbRes) => {
                         /* Item DB */
@@ -120,6 +124,24 @@ export class TTCoreServiceV3 {
                         /* Element DB */
                         this._elementDB = dbRes[5] as ElementDBV3;
 
+                        /* Weapon Type DB */
+                        const wTFromFile = dbRes[6] as Record<WeaponType, DBWeaponType>;
+                        for (const wT in wTFromFile) {
+                            this._weaponTypeDB.set(wT as WeaponType, wTFromFile[wT]);
+                        }
+
+                        /* Ammo DB */
+                        const ammoDBFromFile: { [key in AmmoType]: { [key: string]: Omit<DBAmmo, 'type'> } } = dbRes[7] as any;
+                        for (const curType in ammoDBFromFile) {
+                            for (const curAmmoName in ammoDBFromFile[curType]) {
+                                const curAmmo = ammoDBFromFile[curType as AmmoType][curAmmoName];
+                                this._ammoDB.set(curAmmoName, {
+                                    ...curAmmo,
+                                    type: curType as AmmoType
+                                });
+                            }
+                        }
+
                         /* done */
                         this._loaded.set(true);
                         obs.next(true);
@@ -193,7 +215,13 @@ export class TTCoreServiceV3 {
     get skillDB() {
         return this._skillDB;
     }
-    get elementDb() {
+    get elementDB() {
         return this._elementDB;
+    }
+    get weaponTypeDB() {
+        return this._weaponTypeDB;
+    }
+    get ammoDB() {
+        return this._ammoDB;
     }
 }

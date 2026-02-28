@@ -1,4 +1,7 @@
 /**********/
+
+import { DefaultMap } from "./utils";
+
 /* Global */
 export type BaseStatsNames = "str" | "agi" | "vit" | "int" | "dex" | "luk";
 export type BaseStatsAs<T> = { [key in BaseStatsNames]: T };
@@ -137,18 +140,18 @@ export type SessionBonus = {
   };
 
   /* FIXME: Mappings for bonus2 und bonus3 (Ziel-ID -> Wert) */
-  addRace: Record<string | number, number>;
-  addEle: Record<string | number, number>;
-  addSize: Record<string | number, number>;
-  addClass: Record<string | number, number>;
-  addRace2: Record<string | number, number>;
+  addRace: DefaultMap<MobRace, number>;
+  addRace2: DefaultMap<MobRace2, number>;
+  addEle: DefaultMap<Element, number>;
+  addSize: DefaultMap<MobSize, number>;
+  addClass: DefaultMap<MobClass, number>;
 
-  magicAddRace: PartialRecord<MobRace, number>;
-  magicAddRace2: PartialRecord<MobRace2, number>,
-  magicAddEle: Record<string | number, number>;
+  magicAddRace: DefaultMap<MobRace, number>;
+  magicAddRace2: DefaultMap<MobRace2, number>,
+  magicAddEle: DefaultMap<Element, number>;
   magicAddSize: Record<string | number, number>;
-  magicAddClass: PartialRecord<MobClass, number>;
-  magicAtkEle: Record<string | number, number>;
+  magicAddClass: DefaultMap<MobClass, number>;
+  magicAtkEle: DefaultMap<Element, number>;
 
   subRace: Record<string | number, number>;
   subEle: Record<string | number, number>;
@@ -264,4 +267,25 @@ export type ElementDBV3 = {
   [key in Element]: {
     [key in Element]: number[]
   }
+}
+
+/***********************/
+/*** WAEPON-TYPE DB  ***/
+export type DBWeaponType = {
+  id: number,
+  sizeModifier: {
+    [key in MobSize]: number
+  },
+  isTwoHanded: boolean,
+  ammoType?: AmmoType
+}
+
+/*****************/
+/*** AMMO DB  ***/
+export type AmmoType = "arrow" | "bullet" | "grenade" | "shuriken" | "kunai";
+export type DBAmmo = {
+  type: AmmoType,
+  attack: number,
+  element: Element,
+  bonus?: string
 }
