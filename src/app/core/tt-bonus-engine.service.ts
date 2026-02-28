@@ -24,10 +24,6 @@ const BONUS_FLAGS = new Set([
 
 /*** helper functions ***/
 const transformKey = (key: string) => {
-    // let noramalized = key.toLowerCase();
-    // if (noramalized.startsWith('b')) {
-    //     noramalized = noramalized.substring(1);
-    // }
     let noramalized = key;
     if (noramalized.startsWith('b')) {
         /* bDefRate -> defRate */
@@ -44,7 +40,6 @@ const transformKey = (key: string) => {
 
 /**
  * FIXME
- * sc_start SC_INCATKRATE,1800000,5 -> add 5 to stats.scIncAtkRate
  * bonus bDefRatioAtkClass,c;   make use of c (class) parameter
  */
 
@@ -66,13 +61,22 @@ export class TTBonusEngineService {
                 CANONICAL_KEYS[key.toLowerCase()] = key;
             }
         }
+
+        /* SC_START mappings */
+        CANONICAL_KEYS['SC_STRFOOD'] = 'str';
+        CANONICAL_KEYS['SC_AGIFOOD'] = 'agi';
+        CANONICAL_KEYS['SC_VITFOOD'] = 'vit';
+        CANONICAL_KEYS['SC_INTFOOD'] = 'int';
+        CANONICAL_KEYS['SC_DEXFOOD'] = 'dex';
+        CANONICAL_KEYS['SC_LUKFOOD'] = 'luk';
+        CANONICAL_KEYS['SC_INCATKRATE'] = 'scIncAtkRate';
     }
 
     /*** public functions ***/
     public applyBonus(session: SessionBonus, bonus: string) {
         let parser = new TTItemScriptParser(bonus);
         let bonusAST = parser.parse();
-        // console.log(bonusAST);
+        console.log(bonusAST);
         for (let node of bonusAST) {
             switch (node.type) {
                 case 'Command':
@@ -87,6 +91,9 @@ export class TTBonusEngineService {
             if (args.length >= 1) {
                 this._computeCommandBonus(command, args, session);
             }
+        }
+        else if (command === 'sc_start') {
+            this._computeStatusEffectFunc(args, session);
         }
         else {
             console.log("Unknown command", command, args);
@@ -140,6 +147,31 @@ export class TTBonusEngineService {
         }
         else {
             console.log("Unknown bonus type", bonusType, args);
+        }
+    }
+
+    private _computeStatusEffectFunc(args: string[], session: SessionBonus) {
+        if (args.length < 3) {
+            console.log('Invalud SC_START script');
+            console.log(args);
+            return;
+        }
+        // FIXME: same for all?
+        let func = args[0];
+        let duration = +args[1];
+        let value = +args[2];
+        switch (func) {
+            case 'SC_STRFOOD':
+            case 'SC_AGIFOOD':
+            case 'SC_VITFOOD':
+            case 'SC_INTFOOD':
+            case 'SC_DEXFOOD':
+            case 'SC_LUKFOOD':
+            case 'SC_INCATKRATE':
+                session.stats[CANONICAL_KEYS[func]] += value;
+                break;
+            default:
+                console.log('Unknown SC_START function', args);
         }
     }
 }

@@ -289,3 +289,27 @@ export type DBAmmo = {
   element: Element,
   bonus?: string
 }
+
+/****************/
+/*** FOOD DB  ***/
+export type FoodCategory = 'Stats' |'New World' | 'BG' | 'Summer Cocktails' | 'Misc' | 'Resistance' | 'Eclage' | 'Eden' | 'Aspd Potion';
+export type FoodStatsNames = "STR" | "AGI" | "VIT" | "INT" | "DEX" | "LUK";
+export type DBFood = {
+  ID: number,
+  name: string,
+  duration: number,
+  dispelOnDeath: boolean,
+  bonus: string,
+  category: FoodCategory,
+  subCategory?: FoodStatsNames,
+  description?: string,
+  itemName?: string,
+}
+export type JSONFood = {
+  gid: number,
+  duration: number,
+  dispelOnDeath: boolean,
+  bonus: string,
+  name?: string,
+  description?: string
+}

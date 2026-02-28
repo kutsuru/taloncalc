@@ -20,13 +20,15 @@
     {{se.refines()|json}}<br>
     {{se.cards()|json}}<br>
     {{se.itemCombos()|json}}<br> -->
-    {{se.bonus()|json}}
+    {{se.bonus()|json}}<br>
+    {{se.foodsStats()|json}}<br>
+    {{se.foodsOther()|json}}<br>
   </tt-card>
-  <tt-card>
+  <tt-card [expanded]="false">
     <header>Stats</header>
     <tt-stats-v3 />
   </tt-card>
-  <tt-card>
+  <tt-card [expanded]="false">
     <header>Stats Info</header>
     <tt-stats-info-v3 />
   </tt-card>
@@ -38,9 +40,13 @@
     <header>Buffs</header>
     <tt-buff-v3 />
   </tt-card>
-  <tt-card>
+  <tt-card [expanded]="false">
     <header>Passive Skills</header>
     <tt-passive-v3 />
+  </tt-card>
+  <tt-card>
+    <header>Food</header>
+    <tt-food-v3 />
   </tt-card>
   <tt-card [expanded]="false">
     <header>Battle Calculation</header>

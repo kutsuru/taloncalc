@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable, signal, WritableSignal } from "@angular/core";
 import { forkJoin, Observable } from "rxjs";
-import { AmmoType, DBAmmo, DBItem, DBItemCombo, DBJob, DBMob, DBSkill, DBWeaponType, ElementDBV3, MobClass, WeaponType } from "./models.v3";
+import { AmmoType, DBAmmo, DBFood, DBItem, DBItemCombo, DBJob, DBMob, DBSkill, DBWeaponType, ElementDBV3, FoodCategory, FoodStatsNames, JSONFood, MobClass, WeaponType } from "./models.v3";
 
 const DB_PATH = 'assets/db/item.db.V3.json';
 
@@ -32,6 +32,8 @@ export class TTCoreServiceV3 {
     private _elementDB: ElementDBV3 = {} as any;    // FIXME: provide function for "target" "source" ele ...
     private _weaponTypeDB: Map<WeaponType, DBWeaponType> = new Map();
     private _ammoDB: Map<string, DBAmmo> = new Map();
+    private _foodDB: Map<number, DBFood> = new Map();
+
 
     /*** public functions ***/
     initializeCore$() {
@@ -48,8 +50,9 @@ export class TTCoreServiceV3 {
                     this._loadDB('assets/db/mob.db.json'),              // 3
                     this._loadDB('assets/db/skill.db.V3.json'),         // 4
                     this._loadDB('assets/db/element.db.json'),          // 5
-                    this._loadDB('assets/db/weapon-type.db.V3.json'),      // 6
+                    this._loadDB('assets/db/weapon-type.db.V3.json'),   // 6
                     this._loadDB('assets/db/ammo.db.json'),             // 7
+                    this._loadDB('assets/db/food.db.V3.json'),          // 8
                 ])
                     .subscribe((dbRes) => {
                         /* Item DB */
@@ -142,6 +145,49 @@ export class TTCoreServiceV3 {
                             }
                         }
 
+                        /* Food DB */
+                        const foodDBFromFile = dbRes[8] as {
+                            Stats: { [key in FoodStatsNames]: { [key: string]: JSONFood } },
+                        } & {
+                            [key in Exclude<FoodCategory, 'Stats'>]: { [key: string]: JSONFood }
+                        };
+
+                        for (const foodCat in foodDBFromFile) {
+                            if (foodCat === 'Stats') {
+                                for (const foodStat in foodDBFromFile[foodCat]) {
+                                    for (const foodName in foodDBFromFile[foodCat][foodStat as FoodStatsNames]) {
+                                        const food = foodDBFromFile[foodCat][foodStat][foodName] as JSONFood;
+                                        this._foodDB.set(food.gid, {
+                                            ID: food.gid,
+                                            name: foodName,
+                                            itemName: food.name,
+                                            category: foodCat as FoodCategory,
+                                            subCategory: foodStat as FoodStatsNames,
+                                            bonus: food.bonus,
+                                            dispelOnDeath: food.dispelOnDeath,
+                                            duration: food.duration,
+                                            description: food.description,
+                                        });
+                                    }
+                                }
+                            }
+                            else {
+                                /* all other foods */
+                                for (const foodName in foodDBFromFile[foodCat]) {
+                                    const food = foodDBFromFile[foodCat][foodName] as JSONFood;
+                                    this._foodDB.set(food.gid, {
+                                        ID: food.gid,
+                                        name: foodName,
+                                        category: foodCat as FoodCategory,
+                                        bonus: food.bonus,
+                                        dispelOnDeath: food.dispelOnDeath,
+                                        duration: food.duration,
+                                        description: food.description,
+                                    });
+                                }
+                            }
+                        }
+
                         /* done */
                         this._loaded.set(true);
                         obs.next(true);
@@ -223,5 +269,8 @@ export class TTCoreServiceV3 {
     }
     get ammoDB() {
         return this._ammoDB;
+    }
+    get foodDB(){
+        return this._foodDB;
     }
 }

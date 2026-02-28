@@ -1,0 +1,28 @@
+<mat-tab-group>
+    <!-- Stat Foods -->
+    <mat-tab label="Stats">
+        <!-- stat food-->
+        @for (curStatFood of statFoods(); track $index) {
+        <div>
+            <mat-form-field>
+                <mat-label>{{curStatFood.name}}</mat-label>
+                <mat-select [value]="session.foodsStats()[curStatFood.name]"
+                    (selectionChange)="session.updateStatFood(curStatFood.name, $event.value)">
+                    <mat-option [value]="0">None</mat-option>
+                    @for (statFood of curStatFood.foods; track $index) {
+                    <mat-option [value]="statFood.ID">{{statFood.name}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+        }
+    </mat-tab>
+    <!-- Other Food -->
+    @for (foodGroup of otherFoods(); track $index) {
+    <mat-tab [label]="foodGroup.group">
+        @for (food of foodGroup.foods; track $index) {
+        <mat-slide-toggle [checked]="food.isActive" (change)="session.toogleOtherFood(food.ID)">{{food.name}}</mat-slide-toggle><br>
+        }
+    </mat-tab>
+    }
+</mat-tab-group>

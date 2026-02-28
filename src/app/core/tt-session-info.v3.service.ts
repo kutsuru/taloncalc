@@ -1,6 +1,6 @@
 /*** imports ***/
 import { computed, effect, inject, Injectable, Signal, signal, untracked, WritableSignal } from "@angular/core";
-import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, CardLocations, DBItemCombo, DBJob, DBSkill, ItemLocations, RefineLocations, SessionBonus, SessionEquip, SkillBuff, WeaponTypeLeft } from "./models.v3";
+import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, CardLocations, DBItemCombo, DBJob, DBSkill, FoodStatsNames, ItemLocations, RefineLocations, SessionBonus, SessionEquip, SkillBuff, WeaponTypeLeft } from "./models.v3";
 import { createEmptySessionBonus, SESSION_INFO_DEFAULT } from "./session-info-default";
 import { TTCoreService } from "./tt-core.service";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
@@ -124,6 +124,21 @@ export class TTSessionInfoV3Service {
     skillsBuff = this._skillsBuffState.asReadonly();
     private _skillsPassiveState: WritableSignal<SkillBuff[]> = signal([]);
     skillsPassive = this._skillsPassiveState.asReadonly();
+
+    /* foods */
+    private _foodsStatsState: WritableSignal<{ [key in FoodStatsNames]: number }> = signal({
+        AGI: 0,
+        DEX: 12095,
+        INT: 12047,
+        STR: 0,
+        VIT: 0,
+        LUK: 0
+    });
+    foodsStats = this._foodsStatsState.asReadonly();
+
+    private _foodsOtherState = signal<number[]>([12348, 12321, 14536]);
+    foodsOther = this._foodsOtherState.asReadonly();
+
 
     /* battle calcs */
     private _battleCalcID: number = 0; // for generating unique IDs for battle calcs
@@ -487,6 +502,27 @@ export class TTSessionInfoV3Service {
         }
         return lvl;
     }
+    public updateStatFood(stat: FoodStatsNames, foodId: number) {
+        this._foodsStatsState.update(foods => {
+            return {
+                ...foods,
+                [stat]: foodId
+            };
+        })
+    }
+    public toogleOtherFood(foodId: number) {
+        this._foodsOtherState.update(foods => {
+            if (foods.includes(foodId)) {
+                /* remove */
+                return foods.filter(f => f !== foodId);
+            }
+            else {
+                /* add */
+                return [...foods, foodId];
+            }
+        })
+
+    }
 
     /*** private functions ***/
     private _computeHpSp(mode: 'HP' | 'SP'): number {
@@ -801,6 +837,8 @@ export class TTSessionInfoV3Service {
         let combos = this.itemCombos();
         let skillsBuffs = this._skillsBuffState();
         let skillsPassive = this._skillsPassiveState();
+        let foodsStat = this._foodsStatsState();
+        let foodsOther = this._foodsOtherState();
 
         // job level stats bonus
         if (jobClass) {
@@ -851,6 +889,25 @@ export class TTSessionInfoV3Service {
         /* combo bonus */
         for (const combo of combos) {
             if (combo.effect) this._bonusEngine.applyBonus(res, combo.effect);
+        }
+
+        /* foods */
+        for (const statFood in foodsStat) {
+            const foodId = foodsStat[statFood as FoodStatsNames];
+            if (foodId > 0) {
+                const food = this._core.itemDB.get(foodId);
+                if (food && food.itemScript) {
+                    this._bonusEngine.applyBonus(res, food.itemScript);
+                }
+            }
+        }
+        for (const foodId of foodsOther) {
+            if (foodId > 0) {
+                const food = this._core.itemDB.get(foodId);
+                if (food && food.itemScript) {
+                    this._bonusEngine.applyBonus(res, food.itemScript);
+                }
+            }
         }
 
         /* buffs */

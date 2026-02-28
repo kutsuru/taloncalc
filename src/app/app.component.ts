@@ -26,6 +26,7 @@ import { TtStatsInfoV3Component } from './tt-stats-info-v3/tt-stats-info-v3.comp
 import { TtStatsV3Component } from './tt-stats-v3/tt-stats-v3.component';
 import { TtBuffV3Component } from "./tt-buff-v3/tt-buff-v3.component";
 import { TtPassiveV3Component } from "./tt-passive-v3/tt-passive-v3.component";
+import { TtFoodV3Component } from './tt-food-v3/tt-food-v3.component';
 
 @Component({
   selector: 'app-root',
@@ -50,7 +51,8 @@ import { TtPassiveV3Component } from "./tt-passive-v3/tt-passive-v3.component";
     TtEquipV3Component,
     TtBattleCalcV3Component,
     TtBuffV3Component,
-    TtPassiveV3Component
+    TtPassiveV3Component,
+    TtFoodV3Component
 ]
 })
 export class AppComponent implements OnInit, OnDestroy {
