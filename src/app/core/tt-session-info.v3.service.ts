@@ -128,15 +128,15 @@ export class TTSessionInfoV3Service {
     /* foods */
     private _foodsStatsState: WritableSignal<{ [key in FoodStatsNames]: number }> = signal({
         AGI: 0,
-        DEX: 12095,
-        INT: 12047,
+        DEX: 0,
+        INT: 0,
         STR: 0,
         VIT: 0,
         LUK: 0
     });
     foodsStats = this._foodsStatsState.asReadonly();
 
-    private _foodsOtherState = signal<number[]>([12348, 12321, 14536]);
+    private _foodsOtherState = signal<number[]>([]);
     foodsOther = this._foodsOtherState.asReadonly();
 
 
@@ -163,7 +163,8 @@ export class TTSessionInfoV3Service {
         effect(() => {
             if (this._core.$loaded()) {
                 const allJobs = this._core.allJobNames;
-                this.jobClassName.set(allJobs[0]);
+                // this.jobClassName.set(allJobs[0]);
+                this.jobClassName.set('Lord Knight');   // FIXME: debug
             }
         })
 
@@ -892,6 +893,7 @@ export class TTSessionInfoV3Service {
         }
 
         /* foods */
+        // FIXME: map to one food array?
         for (const statFood in foodsStat) {
             const foodId = foodsStat[statFood as FoodStatsNames];
             if (foodId > 0) {

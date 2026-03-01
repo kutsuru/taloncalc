@@ -665,6 +665,8 @@ export class TTBattleSessionServiceV3 {
                 return 1;
             case 'large':
                 return 2;
+            default:
+                return 0;   // FIXME: Size_ALL
         }
     }
 

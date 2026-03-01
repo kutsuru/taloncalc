@@ -9,8 +9,7 @@ export class TTItemScriptParser {
 
     constructor(script: string) {
         this._pos = 0;
-        let s = script.replace(/"/g, '');
-        this._tokens = this._tokenize(s);
+        this._tokens = this._tokenize(script);
     }
 
     private _tokenize(str: string) {

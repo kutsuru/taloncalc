@@ -21,10 +21,10 @@
     {{se.cards()|json}}<br>
     {{se.itemCombos()|json}}<br> -->
     {{se.bonus()|json}}<br>
-    {{se.foodsStats()|json}}<br>
-    {{se.foodsOther()|json}}<br>
+    <!-- {{se.foodsStats()|json}}<br> -->
+    <!-- {{se.foodsOther()|json}}<br> -->
   </tt-card>
-  <tt-card [expanded]="false">
+  <tt-card [expanded]="true">
     <header>Stats</header>
     <tt-stats-v3 />
   </tt-card>
@@ -32,7 +32,7 @@
     <header>Stats Info</header>
     <tt-stats-info-v3 />
   </tt-card>
-  <tt-card [expanded]="false">
+  <tt-card [expanded]="true">
     <header>Equipment</header>
     <tt-equip-v3 />
   </tt-card>
@@ -44,7 +44,7 @@
     <header>Passive Skills</header>
     <tt-passive-v3 />
   </tt-card>
-  <tt-card>
+  <tt-card [expanded]="false">
     <header>Food</header>
     <tt-food-v3 />
   </tt-card>

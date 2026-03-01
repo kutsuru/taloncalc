@@ -15,23 +15,23 @@ export function createEmptySessionBonus(): SessionBonus {
             atkEle: 0, atkRange: 0, splashRange: 0,
             doubleRate: 0, doubleAddRate: 0, perfectHitRate: 0, perfectHit: 0,
             matk: 0, matk2: 0, matkRate: 0,
-            variableCastrate: 0, fixedCastrate: 0, castrate: 0, delayrate: 0,
+            variableCastrate: 0, fixedCastrate: 0, castrate: 0, delayRate: 0,
             healPower: 0, healPower2: 0,
-            def: 0, def2: 0, defRate: 0, mdef: 0, mdef2: 0, mdefRate: 0,
+            def: 0, def2: 0, defRate: 0, def2Rate: 0, mdef: 0, mdef2: 0, mdefRate: 0,
             defEle: 0, flee: 0, flee2: 0, fleeRate: 0, longAtkDef: 0,
             res: 0, mres: 0, speed: 0,
             hDrainRate: 0, sDrainRate: 0, hDrainValue: 0, sDrainValue: 0,
             shortWeaponDamageReturn: 0, longWeaponDamageReturn: 0, magicDamageReturn: 0,
             scIncAtkRate: 0,
         },
-        // Mappings initialisieren wir als leere Objekte
+        // initialze maps
         addRace: new DefaultMap(0), addEle: new DefaultMap(0), addSize: new DefaultMap(0), addClass: new DefaultMap(0), addRace2: new DefaultMap(0),
-        magicAddRace: new DefaultMap(0), magicAddRace2: new DefaultMap(0), magicAddEle: new DefaultMap(0), magicAddSize: {}, magicAddClass: new DefaultMap(0), magicAtkEle: new DefaultMap(0),
-        subRace: {}, subEle: {}, subSize: {}, subClass: {}, subRace2: {},
+        magicAddRace: new DefaultMap(0), magicAddRace2: new DefaultMap(0), magicAddEle: new DefaultMap(0), magicAddSize: new DefaultMap(0), magicAddClass: new DefaultMap(0), magicAtkEle: new DefaultMap(0),
+        subRace: new DefaultMap(0), subEle: new DefaultMap(0), subSize: new DefaultMap(0), subClass: new DefaultMap(0), subRace2: new DefaultMap(0),
         ignoreDefRace: {}, ignoreDefClass: {}, ignoreMdefRace: {}, ignoreMdefClass: {},
         skillAtk: {}, skillUseSP: {}, skillCooldown: {},
         skillFixedCast: {}, skillVariableCast: {},
-        // Flags starten leer
+        // falgs will start empty
         flags: {}
     };
 }

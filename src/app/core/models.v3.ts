@@ -8,10 +8,10 @@ export type BaseStatsAs<T> = { [key in BaseStatsNames]: T };
 export type ItemLocations = "upperHg" | "middleHg" | "lowerHg" | "armor" | "rightHand" | "leftHand" | "garment" | "shoes" | "rhAccessory" | "lhAccessory";
 export type RefineLocations = Exclude<ItemLocations, 'middleHg' | 'lowerHg' | 'rhAccessory' | 'lhAccessory'>;
 export type CardLocations = Exclude<ItemLocations, 'lowerHg'>;
-export type MobRace = "formless" | "undead" | "brute" | "plant" | "insect" | "fish" | "demon" | "demiHuman" | "angel" | "dragon";
+export type MobRace = "formless" | "undead" | "brute" | "plant" | "insect" | "fish" | "demon" | "demiHuman" | "angel" | "dragon" | "player" | "all"; //FIXME: player okay?
 export type MobRace2 = "goblin" | "golem" | "orc" | "kobold" | "manuk" | "splendide" | "biolab" | "kiel" | "juperos";
-export type Element = "neutral" | "water" | "earth" | "fire" | "wind" | "poison" | "holy" | "shadow" | "ghost" | "undead";
-export type MobSize = "small" | "medium" | "large";
+export type Element = "neutral" | "water" | "earth" | "fire" | "wind" | "poison" | "holy" | "shadow" | "ghost" | "undead" | "all";
+export type MobSize = "small" | "medium" | "large" | "all";
 export type MobClass = "normal" | "boss" | "guardian" | "all";
 export type PartialRecord<K extends keyof any, T> = {
   [P in K]?: T
@@ -121,11 +121,11 @@ export type SessionBonus = {
     // magic offensive
     matk: number; matk2: number; matkRate: number;
     variableCastrate: number; fixedCastrate: number;
-    castrate: number; delayrate: number;
+    castrate: number; delayRate: number;
     healPower: number; healPower2: number;
 
     // def and resistance
-    def: number; def2: number; defRate: number;
+    def: number; def2: number; defRate: number; def2Rate: number;
     mdef: number; mdef2: number; mdefRate: number;
     defEle: number; flee: number; flee2: number; fleeRate: number;
     longAtkDef: number; res: number; mres: number;
@@ -149,15 +149,15 @@ export type SessionBonus = {
   magicAddRace: DefaultMap<MobRace, number>;
   magicAddRace2: DefaultMap<MobRace2, number>,
   magicAddEle: DefaultMap<Element, number>;
-  magicAddSize: Record<string | number, number>;
+  magicAddSize: DefaultMap<MobSize, number>;
   magicAddClass: DefaultMap<MobClass, number>;
   magicAtkEle: DefaultMap<Element, number>;
 
-  subRace: Record<string | number, number>;
-  subEle: Record<string | number, number>;
-  subSize: Record<string | number, number>;
-  subClass: Record<string | number, number>;
-  subRace2: Record<string | number, number>;
+  subRace: DefaultMap<MobRace, number>;
+  subRace2: DefaultMap<MobRace2, number>;
+  subEle: DefaultMap<Element, number>;
+  subSize: DefaultMap<MobSize, number>;
+  subClass: DefaultMap<MobClass, number>;
 
   ignoreDefRace: Record<string | number, number>;
   ignoreDefClass: Record<string | number, number>;
@@ -292,7 +292,7 @@ export type DBAmmo = {
 
 /****************/
 /*** FOOD DB  ***/
-export type FoodCategory = 'Stats' |'New World' | 'BG' | 'Summer Cocktails' | 'Misc' | 'Resistance' | 'Eclage' | 'Eden' | 'Aspd Potion';
+export type FoodCategory = 'Stats' | 'New World' | 'BG' | 'Summer Cocktails' | 'Misc' | 'Resistance' | 'Eclage' | 'Eden' | 'Aspd Potion';
 export type FoodStatsNames = "STR" | "AGI" | "VIT" | "INT" | "DEX" | "LUK";
 export type DBFood = {
   ID: number,
