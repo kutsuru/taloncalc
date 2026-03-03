@@ -254,9 +254,10 @@ export type DBSkill = {
   isPassive: boolean,
   isBuff: boolean,
   job: string,
-  type?: SkillSubType
+  type?: SkillSubType,
+  itemScript?: string,
 }
-export type SkillBuff = Pick<DBSkill, 'id' | 'name' | 'maxLevel'> & {
+export type SkillBuff = Pick<DBSkill, 'id' | 'name' | 'maxLevel' | 'itemScript'> & {
   value: number | boolean
   type: SkillSubType
 }

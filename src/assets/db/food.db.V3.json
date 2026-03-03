@@ -842,7 +842,7 @@
       "bonus": ""
     },
     "Concentration Potion": {
-      "gid": 655,
+      "gid": 645,
       "job": "0xfffffff",
       "duration": 1800000,
       "dispelOnDeath": false,
@@ -874,7 +874,7 @@
       "bonus": "( function (x) { x.scAspdPotion = Math.max(200, x.scAspdPotion)});"
     },
     "Poison Bottle": {
-      "gid": 656,
+      "gid": 678,
       "job": "0x4000002",
       "duration": 60000,
       "dispelOnDeath": false,

@@ -3,8 +3,6 @@ import { inject, Injectable, signal, WritableSignal } from "@angular/core";
 import { forkJoin, Observable } from "rxjs";
 import { AmmoType, DBAmmo, DBFood, DBItem, DBItemCombo, DBJob, DBMob, DBSkill, DBWeaponType, ElementDBV3, FoodCategory, FoodStatsNames, JSONFood, MobClass, WeaponType } from "./models.v3";
 
-const DB_PATH = 'assets/db/item.db.V3.json';
-
 @Injectable({ providedIn: 'root' })
 export class TTCoreServiceV3 {
     /* injects */

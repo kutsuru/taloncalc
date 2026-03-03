@@ -1,8 +1,16 @@
+/*** imports ***/
 import { Injectable } from "@angular/core";
 import { SessionBonus, MobRace, Element, MobSize } from "./models.v3";
-import { TTItemScriptParser } from "./tt-itemscript-parser";
+import { IfNode, TTItemScriptParser } from "./tt-itemscript-parser";
 import { createEmptySessionBonus } from "./session-info-default";
-import { DefaultMap } from "./utils";
+import { DefaultMap, execFormula, parseDBElement, parseDBMobRace, parseDBMobSize } from "./utils";
+
+/*** types ***/
+export type BonusSubstitution = {
+    'subSkillLvl': number,  /* level of the current skill */
+    'BaseClass': string     /* BaseClass for IF statments: IT HAS TO USE "" eg. "Job_Mage" */
+}
+type CustomBonusSubstitution = keyof BonusSubstitution;
 
 /*** REGEX ***/
 const MONSTER_RACE_REG = /RC_[a-zA-Z_]+/g;
@@ -36,100 +44,27 @@ const transformKey = (key: string) => {
         noramalized = noramalized.charAt(0).toLowerCase() + noramalized.substring(1);
     }
     /* 
-    - fixed data will be mapped as [<key in lowercase>] : <key in session object> 
-    - if none is found, we just remove the leading "b"
+    - fixed data will be mapped as [<key in lowercase without b>] : <key in session object> 
+    - if none is found, we just remove the leading "b" and lower the first letter
     */
-
     return CANONICAL_KEYS[noramalized.toLowerCase()] || noramalized;
 };
-const getMobRace = (race: string): MobRace => {
-    switch (race) {
-        case 'RC_Angel':
-            return 'angel';
-        case 'RC_Brute':
-            return 'brute';
-        case 'RC_DemiHuman':
-            return 'demiHuman';
-        case 'RC_Demon':
-            return 'demon';
-        case 'RC_Dragon':
-            return 'dragon';
-        case 'RC_Fish':
-            return 'fish';
-        case 'RC_Formless':
-            return 'formless';
-        case 'RC_Insect':
-            return 'insect';
-        case 'RC_Plant':
-            return 'plant';
-        case 'RC_Player_Human': //FIXME what class?
-            return 'player';
-        case 'RC_Undead':
-            return 'undead';
-        case 'RC_All':
-            return 'all';
-        default:
-            console.log('Unknown mob race', race);
-            return 'all'
-    }
-}
-const getElement = (eleString: string): Element => {
-    switch (eleString) {
-        case 'Ele_Dark':
-            return 'shadow';
-        case 'Ele_Earth':
-            return 'earth';
-        case 'Ele_Fire':
-            return 'fire';
-        case 'Ele_Ghost':
-            return 'ghost';
-        case 'Ele_Holy':
-            return 'holy';
-        case 'Ele_Neutral':
-            return 'neutral';
-        case 'Ele_Poison':
-            return 'poison';
-        case 'Ele_Undead':
-            return 'undead';
-        case 'Ele_Water':
-            return 'water';
-        case 'Ele_Wind':
-            return 'wind';
-        case 'Ele_All':
-            return 'all';
-        default:
-            console.log('Unknown element', eleString);
-            return 'all';
-    }
-}
-const getMobSize = (sizeString: string): MobSize => {
-    switch (sizeString) {
-        case 'Size_Small':
-            return 'small';
-        case 'Size_Medium':
-            return 'medium';
-        case 'Size_Large':
-            return 'large'
-        case 'Size_All':
-            return 'all';
-        default:
-            console.log('Unknown size', sizeString);
-            return 'all';
-    }
-}
+
 
 
 /**
  * FIXME
  * bonus bDefRatioAtkClass,c;   make use of c (class) parameter
- * bonus bAtkEle,e;          		Gives the player's attacks element e
- * bonus bDefEle,e;          		Gives the player's defense element e
+ * bonus bAtkEle,e;          	the player's attacks element e
+ * bonus bDefEle,e;          	the player's defense element e
  * transform MabRace2
+ * SC_ASPDPOTION0/1/2           Merge into one "custome" command?
  */
 
 /*** service ***/
 @Injectable({ providedIn: 'root' })
 export class TTBonusEngineService {
+    /* injects */
 
     constructor() {
         /* initialize canonical keys */
@@ -154,38 +89,55 @@ export class TTBonusEngineService {
         CANONICAL_KEYS['SC_DEXFOOD'] = 'dex';
         CANONICAL_KEYS['SC_LUKFOOD'] = 'luk';
         CANONICAL_KEYS['SC_INCATKRATE'] = 'scIncAtkRate';
+        CANONICAL_KEYS['SC_INCASPDRATE'] = 'aspdRate'
     }
 
     /*** public functions ***/
-    public applyBonus(session: SessionBonus, bonus: string) {
-        let bonusPrepared = this._prepareBonus(bonus);
+    public applyBonus(session: SessionBonus, bonus: string, subs: Partial<BonusSubstitution> = {}) {
+        let bonusPrepared = this._prepareBonus(bonus, subs);
         let parser = new TTItemScriptParser(bonusPrepared);
         let bonusAST = parser.parse();
-        console.log(bonusAST);
+        // console.log(bonusAST);
         for (let node of bonusAST) {
             switch (node.type) {
                 case 'Command':
                     this._computeCommand(node.command, node.args, session);
+                    break;
+                case 'IfStatement':
+                    this._computeIfStatement(node);
                     break;
             }
         }
     }
 
     /*** private functions ***/
-    private _prepareBonus(bonus: string): string {
+    private _prepareBonus(bonus: string, subs: Partial<BonusSubstitution> = {}): string {
         /* remove escaped " */
         let s = bonus.replace(/"/g, '');
 
         /* replace specifc commands with values */
         // mob race
-        s = s.replace(MONSTER_RACE_REG, getMobRace);
+        s = s.replace(MONSTER_RACE_REG, parseDBMobRace);
         // element
-        s = s.replace(ELEMENT_REG, getElement);
+        s = s.replace(ELEMENT_REG, parseDBElement);
         // mob size
-        s = s.replace(SIZE_REG, getMobSize);
+        s = s.replace(SIZE_REG, parseDBMobSize);
+
+        /* custom bonus substituions */
+        for (const sub in subs) {
+            if (!subs[sub]) continue;
+            const replaceWith = subs[sub];
+            const subReg = new RegExp(sub, 'g');    // make sure everything get replaced 
+            s = s.replace(subReg, replaceWith);
+        }
 
         return s;
     }
+
+    private _computeIfStatement(ifNode: IfNode) {
+        console.log(ifNode.condition);
+    }
+
     private _computeCommand(command: string, args: string[], session: SessionBonus) {
         if (command.startsWith('bonus')) {
             if (args.length >= 1) {
@@ -202,7 +154,7 @@ export class TTBonusEngineService {
 
     private _computeCommandBonus(command: string, args: string[], session: SessionBonus) {
         /* try to find bonus */
-        let bonusTypeRaw = args[0];
+        let bonusTypeRaw = args.shift()!;
         let bonusType = transformKey(bonusTypeRaw);
 
         /* bonus with flags */
@@ -217,16 +169,22 @@ export class TTBonusEngineService {
              * format
              * bonus2 <effect>, <effectType>, <value>
             */
-            if (args.length < 3) {
+            if (args.length < 2) {
                 console.log('Invalud BONUS2 script', bonusType, args);
                 return;
             }
-            const key = args[1];
-            const value = Number(args[2]);
-            if (isNaN(value)) {
-                console.log('Bonus2 with complex values not allowed yet', bonusType, args);
-                return;
+            const key = args.shift()!;
+            /* get value */
+            let value: number;
+            if (args.length > 1) {
+                /* complex value */
+                value = execFormula(args);
             }
+            else {
+                value = Number(args[0]);
+            }
+
+            /* check if bonusType is present in session */
             if (bonusType in session) {
                 const map = (session[bonusType] as DefaultMap<any, number>);
                 map.set(key, map.get(key) + value);
@@ -245,10 +203,15 @@ export class TTBonusEngineService {
         }
 
         /* numeric values */
-        let val = Number(args[1]);
-        if (isNaN(val) || args.length > 2) {
-            console.log("Complex values not supported yet", bonusType, args);
-            return;
+        let val: number;
+        if (args.length > 1) {
+            /* complex value with a formula */
+            val = execFormula(args);
+            val = Math.round(val);
+            // FIXME: check for failures?
+        }
+        else {
+            val = Number(args[0]);
         }
 
         if (BONUS_HIGHEST_ONLY.has(bonusType)) {
@@ -288,6 +251,7 @@ export class TTBonusEngineService {
         let duration = +args[1];
         let value = +args[2];
         switch (func) {
+            /* fetch stats */
             case 'SC_STRFOOD':
             case 'SC_AGIFOOD':
             case 'SC_VITFOOD':
@@ -295,8 +259,21 @@ export class TTBonusEngineService {
             case 'SC_DEXFOOD':
             case 'SC_LUKFOOD':
             case 'SC_INCATKRATE':
+            case 'SC_INCASPDRATE':
                 session.stats[CANONICAL_KEYS[func]] += value;
                 break;
+            /* others */
+            case 'SC_ASPDPOTION0':
+                session.stats.aspdRate += 10;
+                break;
+            case 'SC_ASPDPOTION1':
+                session.stats.aspdRate += 15;
+                break;
+            case 'SC_ASPDPOTION2':
+                session.stats.aspdRate += 20;
+                break;
+            case 'SC_ASPDPOTION3':
+                session.stats.aspdRate += 25;
             default:
                 console.log('Unknown SC_START function', args);
         }

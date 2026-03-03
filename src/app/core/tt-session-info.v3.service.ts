@@ -4,7 +4,8 @@ import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, CardLocations, DBItemComb
 import { createEmptySessionBonus, SESSION_INFO_DEFAULT } from "./session-info-default";
 import { TTCoreService } from "./tt-core.service";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
-import { TTBonusEngineService } from "./tt-bonus-engine.service";
+import { BonusSubstitution, TTBonusEngineService } from "./tt-bonus-engine.service";
+import { getBaseClass } from "./utils";
 
 /** Dependencies 
  * BaseStats        Pure-Stats without any bonus
@@ -138,6 +139,8 @@ export class TTSessionInfoV3Service {
 
     private _foodsOtherState = signal<number[]>([]);
     foodsOther = this._foodsOtherState.asReadonly();
+
+    speedPotion: WritableSignal<number> = signal(0);
 
 
     /* battle calcs */
@@ -405,7 +408,8 @@ export class TTSessionInfoV3Service {
                         maxLevel: skill.maxLevel,
                         name: skill.name,
                         value: value,
-                        type: skill.type
+                        type: skill.type,
+                        itemScript: skill.itemScript
                     });
                 }
             }
@@ -827,19 +831,20 @@ export class TTSessionInfoV3Service {
     }
 
     private _computeBonus() {
-        let res: SessionBonus = createEmptySessionBonus();
+        const res: SessionBonus = createEmptySessionBonus();
         // trigers
-        let jobClass = this.jobClass();
-        let level = this.level();
-        let equip = this.equip();
-        let baseStats = this.baseStats();
-        let refines = this.refines();
-        let cards = this._cardsState();
-        let combos = this.itemCombos();
-        let skillsBuffs = this._skillsBuffState();
-        let skillsPassive = this._skillsPassiveState();
-        let foodsStat = this._foodsStatsState();
-        let foodsOther = this._foodsOtherState();
+        const jobClass = this.jobClass();
+        const level = this.level();
+        const equip = this.equip();
+        const baseStats = this.baseStats();
+        const refines = this.refines();
+        const cards = this._cardsState();
+        const combos = this.itemCombos();
+        const skillsBuffs = this._skillsBuffState();
+        const skillsPassive = this._skillsPassiveState();
+        const foodsStat = this._foodsStatsState();
+        const foodsOther = this._foodsOtherState();
+        const speedPot = this.speedPotion();
 
         // job level stats bonus
         if (jobClass) {
@@ -854,6 +859,11 @@ export class TTSessionInfoV3Service {
                 }, 0);
                 res.stats[stat] = bonus;
             }
+        }
+
+        /* create base substituion obj */
+        const bonusSubs: Partial<BonusSubstitution> = {
+            BaseClass: `"${getBaseClass(jobClass!)}"`   // FIXME: what if no job is selected
         }
 
         /* equip bonus */
@@ -914,14 +924,30 @@ export class TTSessionInfoV3Service {
 
         /* buffs */
         for (const buff of skillsBuffs) {
-            if (buff.value) {
-                // FIXME
+            if (buff.value && buff.itemScript) {
+                let lvl: number;
+                if (typeof buff.value === 'boolean') {
+                    lvl = 1;
+                }
+                else {
+                    lvl = buff.value;
+                }
+                this._bonusEngine.applyBonus(res, buff.itemScript, {
+                    subSkillLvl: lvl
+                })
             }
         }
         /* passive skills */
         for (const passive of skillsPassive) {
             if (passive.value) {
                 // FIXME
+            }
+        }
+        /* speed potion */
+        if (speedPot > 0) {
+            const item = this._core.itemDB.get(speedPot);
+            if (item && item.itemScript) {
+                this._bonusEngine.applyBonus(res, item.itemScript);
             }
         }
 

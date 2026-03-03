@@ -1,3 +1,13 @@
+<!-- speed potion -->
+<mat-form-field>
+    <mat-label>Speed Potion</mat-label>
+    <mat-select [value]="session.speedPotion()" (selectionChange)="updateSpeedPoition($event.value)">
+        @for (pot of speedPotions(); track $index) {
+            <mat-option [value]="pot.value">{{pot.name}}</mat-option>
+        }
+    </mat-select>
+</mat-form-field>
+<!-- buffs-->
 @for (buff of session.skillsBuff(); track $index) {
 @switch (buff.type) {
 @case('list'){

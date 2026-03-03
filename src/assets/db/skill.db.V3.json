@@ -838,7 +838,8 @@
     "isPassive": false,
     "isBuff": true,
     "type": "list",
-    "job": "0x0"
+    "job": "0x0",
+    "itemScript": "bonus bAgi,2+subSkillLvl"
   },
   "Decrease AGI": {
     "id": 28,
@@ -929,7 +930,8 @@
     "isPassive": false,
     "isBuff": true,
     "type": "list",
-    "job": "0x0"
+    "job": "0x0",
+    "itemScript": "bonus bDef2Rate,subSkillLvl*5"
   },
   "Blessing": {
     "id": 31,
@@ -960,7 +962,8 @@
     "isPassive": false,
     "isBuff": true,
     "type": "list",
-    "job": "0x0"
+    "job": "0x0",
+    "itemScript": "bonus bStr,subSkillLvl; bonus bDex,subSkillLvl; bonus bInt,subSkillLvl"
   },
   "Pneuma": {
     "id": 32,
@@ -2762,7 +2765,8 @@
     "isPassive": false,
     "isBuff": true,
     "type": "list",
-    "job": "0x0"
+    "job": "0x0",
+    "itemScript": "bonus bCastrate,-15*subSkillLvl"
   },
   "Aspersio": {
     "id": 92,
@@ -3033,7 +3037,8 @@
     "isPassive": false,
     "isBuff": true,
     "type": "check",
-    "job": "0x0"
+    "job": "0x0",
+    "itemScript": "bonus bLuk,30;"
   },
   "Lex Divina": {
     "id": 101,
@@ -8228,7 +8233,8 @@
     "isPassive": true,
     "isBuff": true,
     "type": "list",
-    "job": "0x10002"
+    "job": "0x10002",
+    "itemScript": "bonus bFlee,subSkillLvl/2"
   },
   "Soul Drain": {
     "id": 274,
@@ -13209,6 +13215,7 @@
     "isPassive": false,
     "isBuff": true,
     "type": "list",
-    "job": "0x8000803"
+    "job": "0x8000803",
+    "itemScript": "bonus2 bSubRace,RC_Demon,5*subSkillLvl; bonus2 bSubEle,Ele_Holy,5*subSkillLvl;"
   }
 }

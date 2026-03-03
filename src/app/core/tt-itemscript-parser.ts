@@ -1,6 +1,6 @@
 /*** types ***/
 type CommandNode = { type: "Command", command: string, args: string[] };
-type IfNode = { type: "IfStatement", condition: string, then: ASTNode[], else?: ASTNode[], elseIf?: IfNode };
+export type IfNode = { type: "IfStatement", condition: string, then: ASTNode[], else?: ASTNode[], elseIf?: IfNode };
 type ASTNode = CommandNode | IfNode;
 /*** class ***/
 export class TTItemScriptParser {

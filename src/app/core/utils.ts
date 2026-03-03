@@ -1,15 +1,8 @@
-import { MobSize, Element } from "./models";
+/*** imports ***/
+import { MobRace, Element, MobSize, DBJob } from "./models.v3";
 
-/*** map Mob Size (string) to number */
-export const MOB_SIZE_MODIFIER: { [key in MobSize]: number } = {
-    small: 0,
-    medium: 1,
-    large: 2
-}
-
-/*** map waepon element to Element (string) */
-export const WEAPON_ELE: Element[] = ["neutral", "water", "earth", "fire", "wind", "poison", "holy", "shadow", "ghost", "undead"];
-
+/***************/
+/*** General ***/
 /*** create a debounced function ***/
 export const debounce = <F extends (...args: Parameters<F>) => void>(callback: F, time: number) => {
     let timeout: ReturnType<typeof setTimeout> | undefined;
@@ -96,4 +89,89 @@ export const execFormula = (formula: string[]): number => {
     });
 
     return stack[0];
+}
+/***************************/
+/*** DB helper functions ***/
+/*** parse a MobRace string from DB file to match the type */
+export const parseDBMobRace = (race: string): MobRace => {
+    switch (race) {
+        case 'RC_Angel':
+            return 'angel';
+        case 'RC_Brute':
+            return 'brute';
+        case 'RC_DemiHuman':
+            return 'demiHuman';
+        case 'RC_Demon':
+            return 'demon';
+        case 'RC_Dragon':
+            return 'dragon';
+        case 'RC_Fish':
+            return 'fish';
+        case 'RC_Formless':
+            return 'formless';
+        case 'RC_Insect':
+            return 'insect';
+        case 'RC_Plant':
+            return 'plant';
+        case 'RC_Player_Human': //FIXME what class?
+            return 'player';
+        case 'RC_Undead':
+            return 'undead';
+        case 'RC_All':
+            return 'all';
+        default:
+            console.log('Unknown mob race', race);
+            return 'all'
+    }
+}
+/*** parse a Element string from DB file to match the type */
+export const parseDBElement = (eleString: string): Element => {
+    switch (eleString) {
+        case 'Ele_Dark':
+            return 'shadow';
+        case 'Ele_Earth':
+            return 'earth';
+        case 'Ele_Fire':
+            return 'fire';
+        case 'Ele_Ghost':
+            return 'ghost';
+        case 'Ele_Holy':
+            return 'holy';
+        case 'Ele_Neutral':
+            return 'neutral';
+        case 'Ele_Poison':
+            return 'poison';
+        case 'Ele_Undead':
+            return 'undead';
+        case 'Ele_Water':
+            return 'water';
+        case 'Ele_Wind':
+            return 'wind';
+        case 'Ele_All':
+            return 'all';
+        default:
+            console.log('Unknown element', eleString);
+            return 'all';
+    }
+}
+/*** parse a MobSize string from DB file to match the type */
+export const parseDBMobSize = (sizeString: string): MobSize => {
+    switch (sizeString) {
+        case 'Size_Small':
+            return 'small';
+        case 'Size_Medium':
+            return 'medium';
+        case 'Size_Large':
+            return 'large'
+        case 'Size_All':
+            return 'all';
+        default:
+            console.log('Unknown size', sizeString);
+            return 'all';
+    }
+}
+/*** parse JobClass into BaseClass string ***/
+// https://github.com/rathena/rathena/blob/c1602bbf2e03c6cc8ac57f2ad7ad3326803ade56/src/common/mmo.hpp#L929
+export const getBaseClass = (job: DBJob): string => {
+    return '';
 }
