@@ -167,7 +167,7 @@ export class TTSessionInfoV3Service {
             if (this._core.$loaded()) {
                 const allJobs = this._core.allJobNames;
                 // this.jobClassName.set(allJobs[0]);
-                this.jobClassName.set('Lord Knight');   // FIXME: debug
+                this.jobClassName.set('Clown');   // FIXME: debug
             }
         })
 

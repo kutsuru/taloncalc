@@ -18,6 +18,7 @@ const ELEMENT_REG = /Ele_[a-zA-Z]+/g;
 const SIZE_REG = /Size_[a-zA-Z]+/g;
 
 /*** definitions ***/
+const VARB_PREFIX = '_var';
 const CANONICAL_KEYS: Record<string, string> = {};
 const BONUS_SPECIAL: Set<String> = new Set([
     "allStats"
@@ -97,14 +98,14 @@ export class TTBonusEngineService {
         let bonusPrepared = this._prepareBonus(bonus, subs);
         let parser = new TTItemScriptParser(bonusPrepared);
         let bonusAST = parser.parse();
-        // console.log(bonusAST);
+        console.log(bonusAST);
         for (let node of bonusAST) {
             switch (node.type) {
                 case 'Command':
-                    this._computeCommand(node.command, node.args, session);
+                    // this._computeCommand(node.command, node.args, session);
                     break;
                 case 'IfStatement':
-                    this._computeIfStatement(node);
+                    // this._computeIfStatement(node);
                     break;
             }
         }
@@ -130,6 +131,9 @@ export class TTBonusEngineService {
             const subReg = new RegExp(sub, 'g');    // make sure everything get replaced 
             s = s.replace(subReg, replaceWith);
         }
+
+        /* replace variables */
+        
 
         return s;
     }

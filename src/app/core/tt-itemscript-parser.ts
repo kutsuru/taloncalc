@@ -1,7 +1,8 @@
 /*** types ***/
 type CommandNode = { type: "Command", command: string, args: string[] };
 export type IfNode = { type: "IfStatement", condition: string, then: ASTNode[], else?: ASTNode[], elseIf?: IfNode };
-type ASTNode = CommandNode | IfNode;
+type AssignmentNode = { type: "Assignment", name: string, value: string };
+type ASTNode = CommandNode | IfNode | AssignmentNode;
 /*** class ***/
 export class TTItemScriptParser {
     private _pos: number;
@@ -28,6 +29,8 @@ export class TTItemScriptParser {
         } else if (token === "}") {
             this._consume();
             return null;
+        } else if (token == '.@' && this._pos + 2 < this._tokens.length && this._tokens[this._pos + 2] == '=') {
+            return this._parseAssignment();
         } else {
             return this._parseCommand();
         }
@@ -78,16 +81,54 @@ export class TTItemScriptParser {
     private _parseCommand(): CommandNode {
         const name = this._consume();
         const args: string[] = [];
-        while (this._peek() !== ";" && this._pos < this.tokens.length) {
-            let arg = this._consume();
-            if (arg !== ",") args.push(arg.replace(/"/g, ''));
+        // consume args until we find ";" or end of script
+        while (this._pos < this.tokens.length && this._peek() !== ";") {
+            let currentExpr = "";
+            let bracketLevel = 0;
+
+            // consume arg until "," but ignore "," in brackets ()
+            // example: bonus bStr, callfunc("MyFunc", 10, 20) + 5;
+            while (this._pos < this.tokens.length) {
+                const token = this._peek();
+
+                if (token === "(") bracketLevel++;
+                if (token === ")") bracketLevel--;
+
+                // seperator reached?
+                if ((token === "," && bracketLevel === 0) || token === ";" || token === "}") {
+                    break;
+                }
+
+                currentExpr += this._consume();
+            }
+            args.push(currentExpr.trim());
+
+            // if "," is coming, we consume it and continie with the next arg
+            if (this._peek() === ",") {
+                this._consume();
+            } else {
+                break; // Ende des Befehls erreicht
+            }
         }
-        this._consume(); // ;
+
+        if (this._peek() === ";") this._consume();
         return { type: "Command", command: name, args: args };
+    }
+    private _parseAssignment(): AssignmentNode {
+        this._consume(); // .@
+        const name = this._consume();
+        this._consume(); // =
+        let value = '';
+        while(this._pos < this.tokens.length && this._peek() !== ';') {
+            value += this._consume();
+        }
+        if(this._peek() === ';') this._consume();   // skip ';'
+        return { type: "Assignment", name: name, value: value };
     }
 
     parse() {
         const nodes: ASTNode[] = [];
+        // console.log(this.tokens);
         while (this._pos < this.tokens.length) {
             const node = this._parseStatement();
             if (node) nodes.push(node);
