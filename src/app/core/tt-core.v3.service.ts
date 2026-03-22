@@ -55,6 +55,8 @@ export class TTCoreServiceV3 {
                     .subscribe((dbRes) => {
                         /* Item DB */
                         for (const item of dbRes[0] as DBItem[]) {
+                            /* remove "None" item scripts */
+                            if (item.itemScript === 'None') item.itemScript = "";
                             this._itemDB.set(item.ID, item);
                             switch (item.type) {
                                 case 'Weapon One-Hand':
@@ -268,7 +270,7 @@ export class TTCoreServiceV3 {
     get ammoDB() {
         return this._ammoDB;
     }
-    get foodDB(){
+    get foodDB() {
         return this._foodDB;
     }
 }

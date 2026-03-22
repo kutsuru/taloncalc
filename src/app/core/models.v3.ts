@@ -106,7 +106,7 @@ export type SessionBonus = {
     maxHP: number; maxSP: number;
     maxHPRate: number; maxSPRate: number;
     hpRegenRate: number; spRegenRate: number;
-    hpRecoveryRate: number; spRecoveryRate: number;
+    hpRecovRate: number; spRecovRate: number;
 
     // physical offensive
     atk: number; atk2: number; atkRate: number; baseAtk: number;
@@ -227,6 +227,7 @@ export type SkillSubType = 'check' | 'list';
 export type DBSkill = {
   name: string,
   id: number,
+  skillId: string,
   maxLevel: number,
   spCost: number[],
   element: SkillElement,  // FIXME: in DB File the elements are numbers instead of strings

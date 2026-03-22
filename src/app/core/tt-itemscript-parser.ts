@@ -2,7 +2,11 @@
 type CommandNode = { type: "Command", command: string, args: string[] };
 export type IfNode = { type: "IfStatement", condition: string, then: ASTNode[], else?: ASTNode[], elseIf?: IfNode };
 type AssignmentNode = { type: "Assignment", name: string, value: string };
-type ASTNode = CommandNode | IfNode | AssignmentNode;
+export type ASTNode = CommandNode | IfNode | AssignmentNode;
+
+/*** definitions ***/
+export const VARB_PREFIX = '_var';
+
 /*** class ***/
 export class TTItemScriptParser {
     private _pos: number;
@@ -26,12 +30,15 @@ export class TTItemScriptParser {
 
         if (token === "if") {
             return this._parseIf();
-        } else if (token === "}") {
+        }
+        else if (token === "}") {
             this._consume();
             return null;
-        } else if (token == '.@' && this._pos + 2 < this._tokens.length && this._tokens[this._pos + 2] == '=') {
+        }
+        else if (token.startsWith(VARB_PREFIX) && this._pos + 1 < this._tokens.length && this._tokens[this._pos + 1] == '=') {
             return this._parseAssignment();
-        } else {
+        }
+        else {
             return this._parseCommand();
         }
     }
@@ -90,12 +97,13 @@ export class TTItemScriptParser {
             // example: bonus bStr, callfunc("MyFunc", 10, 20) + 5;
             while (this._pos < this.tokens.length) {
                 const token = this._peek();
-
-                if (token === "(") bracketLevel++;
-                if (token === ")") bracketLevel--;
-
+    
+                if (token === "(" || token === '{') bracketLevel++;
+                if (token === ")" || token === '}') bracketLevel--;
+                // console.log(token, bracketLevel);
                 // seperator reached?
-                if ((token === "," && bracketLevel === 0) || token === ";" || token === "}") {
+                // if ((token === "," && bracketLevel === 0) || (token === ";" && bracketLevel === 0) || (token === "}" && bracketLevel === 0)) {
+                if ((token === "," && bracketLevel === 0) || (token === ";" && bracketLevel === 0)) {
                     break;
                 }
 
@@ -115,14 +123,13 @@ export class TTItemScriptParser {
         return { type: "Command", command: name, args: args };
     }
     private _parseAssignment(): AssignmentNode {
-        this._consume(); // .@
         const name = this._consume();
         this._consume(); // =
         let value = '';
-        while(this._pos < this.tokens.length && this._peek() !== ';') {
+        while (this._pos < this.tokens.length && this._peek() !== ';') {
             value += this._consume();
         }
-        if(this._peek() === ';') this._consume();   // skip ';'
+        if (this._peek() === ';') this._consume();   // skip ';'
         return { type: "Assignment", name: name, value: value };
     }
 

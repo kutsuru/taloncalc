@@ -13,20 +13,20 @@ import { TtSettingsService } from './tt-settings/tt-settings.service';
 import { TtStatsInfoComponent } from './tt-stats-info/tt-stats-info.component';
 import { TTThemerService } from './tt-themer/tt-themer.service';
 
-import { JsonPipe } from '@angular/common';
 import { TTCoreServiceV3 } from './core/tt-core.v3.service';
 import { TTSessionInfoV3Service } from './core/tt-session-info.v3.service';
+import { DebugComponent } from './debug/debug.component';
 import { TtBattleCalcV3Component } from './tt-battle-calc-v3/tt-battle-calc-v3.component';
+import { TtBuffV3Component } from "./tt-buff-v3/tt-buff-v3.component";
 import { TtEquipV3Component } from "./tt-equip-v3/tt-equip-v3.component";
+import { TtFoodV3Component } from './tt-food-v3/tt-food-v3.component';
 import { TtPageLoaderComponent } from './tt-page-loader/tt-page-loader.component';
+import { TtPassiveV3Component } from "./tt-passive-v3/tt-passive-v3.component";
 import { TTPopupButtonComponent } from './tt-popup/tt-popup-button.component';
 import { TtPopupComponent } from './tt-popup/tt-popup.component';
 import { TtSettingsComponent } from './tt-settings/tt-settings.component';
 import { TtStatsInfoV3Component } from './tt-stats-info-v3/tt-stats-info-v3.component';
 import { TtStatsV3Component } from './tt-stats-v3/tt-stats-v3.component';
-import { TtBuffV3Component } from "./tt-buff-v3/tt-buff-v3.component";
-import { TtPassiveV3Component } from "./tt-passive-v3/tt-passive-v3.component";
-import { TtFoodV3Component } from './tt-food-v3/tt-food-v3.component';
 
 @Component({
   selector: 'app-root',
@@ -46,13 +46,13 @@ import { TtFoodV3Component } from './tt-food-v3/tt-food-v3.component';
     TtPopupComponent,
     TtSettingsComponent,
     TtStatsV3Component,
-    JsonPipe,
     TtStatsInfoV3Component,
     TtEquipV3Component,
     TtBattleCalcV3Component,
     TtBuffV3Component,
     TtPassiveV3Component,
-    TtFoodV3Component
+    TtFoodV3Component,
+    DebugComponent
 ]
 })
 export class AppComponent implements OnInit, OnDestroy {

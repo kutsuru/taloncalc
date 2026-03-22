@@ -1,24 +1,30 @@
 /*** imports ***/
 import { Injectable } from "@angular/core";
-import { SessionBonus, MobRace, Element, MobSize } from "./models.v3";
-import { IfNode, TTItemScriptParser } from "./tt-itemscript-parser";
+import { BaseStatsAs, SessionBonus, SessionEquip } from "./models.v3";
 import { createEmptySessionBonus } from "./session-info-default";
-import { DefaultMap, execFormula, parseDBElement, parseDBMobRace, parseDBMobSize } from "./utils";
+import { ASTNode, IfNode, TTItemScriptParser, VARB_PREFIX } from "./tt-itemscript-parser";
+import { DefaultMap, parseDBElement, parseDBMobRace, parseDBMobSize } from "./utils";
 
 /*** types ***/
 export type BonusSubstitution = {
     'subSkillLvl': number,  /* level of the current skill */
-    'BaseClass': string     /* BaseClass for IF statments: IT HAS TO USE "" eg. "Job_Mage" */
 }
 type CustomBonusSubstitution = keyof BonusSubstitution;
+type BonusOptions = {
+    refine?: number,       /* refine of current running equip or location of the card */
+    customSubs?: BonusSubstitution
+}
+type ScriptValue = number | string | boolean;
+type ScriptFunction = (...args: ScriptValue[]) => ScriptValue;
 
 /*** REGEX ***/
 const MONSTER_RACE_REG = /RC_[a-zA-Z_]+/g;
 const ELEMENT_REG = /Ele_[a-zA-Z]+/g;
 const SIZE_REG = /Size_[a-zA-Z]+/g;
+const VARB_REG = /\.@([a-zA-Z]+)/g;
+const VARB_POST_REG = new RegExp(`(${VARB_PREFIX}[a-zA-Z]+)`, 'g');
 
 /*** definitions ***/
-const VARB_PREFIX = '_var';
 const CANONICAL_KEYS: Record<string, string> = {};
 const BONUS_SPECIAL: Set<String> = new Set([
     "allStats"
@@ -35,6 +41,19 @@ const BONUS_FLAGS = new Set([
     'noCurse', 'noBlind', 'noPoison', 'noSilence', 'noBleeding',
     'defRatioAtkClass'  // FIXME: handle for every class?
 ]);
+// FIXME: check if some is needed
+const COMMAND_TO_INGORE = new Set([
+    'itemheal', 'sc_end', 'getrandgroupitem', 'monster', 'percentheal',
+    'produce', 'pet', 'bpet', 'guildgetexp', 'makepet',
+    'delitem', 'getitem', 'soundeffectall', 'homevolution', 'cooking',
+    'mercenary_create', 'mercenary_heal', 'mercenary_sc_start',
+    'input', 'getexp2',
+    'specialeffect2', 'unitskilluseid',   //FIXME: mabye needed?
+    'setfont', 'heal', 'end', 'playbgm', 'getitembound', 'buyingstore',
+    'warp', 'getgroupitem', 'setmounting', 'transform', 'makerune',
+    'rentitem', 'hateffect', 'dispbottom', 'setlook', 'showscript',
+    'announce'
+]);
 
 /*** helper functions ***/
 const transformKey = (key: string) => {
@@ -50,8 +69,36 @@ const transformKey = (key: string) => {
     */
     return CANONICAL_KEYS[noramalized.toLowerCase()] || noramalized;
 };
+/*** script functions ***/
+const generateIsEquipped = (equip: SessionEquip): ScriptFunction => {
+    const equiped = Object.values(equip)
+    return (...gears: ScriptValue[]) => {
+        return gears.every(_ => equiped.includes(_ as number));
+    }
+}
+const generateGetRefine = (refine: number = 0): ScriptFunction => {
+    return () => refine;
+}
+const generateReadParam = (stats: BaseStatsAs<number>): ScriptFunction => {
+    const baseStats = {
+        bVit: stats.vit,
+        bDex: stats.dex,
+        bAgi: stats.agi,
+        bStr: stats.str,
+        bInt: stats.int,
+        bLuk: stats.luk
+    }
+    return (param: ScriptValue) => {
+        return baseStats[param as string];
+    }
+}
+const rand: ScriptFunction = (min: ScriptValue, max: ScriptValue): ScriptValue => {
+    const m: number = Number(max) - Number(min);
+    const b = Number(min);
+    return Math.floor(Math.random() * m + b);
+}
 
-
+/*** varbs ***/
 
 /**
  * FIXME
@@ -60,12 +107,41 @@ const transformKey = (key: string) => {
  * bonus bDefEle,e;          	the player's defense element e
  * transform MabRace2
  * SC_ASPDPOTION0/1/2           Merge into one "custome" command?
+ * set var,value                Handle as Assignment too
  */
 
 /*** service ***/
 @Injectable({ providedIn: 'root' })
 export class TTBonusEngineService {
-    /* injects */
+    /* varbs */
+    private _localVarbs: Map<string, number> = new Map();   //FIXME: allow more types? Use DefaultMap?
+    private _functions: Map<string, ScriptFunction> = new Map();    //FIXME: howto fill?
+    private _session: SessionBonus;
+
+    /* handlers */
+    private readonly _cmdHandler: Record<string, (args: string[]) => void> = {
+        bonus: (args) => this._computeBonus(args),
+        bonus2: (args) => this._computeBonus2(args),
+        bonus3: (args) => this._computeBonus3(args),
+        sc_start: (args) => this._computeStatusEffectFunc(args),
+        itemskill: (args) => this._computeItemSkill(args),
+        set: (args) => this._computeSet(args),
+        skill: (args) => this._computeSkill(args),
+        autobonus: (args) => this._computeAutobonus(args),
+        callfunc: (args) => this._computeCallFunc(args),
+        bonus_script: (args) => this._computeBonusScript(args),
+        bonus4: (args) => this._computeBonus4(args),
+        bonus5: (args) => this._computeBonus5(args),
+        autobonus2: (args) => this._computeAutobonus2(args),
+        autobonus3: (args) => this._computeAutobonus3(args),
+        autobonus4: (args) => this._computeAutobonus4(args),
+        sc_start4: (args) => this._computeStatusEffectFunc4(args),
+        skilleffect: (args) => this._computeSkillEffect(args),
+        sc_start2: (args) => this._computeStatusEffectFunc2(args)
+    }
+
+    /* debug */
+    private _unknownEle: Map<string, string[]> = new Map();
 
     constructor() {
         /* initialize canonical keys */
@@ -90,28 +166,69 @@ export class TTBonusEngineService {
         CANONICAL_KEYS['SC_DEXFOOD'] = 'dex';
         CANONICAL_KEYS['SC_LUKFOOD'] = 'luk';
         CANONICAL_KEYS['SC_INCATKRATE'] = 'scIncAtkRate';
-        CANONICAL_KEYS['SC_INCASPDRATE'] = 'aspdRate'
+        CANONICAL_KEYS['SC_INCASPDRATE'] = 'aspdRate';
+
+        /* save session */
+        this._session = emptyBonus;
+
+        /* create functions static functions */ 
+        this._functions.set('rand', rand);
     }
 
     /*** public functions ***/
-    public applyBonus(session: SessionBonus, bonus: string, subs: Partial<BonusSubstitution> = {}) {
-        let bonusPrepared = this._prepareBonus(bonus, subs);
+    public resetBonus(session: SessionBonus, equip: SessionEquip, baseStats: BaseStatsAs<number>) {
+        this._session = session;
+        /* create dyn. functions */
+        this._functions.set('isequipped', generateIsEquipped(equip));
+        this._functions.set('readparam', generateReadParam(baseStats));
+    }
+    public applyBonus(bonus: string, opts: BonusOptions = {}) {
+        let bonusPrepared = this._prepareBonus(bonus, opts.customSubs);
         let parser = new TTItemScriptParser(bonusPrepared);
         let bonusAST = parser.parse();
-        console.log(bonusAST);
-        for (let node of bonusAST) {
+        // console.log(bonusPrepared);
+        // console.log(bonusAST);
+        /* clear data local varbs (only valid for one bonus script) */
+        this._localVarbs.clear();
+        this._functions.set('getrefine', generateGetRefine(opts.refine));
+        /* run script */
+        this._evaluateNodes(bonusAST);
+    }
+    // DEBUG
+    public getUnknownElements(): string[] {
+        const res: string[] = [];
+        for (const [type, eles] of this._unknownEle) {
+            res.push(`### ${type} ###`);
+            res.push(...eles);
+        }
+        return res;
+    }
+
+    /*** private functions ***/
+    private _addUnknownEle(type: string, ele: string) {
+        const group = this._unknownEle.get(type);
+        if (!group) {
+            this._unknownEle.set(type, []);
+        }
+        else if (!group.includes(ele)) {
+            group.push(ele);
+        }
+    }
+    private _evaluateNodes(nodes: ASTNode[]) {
+        for (let node of nodes) {
             switch (node.type) {
                 case 'Command':
-                    // this._computeCommand(node.command, node.args, session);
+                    this._computeCommand(node.command, node.args);
+                    break;
+                case 'Assignment':
+                    this._computeAssignment(node.name, node.value);
                     break;
                 case 'IfStatement':
-                    // this._computeIfStatement(node);
+                    this._computeIfStatement(node);
                     break;
             }
         }
     }
-
-    /*** private functions ***/
     private _prepareBonus(bonus: string, subs: Partial<BonusSubstitution> = {}): string {
         /* remove escaped " */
         let s = bonus.replace(/"/g, '');
@@ -133,118 +250,142 @@ export class TTBonusEngineService {
         }
 
         /* replace variables */
-        
+        s = s.replace(VARB_REG, (_, name: string) => {
+            return `${VARB_PREFIX}${name.charAt(0).toUpperCase()}${name.slice(1)}`;
+        });
+
 
         return s;
     }
 
     private _computeIfStatement(ifNode: IfNode) {
-        console.log(ifNode.condition);
-    }
+        const condition = this._resolveExpr(ifNode.condition);
 
-    private _computeCommand(command: string, args: string[], session: SessionBonus) {
-        if (command.startsWith('bonus')) {
-            if (args.length >= 1) {
-                this._computeCommandBonus(command, args, session);
-            }
+        if (this._isTruthy(condition)) {
+            this._evaluateNodes(ifNode.then);
         }
-        else if (command === 'sc_start') {
-            this._computeStatusEffectFunc(args, session);
+        else if (ifNode.elseIf) {
+            this._computeIfStatement(ifNode.elseIf);
         }
-        else {
-            console.log("Unknown command", command, args);
+        else if (ifNode.else) {
+            this._evaluateNodes(ifNode.else);
         }
     }
 
-    private _computeCommandBonus(command: string, args: string[], session: SessionBonus) {
-        /* try to find bonus */
-        let bonusTypeRaw = args.shift()!;
-        let bonusType = transformKey(bonusTypeRaw);
+    private _computeCommand(command: string, args: string[]) {
+        if (COMMAND_TO_INGORE.has(command)) return;
+
+        const handler = this._cmdHandler[command];
+        if (!handler) {
+            this._addUnknownEle('command', command);
+            throw new Error(`Unknown command ${command}`);
+        }
+
+        handler(args);
+    }
+
+    private _computeAssignment(name: string, value: string) {
+        const result = this._resolveExpr(value) as number;
+        this._localVarbs.set(name, result);
+    }
+
+    private _computeBonus(args: string[]) {
+        // FIXME: check args length
+        let bonusType = transformKey(args[0]);
+        let valRaw = args[1];
 
         /* bonus with flags */
         if (BONUS_FLAGS.has(bonusType)) {
-            session.flags[bonusType] = true;
+            this._session.flags[bonusType] = true;
             return;
         }
 
-        /* bonus2 */
-        if (command === "bonus2") {
-            /** 
-             * format
-             * bonus2 <effect>, <effectType>, <value>
-            */
-            if (args.length < 2) {
-                console.log('Invalud BONUS2 script', bonusType, args);
-                return;
-            }
-            const key = args.shift()!;
-            /* get value */
-            let value: number;
-            if (args.length > 1) {
-                /* complex value */
-                value = execFormula(args);
-            }
-            else {
-                value = Number(args[0]);
-            }
-
-            /* check if bonusType is present in session */
-            if (bonusType in session) {
-                const map = (session[bonusType] as DefaultMap<any, number>);
-                map.set(key, map.get(key) + value);
-                return;
-            }
-            else {
-                console.log('Unknown bonus type', bonusType, args);
-                return;
-            }
-
-        }
-        /* bonus2 / bonus3 */
-        if (command === "bonus3") {
-            console.log("Bonus2/Bonus3 not supported yet", command, args);
-            return;
-        }
-
-        /* numeric values */
-        let val: number;
-        if (args.length > 1) {
-            /* complex value with a formula */
-            val = execFormula(args);
-            val = Math.round(val);
-            // FIXME: check for failures?
-        }
-        else {
-            val = Number(args[0]);
-        }
+        /* with value */
+        const val = this._resolveExpr(valRaw) as number;
 
         if (BONUS_HIGHEST_ONLY.has(bonusType)) {
-            session.stats[bonusType] = Math.max(session.stats[bonusType] || 0, val);
+            this._session.stats[bonusType] = Math.max(this._session.stats[bonusType] || 0, val);
         }
         else if (BONUS_SPECIAL.has(bonusType)) {
-            /* we lowercase all values */
+            /* we lowercase all initial chars of the bonus */
             switch (bonusType) {
                 case "allStats":
-                    session.stats.str += val;
-                    session.stats.agi += val;
-                    session.stats.dex += val;
-                    session.stats.int += val;
-                    session.stats.vit += val;
-                    session.stats.luk += val;
+                    this._session.stats.str += val;
+                    this._session.stats.agi += val;
+                    this._session.stats.dex += val;
+                    this._session.stats.int += val;
+                    this._session.stats.vit += val;
+                    this._session.stats.luk += val;
                     break;
                 default:
                     console.log("Special bonus type not implemented", bonusType, args);
             }
         }
-        else if (bonusType in session.stats) {
-            session.stats[bonusType] += val;
+        else if (bonusType in this._session.stats) {
+            this._session.stats[bonusType] += val;
         }
         else {
-            console.log("Unknown bonus type", bonusType, args);
+            this._addUnknownEle('bonus', bonusType);
+            throw new Error(`Unknown bonus type ${bonusType} with ${args}`);
         }
     }
 
-    private _computeStatusEffectFunc(args: string[], session: SessionBonus) {
+    private _computeBonus2(args: string[]) {
+        let [bonusTypeRaw, key, valRaw] = args;
+        const bonusType = transformKey(bonusTypeRaw);
+
+        //FIXME: check for args length
+        let value = this._resolveExpr(valRaw) as number;
+
+        /* check if bonusType is present in session */
+        if (bonusType in this._session) {
+            const map = (this._session[bonusType] as DefaultMap<any, number>);
+            map.set(key, map.get(key) + value);
+            return;
+        }
+        else {
+            this._addUnknownEle('bonus2', bonusType);
+            throw new Error(`Unknown bonus type ${bonusType} with ${args}`);
+        }
+    }
+
+    private _computeBonus3(args: string[]) {
+        console.log('Bonus3', args);
+    }
+
+    private _computeBonus4(args: string[]) {
+        console.log('Bonus4', args);
+    }
+
+    private _computeBonus5(args: string[]) {
+        console.log('Bonus5', args);
+    }
+
+    private _computeAutobonus2(args: string[]) {
+        console.log('Autobonus2', args);
+    }
+
+    private _computeAutobonus3(args: string[]) {
+        console.log('Autobonus3', args);
+    }
+
+    private _computeAutobonus4(args: string[]) {
+        console.log('Autobonus4', args);
+    }
+
+    private _computeStatusEffectFunc2(args: string[]) {
+        console.log('SC_START2', args);
+    }
+
+    private _computeStatusEffectFunc4(args: string[]) {
+        console.log('SC_START4', args);
+    }
+
+    private _computeSkillEffect(args: string[]) {
+        console.log('Skill effect', args);
+    }
+
+    private _computeStatusEffectFunc(args: string[]) {
         if (args.length < 3) {
             console.log('Invalud SC_START script');
             console.log(args);
@@ -264,22 +405,108 @@ export class TTBonusEngineService {
             case 'SC_LUKFOOD':
             case 'SC_INCATKRATE':
             case 'SC_INCASPDRATE':
-                session.stats[CANONICAL_KEYS[func]] += value;
+                this._session.stats[CANONICAL_KEYS[func]] += value;
                 break;
             /* others */
             case 'SC_ASPDPOTION0':
-                session.stats.aspdRate += 10;
+                this._session.stats.aspdRate += 10;
                 break;
             case 'SC_ASPDPOTION1':
-                session.stats.aspdRate += 15;
+                this._session.stats.aspdRate += 15;
                 break;
             case 'SC_ASPDPOTION2':
-                session.stats.aspdRate += 20;
+                this._session.stats.aspdRate += 20;
                 break;
             case 'SC_ASPDPOTION3':
-                session.stats.aspdRate += 25;
+                this._session.stats.aspdRate += 25;
             default:
-                console.log('Unknown SC_START function', args);
+                this._addUnknownEle('sc_start', func);
+            // throw new Error(`Unknown SC_START function ${func}`);
         }
+    }
+
+    // FIXME: implment me
+    private _computeItemSkill(args: string[]) {
+        console.log('Item skill', args);
+    }
+
+    // FIXME
+    private _computeSet(args: string[]) {
+        const [name, valRaw] = args;
+        // const value = this._resolveExpr(valRaw);
+        console.log('Set ', name, ' with ', valRaw);
+    }
+    // FIXME: add skills to list of available skills?
+    private _computeSkill(args: string[]) {
+        console.log('Skill', args);
+    }
+    // FIXME: add autobonus to session and allow user to manuelly enable it?
+    private _computeAutobonus(args: string[]) {
+        console.log('Autobonus', args);
+    }
+    // FIXME: sometimes its not a command
+    private _computeCallFunc(args: string[]) {
+        console.log('Callfunc', args);
+    }
+    // FIXME: this needs antoher AST parsing and handling
+    private _computeBonusScript(args: string[]) {
+        console.log('Bonus-Script', args);
+    }
+
+    // FIXME: return type as generic?
+    private _resolveExpr(expression: string): ScriptValue {
+        /* 1) return pure numbers directly */
+        const valAsNumber = Number(expression);
+        if (Number.isFinite(valAsNumber)) return valAsNumber;
+
+        expression = expression.replace(/ /g, '');
+
+        /* 2) look for function calls */    // FIXME
+        expression = expression.replace(/(\w+)\(([^)]*)\)/g, (_, name: string, argsRaw: string) => {
+            const fn = this._functions.get(name);
+            if (!fn) {
+                this._addUnknownEle('func', name);
+                throw new Error(`Unknown function: ${name}`);
+            }
+            const args = argsRaw
+                ? argsRaw.split(',').map(s => {
+                    try {
+                        return this._resolveExpr(s);
+                    }
+                    catch { }
+                    /* return value as string */
+                    return String(s);
+                })
+                : [];
+            return String(fn(...args));
+        });
+
+        /* 3) look for local varbs */
+        expression = expression.replace(VARB_POST_REG, (_, name) => {
+            return String(this._localVarbs.get(name) ?? 0);
+        });
+
+        /* 4) Only allow numbers and operators */
+        if (!/^([\d\s+\-*\/()%&|<>=!.]|true|false)+$/.test(expression)) {
+            throw new Error(`Unsafe expression: ${expression}`);
+        }
+
+        /* 5) (safe) eval expression */
+        console.log('Expr. to eval ', expression);
+        const result = Function(`"use strict"; return (${expression});`)();
+        return typeof result === 'boolean' ? result : Number(result);
+        // 2. Spezial-Behandlung für die Job-Hierarchie (Sniper/Archer)
+        // Wir transformieren "BaseClass == Job_Archer" in einen Funktionsaufruf.
+        // if (expression.includes("BaseClass")) {
+        //     expression = expression.replace(/BaseClass\s*==\s*([a-zA-Z_]\w*)/g, 'checkJob("$1")');
+        //     expression = expression.replace(/BaseClass\s*!=\s*([a-zA-Z_]\w*)/g, '!checkJob("$1")');
+        // }
+    }
+
+    private _isTruthy(val: ScriptValue): boolean {
+        if (typeof val === 'boolean') return val;
+        if (typeof val === 'number') return val !== 0;
+        if (typeof val === 'string') return val !== '';
+        return false;
     }
 }

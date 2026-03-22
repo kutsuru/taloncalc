@@ -8,7 +8,7 @@ export function createEmptySessionBonus(): SessionBonus {
         stats: {
             str: 0, agi: 0, vit: 0, int: 0, dex: 0, luk: 0,
             maxHP: 0, maxSP: 0, maxHPRate: 0, maxSPRate: 0,
-            hpRegenRate: 0, spRegenRate: 0, hpRecoveryRate: 0, spRecoveryRate: 0,
+            hpRegenRate: 0, spRegenRate: 0, hpRecovRate: 0, spRecovRate: 0,
             atk: 0, atk2: 0, atkRate: 0, baseAtk: 0,
             hit: 0, hitRate: 0, critical: 0, critRate: 0,
             aspd: 0, aspdRate: 0, longAtkRate: 0, critAtkRate: 0,

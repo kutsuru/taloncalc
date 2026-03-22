@@ -6,25 +6,18 @@
 <!-- main content -->
 <div class="drawer-content">
   <!-- build loader -->
-  <tt-card expanded="false">
+  <tt-card [expanded]="false">
     <header>Build Loader / Selector</header>
     FIX ME
   </tt-card>
 
   <!-- ###################### V3 START ###################### -->
   <!-- ####################### V3 END ####################### -->
-  <tt-card [expanded]="false">
-    <header>Debug</header>
-    <!-- {{se.totalStats()|json}}<br>
-    {{se.equip()|json}}<br>
-    {{se.refines()|json}}<br>
-    {{se.cards()|json}}<br>
-    {{se.itemCombos()|json}}<br> -->
-    {{se.bonus()|json}}<br>
-    <!-- {{se.foodsStats()|json}}<br> -->
-    <!-- {{se.foodsOther()|json}}<br> -->
-  </tt-card>
   <tt-card [expanded]="true">
+    <header>Debug</header>
+    <app-debug />
+  </tt-card>
+  <tt-card [expanded]="false">
     <header>Stats</header>
     <tt-stats-v3 />
   </tt-card>
@@ -32,7 +25,7 @@
     <header>Stats Info</header>
     <tt-stats-info-v3 />
   </tt-card>
-  <tt-card [expanded]="true">
+  <tt-card [expanded]="false">
     <header>Equipment</header>
     <tt-equip-v3 />
   </tt-card>

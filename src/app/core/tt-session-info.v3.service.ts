@@ -1,11 +1,10 @@
 /*** imports ***/
 import { computed, effect, inject, Injectable, Signal, signal, untracked, WritableSignal } from "@angular/core";
-import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, CardLocations, DBItemCombo, DBJob, DBSkill, FoodStatsNames, ItemLocations, RefineLocations, SessionBonus, SessionEquip, SkillBuff, WeaponTypeLeft } from "./models.v3";
+import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, DBItemCombo, DBJob, DBSkill, FoodStatsNames, RefineLocations, SessionBonus, SessionEquip, SkillBuff, WeaponTypeLeft } from "./models.v3";
 import { createEmptySessionBonus, SESSION_INFO_DEFAULT } from "./session-info-default";
+import { BonusSubstitution, TTBonusEngineService } from "./tt-bonus-engine.service";
 import { TTCoreService } from "./tt-core.service";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
-import { BonusSubstitution, TTBonusEngineService } from "./tt-bonus-engine.service";
-import { getBaseClass } from "./utils";
 
 /** Dependencies 
  * BaseStats        Pure-Stats without any bonus
@@ -30,7 +29,7 @@ type CardState = {
 };
 
 /*** definitons ***/
-const SESSION_EQUIP_DEFAULT: SessionEquip = {
+export const SESSION_EQUIP_DEFAULT: SessionEquip = {
     armor: 0,
     garment: 0,
     leftHand: 0,
@@ -50,7 +49,7 @@ const SESSION_EQUIP_DEFAULT: SessionEquip = {
 export class TTSessionInfoV3Service {
     /* injects */
     private readonly _core = inject(TTCoreServiceV3);
-    private readonly _bonusEngine = inject(TTBonusEngineService);
+    private readonly _bonusSession = inject(TTBonusEngineService);
 
     /* job data */
     jobClassName = signal('');
@@ -861,10 +860,11 @@ export class TTSessionInfoV3Service {
             }
         }
 
-        /* create base substituion obj */
+        /* create base substituion obj FIXME*/
         const bonusSubs: Partial<BonusSubstitution> = {
-            BaseClass: `"${getBaseClass(jobClass!)}"`   // FIXME: what if no job is selected
         }
+        /* reset bonus engine */
+        this._bonusSession.resetBonus(res, equip, baseStats);
 
         /* equip bonus */
         for (let equipSlot in equip) {
@@ -872,18 +872,23 @@ export class TTSessionInfoV3Service {
             let itemId = equip[equipSlot as keyof SessionEquip] as number;
             let item = this._core.itemDB.get(itemId);
             if (item && item.itemScript) {
-                this._bonusEngine.applyBonus(res, item.itemScript);
+                let refine = 0;
+                if (equipSlot in refines) refine = refines[equipSlot];
+                this._bonusSession.applyBonus(item.itemScript, { refine });
             }
         }
 
         /* card bonus */
         for (let cardSlot in cards) {
             const cardId = cards[cardSlot];
+            /* get refine of located equip */
+            let refine = 0;
+            if (cardSlot in refines) refine = refines[cardSlot];
             if (typeof cardId === 'number') {
                 /* single card */
                 const card = this._core.cardDB.get(cardId);
                 if (card && card.itemScript) {
-                    this._bonusEngine.applyBonus(res, card.itemScript);
+                    this._bonusSession.applyBonus(card.itemScript, { refine });
                 }
             }
             else {
@@ -891,15 +896,18 @@ export class TTSessionInfoV3Service {
                 for (const slotId of cardId as number[]) {
                     const card = this._core.cardDB.get(slotId);
                     if (card && card.itemScript) {
-                        this._bonusEngine.applyBonus(res, card.itemScript);
+                        this._bonusSession.applyBonus(card.itemScript, { refine });
                     }
                 }
             }
         }
 
         /* combo bonus */
+        // FIXME: refines for combos?
         for (const combo of combos) {
-            if (combo.effect) this._bonusEngine.applyBonus(res, combo.effect);
+            if (combo.effect) {
+                this._bonusSession.applyBonus(combo.effect);
+            }
         }
 
         /* foods */
@@ -909,7 +917,7 @@ export class TTSessionInfoV3Service {
             if (foodId > 0) {
                 const food = this._core.itemDB.get(foodId);
                 if (food && food.itemScript) {
-                    this._bonusEngine.applyBonus(res, food.itemScript);
+                    this._bonusSession.applyBonus(food.itemScript);
                 }
             }
         }
@@ -917,7 +925,7 @@ export class TTSessionInfoV3Service {
             if (foodId > 0) {
                 const food = this._core.itemDB.get(foodId);
                 if (food && food.itemScript) {
-                    this._bonusEngine.applyBonus(res, food.itemScript);
+                    this._bonusSession.applyBonus(food.itemScript);
                 }
             }
         }
@@ -932,8 +940,10 @@ export class TTSessionInfoV3Service {
                 else {
                     lvl = buff.value;
                 }
-                this._bonusEngine.applyBonus(res, buff.itemScript, {
-                    subSkillLvl: lvl
+                this._bonusSession.applyBonus(buff.itemScript, {
+                    customSubs: {
+                        subSkillLvl: lvl
+                    }
                 })
             }
         }
@@ -947,7 +957,7 @@ export class TTSessionInfoV3Service {
         if (speedPot > 0) {
             const item = this._core.itemDB.get(speedPot);
             if (item && item.itemScript) {
-                this._bonusEngine.applyBonus(res, item.itemScript);
+                this._bonusSession.applyBonus(item.itemScript);
             }
         }
 
