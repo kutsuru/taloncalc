@@ -28,7 +28,7 @@ export function createEmptySessionBonus(): SessionBonus {
         addRace: new DefaultMap(0), addEle: new DefaultMap(0), addSize: new DefaultMap(0), addClass: new DefaultMap(0), addRace2: new DefaultMap(0),
         magicAddRace: new DefaultMap(0), magicAddRace2: new DefaultMap(0), magicAddEle: new DefaultMap(0), magicAddSize: new DefaultMap(0), magicAddClass: new DefaultMap(0), magicAtkEle: new DefaultMap(0),
         subRace: new DefaultMap(0), subEle: new DefaultMap(0), subSize: new DefaultMap(0), subClass: new DefaultMap(0), subRace2: new DefaultMap(0),
-        ignoreDefRace: {}, ignoreDefClass: {}, ignoreMdefRace: {}, ignoreMdefClass: {},
+        ignoreDefRace: {}, ignoreDefClass: {}, ignoreMdefRace: {}, ignoreMdefClass: {}, ignoreDefRaceRate: new DefaultMap(0),
         skillAtk: {}, skillUseSP: {}, skillCooldown: {},
         skillFixedCast: {}, skillVariableCast: {},
         // falgs will start empty

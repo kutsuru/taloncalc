@@ -166,7 +166,7 @@ export class TTSessionInfoV3Service {
             if (this._core.$loaded()) {
                 const allJobs = this._core.allJobNames;
                 // this.jobClassName.set(allJobs[0]);
-                this.jobClassName.set('Clown');   // FIXME: debug
+                this.jobClassName.set('Lord Knight');   // FIXME: debug
             }
         })
 
@@ -844,6 +844,7 @@ export class TTSessionInfoV3Service {
         const foodsStat = this._foodsStatsState();
         const foodsOther = this._foodsOtherState();
         const speedPot = this.speedPotion();
+        // FIXME: how to handle getskilllv of active skills? not needed?
 
         // job level stats bonus
         if (jobClass) {
@@ -864,7 +865,7 @@ export class TTSessionInfoV3Service {
         const bonusSubs: Partial<BonusSubstitution> = {
         }
         /* reset bonus engine */
-        this._bonusSession.resetBonus(res, equip, baseStats);
+        this._bonusSession.resetBonus(res, equip, baseStats, [...skillsBuffs, ...skillsPassive]);
 
         /* equip bonus */
         for (let equipSlot in equip) {

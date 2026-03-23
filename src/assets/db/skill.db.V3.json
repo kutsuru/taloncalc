@@ -30,7 +30,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0xfffffff",
-    "skillId": "NO_skillId"
+    "enum": "NO_enum"
   },
   "First Aid": {
     "id": 1,
@@ -63,7 +63,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "NV_FIRSTAID"
+    "enum": "NV_FIRSTAID"
   },
   "Play Dead": {
     "id": 2,
@@ -96,7 +96,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "NV_TRICKDEAD"
+    "enum": "NV_TRICKDEAD"
   },
   "Sword Mastery": {
     "id": 3,
@@ -127,7 +127,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x8000e0b",
-    "skillId": "SM_SWORD"
+    "enum": "SM_SWORD"
   },
   "Two-Hand Sword Mastery": {
     "id": 4,
@@ -158,7 +158,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0xe03",
-    "skillId": "SM_TWOHAND"
+    "enum": "SM_TWOHAND"
   },
   "Increased HP Recovery": {
     "id": 5,
@@ -189,7 +189,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0xe0b",
-    "skillId": "SM_RECOVERY"
+    "enum": "SM_RECOVERY"
   },
   "Bash": {
     "id": 6,
@@ -231,7 +231,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000e0b",
-    "skillId": "SM_BASH"
+    "enum": "SM_BASH"
   },
   "Magnum Break": {
     "id": 7,
@@ -264,7 +264,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000e0b",
-    "skillId": "SM_MAGNUM"
+    "enum": "SM_MAGNUM"
   },
   "Provoke": {
     "id": 8,
@@ -306,7 +306,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SM_PROVOKE"
+    "enum": "SM_PROVOKE"
   },
   "Endure": {
     "id": 9,
@@ -339,7 +339,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0xe0b",
-    "skillId": "SM_ENDURE"
+    "enum": "SM_ENDURE"
   },
   "HP Recovery While Moving": {
     "id": 10,
@@ -370,7 +370,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SM_MOVINGRECOVERY"
+    "enum": "SM_MOVINGRECOVERY"
   },
   "Fatal Blow": {
     "id": 11,
@@ -401,7 +401,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SM_FATALBLOW"
+    "enum": "SM_FATALBLOW"
   },
   "Auto Berserk": {
     "id": 12,
@@ -434,7 +434,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0xe03",
-    "skillId": "SM_AUTOBERSERK"
+    "enum": "SM_AUTOBERSERK"
   },
   "Double Attack": {
     "id": 13,
@@ -465,7 +465,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0xe00000b",
-    "skillId": "TF_DOUBLE"
+    "enum": "TF_DOUBLE"
   },
   "Improve Dodge": {
     "id": 14,
@@ -496,7 +496,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0xe00000b",
-    "skillId": "TF_MISS"
+    "enum": "TF_MISS"
   },
   "Steal": {
     "id": 15,
@@ -529,7 +529,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "TF_STEAL"
+    "enum": "TF_STEAL"
   },
   "Hiding": {
     "id": 16,
@@ -562,7 +562,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "TF_HIDING"
+    "enum": "TF_HIDING"
   },
   "Envenom": {
     "id": 17,
@@ -595,7 +595,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0xe00000b",
-    "skillId": "TF_POISON"
+    "enum": "TF_POISON"
   },
   "Detoxify": {
     "id": 18,
@@ -628,7 +628,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "TF_DETOXIFY"
+    "enum": "TF_DETOXIFY"
   },
   "Sprinkle Sand": {
     "id": 19,
@@ -661,7 +661,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0xe000003",
-    "skillId": "TF_SPRINKLESAND"
+    "enum": "TF_SPRINKLESAND"
   },
   "Back Slide": {
     "id": 20,
@@ -694,7 +694,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "TF_BACKSLIDING"
+    "enum": "TF_BACKSLIDING"
   },
   "Find Stone": {
     "id": 21,
@@ -727,7 +727,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "TF_PICKSTONE"
+    "enum": "TF_PICKSTONE"
   },
   "Throw Stone": {
     "id": 22,
@@ -760,7 +760,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0xe000003",
-    "skillId": "TF_THROWSTONE"
+    "enum": "TF_THROWSTONE"
   },
   "Divine Protection": {
     "id": 23,
@@ -791,7 +791,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x38080b",
-    "skillId": "AL_DP"
+    "enum": "AL_DP"
   },
   "Demon Bane": {
     "id": 24,
@@ -822,7 +822,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x38080b",
-    "skillId": "AL_DEMONBANE"
+    "enum": "AL_DEMONBANE"
   },
   "Heal": {
     "id": 25,
@@ -864,7 +864,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x838080b",
-    "skillId": "AL_HEAL"
+    "enum": "AL_HEAL"
   },
   "Cure": {
     "id": 26,
@@ -897,7 +897,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "AL_CURE"
+    "enum": "AL_CURE"
   },
   "Increase AGI": {
     "id": 27,
@@ -941,7 +941,7 @@
     "type": "list",
     "job": "0x0",
     "itemScript": "bonus bAgi,2+subSkillLvl",
-    "skillId": "AL_INCAGI"
+    "enum": "AL_INCAGI"
   },
   "Decrease AGI": {
     "id": 28,
@@ -983,7 +983,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "AL_DECAGI"
+    "enum": "AL_DECAGI"
   },
   "Signum Crusis": {
     "id": 29,
@@ -1014,7 +1014,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "AL_CRUCIS"
+    "enum": "AL_CRUCIS"
   },
   "Angelus": {
     "id": 30,
@@ -1058,7 +1058,7 @@
     "type": "list",
     "job": "0x0",
     "itemScript": "bonus bDef2Rate,subSkillLvl*5",
-    "skillId": "AL_ANGELUS"
+    "enum": "AL_ANGELUS"
   },
   "Blessing": {
     "id": 31,
@@ -1102,7 +1102,7 @@
     "type": "list",
     "job": "0x0",
     "itemScript": "bonus bStr,subSkillLvl; bonus bDex,subSkillLvl; bonus bInt,subSkillLvl",
-    "skillId": "AL_BLESSING"
+    "enum": "AL_BLESSING"
   },
   "Pneuma": {
     "id": 32,
@@ -1135,7 +1135,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "AL_PNEUMA"
+    "enum": "AL_PNEUMA"
   },
   "Aqua Benedicta": {
     "id": 33,
@@ -1168,7 +1168,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "AL_HOLYWATER"
+    "enum": "AL_HOLYWATER"
   },
   "Ruwach": {
     "id": 34,
@@ -1201,7 +1201,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "AL_RUWACH"
+    "enum": "AL_RUWACH"
   },
   "Teleport": {
     "id": 35,
@@ -1235,7 +1235,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "AL_TELEPORT"
+    "enum": "AL_TELEPORT"
   },
   "Warp Portal": {
     "id": 36,
@@ -1271,7 +1271,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "AL_WARP"
+    "enum": "AL_WARP"
   },
   "Holy Light": {
     "id": 37,
@@ -1304,7 +1304,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8380003",
-    "skillId": "AL_HOLYLIGHT"
+    "enum": "AL_HOLYLIGHT"
   },
   "Owl's Eye": {
     "id": 38,
@@ -1335,7 +1335,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x7800b",
-    "skillId": "AC_OWL"
+    "enum": "AC_OWL"
   },
   "Vulture's Eye": {
     "id": 39,
@@ -1366,7 +1366,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x807800b",
-    "skillId": "AC_VULTURE"
+    "enum": "AC_VULTURE"
   },
   "Double Strafe": {
     "id": 40,
@@ -1399,7 +1399,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8078003",
-    "skillId": "AC_DOUBLE"
+    "enum": "AC_DOUBLE"
   },
   "Arrow Shower": {
     "id": 41,
@@ -1432,7 +1432,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8078003",
-    "skillId": "AC_SHOWER"
+    "enum": "AC_SHOWER"
   },
   "Improve Concentration": {
     "id": 42,
@@ -1474,7 +1474,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x7800b",
-    "skillId": "AC_CONCENTRATION"
+    "enum": "AC_CONCENTRATION"
   },
   "Arrow Crafting": {
     "id": 43,
@@ -1507,7 +1507,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "AC_MAKINGARROW"
+    "enum": "AC_MAKINGARROW"
   },
   "Charge Arrow": {
     "id": 44,
@@ -1540,7 +1540,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8078003",
-    "skillId": "AC_CHARGEARROW"
+    "enum": "AC_CHARGEARROW"
   },
   "Increased SP Recovery": {
     "id": 45,
@@ -1571,7 +1571,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x107003",
-    "skillId": "MG_SRECOVERY"
+    "enum": "MG_SRECOVERY"
   },
   "Napalm Beat": {
     "id": 46,
@@ -1613,7 +1613,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x800700b",
-    "skillId": "MG_NAPALMBEAT"
+    "enum": "MG_NAPALMBEAT"
   },
   "Soul Strike": {
     "id": 47,
@@ -1655,7 +1655,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x800700b",
-    "skillId": "MG_SOULSTRIKE"
+    "enum": "MG_SOULSTRIKE"
   },
   "Safety Wall": {
     "id": 48,
@@ -1697,7 +1697,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "MG_SAFETYWALL"
+    "enum": "MG_SAFETYWALL"
   },
   "Stone Curse": {
     "id": 49,
@@ -1739,7 +1739,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "MG_STONECURSE"
+    "enum": "MG_STONECURSE"
   },
   "Sight": {
     "id": 50,
@@ -1772,7 +1772,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "MG_SIGHT"
+    "enum": "MG_SIGHT"
   },
   "Fire Bolt": {
     "id": 51,
@@ -1814,7 +1814,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x800700b",
-    "skillId": "MG_FIREBOLT"
+    "enum": "MG_FIREBOLT"
   },
   "Fire Ball": {
     "id": 52,
@@ -1847,7 +1847,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x800700b",
-    "skillId": "MG_FIREBALL"
+    "enum": "MG_FIREBALL"
   },
   "Fire Wall": {
     "id": 53,
@@ -1880,7 +1880,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x800700b",
-    "skillId": "MG_FIREWALL"
+    "enum": "MG_FIREWALL"
   },
   "Cold Bolt": {
     "id": 54,
@@ -1922,7 +1922,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x800700b",
-    "skillId": "MG_COLDBOLT"
+    "enum": "MG_COLDBOLT"
   },
   "Frost Diver": {
     "id": 55,
@@ -1964,7 +1964,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x800700b",
-    "skillId": "MG_FROSTDIVER"
+    "enum": "MG_FROSTDIVER"
   },
   "Lightning Bolt": {
     "id": 56,
@@ -2006,7 +2006,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x800700b",
-    "skillId": "MG_LIGHTNINGBOLT"
+    "enum": "MG_LIGHTNINGBOLT"
   },
   "Thunder Storm": {
     "id": 57,
@@ -2048,7 +2048,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x800700b",
-    "skillId": "MG_THUNDERSTORM"
+    "enum": "MG_THUNDERSTORM"
   },
   "Energy Coat": {
     "id": 58,
@@ -2081,7 +2081,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x7003",
-    "skillId": "MG_ENERGYCOAT"
+    "enum": "MG_ENERGYCOAT"
   },
   "Enlarge Weight Limit": {
     "id": 59,
@@ -2112,7 +2112,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "MC_INCCARRY"
+    "enum": "MC_INCCARRY"
   },
   "Discount": {
     "id": 60,
@@ -2143,7 +2143,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "MC_DISCOUNT"
+    "enum": "MC_DISCOUNT"
   },
   "Overcharge": {
     "id": 61,
@@ -2174,7 +2174,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "MC_OVERCHARGE"
+    "enum": "MC_OVERCHARGE"
   },
   "Pushcart": {
     "id": 62,
@@ -2205,7 +2205,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "MC_PUSHCART"
+    "enum": "MC_PUSHCART"
   },
   "Item Appraisal": {
     "id": 63,
@@ -2238,7 +2238,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "MC_IDENTIFY"
+    "enum": "MC_IDENTIFY"
   },
   "Vending": {
     "id": 64,
@@ -2271,7 +2271,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "MC_VENDING"
+    "enum": "MC_VENDING"
   },
   "Mammonite": {
     "id": 65,
@@ -2304,7 +2304,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x9c0000b",
-    "skillId": "MC_MAMMONITE"
+    "enum": "MC_MAMMONITE"
   },
   "Cart Revolution": {
     "id": 66,
@@ -2337,7 +2337,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x1c00003",
-    "skillId": "MC_CARTREVOLUTION"
+    "enum": "MC_CARTREVOLUTION"
   },
   "Change Cart": {
     "id": 67,
@@ -2370,7 +2370,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "MC_CHANGECART"
+    "enum": "MC_CHANGECART"
   },
   "Crazy Uproar": {
     "id": 68,
@@ -2403,7 +2403,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x1c00003",
-    "skillId": "MC_LOUD"
+    "enum": "MC_LOUD"
   },
   "Spear Mastery": {
     "id": 69,
@@ -2434,7 +2434,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0xc03",
-    "skillId": "KN_SPEARMASTERY"
+    "enum": "KN_SPEARMASTERY"
   },
   "Pierce": {
     "id": 70,
@@ -2467,7 +2467,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x403",
-    "skillId": "KN_PIERCE"
+    "enum": "KN_PIERCE"
   },
   "Spear Stab": {
     "id": 71,
@@ -2500,7 +2500,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x403",
-    "skillId": "KN_SPEARSTAB"
+    "enum": "KN_SPEARSTAB"
   },
   "Spear Boomerang": {
     "id": 72,
@@ -2533,7 +2533,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x403",
-    "skillId": "KN_SPEARBOOMERANG"
+    "enum": "KN_SPEARBOOMERANG"
   },
   "Brandish Spear": {
     "id": 73,
@@ -2566,7 +2566,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x403",
-    "skillId": "KN_BRANDISHSPEAR"
+    "enum": "KN_BRANDISHSPEAR"
   },
   "Twohand Quicken": {
     "id": 74,
@@ -2608,7 +2608,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x403",
-    "skillId": "KN_TWOHANDQUICKEN"
+    "enum": "KN_TWOHANDQUICKEN"
   },
   "Auto Counter": {
     "id": 75,
@@ -2641,7 +2641,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "KN_AUTOCOUNTER"
+    "enum": "KN_AUTOCOUNTER"
   },
   "Bowling Bash": {
     "id": 76,
@@ -2683,7 +2683,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000403",
-    "skillId": "KN_BOWLINGBASH"
+    "enum": "KN_BOWLINGBASH"
   },
   "Peco Peco Ride": {
     "id": 77,
@@ -2714,7 +2714,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "KN_RIDING"
+    "enum": "KN_RIDING"
   },
   "Cavalier Mastery": {
     "id": 78,
@@ -2745,7 +2745,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0xc03",
-    "skillId": "KN_CAVALIERMASTERY"
+    "enum": "KN_CAVALIERMASTERY"
   },
   "Right-Hand Mastery": {
     "id": 79,
@@ -2776,7 +2776,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x4000003",
-    "skillId": "AS_RIGHT"
+    "enum": "AS_RIGHT"
   },
   "Left-Hand Mastery": {
     "id": 80,
@@ -2807,7 +2807,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x4000003",
-    "skillId": "AS_LEFT"
+    "enum": "AS_LEFT"
   },
   "Katar Mastery": {
     "id": 81,
@@ -2838,7 +2838,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x4000003",
-    "skillId": "AS_KATAR"
+    "enum": "AS_KATAR"
   },
   "Cloaking [Active]": {
     "id": 82,
@@ -2871,7 +2871,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x4000003",
-    "skillId": "AS_CLOAKING"
+    "enum": "AS_CLOAKING"
   },
   "Sonic Blow": {
     "id": 83,
@@ -2913,7 +2913,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x4000003",
-    "skillId": "AS_SONICBLOW"
+    "enum": "AS_SONICBLOW"
   },
   "Grimtooth": {
     "id": 84,
@@ -2946,7 +2946,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x4000003",
-    "skillId": "AS_GRIMTOOTH"
+    "enum": "AS_GRIMTOOTH"
   },
   "Enchant Poison": {
     "id": 85,
@@ -2979,7 +2979,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "AS_ENCHANTPOISON"
+    "enum": "AS_ENCHANTPOISON"
   },
   "Poison React [Counter]": {
     "id": 86,
@@ -3021,7 +3021,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x4000003",
-    "skillId": "AS_POISONREACT"
+    "enum": "AS_POISONREACT"
   },
   "Venom Dust": {
     "id": 87,
@@ -3054,7 +3054,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "AS_VENOMDUST"
+    "enum": "AS_VENOMDUST"
   },
   "Venom Splasher": {
     "id": 88,
@@ -3096,7 +3096,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0xc000003",
-    "skillId": "AS_SPLASHER"
+    "enum": "AS_SPLASHER"
   },
   "Mace Mastery": {
     "id": 89,
@@ -3127,7 +3127,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x100003",
-    "skillId": "PR_MACEMASTERY"
+    "enum": "PR_MACEMASTERY"
   },
   "Impositio Manus": {
     "id": 90,
@@ -3165,7 +3165,7 @@
     "isBuff": true,
     "type": "list",
     "job": "0x0",
-    "skillId": "PR_IMPOSITIO"
+    "enum": "PR_IMPOSITIO"
   },
   "Suffragium": {
     "id": 91,
@@ -3200,7 +3200,7 @@
     "type": "list",
     "job": "0x0",
     "itemScript": "bonus bCastrate,-15*subSkillLvl",
-    "skillId": "PR_SUFFRAGIUM"
+    "enum": "PR_SUFFRAGIUM"
   },
   "Aspersio": {
     "id": 92,
@@ -3237,7 +3237,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "PR_ASPERSIO"
+    "enum": "PR_ASPERSIO"
   },
   "Benedictio Sanctissimi Sacramenti": {
     "id": 93,
@@ -3268,7 +3268,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "PR_BENEDICTIO"
+    "enum": "PR_BENEDICTIO"
   },
   "Sanctuary": {
     "id": 94,
@@ -3310,7 +3310,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x100003",
-    "skillId": "PR_SANCTUARY"
+    "enum": "PR_SANCTUARY"
   },
   "Status Recovery": {
     "id": 95,
@@ -3343,7 +3343,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "PR_STRECOVERY"
+    "enum": "PR_STRECOVERY"
   },
   "Slow Poison": {
     "id": 96,
@@ -3379,7 +3379,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "PR_SLOWPOISON"
+    "enum": "PR_SLOWPOISON"
   },
   "Resurrection": {
     "id": 97,
@@ -3412,7 +3412,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8100003",
-    "skillId": "ALL_RESURRECTION"
+    "enum": "ALL_RESURRECTION"
   },
   "Kyrie Eleison": {
     "id": 98,
@@ -3454,7 +3454,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "PR_KYRIE"
+    "enum": "PR_KYRIE"
   },
   "Magnificat": {
     "id": 99,
@@ -3487,7 +3487,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "PR_MAGNIFICAT"
+    "enum": "PR_MAGNIFICAT"
   },
   "Gloria": {
     "id": 100,
@@ -3522,7 +3522,7 @@
     "type": "check",
     "job": "0x0",
     "itemScript": "bonus bLuk,30;",
-    "skillId": "PR_GLORIA"
+    "enum": "PR_GLORIA"
   },
   "Lex Divina": {
     "id": 101,
@@ -3564,7 +3564,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "PR_LEXDIVINA"
+    "enum": "PR_LEXDIVINA"
   },
   "Turn Undead": {
     "id": 102,
@@ -3597,7 +3597,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8100003",
-    "skillId": "PR_TURNUNDEAD"
+    "enum": "PR_TURNUNDEAD"
   },
   "Lex Aeterna": {
     "id": 103,
@@ -3630,7 +3630,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "PR_LEXAETERNA"
+    "enum": "PR_LEXAETERNA"
   },
   "Magnus Exorcismus": {
     "id": 104,
@@ -3672,7 +3672,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8100003",
-    "skillId": "PR_MAGNUS"
+    "enum": "PR_MAGNUS"
   },
   "Skid Trap": {
     "id": 105,
@@ -3705,7 +3705,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "HT_SKIDTRAP"
+    "enum": "HT_SKIDTRAP"
   },
   "Land Mine": {
     "id": 106,
@@ -3738,7 +3738,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8010003",
-    "skillId": "HT_LANDMINE"
+    "enum": "HT_LANDMINE"
   },
   "Ankle Snare": {
     "id": 107,
@@ -3771,7 +3771,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "HT_ANKLESNARE"
+    "enum": "HT_ANKLESNARE"
   },
   "Flasher": {
     "id": 108,
@@ -3804,7 +3804,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "HT_FLASHER"
+    "enum": "HT_FLASHER"
   },
   "Shockwave Trap": {
     "id": 109,
@@ -3837,7 +3837,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "HT_SHOCKWAVE"
+    "enum": "HT_SHOCKWAVE"
   },
   "Sandman": {
     "id": 110,
@@ -3870,7 +3870,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "HT_SANDMAN"
+    "enum": "HT_SANDMAN"
   },
   "Freezing Trap": {
     "id": 111,
@@ -3903,7 +3903,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8010003",
-    "skillId": "HT_FREEZINGTRAP"
+    "enum": "HT_FREEZINGTRAP"
   },
   "Blast Mine": {
     "id": 112,
@@ -3936,7 +3936,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8010003",
-    "skillId": "HT_BLASTMINE"
+    "enum": "HT_BLASTMINE"
   },
   "Claymore Trap": {
     "id": 113,
@@ -3969,7 +3969,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8010003",
-    "skillId": "HT_CLAYMORETRAP"
+    "enum": "HT_CLAYMORETRAP"
   },
   "Remove Trap": {
     "id": 114,
@@ -4002,7 +4002,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "HT_REMOVETRAP"
+    "enum": "HT_REMOVETRAP"
   },
   "Talkie Box": {
     "id": 115,
@@ -4035,7 +4035,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "HT_TALKIEBOX"
+    "enum": "HT_TALKIEBOX"
   },
   "Beast Bane": {
     "id": 116,
@@ -4066,7 +4066,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x10003",
-    "skillId": "HT_BEASTBANE"
+    "enum": "HT_BEASTBANE"
   },
   "Falconry Mastery": {
     "id": 117,
@@ -4097,7 +4097,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "HT_FALCON"
+    "enum": "HT_FALCON"
   },
   "Blitz Beat": {
     "id": 118,
@@ -4134,7 +4134,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x10003",
-    "skillId": "HT_BLITZBEAT"
+    "enum": "HT_BLITZBEAT"
   },
   "Steel Crow": {
     "id": 119,
@@ -4165,7 +4165,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x10003",
-    "skillId": "HT_STEELCROW"
+    "enum": "HT_STEELCROW"
   },
   "Detect": {
     "id": 120,
@@ -4198,7 +4198,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "HT_DETECTING"
+    "enum": "HT_DETECTING"
   },
   "Spring Trap": {
     "id": 121,
@@ -4231,7 +4231,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "HT_SPRINGTRAP"
+    "enum": "HT_SPRINGTRAP"
   },
   "Fire Pillar": {
     "id": 122,
@@ -4264,7 +4264,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8002003",
-    "skillId": "WZ_FIREPILLAR"
+    "enum": "WZ_FIREPILLAR"
   },
   "Monster Property": {
     "id": 123,
@@ -4297,7 +4297,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "WZ_ESTIMATION"
+    "enum": "WZ_ESTIMATION"
   },
   "Sightrasher": {
     "id": 124,
@@ -4339,7 +4339,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8002003",
-    "skillId": "WZ_SIGHTRASHER"
+    "enum": "WZ_SIGHTRASHER"
   },
   "Meteor Storm": {
     "id": 125,
@@ -4381,7 +4381,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8002003",
-    "skillId": "WZ_METEOR"
+    "enum": "WZ_METEOR"
   },
   "Jupitel Thunder": {
     "id": 126,
@@ -4423,7 +4423,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8002003",
-    "skillId": "WZ_JUPITEL"
+    "enum": "WZ_JUPITEL"
   },
   "Lord of Vermillion": {
     "id": 127,
@@ -4465,7 +4465,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8002003",
-    "skillId": "WZ_VERMILION"
+    "enum": "WZ_VERMILION"
   },
   "Water Ball": {
     "id": 320,
@@ -4507,7 +4507,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000003",
-    "skillId": "WZ_WATERBALL"
+    "enum": "WZ_WATERBALL"
   },
   "Ice Wall": {
     "id": 129,
@@ -4540,7 +4540,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "WZ_ICEWALL"
+    "enum": "WZ_ICEWALL"
   },
   "Frost Nova": {
     "id": 130,
@@ -4582,7 +4582,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8002003",
-    "skillId": "WZ_FROSTNOVA"
+    "enum": "WZ_FROSTNOVA"
   },
   "Storm Gust": {
     "id": 131,
@@ -4615,7 +4615,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8002003",
-    "skillId": "WZ_STORMGUST"
+    "enum": "WZ_STORMGUST"
   },
   "Earth Spike": {
     "id": 132,
@@ -4652,7 +4652,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8006003",
-    "skillId": "WZ_EARTHSPIKE"
+    "enum": "WZ_EARTHSPIKE"
   },
   "Heaven's Drive": {
     "id": 319,
@@ -4689,7 +4689,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000003",
-    "skillId": "WZ_HEAVENDRIVE"
+    "enum": "WZ_HEAVENDRIVE"
   },
   "Quagmire": {
     "id": 134,
@@ -4726,7 +4726,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "WZ_QUAGMIRE"
+    "enum": "WZ_QUAGMIRE"
   },
   "Iron Tempering": {
     "id": 135,
@@ -4757,7 +4757,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BS_IRON"
+    "enum": "BS_IRON"
   },
   "Steel Tempering": {
     "id": 136,
@@ -4788,7 +4788,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BS_STEEL"
+    "enum": "BS_STEEL"
   },
   "Enchanted Stone Craft": {
     "id": 137,
@@ -4819,7 +4819,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BS_ENCHANTEDSTONE"
+    "enum": "BS_ENCHANTEDSTONE"
   },
   "Oridecon Research": {
     "id": 138,
@@ -4850,7 +4850,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BS_ORIDEOCON"
+    "enum": "BS_ORIDEOCON"
   },
   "Smith Dagger": {
     "id": 139,
@@ -4881,7 +4881,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BS_DAGGER"
+    "enum": "BS_DAGGER"
   },
   "Smith Sword": {
     "id": 140,
@@ -4912,7 +4912,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BS_SWORD"
+    "enum": "BS_SWORD"
   },
   "Smith Two-handed Sword": {
     "id": 141,
@@ -4943,7 +4943,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BS_TWOHANDSWORD"
+    "enum": "BS_TWOHANDSWORD"
   },
   "Smith Axe": {
     "id": 142,
@@ -4974,7 +4974,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BS_AXE"
+    "enum": "BS_AXE"
   },
   "Smith Mace": {
     "id": 143,
@@ -5005,7 +5005,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BS_MACE"
+    "enum": "BS_MACE"
   },
   "Smith Brass Knuckle": {
     "id": 144,
@@ -5036,7 +5036,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BS_KNUCKLE"
+    "enum": "BS_KNUCKLE"
   },
   "Smith Spear": {
     "id": 145,
@@ -5067,7 +5067,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BS_SPEAR"
+    "enum": "BS_SPEAR"
   },
   "Hilt Binding": {
     "id": 146,
@@ -5098,7 +5098,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x800003",
-    "skillId": "BS_HILTBINDING"
+    "enum": "BS_HILTBINDING"
   },
   "Ore Discovery": {
     "id": 147,
@@ -5129,7 +5129,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BS_FINDINGORE"
+    "enum": "BS_FINDINGORE"
   },
   "Weaponry Research": {
     "id": 148,
@@ -5160,7 +5160,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x800003",
-    "skillId": "BS_WEAPONRESEARCH"
+    "enum": "BS_WEAPONRESEARCH"
   },
   "Weapon Repair": {
     "id": 149,
@@ -5193,7 +5193,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BS_REPAIRWEAPON"
+    "enum": "BS_REPAIRWEAPON"
   },
   "Skin Tempering": {
     "id": 150,
@@ -5224,7 +5224,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x800003",
-    "skillId": "BS_SKINTEMPER"
+    "enum": "BS_SKINTEMPER"
   },
   "Hammer Fall": {
     "id": 151,
@@ -5257,7 +5257,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BS_HAMMERFALL"
+    "enum": "BS_HAMMERFALL"
   },
   "Andrenaline Rush": {
     "id": 152,
@@ -5288,7 +5288,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x800003",
-    "skillId": "BS_ADRENALINE"
+    "enum": "BS_ADRENALINE"
   },
   "Weapon Perfection": {
     "id": 153,
@@ -5326,7 +5326,7 @@
     "isBuff": true,
     "type": "check",
     "job": "0x800003",
-    "skillId": "BS_WEAPONPERFECT"
+    "enum": "BS_WEAPONPERFECT"
   },
   "Power Thrust": {
     "id": 154,
@@ -5364,7 +5364,7 @@
     "isBuff": true,
     "type": "list",
     "job": "0x800003",
-    "skillId": "BS_OVERTHRUST"
+    "enum": "BS_OVERTHRUST"
   },
   "Power Maximize": {
     "id": 155,
@@ -5396,7 +5396,7 @@
     "isBuff": false,
     "type": "check",
     "job": "0x800003",
-    "skillId": "BS_MAXIMIZE"
+    "enum": "BS_MAXIMIZE"
   },
   "Faith": {
     "id": 156,
@@ -5427,7 +5427,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x803",
-    "skillId": "IQ_POWERFUL_FAITH"
+    "enum": "IQ_POWERFUL_FAITH"
   },
   "Auto-Guard": {
     "id": 157,
@@ -5469,7 +5469,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x803",
-    "skillId": "CR_AUTOGUARD"
+    "enum": "CR_AUTOGUARD"
   },
   "Shield Charge": {
     "id": 158,
@@ -5502,7 +5502,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000803",
-    "skillId": "CR_SHIELDCHARGE"
+    "enum": "CR_SHIELDCHARGE"
   },
   "Shield Boomerang": {
     "id": 159,
@@ -5535,7 +5535,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000803",
-    "skillId": "CR_SHIELDBOOMERANG"
+    "enum": "CR_SHIELDBOOMERANG"
   },
   "Shield Reflect": {
     "id": 160,
@@ -5577,7 +5577,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x803",
-    "skillId": "CR_REFLECTSHIELD"
+    "enum": "CR_REFLECTSHIELD"
   },
   "Holy Cross": {
     "id": 161,
@@ -5619,7 +5619,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000803",
-    "skillId": "CR_HOLYCROSS"
+    "enum": "CR_HOLYCROSS"
   },
   "Grand Cross": {
     "id": 162,
@@ -5661,7 +5661,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000803",
-    "skillId": "CR_GRANDCROSS"
+    "enum": "CR_GRANDCROSS"
   },
   "Devotion": {
     "id": 163,
@@ -5692,7 +5692,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "CR_DEVOTION"
+    "enum": "CR_DEVOTION"
   },
   "Defender": {
     "id": 165,
@@ -5723,7 +5723,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x803",
-    "skillId": "NPC_DEFENDER"
+    "enum": "NPC_DEFENDER"
   },
   "Spear Quicken": {
     "id": 166,
@@ -5765,7 +5765,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x803",
-    "skillId": "CR_SPEARQUICKEN"
+    "enum": "CR_SPEARQUICKEN"
   },
   "Plagiarism": {
     "id": 167,
@@ -5796,7 +5796,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "RG_PLAGIARISM"
+    "enum": "RG_PLAGIARISM"
   },
   "Steal Coin": {
     "id": 168,
@@ -5829,7 +5829,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "RG_STEALCOIN"
+    "enum": "RG_STEALCOIN"
   },
   "Back Stab": {
     "id": 169,
@@ -5862,7 +5862,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000003",
-    "skillId": "RG_BACKSTAP"
+    "enum": "RG_BACKSTAP"
   },
   "Tunnel Drive": {
     "id": 170,
@@ -5893,7 +5893,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "RG_TUNNELDRIVE"
+    "enum": "RG_TUNNELDRIVE"
   },
   "Raid": {
     "id": 171,
@@ -5926,7 +5926,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000003",
-    "skillId": "RG_RAID"
+    "enum": "RG_RAID"
   },
   "Strip Weapon": {
     "id": 172,
@@ -5963,7 +5963,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "RG_STRIPWEAPON"
+    "enum": "RG_STRIPWEAPON"
   },
   "Strip Shield": {
     "id": 173,
@@ -6000,7 +6000,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "RG_STRIPSHIELD"
+    "enum": "RG_STRIPSHIELD"
   },
   "Strip Armor": {
     "id": 174,
@@ -6037,7 +6037,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "RG_STRIPARMOR"
+    "enum": "RG_STRIPARMOR"
   },
   "Strip Helm": {
     "id": 175,
@@ -6074,7 +6074,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "RG_STRIPHELM"
+    "enum": "RG_STRIPHELM"
   },
   "Intimidate": {
     "id": 176,
@@ -6111,7 +6111,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000003",
-    "skillId": "RG_INTIMIDATE"
+    "enum": "RG_INTIMIDATE"
   },
   "Graffiti": {
     "id": 177,
@@ -6144,7 +6144,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "RG_GRAFFITI"
+    "enum": "RG_GRAFFITI"
   },
   "Flag Graffiti": {
     "id": 178,
@@ -6177,7 +6177,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "RG_FLAGGRAFFITI"
+    "enum": "RG_FLAGGRAFFITI"
   },
   "Cleaner": {
     "id": 179,
@@ -6210,7 +6210,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "RG_CLEANER"
+    "enum": "RG_CLEANER"
   },
   "Gangster's Paradise": {
     "id": 180,
@@ -6241,7 +6241,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "RG_GANGSTER"
+    "enum": "RG_GANGSTER"
   },
   "Compulsion Discount": {
     "id": 181,
@@ -6272,7 +6272,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "RG_COMPULSION"
+    "enum": "RG_COMPULSION"
   },
   "Snatcher": {
     "id": 182,
@@ -6303,7 +6303,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "RG_SNATCHER"
+    "enum": "RG_SNATCHER"
   },
   "Iron Hand": {
     "id": 183,
@@ -6334,7 +6334,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x200003",
-    "skillId": "MO_IRONHAND"
+    "enum": "MO_IRONHAND"
   },
   "Spirits Recovery": {
     "id": 184,
@@ -6365,7 +6365,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "MO_SPIRITSRECOVERY"
+    "enum": "MO_SPIRITSRECOVERY"
   },
   "Summon Spirit Sphere": {
     "id": 185,
@@ -6398,7 +6398,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x200003",
-    "skillId": "MO_CALLSPIRITS"
+    "enum": "MO_CALLSPIRITS"
   },
   "Spiritual Sphere Absorption": {
     "id": 186,
@@ -6429,7 +6429,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "MO_ABSORBSPIRITS"
+    "enum": "MO_ABSORBSPIRITS"
   },
   "Triple Attack": {
     "id": 187,
@@ -6460,7 +6460,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x8200003",
-    "skillId": "MO_TRIPLEATTACK"
+    "enum": "MO_TRIPLEATTACK"
   },
   "Chain Combo": {
     "id": 188,
@@ -6497,7 +6497,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x200003",
-    "skillId": "MO_CHAINCOMBO"
+    "enum": "MO_CHAINCOMBO"
   },
   "Combo Finish": {
     "id": 189,
@@ -6534,7 +6534,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x200003",
-    "skillId": "MO_COMBOFINISH"
+    "enum": "MO_COMBOFINISH"
   },
   "Body Relocation": {
     "id": 190,
@@ -6565,7 +6565,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "MO_BODYRELOCATION"
+    "enum": "MO_BODYRELOCATION"
   },
   "Dodge": {
     "id": 191,
@@ -6596,7 +6596,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x200003",
-    "skillId": "MO_DODGE"
+    "enum": "MO_DODGE"
   },
   "Finger Offensive [# Hits = # of Spirit Spheres]": {
     "id": 192,
@@ -6629,7 +6629,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8200003",
-    "skillId": "MO_FINGEROFFENSIVE"
+    "enum": "MO_FINGEROFFENSIVE"
   },
   "Investigate": {
     "id": 193,
@@ -6666,7 +6666,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8200003",
-    "skillId": "MO_INVESTIGATE"
+    "enum": "MO_INVESTIGATE"
   },
   "Blade Stop": {
     "id": 194,
@@ -6699,7 +6699,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "MO_BLADESTOP"
+    "enum": "MO_BLADESTOP"
   },
   "Critical Explosion": {
     "id": 195,
@@ -6732,7 +6732,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x200003",
-    "skillId": "MO_EXPLOSIONSPIRITS"
+    "enum": "MO_EXPLOSIONSPIRITS"
   },
   "Steel Body": {
     "id": 196,
@@ -6765,7 +6765,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x20000b",
-    "skillId": "MO_STEELBODY"
+    "enum": "MO_STEELBODY"
   },
   "Asura Strike": {
     "id": 197,
@@ -6798,7 +6798,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8200003",
-    "skillId": "MO_EXTREMITYFIST"
+    "enum": "MO_EXTREMITYFIST"
   },
   "Musical Lesson": {
     "id": 198,
@@ -6829,7 +6829,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x20003",
-    "skillId": "BA_MUSICALLESSON"
+    "enum": "BA_MUSICALLESSON"
   },
   "Musical Strike": {
     "id": 199,
@@ -6866,7 +6866,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x20003",
-    "skillId": "BA_MUSICALSTRIKE"
+    "enum": "BA_MUSICALSTRIKE"
   },
   "Dissonance": {
     "id": 200,
@@ -6897,7 +6897,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BA_DISSONANCE"
+    "enum": "BA_DISSONANCE"
   },
   "Frost Joker": {
     "id": 201,
@@ -6928,7 +6928,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BA_FROSTJOKER"
+    "enum": "BA_FROSTJOKER"
   },
   "A Whistle": {
     "id": 202,
@@ -6959,7 +6959,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BA_WHISTLE"
+    "enum": "BA_WHISTLE"
   },
   "Assassin Cross of Sunset": {
     "id": 203,
@@ -6990,7 +6990,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BA_ASSASSINCROSS"
+    "enum": "BA_ASSASSINCROSS"
   },
   "A Poem of Bragi": {
     "id": 204,
@@ -7021,7 +7021,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BA_POEMBRAGI"
+    "enum": "BA_POEMBRAGI"
   },
   "The Apple of Idun": {
     "id": 205,
@@ -7052,7 +7052,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BA_APPLEIDUN"
+    "enum": "BA_APPLEIDUN"
   },
   "Dancing Lesson": {
     "id": 206,
@@ -7083,7 +7083,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x40003",
-    "skillId": "DC_DANCINGLESSON"
+    "enum": "DC_DANCINGLESSON"
   },
   "Throw Arrow": {
     "id": 207,
@@ -7114,7 +7114,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x40003",
-    "skillId": "DC_THROWARROW"
+    "enum": "DC_THROWARROW"
   },
   "Ugly Dance": {
     "id": 208,
@@ -7145,7 +7145,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "DC_UGLYDANCE"
+    "enum": "DC_UGLYDANCE"
   },
   "Scream": {
     "id": 209,
@@ -7176,7 +7176,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "DC_SCREAM"
+    "enum": "DC_SCREAM"
   },
   "Humming": {
     "id": 210,
@@ -7207,7 +7207,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "DC_HUMMING"
+    "enum": "DC_HUMMING"
   },
   "Please Don't Forget Me": {
     "id": 211,
@@ -7238,7 +7238,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "DC_DONTFORGETME"
+    "enum": "DC_DONTFORGETME"
   },
   "Fortune's Kiss": {
     "id": 212,
@@ -7269,7 +7269,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "DC_FORTUNEKISS"
+    "enum": "DC_FORTUNEKISS"
   },
   "Service for You": {
     "id": 213,
@@ -7300,7 +7300,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "DC_SERVICEFORYOU"
+    "enum": "DC_SERVICEFORYOU"
   },
   "Adaptation to Circumstances": {
     "id": 214,
@@ -7331,7 +7331,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BD_ADAPTATION"
+    "enum": "BD_ADAPTATION"
   },
   "Encore": {
     "id": 215,
@@ -7364,7 +7364,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BD_ENCORE"
+    "enum": "BD_ENCORE"
   },
   "Lullaby": {
     "id": 216,
@@ -7397,7 +7397,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BD_LULLABY"
+    "enum": "BD_LULLABY"
   },
   "Mr. Kim A Rich Man": {
     "id": 217,
@@ -7428,7 +7428,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BD_RICHMANKIM"
+    "enum": "BD_RICHMANKIM"
   },
   "Eternal Chaos": {
     "id": 218,
@@ -7459,7 +7459,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BD_ETERNALCHAOS"
+    "enum": "BD_ETERNALCHAOS"
   },
   "A Drum on the Battlefield": {
     "id": 219,
@@ -7490,7 +7490,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BD_DRUMBATTLEFIELD"
+    "enum": "BD_DRUMBATTLEFIELD"
   },
   "The Ring of Nibelungen": {
     "id": 220,
@@ -7521,7 +7521,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BD_RINGNIBELUNGEN"
+    "enum": "BD_RINGNIBELUNGEN"
   },
   "Loki's Veil": {
     "id": 221,
@@ -7552,7 +7552,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BD_ROKISWEIL"
+    "enum": "BD_ROKISWEIL"
   },
   "Into the Abyss": {
     "id": 222,
@@ -7583,7 +7583,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BD_INTOABYSS"
+    "enum": "BD_INTOABYSS"
   },
   "Invulnerable Siegfried": {
     "id": 223,
@@ -7614,7 +7614,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "BD_SIEGFRIED"
+    "enum": "BD_SIEGFRIED"
   },
   "Advanced Book": {
     "id": 224,
@@ -7645,7 +7645,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x4003",
-    "skillId": "SA_ADVANCEDBOOK"
+    "enum": "SA_ADVANCEDBOOK"
   },
   "Cast Cancel": {
     "id": 225,
@@ -7678,7 +7678,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SA_CASTCANCEL"
+    "enum": "SA_CASTCANCEL"
   },
   "Magic Rod": {
     "id": 226,
@@ -7711,7 +7711,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SA_MAGICROD"
+    "enum": "SA_MAGICROD"
   },
   "Spell Breaker": {
     "id": 227,
@@ -7744,7 +7744,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SA_SPELLBREAKER"
+    "enum": "SA_SPELLBREAKER"
   },
   "Free Cast": {
     "id": 228,
@@ -7775,7 +7775,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x4003",
-    "skillId": "SA_FREECAST"
+    "enum": "SA_FREECAST"
   },
   "Auto Spell": {
     "id": 229,
@@ -7806,7 +7806,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x4003",
-    "skillId": "SA_AUTOSPELL"
+    "enum": "SA_AUTOSPELL"
   },
   "Flame Launcher": {
     "id": 230,
@@ -7839,7 +7839,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SA_FLAMELAUNCHER"
+    "enum": "SA_FLAMELAUNCHER"
   },
   "Frost Weapon": {
     "id": 231,
@@ -7872,7 +7872,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SA_FROSTWEAPON"
+    "enum": "SA_FROSTWEAPON"
   },
   "Lightning Loader": {
     "id": 232,
@@ -7905,7 +7905,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SA_LIGHTNINGLOADER"
+    "enum": "SA_LIGHTNINGLOADER"
   },
   "Seismic Weapon": {
     "id": 233,
@@ -7938,7 +7938,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SA_SEISMICWEAPON"
+    "enum": "SA_SEISMICWEAPON"
   },
   "Dragonology": {
     "id": 234,
@@ -7969,7 +7969,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x4003",
-    "skillId": "SA_DRAGONOLOGY"
+    "enum": "SA_DRAGONOLOGY"
   },
   "Volcano": {
     "id": 235,
@@ -8006,7 +8006,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SA_VOLCANO"
+    "enum": "SA_VOLCANO"
   },
   "Deluge": {
     "id": 236,
@@ -8043,7 +8043,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SA_DELUGE"
+    "enum": "SA_DELUGE"
   },
   "Violent Gale": {
     "id": 237,
@@ -8080,7 +8080,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SA_VIOLENTGALE"
+    "enum": "SA_VIOLENTGALE"
   },
   "Land Protector": {
     "id": 238,
@@ -8117,7 +8117,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SA_LANDPROTECTOR"
+    "enum": "SA_LANDPROTECTOR"
   },
   "Dispell": {
     "id": 239,
@@ -8150,7 +8150,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SA_DISPELL"
+    "enum": "SA_DISPELL"
   },
   "Abracadabra": {
     "id": 240,
@@ -8183,7 +8183,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SA_ABRACADABRA"
+    "enum": "SA_ABRACADABRA"
   },
   "Axe Mastery": {
     "id": 241,
@@ -8214,7 +8214,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x1000003",
-    "skillId": "AM_AXEMASTERY"
+    "enum": "AM_AXEMASTERY"
   },
   "Potion Research": {
     "id": 242,
@@ -8245,7 +8245,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "AM_LEARNINGPOTION"
+    "enum": "AM_LEARNINGPOTION"
   },
   "Pharmacy": {
     "id": 243,
@@ -8276,7 +8276,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "AM_PHARMACY"
+    "enum": "AM_PHARMACY"
   },
   "Acid Terror": {
     "id": 244,
@@ -8309,7 +8309,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x9000003",
-    "skillId": "AM_ACIDTERROR"
+    "enum": "AM_ACIDTERROR"
   },
   "Potion Pitcher": {
     "id": 245,
@@ -8340,7 +8340,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "AM_POTIONPITCHER"
+    "enum": "AM_POTIONPITCHER"
   },
   "Summon Flora": {
     "id": 246,
@@ -8373,7 +8373,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "AM_CANNIBALIZE"
+    "enum": "AM_CANNIBALIZE"
   },
   "Summon Marine Sphere": {
     "id": 247,
@@ -8406,7 +8406,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "AM_SPHEREMINE"
+    "enum": "AM_SPHEREMINE"
   },
   "Demonstration": {
     "id": 248,
@@ -8439,7 +8439,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x9000003",
-    "skillId": "AM_DEMONSTRATION"
+    "enum": "AM_DEMONSTRATION"
   },
   "Chemical Protection Weapon": {
     "id": 249,
@@ -8470,7 +8470,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "AM_CP_WEAPON"
+    "enum": "AM_CP_WEAPON"
   },
   "Chemical Protection Shield": {
     "id": 250,
@@ -8501,7 +8501,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "AM_CP_SHIELD"
+    "enum": "AM_CP_SHIELD"
   },
   "Chemical Protection Armor": {
     "id": 251,
@@ -8532,7 +8532,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "AM_CP_ARMOR"
+    "enum": "AM_CP_ARMOR"
   },
   "Chemical Protection Helm": {
     "id": 252,
@@ -8563,7 +8563,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "AM_CP_HELM"
+    "enum": "AM_CP_HELM"
   },
   "Critical Explosion [Super Novice]": {
     "id": 253,
@@ -8594,7 +8594,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x9",
-    "skillId": "MO_EXPLOSIONSPIRITS"
+    "enum": "MO_EXPLOSIONSPIRITS"
   },
   "Aura Blade": {
     "id": 254,
@@ -8631,7 +8631,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x402",
-    "skillId": "LK_AURABLADE"
+    "enum": "LK_AURABLADE"
   },
   "Parrying": {
     "id": 255,
@@ -8664,7 +8664,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x402",
-    "skillId": "LK_PARRYING"
+    "enum": "LK_PARRYING"
   },
   "Concentration": {
     "id": 256,
@@ -8701,7 +8701,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x402",
-    "skillId": "AC_CONCENTRATION"
+    "enum": "LK_CONCENTRATION"
   },
   "Tension Relax": {
     "id": 257,
@@ -8732,7 +8732,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "LK_TENSIONRELAX"
+    "enum": "LK_TENSIONRELAX"
   },
   "Berserk": {
     "id": 258,
@@ -8765,7 +8765,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x402",
-    "skillId": "SM_AUTOBERSERK"
+    "enum": "SM_AUTOBERSERK"
   },
   "Spiral Pierce": {
     "id": 259,
@@ -8802,7 +8802,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x402",
-    "skillId": "LK_SPIRALPIERCE"
+    "enum": "LK_SPIRALPIERCE"
   },
   "Head Crush": {
     "id": 260,
@@ -8835,7 +8835,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x402",
-    "skillId": "LK_HEADCRUSH"
+    "enum": "LK_HEADCRUSH"
   },
   "Joint Beat": {
     "id": 261,
@@ -8877,7 +8877,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x402",
-    "skillId": "LK_JOINTBEAT"
+    "enum": "LK_JOINTBEAT"
   },
   "Advanced Katar Mastery": {
     "id": 262,
@@ -8908,7 +8908,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x4000002",
-    "skillId": "ASC_KATAR"
+    "enum": "ASC_KATAR"
   },
   "Soul Breaker": {
     "id": 263,
@@ -8950,7 +8950,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x4000002",
-    "skillId": "ASC_BREAKER"
+    "enum": "ASC_BREAKER"
   },
   "Meteor Assault": {
     "id": 264,
@@ -8992,7 +8992,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x4000002",
-    "skillId": "ASC_METEORASSAULT"
+    "enum": "ASC_METEORASSAULT"
   },
   "Create Deadly Poison": {
     "id": 265,
@@ -9025,7 +9025,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "ASC_CDP"
+    "enum": "ASC_CDP"
   },
   "Enchant Deadly Poison": {
     "id": 266,
@@ -9062,7 +9062,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x4000002",
-    "skillId": "ASC_EDP"
+    "enum": "ASC_EDP"
   },
   "Assumptio": {
     "id": 267,
@@ -9100,7 +9100,7 @@
     "isBuff": true,
     "type": "check",
     "job": "0x0",
-    "skillId": "HP_ASSUMPTIO"
+    "enum": "HP_ASSUMPTIO"
   },
   "Basilica": {
     "id": 268,
@@ -9137,7 +9137,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "HP_BASILICA"
+    "enum": "HP_BASILICA"
   },
   "Mediatio": {
     "id": 269,
@@ -9168,7 +9168,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x100002",
-    "skillId": "HP_MEDITATIO"
+    "enum": "HP_MEDITATIO"
   },
   "True Sight": {
     "id": 270,
@@ -9199,7 +9199,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x10002",
-    "skillId": "SN_SIGHT"
+    "enum": "SN_SIGHT"
   },
   "Falcon Assault": {
     "id": 271,
@@ -9236,7 +9236,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x10002",
-    "skillId": "SN_FALCONASSAULT"
+    "enum": "SN_FALCONASSAULT"
   },
   "Sharp Shooting": {
     "id": 272,
@@ -9273,7 +9273,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x10002",
-    "skillId": "SN_SHARPSHOOTING"
+    "enum": "SN_SHARPSHOOTING"
   },
   "Wind Walk": {
     "id": 273,
@@ -9306,7 +9306,7 @@
     "type": "list",
     "job": "0x10002",
     "itemScript": "bonus bFlee,subSkillLvl/2",
-    "skillId": "SN_WINDWALK"
+    "enum": "SN_WINDWALK"
   },
   "Soul Drain": {
     "id": 274,
@@ -9337,7 +9337,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x2002",
-    "skillId": "HW_SOULDRAIN"
+    "enum": "HW_SOULDRAIN"
   },
   "Magic Crasher": {
     "id": 275,
@@ -9368,7 +9368,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x2002",
-    "skillId": "HW_MAGICCRASHER"
+    "enum": "HW_MAGICCRASHER"
   },
   "Amplify Magic Power": {
     "id": 276,
@@ -9399,7 +9399,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x2002",
-    "skillId": "HW_MAGICPOWER"
+    "enum": "HW_MAGICPOWER"
   },
   "Napalm Vulcan": {
     "id": 277,
@@ -9436,7 +9436,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x2002",
-    "skillId": "HW_NAPALMVULCAN"
+    "enum": "HW_NAPALMVULCAN"
   },
   "Meltdown": {
     "id": 278,
@@ -9467,7 +9467,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "WS_MELTDOWN"
+    "enum": "WS_MELTDOWN"
   },
   "Coin Craft": {
     "id": 279,
@@ -9498,7 +9498,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "WS_CREATECOIN"
+    "enum": "WS_CREATECOIN"
   },
   "Nugget Craft": {
     "id": 280,
@@ -9529,7 +9529,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "WS_CREATENUGGET"
+    "enum": "WS_CREATENUGGET"
   },
   "Cart Boost": {
     "id": 281,
@@ -9562,7 +9562,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "WS_CARTBOOST"
+    "enum": "WS_CARTBOOST"
   },
   "Battle Machine Craft": {
     "id": 282,
@@ -9593,7 +9593,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "NO_skillId"
+    "enum": "NO_enum"
   },
   "Pressure": {
     "id": 283,
@@ -9630,7 +9630,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x802",
-    "skillId": "PA_PRESSURE"
+    "enum": "PA_PRESSURE"
   },
   "Sacrifice": {
     "id": 284,
@@ -9663,7 +9663,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x802",
-    "skillId": "PA_SACRIFICE"
+    "enum": "PA_SACRIFICE"
   },
   "Gospel": {
     "id": 285,
@@ -9694,7 +9694,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "PA_GOSPEL"
+    "enum": "PA_GOSPEL"
   },
   "Stealth [STR+]": {
     "id": 286,
@@ -9725,7 +9725,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x8000002",
-    "skillId": "ST_CHASEWALK"
+    "enum": "ST_CHASEWALK"
   },
   "Counter Instinct": {
     "id": 287,
@@ -9762,7 +9762,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x8000002",
-    "skillId": "ST_REJECTSWORD"
+    "enum": "ST_REJECTSWORD"
   },
   "Palm Push Strike": {
     "id": 288,
@@ -9799,7 +9799,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x200002",
-    "skillId": "CH_PALMSTRIKE"
+    "enum": "CH_PALMSTRIKE"
   },
   "Tiger Knuckle Fist": {
     "id": 289,
@@ -9836,7 +9836,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x200002",
-    "skillId": "CH_TIGERFIST"
+    "enum": "CH_TIGERFIST"
   },
   "Chain Crush Combo": {
     "id": 290,
@@ -9878,7 +9878,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x200002",
-    "skillId": "CH_CHAINCRUSH"
+    "enum": "CH_CHAINCRUSH"
   },
   "Dangerous Soul Collect": {
     "id": 291,
@@ -9909,7 +9909,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "CH_SOULCOLLECT"
+    "enum": "CH_SOULCOLLECT"
   },
   "Arrow Vulcan": {
     "id": 292,
@@ -9951,7 +9951,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x60002",
-    "skillId": "CG_ARROWVULCAN"
+    "enum": "CG_ARROWVULCAN"
   },
   "Moonlit Water Mill": {
     "id": 293,
@@ -9982,7 +9982,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "CG_MOONLIT"
+    "enum": "CG_MOONLIT"
   },
   "Marionette Control": {
     "id": 294,
@@ -10015,7 +10015,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "CG_MARIONETTE"
+    "enum": "CG_MARIONETTE"
   },
   "Health Conversion": {
     "id": 295,
@@ -10046,7 +10046,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "PF_HPCONVERSION"
+    "enum": "PF_HPCONVERSION"
   },
   "Soul Change": {
     "id": 296,
@@ -10077,7 +10077,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "PF_SOULCHANGE"
+    "enum": "PF_SOULCHANGE"
   },
   "Soul Burn": {
     "id": 297,
@@ -10108,7 +10108,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "PF_SOULBURN"
+    "enum": "PF_SOULBURN"
   },
   "Mind Breaker": {
     "id": 298,
@@ -10145,7 +10145,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "PF_MINDBREAKER"
+    "enum": "PF_MINDBREAKER"
   },
   "Alchemy": {
     "id": 299,
@@ -10176,7 +10176,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "CR_ALCHEMY"
+    "enum": "CR_ALCHEMY"
   },
   "Potion Synthesis": {
     "id": 300,
@@ -10207,7 +10207,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "CR_SYNTHESISPOTION"
+    "enum": "CR_SYNTHESISPOTION"
   },
   "<Font size=2>Add the delay time when attacking for triple attack</Font>": {
     "id": 301,
@@ -10238,7 +10238,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x200003",
-    "skillId": "NO_skillId"
+    "enum": "NO_enum"
   },
   "Throw Tomahawk": {
     "id": 302,
@@ -10271,7 +10271,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000003",
-    "skillId": "ITM_TOMAHAWK"
+    "enum": "ITM_TOMAHAWK"
   },
   "Pulse Strike [Temp]": {
     "id": 303,
@@ -10302,7 +10302,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "NPC_PULSESTRIKE"
+    "enum": "NPC_PULSESTRIKE"
   },
   "Berserk Pitcher": {
     "id": 304,
@@ -10333,7 +10333,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "AM_BERSERKPITCHER"
+    "enum": "AM_BERSERKPITCHER"
   },
   "Flying Kick [sprint on]": {
     "id": 305,
@@ -10364,7 +10364,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x51",
-    "skillId": "TK_JUMPKICK"
+    "enum": "TK_JUMPKICK"
   },
   "Throw Venom Knife": {
     "id": 306,
@@ -10397,7 +10397,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0xc000003",
-    "skillId": "AS_VENOMKNIFE"
+    "enum": "AS_VENOMKNIFE"
   },
   "Phantasmic Arrow": {
     "id": 307,
@@ -10430,7 +10430,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8010003",
-    "skillId": "HT_PHANTASMIC"
+    "enum": "HT_PHANTASMIC"
   },
   "Charge Attack": {
     "id": 308,
@@ -10463,7 +10463,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000403",
-    "skillId": "KN_CHARGEATK"
+    "enum": "KN_CHARGEATK"
   },
   "No Death Bonus": {
     "id": 309,
@@ -10494,7 +10494,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x9",
-    "skillId": "NO_skillId"
+    "enum": "NO_enum"
   },
   "Married [All Stats - 1]": {
     "id": 310,
@@ -10525,7 +10525,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x9",
-    "skillId": "NO_skillId"
+    "enum": "NO_enum"
   },
   "<Font size=2>Number of mastered Smith XYZ Skills [for Veteran Axe Bonus]</Font>": {
     "id": 311,
@@ -10556,7 +10556,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x800003",
-    "skillId": "NO_skillId"
+    "enum": "NO_enum"
   },
   "Dark Strike": {
     "id": 312,
@@ -10587,7 +10587,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "NPC_DARKSTRIKE"
+    "enum": "NPC_DARKSTRIKE"
   },
   "": {
     "id": 316,
@@ -10618,7 +10618,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "NV_BASIC"
+    "enum": "NV_BASIC"
   },
   "Heat": {
     "id": 317,
@@ -10649,7 +10649,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x41",
-    "skillId": "SG_STAR_WARM"
+    "enum": "SG_STAR_WARM"
   },
   "Heat [no pushback]": {
     "id": 318,
@@ -10680,7 +10680,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x41",
-    "skillId": "SG_STAR_WARM"
+    "enum": "SG_STAR_WARM"
   },
   "Asura Strike [Max SP-1]": {
     "id": 321,
@@ -10711,7 +10711,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8200003",
-    "skillId": "MO_EXTREMITYFIST"
+    "enum": "MO_EXTREMITYFIST"
   },
   "Memorize": {
     "id": 322,
@@ -10742,7 +10742,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x4002",
-    "skillId": "PF_MEMORIZE"
+    "enum": "PF_MEMORIZE"
   },
   "Poison Bottle [Consumed]": {
     "id": 323,
@@ -10773,7 +10773,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "NO_skillId"
+    "enum": "NO_enum"
   },
   "Shield Chain": {
     "id": 324,
@@ -10810,7 +10810,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x802",
-    "skillId": "PA_SHIELDCHAIN"
+    "enum": "PA_SHIELDCHAIN"
   },
   "Gravitation Field": {
     "id": 325,
@@ -10847,7 +10847,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x2002",
-    "skillId": "HW_GRAVITATION"
+    "enum": "HW_GRAVITATION"
   },
   "Cart Termination": {
     "id": 326,
@@ -10880,7 +10880,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x800002",
-    "skillId": "WS_CARTTERMINATION"
+    "enum": "WS_CARTTERMINATION"
   },
   "Maximum Power-Thust": {
     "id": 327,
@@ -10911,7 +10911,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x800002",
-    "skillId": "WS_OVERTHRUSTMAX"
+    "enum": "WS_OVERTHRUSTMAX"
   },
   "Acid Demonstration": {
     "id": 328,
@@ -10944,7 +10944,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x1000002",
-    "skillId": "CR_ACIDDEMONSTRATION"
+    "enum": "CR_ACIDDEMONSTRATION"
   },
   "Sprint [Unarmed Mastery]": {
     "id": 329,
@@ -10975,7 +10975,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x71",
-    "skillId": "NO_skillId"
+    "enum": "NO_enum"
   },
   "Prepare Whirlwind Kick": {
     "id": 330,
@@ -11008,7 +11008,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "TK_READYSTORM"
+    "enum": "TK_READYSTORM"
   },
   "Whirlwind Kick": {
     "id": 331,
@@ -11047,7 +11047,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x51",
-    "skillId": "TK_STORMKICK"
+    "enum": "TK_STORMKICK"
   },
   "Prepare Axe Kick": {
     "id": 332,
@@ -11080,7 +11080,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "TK_READYDOWN"
+    "enum": "TK_READYDOWN"
   },
   "Axe Kick": {
     "id": 333,
@@ -11119,7 +11119,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x51",
-    "skillId": "TK_DOWNKICK"
+    "enum": "TK_DOWNKICK"
   },
   "Prepare Round Kick": {
     "id": 334,
@@ -11152,7 +11152,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "TK_READYTURN"
+    "enum": "TK_READYTURN"
   },
   "Round Kick": {
     "id": 335,
@@ -11191,7 +11191,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x51",
-    "skillId": "TK_TURNKICK"
+    "enum": "TK_TURNKICK"
   },
   "Prepare Counter Kick": {
     "id": 336,
@@ -11224,7 +11224,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "TK_READYCOUNTER"
+    "enum": "TK_READYCOUNTER"
   },
   "Counter Kick": {
     "id": 337,
@@ -11263,7 +11263,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x51",
-    "skillId": "TK_COUNTER"
+    "enum": "TK_COUNTER"
   },
   "Break Fall [Untested]": {
     "id": 338,
@@ -11294,7 +11294,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x71",
-    "skillId": "TK_DODGE"
+    "enum": "TK_DODGE"
   },
   "Flying Side Kick": {
     "id": 339,
@@ -11333,7 +11333,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000053",
-    "skillId": "TK_JUMPKICK"
+    "enum": "TK_JUMPKICK"
   },
   "Peaceful Rest": {
     "id": 340,
@@ -11364,7 +11364,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "TK_HPTIME"
+    "enum": "TK_HPTIME"
   },
   "Enjoyable Rest": {
     "id": 341,
@@ -11395,7 +11395,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "TK_SPTIME"
+    "enum": "TK_SPTIME"
   },
   "Fighting Chant": {
     "id": 342,
@@ -11426,7 +11426,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x71",
-    "skillId": "TK_POWER"
+    "enum": "TK_POWER"
   },
   "High Jump": {
     "id": 343,
@@ -11457,7 +11457,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "TK_HIGHJUMP"
+    "enum": "TK_HIGHJUMP"
   },
   "Taekwon Mission": {
     "id": 344,
@@ -11490,7 +11490,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "TK_MISSION"
+    "enum": "TK_MISSION"
   },
   "Taekwon Ranker": {
     "id": 345,
@@ -11521,7 +11521,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x11",
-    "skillId": "NO_skillId"
+    "enum": "NO_enum"
   },
   "Warm Wind": {
     "id": 346,
@@ -11552,7 +11552,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "TK_SEVENWIND"
+    "enum": "TK_SEVENWIND"
   },
   "Feeling of the Sun,Moon and Stars": {
     "id": 347,
@@ -11583,7 +11583,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SG_FEEL"
+    "enum": "SG_FEEL"
   },
   "Warmth of the Sun": {
     "id": 348,
@@ -11616,7 +11616,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SG_SUN_WARM"
+    "enum": "SG_SUN_WARM"
   },
   "Warmth of the Moon": {
     "id": 349,
@@ -11649,7 +11649,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SG_MOON_WARM"
+    "enum": "SG_MOON_WARM"
   },
   "Warmth of the Stars": {
     "id": 350,
@@ -11682,7 +11682,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SG_STAR_WARM"
+    "enum": "SG_STAR_WARM"
   },
   "Hatred of the Sun,Moon,and Stars": {
     "id": 351,
@@ -11713,7 +11713,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SG_HATE"
+    "enum": "SG_HATE"
   },
   "Anger of the Sun": {
     "id": 352,
@@ -11744,7 +11744,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x41",
-    "skillId": "SG_SUN_ANGER"
+    "enum": "SG_SUN_ANGER"
   },
   "Anger of the Moon": {
     "id": 353,
@@ -11775,7 +11775,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x41",
-    "skillId": "SG_MOON_ANGER"
+    "enum": "SG_MOON_ANGER"
   },
   "Anger of the Stars": {
     "id": 354,
@@ -11806,7 +11806,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x41",
-    "skillId": "SG_STAR_ANGER"
+    "enum": "SG_STAR_ANGER"
   },
   "Comfort of the Sun": {
     "id": 355,
@@ -11842,7 +11842,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x41",
-    "skillId": "SG_SUN_COMFORT"
+    "enum": "SG_SUN_COMFORT"
   },
   "Comfort of the Moon": {
     "id": 356,
@@ -11878,7 +11878,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x41",
-    "skillId": "SG_MOON_COMFORT"
+    "enum": "SG_MOON_COMFORT"
   },
   "Comfort of the Stars": {
     "id": 357,
@@ -11914,7 +11914,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x41",
-    "skillId": "SG_STAR_COMFORT"
+    "enum": "SG_STAR_COMFORT"
   },
   "Blessing of the Sun": {
     "id": 358,
@@ -11945,7 +11945,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SG_SUN_BLESS"
+    "enum": "SG_SUN_BLESS"
   },
   "Blessing of the Moon": {
     "id": 359,
@@ -11976,7 +11976,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SG_MOON_BLESS"
+    "enum": "SG_MOON_BLESS"
   },
   "Blessing of the Stars": {
     "id": 360,
@@ -12007,7 +12007,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SG_STAR_BLESS"
+    "enum": "SG_STAR_BLESS"
   },
   "Demon of the Sun,Moon and Stars": {
     "id": 361,
@@ -12038,7 +12038,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x41",
-    "skillId": "SG_DEVIL"
+    "enum": "SG_DEVIL"
   },
   "Friend of the Sun,Moon and Stars": {
     "id": 362,
@@ -12069,7 +12069,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SG_FRIEND"
+    "enum": "SG_FRIEND"
   },
   "Knowledge of the Sun,Moon and Stars": {
     "id": 363,
@@ -12100,7 +12100,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SG_KNOWLEDGE"
+    "enum": "SG_KNOWLEDGE"
   },
   "Union of the Sun,Moon and Stars": {
     "id": 364,
@@ -12131,7 +12131,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x41",
-    "skillId": "SG_FUSION"
+    "enum": "SG_FUSION"
   },
   "Miracle of the Sun,Moon and Stars": {
     "id": 365,
@@ -12162,7 +12162,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x41",
-    "skillId": "NO_skillId"
+    "enum": "NO_enum"
   },
   "Angel of the Sun,Moon and Stars": {
     "id": 366,
@@ -12193,7 +12193,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "NO_skillId"
+    "enum": "NO_enum"
   },
   "Blessings of the Sun,Moon and Stars [Exp Increase]": {
     "id": 367,
@@ -12224,7 +12224,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x41",
-    "skillId": "NO_skillId"
+    "enum": "NO_enum"
   },
   "Kaizel": {
     "id": 368,
@@ -12263,7 +12263,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SL_KAIZEL"
+    "enum": "SL_KAIZEL"
   },
   "Kaahi": {
     "id": 369,
@@ -12296,7 +12296,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SL_KAAHI"
+    "enum": "SL_KAAHI"
   },
   "Kaupe": {
     "id": 370,
@@ -12331,7 +12331,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SL_KAUPE"
+    "enum": "SL_KAUPE"
   },
   "Kaite": {
     "id": 371,
@@ -12364,7 +12364,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SL_KAITE"
+    "enum": "SL_KAITE"
   },
   "Kaina": {
     "id": 372,
@@ -12395,7 +12395,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x21",
-    "skillId": "SL_KAINA"
+    "enum": "SL_KAINA"
   },
   "Estin": {
     "id": 373,
@@ -12434,7 +12434,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x21",
-    "skillId": "SL_STIN"
+    "enum": "SL_STIN"
   },
   "Estun": {
     "id": 374,
@@ -12473,7 +12473,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x21",
-    "skillId": "NPC_WIDESTUN"
+    "enum": "NPC_WIDESTUN"
   },
   "Esma": {
     "id": 375,
@@ -12515,7 +12515,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x21",
-    "skillId": "SL_SMA"
+    "enum": "SL_SMA"
   },
   "Eswoo": {
     "id": 376,
@@ -12554,7 +12554,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SL_SWOO"
+    "enum": "SL_SWOO"
   },
   "Eska": {
     "id": 377,
@@ -12589,7 +12589,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SL_SKA"
+    "enum": "SL_SKA"
   },
   "Eske": {
     "id": 378,
@@ -12624,7 +12624,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "SL_SKE"
+    "enum": "SL_SKE"
   },
   "Sprint [STR + State]": {
     "id": 379,
@@ -12655,7 +12655,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x71",
-    "skillId": "NO_skillId"
+    "enum": "NO_enum"
   },
   "Additional Party Members [Fighting Chant Bonus]": {
     "id": 380,
@@ -12686,7 +12686,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x71",
-    "skillId": "NO_skillId"
+    "enum": "NO_enum"
   },
   "Sonic Acceleration": {
     "id": 381,
@@ -12717,7 +12717,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x4000003",
-    "skillId": "AS_SONICACCEL"
+    "enum": "AS_SONICACCEL"
   },
   "Ki Explosion": {
     "id": 382,
@@ -12750,7 +12750,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8200003",
-    "skillId": "MO_BALKYOUNG"
+    "enum": "MO_BALKYOUNG"
   },
   "Close Confine": {
     "id": 383,
@@ -12783,7 +12783,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x8000003",
-    "skillId": "RG_CLOSECONFINE"
+    "enum": "RG_CLOSECONFINE"
   },
   "Shield Boomerang [Soul Linked]": {
     "id": 384,
@@ -12814,7 +12814,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x803",
-    "skillId": "CR_SHIELDBOOMERANG"
+    "enum": "CR_SHIELDBOOMERANG"
   },
   "Super Novice Link [Soul Linker]": {
     "id": 385,
@@ -12845,7 +12845,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x9",
-    "skillId": "SL_SUPERNOVICE"
+    "enum": "SL_SUPERNOVICE"
   },
   "One Hand Quicken [Soul Linked]": {
     "id": 386,
@@ -12876,7 +12876,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x403",
-    "skillId": "KN_ONEHAND"
+    "enum": "KN_ONEHAND"
   },
   "Holy Light [Soul Linked]": {
     "id": 387,
@@ -12909,7 +12909,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x100003",
-    "skillId": "AL_HOLYLIGHT"
+    "enum": "AL_HOLYLIGHT"
   },
   "Sonic Blow [Soul Linked]": {
     "id": 388,
@@ -12951,7 +12951,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x4000003",
-    "skillId": "AS_SONICBLOW"
+    "enum": "AS_SONICBLOW"
   },
   "Full Andrenaline Rush": {
     "id": 389,
@@ -12982,7 +12982,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x800003",
-    "skillId": "BS_ADRENALINE2"
+    "enum": "BS_ADRENALINE2"
   },
   "Hunter Spirit [Soul Linker]": {
     "id": 390,
@@ -13013,7 +13013,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x10003",
-    "skillId": "SL_HUNTER"
+    "enum": "SL_HUNTER"
   },
   "Beast Strafing": {
     "id": 391,
@@ -13046,7 +13046,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x10003",
-    "skillId": "HT_POWER"
+    "enum": "HT_POWER"
   },
   "Rebirth Spirit [Soul Linker]": {
     "id": 392,
@@ -13077,7 +13077,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x2489203",
-    "skillId": "NO_skillId"
+    "enum": "NO_enum"
   },
   "Throwing Practice": {
     "id": 393,
@@ -13108,7 +13108,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x81",
-    "skillId": "NJ_TOBIDOUGU"
+    "enum": "NJ_TOBIDOUGU"
   },
   "Throw Shuriken": {
     "id": 394,
@@ -13141,7 +13141,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x81",
-    "skillId": "NJ_SYURIKEN"
+    "enum": "NJ_SYURIKEN"
   },
   "Throw Kunai": {
     "id": 395,
@@ -13178,7 +13178,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x81",
-    "skillId": "NJ_KUNAI"
+    "enum": "NJ_KUNAI"
   },
   "Throw Huuma Shuriken": {
     "id": 396,
@@ -13215,7 +13215,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x81",
-    "skillId": "NJ_HUUMA"
+    "enum": "NJ_HUUMA"
   },
   "Throw Zeny": {
     "id": 397,
@@ -13248,7 +13248,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "NJ_ZENYNAGE"
+    "enum": "NJ_ZENYNAGE"
   },
   "Reverse Tatami": {
     "id": 398,
@@ -13281,7 +13281,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000083",
-    "skillId": "NJ_TATAMIGAESHI"
+    "enum": "NJ_TATAMIGAESHI"
   },
   "Shadow Jump": {
     "id": 399,
@@ -13314,7 +13314,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "NJ_SHADOWJUMP"
+    "enum": "NJ_SHADOWJUMP"
   },
   "Mist Slash": {
     "id": 400,
@@ -13356,7 +13356,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000083",
-    "skillId": "NJ_KASUMIKIRI"
+    "enum": "NJ_KASUMIKIRI"
   },
   "Shadow Slash": {
     "id": 401,
@@ -13393,7 +13393,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000083",
-    "skillId": "NJ_KIRIKAGE"
+    "enum": "NJ_KIRIKAGE"
   },
   "Cast-off Ciceda Shell": {
     "id": 403,
@@ -13435,7 +13435,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "NJ_UTSUSEMI"
+    "enum": "NJ_UTSUSEMI"
   },
   "Soul": {
     "id": 404,
@@ -13472,7 +13472,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x81",
-    "skillId": "MG_SOULSTRIKE"
+    "enum": "MG_SOULSTRIKE"
   },
   "Final Strike": {
     "id": 405,
@@ -13514,7 +13514,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x81",
-    "skillId": "NJ_ISSEN"
+    "enum": "NJ_ISSEN"
   },
   "Ninpou Training": {
     "id": 406,
@@ -13556,7 +13556,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "NJ_NINPOU"
+    "enum": "NJ_NINPOU"
   },
   "Crimson Fire Blossom": {
     "id": 407,
@@ -13598,7 +13598,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000083",
-    "skillId": "NJ_KOUENKA"
+    "enum": "NJ_KOUENKA"
   },
   "Crimson Fire Formation": {
     "id": 408,
@@ -13631,7 +13631,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000083",
-    "skillId": "NJ_KAENSIN"
+    "enum": "NJ_KAENSIN"
   },
   "Dragon Fire Formation": {
     "id": 409,
@@ -13668,7 +13668,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000083",
-    "skillId": "NJ_BAKUENRYU"
+    "enum": "NJ_BAKUENRYU"
   },
   "Lightning Spear of Ice": {
     "id": 410,
@@ -13710,7 +13710,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000083",
-    "skillId": "NJ_HYOUSENSOU"
+    "enum": "NJ_HYOUSENSOU"
   },
   "Water Escape Technique": {
     "id": 411,
@@ -13752,7 +13752,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "NJ_SUITON"
+    "enum": "NJ_SUITON"
   },
   "Falling Ice Pillar": {
     "id": 412,
@@ -13789,7 +13789,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000083",
-    "skillId": "NJ_HYOUSYOURAKU"
+    "enum": "NJ_HYOUSYOURAKU"
   },
   "Wind Blade": {
     "id": 413,
@@ -13831,7 +13831,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000083",
-    "skillId": "NJ_HUUJIN"
+    "enum": "NJ_HUUJIN"
   },
   "Lightning Crash": {
     "id": 414,
@@ -13868,7 +13868,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000083",
-    "skillId": "NJ_RAIGEKISAI"
+    "enum": "NJ_RAIGEKISAI"
   },
   "North Wind": {
     "id": 415,
@@ -13905,7 +13905,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000083",
-    "skillId": "NJ_KAMAITACHI"
+    "enum": "NJ_KAMAITACHI"
   },
   "Flip the Coin": {
     "id": 416,
@@ -13938,7 +13938,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x101",
-    "skillId": "GS_GLITTERING"
+    "enum": "GS_GLITTERING"
   },
   "Fling": {
     "id": 417,
@@ -13971,7 +13971,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "GS_FLING"
+    "enum": "GS_FLING"
   },
   "Triple Action": {
     "id": 418,
@@ -14004,7 +14004,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000103",
-    "skillId": "GS_TRIPLEACTION"
+    "enum": "GS_TRIPLEACTION"
   },
   "Bull's Eye": {
     "id": 419,
@@ -14035,7 +14035,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000103",
-    "skillId": "GS_BULLSEYE"
+    "enum": "GS_BULLSEYE"
   },
   "Madness Canceller": {
     "id": 420,
@@ -14068,7 +14068,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x101",
-    "skillId": "GS_MADNESSCANCEL"
+    "enum": "GS_MADNESSCANCEL"
   },
   "Adjustment": {
     "id": 421,
@@ -14099,7 +14099,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x101",
-    "skillId": "GS_ADJUSTMENT"
+    "enum": "GS_ADJUSTMENT"
   },
   "Increase Accuracy": {
     "id": 422,
@@ -14130,7 +14130,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x101",
-    "skillId": "GS_INCREASING"
+    "enum": "GS_INCREASING"
   },
   "Magical Bullet": {
     "id": 423,
@@ -14163,7 +14163,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x8000103",
-    "skillId": "GS_MAGICALBULLET"
+    "enum": "GS_MAGICALBULLET"
   },
   "Cracker": {
     "id": 424,
@@ -14196,7 +14196,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "GS_CRACKER"
+    "enum": "GS_CRACKER"
   },
   "Single Action": {
     "id": 425,
@@ -14227,7 +14227,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x101",
-    "skillId": "GS_SINGLEACTION"
+    "enum": "GS_SINGLEACTION"
   },
   "Snake Eyes": {
     "id": 426,
@@ -14258,7 +14258,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x101",
-    "skillId": "GS_SNAKEEYE"
+    "enum": "GS_SNAKEEYE"
   },
   "Chain Action": {
     "id": 427,
@@ -14289,7 +14289,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x101",
-    "skillId": "GS_CHAINACTION"
+    "enum": "GS_CHAINACTION"
   },
   "Rapid Shower": {
     "id": 428,
@@ -14331,7 +14331,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x101",
-    "skillId": "GS_RAPIDSHOWER"
+    "enum": "GS_RAPIDSHOWER"
   },
   "Desperado": {
     "id": 429,
@@ -14373,7 +14373,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x101",
-    "skillId": "GS_DESPERADO"
+    "enum": "GS_DESPERADO"
   },
   "Tracking": {
     "id": 430,
@@ -14415,7 +14415,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x101",
-    "skillId": "GS_TRACKING"
+    "enum": "GS_TRACKING"
   },
   "Disarm": {
     "id": 431,
@@ -14452,7 +14452,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x101",
-    "skillId": "GS_DISARM"
+    "enum": "GS_DISARM"
   },
   "Piercing Shot": {
     "id": 432,
@@ -14489,7 +14489,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x101",
-    "skillId": "GS_PIERCINGSHOT"
+    "enum": "GS_PIERCINGSHOT"
   },
   "Gatling Fever": {
     "id": 433,
@@ -14531,7 +14531,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x101",
-    "skillId": "GS_GATLINGFEVER"
+    "enum": "GS_GATLINGFEVER"
   },
   "Dust": {
     "id": 434,
@@ -14573,7 +14573,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x101",
-    "skillId": "AS_VENOMDUST"
+    "enum": "AS_VENOMDUST"
   },
   "Full Buster": {
     "id": 435,
@@ -14615,7 +14615,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x101",
-    "skillId": "GS_FULLBUSTER"
+    "enum": "GS_FULLBUSTER"
   },
   "Spread Attack": {
     "id": 436,
@@ -14657,7 +14657,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x101",
-    "skillId": "GS_SPREADATTACK"
+    "enum": "GS_SPREADATTACK"
   },
   "Ground Drift": {
     "id": 437,
@@ -14699,7 +14699,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x101",
-    "skillId": "GS_GROUNDDRIFT"
+    "enum": "GS_GROUNDDRIFT"
   },
   "Final Strike [Max HP]": {
     "id": 438,
@@ -14741,7 +14741,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x81",
-    "skillId": "NJ_ISSEN"
+    "enum": "NJ_ISSEN"
   },
   "Tarot Card of Fate": {
     "id": 439,
@@ -14774,7 +14774,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "CG_TAROTCARD"
+    "enum": "CG_TAROTCARD"
   },
   "Wink of Charm": {
     "id": 440,
@@ -14807,7 +14807,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "skillId": "DC_WINKCHARM"
+    "enum": "DC_WINKCHARM"
   },
   "Mana Recharge": {
     "id": 441,
@@ -14838,7 +14838,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x100002",
-    "skillId": "HP_MANARECHARGE"
+    "enum": "HP_MANARECHARGE"
   },
   "Learning Potion": {
     "id": 442,
@@ -14869,7 +14869,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x1000002",
-    "skillId": "AM_LEARNINGPOTION"
+    "enum": "AM_LEARNINGPOTION"
   },
   "Double Casting": {
     "id": 443,
@@ -14906,7 +14906,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x4002",
-    "skillId": "PF_DOUBLECASTING"
+    "enum": "PF_DOUBLECASTING"
   },
   "Illusionary Shadow": {
     "id": 444,
@@ -14948,7 +14948,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x81",
-    "skillId": "NJ_BUNSINJYUTSU"
+    "enum": "NJ_BUNSINJYUTSU"
   },
   "Providence": {
     "id": 445,
@@ -14983,6 +14983,6 @@
     "type": "list",
     "job": "0x8000803",
     "itemScript": "bonus2 bSubRace,RC_Demon,5*subSkillLvl; bonus2 bSubEle,Ele_Holy,5*subSkillLvl;",
-    "skillId": "CR_PROVIDENCE"
+    "enum": "CR_PROVIDENCE"
   }
 }

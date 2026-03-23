@@ -23,6 +23,9 @@ export class DefaultMap<K extends string | number | symbol, T> {
 
     constructor(private _default: T) { }
 
+    public has(key: K) {
+        return this._map.has(key);
+    }
     public get(key: K) {
         return this._map.get(key) ?? this._default;
     }

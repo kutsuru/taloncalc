@@ -160,6 +160,7 @@ export type SessionBonus = {
   subClass: DefaultMap<MobClass, number>;
 
   ignoreDefRace: Record<string | number, number>;
+  ignoreDefRaceRate: DefaultMap<MobRace, number>;
   ignoreDefClass: Record<string | number, number>;
   ignoreMdefRace: Record<string | number, number>;
   ignoreMdefClass: Record<string | number, number>;
@@ -227,7 +228,7 @@ export type SkillSubType = 'check' | 'list';
 export type DBSkill = {
   name: string,
   id: number,
-  skillId: string,
+  enum: string,
   maxLevel: number,
   spCost: number[],
   element: SkillElement,  // FIXME: in DB File the elements are numbers instead of strings

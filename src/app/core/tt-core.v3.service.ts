@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { inject, Injectable, signal, WritableSignal } from "@angular/core";
 import { forkJoin, Observable } from "rxjs";
 import { AmmoType, DBAmmo, DBFood, DBItem, DBItemCombo, DBJob, DBMob, DBSkill, DBWeaponType, ElementDBV3, FoodCategory, FoodStatsNames, JSONFood, MobClass, WeaponType } from "./models.v3";
+import { DefaultMap } from "./utils";
 
 @Injectable({ providedIn: 'root' })
 export class TTCoreServiceV3 {
@@ -27,6 +28,7 @@ export class TTCoreServiceV3 {
     private _jobDB: Map<string, DBJob> = new Map();
     private _mobDB: Map<number, DBMob> = new Map();
     private _skillDB: Map<number, DBSkill> = new Map();
+    private _skillEnumToId: DefaultMap<string, number[]> = new DefaultMap([]);    // key=enum, value=skill ids
     private _elementDB: ElementDBV3 = {} as any;    // FIXME: provide function for "target" "source" ele ...
     private _weaponTypeDB: Map<WeaponType, DBWeaponType> = new Map();
     private _ammoDB: Map<string, DBAmmo> = new Map();
@@ -122,6 +124,12 @@ export class TTCoreServiceV3 {
                                 ...skill,
                                 name: skillName
                             });
+
+                            /* add to mapping DB */
+                            if (!this._skillEnumToId.has(skill.enum)) {
+                                this._skillEnumToId.set(skill.enum, []);
+                            }
+                            this._skillEnumToId.get(skill.enum)!.push(skill.id);
                         }
 
                         /* Element DB */
@@ -204,6 +212,9 @@ export class TTCoreServiceV3 {
         if (mob.mode.isBoss || mob.mode.isMvP) return 'boss';
         // FIXME: guardian?
         return 'normal';
+    }
+    public getSkillIDs(skillEnum: string): number[] {
+        return this._skillEnumToId.get(skillEnum);
     }
 
     /*** private functions ***/

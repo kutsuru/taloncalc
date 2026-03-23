@@ -1,9 +1,10 @@
 /*** imports ***/
-import { Injectable } from "@angular/core";
-import { BaseStatsAs, SessionBonus, SessionEquip } from "./models.v3";
+import { inject, Injectable } from "@angular/core";
+import { BaseStatsAs, SessionBonus, SessionEquip, SkillBuff } from "./models.v3";
 import { createEmptySessionBonus } from "./session-info-default";
 import { ASTNode, IfNode, TTItemScriptParser, VARB_PREFIX } from "./tt-itemscript-parser";
 import { DefaultMap, parseDBElement, parseDBMobRace, parseDBMobSize } from "./utils";
+import { TTCoreServiceV3 } from "./tt-core.v3.service";
 
 /*** types ***/
 export type BonusSubstitution = {
@@ -113,6 +114,9 @@ const rand: ScriptFunction = (min: ScriptValue, max: ScriptValue): ScriptValue =
 /*** service ***/
 @Injectable({ providedIn: 'root' })
 export class TTBonusEngineService {
+    /* injects */
+    private readonly _core = inject(TTCoreServiceV3);
+
     /* varbs */
     private _localVarbs: Map<string, number> = new Map();   //FIXME: allow more types? Use DefaultMap?
     private _functions: Map<string, ScriptFunction> = new Map();    //FIXME: howto fill?
@@ -171,16 +175,23 @@ export class TTBonusEngineService {
         /* save session */
         this._session = emptyBonus;
 
-        /* create functions static functions */ 
+        /* create functions static functions */
         this._functions.set('rand', rand);
     }
 
     /*** public functions ***/
-    public resetBonus(session: SessionBonus, equip: SessionEquip, baseStats: BaseStatsAs<number>) {
+    public resetBonus(
+        session: SessionBonus,
+        equip: SessionEquip,
+        baseStats: BaseStatsAs<number>,
+        skills: SkillBuff[]
+    ) {
         this._session = session;
+
         /* create dyn. functions */
         this._functions.set('isequipped', generateIsEquipped(equip));
         this._functions.set('readparam', generateReadParam(baseStats));
+        this._functions.set('getskilllv', this._generateGetSkillLv(skills))
     }
     public applyBonus(bonus: string, opts: BonusOptions = {}) {
         let bonusPrepared = this._prepareBonus(bonus, opts.customSubs);
@@ -204,6 +215,29 @@ export class TTBonusEngineService {
         return res;
     }
 
+    /*** generate functions ***/
+    private _generateGetSkillLv(skills: SkillBuff[]): ScriptFunction {
+        return (skillEnum: ScriptValue) => {
+            /* get skill IDs from core */
+            const ids = this._core.getSkillIDs(skillEnum as string);
+            console.log(`### SKILL IDS FOR ${skillEnum}###`);
+            console.log(ids);
+
+            /* no skill found */
+            if (ids.length === 0) return 0;
+
+            /* loop over active skills, look for matchin IDs and get max. value */
+            const maxLvl = skills.reduce((max, cur) => {
+                if (!ids.includes(cur.id)) return max;
+
+                let curLvl = typeof cur.value === 'boolean' ? 1 : cur.value;
+
+                return curLvl > max ? curLvl : max;
+            }, 0);
+
+            return maxLvl;
+        }
+    }
     /*** private functions ***/
     private _addUnknownEle(type: string, ele: string) {
         const group = this._unknownEle.get(type);
@@ -487,7 +521,7 @@ export class TTBonusEngineService {
         });
 
         /* 4) Only allow numbers and operators */
-        if (!/^([\d\s+\-*\/()%&|<>=!.]|true|false)+$/.test(expression)) {
+        if (!/^([\d\s+\-*\/()%&|<>=!.:?]|true|false)+$/.test(expression)) {
             throw new Error(`Unsafe expression: ${expression}`);
         }
 

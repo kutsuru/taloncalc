@@ -26,7 +26,7 @@ export class DebugComponent {
     const session = createEmptySessionBonus();
     const equip = { ...SESSION_EQUIP_DEFAULT };
     const stats: BaseStatsAs<number> = { agi: 0, dex: 0, int: 0, luk: 0, str: 0, vit: 0 };
-    this.be.resetBonus(session, equip, stats);
+    this.be.resetBonus(session, equip, stats, []);
 
     /* items */
     let cnt = 1;
