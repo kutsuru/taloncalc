@@ -1,6 +1,6 @@
 /*** imports ***/
 import { inject, Injectable } from "@angular/core";
-import { BaseStatsAs, SessionBonus, SessionEquip, SkillBuff } from "./models.v3";
+import { BaseStatsAs, SessionBonus, SessionEquip, SkillBuff } from "./tt-models.v3";
 import { createEmptySessionBonus } from "./session-info-default";
 import { ASTNode, IfNode, TTItemScriptParser, VARB_PREFIX } from "./tt-itemscript-parser";
 import { DefaultMap, parseDBElement, parseDBMobRace, parseDBMobSize } from "./utils";

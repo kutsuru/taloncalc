@@ -30,7 +30,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0xfffffff",
-    "enum": "NO_enum"
+    "enum": "NO_ENUM"
   },
   "First Aid": {
     "id": 1,
@@ -9593,7 +9593,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "enum": "NO_enum"
+    "enum": "NO_ENUM"
   },
   "Pressure": {
     "id": 283,
@@ -10238,7 +10238,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x200003",
-    "enum": "NO_enum"
+    "enum": "NO_ENUM"
   },
   "Throw Tomahawk": {
     "id": 302,
@@ -10494,7 +10494,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x9",
-    "enum": "NO_enum"
+    "enum": "NO_ENUM"
   },
   "Married [All Stats - 1]": {
     "id": 310,
@@ -10525,7 +10525,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x9",
-    "enum": "NO_enum"
+    "enum": "NO_ENUM"
   },
   "<Font size=2>Number of mastered Smith XYZ Skills [for Veteran Axe Bonus]</Font>": {
     "id": 311,
@@ -10556,7 +10556,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x800003",
-    "enum": "NO_enum"
+    "enum": "NO_ENUM"
   },
   "Dark Strike": {
     "id": 312,
@@ -10773,7 +10773,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "enum": "NO_enum"
+    "enum": "NO_ENUM"
   },
   "Shield Chain": {
     "id": 324,
@@ -10975,7 +10975,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x71",
-    "enum": "NO_enum"
+    "enum": "NO_ENUM"
   },
   "Prepare Whirlwind Kick": {
     "id": 330,
@@ -11521,7 +11521,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x11",
-    "enum": "NO_enum"
+    "enum": "NO_ENUM"
   },
   "Warm Wind": {
     "id": 346,
@@ -12162,7 +12162,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x41",
-    "enum": "NO_enum"
+    "enum": "NO_ENUM"
   },
   "Angel of the Sun,Moon and Stars": {
     "id": 366,
@@ -12193,7 +12193,7 @@
     "isPassive": false,
     "isBuff": false,
     "job": "0x0",
-    "enum": "NO_enum"
+    "enum": "NO_ENUM"
   },
   "Blessings of the Sun,Moon and Stars [Exp Increase]": {
     "id": 367,
@@ -12224,7 +12224,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x41",
-    "enum": "NO_enum"
+    "enum": "NO_ENUM"
   },
   "Kaizel": {
     "id": 368,
@@ -12655,7 +12655,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x71",
-    "enum": "NO_enum"
+    "enum": "NO_ENUM"
   },
   "Additional Party Members [Fighting Chant Bonus]": {
     "id": 380,
@@ -12686,7 +12686,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x71",
-    "enum": "NO_enum"
+    "enum": "NO_ENUM"
   },
   "Sonic Acceleration": {
     "id": 381,
@@ -13077,7 +13077,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x2489203",
-    "enum": "NO_enum"
+    "enum": "NO_ENUM"
   },
   "Throwing Practice": {
     "id": 393,

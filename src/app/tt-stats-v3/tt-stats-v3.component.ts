@@ -6,7 +6,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ClassAvatarComponent } from "../class-avatar/class-avatar.component";
 import { TTCoreService } from '../core/tt-core.service';
 import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
-import { BaseStatsAs } from '../core/models.v3';
+import { BaseStatsAs } from '../core/tt-models.v3';
 import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
 
 @Component({

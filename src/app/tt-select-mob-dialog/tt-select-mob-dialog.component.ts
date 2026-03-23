@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { DBMob } from '../core/models.v3';
+import { DBMob } from '../core/tt-models.v3';
 import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
 
 export type SelectMobDialogData = {

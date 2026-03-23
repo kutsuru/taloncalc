@@ -1,5 +1,5 @@
 import { SessionInfoV2 } from "./models";
-import { SessionBonus } from "./models.v3";
+import { SessionBonus } from "./tt-models.v3";
 import { TTCoreService } from "./tt-core.service";
 import { DefaultMap } from "./utils";
 

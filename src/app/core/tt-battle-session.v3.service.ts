@@ -1,5 +1,5 @@
 import { inject, Injectable, signal } from "@angular/core";
-import { BaseStatsAs, DBAmmo, DBMob, DBSkill, Element, RefineLocations, SessionBonus, SessionEquip } from "./models.v3";
+import { BaseStatsAs, DBAmmo, DBMob, DBSkill, Element, RefineLocations, SessionBonus, SessionEquip } from "./tt-models.v3";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
 import { TTSessionInfoV3Service } from "./tt-session-info.v3.service";
 

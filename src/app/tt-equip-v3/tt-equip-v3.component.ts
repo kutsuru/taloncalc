@@ -3,7 +3,7 @@ import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { DBItem, EquipLocation, RefineLocations, WeaponType, WeaponTypeLeft } from '../core/models.v3';
+import { DBItem, EquipLocation, RefineLocations, WeaponType, WeaponTypeLeft } from '../core/tt-models.v3';
 import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
 import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
 import { TtCardSlotV3Component } from "../tt-card-slot-v3/tt-card-slot-v3.component";

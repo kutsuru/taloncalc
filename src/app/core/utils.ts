@@ -1,5 +1,5 @@
 /*** imports ***/
-import { MobRace, Element, MobSize, DBJob } from "./models.v3";
+import { MobRace, Element, MobSize, DBJob } from "./tt-models.v3";
 
 /***************/
 /*** General ***/

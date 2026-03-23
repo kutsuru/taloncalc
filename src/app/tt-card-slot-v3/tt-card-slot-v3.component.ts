@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, model, Signal } from '@angular/core';
-import { CardLocations, ItemSubType } from '../core/models.v3';
+import { CardLocations, ItemSubType } from '../core/tt-models.v3';
 import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
 import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
 import { MatDialog } from '@angular/material/dialog';

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from "@angular/core";
-import { DBItem, ItemSubType } from "../core/models.v3";
+import { DBItem, ItemSubType } from "../core/tt-models.v3";
 import { TTCoreServiceV3 } from "../core/tt-core.v3.service";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { MatDialogModule } from '@angular/material/dialog';

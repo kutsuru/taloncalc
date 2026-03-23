@@ -4,7 +4,7 @@ import { SESSION_EQUIP_DEFAULT, TTSessionInfoV3Service } from '../core/tt-sessio
 import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
 import { TTBonusEngineService } from '../core/tt-bonus-engine.service';
 import { createEmptySessionBonus } from '../core/session-info-default';
-import { BaseStatsAs, DBItem, SessionBonus } from '../core/models.v3';
+import { BaseStatsAs, DBItem, SessionBonus } from '../core/tt-models.v3';
 
 @Component({
   selector: 'app-debug',

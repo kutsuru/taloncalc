@@ -1,6 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
 import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
-import { DBFood, FoodStatsNames } from '../core/models.v3';
+import { DBFood, FoodStatsNames } from '../core/tt-models.v3';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';

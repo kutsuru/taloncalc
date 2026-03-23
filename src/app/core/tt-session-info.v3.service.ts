@@ -1,6 +1,6 @@
 /*** imports ***/
 import { computed, effect, inject, Injectable, Signal, signal, untracked, WritableSignal } from "@angular/core";
-import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, DBItemCombo, DBJob, DBSkill, FoodStatsNames, RefineLocations, SessionBonus, SessionEquip, SkillBuff, WeaponTypeLeft } from "./models.v3";
+import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, DBItemCombo, DBJob, DBSkill, FoodStatsNames, RefineLocations, SessionBonus, SessionEquip, SkillBuff, WeaponTypeLeft } from "./tt-models.v3";
 import { createEmptySessionBonus, SESSION_INFO_DEFAULT } from "./session-info-default";
 import { BonusSubstitution, TTBonusEngineService } from "./tt-bonus-engine.service";
 import { TTCoreService } from "./tt-core.service";
