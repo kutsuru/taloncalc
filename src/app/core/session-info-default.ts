@@ -12,7 +12,7 @@ export function createEmptySessionBonus(): SessionBonus {
             atk: 0, atk2: 0, atkRate: 0, baseAtk: 0,
             hit: 0, hitRate: 0, critical: 0, critRate: 0,
             aspd: 0, aspdRate: 0, longAtkRate: 0, critAtkRate: 0,
-            atkEle: 0, atkRange: 0, splashRange: 0,
+            atkEle: 'None', atkRange: 0, splashRange: 0,
             doubleRate: 0, doubleAddRate: 0, perfectHitRate: 0, perfectHit: 0,
             matk: 0, matk2: 0, matkRate: 0,
             variableCastrate: 0, fixedCastrate: 0, castrate: 0, delayRate: 0,
@@ -28,8 +28,8 @@ export function createEmptySessionBonus(): SessionBonus {
         addRace: new DefaultMap(0), addEle: new DefaultMap(0), addSize: new DefaultMap(0), addClass: new DefaultMap(0), addRace2: new DefaultMap(0),
         magicAddRace: new DefaultMap(0), magicAddRace2: new DefaultMap(0), magicAddEle: new DefaultMap(0), magicAddSize: new DefaultMap(0), magicAddClass: new DefaultMap(0), magicAtkEle: new DefaultMap(0),
         subRace: new DefaultMap(0), subEle: new DefaultMap(0), subSize: new DefaultMap(0), subClass: new DefaultMap(0), subRace2: new DefaultMap(0),
-        ignoreDefRace: {}, ignoreDefClass: {}, ignoreMdefRace: {}, ignoreMdefClass: {}, ignoreDefRaceRate: new DefaultMap(0),
-        skillAtk: {}, skillUseSP: {}, skillCooldown: {},
+        ignoreDefRace: new DefaultMap(false), ignoreDefClass: {}, ignoreMdefRace: {}, ignoreMdefClass: {}, ignoreDefRaceRate: new DefaultMap(0),
+        skillAtk: new DefaultMap(0), skillUseSP: {}, skillCooldown: {},
         skillFixedCast: {}, skillVariableCast: {},
         // falgs will start empty
         flags: {}

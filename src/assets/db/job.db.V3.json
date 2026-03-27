@@ -47,7 +47,10 @@
         "int": [9],
         "dex": [3],
         "luk": [2]
-      }
+      },
+      "class":"Job_Novice",
+      "baseClass": "Job_Novice",
+      "baseJob": "Job_Novice"
     },
     "Swordman": {
       "isTrans": false,
@@ -103,7 +106,10 @@
         "int": [],
         "dex": [10, 22, 36],
         "luk": [26, 44]
-      }
+      },
+      "class":"Job_Swordman",
+      "baseClass": "Job_Swordman",
+      "baseJob": "Job_Swordman"
     },
     "Mage": {
       "isTrans": false,
@@ -142,7 +148,10 @@
         "int": [2, 14, 22, 33, 38, 44, 46, 50],
         "dex": [6, 10, 36],
         "luk": [30, 42, 49]
-      }
+      },
+      "class":"Job_Mage",
+      "baseClass": "Job_Mage",
+      "baseJob": "Job_Mage"
     },
     "Archer": {
       "isTrans": false,
@@ -176,7 +185,10 @@
         "int": [10, 47],
         "dex": [2, 14, 18, 30, 36, 42, 50],
         "luk": [22, 44]
-      }
+      },
+      "class":"Job_Archer",
+      "baseClass": "Job_Archer",
+      "baseJob": "Job_Archer"
     },
     "Acolyte": {
       "isTrans": false,
@@ -222,7 +234,10 @@
         "int": [10, 33, 46],
         "dex": [14, 36, 47],
         "luk": [2, 18, 38, 50]
-      }
+      },
+      "class":"Job_Acolyte",
+      "baseClass": "Job_Acolyte",
+      "baseJob": "Job_Acolyte"
     },
     "Merchant": {
       "isTrans": false,
@@ -272,7 +287,10 @@
         "int": [26],
         "dex": [6, 14, 38, 42, 50],
         "luk": [36, 46]
-      }
+      },
+      "class":"Job_Merchant",
+      "baseClass": "Job_Merchant",
+      "baseJob": "Job_Merchant"
     },
     "Thief": {
       "isTrans": false,
@@ -312,7 +330,10 @@
         "int": [18],
         "dex": [10, 22, 42, 49],
         "luk": [26, 40, 46]
-      }
+      },
+      "class":"Job_Thief",
+      "baseClass": "Job_Thief",
+      "baseJob": "Job_Thief"
     },
     "Knight": {
       "isTrans": false,
@@ -368,7 +389,10 @@
         "int": [],
         "dex": [11, 19, 31, 40, 48, 49],
         "luk": [5, 20, 28, 37]
-      }
+      },
+      "class":"Job_Knight",
+      "baseClass": "Job_Swordman",
+      "baseJob": "Job_Knight"
     },
     "Priest": {
       "isTrans": false,
@@ -416,7 +440,10 @@
         "int": [8, 9, 22, 42, 43],
         "dex": [16, 20, 25, 32],
         "luk": [1, 3, 10, 21, 31, 39, 50]
-      }
+      },
+      "class":"Job_Priest",
+      "baseClass": "Job_Acolyte",
+      "baseJob": "Job_Priest"
     },
     "Wizard": {
       "isTrans": false,
@@ -455,7 +482,10 @@
         "int": [1, 4, 9, 18, 22, 29, 31, 33, 40, 45, 48, 50],
         "dex": [2, 5, 13, 26, 32, 39],
         "luk": [15, 36]
-      }
+      },
+      "class":"Job_Wizard",
+      "baseClass": "Job_Mage",
+      "baseJob": "Job_Wizard"
     },
     "Blacksmith": {
       "isTrans": false,
@@ -505,7 +535,10 @@
         "int": [21, 34],
         "dex": [1, 4, 5, 9, 12, 19, 26, 28, 36, 39, 40, 47],
         "luk": [11, 46]
-      }
+      },
+      "class":"Job_Blacksmith",
+      "baseClass": "Job_Merchant",
+      "baseJob": "Job_Blacksmith"
     },
     "Hunter": {
       "isTrans": false,
@@ -539,7 +572,10 @@
         "int": [3, 34, 41, 46],
         "dex": [1, 4, 8, 14, 21, 27, 33, 38, 43, 49],
         "luk": [5, 15, 29, 42]
-      }
+      },
+      "class":"Job_Hunter",
+      "baseClass": "Job_Archer",
+      "baseJob": "Job_Hunter"
     },
     "Assassin": {
       "isTrans": false,
@@ -579,7 +615,10 @@
         "int": [4, 14, 38, 42],
         "dex": [9, 24, 30, 31, 40, 41, 46, 50],
         "luk": []
-      }
+      },
+      "class":"Job_Assassin",
+      "baseClass": "Job_Thief",
+      "baseJob": "Job_Assassin"
     },
     "Crusader": {
       "isTrans": false,
@@ -635,7 +674,10 @@
         "int": [9, 20, 21, 35, 38, 44],
         "dex": [14, 28, 34],
         "luk": [1, 2, 3, 4, 5]
-      }
+      },
+      "class":"Job_Crusader",
+      "baseClass": "Job_Swordman",
+      "baseJob": "Job_Crusader"
     },
     "Monk": {
       "isTrans": false,
@@ -683,7 +725,10 @@
         "int": [16, 38],
         "dex": [4, 22, 30, 43],
         "luk": [15, 32, 40]
-      }
+      },
+      "class":"Job_Monk",
+      "baseClass": "Job_Acolyte",
+      "baseJob": "Job_Monk"
     },
     "Sage": {
       "isTrans": false,
@@ -729,7 +774,10 @@
         "int": [1, 8, 15, 24, 30, 37, 38, 45, 50],
         "dex": [20, 25, 27, 32, 39],
         "luk": [17, 35, 40]
-      }
+      },
+      "class":"Job_Sage",
+      "baseClass": "Job_Mage",
+      "baseJob": "Job_Sage"
     },
     "Rogue": {
       "isTrans": false,
@@ -763,7 +811,10 @@
         "int": [38, 43, 47, 48],
         "dex": [3, 11, 18, 20, 33, 34, 50],
         "luk": []
-      }
+      },
+      "class":"Job_Rogue",
+      "baseClass": "Job_Thief",
+      "baseJob": "Job_Rogue"
     },
     "Alchemist": {
       "isTrans": false,
@@ -813,7 +864,10 @@
         "int": [1, 9, 17, 23, 24, 29, 38],
         "dex": [2, 3, 8, 13, 19, 21, 25, 28, 32],
         "luk": []
-      }
+      },
+      "class":"Job_Alchemist",
+      "baseClass": "Job_Merchant",
+      "baseJob": "Job_Alchemist"
     },
     "Bard": {
       "isTrans": false,
@@ -852,7 +906,10 @@
         "int": [5, 13, 21, 40, 47],
         "dex": [1, 7, 15, 16, 19, 32, 38, 46, 50],
         "luk": [6, 9, 20, 41]
-      }
+      },
+      "class":"Job_Bard",
+      "baseClass": "Job_Archer",
+      "baseJob": "Job_Bard"
     },
     "Dancer": {
       "isTrans": false,
@@ -886,7 +943,10 @@
         "int": [5, 13, 21, 40, 47],
         "dex": [6, 9, 16, 20, 41],
         "luk": [1, 7, 15, 19, 32, 38, 46, 50]
-      }
+      },
+      "class":"Job_Dancer",
+      "baseClass": "Job_Archer",
+      "baseJob": "Job_Dancer"
     },
     "Supernovice": {
       "isTrans": false,
@@ -936,7 +996,10 @@
         "int": [7, 19, 31, 43, 60],
         "dex": [9, 21, 33, 45, 64],
         "luk": [11, 23, 35, 47, 68]
-      }
+      },
+      "class":"Job_Super_Novice",
+      "baseClass": "Job_Novice",
+      "baseJob": "Job_Super_Novice"
     },
     "Gunslinger": {
       "isTrans": false,
@@ -984,7 +1047,10 @@
         "int": [52, 61],
         "dex": [1, 6, 11, 17, 25, 35, 45, 55, 62],
         "luk": [2, 4, 12, 21, 31, 51, 63]
-      }
+      },
+      "class":"Job_Gunslinger",
+      "baseClass": "Job_Gunslinger",
+      "baseJob": "Job_Gunslinger"
     },
     "Ninja": {
       "isTrans": false,
@@ -1018,7 +1084,10 @@
         "int": [20, 29, 42, 50, 62],
         "dex": [10, 22, 32, 43, 53, 63],
         "luk": [30, 40, 52, 64]
-      }
+      },
+      "class":"Job_Ninja",
+      "baseClass": "Job_Ninja",
+      "baseJob": "Job_Ninja"
     },
     "Novice High": {
       "isTrans": true,
@@ -1068,7 +1137,10 @@
         "int": [9],
         "dex": [3],
         "luk": [2]
-      }
+      },
+      "class":"Job_Novice_High",
+      "baseClass": "Job_Novice",
+      "baseJob": "Job_Novice"
     },
     "Swordman High": {
       "isTrans": true,
@@ -1124,7 +1196,10 @@
         "int": [],
         "dex": [10, 22, 36],
         "luk": [26, 44]
-      }
+      },
+      "class":"Job_Swordman_High",
+      "baseClass": "Job_Swordman",
+      "baseJob": "Job_Swordman"
     },
     "Mage High": {
       "isTrans": true,
@@ -1163,7 +1238,10 @@
         "int": [2, 14, 22, 33, 38, 44, 46, 50],
         "dex": [6, 10, 36],
         "luk": [30, 42, 49]
-      }
+      },
+      "class":"Job_Mage_High",
+      "baseClass": "Job_Mage",
+      "baseJob": "Job_Mage"
     },
     "Archer High": {
       "isTrans": true,
@@ -1197,7 +1275,10 @@
         "int": [10, 47],
         "dex": [2, 14, 18, 30, 36, 42, 50],
         "luk": [22, 44]
-      }
+      },
+      "class":"Job_Archer_High",
+      "baseClass": "Job_Archer",
+      "baseJob": "Job_Archer"
     },
     "Acolyte High": {
       "isTrans": true,
@@ -1243,7 +1324,10 @@
         "int": [10, 33, 46],
         "dex": [14, 36, 47],
         "luk": [2, 18, 38, 50]
-      }
+      },
+      "class":"Job_Acolyte_High",
+      "baseClass": "Job_Acolyte",
+      "baseJob": "Job_Acolyte"
     },
     "Merchant High": {
       "isTrans": true,
@@ -1293,7 +1377,10 @@
         "int": [26],
         "dex": [6, 14, 38, 42, 50],
         "luk": [36, 46]
-      }
+      },
+      "class":"Job_Merchant_High",
+      "baseClass": "Job_Merchant",
+      "baseJob": "Job_Merchant"
     },
     "Thief High": {
       "isTrans": true,
@@ -1333,7 +1420,10 @@
         "int": [18],
         "dex": [10, 22, 42, 49],
         "luk": [26, 40, 46]
-      }
+      },
+      "class":"Job_Thief_High",
+      "baseClass": "Job_Thief",
+      "baseJob": "Job_Thief"
     },
     "Lord Knight": {
       "isTrans": true,
@@ -1389,7 +1479,10 @@
         "int": [13, 67],
         "dex": [4, 11, 16, 28, 31, 36, 44, 49, 62],
         "luk": [3, 27, 38]
-      }
+      },
+      "class":"Job_Lord_Knight",
+      "baseClass": "Job_Swordman",
+      "baseJob": "Job_Knight"
     },
     "High Priest": {
       "isTrans": true,
@@ -1437,7 +1530,10 @@
         "int": [1, 7, 11, 20, 23, 24, 34, 47, 57, 61, 66, 70],
         "dex": [13, 16, 26, 28, 37, 43, 46, 56, 62],
         "luk": [40, 49]
-      }
+      },
+      "class":"Job_High_Priest",
+      "baseClass": "Job_Acolyte",
+      "baseJob": "Job_Priest"
     },
     "High Wizard": {
       "isTrans": true,
@@ -1476,7 +1572,10 @@
         "int": [1, 5, 10, 14, 19, 24, 28, 32, 37, 38, 39, 46, 49, 55, 59, 62, 70],
         "dex": [2, 9, 17, 22, 23, 31, 43, 61, 67],
         "luk": [12, 41, 57]
-      }
+      },
+      "class":"Job_High_Wizard",
+      "baseClass": "Job_Mage",
+      "baseJob": "Job_Wizard"
     },
     "Whitesmith": {
       "isTrans": true,
@@ -1526,7 +1625,10 @@
         "int": [4, 15, 22, 34, 50, 61],
         "dex": [1, 6, 12, 23, 32, 38, 41, 47, 55, 56, 62, 70],
         "luk": [8, 16, 28, 39, 44, 45, 66, 67]
-      }
+      },
+      "class":"Job_Whitesmith",
+      "baseClass": "Job_Merchant",
+      "baseJob": "Job_Blacksmith"
     },
     "Sniper": {
       "isTrans": true,
@@ -1560,7 +1662,10 @@
         "int": [5, 20, 42, 54, 65],
         "dex": [1, 3, 4, 16, 17, 22, 26, 30, 35, 40, 46, 51, 60, 69],
         "luk": [14, 25, 31, 36, 50, 57, 62, 70]
-      }
+      },
+      "class":"Job_Sniper",
+      "baseClass": "Job_Archer",
+      "baseJob": "Job_Hunter"
     },
     "Assassin Cross": {
       "isTrans": true,
@@ -1600,7 +1705,10 @@
         "int": [],
         "dex": [10, 23, 37, 39, 43, 53, 57, 61, 64, 70],
         "luk": [3, 8, 16, 18, 26, 34, 48, 65]
-      }
+      },
+      "class":"Job_Assassin_Cross",
+      "baseClass": "Job_Thief",
+      "baseJob": "Job_Assassin"
     },
     "Paladin": {
       "isTrans": true,
@@ -1656,7 +1764,10 @@
         "int": [7, 14, 29, 43, 54, 61, 65],
         "dex": [6, 12, 17, 23, 36, 45, 57, 68],
         "luk": [39, 59, 67]
-      }
+      },
+      "class":"Job_Paladin",
+      "baseClass": "Job_Swordman",
+      "baseJob": "Job_Crusader"
     },
     "Champion": {
       "isTrans": true,
@@ -1704,7 +1815,10 @@
         "int": [2, 11, 33, 47, 56, 64, 69],
         "dex": [6, 16, 22, 30, 38, 44, 50, 53, 60, 67],
         "luk": [13, 34, 46]
-      }
+      },
+      "class":"Job_Champion",
+      "baseClass": "Job_Acolyte",
+      "baseJob": "Job_Monk"
     },
     "Professor": {
       "isTrans": true,
@@ -1750,7 +1864,10 @@
         "int": [1, 2, 11, 14, 22, 30, 38, 41, 49, 57, 64, 68, 70],
         "dex": [8, 16, 20, 26, 29, 34, 37, 46, 52, 55, 62],
         "luk": [21, 66]
-      }
+      },
+      "class":"Job_Professor",
+      "baseClass": "Job_Mage",
+      "baseJob": "Job_Sage"
     },
     "Stalker": {
       "isTrans": true,
@@ -1784,7 +1901,10 @@
         "int": [5, 44, 57],
         "dex": [10, 16, 17, 26, 29, 37, 38, 49, 52, 56, 60, 66],
         "luk": [4, 20, 24, 31, 50, 59]
-      }
+      },
+      "class":"Job_Stalker",
+      "baseClass": "Job_Thief",
+      "baseJob": "Job_Rogue"
     },
     "Creator": {
       "isTrans": true,
@@ -1834,7 +1954,10 @@
         "int": [7, 13, 22, 30, 46, 59, 68],
         "dex": [1, 10, 15, 23, 35, 41, 42, 43, 47, 49, 56, 57, 63, 70],
         "luk": [3, 8, 20, 25, 34, 45, 51, 52, 60, 64, 69]
-      }
+      },
+      "class":"Job_Creator",
+      "baseClass": "Job_Merchant",
+      "baseJob": "Job_Alchemist"
     },
     "Clown": {
       "isTrans": true,
@@ -1873,7 +1996,10 @@
         "int": [8, 21, 28, 41, 69],
         "dex": [2, 7, 15, 23, 30, 39, 40, 43, 50, 56, 57, 61, 63, 66],
         "luk": [11, 18, 26, 47]
-      }
+      },
+      "class":"Job_Clown",
+      "baseClass": "Job_Archer",
+      "baseJob": "Job_Bard"
     },
     "Gypsy": {
       "isTrans": true,
@@ -1907,7 +2033,10 @@
         "int": [8, 26, 39, 53, 60],
         "dex": [1, 9, 14, 15, 18, 22, 23, 28, 33, 41, 43, 45, 49, 58, 65, 69],
         "luk": [27, 63]
-      }
+      },
+      "class":"Job_Gypsy",
+      "baseClass": "Job_Archer",
+      "baseJob": "Job_Dancer"
     },
     "Taekwon": {
       "isTrans": false,
@@ -1941,7 +2070,10 @@
         "int": [],
         "dex": [10, 11, 12, 13, 14, 15],
         "luk": []
-      }
+      },
+      "class":"Job_Taekwon",
+      "baseClass": "Job_Taekwon",
+      "baseJob": "Job_Taekwon"
     },
     "Star Gladiator": {
       "isTrans": false,
@@ -1975,7 +2107,10 @@
         "int": [],
         "dex": [20, 21, 22, 23, 24, 25],
         "luk": []
-      }
+      },
+      "class":"Job_Star_Gladiator",
+      "baseClass": "Job_Taekwon",
+      "baseJob": "Job_Star_Gladiator"
     },
     "Soul Linker": {
       "isTrans": false,
@@ -2014,6 +2149,9 @@
         "int": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
         "dex": [39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
         "luk": []
-      }
+      },
+      "class":"Job_Soul_Linker",
+      "baseClass": "Job_Taekwon",
+      "baseJob": "Job_Soul_Linker"
     }
   }

@@ -2,7 +2,7 @@ import { JsonPipe } from '@angular/common';
 import { Component, effect, inject, signal, WritableSignal } from '@angular/core';
 import { SESSION_EQUIP_DEFAULT, TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
 import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
-import { TTBonusEngineService } from '../core/tt-bonus-engine.service';
+import { TTBonusEngineService } from '../core/item-script/tt-bonus-engine.service';
 import { createEmptySessionBonus } from '../core/session-info-default';
 import { BaseStatsAs, DBItem, SessionBonus } from '../core/tt-models.v3';
 
@@ -26,7 +26,14 @@ export class DebugComponent {
     const session = createEmptySessionBonus();
     const equip = { ...SESSION_EQUIP_DEFAULT };
     const stats: BaseStatsAs<number> = { agi: 0, dex: 0, int: 0, luk: 0, str: 0, vit: 0 };
-    this.be.resetBonus(session, equip, stats, []);
+    this.be.resetBonus(session, {
+      baseStats: stats,
+      equip: equip,
+      isPVP: false,
+      skills: [],
+      refines: { armor: 0, garment: 1, leftHand: 2, rightHand: 3, shoes: 4, upperHg: 5 },
+      cards: { armor: 0, garment: 0, leftHand: [0], rightHand: [0], shoes: 0, upperHg: 0, lhAccessory: 0, rhAccessory: 0, middleHg: 0 }
+    });
 
     /* items */
     let cnt = 1;

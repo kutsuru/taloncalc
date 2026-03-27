@@ -81,7 +81,13 @@ export class TTItemScriptParser {
             this._consume(); // }
             return statements;
         } else {
-            return [this._parseCommand()];
+            const node = this._parseStatement();
+            if (node) {
+                return [node];
+            }
+            else {
+                return [];
+            }
         }
     }
 
@@ -97,7 +103,7 @@ export class TTItemScriptParser {
             // example: bonus bStr, callfunc("MyFunc", 10, 20) + 5;
             while (this._pos < this.tokens.length) {
                 const token = this._peek();
-    
+
                 if (token === "(" || token === '{') bracketLevel++;
                 if (token === ")" || token === '}') bracketLevel--;
                 // console.log(token, bracketLevel);

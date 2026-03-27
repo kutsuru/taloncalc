@@ -2,9 +2,10 @@
 import { computed, effect, inject, Injectable, Signal, signal, untracked, WritableSignal } from "@angular/core";
 import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, DBItemCombo, DBJob, DBSkill, FoodStatsNames, RefineLocations, SessionBonus, SessionEquip, SkillBuff, WeaponTypeLeft } from "./tt-models.v3";
 import { createEmptySessionBonus, SESSION_INFO_DEFAULT } from "./session-info-default";
-import { BonusSubstitution, TTBonusEngineService } from "./tt-bonus-engine.service";
+import { BonusSubstitution, TTBonusEngineService } from "./item-script/tt-bonus-engine.service";
 import { TTCoreService } from "./tt-core.service";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
+import { isTwoHandedWeapon } from "./utils";
 
 /** Dependencies 
  * BaseStats        Pure-Stats without any bonus
@@ -16,7 +17,7 @@ import { TTCoreServiceV3 } from "./tt-core.v3.service";
 **/
 
 /*** types ***/
-type CardState = {
+export type CardState = {
     armor: number;
     garment: number;
     leftHand: number[];
@@ -88,7 +89,9 @@ export class TTSessionInfoV3Service {
     bonus: Signal<SessionBonus>;
 
     /* equip */
-    equip: WritableSignal<SessionEquip> = signal({ ...SESSION_EQUIP_DEFAULT });
+    private _equipState: WritableSignal<SessionEquip> = signal({ ...SESSION_EQUIP_DEFAULT });
+    equip = this._equipState.asReadonly();
+
     isDualWielding: Signal<boolean>;
 
     /* refines */
@@ -248,7 +251,7 @@ export class TTSessionInfoV3Service {
         this.matkMin = computed(() => this._computeMatk('MIN'));
         this.matkMax = computed(() => this._computeMatk('MAX'));
         this.isDualWielding = computed(() => {
-            const equip = this.equip();
+            const equip = this._equipState();
             if (equip.leftHandType === 'Shield' || equip.leftHandType === 'Unarmed') {
                 return false;
             }
@@ -264,7 +267,7 @@ export class TTSessionInfoV3Service {
             const job = this.jobClass();
             if (job) {
                 untracked(() => {
-                    const equip = this.equip();
+                    const equip = this._equipState();
                     const jobMask = Number(job.mask);
                     let update = false;
                     // right hand type
@@ -333,7 +336,7 @@ export class TTSessionInfoV3Service {
                     }
 
                     if (update) {
-                        this.equip.set({ ...equip });
+                        this._equipState.set({ ...equip });
                     }
                 })
             }
@@ -342,7 +345,7 @@ export class TTSessionInfoV3Service {
         // update card slots based on types & equip
         effect(() => {
             // TODO: only reduce card slots instead of restet-ing all?
-            const equip = this.equip();
+            const equip = this._equipState();
             const cards = untracked(() => this._cardsState());
             const slotsLH = cards.leftHand.length;
             const slotsRH = cards.rightHand.length;
@@ -442,6 +445,7 @@ export class TTSessionInfoV3Service {
     }
 
     /*** public functions ***/
+    // public updateEquip
     public updateCard(key: keyof CardState, val: number, slot = -1) {
         this._cardsState.update(cards => {
             if (key === 'leftHand' || key === 'rightHand') {
@@ -459,6 +463,18 @@ export class TTSessionInfoV3Service {
             }
 
             return { ...cards };
+        });
+    }
+    public updateEquip(newEquip: Partial<SessionEquip>) {
+        this._equipState.update(cur => {
+            /**
+             * in case of 2H at rightHand, we override leftHandType + leftHand
+             */
+            if (newEquip.rightHandType && isTwoHandedWeapon(newEquip.rightHandType)) {
+                newEquip.leftHandType = 'Unarmed';
+                newEquip.leftHand = 0;
+            }
+            return { ...cur, ...newEquip };
         });
     }
     public addBattleCalcPVM(target: number) {
@@ -612,7 +628,7 @@ export class TTSessionInfoV3Service {
     }
     private _computeWeaponAtk(): number {
         /* triggers */
-        const equip = this.equip();
+        const equip = this._equipState();
         const bonus = this.bonus();
 
         // right hand
@@ -684,7 +700,7 @@ export class TTSessionInfoV3Service {
         const job = this.jobClass();
         const stats = this.totalStats();
         const bonus = this.bonus();
-        const equip = this.equip();
+        const equip = this._equipState();
 
         /* varbs */
         let aspd = 0;
@@ -780,7 +796,7 @@ export class TTSessionInfoV3Service {
         const res: DBItemCombo[] = [];
         /* trigger */
         const cards = this._cardsState();
-        const equip = this.equip();
+        const equip = this._equipState();
 
         /* create map with item ids and counter how many of each */
         const itemCnt: Map<number, number> = new Map();
@@ -834,7 +850,7 @@ export class TTSessionInfoV3Service {
         // trigers
         const jobClass = this.jobClass();
         const level = this.level();
-        const equip = this.equip();
+        const equip = this._equipState();
         const baseStats = this.baseStats();
         const refines = this.refines();
         const cards = this._cardsState();
@@ -865,7 +881,15 @@ export class TTSessionInfoV3Service {
         const bonusSubs: Partial<BonusSubstitution> = {
         }
         /* reset bonus engine */
-        this._bonusSession.resetBonus(res, equip, baseStats, [...skillsBuffs, ...skillsPassive]);
+        this._bonusSession.resetBonus(res, {
+            baseStats: baseStats,
+            equip: equip,
+            isPVP: false,   // FIXME: we need this in battle-service
+            skills: [...skillsBuffs, ...skillsPassive],
+            job: jobClass,
+            refines: refines,
+            cards: cards
+        });
 
         /* equip bonus */
         for (let equipSlot in equip) {

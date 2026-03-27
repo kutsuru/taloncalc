@@ -1,22 +1,34 @@
 /*** imports ***/
 import { inject, Injectable } from "@angular/core";
-import { BaseStatsAs, SessionBonus, SessionEquip, SkillBuff } from "./tt-models.v3";
-import { createEmptySessionBonus } from "./session-info-default";
+import { INLINE_FUNCTIONS, InlineFunction } from "./inline.functions";
+import { getItemTypeValue, getJobValue, getWeaponTypeValue } from "../rAthena/ra-utils";
+import { createEmptySessionBonus, SESSION_INFO_DEFAULT } from "../session-info-default";
+import { TTCoreServiceV3 } from "../tt-core.v3.service";
 import { ASTNode, IfNode, TTItemScriptParser, VARB_PREFIX } from "./tt-itemscript-parser";
-import { DefaultMap, parseDBElement, parseDBMobRace, parseDBMobSize } from "./utils";
-import { TTCoreServiceV3 } from "./tt-core.v3.service";
+import { BaseStatsAs, DBJob, Element, MobRace, RefineLocations, SessionBonus, SessionEquip, SkillBuff } from "../tt-models.v3";
+import { CardState, SESSION_EQUIP_DEFAULT } from "../tt-session-info.v3.service";
+import { DefaultMap, parseDBElement, parseDBMobRace, parseDBMobSize } from "../utils";
 
 /*** types ***/
 export type BonusSubstitution = {
     'subSkillLvl': number,  /* level of the current skill */
 }
 type CustomBonusSubstitution = keyof BonusSubstitution;
-type BonusOptions = {
+export type LocalOptions = {
     refine?: number,       /* refine of current running equip or location of the card */
     customSubs?: BonusSubstitution
 }
 type ScriptValue = number | string | boolean;
-type ScriptFunction = (...args: ScriptValue[]) => ScriptValue;
+type ScriptFunction = (...args: any[]) => any;
+type SessionOptions = {
+    equip: SessionEquip,
+    cards: CardState
+    refines: Record<RefineLocations, number>,
+    baseStats: BaseStatsAs<number>,
+    skills: SkillBuff[],
+    isPVP: boolean,
+    job?: DBJob,
+}
 
 /*** REGEX ***/
 const MONSTER_RACE_REG = /RC_[a-zA-Z_]+/g;
@@ -24,11 +36,17 @@ const ELEMENT_REG = /Ele_[a-zA-Z]+/g;
 const SIZE_REG = /Size_[a-zA-Z]+/g;
 const VARB_REG = /\.@([a-zA-Z]+)/g;
 const VARB_POST_REG = new RegExp(`(${VARB_PREFIX}[a-zA-Z]+)`, 'g');
+const JOB_REG = /Job_\w+/g;
+const BASE_CLASS_REG = /BaseClass/g;
+const BASE_JOB_REG = /BaseJob/g;
+const FUNC_REGEX = /(\w+)\(([^()]*)\)/g;
+const WEAPON_TYPE_REGEX = /(?<![A-Za-z])W_\w+/g;
+const ITEM_TYPE_REGEX = /(?<![A-Za-z])IT_[\w]+/g;
 
 /*** definitions ***/
 const CANONICAL_KEYS: Record<string, string> = {};
 const BONUS_SPECIAL: Set<String> = new Set([
-    "allStats"
+    'allStats', 'ignoreDefRace', 'atkEle'
 ]);
 const BONUS_HIGHEST_ONLY = new Set([
     'speed', 'noCastCancel', 'noCastCancel2', 'noGemstone',
@@ -55,6 +73,13 @@ const COMMAND_TO_INGORE = new Set([
     'rentitem', 'hateffect', 'dispbottom', 'setlook', 'showscript',
     'announce'
 ]);
+const COMMAND_CALL_FUNC_TO_IGNORE = new Set([
+    'F_SQI', 'F_Reward_Credit', 'F_Cat_Hard_Biscuit', 'F_Rice_Weevil_Bug',
+    'F_CashStore', 'F_CashPartyCall', 'F_CashReset', 'F_CashDungeon',
+    'F_Snowball', 'F_CashTele', 'F_CashCity', 'F_CashSiegeTele',
+    'F_GetForumBoundItem', 'F_ASPDBuffBG', 'F_SummerTreasure', 'F_SetForumVar',
+    'F_LNY_Envelope', 'F_Hal_SecretItems', 'F_22507', 'F_Hal_Broomstick',
+]);
 
 /*** helper functions ***/
 const transformKey = (key: string) => {
@@ -70,34 +95,6 @@ const transformKey = (key: string) => {
     */
     return CANONICAL_KEYS[noramalized.toLowerCase()] || noramalized;
 };
-/*** script functions ***/
-const generateIsEquipped = (equip: SessionEquip): ScriptFunction => {
-    const equiped = Object.values(equip)
-    return (...gears: ScriptValue[]) => {
-        return gears.every(_ => equiped.includes(_ as number));
-    }
-}
-const generateGetRefine = (refine: number = 0): ScriptFunction => {
-    return () => refine;
-}
-const generateReadParam = (stats: BaseStatsAs<number>): ScriptFunction => {
-    const baseStats = {
-        bVit: stats.vit,
-        bDex: stats.dex,
-        bAgi: stats.agi,
-        bStr: stats.str,
-        bInt: stats.int,
-        bLuk: stats.luk
-    }
-    return (param: ScriptValue) => {
-        return baseStats[param as string];
-    }
-}
-const rand: ScriptFunction = (min: ScriptValue, max: ScriptValue): ScriptValue => {
-    const m: number = Number(max) - Number(min);
-    const b = Number(min);
-    return Math.floor(Math.random() * m + b);
-}
 
 /*** varbs ***/
 
@@ -115,12 +112,14 @@ const rand: ScriptFunction = (min: ScriptValue, max: ScriptValue): ScriptValue =
 @Injectable({ providedIn: 'root' })
 export class TTBonusEngineService {
     /* injects */
-    private readonly _core = inject(TTCoreServiceV3);
+    public readonly core = inject(TTCoreServiceV3);
 
     /* varbs */
     private _localVarbs: Map<string, number> = new Map();   //FIXME: allow more types? Use DefaultMap?
-    private _functions: Map<string, ScriptFunction> = new Map();    //FIXME: howto fill?
-    private _session: SessionBonus;
+    private _localOpts: LocalOptions = {};  // is only valid for one "apply cycle"
+    private _inlineFuncs: Map<string, InlineFunction> = new Map();
+    public session: SessionBonus;
+    public sessionOpts: SessionOptions;
 
     /* handlers */
     private readonly _cmdHandler: Record<string, (args: string[]) => void> = {
@@ -132,7 +131,7 @@ export class TTBonusEngineService {
         set: (args) => this._computeSet(args),
         skill: (args) => this._computeSkill(args),
         autobonus: (args) => this._computeAutobonus(args),
-        callfunc: (args) => this._computeCallFunc(args),
+        callfunc: (args) => this._computeCommandCallFunc(args),
         bonus_script: (args) => this._computeBonusScript(args),
         bonus4: (args) => this._computeBonus4(args),
         bonus5: (args) => this._computeBonus5(args),
@@ -173,27 +172,30 @@ export class TTBonusEngineService {
         CANONICAL_KEYS['SC_INCASPDRATE'] = 'aspdRate';
 
         /* save session */
-        this._session = emptyBonus;
+        this.session = emptyBonus;
+        // FIXME create default opts for this serivce
+        this.sessionOpts = {
+            baseStats: { ...SESSION_INFO_DEFAULT.baseStats },
+            equip: SESSION_EQUIP_DEFAULT,
+            skills: [],
+            isPVP: false,
+            refines: { armor: 0, garment: 0, leftHand: 0, rightHand: 0, shoes: 0, upperHg: 0 },
+            cards: { armor: 0, garment: 0, leftHand: [0], rightHand: [0], shoes: 0, upperHg: 0, lhAccessory: 0, rhAccessory: 0, middleHg: 0 }
+        }
 
-        /* create functions static functions */
-        this._functions.set('rand', rand);
+        /* create static functions */
+        for (const fnName in INLINE_FUNCTIONS) {
+            this._inlineFuncs.set(fnName, INLINE_FUNCTIONS[fnName]);
+        }
     }
 
     /*** public functions ***/
-    public resetBonus(
-        session: SessionBonus,
-        equip: SessionEquip,
-        baseStats: BaseStatsAs<number>,
-        skills: SkillBuff[]
-    ) {
-        this._session = session;
-
-        /* create dyn. functions */
-        this._functions.set('isequipped', generateIsEquipped(equip));
-        this._functions.set('readparam', generateReadParam(baseStats));
-        this._functions.set('getskilllv', this._generateGetSkillLv(skills))
+    public resetBonus(session: SessionBonus, opts: SessionOptions) {
+        this.session = session;
+        this.sessionOpts = opts;
     }
-    public applyBonus(bonus: string, opts: BonusOptions = {}) {
+    public applyBonus(bonus: string, opts: LocalOptions = {}) {
+        this._localOpts = opts;
         let bonusPrepared = this._prepareBonus(bonus, opts.customSubs);
         let parser = new TTItemScriptParser(bonusPrepared);
         let bonusAST = parser.parse();
@@ -201,11 +203,21 @@ export class TTBonusEngineService {
         // console.log(bonusAST);
         /* clear data local varbs (only valid for one bonus script) */
         this._localVarbs.clear();
-        this._functions.set('getrefine', generateGetRefine(opts.refine));
         /* run script */
         this._evaluateNodes(bonusAST);
+        /* reset local opts */
+        this._localOpts = {};
     }
     // DEBUG
+    public addUnknownEle(type: string, ele: string) {
+        const group = this._unknownEle.get(type);
+        if (!group) {
+            this._unknownEle.set(type, []);
+        }
+        else if (!group.includes(ele)) {
+            group.push(ele);
+        }
+    }
     public getUnknownElements(): string[] {
         const res: string[] = [];
         for (const [type, eles] of this._unknownEle) {
@@ -215,38 +227,16 @@ export class TTBonusEngineService {
         return res;
     }
 
-    /*** generate functions ***/
-    private _generateGetSkillLv(skills: SkillBuff[]): ScriptFunction {
-        return (skillEnum: ScriptValue) => {
-            /* get skill IDs from core */
-            const ids = this._core.getSkillIDs(skillEnum as string);
-            console.log(`### SKILL IDS FOR ${skillEnum}###`);
-            console.log(ids);
-
-            /* no skill found */
-            if (ids.length === 0) return 0;
-
-            /* loop over active skills, look for matchin IDs and get max. value */
-            const maxLvl = skills.reduce((max, cur) => {
-                if (!ids.includes(cur.id)) return max;
-
-                let curLvl = typeof cur.value === 'boolean' ? 1 : cur.value;
-
-                return curLvl > max ? curLvl : max;
-            }, 0);
-
-            return maxLvl;
-        }
-    }
     /*** private functions ***/
-    private _addUnknownEle(type: string, ele: string) {
-        const group = this._unknownEle.get(type);
-        if (!group) {
-            this._unknownEle.set(type, []);
+    private _getJobValue(mode: 'class' | 'baseClass' | 'baseJob'): number {
+        let res = 0;
+        if (this.sessionOpts.job) {
+            const jobValue = getJobValue(this.sessionOpts.job[mode]);
+            if (jobValue) {
+                res = jobValue;
+            }
         }
-        else if (!group.includes(ele)) {
-            group.push(ele);
-        }
+        return res;
     }
     private _evaluateNodes(nodes: ASTNode[]) {
         for (let node of nodes) {
@@ -274,6 +264,22 @@ export class TTBonusEngineService {
         s = s.replace(ELEMENT_REG, parseDBElement);
         // mob size
         s = s.replace(SIZE_REG, parseDBMobSize);
+        // BaseClass
+        s = s.replace(BASE_CLASS_REG, () => String(this._getJobValue('baseClass')));
+        // BaseJob
+        s = s.replace(BASE_JOB_REG, () => String(this._getJobValue('baseJob')));
+        // Job_<JobName>
+        s = s.replace(JOB_REG, (job) => {
+            const val = getJobValue(job);
+            return val?.toString() ?? '0';
+        });
+        // sqi_option_v3 (is used to trigger SQI bonus ingame)
+        // FIXME: for items SN can use, this value needs to be diffrent
+        s = s.replace(/sqi_option_v3/g, '32');
+        // Weapon Type
+        s = s.replace(WEAPON_TYPE_REGEX, (wT) => String(getWeaponTypeValue(wT)));
+        // Item Type
+        s = s.replace(ITEM_TYPE_REGEX, (iT) => String(getItemTypeValue(iT)));
 
         /* custom bonus substituions */
         for (const sub in subs) {
@@ -311,7 +317,7 @@ export class TTBonusEngineService {
 
         const handler = this._cmdHandler[command];
         if (!handler) {
-            this._addUnknownEle('command', command);
+            this.addUnknownEle('command', command);
             throw new Error(`Unknown command ${command}`);
         }
 
@@ -330,36 +336,48 @@ export class TTBonusEngineService {
 
         /* bonus with flags */
         if (BONUS_FLAGS.has(bonusType)) {
-            this._session.flags[bonusType] = true;
+            this.session.flags[bonusType] = true;
             return;
         }
 
-        /* with value */
-        const val = this._resolveExpr(valRaw) as number;
-
-        if (BONUS_HIGHEST_ONLY.has(bonusType)) {
-            this._session.stats[bonusType] = Math.max(this._session.stats[bonusType] || 0, val);
-        }
-        else if (BONUS_SPECIAL.has(bonusType)) {
+        /* look for special bonus */
+        if (BONUS_SPECIAL.has(bonusType)) {
             /* we lowercase all initial chars of the bonus */
             switch (bonusType) {
                 case "allStats":
-                    this._session.stats.str += val;
-                    this._session.stats.agi += val;
-                    this._session.stats.dex += val;
-                    this._session.stats.int += val;
-                    this._session.stats.vit += val;
-                    this._session.stats.luk += val;
+                    const val = this._resolveExpr(valRaw) as number;
+                    this.session.stats.str += val;
+                    this.session.stats.agi += val;
+                    this.session.stats.dex += val;
+                    this.session.stats.int += val;
+                    this.session.stats.vit += val;
+                    this.session.stats.luk += val;
+                    break;
+                case 'ignoreDefRace':
+                    /* val is MobRace */
+                    this.session.ignoreDefRace.set(valRaw as MobRace, true);
+                    break;
+                case 'atkEle':
+                    /* val is Element */
+                    this.session.stats.atkEle = valRaw as Element;
                     break;
                 default:
                     console.log("Special bonus type not implemented", bonusType, args);
             }
+            return;
         }
-        else if (bonusType in this._session.stats) {
-            this._session.stats[bonusType] += val;
+
+        /* from here all types will have with value */
+        const val = this._resolveExpr(valRaw) as number;
+
+        if (BONUS_HIGHEST_ONLY.has(bonusType)) {
+            this.session.stats[bonusType] = Math.max(this.session.stats[bonusType] || 0, val);
+        }
+        else if (bonusType in this.session.stats) {
+            this.session.stats[bonusType] += val;
         }
         else {
-            this._addUnknownEle('bonus', bonusType);
+            this.addUnknownEle('bonus', bonusType);
             throw new Error(`Unknown bonus type ${bonusType} with ${args}`);
         }
     }
@@ -372,13 +390,14 @@ export class TTBonusEngineService {
         let value = this._resolveExpr(valRaw) as number;
 
         /* check if bonusType is present in session */
-        if (bonusType in this._session) {
-            const map = (this._session[bonusType] as DefaultMap<any, number>);
+        if (bonusType in this.session) {
+            console.log(bonusType);
+            const map = (this.session[bonusType] as DefaultMap<any, number>);
             map.set(key, map.get(key) + value);
             return;
         }
         else {
-            this._addUnknownEle('bonus2', bonusType);
+            this.addUnknownEle('bonus2', bonusType);
             throw new Error(`Unknown bonus type ${bonusType} with ${args}`);
         }
     }
@@ -439,22 +458,22 @@ export class TTBonusEngineService {
             case 'SC_LUKFOOD':
             case 'SC_INCATKRATE':
             case 'SC_INCASPDRATE':
-                this._session.stats[CANONICAL_KEYS[func]] += value;
+                this.session.stats[CANONICAL_KEYS[func]] += value;
                 break;
             /* others */
             case 'SC_ASPDPOTION0':
-                this._session.stats.aspdRate += 10;
+                this.session.stats.aspdRate += 10;
                 break;
             case 'SC_ASPDPOTION1':
-                this._session.stats.aspdRate += 15;
+                this.session.stats.aspdRate += 15;
                 break;
             case 'SC_ASPDPOTION2':
-                this._session.stats.aspdRate += 20;
+                this.session.stats.aspdRate += 20;
                 break;
             case 'SC_ASPDPOTION3':
-                this._session.stats.aspdRate += 25;
+                this.session.stats.aspdRate += 25;
             default:
-                this._addUnknownEle('sc_start', func);
+                this.addUnknownEle('sc_start', func);
             // throw new Error(`Unknown SC_START function ${func}`);
         }
     }
@@ -478,9 +497,18 @@ export class TTBonusEngineService {
     private _computeAutobonus(args: string[]) {
         console.log('Autobonus', args);
     }
-    // FIXME: sometimes its not a command
-    private _computeCallFunc(args: string[]) {
-        console.log('Callfunc', args);
+    // FIXME: handle the functions
+    private _computeCommandCallFunc(args: string[]) {
+        /* remove () if present and only use first arg(all is there) */
+        let argsExt = args[0].replace(/[()]/g, '').split(',');
+        const fnName = argsExt.shift()!;
+        if (COMMAND_CALL_FUNC_TO_IGNORE.has(fnName)) return;
+
+        switch (fnName) {
+            default:
+                this.addUnknownEle('commandCallFunc', fnName);
+                throw new Error('Unknown callfunc ' + fnName);
+        }
     }
     // FIXME: this needs antoher AST parsing and handling
     private _computeBonusScript(args: string[]) {
@@ -489,31 +517,47 @@ export class TTBonusEngineService {
 
     // FIXME: return type as generic?
     private _resolveExpr(expression: string): ScriptValue {
+        // console.log('Resolve', expression);
+        expression = expression.trim();
+
         /* 1) return pure numbers directly */
-        const valAsNumber = Number(expression);
-        if (Number.isFinite(valAsNumber)) return valAsNumber;
+        if (/^-?\d+(\.\d+)?$/.test(expression)) return Number(expression);
 
         expression = expression.replace(/ /g, '');
+        /* 2) look for function calls */
+        let previousExpr: string;
+        let iterations = 0;
+        const MAX_ITERATIONS = 100; // protections for endless-loops
 
-        /* 2) look for function calls */    // FIXME
-        expression = expression.replace(/(\w+)\(([^)]*)\)/g, (_, name: string, argsRaw: string) => {
-            const fn = this._functions.get(name);
-            if (!fn) {
-                this._addUnknownEle('func', name);
-                throw new Error(`Unknown function: ${name}`);
+        // we loop from in to out (inner first)
+        do {
+            previousExpr = expression;
+            expression = expression.replace(FUNC_REGEX, (_, name: string, argsRaw: string) => {
+                const fn = this._inlineFuncs.get(name);
+                if (!fn) {
+                    this.addUnknownEle('func', name);
+                    throw new Error(`Unknown function: ${name}`);
+                }
+
+                const args = argsRaw
+                    ? argsRaw.split(/\s*,\s*/).map(arg => {
+                        try {
+                            return this._resolveExpr(arg)
+                        }
+                        catch { }
+                        /* return as string */
+                        return String(arg);
+                    })
+                    : [];
+
+                return String(fn(this, this._localOpts, ...args));
+            });
+
+            if (++iterations >= MAX_ITERATIONS) {
+                throw new Error(`Resolver: maximale Iterationen erreicht für: ${expression}`);
             }
-            const args = argsRaw
-                ? argsRaw.split(',').map(s => {
-                    try {
-                        return this._resolveExpr(s);
-                    }
-                    catch { }
-                    /* return value as string */
-                    return String(s);
-                })
-                : [];
-            return String(fn(...args));
-        });
+
+        } while (expression !== previousExpr); // repeat until all functions are resolved
 
         /* 3) look for local varbs */
         expression = expression.replace(VARB_POST_REG, (_, name) => {

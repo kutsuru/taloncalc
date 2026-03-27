@@ -1,5 +1,5 @@
 /**********/
-
+import { JobKey, WeaponType, ItemType } from "./rAthena/ra-models";
 import { DefaultMap } from "./utils";
 
 /* Global */
@@ -19,25 +19,54 @@ export type PartialRecord<K extends keyof any, T> = {
 
 /*****************/
 /* Item Database */
-export type WeaponType = 'Unarmed' | 'One-Handed Sword' | 'Two-Handed Sword' | 'Dagger' | 'Katar' | 'One-Handed Axe' | 'Two-Handed Axe' | 'One-Handed Spear' | 'Two-Handed Spear' | 'Two-handed staves' | 'Mace' | 'Book' | 'Staff' | 'Bow' | 'Knuckle' | 'Musical Instrument' | 'Whip' | 'Revolver' | 'Rifle' | 'Shotgun' | 'Gatling Gun' | 'Grenade Launcher' | 'Fuuma Shuriken';
-export type WeaponTypeLeft = WeaponType | 'Shield';
-export type ItemType =
-  'Healing' |
-  'Delay Consume' |
-  'Usable' |
-  'Etc' |
-  'Weapon One-Hand' |
-  'Weapon Two-Hand' |
-  'Ammo' |
-  'Armor' |
-  'Card' |
-  'Item Container' |
-  'Pet Egg' |
-  'Pet Armor' |
-  'Shadow Equipment';
+export const DBWeaponType = {
+  'Unarmed': -1,
+  'One-Handed Sword': WeaponType.W_1HSWORD,
+  'Two-Handed Sword': WeaponType.W_2HSWORD,
+  'Dagger': WeaponType.W_DAGGER,
+  'Katar': WeaponType.W_KATAR,
+  'One-Handed Axe': WeaponType.W_1HAXE,
+  'Two-Handed Axe': WeaponType.W_2HAXE,
+  'One-Handed Spear': WeaponType.W_1HSPEAR,
+  'Two-Handed Spear': WeaponType.W_2HSPEAR,
+  'Two-handed staves': WeaponType.W_2HSTAFF,
+  'Mace': WeaponType.W_MACE,
+  'Book': WeaponType.W_BOOK,
+  'Staff': WeaponType.W_STAFF,
+  'Bow': WeaponType.W_BOW,
+  'Knuckle': WeaponType.W_KNUCKLE,
+  'Musical Instrument': WeaponType.W_MUSICAL,
+  'Whip': WeaponType.W_WHIP,
+  'Revolver': WeaponType.W_REVOLVER,
+  'Rifle': WeaponType.W_RIFLE,
+  'Shotgun': WeaponType.W_SHOTGUN,
+  'Gatling Gun': WeaponType.W_GATLING,
+  'Grenade Launcher': WeaponType.W_GRENADE,
+  'Fuuma Shuriken': WeaponType.W_HUUMA
+} as const;
+export type DBWeaponTypeKey = keyof typeof DBWeaponType;
+export type DBWeaponTypeValue = typeof DBWeaponType[DBWeaponTypeKey];
+export type WeaponTypeLeft = DBWeaponTypeKey | 'Shield';
+
+export const DBItemType = {
+  'Healing': ItemType.IT_HEALING, 
+  'Delay Consume': ItemType.IT_RESTRICTEDCONSUME,
+  'Usable': ItemType.IT_USABLE,
+  'Etc': ItemType.IT_ETC,
+  'Weapon One-Hand': ItemType.IT_WEAPON,
+  'Weapon Two-Hand':ItemType.IT_WEAPON,
+  'Ammo': ItemType.IT_AMMO,
+  'Armor': ItemType.IT_ARMOR,
+  'Card': ItemType.IT_CARD,
+  'Item Container':ItemType.IT_USABLE,
+  'Pet Egg': ItemType.IT_PETEGG,
+  'Pet Armor': ItemType.IT_PETARMOR,
+  'Shadow Equipment': ItemType.IT_SHADOWGEAR
+}
+export type DBItemTypeKey = keyof typeof DBItemType;
 
 export type ItemSubType = 'None' |
-  WeaponType |
+  DBWeaponTypeKey |
   'Arrow' | 'Throwing Dagger' | 'Bullet' | 'Grenade' | 'Shuriken' | 'Kunai' | 'Throwable Item (Sling Item)' | 'Cannonballs' |
   'Headgear' | 'Armor' | 'Weapon' | 'Shield' | 'Garment' | 'Shoes' | 'Accessory' |
   'Costume';
@@ -61,7 +90,7 @@ export type DBItem = {
   jobMask: string;
   isVanillaPvp: boolean,
   isVanillaPvm: boolean,
-  type: ItemType,
+  type: DBItemTypeKey,
   subType: ItemSubType,
   location: EquipLocation
 }
@@ -76,7 +105,7 @@ export type DBJob = {
   isTrans: boolean,
   maxJobLv: number,
   mask: string,
-  compatibleWeapons: WeaponType[],
+  compatibleWeapons: DBWeaponTypeKey[],
   hpTable: number[],
   spTable: number[],
   baseAspd: {
@@ -84,7 +113,10 @@ export type DBJob = {
   },
   jobBonus: {
     [key in BaseStatsNames]: number[]
-  }
+  },
+  class: JobKey,
+  baseClass: JobKey,
+  baseJob: JobKey
 }
 
 /***************/
@@ -93,7 +125,7 @@ export type SessionEquipBase<T> = {
   [key in ItemLocations]: T
 }
 export type SessionEquip = SessionEquipBase<number> & {
-  rightHandType: 'Unarmed' | WeaponType,
+  rightHandType: 'Unarmed' | DBWeaponTypeKey,
   leftHandType: 'Unarmed' | WeaponTypeLeft
 }
 export type SessionBonus = {
@@ -114,7 +146,8 @@ export type SessionBonus = {
     critical: number; critRate: number;
     aspd: number; aspdRate: number;
     longAtkRate: number; critAtkRate: number;
-    atkEle: number; atkRange: number; splashRange: number;
+    atkEle: Element | 'None'; // FIXME None as "use other ele from somewere elese"
+    atkRange: number; splashRange: number;
     doubleRate: number; doubleAddRate: number;
     perfectHitRate: number; perfectHit: number;
 
@@ -159,13 +192,13 @@ export type SessionBonus = {
   subSize: DefaultMap<MobSize, number>;
   subClass: DefaultMap<MobClass, number>;
 
-  ignoreDefRace: Record<string | number, number>;
+  ignoreDefRace: DefaultMap<MobRace, boolean>;
   ignoreDefRaceRate: DefaultMap<MobRace, number>;
   ignoreDefClass: Record<string | number, number>;
   ignoreMdefRace: Record<string | number, number>;
   ignoreMdefClass: Record<string | number, number>;
 
-  skillAtk: Record<string | number, number>;
+  skillAtk: DefaultMap<string, number>;
   skillUseSP: Record<string | number, number>;
   skillCooldown: Record<string | number, number>;
   skillFixedCast: Record<string | number, number>;

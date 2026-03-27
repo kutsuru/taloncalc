@@ -1,5 +1,6 @@
 /*** imports ***/
-import { MobRace, Element, MobSize, DBJob } from "./tt-models.v3";
+import { EquipIndexKey } from "./rAthena/ra-models";
+import { DBWeaponType, DBWeaponTypeKey, DBWeaponTypeValue, Element, ItemLocations, MobRace, MobSize } from "./tt-models.v3";
 
 /***************/
 /*** General ***/
@@ -93,6 +94,21 @@ export const execFormula = (formula: string[]): number => {
 
     return stack[0];
 }
+const TWO_HANDED_WEAPON: Set<DBWeaponTypeKey> = new Set<DBWeaponTypeKey>([
+    'Two-Handed Sword',
+    'Two-Handed Spear',
+    'Two-Handed Axe',
+    'Bow',
+    'Katar',
+    'Two-handed staves',
+    'Fuuma Shuriken',
+    'Gatling Gun',
+    'Shotgun',
+    'Grenade Launcher'
+]);
+export const isTwoHandedWeapon = (dbWeaponType: DBWeaponTypeKey): boolean => {
+    return TWO_HANDED_WEAPON.has(dbWeaponType);
+}
 /***************************/
 /*** DB helper functions ***/
 /*** parse a MobRace string from DB file to match the type */
@@ -173,8 +189,30 @@ export const parseDBMobSize = (sizeString: string): MobSize => {
             return 'all';
     }
 }
-/*** parse JobClass into BaseClass string ***/
-// https://github.com/rathena/rathena/blob/c1602bbf2e03c6cc8ac57f2ad7ad3326803ade56/src/common/mmo.hpp#L929
-export const getBaseClass = (job: DBJob): string => {
-    return '';
+/*** transform EquipIndex into EquipLocation ***/
+export const getItemLocationFromIndex = (equipIndex: EquipIndexKey): ItemLocations | undefined => {
+    switch (equipIndex) {
+        case 'EQI_ACC_L':
+            return 'lhAccessory';
+        case 'EQI_ACC_R':
+            return 'rhAccessory';
+        case 'EQI_ARMOR':
+            return 'armor';
+        case 'EQI_GARMENT':
+            return 'garment';
+        case 'EQI_HAND_L':
+            return 'leftHand';
+        case 'EQI_HAND_R':
+            return 'rightHand';
+        case 'EQI_HEAD_LOW':
+            return 'lowerHg';
+        case 'EQI_HEAD_MID':
+            return 'middleHg';
+        case 'EQI_HEAD_TOP':
+            return 'upperHg';
+        case 'EQI_SHOES':
+            return 'shoes';
+        default:
+            return undefined
+    }
 }

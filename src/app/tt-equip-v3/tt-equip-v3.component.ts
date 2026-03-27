@@ -3,7 +3,7 @@ import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { DBItem, EquipLocation, RefineLocations, WeaponType, WeaponTypeLeft } from '../core/tt-models.v3';
+import { DBItem, EquipLocation, RefineLocations, DBWeaponTypeKey, WeaponTypeLeft } from '../core/tt-models.v3';
 import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
 import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
 import { TtCardSlotV3Component } from "../tt-card-slot-v3/tt-card-slot-v3.component";
@@ -29,7 +29,7 @@ export class TtEquipV3Component {
     garment: new FormControl(0, { nonNullable: true }),
     leftHand: new FormControl(0, { nonNullable: true }),
     leftHandType: new FormControl<WeaponTypeLeft>('Unarmed', { nonNullable: true }),
-    rightHandType: new FormControl<WeaponType>('Unarmed', { nonNullable: true }),
+    rightHandType: new FormControl<DBWeaponTypeKey>('Unarmed', { nonNullable: true }),
     lhAccessory: new FormControl(0, { nonNullable: true }),
     lowerHg: new FormControl(0, { nonNullable: true }),
     middleHg: new FormControl(0, { nonNullable: true }),
@@ -39,7 +39,7 @@ export class TtEquipV3Component {
     upperHg: new FormControl(0, { nonNullable: true })
   });
   rightHandLast = '';
-  $weaponType: Signal<WeaponType>;
+  $weaponType: Signal<DBWeaponTypeKey>;
   $leftHandType: Signal<WeaponTypeLeft>;
   $leftHandCardType: Signal<'Shield' | 'Weapon'>;
 
@@ -56,7 +56,7 @@ export class TtEquipV3Component {
   });
 
   /* gear lists */
-  weaponTypes: Signal<WeaponType[]>;
+  weaponTypes: Signal<DBWeaponTypeKey[]>;
   leftHandTypes: Signal<WeaponTypeLeft[]>;
   upperHgList: Signal<GearItem[]>;
   middleHgList: Signal<GearItem[]>;
@@ -172,9 +172,7 @@ export class TtEquipV3Component {
 
     /* update gears in session on selection */
     this.gears.valueChanges.pipe(takeUntilDestroyed()).subscribe((value) => {
-      this.session.equip.update(old => {
-        return { ...old, ...value };
-      });
+      this.session.updateEquip(value);
     });
 
     /* update right hand if list changed */
@@ -209,7 +207,7 @@ export class TtEquipV3Component {
   }
 
   /*** private function ***/
-  private _computeWeaponList(weaponType: WeaponType) {
+  private _computeWeaponList(weaponType: DBWeaponTypeKey) {
     const equipMask = this.equipMask();
     const res: GearItem[] = [{
       ID: 0,
