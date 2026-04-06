@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable, signal, WritableSignal } from "@angular/core";
 import { forkJoin, Observable } from "rxjs";
-import { AmmoType, DBAmmo, DBFood, DBItem, DBItemCombo, DBJob, DBMob, DBSkill, DBWeaponType, ElementDBV3, FoodCategory, FoodStatsNames, JSONFood, MobClass, DBWeaponTypeKey } from "./tt-models.v3";
+import { AmmoType, DBAmmo, DBFood, DBItem, DBItemCombo, DBJob, DBMob, DBSkill, DBWeaponType, ElementDBV3, FoodCategory, FoodStatsNames, JSONFood, DBMobClass, DBWeaponTypeKey } from "./tt-models.v3";
 import { DefaultMap } from "./utils";
 
 @Injectable({ providedIn: 'root' })
@@ -208,7 +208,7 @@ export class TTCoreServiceV3 {
     public canWearItem(jobMask: number, item: DBItem): boolean {
         return (Number(item.jobMask) & jobMask) == jobMask
     }
-    public getMobClass(mob: DBMob): MobClass {
+    public getMobClass(mob: DBMob): DBMobClass {
         if (mob.mode.isBoss || mob.mode.isMvP) return 'boss';
         // FIXME: guardian?
         return 'normal';

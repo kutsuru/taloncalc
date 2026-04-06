@@ -5,9 +5,10 @@ import { getItemTypeValue, getJobValue, getWeaponTypeValue } from "../rAthena/ra
 import { createEmptySessionBonus, SESSION_INFO_DEFAULT } from "../session-info-default";
 import { TTCoreServiceV3 } from "../tt-core.v3.service";
 import { ASTNode, IfNode, TTItemScriptParser, VARB_PREFIX } from "./tt-itemscript-parser";
-import { BaseStatsAs, DBJob, Element, MobRace, RefineLocations, SessionBonus, SessionEquip, SkillBuff } from "../tt-models.v3";
+import { BaseStatsAs, DBJob, DBElement, DBMobRace, RefineLocations, SESSION_BONUS_FLAGS, SessionBonus, SessionBonusFlag, SessionEquip, SkillBuff, DBMobClass } from "../tt-models.v3";
 import { CardState, SESSION_EQUIP_DEFAULT } from "../tt-session-info.v3.service";
-import { DefaultMap, parseDBElement, parseDBMobRace, parseDBMobSize } from "../utils";
+import { DefaultMap, parseDBElement, parseDBMobClass, parseDBMobRace, parseDBMobRace2, parseDBMobSize } from "../utils";
+import { SC_FUNCTIONS, SCFunction } from "./sc.functions";
 
 /*** types ***/
 export type BonusSubstitution = {
@@ -19,8 +20,11 @@ export type LocalOptions = {
     customSubs?: BonusSubstitution
 }
 type ScriptValue = number | string | boolean;
-type ScriptFunction = (...args: any[]) => any;
 type SessionOptions = {
+    level: {
+        base: number,
+        job: number,
+    },
     equip: SessionEquip,
     cards: CardState
     refines: Record<RefineLocations, number>,
@@ -32,53 +36,164 @@ type SessionOptions = {
 
 /*** REGEX ***/
 const MONSTER_RACE_REG = /RC_[a-zA-Z_]+/g;
+const MONSTER_RACE2_REG = /\bRC2_\w+/g;
+const MONSTER_CLASS_REG = /\bClass_\w+/g;
 const ELEMENT_REG = /Ele_[a-zA-Z]+/g;
 const SIZE_REG = /Size_[a-zA-Z]+/g;
-const VARB_REG = /\.@([a-zA-Z]+)/g;
-const VARB_POST_REG = new RegExp(`(${VARB_PREFIX}[a-zA-Z]+)`, 'g');
+const SCOPE_VARB_REG = /[.$]*@([a-zA-Z]+)/g;
+const LOCAL_VARB_REG = /#(\w+)/g;
+const VARB_POST_REG = new RegExp(`(${VARB_PREFIX}[a-zA-Z0-9_]+)`, 'g');
 const JOB_REG = /Job_\w+/g;
 const BASE_CLASS_REG = /BaseClass/g;
 const BASE_JOB_REG = /BaseJob/g;
+const CLASS_REG = /\bClass\b/g;
 const FUNC_REGEX = /(\w+)\(([^()]*)\)/g;
 const WEAPON_TYPE_REGEX = /(?<![A-Za-z])W_\w+/g;
 const ITEM_TYPE_REGEX = /(?<![A-Za-z])IT_[\w]+/g;
+const WHITESPACE_REGEX = / /g;
+const PURE_STR_REGEX = /^\w+$/;
+const IS_CONDITION_REGEX = /==|!=|<=?|>=?|&/;
+const WORD_WO_QUOTES_REGEX = /(?<!")\b([A-Za-z_][A-Za-z0-9_]*)\b(?!")/g;
 
 /*** definitions ***/
 const CANONICAL_KEYS: Record<string, string> = {};
+/* bonus xxx */
 const BONUS_SPECIAL: Set<String> = new Set([
-    'allStats', 'ignoreDefRace', 'atkEle'
+    'allStats', 'ignoreDefRace', 'atkEle',
+    'ignoreDefClass',
+    'defRatioAtkClass', // IcePick effect
+    'noRegen',
+    'defEle'
 ]);
 const BONUS_HIGHEST_ONLY = new Set([
-    'speed', 'noCastCancel', 'noCastCancel2', 'noGemstone',
-    'noSizeFix', 'noKnockback', 'fixedCastrate'
+    'speedRate', 'splashRange', 'doubleRate', 'perfectHitRate'
 ]);
-
-const BONUS_FLAGS = new Set([
-    'unbreakableWeapon', 'unbreakableArmor', 'unbreakableHelm',
-    'unbreakableShield', 'unbreakableGarment', 'unbreakableShoes',
-    'noStun', 'noFreezing', 'noStone', 'noSleep', 'noConfusion',
-    'noCurse', 'noBlind', 'noPoison', 'noSilence', 'noBleeding',
-    'defRatioAtkClass'  // FIXME: handle for every class?
+const BONUS_TO_IGNORE = new Set([
+    'classChange',
+    'zenyCost', // FIXME: maybe needed?
+    'restartFullRecover', // Osiris Card
+    'skillDisabled',
+    'skillDelayToCooldown',
+    'allEsMagic',
+    'noAdaptionDelay',
+    'noPerformWalkPenalty',
+    'crimsonLegacy',
+    'noNinjaStone'
 ]);
+/* general commands */
 // FIXME: check if some is needed
 const COMMAND_TO_INGORE = new Set([
     'itemheal', 'sc_end', 'getrandgroupitem', 'monster', 'percentheal',
     'produce', 'pet', 'bpet', 'guildgetexp', 'makepet',
     'delitem', 'getitem', 'soundeffectall', 'homevolution', 'cooking',
     'mercenary_create', 'mercenary_heal', 'mercenary_sc_start',
-    'input', 'getexp2',
+    'input', 'getexp2', 'logmes',
     'specialeffect2', 'unitskilluseid',   //FIXME: mabye needed?
     'setfont', 'heal', 'end', 'playbgm', 'getitembound', 'buyingstore',
     'warp', 'getgroupitem', 'setmounting', 'transform', 'makerune',
     'rentitem', 'hateffect', 'dispbottom', 'setlook', 'showscript',
-    'announce'
+    'announce', 'unittalk', 'addhomintimacy', 'vip_time'
 ]);
+/* callFunc xxx */
 const COMMAND_CALL_FUNC_TO_IGNORE = new Set([
     'F_SQI', 'F_Reward_Credit', 'F_Cat_Hard_Biscuit', 'F_Rice_Weevil_Bug',
     'F_CashStore', 'F_CashPartyCall', 'F_CashReset', 'F_CashDungeon',
     'F_Snowball', 'F_CashTele', 'F_CashCity', 'F_CashSiegeTele',
     'F_GetForumBoundItem', 'F_ASPDBuffBG', 'F_SummerTreasure', 'F_SetForumVar',
     'F_LNY_Envelope', 'F_Hal_SecretItems', 'F_22507', 'F_Hal_Broomstick',
+]);
+/* scStart */
+const SC_START_TO_IGNORE = new Set([
+    'SC_Freeze', 'SC_Stun', 'SC_EXPBOOST', 'SC_JEXPBOOST', 'SC_SPEEDUP0', 'SC_SPEEDUP1', 'SC_SpeedUp1',
+    'SC_Blind', 'SC_Poison', 'SC_REGENERATION', 'SC_Curse', 'SC_Intravision', 'SC_Silence', 'SC_Xmas', 'SC_Confusion',
+    'SC_Bleeding', 'SC_Summer', 'SC_DRESSUP', 'SC_OKTOBERFEST', 'SC_LIFEINSURANCE', 'SC_SlowDown', 'SC_ITEMBOOST',
+    'SC_BOSSMAPINFO', 'SC_TOXIN', 'SC_KAIZEL', 'SC_HANBOK', 'SC_MYSTERIOUS_POWDER', 'SC_MAGICMUSHROOM', 'SC_PYREXIA',
+    'SC_DEATHHURT', 'SC_OBLIVIONCURSE', 'SC_LEECHESEND', 'SC_EXTRACT_SALAMINE_JUICE', 'SC_VITATA_500',
+    'SC_ENERGY_DRINK_RESERCH', 'SC_PARALYSE', 'SC_KAAHI', 'SC_PROMOTE_HEALTH_RESERCH', 'SC_WEDDING',
+    // FIXME maybe needed
+    'SC_DPoison',
+    'SC_COMMONSC_RESIST',       // FIXME: so far only one usable item has it
+    'SC_INCHEALRATE',           // FIXME: so far only one usable item has it
+
+]);
+// FIXME: map atk to baseAtk?
+const SC_START_STATS_MAPPING: Map<string, keyof SessionBonus["stats"]> = new Map(Object.entries({
+    'SC_STRFOOD': 'str',
+    'SC_AGIFOOD': 'agi',
+    'SC_VITFOOD': 'vit',
+    'SC_INTFOOD': 'int',
+    'SC_DEXFOOD': 'dex',
+    'SC_LUKFOOD': 'luk',
+    'SC_INCATKRATE': 'scIncAtkRate',
+    'SC_INCASPDRATE': 'aspdRate',
+    'SC_ATKPOTION': 'scAtkPotion',
+    'SC_MATKPOTION': 'scMatkPotion',
+    'SC_FOOD_STR_CASH': 'str',
+    'SC_FOOD_AGI_CASH': 'agi',
+    'SC_FOOD_INT_CASH': 'int',
+    'SC_FOOD_DEX_CASH': 'dex',
+    'SC_FOOD_LUK_CASH': 'luk',
+    'SC_FOOD_VIT_CASH': 'vit',
+    'SC_INCHIT': 'hit',
+    'SC_INCFLEE': 'flee',
+    'SC_INCSTR': 'str',
+    'SC_INCINT': 'int',
+    'SC_INCAGI': 'agi',
+    'SC_INCVIT': 'vit',
+    'SC_INCDEX': 'dex',
+    'SC_INCLUK': 'luk',
+    'SC_INCFLEE2': 'flee2',
+    'SC_CASTRATE': 'scCastRate',
+    'SC_BOOST500': 'aspdRate',
+    'SC_HITFOOD': 'hit',
+    'SC_DEF_RATE': 'defRate',
+    'SC_MDEF_RATE': 'mdefRate',
+    'SC_INCMATKRATE': 'matkRate',
+    'SC_FLEEFOOD': 'flee',
+    'SC_BATKFOOD': 'baseAtk',
+    'SC_MATKFOOD': 'matk',
+    'SC_INCMHPRATE': 'maxHPRate',
+    'SC_INCMSPRATE': 'maxSPRate',
+    'SC_PUTTI_TAILS_NOODLES': 'luk',
+    'SC_DROCERA_HERB_STEAMED': 'agi',
+    'SC_SIROMA_ICE_TEA': 'dex',
+    'SC_MINOR_BBQ': 'vit',
+    'SC_COCKTAIL_WARG_BLOOD': 'int',
+    'SC_SAVAGE_STEAK': 'str',
+    'SC_EXTRACT_WHITE_POTION_Z': 'hpRecovRate',
+    'SC_LIFE_FORCE_F': 'maxSPRate',
+    'SC_MUSTLE_M': 'maxHPRate',
+    'SC_MANA_PLUS': 'matk',
+    'SC_FULL_SWING_K': 'baseAtk',
+    'SC_BG_RATION_PINK': 'baseAtk',
+    'SC_BG_RATION_WHITE': 'matk',
+    'SC_BG_RATION_MILITARY_B': 'hit',
+    'SC_BG_RATION_MILITARY_C': 'flee',
+    'SC_DEFENCE': 'def',
+    'SC_STRFOOD_BG': 'str',
+    'SC_INTFOOD_BG': 'int',
+    'SC_VITFOOD_BG': 'vit',
+    'SC_AGIFOOD_BG': 'agi',
+    'SC_DEXFOOD_BG': 'dex',
+    'SC_LUKFOOD_BG': 'luk'
+}));
+/* bonus2 xxx */
+const BONUS2_TO_IGNORE = new Set([
+    'comaClass', 'addMonsterDropItemGroup', 'getZenyNum', 'addSkillBlow',
+    'comaRace', 'sPGainRace', 'addMonsterDropItem', 'skillSplashRange', 'skillAddCooldown',
+    'dropAddRace', 'skillRange', 'skillUseSPrate', 'skillNoRequire',
+    // FIXME maybe??
+    'sPDrainValueRace',
+    'noSoulLink',   // what the hell is this?
+    'skillAtk2',    // splashdmg for combo finish
+    'addEffWhenHit',
+    'addEff',
+    'addEff2',
+    'subSkill',     // maybe for PVP?
+    'addItemGroupHealRate',
+    'statusDuration',   // custom for talon? extend skill durations etc
+    'sPVanishRate', // maybe for PVP
+    'zenyCost'
 ]);
 
 /*** helper functions ***/
@@ -95,6 +210,9 @@ const transformKey = (key: string) => {
     */
     return CANONICAL_KEYS[noramalized.toLowerCase()] || noramalized;
 };
+const isBonusFlag = (key: string): key is SessionBonusFlag => {
+    return SESSION_BONUS_FLAGS.has(key as SessionBonusFlag);
+}
 
 /*** varbs ***/
 
@@ -103,7 +221,6 @@ const transformKey = (key: string) => {
  * bonus bDefRatioAtkClass,c;   make use of c (class) parameter
  * bonus bAtkEle,e;          	the player's attacks element e
  * bonus bDefEle,e;          	the player's defense element e
- * transform MabRace2
  * SC_ASPDPOTION0/1/2           Merge into one "custome" command?
  * set var,value                Handle as Assignment too
  */
@@ -118,6 +235,7 @@ export class TTBonusEngineService {
     private _localVarbs: Map<string, number> = new Map();   //FIXME: allow more types? Use DefaultMap?
     private _localOpts: LocalOptions = {};  // is only valid for one "apply cycle"
     private _inlineFuncs: Map<string, InlineFunction> = new Map();
+    private _scFuncs: Map<string, SCFunction> = new Map();
     public session: SessionBonus;
     public sessionOpts: SessionOptions;
 
@@ -126,6 +244,9 @@ export class TTBonusEngineService {
         bonus: (args) => this._computeBonus(args),
         bonus2: (args) => this._computeBonus2(args),
         bonus3: (args) => this._computeBonus3(args),
+        bonus4: (args) => this._computeBonus4(args),
+        bonus5: (args) => this._computeBonus5(args),
+        bonus6: (args) => this._computeBonus6(args),
         sc_start: (args) => this._computeStatusEffectFunc(args),
         itemskill: (args) => this._computeItemSkill(args),
         set: (args) => this._computeSet(args),
@@ -133,8 +254,6 @@ export class TTBonusEngineService {
         autobonus: (args) => this._computeAutobonus(args),
         callfunc: (args) => this._computeCommandCallFunc(args),
         bonus_script: (args) => this._computeBonusScript(args),
-        bonus4: (args) => this._computeBonus4(args),
-        bonus5: (args) => this._computeBonus5(args),
         autobonus2: (args) => this._computeAutobonus2(args),
         autobonus3: (args) => this._computeAutobonus3(args),
         autobonus4: (args) => this._computeAutobonus4(args),
@@ -161,20 +280,11 @@ export class TTBonusEngineService {
             }
         }
 
-        /* SC_START mappings */
-        CANONICAL_KEYS['SC_STRFOOD'] = 'str';
-        CANONICAL_KEYS['SC_AGIFOOD'] = 'agi';
-        CANONICAL_KEYS['SC_VITFOOD'] = 'vit';
-        CANONICAL_KEYS['SC_INTFOOD'] = 'int';
-        CANONICAL_KEYS['SC_DEXFOOD'] = 'dex';
-        CANONICAL_KEYS['SC_LUKFOOD'] = 'luk';
-        CANONICAL_KEYS['SC_INCATKRATE'] = 'scIncAtkRate';
-        CANONICAL_KEYS['SC_INCASPDRATE'] = 'aspdRate';
-
         /* save session */
         this.session = emptyBonus;
         // FIXME create default opts for this serivce
         this.sessionOpts = {
+            level: { base: 0, job: 0 },
             baseStats: { ...SESSION_INFO_DEFAULT.baseStats },
             equip: SESSION_EQUIP_DEFAULT,
             skills: [],
@@ -186,6 +296,11 @@ export class TTBonusEngineService {
         /* create static functions */
         for (const fnName in INLINE_FUNCTIONS) {
             this._inlineFuncs.set(fnName, INLINE_FUNCTIONS[fnName]);
+        }
+
+        /* create SC functions */
+        for (const fnName in SC_FUNCTIONS) {
+            this._scFuncs.set(fnName, SC_FUNCTIONS[fnName]);
         }
     }
 
@@ -212,7 +327,7 @@ export class TTBonusEngineService {
     public addUnknownEle(type: string, ele: string) {
         const group = this._unknownEle.get(type);
         if (!group) {
-            this._unknownEle.set(type, []);
+            this._unknownEle.set(type, [ele]);
         }
         else if (!group.includes(ele)) {
             group.push(ele);
@@ -221,10 +336,29 @@ export class TTBonusEngineService {
     public getUnknownElements(): string[] {
         const res: string[] = [];
         for (const [type, eles] of this._unknownEle) {
-            res.push(`### ${type} ###`);
+            res.push(`### ${type} (${eles.length}) ###`);
             res.push(...eles);
         }
         return res;
+    }
+    public incAllStatsBy(value: number) {
+        this.session.stats.str += value;
+        this.session.stats.agi += value;
+        this.session.stats.dex += value;
+        this.session.stats.int += value;
+        this.session.stats.vit += value;
+        this.session.stats.luk += value;
+    }
+
+    public useSkill(skillId: number, level: number) {
+        const skill = this.core.skillDB.get(skillId);
+        const subs: BonusSubstitution = { ...this._localOpts.customSubs, subSkillLvl: level };
+        if (skill && skill.itemScript) {
+            const bonus = this._prepareBonus(skill.itemScript, subs);
+            const skillParser = new TTItemScriptParser(bonus);
+            const skillAST = skillParser.parse();
+            this._evaluateNodes(skillAST);
+        }
     }
 
     /*** private functions ***/
@@ -240,6 +374,7 @@ export class TTBonusEngineService {
     }
     private _evaluateNodes(nodes: ASTNode[]) {
         for (let node of nodes) {
+            // console.log(node);
             switch (node.type) {
                 case 'Command':
                     this._computeCommand(node.command, node.args);
@@ -260,6 +395,10 @@ export class TTBonusEngineService {
         /* replace specifc commands with values */
         // mob race
         s = s.replace(MONSTER_RACE_REG, parseDBMobRace);
+        // mob race 2
+        s = s.replace(MONSTER_RACE2_REG, parseDBMobRace2);
+        // mob class
+        s = s.replace(MONSTER_CLASS_REG, parseDBMobClass);
         // element
         s = s.replace(ELEMENT_REG, parseDBElement);
         // mob size
@@ -268,6 +407,8 @@ export class TTBonusEngineService {
         s = s.replace(BASE_CLASS_REG, () => String(this._getJobValue('baseClass')));
         // BaseJob
         s = s.replace(BASE_JOB_REG, () => String(this._getJobValue('baseJob')));
+        // Class
+        s = s.replace(CLASS_REG, () => String(this._getJobValue('class')));
         // Job_<JobName>
         s = s.replace(JOB_REG, (job) => {
             const val = getJobValue(job);
@@ -276,10 +417,15 @@ export class TTBonusEngineService {
         // sqi_option_v3 (is used to trigger SQI bonus ingame)
         // FIXME: for items SN can use, this value needs to be diffrent
         s = s.replace(/sqi_option_v3/g, '32');
+        s = s.replace(/sqi_choice/g, '1');
         // Weapon Type
         s = s.replace(WEAPON_TYPE_REGEX, (wT) => String(getWeaponTypeValue(wT)));
         // Item Type
         s = s.replace(ITEM_TYPE_REGEX, (iT) => String(getItemTypeValue(iT)));
+        // JobLevel
+        s = s.replace(/JobLevel/g, String(this.sessionOpts.level.job));
+        // BaseLevel
+        s = s.replace(/BaseLevel/g, String(this.sessionOpts.level.base));
 
         /* custom bonus substituions */
         for (const sub in subs) {
@@ -290,7 +436,13 @@ export class TTBonusEngineService {
         }
 
         /* replace variables */
-        s = s.replace(VARB_REG, (_, name: string) => {
+        // scope
+        s = s.replace(SCOPE_VARB_REG, (_, name: string) => {
+            return `${VARB_PREFIX}${name.charAt(0).toUpperCase()}${name.slice(1)}`;
+        });
+        // local
+        s = s.replace(LOCAL_VARB_REG, (_, name: string) => {
+            console.log('Found', name);
             return `${VARB_PREFIX}${name.charAt(0).toUpperCase()}${name.slice(1)}`;
         });
 
@@ -334,9 +486,12 @@ export class TTBonusEngineService {
         let bonusType = transformKey(args[0]);
         let valRaw = args[1];
 
+        /* ignore bonus */
+        if (BONUS_TO_IGNORE.has(bonusType)) return;
+
         /* bonus with flags */
-        if (BONUS_FLAGS.has(bonusType)) {
-            this.session.flags[bonusType] = true;
+        if (isBonusFlag(bonusType)) {
+            this.session.flags.set(bonusType, true);
             return;
         }
 
@@ -346,21 +501,32 @@ export class TTBonusEngineService {
             switch (bonusType) {
                 case "allStats":
                     const val = this._resolveExpr(valRaw) as number;
-                    this.session.stats.str += val;
-                    this.session.stats.agi += val;
-                    this.session.stats.dex += val;
-                    this.session.stats.int += val;
-                    this.session.stats.vit += val;
-                    this.session.stats.luk += val;
+                    this.incAllStatsBy(val);
                     break;
                 case 'ignoreDefRace':
                     /* val is MobRace */
-                    this.session.ignoreDefRace.set(valRaw as MobRace, true);
+                    this.session.ignoreDefRace.set(valRaw as DBMobRace, true);
+                    break;
+                case 'ignoreDefClass':
+                    /* val is MobClass */
+                    this.session.ignoreDefClass.set(valRaw as DBMobClass, true);
                     break;
                 case 'atkEle':
                     /* val is Element */
-                    this.session.stats.atkEle = valRaw as Element;
+                    this.session.stats.atkEle = valRaw as DBElement;
                     break;
+                case 'defEle':
+                    /* val is DBElement */
+                    this.session.stats.defEle = valRaw as DBElement;
+                    break;
+                case 'noRegen':
+                    const hpOrSp = this._resolveExpr(valRaw) as number;
+                    if (hpOrSp === 1) {
+                        this.session.flags.set('noRegenHP', true);
+                    }
+                    else {
+                        this.session.flags.set('noRegenSP', true);
+                    }
                 default:
                     console.log("Special bonus type not implemented", bonusType, args);
             }
@@ -370,15 +536,16 @@ export class TTBonusEngineService {
         /* from here all types will have with value */
         const val = this._resolveExpr(valRaw) as number;
 
+        if (!(bonusType in this.session.stats)) {
+            this.addUnknownEle('bonus', bonusType);
+            throw new Error(`Unknown bonus type ${bonusType} with ${args}`);
+        }
+
         if (BONUS_HIGHEST_ONLY.has(bonusType)) {
             this.session.stats[bonusType] = Math.max(this.session.stats[bonusType] || 0, val);
         }
-        else if (bonusType in this.session.stats) {
-            this.session.stats[bonusType] += val;
-        }
         else {
-            this.addUnknownEle('bonus', bonusType);
-            throw new Error(`Unknown bonus type ${bonusType} with ${args}`);
+            this.session.stats[bonusType] += val;
         }
     }
 
@@ -386,15 +553,24 @@ export class TTBonusEngineService {
         let [bonusTypeRaw, key, valRaw] = args;
         const bonusType = transformKey(bonusTypeRaw);
 
+        if (BONUS2_TO_IGNORE.has(bonusType)) return;
+
         //FIXME: check for args length
         let value = this._resolveExpr(valRaw) as number;
 
         /* check if bonusType is present in session */
         if (bonusType in this.session) {
-            console.log(bonusType);
             const map = (this.session[bonusType] as DefaultMap<any, number>);
             map.set(key, map.get(key) + value);
             return;
+        }
+        else if (bonusType in this.session.stats) {
+            /**
+             * this bonus2 has the format bonus,value,time
+             * so we resolve the key now and use it as value
+             */
+            value = this._resolveExpr(key) as number;
+            this.session.stats[bonusType] += value;
         }
         else {
             this.addUnknownEle('bonus2', bonusType);
@@ -412,6 +588,10 @@ export class TTBonusEngineService {
 
     private _computeBonus5(args: string[]) {
         console.log('Bonus5', args);
+    }
+
+    private _computeBonus6(args: string[]) {
+        console.log('Bonus6', args);
     }
 
     private _computeAutobonus2(args: string[]) {
@@ -439,6 +619,8 @@ export class TTBonusEngineService {
     }
 
     private _computeStatusEffectFunc(args: string[]) {
+        if (SC_START_TO_IGNORE.has(args[0])) return;
+
         if (args.length < 3) {
             console.log('Invalud SC_START script');
             console.log(args);
@@ -447,34 +629,20 @@ export class TTBonusEngineService {
         // FIXME: same for all?
         let func = args[0];
         let duration = +args[1];
-        let value = +args[2];
-        switch (func) {
-            /* fetch stats */
-            case 'SC_STRFOOD':
-            case 'SC_AGIFOOD':
-            case 'SC_VITFOOD':
-            case 'SC_INTFOOD':
-            case 'SC_DEXFOOD':
-            case 'SC_LUKFOOD':
-            case 'SC_INCATKRATE':
-            case 'SC_INCASPDRATE':
-                this.session.stats[CANONICAL_KEYS[func]] += value;
-                break;
-            /* others */
-            case 'SC_ASPDPOTION0':
-                this.session.stats.aspdRate += 10;
-                break;
-            case 'SC_ASPDPOTION1':
-                this.session.stats.aspdRate += 15;
-                break;
-            case 'SC_ASPDPOTION2':
-                this.session.stats.aspdRate += 20;
-                break;
-            case 'SC_ASPDPOTION3':
-                this.session.stats.aspdRate += 25;
-            default:
-                this.addUnknownEle('sc_start', func);
-            // throw new Error(`Unknown SC_START function ${func}`);
+        let value = +args[2];   // maybe resolve?
+
+        /* check if stats method */
+        const statsKey = SC_START_STATS_MAPPING.get(func);
+        if (statsKey) {
+            (this.session.stats[statsKey] as number) += value;
+        }
+        else if (this._scFuncs.has(func)) {
+            const scFunc = this._scFuncs.get(func)!;
+            scFunc(this, this._localOpts, duration, value);
+        }
+        else {
+            this.addUnknownEle('sc_start', func);
+            throw new Error(`Unkown sc_start func ${func}`);
         }
     }
 
@@ -486,8 +654,8 @@ export class TTBonusEngineService {
     // FIXME
     private _computeSet(args: string[]) {
         const [name, valRaw] = args;
-        // const value = this._resolveExpr(valRaw);
-        console.log('Set ', name, ' with ', valRaw);
+        const val = this._resolveExpr(valRaw) as number;
+        this._localVarbs.set(name, val);
     }
     // FIXME: add skills to list of available skills?
     private _computeSkill(args: string[]) {
@@ -517,19 +685,20 @@ export class TTBonusEngineService {
 
     // FIXME: return type as generic?
     private _resolveExpr(expression: string): ScriptValue {
-        // console.log('Resolve', expression);
         expression = expression.trim();
 
         /* 1) return pure numbers directly */
-        if (/^-?\d+(\.\d+)?$/.test(expression)) return Number(expression);
+        let valAsNum = Number(expression);
+        if (Number.isFinite(valAsNum)) return valAsNum;
 
-        expression = expression.replace(/ /g, '');
-        /* 2) look for function calls */
+        /* 2) replace whitespace */
+        expression = expression.replace(WHITESPACE_REGEX, '');
+
+        /* 3) look for function calls */
         let previousExpr: string;
         let iterations = 0;
-        const MAX_ITERATIONS = 100; // protections for endless-loops
+        const MAX_ITERATIONS = 100;
 
-        // we loop from in to out (inner first)
         do {
             previousExpr = expression;
             expression = expression.replace(FUNC_REGEX, (_, name: string, argsRaw: string) => {
@@ -540,14 +709,7 @@ export class TTBonusEngineService {
                 }
 
                 const args = argsRaw
-                    ? argsRaw.split(/\s*,\s*/).map(arg => {
-                        try {
-                            return this._resolveExpr(arg)
-                        }
-                        catch { }
-                        /* return as string */
-                        return String(arg);
-                    })
+                    ? argsRaw.split(/\s*,\s*/).map(arg => this._resolveExpr(arg))
                     : [];
 
                 return String(fn(this, this._localOpts, ...args));
@@ -556,29 +718,35 @@ export class TTBonusEngineService {
             if (++iterations >= MAX_ITERATIONS) {
                 throw new Error(`Resolver: maximale Iterationen erreicht für: ${expression}`);
             }
+        } while (expression !== previousExpr);
 
-        } while (expression !== previousExpr); // repeat until all functions are resolved
-
-        /* 3) look for local varbs */
+        /* 4) look for local varbs */
         expression = expression.replace(VARB_POST_REG, (_, name) => {
+            // console.log('### Get varb ', name, ' = ', this._localVarbs.get(name));
             return String(this._localVarbs.get(name) ?? 0);
         });
 
-        /* 4) Only allow numbers and operators */
-        if (!/^([\d\s+\-*\/()%&|<>=!.:?]|true|false)+$/.test(expression)) {
-            throw new Error(`Unsafe expression: ${expression}`);
+        /* 5) look again for pure numbers */
+        valAsNum = Number(expression);
+        if (Number.isFinite(valAsNum)) return valAsNum;
+
+        /* 6) Look for pure strings without any operators */
+        if (PURE_STR_REGEX.test(expression)) return expression;
+
+        /* 6) look for conditons → bare words quoten */
+        if (IS_CONDITION_REGEX.test(expression)) {
+            expression = expression.replace(WORD_WO_QUOTES_REGEX, (match) => {
+                if (match === 'true' || match === 'false' || match === 'null' || match === 'undefined') {
+                    return match;
+                }
+                return `"${match}"`;
+            });
         }
 
-        /* 5) (safe) eval expression */
+        /* 7) (safe) eval */
         console.log('Expr. to eval ', expression);
         const result = Function(`"use strict"; return (${expression});`)();
         return typeof result === 'boolean' ? result : Number(result);
-        // 2. Spezial-Behandlung für die Job-Hierarchie (Sniper/Archer)
-        // Wir transformieren "BaseClass == Job_Archer" in einen Funktionsaufruf.
-        // if (expression.includes("BaseClass")) {
-        //     expression = expression.replace(/BaseClass\s*==\s*([a-zA-Z_]\w*)/g, 'checkJob("$1")');
-        //     expression = expression.replace(/BaseClass\s*!=\s*([a-zA-Z_]\w*)/g, '!checkJob("$1")');
-        // }
     }
 
     private _isTruthy(val: ScriptValue): boolean {

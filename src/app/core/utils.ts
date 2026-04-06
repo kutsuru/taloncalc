@@ -1,6 +1,6 @@
 /*** imports ***/
-import { EquipIndexKey } from "./rAthena/ra-models";
-import { DBWeaponType, DBWeaponTypeKey, DBWeaponTypeValue, Element, ItemLocations, MobRace, MobSize } from "./tt-models.v3";
+import { EquipIndexKey, MobClass, MobRace2 } from "./rAthena/ra-models";
+import { DBWeaponType, DBMobClass, DBWeaponTypeKey, DBWeaponTypeValue, DBElement, ItemLocations, DBMobRace, DBMobRace2, DBMobSize } from "./tt-models.v3";
 
 /***************/
 /*** General ***/
@@ -21,8 +21,9 @@ export const debounce = <F extends (...args: Parameters<F>) => void>(callback: F
 /*** Map with default Value ***/
 export class DefaultMap<K extends string | number | symbol, T> {
     private _map: Map<K, T> = new Map();
+    private _default: T;
 
-    constructor(private _default: T) { }
+    constructor(defaultValue: T) { this._default = defaultValue }
 
     public has(key: K) {
         return this._map.has(key);
@@ -112,7 +113,7 @@ export const isTwoHandedWeapon = (dbWeaponType: DBWeaponTypeKey): boolean => {
 /***************************/
 /*** DB helper functions ***/
 /*** parse a MobRace string from DB file to match the type */
-export const parseDBMobRace = (race: string): MobRace => {
+export const parseDBMobRace = (race: string): DBMobRace => {
     switch (race) {
         case 'RC_Angel':
             return 'angel';
@@ -144,7 +145,7 @@ export const parseDBMobRace = (race: string): MobRace => {
     }
 }
 /*** parse a Element string from DB file to match the type */
-export const parseDBElement = (eleString: string): Element => {
+export const parseDBElement = (eleString: string): DBElement => {
     switch (eleString) {
         case 'Ele_Dark':
             return 'shadow';
@@ -174,7 +175,7 @@ export const parseDBElement = (eleString: string): Element => {
     }
 }
 /*** parse a MobSize string from DB file to match the type */
-export const parseDBMobSize = (sizeString: string): MobSize => {
+export const parseDBMobSize = (sizeString: string): DBMobSize => {
     switch (sizeString) {
         case 'Size_Small':
             return 'small';
@@ -214,5 +215,37 @@ export const getItemLocationFromIndex = (equipIndex: EquipIndexKey): ItemLocatio
             return 'shoes';
         default:
             return undefined
+    }
+}
+/*** parse MobRace2 itemscript type to match DB type ***/
+export const parseDBMobRace2 = (race: string): DBMobRace2 => {
+    switch (race as MobRace2) {
+        case 'RC2_Goblin': return "goblin";
+        case 'RC2_Golem': return "golem";
+        case 'RC2_Orc': return "orc";
+        case 'RC2_Kobold': return "kobold";
+        case 'RC2_Manuk': return "manuk";
+        case 'RC2_Splendide': return "splendide";
+        case 'RC2_Biolab': return "biolab";
+        case 'RC2_Guardian': return "guardian";
+        case "RC2_Ninja": return "ninja";
+        case "RC2_Faceworm": return "faceworm";
+        case "RC2_Robot": return "robot";
+        case "RC2_Emperium": return "emperium";
+        case "RC2_Snake": return "snake";
+        // return "kiel"; FIXME
+        // return "juperos"; FIXME
+        default:
+            console.log('### UNKOWN MOBRACE2', race);
+            return "unknown";
+    }
+}
+/*** parse MobClass itemscript type to match DB type ***/
+export const parseDBMobClass = (classStr: string): DBMobClass => {
+    switch (classStr as MobClass) {
+        case 'Class_All': return 'all';
+        case 'Class_Boss': return 'boss';
+        case 'Class_Guardian': return 'guardian';
+        case 'Class_Normal': return 'normal';
     }
 }

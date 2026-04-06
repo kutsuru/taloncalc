@@ -1,5 +1,5 @@
 /**********/
-import { JobKey, WeaponType, ItemType } from "./rAthena/ra-models";
+import { JobKey, WeaponType, ItemType, StatusEffect } from "./rAthena/ra-models";
 import { DefaultMap } from "./utils";
 
 /* Global */
@@ -8,11 +8,11 @@ export type BaseStatsAs<T> = { [key in BaseStatsNames]: T };
 export type ItemLocations = "upperHg" | "middleHg" | "lowerHg" | "armor" | "rightHand" | "leftHand" | "garment" | "shoes" | "rhAccessory" | "lhAccessory";
 export type RefineLocations = Exclude<ItemLocations, 'middleHg' | 'lowerHg' | 'rhAccessory' | 'lhAccessory'>;
 export type CardLocations = Exclude<ItemLocations, 'lowerHg'>;
-export type MobRace = "formless" | "undead" | "brute" | "plant" | "insect" | "fish" | "demon" | "demiHuman" | "angel" | "dragon" | "player" | "all"; //FIXME: player okay?
-export type MobRace2 = "goblin" | "golem" | "orc" | "kobold" | "manuk" | "splendide" | "biolab" | "kiel" | "juperos";
-export type Element = "neutral" | "water" | "earth" | "fire" | "wind" | "poison" | "holy" | "shadow" | "ghost" | "undead" | "all";
-export type MobSize = "small" | "medium" | "large" | "all";
-export type MobClass = "normal" | "boss" | "guardian" | "all";
+export type DBMobRace = "formless" | "undead" | "brute" | "plant" | "insect" | "fish" | "demon" | "demiHuman" | "angel" | "dragon" | "player" | "all"; //FIXME: player okay?
+export type DBMobRace2 = "goblin" | "golem" | "orc" | "kobold" | "manuk" | "splendide" | "biolab" | "kiel" | "juperos" | "guardian" | "emperium" | "ninja" | "faceworm" | "robot" | "snake" | "unknown";
+export type DBElement = "neutral" | "water" | "earth" | "fire" | "wind" | "poison" | "holy" | "shadow" | "ghost" | "undead" | "all";
+export type DBMobSize = "small" | "medium" | "large" | "all";
+export type DBMobClass = "normal" | "boss" | "guardian" | "all";
 export type PartialRecord<K extends keyof any, T> = {
   [P in K]?: T
 }
@@ -49,16 +49,16 @@ export type DBWeaponTypeValue = typeof DBWeaponType[DBWeaponTypeKey];
 export type WeaponTypeLeft = DBWeaponTypeKey | 'Shield';
 
 export const DBItemType = {
-  'Healing': ItemType.IT_HEALING, 
+  'Healing': ItemType.IT_HEALING,
   'Delay Consume': ItemType.IT_RESTRICTEDCONSUME,
   'Usable': ItemType.IT_USABLE,
   'Etc': ItemType.IT_ETC,
   'Weapon One-Hand': ItemType.IT_WEAPON,
-  'Weapon Two-Hand':ItemType.IT_WEAPON,
+  'Weapon Two-Hand': ItemType.IT_WEAPON,
   'Ammo': ItemType.IT_AMMO,
   'Armor': ItemType.IT_ARMOR,
   'Card': ItemType.IT_CARD,
-  'Item Container':ItemType.IT_USABLE,
+  'Item Container': ItemType.IT_USABLE,
   'Pet Egg': ItemType.IT_PETEGG,
   'Pet Armor': ItemType.IT_PETARMOR,
   'Shadow Equipment': ItemType.IT_SHADOWGEAR
@@ -128,6 +128,18 @@ export type SessionEquip = SessionEquipBase<number> & {
   rightHandType: 'Unarmed' | DBWeaponTypeKey,
   leftHandType: 'Unarmed' | WeaponTypeLeft
 }
+export const SESSION_BONUS_FLAGS = new Set([
+  // normale flags
+  'noCastCancel', 'noCastCancel2', 'noSizeFix',
+  'unstripableWeapon', 'unstripableArmor', 'unstripableHelm', 'unstripableShield', 'unstripable',
+  'unbreakableWeapon', 'unbreakableArmor', 'unbreakableHelm',
+  'unbreakableShield', 'unbreakableGarment', 'unbreakableShoes',
+  'noKnockback', 'noGemStone', 'intravision', 'perfectHide', 'noWalkDelay',
+  'noTripleDelay',
+  // custom flags 
+  'noRegenHP', 'noRegenSP', // bonus bNoRegen,x;       		Stops HP or SP regeneration (x: 1=HP, 2=SP)
+] as const);
+export type SessionBonusFlag = typeof SESSION_BONUS_FLAGS extends Set<infer T> ? T : never;
 export type SessionBonus = {
   /* numiercs sums or highest only */
   stats: {
@@ -139,20 +151,23 @@ export type SessionBonus = {
     maxHPRate: number; maxSPRate: number;
     hpRegenRate: number; spRegenRate: number;
     hpRecovRate: number; spRecovRate: number;
+    hpGainValue: number; spGainValue: number;
+    hpLossRate: number; spLossRate: number;
 
     // physical offensive
     atk: number; atk2: number; atkRate: number; baseAtk: number;
     hit: number; hitRate: number;
-    critical: number; critRate: number;
+    critical: number; critAtkRate: number; criticalLong: number;
     aspd: number; aspdRate: number;
-    longAtkRate: number; critAtkRate: number;
-    atkEle: Element | 'None'; // FIXME None as "use other ele from somewere elese"
+    longAtkRate: number; shortAtkRate: number;
+    atkEle: DBElement;  // FIXME: in case of neutral maybe ignore?
     atkRange: number; splashRange: number;
-    doubleRate: number; doubleAddRate: number;
+    doubleRate: number; doubleAddRate: number; tripleAddRate: number;
     perfectHitRate: number; perfectHit: number;
 
     // magic offensive
     matk: number; matk2: number; matkRate: number;
+    minMatk: number;
     variableCastrate: number; fixedCastrate: number;
     castrate: number; delayRate: number;
     healPower: number; healPower2: number;
@@ -160,53 +175,84 @@ export type SessionBonus = {
     // def and resistance
     def: number; def2: number; defRate: number; def2Rate: number;
     mdef: number; mdef2: number; mdefRate: number;
-    defEle: number; flee: number; flee2: number; fleeRate: number;
-    longAtkDef: number; res: number; mres: number;
+    defEle: DBElement;   // FIXME: use in battle calc
+    flee: number; flee2: number; fleeRate: number;
+    nearAtkDef: number; longAtkDef: number; res: number; mres: number;
+    magicAtkDef: number; miscAtkDef: number; skillLongAtkDef: number;
+    reduceMagicReturn: number; reduceMeleeReturn: number;
+    noWeaponDamage: number; noMagicDamage: number;
 
     // Utility & Spezial
-    speed: number;
-    hDrainRate: number; sDrainRate: number;
-    hDrainValue: number; sDrainValue: number;
+    speedRate: number;
+    hpDrainRate: number; spDrainRate: number;
+    hpDrainValue: number; spDrainValue: number;
+    magicSPGainValue: number; magicHPGainValue: number;
     shortWeaponDamageReturn: number; longWeaponDamageReturn: number;
-    magicDamageReturn: number;
-    scIncAtkRate: number;
+    magicDamageReturn: number; scIncAtkRate: number;
+    breakWeaponRate: number; breakArmorRate: number;
+    freeCastMoveRate: number; addItemHealRate: number;
+    useSPrate: number; scAtkPotion: number; scMatkPotion: number;
+    scIncCrit: number; scCastRate: number;
   };
 
-  /* FIXME: Mappings for bonus2 und bonus3 (Ziel-ID -> Wert) */
-  addRace: DefaultMap<MobRace, number>;
-  addRace2: DefaultMap<MobRace2, number>;
-  addEle: DefaultMap<Element, number>;
-  addSize: DefaultMap<MobSize, number>;
-  addClass: DefaultMap<MobClass, number>;
+  /* Mappings for bonus2 und bonus3 */
+  addRace: DefaultMap<DBMobRace, number>;
+  addRace2: DefaultMap<DBMobRace2, number>;
+  addEle: DefaultMap<DBElement, number>;
+  addSize: DefaultMap<DBMobSize, number>;
+  addClass: DefaultMap<DBMobClass, number>;
+  criticalAddRace: DefaultMap<DBMobRace, number>;
+  criticalAddEle: DefaultMap<DBElement, number>;
+  addDamageClass: DefaultMap<string, number>;
 
-  magicAddRace: DefaultMap<MobRace, number>;
-  magicAddRace2: DefaultMap<MobRace2, number>,
-  magicAddEle: DefaultMap<Element, number>;
-  magicAddSize: DefaultMap<MobSize, number>;
-  magicAddClass: DefaultMap<MobClass, number>;
-  magicAtkEle: DefaultMap<Element, number>;
+  magicAddRace: DefaultMap<DBMobRace, number>;
+  magicAddRace2: DefaultMap<DBMobRace2, number>,
+  magicAddEle: DefaultMap<DBElement, number>;
+  magicAddSize: DefaultMap<DBMobSize, number>;
+  magicAddClass: DefaultMap<DBMobClass, number>;
+  magicAtkEle: DefaultMap<DBElement, number>;
 
-  subRace: DefaultMap<MobRace, number>;
-  subRace2: DefaultMap<MobRace2, number>;
-  subEle: DefaultMap<Element, number>;
-  subSize: DefaultMap<MobSize, number>;
-  subClass: DefaultMap<MobClass, number>;
+  addMagicDamageClass: DefaultMap<string, number>;  // mobID
+  addDefMonster: DefaultMap<string, number>;  // mobID
 
-  ignoreDefRace: DefaultMap<MobRace, boolean>;
-  ignoreDefRaceRate: DefaultMap<MobRace, number>;
-  ignoreDefClass: Record<string | number, number>;
+  subRace: DefaultMap<DBMobRace, number>;
+  subRace2: DefaultMap<DBMobRace2, number>;
+  subEle: DefaultMap<DBElement, number>;
+  subSize: DefaultMap<DBMobSize, number>;
+  subClass: DefaultMap<DBMobClass, number>;
+  // subSkill: DefaultMap<string, number>;
+
+  ignoreDefRace: DefaultMap<DBMobRace, boolean>;
+  ignoreDefRaceRate: DefaultMap<DBMobRace, number>;
+  ignoreDefClass: DefaultMap<DBMobClass, boolean>;
   ignoreMdefRace: Record<string | number, number>;
+  ignoreMdefRaceRate: DefaultMap<DBMobRace, number>;
   ignoreMdefClass: Record<string | number, number>;
+  ignoreMdefClassRate: DefaultMap<DBMobClass, number>;
+  ignoreMdefRace2Rate: DefaultMap<DBMobRace2, number>;
+  ignoreMdefEleRate: DefaultMap<DBElement, number>;
 
   skillAtk: DefaultMap<string, number>;
-  skillUseSP: Record<string | number, number>;
+  skillUseSP: DefaultMap<string, number>; // skill enum
   skillCooldown: Record<string | number, number>;
   skillFixedCast: Record<string | number, number>;
   skillVariableCast: Record<string | number, number>;
+  skillCritAtkRate: DefaultMap<string, number>;
+  skillDelayrate: DefaultMap<string, number>; // skill enum
+  castrate: DefaultMap<string, number>; // skill enum
 
+  resEff: DefaultMap<StatusEffect, number>;
+  skillHeal: DefaultMap<string, number>; // skill enum
+  skillHeal2: DefaultMap<string, number>; // skill enum
+  expAddRace: DefaultMap<DBMobRace, number>;
+  expAddClass: DefaultMap<DBMobClass, number>;
+  kickAddRate: DefaultMap<string, number>;  // skill enum
+  addItemSPHealRate: DefaultMap<string, number>; //item ID
+  skillDefRatioAtkClass: DefaultMap<string, DBMobClass>; // skill enum FIXME: special talon bonus
+  skillWeaponElement: DefaultMap<string, DBElement>;  // skill enum FIXME: special talon bonus
   /* flags */
   // TOOD: predefine / fill?
-  flags: Record<string, boolean>;
+  flags: DefaultMap<SessionBonusFlag, boolean>
 };
 
 /*******************/
@@ -222,11 +268,11 @@ export type DBMob = {
   id: number,
   name: string,
   mid: number,
-  race: MobRace,
-  race2: MobRace2,
-  element: Element,
+  race: DBMobRace,
+  race2: DBMobRace2,
+  element: DBElement,
   elementLv: number,
-  size: MobSize,
+  size: DBMobSize,
   lv: number,
   hp: number,
   def: number,
@@ -256,7 +302,7 @@ export type DBMob = {
 
 /*****************/
 /*** SKILL DB  ***/
-export type SkillElement = Element | "weapon";
+export type SkillElement = DBElement | "weapon";
 export type SkillSubType = 'check' | 'list';
 export type DBSkill = {
   name: string,
@@ -300,8 +346,8 @@ export type SkillBuff = Pick<DBSkill, 'id' | 'name' | 'maxLevel' | 'itemScript'>
 /******************/
 /*** ELEMENT DB ***/
 export type ElementDBV3 = {
-  [key in Element]: {
-    [key in Element]: number[]
+  [key in DBElement]: {
+    [key in DBElement]: number[]
   }
 }
 
@@ -310,7 +356,7 @@ export type ElementDBV3 = {
 export type DBWeaponType = {
   id: number,
   sizeModifier: {
-    [key in MobSize]: number
+    [key in DBMobSize]: number
   },
   isTwoHanded: boolean,
   ammoType?: AmmoType
@@ -322,7 +368,7 @@ export type AmmoType = "arrow" | "bullet" | "grenade" | "shuriken" | "kunai";
 export type DBAmmo = {
   type: AmmoType,
   attack: number,
-  element: Element,
+  element: DBElement,
   bonus?: string
 }
 

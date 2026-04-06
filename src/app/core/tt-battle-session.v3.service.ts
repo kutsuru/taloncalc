@@ -1,5 +1,5 @@
 import { inject, Injectable, signal } from "@angular/core";
-import { BaseStatsAs, DBAmmo, DBMob, DBSkill, Element, RefineLocations, SessionBonus, SessionEquip } from "./tt-models.v3";
+import { BaseStatsAs, DBAmmo, DBMob, DBSkill, DBElement, RefineLocations, SessionBonus, SessionEquip } from "./tt-models.v3";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
 import { TTSessionInfoV3Service } from "./tt-session-info.v3.service";
 
@@ -38,7 +38,7 @@ export class TTBattleSessionServiceV3 {
     private _target: DBMob | undefined;
     private _isPvp = false; // FIXME
     private _ammo: DBAmmo | undefined;  // FIXME
-    private _appliedEndow: Element | undefined;
+    private _appliedEndow: DBElement | undefined;
     private _sessionData!: SessionData;
 
     /*** public functions ***/
@@ -220,7 +220,7 @@ export class TTBattleSessionServiceV3 {
         if (this._skill!.allows_modifiers) {
             // MagicAddEle
             // Damage modifier on magic element
-            const magicAtkEle = this._sessionData.bonus.magicAtkEle.get(this._skill!.element as Element);   // FIXME: looks bad
+            const magicAtkEle = this._sessionData.bonus.magicAtkEle.get(this._skill!.element as DBElement);   // FIXME: looks bad
             let elementModifier = 100 + magicAtkEle;
 
             // Damage modifier for monster element
@@ -309,6 +309,7 @@ export class TTBattleSessionServiceV3 {
         damage = this._applyAdditionalElementDamage(damage, this._sessionData.baseAtk);
         // console.log('after: applyAdditionalElementDamage');
         // console.log(damage);
+        // FIXME: make use of addDamageClass<mobId, rate>
 
         // Throw Kunai#395 bonus damage
         if (395 == this._skill!.id) damage = damage.map((x) => x + 90);
@@ -480,7 +481,7 @@ export class TTBattleSessionServiceV3 {
 
     private _applyElementDamageRatio(damage: number[]): number[] {
         let elementRatio = 100;
-        let activeElement: Element = 'neutral';
+        let activeElement: DBElement = 'neutral';
         let aoeDamageBonus = [100, 110, 114, 117, 119, 120];
 
         if (!this._skill!.ignoreElement) {

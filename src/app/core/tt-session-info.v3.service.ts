@@ -618,11 +618,9 @@ export class TTSessionInfoV3Service {
 
         // TODO
         // SC_INCATKRATE is applied on base attack
-        baseAtk +=
-            bonus.stats.baseAtk
-            //    + this._sessionInfoData.activeBonus.scAtkPotion
+        baseAtk += bonus.stats.baseAtk
+            + bonus.stats.scAtkPotion
             + bonus.stats.scIncAtkRate;
-
 
         return baseAtk;
     }
@@ -669,25 +667,31 @@ export class TTSessionInfoV3Service {
         /* trigger */
         const level = this.level();
         const stats = this.totalStats();
+        const bonus = this.bonus();
 
         /* varbs */
-        let hit = level.base +
-            stats.dex;
+        let hit = level.base
+            + stats.dex
+            + bonus.stats.hit;
+
+        // FIXME: hitRate correct used?
+        hit = hit * (1 + (bonus.stats.hitRate / 100));
         // TODO
         // +
-        // this._sessionInfoData.activeBonus.flee +
-        // this._sessionInfoData.activeBonus.scHitFood;
-        // FIXME bonus.stats.hit
+        // this._sessionInfoData.activeBonus.flee
         return hit;
     }
     private _computeFlee(): number {
         /* triggers */
         const level = this.level();
         const stats = this.totalStats();
+        const bonus = this.bonus();
 
         /* varbs */
-        let flee = level.base +
-            stats.agi
+        let flee = level.base
+            + stats.agi
+            + bonus.stats.flee;
+        // FIXME: bonus.stats.fleeRate?
         // TODO
         // +
         // this._sessionInfoData.activeBonus.flee +
@@ -735,10 +739,12 @@ export class TTSessionInfoV3Service {
     private _computeCrit(): number {
         /* triggers */
         const stats = this.totalStats();
+        const bonus = this.bonus();
 
         let crit = Math.floor(
-            1 +
-            stats.luk / 3
+            1 + stats.luk / 3
+            + bonus.stats.critical
+            + bonus.stats.scIncCrit
             // TODO:
             // +
             // this._sessionInfo['activeBonus']['crit'] +
@@ -750,10 +756,12 @@ export class TTSessionInfoV3Service {
     private _computePerfectDodge(): number {
         /* triggers */
         const stats = this.totalStats();
+        const bonus = this.bonus();
 
         let pd = Math.floor(
-            1 +
-            stats.luk * 0.1
+            1
+            + stats.luk * 0.1
+            + bonus.stats.flee2
             // TODO
             // +
             // this._sessionInfo['activeBonus']['perfectDodge'] +
@@ -777,18 +785,20 @@ export class TTSessionInfoV3Service {
             factor = 25;
         }
         let matk = Math.floor(
-            stats.int +
-            dInt / factor +
-            bonus.stats.matk
-            // TODO
-            //  +
-            // this._sessionInfo['activeBonus']['scMatkPotion']
+            stats.int
+            + dInt / factor
+            + bonus.stats.matk
+            + bonus.stats.scMatkPotion
         );
 
         // TODO
         matk = Math.floor(
             matk * (1 + bonus.stats.matkRate / 100)
         );
+
+        if (mode === 'MIN') {
+            matk += bonus.stats.minMatk;
+        }
 
         return matk;
     }
@@ -882,6 +892,7 @@ export class TTSessionInfoV3Service {
         }
         /* reset bonus engine */
         this._bonusSession.resetBonus(res, {
+            level: { ...level },
             baseStats: baseStats,
             equip: equip,
             isPVP: false,   // FIXME: we need this in battle-service

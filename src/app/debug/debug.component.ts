@@ -27,6 +27,7 @@ export class DebugComponent {
     const equip = { ...SESSION_EQUIP_DEFAULT };
     const stats: BaseStatsAs<number> = { agi: 0, dex: 0, int: 0, luk: 0, str: 0, vit: 0 };
     this.be.resetBonus(session, {
+      level: { base: 0, job: 0 },
       baseStats: stats,
       equip: equip,
       isPVP: false,
@@ -51,6 +52,9 @@ export class DebugComponent {
       }
       catch (e) {
         bad++;
+        console.log(e);
+        console.log(item.itemScript);
+        break;
       }
       cnt++;
     }
