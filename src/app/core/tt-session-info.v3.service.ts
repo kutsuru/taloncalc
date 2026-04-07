@@ -44,6 +44,7 @@ export const SESSION_EQUIP_DEFAULT: SessionEquip = {
     shoes: 0,
     upperHg: 0
 }
+const DEF_PER_REFINE = 2 / 3;
 
 /*** service ***/
 @Injectable({ providedIn: 'root' })
@@ -83,7 +84,7 @@ export class TTSessionInfoV3Service {
     baseAtk: Signal<number>;
     weaponAtk: Signal<number>;
     perfectDodge: Signal<number>;
-    // def: Signal<never>;
+    def: Signal<number>;
 
     /* bonus VERY BIG ONE */
     bonus: Signal<SessionBonus>;
@@ -259,6 +260,7 @@ export class TTSessionInfoV3Service {
                 return true;
             }
         });
+        this.def = computed(() => this._computeDEF());
 
 
         /* effects */
@@ -801,6 +803,44 @@ export class TTSessionInfoV3Service {
         }
 
         return matk;
+    }
+
+    private _computeDEF(): number {
+        const equip = this._equipState()
+        const refine = this.refines();
+        const bonus = this.bonus();
+
+        let def = 0;
+
+        /* equip */
+        for (const equipSlot in equip) {
+            // no weapon (rightHand) or 2nd hand if not shield
+            if (
+                equipSlot === 'rightHand' ||
+                equipSlot === 'rightHandType' ||
+                equipSlot === 'leftHandType' ||
+                (equipSlot === 'leftHand' && equip.leftHandType !== 'Shield')) continue;
+
+            const gear = this._core.itemDB.get(equip[equipSlot]);
+            if (gear) {
+                def += gear.defense;
+            }
+        }
+        /* refines */
+        for (const refineSlot in refine) {
+            // ignore refine of weapon (rightHand) or 2nd hand if not shield
+            if (
+                refineSlot === 'rightHand' ||
+                (refineSlot === 'leftHand' && equip.leftHandType !== 'Shield')
+            ) continue;
+            def += DEF_PER_REFINE * refine[refineSlot];
+        }
+
+        /* bonus */
+        def += bonus.stats.def;
+        def = def * (1 + bonus.stats.defRate / 100);
+
+        return def;
     }
     private _computeItemCombos(): DBItemCombo[] {
         const res: DBItemCombo[] = [];
