@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from "@angular/core";
-import { BaseStatsAs, DBAmmo, DBMob, DBSkill, DBElement, RefineLocations, SessionBonus, SessionEquip, EquipState, DBWeaponTypeKey, DBWeaponTypeLeft } from "./tt-models.v3";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
+import { BaseStatsAs, DBAmmo, DBElement, DBMob, DBSkill, DBWeaponTypeKey, DBWeaponTypeLeft, EquipState, SessionBonus } from "./tt-models.v3";
 import { TTSessionInfoV3Service } from "./tt-session-info.v3.service";
 
 type SessionData = {

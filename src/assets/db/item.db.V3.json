@@ -10738,7 +10738,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1131,
@@ -10761,7 +10765,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1132,
@@ -10784,7 +10792,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1133,
@@ -10807,7 +10819,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1134,
@@ -10830,7 +10846,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1135,
@@ -10853,7 +10873,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1136,
@@ -10876,7 +10900,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1137,
@@ -10899,7 +10927,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo_nerf",
+      "malangdo_nerf"
+    ]
   },
   {
     "ID": 1138,
@@ -10922,7 +10954,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1139,
@@ -10945,7 +10981,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1140,
@@ -10968,7 +11008,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1141,
@@ -10991,7 +11035,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1142,
@@ -11152,7 +11200,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1149,
@@ -11497,7 +11549,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1165,
@@ -11520,7 +11576,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1166,
@@ -11543,7 +11603,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1167,
@@ -11566,7 +11630,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1168,
@@ -11589,7 +11657,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1169,
@@ -11612,7 +11684,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1170,
@@ -11635,7 +11711,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1171,
@@ -11658,7 +11738,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1172,
@@ -11750,7 +11834,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1176,
@@ -11773,7 +11861,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1177,
@@ -11819,7 +11911,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1179,
@@ -11842,7 +11938,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1180,
@@ -11865,7 +11965,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1181,
@@ -11888,7 +11992,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1182,
@@ -11911,7 +12019,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1183,
@@ -11980,7 +12092,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1186,
@@ -12003,7 +12119,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1187,
@@ -12049,7 +12169,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1189,
@@ -12072,7 +12196,10 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo"
+    ]
   },
   {
     "ID": 1190,
@@ -12233,7 +12360,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1197,
@@ -12256,7 +12387,12 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "eden_weapon_1st",
+      "eden_weapon_2nd",
+      "eden_weapon_3rd"
+    ]
   },
   {
     "ID": 1198,
@@ -12808,7 +12944,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1224,
@@ -12831,7 +12971,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1225,
@@ -12854,7 +12998,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1226,
@@ -12900,7 +13048,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1228,
@@ -12923,7 +13075,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1229,
@@ -12946,7 +13102,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1230,
@@ -12969,7 +13129,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1231,
@@ -12992,7 +13156,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo_nerf",
+      "malangdo_nerf"
+    ]
   },
   {
     "ID": 1232,
@@ -13015,7 +13183,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1233,
@@ -13038,7 +13210,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1234,
@@ -13061,7 +13237,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1235,
@@ -13084,7 +13264,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1236,
@@ -13107,7 +13291,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1237,
@@ -13130,7 +13318,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1238,
@@ -13199,7 +13391,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1241,
@@ -13222,7 +13418,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1242,
@@ -13245,7 +13445,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1243,
@@ -13291,7 +13495,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1245,
@@ -13682,7 +13890,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Katar",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1262,
@@ -13728,7 +13940,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Katar",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1264,
@@ -13774,7 +13990,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Katar",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1266,
@@ -13797,7 +14017,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Katar",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1267,
@@ -13843,7 +14067,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Katar",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1269,
@@ -13866,7 +14094,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Katar",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1270,
@@ -13889,7 +14121,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Katar",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1271,
@@ -13912,7 +14148,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Katar",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1272,
@@ -14211,7 +14451,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Katar",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1285,
@@ -14234,7 +14478,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Katar",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1286,
@@ -14326,7 +14574,12 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Katar",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "eden_weapon_1st",
+      "eden_weapon_2nd",
+      "eden_weapon_3rd"
+    ]
   },
   {
     "ID": 1290,
@@ -14372,7 +14625,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Katar",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "biolab_weapon",
+      "biolab_weapon"
+    ]
   },
   {
     "ID": 1295,
@@ -14395,7 +14652,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Katar",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "biolab_weapon",
+      "biolab_weapon"
+    ]
   },
   {
     "ID": 1297,
@@ -14533,7 +14794,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Axe",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1306,
@@ -14671,7 +14936,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Axe",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1312,
@@ -15039,7 +15308,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Axe",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1364,
@@ -15062,7 +15335,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Axe",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1365,
@@ -15085,7 +15362,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Axe",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1366,
@@ -15108,7 +15389,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Axe",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1367,
@@ -15131,7 +15416,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Axe",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1368,
@@ -15154,7 +15443,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Axe",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1369,
@@ -15177,7 +15470,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Axe",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1370,
@@ -15200,7 +15497,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Axe",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1371,
@@ -15223,7 +15524,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Axe",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1372,
@@ -15315,7 +15620,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Axe",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1376,
@@ -15338,7 +15647,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Axe",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1377,
@@ -15361,7 +15674,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Axe",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1378,
@@ -15545,7 +15862,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Axe",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1386,
@@ -15591,7 +15912,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Axe",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1388,
@@ -15637,7 +15962,12 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Axe",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "eden_weapon_1st",
+      "eden_weapon_2nd",
+      "eden_weapon_3rd"
+    ]
   },
   {
     "ID": 1392,
@@ -15660,7 +15990,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Axe",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "biolab_weapon",
+      "biolab_weapon"
+    ]
   },
   {
     "ID": 1393,
@@ -15683,7 +16017,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Axe",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "biolab_weapon",
+      "biolab_weapon"
+    ]
   },
   {
     "ID": 1401,
@@ -15982,7 +16320,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1414,
@@ -16005,7 +16347,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1415,
@@ -16028,7 +16374,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1416,
@@ -16051,7 +16401,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1417,
@@ -16074,7 +16428,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1418,
@@ -16097,7 +16455,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1419,
@@ -16143,7 +16505,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1421,
@@ -16166,7 +16532,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1422,
@@ -16189,7 +16559,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1423,
@@ -16396,7 +16770,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1434,
@@ -16419,7 +16797,12 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "eden_weapon_1st",
+      "eden_weapon_2nd",
+      "eden_weapon_3rd"
+    ]
   },
   {
     "ID": 1435,
@@ -16442,7 +16825,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "biolab_weapon",
+      "biolab_weapon"
+    ]
   },
   {
     "ID": 1451,
@@ -16810,7 +17197,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1467,
@@ -16833,7 +17224,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1468,
@@ -16856,7 +17251,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1469,
@@ -16879,7 +17278,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1470,
@@ -16902,7 +17305,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1471,
@@ -16925,7 +17332,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1472,
@@ -16971,7 +17382,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-handed staves",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo_staff",
+      "malangdo_staff"
+    ]
   },
   {
     "ID": 1474,
@@ -16994,7 +17409,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1475,
@@ -17040,7 +17459,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1477,
@@ -17063,7 +17486,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1478,
@@ -17086,7 +17513,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1479,
@@ -17109,7 +17540,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1480,
@@ -17132,7 +17567,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1481,
@@ -17155,7 +17594,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1482,
@@ -17224,7 +17667,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1485,
@@ -17362,7 +17809,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "biolab_weapon",
+      "biolab_weapon"
+    ]
   },
   {
     "ID": 1494,
@@ -17914,7 +18365,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Mace",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1524,
@@ -17937,7 +18392,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Mace",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1525,
@@ -17960,7 +18419,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Mace",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1526,
@@ -17983,7 +18446,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Mace",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1527,
@@ -18006,7 +18473,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Mace",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1528,
@@ -18029,7 +18500,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Mace",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1529,
@@ -18259,7 +18734,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Mace",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1539,
@@ -18282,7 +18761,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Mace",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1540,
@@ -18305,7 +18788,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Mace",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1541,
@@ -18328,7 +18815,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Mace",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1542,
@@ -18489,7 +18980,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Mace",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1549,
@@ -18696,7 +19191,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Book",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1558,
@@ -18719,7 +19218,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Book",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1559,
@@ -18742,7 +19245,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Book",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1560,
@@ -18788,7 +19295,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Book",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1562,
@@ -18811,7 +19322,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Book",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1563,
@@ -18857,7 +19372,10 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Book",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo"
+    ]
   },
   {
     "ID": 1565,
@@ -18880,7 +19398,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Book",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1566,
@@ -19271,7 +19793,12 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Book",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "eden_weapon_1st",
+      "eden_weapon_2nd",
+      "eden_weapon_3rd"
+    ]
   },
   {
     "ID": 1584,
@@ -19294,7 +19821,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Book",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "biolab_weapon",
+      "biolab_weapon"
+    ]
   },
   {
     "ID": 1590,
@@ -19708,7 +20239,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Staff",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo_staff",
+      "malangdo_staff"
+    ]
   },
   {
     "ID": 1617,
@@ -20007,7 +20542,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Staff",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo_staff",
+      "malangdo_staff"
+    ]
   },
   {
     "ID": 1630,
@@ -20053,7 +20592,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Staff",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo_staff",
+      "malangdo_staff"
+    ]
   },
   {
     "ID": 1632,
@@ -20168,7 +20711,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Staff",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo_staff",
+      "malangdo_staff"
+    ]
   },
   {
     "ID": 1637,
@@ -20191,7 +20738,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Staff",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo_staff",
+      "malangdo_staff"
+    ]
   },
   {
     "ID": 1638,
@@ -20329,7 +20880,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Staff",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo_staff",
+      "malangdo_staff"
+    ]
   },
   {
     "ID": 1644,
@@ -20398,7 +20953,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Staff",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo_staff",
+      "malangdo_staff"
+    ]
   },
   {
     "ID": 1647,
@@ -20582,7 +21141,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Staff",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo_staff",
+      "malangdo_staff"
+    ]
   },
   {
     "ID": 1655,
@@ -20628,7 +21191,12 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Staff",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "eden_weapon_1st",
+      "eden_weapon_2nd",
+      "eden_weapon_3rd"
+    ]
   },
   {
     "ID": 1659,
@@ -20651,7 +21219,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Staff",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "biolab_weapon",
+      "biolab_weapon"
+    ]
   },
   {
     "ID": 1662,
@@ -21111,7 +21683,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Bow",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1720,
@@ -21134,7 +21710,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Bow",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1721,
@@ -21180,7 +21760,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Bow",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1723,
@@ -21203,7 +21787,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Bow",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1724,
@@ -21226,7 +21814,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Bow",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1725,
@@ -21249,7 +21841,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Bow",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1726,
@@ -21295,7 +21891,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Bow",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1728,
@@ -21456,7 +22056,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Bow",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1735,
@@ -21525,7 +22129,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Bow",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1738,
@@ -21594,7 +22202,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Bow",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1741,
@@ -21617,7 +22229,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Bow",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1742,
@@ -21801,7 +22417,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Bow",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1750,
@@ -22675,7 +23295,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Knuckle",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1814,
@@ -22698,7 +23322,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Knuckle",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1815,
@@ -22721,7 +23349,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Knuckle",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1816,
@@ -22744,7 +23376,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Knuckle",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1817,
@@ -23066,7 +23702,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Knuckle",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1831,
@@ -23089,7 +23729,12 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Knuckle",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "eden_weapon_1st",
+      "eden_weapon_2nd",
+      "eden_weapon_3rd"
+    ]
   },
   {
     "ID": 1840,
@@ -23526,7 +24171,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Musical Instrument",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1919,
@@ -23572,7 +24221,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Musical Instrument",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1921,
@@ -23618,7 +24271,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Musical Instrument",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1923,
@@ -23710,7 +24367,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Musical Instrument",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1927,
@@ -23802,7 +24463,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Musical Instrument",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1931,
@@ -23825,7 +24490,12 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Musical Instrument",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "eden_weapon_1st",
+      "eden_weapon_2nd",
+      "eden_weapon_3rd"
+    ]
   },
   {
     "ID": 1950,
@@ -24124,7 +24794,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Whip",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1963,
@@ -24147,7 +24821,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Whip",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1964,
@@ -24170,7 +24848,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Whip",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1965,
@@ -24285,7 +24967,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Whip",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1970,
@@ -24308,7 +24994,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Whip",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1971,
@@ -24354,7 +25044,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Whip",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1973,
@@ -24377,7 +25071,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Whip",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1974,
@@ -24400,7 +25098,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Whip",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1975,
@@ -24446,7 +25148,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Whip",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1977,
@@ -24515,7 +25221,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Whip",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1980,
@@ -24630,7 +25340,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Whip",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1985,
@@ -24653,7 +25367,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Whip",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 1986,
@@ -24676,7 +25394,12 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Whip",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "eden_weapon_1st",
+      "eden_weapon_2nd",
+      "eden_weapon_3rd"
+    ]
   },
   {
     "ID": 1990,
@@ -24722,7 +25445,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-handed staves",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo_staff",
+      "malangdo_staff"
+    ]
   },
   {
     "ID": 2001,
@@ -24745,7 +25472,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-handed staves",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo_staff",
+      "malangdo_staff"
+    ]
   },
   {
     "ID": 2002,
@@ -24814,7 +25545,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-handed staves",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo_staff",
+      "malangdo_staff"
+    ]
   },
   {
     "ID": 2005,
@@ -24837,7 +25572,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Two-handed staves",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo_staff",
+      "malangdo_staff"
+    ]
   },
   {
     "ID": 2006,
@@ -26056,7 +26795,11 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Shield",
-    "location": "Shield"
+    "location": "Shield",
+    "enchant": [
+      "biolab_armor",
+      "biolab_armor"
+    ]
   },
   {
     "ID": 2161,
@@ -26079,7 +26822,11 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Shield",
-    "location": "Shield"
+    "location": "Shield",
+    "enchant": [
+      "biolab_armor",
+      "biolab_armor"
+    ]
   },
   {
     "ID": 2162,
@@ -26102,7 +26849,11 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Shield",
-    "location": "Shield"
+    "location": "Shield",
+    "enchant": [
+      "biolab_armor",
+      "biolab_armor"
+    ]
   },
   {
     "ID": 2168,
@@ -28747,7 +29498,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2308,
@@ -28770,7 +29524,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2309,
@@ -28793,7 +29550,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2310,
@@ -28816,7 +29576,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2311,
@@ -28839,7 +29602,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2312,
@@ -28908,7 +29674,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2315,
@@ -28931,7 +29700,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2316,
@@ -28954,7 +29726,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2317,
@@ -28977,7 +29752,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2318,
@@ -29000,7 +29778,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2319,
@@ -29023,7 +29804,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2320,
@@ -29046,7 +29830,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2321,
@@ -29069,7 +29856,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2322,
@@ -29092,7 +29882,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2323,
@@ -29161,7 +29954,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2326,
@@ -29184,7 +29980,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2327,
@@ -29207,7 +30006,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2328,
@@ -29230,7 +30032,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2329,
@@ -29253,7 +30058,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2330,
@@ -29276,7 +30084,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2331,
@@ -29299,7 +30110,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2332,
@@ -29322,7 +30136,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2333,
@@ -29345,7 +30162,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2334,
@@ -29368,7 +30188,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2335,
@@ -29391,7 +30214,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2336,
@@ -29414,7 +30240,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2337,
@@ -29529,7 +30358,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2342,
@@ -29552,7 +30384,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2343,
@@ -29598,7 +30433,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2345,
@@ -29644,7 +30482,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2347,
@@ -29690,7 +30531,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2349,
@@ -29736,7 +30580,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2351,
@@ -29851,7 +30698,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2356,
@@ -29989,7 +30839,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2365,
@@ -30012,7 +30865,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2366,
@@ -30173,7 +31029,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2373,
@@ -30196,7 +31055,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2374,
@@ -30219,7 +31081,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2375,
@@ -30242,7 +31107,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2376,
@@ -30265,7 +31133,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2377,
@@ -30288,7 +31159,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2378,
@@ -30311,7 +31185,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2379,
@@ -30334,7 +31211,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2380,
@@ -30357,7 +31237,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2381,
@@ -30380,7 +31263,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2382,
@@ -30403,7 +31289,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2383,
@@ -30495,7 +31384,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2387,
@@ -30518,7 +31410,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2388,
@@ -30541,7 +31436,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2389,
@@ -30564,7 +31462,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2390,
@@ -30587,7 +31488,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2391,
@@ -30610,7 +31514,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2392,
@@ -30679,7 +31586,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2395,
@@ -30702,7 +31612,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2396,
@@ -30725,7 +31638,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 2397,
@@ -32151,7 +33067,12 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Shoes",
-    "location": "Shoes"
+    "location": "Shoes",
+    "enchant": [
+      "el_discastel_1st",
+      "el_discastel_2nd",
+      "el_discastel_3rd"
+    ]
   },
   {
     "ID": 2464,
@@ -32220,7 +33141,11 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Shoes",
-    "location": "Shoes"
+    "location": "Shoes",
+    "enchant": [
+      "eden_armor_1st",
+      "eden_armor_2nd"
+    ]
   },
   {
     "ID": 2474,
@@ -33692,7 +34617,12 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Garment",
-    "location": "Garment"
+    "location": "Garment",
+    "enchant": [
+      "el_discastel_1st",
+      "el_discastel_2nd",
+      "el_discastel_3rd"
+    ]
   },
   {
     "ID": 2565,
@@ -33738,7 +34668,12 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Garment",
-    "location": "Garment"
+    "location": "Garment",
+    "enchant": [
+      "mora_1st",
+      "mora_2nd",
+      "mora_3rd"
+    ]
   },
   {
     "ID": 2571,
@@ -33761,7 +34696,11 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Garment",
-    "location": "Garment"
+    "location": "Garment",
+    "enchant": [
+      "eden_armor_1st",
+      "eden_armor_2nd"
+    ]
   },
   {
     "ID": 2576,
@@ -33807,7 +34746,11 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Garment",
-    "location": "Garment"
+    "location": "Garment",
+    "enchant": [
+      "biolab_armor",
+      "biolab_armor"
+    ]
   },
   {
     "ID": 2590,
@@ -39028,7 +39971,12 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Accessory",
-    "location": "Accessory"
+    "location": "Accessory",
+    "enchant": [
+      "el_discastel_1st",
+      "el_discastel_2nd",
+      "el_discastel_light_2rd_3rd"
+    ]
   },
   {
     "ID": 2844,
@@ -39051,7 +39999,12 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Accessory",
-    "location": "Accessory"
+    "location": "Accessory",
+    "enchant": [
+      "el_discastel_1st",
+      "el_discastel_light_2rd_3rd",
+      "el_discastel_light_2rd_3rd"
+    ]
   },
   {
     "ID": 2845,
@@ -39143,7 +40096,12 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Accessory",
-    "location": "Accessory"
+    "location": "Accessory",
+    "enchant": [
+      "mora_1st",
+      "mora_2nd",
+      "mora_3rd"
+    ]
   },
   {
     "ID": 2872,
@@ -39212,7 +40170,11 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Accessory",
-    "location": "Accessory"
+    "location": "Accessory",
+    "enchant": [
+      "biolab_armor",
+      "biolab_armor"
+    ]
   },
   {
     "ID": 2899,
@@ -70630,7 +71592,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearUpper"
+    "location": "HeadgearUpper",
+    "enchant": [
+      "eden_hat"
+    ]
   },
   {
     "ID": 5584,
@@ -147872,7 +148837,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13019,
@@ -148171,7 +149140,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13032,
@@ -148194,7 +149167,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13033,
@@ -148217,7 +149194,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13034,
@@ -148240,7 +149221,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13035,
@@ -148516,7 +149501,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13047,
@@ -148539,7 +149528,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13048,
@@ -148700,7 +149693,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13062,
@@ -148723,7 +149720,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13066,
@@ -148746,7 +149747,12 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "eden_weapon_1st",
+      "eden_weapon_2nd",
+      "eden_weapon_3rd"
+    ]
   },
   {
     "ID": 13067,
@@ -148815,7 +149821,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "biolab_weapon",
+      "biolab_weapon"
+    ]
   },
   {
     "ID": 13070,
@@ -148838,7 +149848,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "biolab_weapon",
+      "biolab_weapon"
+    ]
   },
   {
     "ID": 13078,
@@ -149045,7 +150059,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Revolver",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13105,
@@ -149068,7 +150086,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Revolver",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13106,
@@ -149252,7 +150274,12 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Revolver",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "eden_weapon_1st",
+      "eden_weapon_2nd",
+      "eden_weapon_3rd"
+    ]
   },
   {
     "ID": 13122,
@@ -149275,7 +150302,10 @@
     "isVanillaPvp": false,
     "type": "Weapon Two-Hand",
     "subType": "Revolver",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo"
+    ]
   },
   {
     "ID": 13120,
@@ -149298,7 +150328,10 @@
     "isVanillaPvp": false,
     "type": "Weapon Two-Hand",
     "subType": "Revolver",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo"
+    ]
   },
   {
     "ID": 13150,
@@ -149413,7 +150446,10 @@
     "isVanillaPvp": false,
     "type": "Weapon Two-Hand",
     "subType": "Rifle",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo"
+    ]
   },
   {
     "ID": 13195,
@@ -149436,7 +150472,11 @@
     "isVanillaPvp": false,
     "type": "Weapon Two-Hand",
     "subType": "Rifle",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13154,
@@ -149528,7 +150568,11 @@
     "isVanillaPvp": false,
     "type": "Weapon Two-Hand",
     "subType": "Shotgun",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13192,
@@ -149551,7 +150595,11 @@
     "isVanillaPvp": false,
     "type": "Weapon Two-Hand",
     "subType": "Shotgun",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13196,
@@ -149620,7 +150668,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Gatling Gun",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13159,
@@ -149643,7 +150695,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Gatling Gun",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13197,
@@ -149666,7 +150722,11 @@
     "isVanillaPvp": false,
     "type": "Weapon Two-Hand",
     "subType": "Gatling Gun",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13198,
@@ -149689,7 +150749,11 @@
     "isVanillaPvp": false,
     "type": "Weapon Two-Hand",
     "subType": "Gatling Gun",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13160,
@@ -149758,7 +150822,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Grenade Launcher",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 28200,
@@ -149781,7 +150849,11 @@
     "isVanillaPvp": false,
     "type": "Weapon Two-Hand",
     "subType": "Grenade Launcher",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 28202,
@@ -149804,7 +150876,11 @@
     "isVanillaPvp": false,
     "type": "Weapon Two-Hand",
     "subType": "Grenade Launcher",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13163,
@@ -149827,7 +150903,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Rifle",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13164,
@@ -149850,7 +150930,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Rifle",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13165,
@@ -149942,7 +151026,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Shotgun",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13169,
@@ -149965,7 +151053,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Shotgun",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13170,
@@ -149988,7 +151080,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Rifle",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13171,
@@ -151828,7 +152924,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Fuuma Shuriken",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13305,
@@ -151966,7 +153066,12 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Fuuma Shuriken",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "eden_weapon_1st",
+      "eden_weapon_2nd",
+      "eden_weapon_3rd"
+    ]
   },
   {
     "ID": 13313,
@@ -152127,7 +153232,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13401,
@@ -152242,7 +153351,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13406,
@@ -152610,7 +153723,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13422,
@@ -152725,7 +153842,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 13434,
@@ -152748,7 +153869,12 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Sword",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "eden_weapon_1st",
+      "eden_weapon_2nd",
+      "eden_weapon_3rd"
+    ]
   },
   {
     "ID": 13440,
@@ -174115,7 +175241,12 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "mora_1st",
+      "mora_2nd",
+      "mora_3rd"
+    ]
   },
   {
     "ID": 15031,
@@ -174138,7 +175269,11 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "eden_armor_1st",
+      "eden_armor_2nd"
+    ]
   },
   {
     "ID": 15032,
@@ -174230,7 +175365,11 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "biolab_armor",
+      "biolab_armor"
+    ]
   },
   {
     "ID": 15051,
@@ -174391,7 +175530,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Armor",
-    "location": "Armor"
+    "location": "Armor",
+    "enchant": [
+      "hidden"
+    ]
   },
   {
     "ID": 15138,
@@ -174437,7 +175579,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Mace",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 16001,
@@ -174460,7 +175606,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Mace",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 16002,
@@ -174644,7 +175794,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Mace",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 16014,
@@ -174667,7 +175821,12 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Mace",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "eden_weapon_1st",
+      "eden_weapon_2nd",
+      "eden_weapon_3rd"
+    ]
   },
   {
     "ID": 16015,
@@ -174736,7 +175895,11 @@
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
     "subType": "Mace",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "biolab_weapon",
+      "biolab_weapon"
+    ]
   },
   {
     "ID": 16039,
@@ -176070,7 +177233,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Bow",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "malangdo",
+      "malangdo"
+    ]
   },
   {
     "ID": 18106,
@@ -176093,7 +177260,12 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Bow",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "eden_weapon_1st",
+      "eden_weapon_2nd",
+      "eden_weapon_3rd"
+    ]
   },
   {
     "ID": 18107,
@@ -176162,7 +177334,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Bow",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "biolab_weapon",
+      "biolab_weapon"
+    ]
   },
   {
     "ID": 18110,
@@ -176185,7 +177361,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Bow",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "biolab_weapon",
+      "biolab_weapon"
+    ]
   },
   {
     "ID": 18111,
@@ -176208,7 +177388,11 @@
     "isVanillaPvp": true,
     "type": "Weapon Two-Hand",
     "subType": "Bow",
-    "location": "Weapon"
+    "location": "Weapon",
+    "enchant": [
+      "biolab_weapon",
+      "biolab_weapon"
+    ]
   },
   {
     "ID": 18505,
@@ -177335,7 +178519,11 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearUpper"
+    "location": "HeadgearUpper",
+    "enchant": [
+      "biolab_armor",
+      "biolab_armor"
+    ]
   },
   {
     "ID": 18571,
@@ -205812,7 +207000,10 @@
     "isVanillaPvp": true,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearUpper"
+    "location": "HeadgearUpper",
+    "enchant": [
+      "eden_hat"
+    ]
   },
   {
     "ID": 21001,

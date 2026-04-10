@@ -1,10 +1,10 @@
 import { JsonPipe } from '@angular/common';
-import { Component, effect, inject, signal, WritableSignal } from '@angular/core';
-import { SESSION_EQUIP_DEFAULT, TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
-import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
+import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { TTBonusEngineService } from '../core/item-script/tt-bonus-engine.service';
 import { createEmptySessionBonus, defaultEquipState } from '../core/session-info-default';
+import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
 import { BaseStatsAs, DBItem, SessionBonus } from '../core/tt-models.v3';
+import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
 
 @Component({
   selector: 'app-debug',

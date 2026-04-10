@@ -2,25 +2,18 @@ import { ChangeDetectionStrategy, Component, computed, inject, input, Signal } f
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
-import { CardTypes, DBItem, EquipItemFilter, EquipLocation, EquipSlotMeta, ItemLocations, ItemSubType } from '../core/tt-models.v3';
+import { CardTypes, DBItem, EquipItemFilter, EquipSlotMeta, ItemLocations } from '../core/tt-models.v3';
 import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
-import { JsonPipe } from '@angular/common';
 import { getCardTypeForEquipLocation } from '../core/utils';
 import { TtCardSlotV3Component } from '../tt-card-slot-v3/tt-card-slot-v3.component';
 
 type EquipItem = Pick<DBItem, 'ID' | 'name'>;
-type EffectiveMeta = {
-  canRefine: boolean,
-  itemFilter: EquipItemFilter,
-  disabled: boolean
-}
 
 @Component({
   selector: 'tt-equip-slot',
   imports: [
     MatFormFieldModule,
     MatSelectModule,
-    JsonPipe,
     TtCardSlotV3Component
   ],
   templateUrl: './tt-equip-slot.component.html',

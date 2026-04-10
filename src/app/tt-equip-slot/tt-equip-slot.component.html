@@ -1,7 +1,7 @@
 <!-- <p>Equip {{meta()|json}} - {{state()|json}} - Items: {{jobItems().length}} ({{allSlotItems().length}})</p> -->
 <div>
     @if(meta().canRefine){
-    <mat-form-field>
+    <mat-form-field class="refine-select">
         <mat-select (selectionChange)="changeRefine($event.value)" [value]="state().refine">
             @for (ref of maxRefines; track $index) {
             <mat-option [value]="ref">+{{ref}}</mat-option>

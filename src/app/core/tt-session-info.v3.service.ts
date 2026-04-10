@@ -1,10 +1,10 @@
 /*** imports ***/
 import { computed, effect, inject, Injectable, Signal, signal, untracked, WritableSignal } from "@angular/core";
-import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, DBItemCombo, DBJob, DBSkill, DBWeaponTypeKey, EQUIP_META, EquipSlotState, EquipState, FoodStatsNames, ItemLocations, RefineLocations, SessionBonus, SessionEquip, SkillBuff, DBWeaponTypeLeft } from "./tt-models.v3";
-import { createEmptySessionBonus, defaultEquipSlotState, SESSION_INFO_DEFAULT } from "./session-info-default";
 import { BonusSubstitution, TTBonusEngineService } from "./item-script/tt-bonus-engine.service";
+import { createEmptySessionBonus, defaultEquipSlotState, SESSION_INFO_DEFAULT } from "./session-info-default";
 import { TTCoreService } from "./tt-core.service";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
+import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, DBItemCombo, DBJob, DBSkill, DBWeaponTypeKey, DBWeaponTypeLeft, EQUIP_META, EquipSlotState, EquipState, FoodStatsNames, ItemLocations, SessionBonus, SkillBuff } from "./tt-models.v3";
 import { DefaultMap, isTwoHandedWeapon } from "./utils";
 
 /** Dependencies 
@@ -30,20 +30,6 @@ export type CardState = {
 };
 
 /*** definitons ***/
-export const SESSION_EQUIP_DEFAULT: SessionEquip = {
-    armor: 0,
-    garment: 0,
-    leftHand: 0,
-    leftHandType: 'Unarmed',
-    lowerHg: 0,
-    middleHg: 0,
-    rightHand: 0,
-    rightHandType: 'Unarmed',
-    rhAccessory: 0,
-    lhAccessory: 0,
-    shoes: 0,
-    upperHg: 0
-}
 const DEF_PER_REFINE = 2 / 3;
 
 /*** service ***/

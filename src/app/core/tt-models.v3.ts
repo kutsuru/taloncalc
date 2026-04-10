@@ -95,7 +95,8 @@ export type DBItem = {
   type: DBItemTypeKey,
   subType: ItemSubType,
   location: EquipLocation,
-  disabled?: boolean
+  disabled?: boolean,
+  enchant?: DBEnchantTypes[]
 }
 export type DBItemCombo = {
   items: number[];
@@ -152,14 +153,6 @@ export type EquipSlotState = {
   // enchants: any[]  // FIXME
 }
 export type EquipState = Record<ItemLocations, EquipSlotState>;
-
-export type SessionEquipBase<T> = {
-  [key in ItemLocations]: T
-}
-export type SessionEquip = SessionEquipBase<number> & {
-  rightHandType: 'Unarmed' | DBWeaponTypeKey,
-  leftHandType: 'Unarmed' | DBWeaponTypeLeft
-}
 export const SESSION_BONUS_FLAGS = new Set([
   // normale flags
   'noCastCancel', 'noCastCancel2', 'noSizeFix',
@@ -427,3 +420,6 @@ export type JSONFood = {
   name?: string,
   description?: string
 }
+/****************/
+/*** ENCHANTS ***/
+export type DBEnchantTypes = "kris" | "hidden" | "malangdo" | "malangdo_staff" | "malangdo_nerf" | "biolab_weapon" | "biolab_armor" | "eden_hat" | "eden_armor_1st" | "eden_armor_2nd" | "eden_weapon_1st" | "eden_weapon_2nd" | "eden_weapon_3rd" | "el_discastel_1st" | "el_discastel_2nd" | "el_discastel_3rd" | "el_discastel_light_2rd_3rd" | "mora_1st" | "mora_2nd" | "mora_3rd";
