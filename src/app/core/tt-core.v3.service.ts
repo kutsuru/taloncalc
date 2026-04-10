@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable, signal, WritableSignal } from "@angular/core";
 import { forkJoin, Observable } from "rxjs";
-import { AmmoType, DBAmmo, DBFood, DBItem, DBItemCombo, DBJob, DBMob, DBSkill, DBWeaponType, ElementDBV3, FoodCategory, FoodStatsNames, JSONFood, DBMobClass, DBWeaponTypeKey, DBWeaponTypeEntry } from "./tt-models.v3";
+import { AmmoType, DBAmmo, DBFood, DBItem, DBItemCombo, DBJob, DBMob, DBSkill, DBWeaponType, ElementDBV3, FoodCategory, FoodStatsNames, JSONFood, DBMobClass, DBWeaponTypeKey, DBWeaponTypeEntry, DBEnchantTypes, DBEnchant, EnchantDBV3 } from "./tt-models.v3";
 import { DefaultMap } from "./utils";
 
 @Injectable({ providedIn: 'root' })
@@ -33,6 +33,7 @@ export class TTCoreServiceV3 {
     private _weaponTypeDB: Map<DBWeaponTypeKey, DBWeaponTypeEntry> = new Map();
     private _ammoDB: Map<string, DBAmmo> = new Map();
     private _foodDB: Map<number, DBFood> = new Map();
+    private _enchantDB: Map<DBEnchantTypes, DBEnchant[]> = new Map();
 
 
     /*** public functions ***/
@@ -53,11 +54,12 @@ export class TTCoreServiceV3 {
                     this._loadDB('assets/db/weapon-type.db.V3.json'),   // 6
                     this._loadDB('assets/db/ammo.db.json'),             // 7
                     this._loadDB('assets/db/food.db.V3.json'),          // 8
+                    this._loadDB('assets/db/enchant.db.V3.json'),       // 9
                 ])
                     .subscribe((dbRes) => {
                         /* Item DB */
                         for (const item of dbRes[0] as DBItem[]) {
-                            if(item.disabled) continue; // skip items which are disabled
+                            if (item.disabled) continue; // skip items which are disabled
                             /* remove "None" item scripts */
                             if (item.itemScript === 'None') item.itemScript = "";
                             this._itemDB.set(item.ID, item);
@@ -196,6 +198,21 @@ export class TTCoreServiceV3 {
                                 }
                             }
                         }
+                        /* enchant DB */
+                        const enchants = dbRes[9] as EnchantDBV3;
+
+                        for (const enchantGr in enchants) {
+                            if (!this._enchantDB.has(enchantGr as DBEnchantTypes)) {
+                                this._enchantDB.set(enchantGr as DBEnchantTypes, []);
+                            }
+                            for (const enchantName in enchants[enchantGr]) {
+                                const entry: DBEnchant = {
+                                    itemId: enchants[enchantGr][enchantName],
+                                    name: enchantName
+                                };
+                                this._enchantDB.get(enchantGr as DBEnchantTypes)!.push(entry);
+                            }
+                        }
 
                         /* done */
                         this._loaded.set(true);
@@ -284,5 +301,8 @@ export class TTCoreServiceV3 {
     }
     get foodDB() {
         return this._foodDB;
+    }
+    get enchantDB() {
+        return this._enchantDB;
     }
 }
