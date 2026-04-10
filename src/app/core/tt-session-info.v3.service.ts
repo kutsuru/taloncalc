@@ -1,11 +1,11 @@
 /*** imports ***/
 import { computed, effect, inject, Injectable, Signal, signal, untracked, WritableSignal } from "@angular/core";
-import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, DBItemCombo, DBJob, DBSkill, FoodStatsNames, RefineLocations, SessionBonus, SessionEquip, SkillBuff, WeaponTypeLeft } from "./tt-models.v3";
-import { createEmptySessionBonus, SESSION_INFO_DEFAULT } from "./session-info-default";
+import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, DBItemCombo, DBJob, DBSkill, DBWeaponTypeKey, EQUIP_META, EquipSlotState, EquipState, FoodStatsNames, ItemLocations, RefineLocations, SessionBonus, SessionEquip, SkillBuff, DBWeaponTypeLeft } from "./tt-models.v3";
+import { createEmptySessionBonus, defaultEquipSlotState, SESSION_INFO_DEFAULT } from "./session-info-default";
 import { BonusSubstitution, TTBonusEngineService } from "./item-script/tt-bonus-engine.service";
 import { TTCoreService } from "./tt-core.service";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
-import { isTwoHandedWeapon } from "./utils";
+import { DefaultMap, isTwoHandedWeapon } from "./utils";
 
 /** Dependencies 
  * BaseStats        Pure-Stats without any bonus
@@ -90,34 +90,18 @@ export class TTSessionInfoV3Service {
     bonus: Signal<SessionBonus>;
 
     /* equip */
-    private _equipState: WritableSignal<SessionEquip> = signal({ ...SESSION_EQUIP_DEFAULT });
-    equip = this._equipState.asReadonly();
+    // FIXME: when job changed, check if items still wearable
+    private _equipmentState: WritableSignal<EquipState> = signal(
+        Object.fromEntries(
+            Object.keys(EQUIP_META).map(slot => [slot, defaultEquipSlotState()])
+        ) as EquipState
+    );
+    equipment = this._equipmentState.asReadonly();
+    // FIXME: react on job changes
+    rightHandType: WritableSignal<DBWeaponTypeKey> = signal('Unarmed');
+    leftHandType: WritableSignal<DBWeaponTypeLeft> = signal('Shield');
 
     isDualWielding: Signal<boolean>;
-
-    /* refines */
-    refines: WritableSignal<Record<RefineLocations, number>> = signal({
-        armor: 0,
-        garment: 0,
-        leftHand: 0,
-        rightHand: 0,
-        shoes: 0,
-        upperHg: 0
-    });
-
-    /* cards */
-    private _cardsState: WritableSignal<CardState> = signal({
-        armor: 0,
-        garment: 0,
-        leftHand: [0],
-        rightHand: [0],
-        shoes: 0,
-        upperHg: 0,
-        lhAccessory: 0,
-        rhAccessory: 0,
-        middleHg: 0
-    });
-    cards = this._cardsState.asReadonly();
 
     /* item combos */
     itemCombos: Signal<DBItemCombo[]>;
@@ -252,8 +236,9 @@ export class TTSessionInfoV3Service {
         this.matkMin = computed(() => this._computeMatk('MIN'));
         this.matkMax = computed(() => this._computeMatk('MAX'));
         this.isDualWielding = computed(() => {
-            const equip = this._equipState();
-            if (equip.leftHandType === 'Shield' || equip.leftHandType === 'Unarmed') {
+            // FIXME
+            const lhType = this.leftHandType();
+            if (lhType === 'Shield' || lhType === 'Unarmed') {
                 return false;
             }
             else {
@@ -264,24 +249,20 @@ export class TTSessionInfoV3Service {
 
 
         /* effects */
-        // update equips if job class changes
+        // update rightHandtype when job changes
         effect(() => {
             const job = this.jobClass();
-            if (job) {
-                untracked(() => {
-                    const equip = this._equipState();
-                    const jobMask = Number(job.mask);
-                    let update = false;
-                    // right hand type
-                    let wT = equip.rightHandType;
+            // FIXME
+            /*
+            let wT = equip.rightHandType;
                     if (wT === 'Unarmed' || !job.compatibleWeapons.includes(wT)) {
                         equip.rightHandType = 'Unarmed';
                         equip.rightHand = 0;
                         update = true;
                     }
-                    // left hand type
+            // left hand type
                     const jobClassName = untracked(() => this.jobClassName());
-                    let allowedLeftHandTypes: WeaponTypeLeft[] = ['Unarmed', 'Shield'];
+                    let allowedLeftHandTypes: DBWeaponTypeLeft[] = ['Unarmed', 'Shield'];
                     if (jobClassName.includes('Assassin')) {
                         allowedLeftHandTypes = [...job.compatibleWeapons, 'Shield'];
                     }
@@ -289,108 +270,31 @@ export class TTSessionInfoV3Service {
                         equip.leftHandType = 'Unarmed';
                         update = true;
                     }
-                    // upper headgear
-                    let upperHg = this._core.headgearDB.get(equip.upperHg);
-                    if (!upperHg || !this._core.canWearItem(jobMask, upperHg)) {
-                        equip.upperHg = SESSION_EQUIP_DEFAULT.upperHg;
-                        update = true;
+            */
+        });
+        // update equips if job class changes
+        effect(() => {
+            const job = this.jobClass();
+            if (job) {
+                untracked(() => {
+                    const equipUpdated = { ...this._equipmentState() };
+                    const jobMask = Number(job.mask);
+                    let update = false;
+                    for (const slot in equipUpdated) {
+                        const equipSlot = equipUpdated[slot as ItemLocations];
+                        if (equipSlot.item > 0) {
+                            const item = this._core.itemDB.get(equipSlot.item);
+                            if (!item || !this._core.canWearItem(jobMask, item)) {
+                                // cant wear create new empty item
+                                equipUpdated[slot] = defaultEquipSlotState();
+                                update = true;
+                            }
+                        }
                     }
-                    // middle headgear
-                    let middleHg = this._core.headgearDB.get(equip.middleHg);
-                    if (!middleHg || !this._core.canWearItem(jobMask, middleHg)) {
-                        equip.middleHg = SESSION_EQUIP_DEFAULT.middleHg
-                        update = true;
-                    }
-                    // lower headgear
-                    let lowerHg = this._core.headgearDB.get(equip.lowerHg);
-                    if (!lowerHg || !this._core.canWearItem(jobMask, lowerHg)) {
-                        equip.middleHg = SESSION_EQUIP_DEFAULT.lowerHg;
-                        update = true;
-                    }
-                    // armor
-                    let armor = this._core.armorDB.get(equip.armor);
-                    if (!armor || !this._core.canWearItem(jobMask, armor)) {
-                        equip.armor = SESSION_EQUIP_DEFAULT.armor;
-                        update = true;
-                    }
-                    // garment
-                    let gar = this._core.garmentDB.get(equip.garment);
-                    if (!gar || !this._core.canWearItem(jobMask, gar)) {
-                        equip.garment = SESSION_EQUIP_DEFAULT.garment;
-                        update = true
-                    }
-                    // shoes
-                    let shoes = this._core.shoesDB.get(equip.shoes);
-                    if (!shoes || !this._core.canWearItem(jobMask, shoes)) {
-                        equip.shoes = SESSION_EQUIP_DEFAULT.shoes;
-                        update = true;
-                    }
-                    // accessory
-                    let accR = this._core.accessoryDB.get(equip.rhAccessory);
-                    let accL = this._core.accessoryDB.get(equip.lhAccessory);
-                    if (!accR || !this._core.canWearItem(jobMask, accR)) {
-                        equip.rhAccessory = SESSION_EQUIP_DEFAULT.rhAccessory;
-                        update = true;
-                    }
-                    if (!accL || !this._core.canWearItem(jobMask, accL)) {
-                        equip.lhAccessory = SESSION_EQUIP_DEFAULT.lhAccessory;
-                        update = true;
-                    }
-
                     if (update) {
-                        this._equipState.set({ ...equip });
+                        this._equipmentState.set(equipUpdated);
                     }
                 })
-            }
-        });
-
-        // update card slots based on types & equip
-        effect(() => {
-            // TODO: only reduce card slots instead of restet-ing all?
-            const equip = this._equipState();
-            const cards = untracked(() => this._cardsState());
-            const slotsLH = cards.leftHand.length;
-            const slotsRH = cards.rightHand.length;
-            let update = false;
-
-            /* left hand (type) */
-            if (equip.leftHandType === 'Shield') {
-                if (slotsLH != 1) {
-                    cards.leftHand = [0];
-                    update = true;
-                }
-            }
-            else {
-                const weapon = this._core.weaponDB.get(equip.leftHand);
-                if (weapon) {
-                    if (slotsLH !== weapon.slots) {
-                        cards.leftHand = new Array(weapon.slots).fill(0);
-                        update = true;
-                    }
-                }
-                else if (slotsLH !== 1) {
-                    cards.leftHand = [0];
-                    update = true;
-                }
-            }
-
-            /* right hand */
-            const weaponRH = this._core.weaponDB.get(equip.rightHand);
-            if (weaponRH) {
-                if (slotsRH !== weaponRH.slots) {
-                    cards.rightHand = new Array(weaponRH.slots).fill(0);
-                    update = true;
-                }
-            }
-            else if (slotsRH !== 1) {
-                /* reset to one slot TODO: or zero? */
-                cards.rightHand = [0];
-                update = true;
-            }
-
-            /* update */
-            if (update) {
-                this._cardsState.set({ ...cards });
             }
         });
 
@@ -447,38 +351,43 @@ export class TTSessionInfoV3Service {
     }
 
     /*** public functions ***/
-    // public updateEquip
-    public updateCard(key: keyof CardState, val: number, slot = -1) {
-        this._cardsState.update(cards => {
-            if (key === 'leftHand' || key === 'rightHand') {
-                if (slot >= 0) {
-                    let arr = cards[key];
-                    arr[slot] = val;
-                    cards[key] = [...arr];  // create new array to trigger change-detection
-                }
-                else {
-                    cards[key] = [val];
+    public updateEquipment(slot: ItemLocations, update: Partial<EquipSlotState>) {
+        // FIXME: correct slots etc
+        this._equipmentState.update(old => ({
+            ...old,
+            [slot]: { ...old[slot], ...update }
+        }));
+    }
+    public updateEquipmentId(slot: ItemLocations, itemId: number) {
+        let newItem = defaultEquipSlotState();
+        if (itemId > 0) {
+            const dbItem = this._core.itemDB.get(itemId);
+            newItem.item = itemId;
+            if (dbItem) {
+                if (newItem.cards.length != dbItem.slots) {
+                    newItem.cards = Array(dbItem.slots).fill(0);
                 }
             }
-            else {
-                cards[key] = val;
-            }
+        }
+        this.updateEquipment(slot, newItem);
+    }
+    public updateCard(slot: ItemLocations, cardId: number, cardSlot: number = 0) {
+        let cards = this._equipmentState()[slot].cards.map((val, idx) => idx === cardSlot ? cardId : val);
+        this.updateEquipment(slot, { cards });
+    }
+    public updateRightHandType(newType: DBWeaponTypeKey) {
+        this.rightHandType.set(newType);
+        /* update equip */
+        this.updateEquipmentId('rightHand', 0);
+        /* set lefthand to "none" in case of 2h */
+        if (isTwoHandedWeapon(newType)) {
+            this.updateEquipmentId('leftHand', 0);
+        }
+    }
+    public updateLeftHandType(newType: DBWeaponTypeLeft) {
+        this.leftHandType.set(newType)
+    }
 
-            return { ...cards };
-        });
-    }
-    public updateEquip(newEquip: Partial<SessionEquip>) {
-        this._equipState.update(cur => {
-            /**
-             * in case of 2H at rightHand, we override leftHandType + leftHand
-             */
-            if (newEquip.rightHandType && isTwoHandedWeapon(newEquip.rightHandType)) {
-                newEquip.leftHandType = 'Unarmed';
-                newEquip.leftHand = 0;
-            }
-            return { ...cur, ...newEquip };
-        });
-    }
     public addBattleCalcPVM(target: number) {
         const newEntry: BattleCalcEntry = {
             ID: this._getBattleCalcID(),
@@ -628,19 +537,19 @@ export class TTSessionInfoV3Service {
     }
     private _computeWeaponAtk(): number {
         /* triggers */
-        const equip = this._equipState();
+        const equip = this._equipmentState();
         const bonus = this.bonus();
 
         // right hand
         let rhWeaponAtk: number = 0;
-        const rhWeapon = this._core.weaponDB.get(equip.rightHand);
+        const rhWeapon = this._core.weaponDB.get(equip.rightHand.item);
         if (rhWeapon) {
             rhWeaponAtk = rhWeapon.attack;
         }
 
         // left hand
         let lhWeaponAtk: number = 0;
-        const lhWeapon = this._core.weaponDB.get(equip.leftHand);
+        const lhWeapon = this._core.weaponDB.get(equip.leftHand.item);
         if (lhWeapon) {
             lhWeaponAtk = lhWeapon.attack;
         }
@@ -706,7 +615,8 @@ export class TTSessionInfoV3Service {
         const job = this.jobClass();
         const stats = this.totalStats();
         const bonus = this.bonus();
-        const equip = this._equipState();
+        const lhType = this.leftHandType();
+        const rhType = this.rightHandType();
 
         /* varbs */
         let aspd = 0;
@@ -720,11 +630,11 @@ export class TTSessionInfoV3Service {
         //     this._sessionInfoData.activeBonus.scIncAspdRate;
 
         if (job) {
-            attackMotion = job.baseAspd[equip.rightHandType];
+            attackMotion = job.baseAspd[rhType];
 
             if (this.isDualWielding())
                 attackMotion = Math.floor(
-                    (attackMotion + job.baseAspd[equip.leftHandType]) * 0.7
+                    (attackMotion + job.baseAspd[lhType]) * 0.7
                 );
 
             attackMotion =
@@ -806,34 +716,27 @@ export class TTSessionInfoV3Service {
     }
 
     private _computeDEF(): number {
-        const equip = this._equipState()
-        const refine = this.refines();
+        const equip = this._equipmentState();
         const bonus = this.bonus();
+        const lhType = this.leftHandType();
 
         let def = 0;
 
         /* equip */
         for (const equipSlot in equip) {
             // no weapon (rightHand) or 2nd hand if not shield
+            let equipSlotKey = equipSlot as ItemLocations;
             if (
-                equipSlot === 'rightHand' ||
-                equipSlot === 'rightHandType' ||
-                equipSlot === 'leftHandType' ||
-                (equipSlot === 'leftHand' && equip.leftHandType !== 'Shield')) continue;
+                equipSlotKey === 'rightHand' ||
+                (equipSlotKey === 'leftHand' && lhType !== 'Shield')) continue;
 
-            const gear = this._core.itemDB.get(equip[equipSlot]);
+            /* gear DEF */
+            const gear = this._core.itemDB.get(equip[equipSlotKey].item);
             if (gear) {
                 def += gear.defense;
             }
-        }
-        /* refines */
-        for (const refineSlot in refine) {
-            // ignore refine of weapon (rightHand) or 2nd hand if not shield
-            if (
-                refineSlot === 'rightHand' ||
-                (refineSlot === 'leftHand' && equip.leftHandType !== 'Shield')
-            ) continue;
-            def += DEF_PER_REFINE * refine[refineSlot];
+            /* refine DEF */
+            def += DEF_PER_REFINE * equip[equipSlotKey].refine;
         }
 
         /* bonus */
@@ -845,31 +748,21 @@ export class TTSessionInfoV3Service {
     private _computeItemCombos(): DBItemCombo[] {
         const res: DBItemCombo[] = [];
         /* trigger */
-        const cards = this._cardsState();
-        const equip = this._equipState();
+        const equip = this._equipmentState();
 
         /* create map with item ids and counter how many of each */
-        const itemCnt: Map<number, number> = new Map();
-        for (const cardSlot in cards) {
-            const card = cards[cardSlot as keyof CardState];
-            if (typeof card === 'number') {
-                if (card > 0) {
-                    itemCnt.set(card, (itemCnt.get(card) ?? 0) + 1);
-                }
+        const itemCnt = new DefaultMap(0);
+        for (const equipSlotKey in equip) {
+            const equipSlot = equip[equipSlotKey as ItemLocations];
+            // equip
+            if (equipSlot.item > 0) {
+                itemCnt.set(equipSlot.item, itemCnt.get(equipSlot.item) + 1);
             }
-            else {
-                for (const cardId of card) {
-                    if (cardId > 0) {
-                        itemCnt.set(cardId, (itemCnt.get(cardId) ?? 0) + 1);
-                    }
+            // cards
+            for (const cardId of equipSlot.cards) {
+                if (cardId > 0) {
+                    itemCnt.set(cardId, itemCnt.get(cardId) + 1);
                 }
-            }
-        }
-        for (const equipSlot in equip) {
-            if (equipSlot === 'leftHandType' || equipSlot === 'rightHandType') continue;
-            const itemId = equip[equipSlot as keyof SessionEquip] as number;
-            if (itemId > 0) {
-                itemCnt.set(itemId, (itemCnt.get(itemId) ?? 0) + 1);
             }
         }
         /** loop over all combos and than check:
@@ -879,7 +772,7 @@ export class TTSessionInfoV3Service {
         for (const combo of this._core.itemComboDB) {
             let amount = 0;
             for (const itemId of combo.items) {
-                let curCnt = itemCnt.get(itemId) ?? 0;
+                let curCnt = itemCnt.get(itemId);
                 if (curCnt === 0) {
                     // item missing
                     amount = 0;
@@ -900,10 +793,8 @@ export class TTSessionInfoV3Service {
         // trigers
         const jobClass = this.jobClass();
         const level = this.level();
-        const equip = this._equipState();
+        const equip = this._equipmentState();
         const baseStats = this.baseStats();
-        const refines = this.refines();
-        const cards = this._cardsState();
         const combos = this.itemCombos();
         const skillsBuffs = this._skillsBuffState();
         const skillsPassive = this._skillsPassiveState();
@@ -935,45 +826,27 @@ export class TTSessionInfoV3Service {
             level: { ...level },
             baseStats: baseStats,
             equip: equip,
+            lefhtHandtType: this.leftHandType(),
+            rightHandType: this.rightHandType(),
             isPVP: false,   // FIXME: we need this in battle-service
             skills: [...skillsBuffs, ...skillsPassive],
-            job: jobClass,
-            refines: refines,
-            cards: cards
+            job: jobClass
         });
 
-        /* equip bonus */
-        for (let equipSlot in equip) {
-            if (equipSlot === 'leftHandType' || equipSlot === 'rightHandType') continue;
-            let itemId = equip[equipSlot as keyof SessionEquip] as number;
-            let item = this._core.itemDB.get(itemId);
+        /* equip bonus & card bonus */
+        for (let equipSlotKey in equip) {
+            const equipSlot = equip[equipSlotKey as ItemLocations];
+            /* item bonus */
+            let item = this._core.itemDB.get(equipSlot.item);
             if (item && item.itemScript) {
-                let refine = 0;
-                if (equipSlot in refines) refine = refines[equipSlot];
-                this._bonusSession.applyBonus(item.itemScript, { refine });
+                this._bonusSession.applyBonus(item.itemScript, { refine: equipSlot.refine });
             }
-        }
-
-        /* card bonus */
-        for (let cardSlot in cards) {
-            const cardId = cards[cardSlot];
-            /* get refine of located equip */
-            let refine = 0;
-            if (cardSlot in refines) refine = refines[cardSlot];
-            if (typeof cardId === 'number') {
-                /* single card */
+            /* card bonus */
+            for (const cardId of equipSlot.cards) {
                 const card = this._core.cardDB.get(cardId);
                 if (card && card.itemScript) {
-                    this._bonusSession.applyBonus(card.itemScript, { refine });
-                }
-            }
-            else {
-                /* multiple cards */
-                for (const slotId of cardId as number[]) {
-                    const card = this._core.cardDB.get(slotId);
-                    if (card && card.itemScript) {
-                        this._bonusSession.applyBonus(card.itemScript, { refine });
-                    }
+                    // use refine of located equip
+                    this._bonusSession.applyBonus(card.itemScript, { refine: equipSlot.refine });
                 }
             }
         }

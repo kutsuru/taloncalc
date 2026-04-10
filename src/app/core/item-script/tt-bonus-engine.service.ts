@@ -1,14 +1,13 @@
 /*** imports ***/
 import { inject, Injectable } from "@angular/core";
-import { INLINE_FUNCTIONS, InlineFunction } from "./inline.functions";
 import { getItemTypeValue, getJobValue, getWeaponTypeValue } from "../rAthena/ra-utils";
-import { createEmptySessionBonus, SESSION_INFO_DEFAULT } from "../session-info-default";
+import { createEmptySessionBonus, defaultEquipState, SESSION_INFO_DEFAULT } from "../session-info-default";
 import { TTCoreServiceV3 } from "../tt-core.v3.service";
-import { ASTNode, IfNode, TTItemScriptParser, VARB_PREFIX } from "./tt-itemscript-parser";
-import { BaseStatsAs, DBJob, DBElement, DBMobRace, RefineLocations, SESSION_BONUS_FLAGS, SessionBonus, SessionBonusFlag, SessionEquip, SkillBuff, DBMobClass } from "../tt-models.v3";
-import { CardState, SESSION_EQUIP_DEFAULT } from "../tt-session-info.v3.service";
+import { BaseStatsAs, DBElement, DBJob, DBMobClass, DBMobRace, DBWeaponTypeKey, DBWeaponTypeLeft, EquipState, SESSION_BONUS_FLAGS, SessionBonus, SessionBonusFlag, SkillBuff } from "../tt-models.v3";
 import { DefaultMap, parseDBElement, parseDBMobClass, parseDBMobRace, parseDBMobRace2, parseDBMobSize } from "../utils";
+import { INLINE_FUNCTIONS, InlineFunction } from "./inline.functions";
 import { SC_FUNCTIONS, SCFunction } from "./sc.functions";
+import { ASTNode, IfNode, TTItemScriptParser, VARB_PREFIX } from "./tt-itemscript-parser";
 
 /*** types ***/
 export type BonusSubstitution = {
@@ -25,9 +24,9 @@ type SessionOptions = {
         base: number,
         job: number,
     },
-    equip: SessionEquip,
-    cards: CardState
-    refines: Record<RefineLocations, number>,
+    equip: EquipState,
+    rightHandType: DBWeaponTypeKey,
+    lefhtHandtType: DBWeaponTypeLeft,
     baseStats: BaseStatsAs<number>,
     skills: SkillBuff[],
     isPVP: boolean,
@@ -286,11 +285,11 @@ export class TTBonusEngineService {
         this.sessionOpts = {
             level: { base: 0, job: 0 },
             baseStats: { ...SESSION_INFO_DEFAULT.baseStats },
-            equip: SESSION_EQUIP_DEFAULT,
+            equip: defaultEquipState(),
+            lefhtHandtType: 'Unarmed',
+            rightHandType: 'Unarmed',
             skills: [],
             isPVP: false,
-            refines: { armor: 0, garment: 0, leftHand: 0, rightHand: 0, shoes: 0, upperHg: 0 },
-            cards: { armor: 0, garment: 0, leftHand: [0], rightHand: [0], shoes: 0, upperHg: 0, lhAccessory: 0, rhAccessory: 0, middleHg: 0 }
         }
 
         /* create static functions */

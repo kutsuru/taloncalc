@@ -1,5 +1,5 @@
 import { inject, Injectable, signal } from "@angular/core";
-import { BaseStatsAs, DBAmmo, DBMob, DBSkill, DBElement, RefineLocations, SessionBonus, SessionEquip } from "./tt-models.v3";
+import { BaseStatsAs, DBAmmo, DBMob, DBSkill, DBElement, RefineLocations, SessionBonus, SessionEquip, EquipState, DBWeaponTypeKey, DBWeaponTypeLeft } from "./tt-models.v3";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
 import { TTSessionInfoV3Service } from "./tt-session-info.v3.service";
 
@@ -7,8 +7,9 @@ type SessionData = {
     level: { base: number, job: number },
     bonus: SessionBonus,
     statsTotal: BaseStatsAs<number>,
-    equip: SessionEquip,
-    refines: Record<RefineLocations, number>
+    equip: EquipState,
+    rightHandType: DBWeaponTypeKey,
+    leftHandType: DBWeaponTypeLeft,
     matk: { min: number, max: number },
     baseAtk: number,
     weaponAtk: number,
@@ -51,8 +52,9 @@ export class TTBattleSessionServiceV3 {
             /* fetch all data */
             this._sessionData = {
                 bonus: this._session.bonus(),
-                equip: this._session.equip(),
-                refines: this._session.refines(),
+                equip: this._session.equipment(),
+                rightHandType: this._session.rightHandType(),
+                leftHandType: this._session.leftHandType(),
                 level: this._session.level(),
                 statsTotal: this._session.totalStats(),
                 matk: {
@@ -271,7 +273,7 @@ export class TTBattleSessionServiceV3 {
     private _calcPhysicalAttackDamage(isCritAtk: boolean, isDualWielding: boolean): number[] {
         // check if dex based by looking for ammoType
         let isDexBased = false;
-        const weaponTypeData = this._core.weaponTypeDB.get(this._sessionData.equip.rightHandType);
+        const weaponTypeData = this._core.weaponTypeDB.get(this._sessionData.rightHandType);
         if (weaponTypeData && weaponTypeData.ammoType) {
             isDexBased = true;
         }
@@ -366,14 +368,14 @@ export class TTBattleSessionServiceV3 {
         if (
             [331, 333, 335, 337].findIndex((x) => x == this._skill!.id) >
             -1 &&
-            'Unarmed' == this._sessionData.equip.rightHandType  // FIXME: does this work or do we need to get the type from the weaponDB?
+            'Unarmed' == this._sessionData.rightHandType  // FIXME: does this work or do we need to get the type from the weaponDB?
         ) {
             damage = damage.map((x) => x + 10 * this._sessionData.FIXME.sprint);
         }
 
         // Refine bonus for Shield Chain#324 and Shield Boomerang#159#384
         if ([159, 324, 385].findIndex((x) => x == this._skill!.id) > -1)
-            damage = damage.map((x) => x + this._sessionData.refines.leftHand * 10);
+            damage = damage.map((x) => x + this._sessionData.equip.leftHand.refine * 10);
 
         damage = this._applyPhysicalDamageModifiers(damage, isCritAtk);
 
@@ -584,7 +586,7 @@ export class TTBattleSessionServiceV3 {
                 );
                 break;
             case 259: // Spiral Pierce#259
-                const rhWeap = this._core.weaponDB.get(this._sessionData.equip.rightHand);
+                const rhWeap = this._core.weaponDB.get(this._sessionData.equip.rightHand.item);
                 let spearWeight = rhWeap?.weight ?? 0;
                 skillBaseDamage = Math.floor(spearWeight * 0.8) * (1 + 0.5 * this._skillLvl); // 80% of weapon's weight x ratio which only applies to weight
 
@@ -600,7 +602,7 @@ export class TTBattleSessionServiceV3 {
             case 384: // Shield Boomerang#384 [Soul Linked]
             case 159: // Shield Boomerang#159
             case 324: // Shield Chain#324
-                const shield = this._core.shieldDB.get(this._sessionData.equip.leftHand);
+                const shield = this._core.shieldDB.get(this._sessionData.equip.leftHand.item);
                 let shieldWeight = shield?.weight ?? 0;
                 skillBaseDamage = baseAtk + shieldWeight;
                 break;
@@ -1070,10 +1072,10 @@ export class TTBattleSessionServiceV3 {
         isDexBased: boolean
     ) {
         let sizeModifier: number;
-        const rhWeaponTypeData = this._core.weaponTypeDB.get(this._sessionData.equip.rightHandType)!;
-        if (this._sessionData.equip.leftHandType !== 'Shield' && this._sessionData.equip.leftHandType !== 'Unarmed') {
+        const rhWeaponTypeData = this._core.weaponTypeDB.get(this._sessionData.rightHandType)!;
+        if (this._sessionData.leftHandType !== 'Shield' && this._sessionData.leftHandType !== 'Unarmed') {
             // dual weapon
-            sizeModifier = this._core.weaponTypeDB.get(this._sessionData.equip.leftHandType)!.sizeModifier[this._target!.size];
+            sizeModifier = this._core.weaponTypeDB.get(this._sessionData.leftHandType)!.sizeModifier[this._target!.size];
         }
         else {
             sizeModifier = rhWeaponTypeData.sizeModifier[this._target!.size]
@@ -1084,8 +1086,8 @@ export class TTBattleSessionServiceV3 {
         if (
             this._session.getSkillLvlOfSkillPassive(78) && //Cavalier Mastery#78
             (
-                'One-Handed Spear' === this._sessionData.equip.rightHandType ||
-                'Two-Handed Spear' === this._sessionData.equip.rightHandType
+                'One-Handed Spear' === this._sessionData.rightHandType ||
+                'Two-Handed Spear' === this._sessionData.rightHandType
             ) &&
             'medium' == this._target!.size
         ) {
@@ -1097,13 +1099,13 @@ export class TTBattleSessionServiceV3 {
 
         let weaponLv: number;
         let weaponRefine: number;
-        if (isDualWielding && this._sessionData.equip.leftHand > 0) {
-            weaponLv = this._core.weaponDB.get(this._sessionData.equip.leftHand)?.weaponLevel ?? 0;
-            weaponRefine = this._sessionData.refines.leftHand;
+        if (isDualWielding && this._sessionData.equip.leftHand.item > 0) {
+            weaponLv = this._core.weaponDB.get(this._sessionData.equip.leftHand.item)?.weaponLevel ?? 0;
+            weaponRefine = this._sessionData.equip.leftHand.refine;
         }
         else {
-            weaponLv = this._core.weaponDB.get(this._sessionData.equip.rightHand)?.weaponLevel ?? 0;
-            weaponRefine = this._sessionData.refines.rightHand;
+            weaponLv = this._core.weaponDB.get(this._sessionData.equip.rightHand.item)?.weaponLevel ?? 0;
+            weaponRefine = this._sessionData.equip.rightHand.refine;
         }
 
         // if the attack is not a critical hit at the exception of arrows attack
@@ -1182,16 +1184,16 @@ export class TTBattleSessionServiceV3 {
         let weaponRefineBonus = 0;
 
         if (isDualWielding) {
-            const lhWeapon = this._core.weaponDB.get(this._sessionData.equip.leftHand);
+            const lhWeapon = this._core.weaponDB.get(this._sessionData.equip.leftHand.item);
             weaponRefineBonus = this._calcWeaponRefineBonus(
-                this._sessionData.refines.leftHand,
+                this._sessionData.equip.leftHand.refine,
                 lhWeapon?.weaponLevel ?? 0
             );
         }
         else {
-            const rhWeapon = this._core.weaponDB.get(this._sessionData.equip.rightHand);
+            const rhWeapon = this._core.weaponDB.get(this._sessionData.equip.rightHand.item);
             weaponRefineBonus = this._calcWeaponRefineBonus(
-                this._sessionData.refines.rightHand,
+                this._sessionData.equip.rightHand.refine,
                 rhWeapon?.weaponLevel ?? 0
             );
         }
@@ -1251,7 +1253,7 @@ export class TTBattleSessionServiceV3 {
 
         if (this._skill!.enableMasteries) {
             // Masteries related to weapons
-            switch (this._sessionData.equip.rightHandType) {
+            switch (this._sessionData.rightHandType) {
                 case 'Dagger': // Dagger
                 case 'One-Handed Sword': // One-handed Sword
                     masteryAtkBonus += 4 * this._session.getSkillLvlOfSkillPassive(3); // One-handed Sword Mastery#3
@@ -1381,7 +1383,7 @@ export class TTBattleSessionServiceV3 {
 
             let advKatarMastery = 100;
             if (
-                'Katar' === this._sessionData.equip.rightHandType &&
+                'Katar' === this._sessionData.rightHandType &&
                 this._session.getSkillLvlOfSkillPassive(262)
             ) {
                 // Advanced Katar Mastery#262 functions similar to a +%ATK card

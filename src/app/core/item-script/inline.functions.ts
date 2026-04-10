@@ -34,8 +34,8 @@ export const INLINE_FUNCTIONS: Record<string, InlineFunction> = {
     },
     // FIXME: check also for cards
     isequipped: (be, opts, ...gears: number[]) => {
-        const equiped = Object.values(be.sessionOpts.equip);
-        return gears.every(gearId => equiped.includes(gearId));
+        const equipedIds = Object.values(be.sessionOpts.equip).map(_ => _.item);
+        return gears.every(gear => equipedIds.includes(gear));
     },
     readparam: (be, opts, param: string) => {
         // FIXME if more than basestats is needed
@@ -64,17 +64,17 @@ export const INLINE_FUNCTIONS: Record<string, InlineFunction> = {
     getequiprefinerycnt: (be, opts, equip: EquipIndexKey) => {
         switch (equip) {
             case 'EQI_ARMOR':
-                return be.sessionOpts.refines.armor;
+                return be.sessionOpts.equip.armor.refine;
             case 'EQI_GARMENT':
-                return be.sessionOpts.refines.garment;
+                return be.sessionOpts.equip.garment.refine;
             case 'EQI_HAND_L':
-                return be.sessionOpts.refines.leftHand;
+                return be.sessionOpts.equip.leftHand.refine;
             case 'EQI_HAND_R':
-                return be.sessionOpts.refines.rightHand;
+                return be.sessionOpts.equip.rightHand.refine;
             case 'EQI_SHOES':
-                return be.sessionOpts.refines.shoes;
+                return be.sessionOpts.equip.shoes.refine;
             case 'EQI_HEAD_TOP':
-                return be.sessionOpts.refines.upperHg;
+                return be.sessionOpts.equip.upperHg.refine;
             default:
                 return 0;
         }
@@ -83,23 +83,18 @@ export const INLINE_FUNCTIONS: Record<string, InlineFunction> = {
         return opts.refine ?? 0;
     },
     isequippedcnt: (be, opts, itemId: number) => {
+        // FIXME: can be optimized now with new equp structure
         // equips
         const equips = Object.values(be.sessionOpts.equip);
         let cntTotal = equips.reduce((curCnt: number, curEquip) => {
-            if (typeof curEquip === 'number' && curEquip === itemId) curCnt++;
+            if (curEquip.item === itemId) curCnt++;
             return curCnt;
         }, 0);
         // cards
-        const cards = Object.values(be.sessionOpts.cards);
-        cntTotal = cards.reduce((curCnt: number, curCard) => {
-            if (typeof curCard === 'number') {
-                if (curCard === itemId) curCnt++;
-            }
-            else {
-                // array
-                for (const entry of curCard) {
-                    if (entry === itemId) curCnt++;
-                }
+        const cards = Object.values(be.sessionOpts.equip).map(_ => _.cards);
+        cntTotal = cards.reduce((curCnt: number, curCards) => {
+            for (const entry of curCards) {
+                if (entry === itemId) curCnt++;
             }
             return curCnt;
         }, cntTotal);
@@ -130,7 +125,7 @@ export const INLINE_FUNCTIONS: Record<string, InlineFunction> = {
         return 0;
     },
     getequipid: (be, opts, equip: EquipIndexKey) => {
-        if (equip === 'EQI_HAND_L' && isTwoHandedWeapon(be.sessionOpts.equip.rightHandType)) {
+        if (equip === 'EQI_HAND_L' && isTwoHandedWeapon(be.sessionOpts.rightHandType)) {
             /** 
              * Note: in case of 2h weapon rAthena uses L & R with the same ID
              * in case of a 2H weapon on R and script is asking for L, we give the ID of R
@@ -140,7 +135,7 @@ export const INLINE_FUNCTIONS: Record<string, InlineFunction> = {
         }
         const loc = getItemLocationFromIndex(equip);
         if (loc) {
-            return be.sessionOpts.equip[loc];
+            return be.sessionOpts.equip[loc].item;
         }
         return -1;
     },

@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable, signal, WritableSignal } from "@angular/core";
 import { forkJoin, Observable } from "rxjs";
-import { AmmoType, DBAmmo, DBFood, DBItem, DBItemCombo, DBJob, DBMob, DBSkill, DBWeaponType, ElementDBV3, FoodCategory, FoodStatsNames, JSONFood, DBMobClass, DBWeaponTypeKey } from "./tt-models.v3";
+import { AmmoType, DBAmmo, DBFood, DBItem, DBItemCombo, DBJob, DBMob, DBSkill, DBWeaponType, ElementDBV3, FoodCategory, FoodStatsNames, JSONFood, DBMobClass, DBWeaponTypeKey, DBWeaponTypeEntry } from "./tt-models.v3";
 import { DefaultMap } from "./utils";
 
 @Injectable({ providedIn: 'root' })
@@ -30,7 +30,7 @@ export class TTCoreServiceV3 {
     private _skillDB: Map<number, DBSkill> = new Map();
     private _skillEnumToId: DefaultMap<string, number[]> = new DefaultMap([]);    // key=enum, value=skill ids
     private _elementDB: ElementDBV3 = {} as any;    // FIXME: provide function for "target" "source" ele ...
-    private _weaponTypeDB: Map<DBWeaponTypeKey, DBWeaponType> = new Map();
+    private _weaponTypeDB: Map<DBWeaponTypeKey, DBWeaponTypeEntry> = new Map();
     private _ammoDB: Map<string, DBAmmo> = new Map();
     private _foodDB: Map<number, DBFood> = new Map();
 
@@ -136,7 +136,7 @@ export class TTCoreServiceV3 {
                         this._elementDB = dbRes[5] as ElementDBV3;
 
                         /* Weapon Type DB */
-                        const wTFromFile = dbRes[6] as Record<DBWeaponTypeKey, DBWeaponType>;
+                        const wTFromFile = dbRes[6] as Record<DBWeaponTypeKey, DBWeaponTypeEntry>;
                         for (const wT in wTFromFile) {
                             this._weaponTypeDB.set(wT as DBWeaponTypeKey, wTFromFile[wT]);
                         }

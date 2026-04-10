@@ -8,6 +8,7 @@ export type BaseStatsAs<T> = { [key in BaseStatsNames]: T };
 export type ItemLocations = "upperHg" | "middleHg" | "lowerHg" | "armor" | "rightHand" | "leftHand" | "garment" | "shoes" | "rhAccessory" | "lhAccessory";
 export type RefineLocations = Exclude<ItemLocations, 'middleHg' | 'lowerHg' | 'rhAccessory' | 'lhAccessory'>;
 export type CardLocations = Exclude<ItemLocations, 'lowerHg'>;
+export type CardTypes = 'Headgear' | 'Armor' | 'Weapon' | 'Shield' | 'Garment' | 'Shoes' | 'Accessory';
 export type DBMobRace = "formless" | "undead" | "brute" | "plant" | "insect" | "fish" | "demon" | "demiHuman" | "angel" | "dragon" | "player" | "all"; //FIXME: player okay?
 export type DBMobRace2 = "goblin" | "golem" | "orc" | "kobold" | "manuk" | "splendide" | "biolab" | "kiel" | "juperos" | "guardian" | "emperium" | "ninja" | "faceworm" | "robot" | "snake" | "unknown";
 export type DBElement = "neutral" | "water" | "earth" | "fire" | "wind" | "poison" | "holy" | "shadow" | "ghost" | "undead" | "all";
@@ -46,7 +47,7 @@ export const DBWeaponType = {
 } as const;
 export type DBWeaponTypeKey = keyof typeof DBWeaponType;
 export type DBWeaponTypeValue = typeof DBWeaponType[DBWeaponTypeKey];
-export type WeaponTypeLeft = DBWeaponTypeKey | 'Shield';
+export type DBWeaponTypeLeft = DBWeaponTypeKey | 'Shield';
 
 export const DBItemType = {
   'Healing': ItemType.IT_HEALING,
@@ -65,11 +66,12 @@ export const DBItemType = {
 }
 export type DBItemTypeKey = keyof typeof DBItemType;
 
-export type ItemSubType = 'None' |
-  DBWeaponTypeKey |
-  'Arrow' | 'Throwing Dagger' | 'Bullet' | 'Grenade' | 'Shuriken' | 'Kunai' | 'Throwable Item (Sling Item)' | 'Cannonballs' |
-  'Headgear' | 'Armor' | 'Weapon' | 'Shield' | 'Garment' | 'Shoes' | 'Accessory' |
-  'Costume';
+export type ItemSubType =
+  | 'None'
+  | DBWeaponTypeKey
+  | 'Arrow' | 'Throwing Dagger' | 'Bullet' | 'Grenade' | 'Shuriken' | 'Kunai' | 'Throwable Item (Sling Item)' | 'Cannonballs'
+  | CardTypes
+  | 'Costume';
 export type EquipLocation = 'None' | 'HeadgearUpper' | 'HeadgearMiddle' | 'HeadgearLower' | 'Armor' | 'Shield' | 'Garment' | 'Shoes' | 'Accessory' | 'Weapon' | 'Unknown';
 export type DBItem = {
   ID: number;
@@ -121,12 +123,41 @@ export type DBJob = {
 
 /***************/
 /*** Session ***/
+export type EquipItemFilter =
+  | { type: 'equip', location: EquipLocation }
+  | { type: 'weapon', weaponType: DBWeaponTypeKey }
+  | { type: 'none' }
+export type EquipSlotMeta = {
+  label: string;
+  canRefine: boolean;
+  defaultFilter: EquipItemFilter
+}
+export const EQUIP_META: Record<ItemLocations, EquipSlotMeta> = {
+  upperHg: { label: 'Upper Headgear', canRefine: true, defaultFilter: { type: 'equip', location: 'HeadgearUpper' } },
+  middleHg: { label: 'Middle Headgear', canRefine: false, defaultFilter: { type: 'equip', location: 'HeadgearMiddle' } },
+  lowerHg: { label: 'Lower Headgear', canRefine: false, defaultFilter: { type: 'equip', location: 'HeadgearLower' } },
+  armor: { label: 'Armor', canRefine: true, defaultFilter: { type: 'equip', location: 'Armor' } },
+  rightHand: { label: 'Main-Hand', canRefine: true, defaultFilter: { type: 'none' } },
+  leftHand: { label: 'Off-Hand', canRefine: true, defaultFilter: { type: 'equip', location: 'Shield' } },
+  garment: { label: 'Garment', canRefine: true, defaultFilter: { type: 'equip', location: 'Garment' } },
+  shoes: { label: 'Shoes', canRefine: true, defaultFilter: { type: 'equip', location: 'Shoes' } },
+  rhAccessory: { label: 'Accessory (R)', canRefine: false, defaultFilter: { type: 'equip', location: 'Accessory' } },
+  lhAccessory: { label: 'Accessory (L)', canRefine: false, defaultFilter: { type: 'equip', location: 'Accessory' } }
+}
+export type EquipSlotState = {
+  item: number;
+  refine: number;
+  cards: number[];
+  // enchants: any[]  // FIXME
+}
+export type EquipState = Record<ItemLocations, EquipSlotState>;
+
 export type SessionEquipBase<T> = {
   [key in ItemLocations]: T
 }
 export type SessionEquip = SessionEquipBase<number> & {
   rightHandType: 'Unarmed' | DBWeaponTypeKey,
-  leftHandType: 'Unarmed' | WeaponTypeLeft
+  leftHandType: 'Unarmed' | DBWeaponTypeLeft
 }
 export const SESSION_BONUS_FLAGS = new Set([
   // normale flags
@@ -353,7 +384,7 @@ export type ElementDBV3 = {
 
 /***********************/
 /*** WAEPON-TYPE DB  ***/
-export type DBWeaponType = {
+export type DBWeaponTypeEntry = {
   id: number,
   sizeModifier: {
     [key in DBMobSize]: number

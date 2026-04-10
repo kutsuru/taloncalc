@@ -1,6 +1,6 @@
 /*** imports ***/
 import { EquipIndexKey, MobClass, MobRace2 } from "./rAthena/ra-models";
-import { DBWeaponType, DBMobClass, DBWeaponTypeKey, DBWeaponTypeValue, DBElement, ItemLocations, DBMobRace, DBMobRace2, DBMobSize } from "./tt-models.v3";
+import { DBWeaponType, DBMobClass, DBWeaponTypeKey, DBWeaponTypeValue, DBElement, ItemLocations, DBMobRace, DBMobRace2, DBMobSize, EquipLocation, CardTypes } from "./tt-models.v3";
 
 /***************/
 /*** General ***/
@@ -247,5 +247,28 @@ export const parseDBMobClass = (classStr: string): DBMobClass => {
         case 'Class_Boss': return 'boss';
         case 'Class_Guardian': return 'guardian';
         case 'Class_Normal': return 'normal';
+    }
+}
+/*** parse equipLocation into CardType */
+export const getCardTypeForEquipLocation = (loc: EquipLocation): CardTypes => {
+    switch (loc) {
+        case 'HeadgearUpper':
+        case 'HeadgearMiddle':
+            return 'Headgear';
+        case 'Accessory':
+            return 'Accessory';
+        case 'Armor':
+            return 'Armor';
+        case 'Garment':
+            return 'Garment';
+        case 'Shield':
+            return 'Shield';
+        case 'Shoes':
+            return 'Shoes';
+        case 'Weapon':
+            return 'Weapon';
+        default:
+            /* all other juse go for Armor */
+            return 'Armor';
     }
 }

@@ -2,167 +2,22 @@
 <div>
     <mat-form-field>
         <mat-label>Waepon Type</mat-label>
-        <mat-select [formControl]="gears.controls.rightHandType">
+        <mat-select [value]="session.rightHandType()" (selectionChange)="session.updateRightHandType($event.value)">
             @for (wT of weaponTypes(); track $index) {
             <mat-option [value]="wT"> {{wT}} </mat-option>
             }
         </mat-select>
     </mat-form-field>
     <mat-form-field>
-        <mat-label>Left Hand</mat-label>
-        <mat-select [formControl]="gears.controls.leftHandType">
+        <mat-label>Left Hand Type</mat-label>
+        <mat-select [value]="session.leftHandType()" (selectionChange)="session.updateLeftHandType($event.value)">
             @for (wT of leftHandTypes(); track $index) {
             <mat-option [value]="wT"> {{wT}} </mat-option>
             }
         </mat-select>
     </mat-form-field>
 </div>
-<div>
-    <!-- headgears -->
-    <!-- Upper Hg -->
-    <mat-form-field class="refine-select">
-        <mat-select [formControl]="refines.controls.upperHg">
-            @for (ref of maxRefines; track $index) {
-            <mat-option [value]="ref">+{{ref}}</mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-select [formControl]="gears.controls.upperHg">
-            @for (hg of upperHgList(); track $index) {
-            <mat-option [value]="hg.ID"> {{hg.name}} </mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
-    <tt-card-slot-v3 cardType="Headgear" cardLocation="upperHg" />
-    <!-- Middle Hg -->
-    <br>
-    <mat-form-field>
-        <mat-select [formControl]="gears.controls.middleHg">
-            @for (hg of middleHgList(); track $index) {
-            <mat-option [value]="hg.ID"> {{hg.name}} </mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
-    <tt-card-slot-v3 cardType="Headgear" cardLocation="middleHg" />
-    <!-- Lower Hg -->
-    <br>
-    <mat-form-field>
-        <mat-select [formControl]="gears.controls.lowerHg">
-            @for (hg of lowerHgList(); track $index) {
-            <mat-option [value]="hg.ID"> {{hg.name}} </mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
-</div>
-<div>
-    <!-- Arms -->
-    <!-- Weapon -->
-    <mat-form-field class="refine-select">
-        <mat-select [formControl]="refines.controls.rightHand">
-            @for (ref of maxRefines; track $index) {
-            <mat-option [value]="ref">+{{ref}} </mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-select [formControl]="gears.controls.rightHand">
-            @for (w of weaponList(); track $index) {
-            <mat-option [value]="w.ID"> {{w.name}} </mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
-    @for (slot of session.cards().rightHand; track $index) {
-    <tt-card-slot-v3 cardType="Weapon" cardLocation="rightHand" [cardSlot]="$index" />
-    }
-    <!-- Left-Hand / Shield -->
-    <br>
-    <mat-form-field class="refine-select">
-        <mat-select [formControl]="refines.controls.leftHand">
-            @for (ref of maxRefines; track $index) {
-            <mat-option [value]="ref">+{{ref}} </mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-select [formControl]="gears.controls.leftHand">
-            @for (lh of leftHandList(); track $index) {
-            <mat-option [value]="lh.ID"> {{lh.name}} </mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
-    @for (slot of session.cards().leftHand; track $index) {
-    <tt-card-slot-v3 [cardType]="$leftHandCardType()" cardLocation="leftHand" [cardSlot]="$index" />
-    }
-</div>
-<div>
-    <!-- Armors -->
-    <mat-form-field class="refine-select">
-        <mat-select [formControl]="refines.controls.armor">
-            @for (ref of maxRefines; track $index) {
-            <mat-option [value]="ref">+{{ref}} </mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-select [formControl]="gears.controls.armor">
-            @for (a of armorList(); track $index) {
-            <mat-option [value]="a.ID"> {{a.name}} </mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
-    <tt-card-slot-v3 cardType="Armor" cardLocation="armor" />
-
-    <br>
-    <mat-form-field class="refine-select">
-        <mat-select [formControl]="refines.controls.garment">
-            @for (ref of maxRefines; track $index) {
-            <mat-option [value]="ref">+{{ref}} </mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-select [formControl]="gears.controls.garment">
-            @for (gar of garmentList(); track $index) {
-            <mat-option [value]="gar.ID"> {{gar.name}} </mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
-    <tt-card-slot-v3 cardType="Garment" cardLocation="garment" />
-
-    <br>
-    <mat-form-field class="refine-select">
-        <mat-select [formControl]="refines.controls.shoes">
-            @for (ref of maxRefines; track $index) {
-            <mat-option [value]="ref">+{{ref}} </mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-select [formControl]="gears.controls.shoes">
-            @for (sh of shoesList(); track $index) {
-            <mat-option [value]="sh.ID"> {{sh.name}} </mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
-    <tt-card-slot-v3 cardType="Shoes" cardLocation="shoes" />
-</div>
-<div>
-    <!-- Accessory -->
-    <mat-form-field>
-        <mat-select [formControl]="gears.controls.rhAccessory">
-            @for (acc of accessorieList(); track $index) {
-            <mat-option [value]="acc.ID"> {{acc.name}} </mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
-    <tt-card-slot-v3 cardType="Accessory" cardLocation="rhAccessory" />
-    <mat-form-field>
-        <mat-select [formControl]="gears.controls.lhAccessory">
-            @for (acc of accessorieList(); track $index) {
-            <mat-option [value]="acc.ID"> {{acc.name}} </mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
-    <tt-card-slot-v3 cardType="Accessory" cardLocation="lhAccessory" />
-</div>
+<!-- Equips -->
+@for (equipSlot of equip(); track equipSlot.slot) {
+<tt-equip-slot [slot]="equipSlot.slot" [meta]="equipSlot.meta" />
+}

@@ -1,16 +1,15 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from "@angular/core";
-import { DBItem, ItemSubType } from "../core/tt-models.v3";
-import { TTCoreServiceV3 } from "../core/tt-core.v3.service";
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatFormFieldModule } from "@angular/material/form-field";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
-import { MatSelectModule } from "@angular/material/select";
 import { MatButtonModule } from "@angular/material/button";
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatSelectModule } from "@angular/material/select";
+import { TTCoreServiceV3 } from "../core/tt-core.v3.service";
+import { CardTypes, DBItem } from "../core/tt-models.v3";
 
 export type CardSelectV3Input = {
     cardId: number;
-    type: ItemSubType
+    type: CardTypes
 }
 
 @Component({

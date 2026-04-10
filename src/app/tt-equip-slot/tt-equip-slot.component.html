@@ -1,0 +1,23 @@
+<!-- <p>Equip {{meta()|json}} - {{state()|json}} - Items: {{jobItems().length}} ({{allSlotItems().length}})</p> -->
+<div>
+    @if(meta().canRefine){
+    <mat-form-field>
+        <mat-select (selectionChange)="changeRefine($event.value)" [value]="state().refine">
+            @for (ref of maxRefines; track $index) {
+            <mat-option [value]="ref">+{{ref}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    }
+    <mat-form-field>
+        <mat-label>{{meta().label}}</mat-label>
+        <mat-select (selectionChange)="changeItem($event.value)" [value]="state().item">
+            @for(item of jobItems(); track $index){
+            <mat-option [value]="item.ID">{{item.name}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    @for (cardId of state().cards; track $index) {
+    <tt-card-slot-v3 [cardId]="cardId" [cardType]="cardType()" (cardIdChange)="changeCard($index, $event)" />
+    }
+</div>
