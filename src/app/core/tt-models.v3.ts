@@ -94,7 +94,8 @@ export type DBItem = {
   isVanillaPvm: boolean,
   type: DBItemTypeKey,
   subType: ItemSubType,
-  location: EquipLocation
+  location: EquipLocation,
+  disabled?: boolean
 }
 export type DBItemCombo = {
   items: number[];

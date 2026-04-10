@@ -57,6 +57,7 @@ export class TTCoreServiceV3 {
                     .subscribe((dbRes) => {
                         /* Item DB */
                         for (const item of dbRes[0] as DBItem[]) {
+                            if(item.disabled) continue; // skip items which are disabled
                             /* remove "None" item scripts */
                             if (item.itemScript === 'None') item.itemScript = "";
                             this._itemDB.set(item.ID, item);
