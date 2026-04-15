@@ -9,26 +9,14 @@ import { DefaultMap, isTwoHandedWeapon } from "./utils";
 
 /** Dependencies 
  * BaseStats        Pure-Stats without any bonus
- * Equip            Pure equip
- * Refines          Pure refines
- * Bonus            f(BaseStats, Job, Equip, Refines)          
+ * Equip            Pure equip,cards,refines,enchants
+ * 
+ * Bonus            f(BaseStats, Job, Equip, ...)          
  * TotalStats       f(BaseStats, Bonus)
  * "DerivedStats"   ATK/Flee/... f("all above")
 **/
 
 /*** types ***/
-export type CardState = {
-    armor: number;
-    garment: number;
-    leftHand: number[];
-    rightHand: number[];
-    shoes: number;
-    upperHg: number;
-    lhAccessory: number;
-    rhAccessory: number;
-    middleHg: number;
-};
-
 /*** definitons ***/
 const DEF_PER_REFINE = 2 / 3;
 
@@ -353,6 +341,9 @@ export class TTSessionInfoV3Service {
                 if (newItem.cards.length != dbItem.slots) {
                     newItem.cards = Array(dbItem.slots).fill(0);
                 }
+                if (dbItem.enchant) {
+                    newItem.enchants = Array(dbItem.enchant.length).fill(0);
+                }
             }
         }
         this.updateEquipment(slot, newItem);
@@ -360,6 +351,10 @@ export class TTSessionInfoV3Service {
     public updateCard(slot: ItemLocations, cardId: number, cardSlot: number = 0) {
         let cards = this._equipmentState()[slot].cards.map((val, idx) => idx === cardSlot ? cardId : val);
         this.updateEquipment(slot, { cards });
+    }
+    public updateEnchant(slot: ItemLocations, enchantSlot: number, enchantId: number) {
+        const enchants = this._equipmentState()[slot].enchants.map((val, idx) => idx === enchantSlot ? enchantId : val);
+        this.updateEquipment(slot, { enchants })
     }
     public updateRightHandType(newType: DBWeaponTypeKey) {
         this.rightHandType.set(newType);
@@ -835,6 +830,13 @@ export class TTSessionInfoV3Service {
                     this._bonusSession.applyBonus(card.itemScript, { refine: equipSlot.refine });
                 }
             }
+            /* enchants */
+            for (const enchantId of equipSlot.enchants) {
+                const enchant = this._core.itemDB.get(enchantId);
+                if (enchant && enchant.itemScript) {
+                    this._bonusSession.applyBonus(enchant.itemScript);
+                }
+            }
         }
 
         /* combo bonus */
@@ -865,6 +867,7 @@ export class TTSessionInfoV3Service {
             }
         }
 
+        // FIXME: merge skills with bonused enabled skills
         /* buffs */
         for (const buff of skillsBuffs) {
             if (buff.value && buff.itemScript) {

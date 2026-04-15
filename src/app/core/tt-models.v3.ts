@@ -150,7 +150,7 @@ export type EquipSlotState = {
   item: number;
   refine: number;
   cards: number[];
-  // enchants: any[]  // FIXME
+  enchants: number[]  // FIXME
 }
 export type EquipState = Record<ItemLocations, EquipSlotState>;
 export const SESSION_BONUS_FLAGS = new Set([
@@ -275,8 +275,8 @@ export type SessionBonus = {
   addItemSPHealRate: DefaultMap<string, number>; //item ID
   skillDefRatioAtkClass: DefaultMap<string, DBMobClass>; // skill enum FIXME: special talon bonus
   skillWeaponElement: DefaultMap<string, DBElement>;  // skill enum FIXME: special talon bonus
+  
   /* flags */
-  // TOOD: predefine / fill?
   flags: DefaultMap<SessionBonusFlag, boolean>
 };
 

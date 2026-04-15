@@ -306,28 +306,28 @@
     "MATK+2%": 4761
   },
   "eden_weapon_2nd": {
-    "Physical Damage vs Formless + 10%": -1,
-    "Physical Damage vs Undead + 10%": -1,
-    "Physical Damage vs Brute + 10%": -1,
-    "Physical Damage vs Plant + 10%": -1,
-    "Physical Damage vs Insect + 10%": -1,
-    "Physical Damage vs Fish + 10%": -1,
-    "Physical Damage vs Demon + 10%": -1,
-    "Physical Damage vs Demi-Human + 10%": -1,
-    "Physical Damage vs Angel + 10%": -1,
-    "Physical Damage vs Dragon + 10%": -1
+    "Physical Damage vs Formless + 10%": 4957,
+    "Physical Damage vs Undead + 10%": 4960,
+    "Physical Damage vs Brute + 10%": 4952,
+    "Physical Damage vs Plant + 10%": 4965,
+    "Physical Damage vs Insect + 10%": 4953,
+    "Physical Damage vs Fish + 10%": 4954,
+    "Physical Damage vs Demon + 10%": 4959,
+    "Physical Damage vs Demi-Human + 10%": 4951,
+    "Physical Damage vs Angel + 10%": 4958,
+    "Physical Damage vs Dragon + 10%": 4955
   },
   "eden_weapon_3rd": {
-    "Physical Damage vs Formless + 5%": -1,
-    "Physical Damage vs Undead + 5%": -1,
-    "Physical Damage vs Brute + 5%": -1,
-    "Physical Damage vs Plant + 5%": -1,
-    "Physical Damage vs Insect + 5%": -1,
-    "Physical Damage vs Fish + 5%": -1,
-    "Physical Damage vs Demon + 5%": -1,
-    "Physical Damage vs Demi-Human + 5%": -1,
-    "Physical Damage vs Angel + 5%": -1,
-    "Physical Damage vs Dragon + 5%": -1
+    "Magical Damage vs Formless + 5%": 4967,
+    "Magical Damage vs Undead + 5%": 4970,
+    "Magical Damage vs Brute + 5%": 4962,
+    "Magical Damage vs Plant + 5%": 4966,
+    "Magical Damage vs Insect + 5%": 4963,
+    "Magical Damage vs Fish + 5%": 4964,
+    "Magical Damage vs Demon + 5%": 4969,
+    "Magical Damage vs Demi-Human + 5%": 4961,
+    "Magical Damage vs Angel + 5%": 4968,
+    "Magical Damage vs Dragon + 5%": 4965
   },
   "el_discastel_1st": {
     "ATK+2%": 4766,

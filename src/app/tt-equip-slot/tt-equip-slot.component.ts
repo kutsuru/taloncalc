@@ -2,19 +2,24 @@ import { ChangeDetectionStrategy, Component, computed, inject, input, Signal } f
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
-import { CardTypes, DBItem, EquipItemFilter, EquipSlotMeta, ItemLocations } from '../core/tt-models.v3';
+import { CardTypes, DBEnchantTypes, DBItem, EquipItemFilter, EquipSlotMeta, ItemLocations } from '../core/tt-models.v3';
 import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
 import { getCardTypeForEquipLocation } from '../core/utils';
 import { TtCardSlotV3Component } from '../tt-card-slot-v3/tt-card-slot-v3.component';
+import { JsonPipe } from '@angular/common';
+import { TtEnchantSlotComponent } from "../tt-enchant-slot/tt-enchant-slot.component";
 
 type EquipItem = Pick<DBItem, 'ID' | 'name'>;
+type EquipEnchant = { type: DBEnchantTypes, itemId: number };
 
 @Component({
   selector: 'tt-equip-slot',
   imports: [
     MatFormFieldModule,
     MatSelectModule,
-    TtCardSlotV3Component
+    TtCardSlotV3Component,
+    JsonPipe,
+    TtEnchantSlotComponent
   ],
   templateUrl: './tt-equip-slot.component.html',
   styleUrl: './tt-equip-slot.component.scss',
@@ -30,6 +35,9 @@ export class TtEquipSlotComponent {
   readonly meta = input.required<EquipSlotMeta>();
 
   /* varbs */
+  readonly maxRefines = Array.from({ length: 10 + 1 }, (_, i) => i);
+
+  /* signals */
   state = computed(() => this._session.equipment()[this.slot()]);
   allSlotItems: Signal<DBItem[]> = computed(() => {
     /* triggers */
@@ -110,7 +118,20 @@ export class TtEquipSlotComponent {
     }
     return 'Armor'; // just a value
   });
-  readonly maxRefines = Array.from({ length: 10 + 1 }, (_, i) => i);
+  enchants: Signal<EquipEnchant[]> = computed(() => {
+    const state = this.state();
+    const item = this._core.itemDB.get(state.item);
+    if (!item || !item.enchant) return [];
+
+    const res: EquipEnchant[] = [];
+    for (let i = 0; i < item.enchant.length; i++) {
+      res.push({
+        itemId: state.enchants[i],
+        type: item.enchant[i]
+      });
+    }
+    return res;
+  });
 
   /*** public functions ***/
   public changeItem(id: number) {
@@ -119,7 +140,10 @@ export class TtEquipSlotComponent {
   public changeRefine(refine: number) {
     this._session.updateEquipment(this.slot(), { refine });
   }
-  public changeCard(cardSlot, cardId: number) {
+  public changeCard(cardSlot: number, cardId: number) {
     this._session.updateCard(this.slot(), cardId, cardSlot);
+  }
+  public changeEnchant(enchantSlot: number, enchantId: number) {
+    this._session.updateEnchant(this.slot(), enchantSlot, enchantId);
   }
 }

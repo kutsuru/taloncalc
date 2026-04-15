@@ -349,6 +349,8 @@ export class TTBonusEngineService {
         this.session.stats.luk += value;
     }
 
+    // FIXME: instead of using the skill, add it do the "unlucked" skills so it can merged with
+    // already leanred / used skills to get the highest level for execution
     public useSkill(skillId: number, level: number) {
         const skill = this.core.skillDB.get(skillId);
         const subs: BonusSubstitution = { ...this._localOpts.customSubs, subSkillLvl: level };

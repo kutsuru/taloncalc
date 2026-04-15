@@ -53,7 +53,8 @@ export function defaultEquipSlotState(): EquipSlotState {
     return {
         item: 0,
         refine: 0,
-        cards: []
+        cards: [],
+        enchants: []
     }
 }
 export function defaultEquipState(): EquipState {

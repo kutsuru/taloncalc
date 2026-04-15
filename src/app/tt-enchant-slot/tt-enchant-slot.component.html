@@ -1,0 +1,7 @@
+<mat-form-field>
+    <mat-select [value]="value()" (selectionChange)="enchantSelected($event.value)">
+        @for (ent of enchants(); track $index) {
+        <mat-option [value]="ent.itemId">{{ent.name}}</mat-option>
+        }
+    </mat-select>
+</mat-form-field>
