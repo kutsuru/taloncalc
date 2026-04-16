@@ -1,0 +1,9 @@
+@if (session.sqiEquipped() > 0) {
+@for (bonus of bonusList(); track $index) {
+<mat-slide-toggle [checked]="bonus.checked" [disabled]="isDisabled(bonus)"
+    (change)="session.toggleSQIBonus(bonus.ID)">{{bonus.description}}</mat-slide-toggle><br>
+}
+}
+@else {
+<p>No class specific SQI equipped</p>
+}

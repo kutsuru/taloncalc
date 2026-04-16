@@ -4,7 +4,7 @@ import { BonusSubstitution, TTBonusEngineService } from "./item-script/tt-bonus-
 import { createEmptySessionBonus, defaultEquipSlotState, SESSION_INFO_DEFAULT } from "./session-info-default";
 import { TTCoreService } from "./tt-core.service";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
-import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, DBItemCombo, DBJob, DBSkill, DBWeaponTypeKey, DBWeaponTypeLeft, EQUIP_META, EquipSlotState, EquipState, FoodStatsNames, ItemLocations, SessionBonus, SkillBuff } from "./tt-models.v3";
+import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, CLASS_SPECIFIC_SQI, ClassWithSQI, DBItemCombo, DBJob, DBSkill, DBWeaponTypeKey, DBWeaponTypeLeft, EQUIP_META, EquipSlotState, EquipState, FoodStatsNames, ItemLocations, SessionBonus, SkillBuff } from "./tt-models.v3";
 import { DefaultMap, isTwoHandedWeapon } from "./utils";
 
 /** Dependencies 
@@ -18,7 +18,8 @@ import { DefaultMap, isTwoHandedWeapon } from "./utils";
 
 /*** types ***/
 /*** definitons ***/
-const DEF_PER_REFINE = 2 / 3;
+export const DEF_PER_REFINE = 2 / 3;
+export const SQI_BONUS_CNT_MAX = 4;
 
 /*** service ***/
 @Injectable({ providedIn: 'root' })
@@ -76,6 +77,10 @@ export class TTSessionInfoV3Service {
     leftHandType: WritableSignal<DBWeaponTypeLeft> = signal('Shield');
 
     isDualWielding: Signal<boolean>;
+    /* sqi */
+    sqiEquipped: Signal<number>;
+    private _sqiBonusState: WritableSignal<string[]> = signal([]);
+    sqiBonus = this._sqiBonusState.asReadonly();
 
     /* item combos */
     itemCombos: Signal<DBItemCombo[]>;
@@ -129,6 +134,9 @@ export class TTSessionInfoV3Service {
                 const allJobs = this._core.allJobNames;
                 // this.jobClassName.set(allJobs[0]);
                 this.jobClassName.set('Lord Knight');   // FIXME: debug
+                this.updateRightHandType("One-Handed Spear");
+                this.updateEquipmentId("rightHand", 1430);
+                this._sqiBonusState.set(["1430_12", "1430_8"]);
             }
         })
 
@@ -220,7 +228,20 @@ export class TTSessionInfoV3Service {
             }
         });
         this.def = computed(() => this._computeDEF());
+        this.sqiEquipped = computed(() => {
+            // FIXME: make a object with "job specifc SQi instead?"
+            const equip = this._equipmentState();
+            const jobClassName = this.jobClassName();
 
+            if (!(jobClassName in CLASS_SPECIFIC_SQI)) return 0;    // class without SQI
+
+            const sqiID = CLASS_SPECIFIC_SQI[jobClassName as ClassWithSQI];
+
+            // FIXME: how to handle SN with link?
+            const equipedIDs = Object.values(equip).map(_ => _.item);
+
+            return equipedIDs.includes(sqiID) ? sqiID : 0;
+        });
 
         /* effects */
         // update rightHandtype when job changes
@@ -321,6 +342,20 @@ export class TTSessionInfoV3Service {
                 }
             }
             this._skillsPassiveState.set(resPassive);
+        });
+        // clear SQI bonus, if the SQI changes
+        effect(() => {
+            const sqiID = this.sqiEquipped(); // everytime it changes
+            if (sqiID === 0) {
+                /* set to empty */
+                this._sqiBonusState.set([]);
+            }
+            else {
+                /* remove bonis of wrong SQI */
+                this._sqiBonusState.update(bonis => {
+                    return bonis.filter(b => b.startsWith(sqiID.toString()));
+                });
+            }
         });
     }
 
@@ -434,6 +469,22 @@ export class TTSessionInfoV3Service {
             }
         })
 
+    }
+    public toggleSQIBonus(bonusId: string) {
+        this._sqiBonusState.update(bonis => {
+            if (bonis.includes(bonusId)) {
+                /* remove */
+                return bonis.filter(b => b !== bonusId);
+            }
+            else if (bonis.length < SQI_BONUS_CNT_MAX) {
+                /* add */
+                return [...bonis, bonusId];
+            }
+            else {
+                /* keep untouched */
+                return [...bonis];
+            }
+        })
     }
 
     /*** private functions ***/

@@ -73,6 +73,10 @@ export type ItemSubType =
   | CardTypes
   | 'Costume';
 export type EquipLocation = 'None' | 'HeadgearUpper' | 'HeadgearMiddle' | 'HeadgearLower' | 'Armor' | 'Shield' | 'Garment' | 'Shoes' | 'Accessory' | 'Weapon' | 'Unknown';
+export type DBSQIBonus = {
+  description: string;
+  bonus: string
+}
 export type DBItem = {
   ID: number;
   talonShop: number;
@@ -96,7 +100,8 @@ export type DBItem = {
   subType: ItemSubType,
   location: EquipLocation,
   disabled?: boolean,
-  enchant?: DBEnchantTypes[]
+  enchant?: DBEnchantTypes[],
+  sqiBonus?: Record<string, DBSQIBonus>
 }
 export type DBItemCombo = {
   items: number[];
@@ -432,3 +437,43 @@ export type DBEnchant = {
   name: string,
   itemId: number
 }
+
+/***********/
+/*** SQI ***/
+export const CLASS_SPECIFIC_SQI = {
+  "Novice": 1190,
+  "Knight": 1430,
+  "Priest": 1549,
+  "Wizard": 1650,
+  "Blacksmith": 1530,
+  "Hunter": 1745,
+  "Assassin": 1290,
+  "Crusader": 2150,
+  "Monk": 1840,
+  "Sage": 1590,
+  "Rogue": 1746,
+  "Alchemist": 1320,
+  "Bard": 1913,
+  "Dancer": 1990,
+  "Supernovice": 1190,
+  "Gunslinger": 5600,
+  "Ninja": 13320,
+  "Novice High": 1190,
+  "Lord Knight": 1430,
+  "High Priest": 1549,
+  "High Wizard": 1650,
+  "Whitesmith": 1530,
+  "Sniper": 1745,
+  "Assassin Cross": 1290,
+  "Paladin": 2150,
+  "Champion": 1840,
+  "Professor": 1590,
+  "Stalker": 1746,
+  "Creator": 1320,
+  "Clown": 1913,
+  "Gypsy": 1990,
+  "Taekwon": 2480,
+  "Star Gladiator": 2480,
+  "Soul Linker": 1651
+} as const;
+export type ClassWithSQI = keyof typeof CLASS_SPECIFIC_SQI;

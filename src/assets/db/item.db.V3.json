@@ -12222,7 +12222,61 @@
     "isVanillaPvp": false,
     "type": "Weapon One-Hand",
     "subType": "Dagger",
-    "location": "Weapon"
+    "location": "Weapon",
+    "sqiBonus": {
+      "1190_0": {
+        "description": "Enables use of level 1 [Cart Revolution]. 100% more damage with [Cart Revolution]. 200% more damage with [Magnum Break]",
+        "bonus": "(function (x,y) { x.enableSkill[\"Cart Revolution\"] = { skillLv: 1, isOffensive: true} }); "
+      },
+      "1190_1": {
+        "description": "+25 CRIT, 20% more damage with Critical Hits",
+        "bonus": "(function (x,y) { x.crit += 25;x.criticalAtkRate += 20; });"
+      },
+      "1190_2": {
+        "description": "15% Aftercast Reduction",
+        "bonus": "(function (x,y) { x.delayRate += 15; });"
+      },
+      "1190_3": {
+        "description": "Ignore 10% of enemy MDEF",
+        "bonus": "(function (x,y) { x.ignoreMdefClass.all += 10; });"
+      },
+      "1190_4": {
+        "description": "Enables use of level 5 [Heaven's Drive]. 25% more damage with [Heaven's Drive] and [Thunderstorm]. 200% more damage with [Fire Ball].",
+        "bonus": "(function (x,y) { x.enableSkill[\"Heaven's Drive\"] = { skillLv: 5, isOffensive: true} }); "
+      },
+      "1190_5": {
+        "description": "50% more damage with [Mammonite]. 75% reduced zeny cost with [Mammonite] and enable use of level 1 [Fatal Blow]",
+        "bonus": "(function (x,y) { x.skillAtk[\"Mammonite\"] += 50; });"
+      },
+      "1190_6": {
+        "description": "Enables use of level 5  [Aspersio]",
+        "bonus": ""
+      },
+      "1190_7": {
+        "description": "Enables use of Level 10 [Auto Spell]",
+        "bonus": ""
+      },
+      "1190_8": {
+        "description": "Enables use of level 10 [Grand Cross]",
+        "bonus": "(function (x,y) { x.enableSkill[\"Grand Cross\"] = { skillLv: 10, isOffensive: true} }); "
+      },
+      "1190_9": {
+        "description": "Enables use of Level 5  [Aura Blade] (Toggle)",
+        "bonus": ""
+      },
+      "1190_10": {
+        "description": "Double the duration of [Super Novice Spirit] and remains after death. Death record isn't increased during [Super Novice Spirit]",
+        "bonus": ""
+      },
+      "1190_11": {
+        "description": "[Double Attack] Rate + 10%",
+        "bonus": ""
+      },
+      "1190_12": {
+        "description": "Convert [Fire Bolt], [Cold Bolt], [Lightning Bolt], and [Magnum Break] delays into cooldowns",
+        "bonus": ""
+      }
+    }
   },
   {
     "ID": 1191,
@@ -14602,7 +14656,61 @@
     "isVanillaPvp": false,
     "type": "Weapon Two-Hand",
     "subType": "Katar",
-    "location": "Weapon"
+    "location": "Weapon",
+    "sqiBonus": {
+      "1290_0": {
+        "description": "20% Magic Resistance",
+        "bonus": "(function (x,y) { x.magicAtkDef += 20; });"
+      },
+      "1290_1": {
+        "description": "30% Freeze and Stone Curse Resistance",
+        "bonus": "(function (x,y) { x.resEffect.freeze += 30;x.resEffect.stone += 30; });"
+      },
+      "1290_2": {
+        "description": "20% more damage with Critical Hits",
+        "bonus": "(function (x,y) { x.criticalAtkRate += 20; });"
+      },
+      "1290_3": {
+        "description": "25% more damage with [Grimtooth]",
+        "bonus": "(function (x,y) { x.skillAtk[\"Grimtooth\"] += 25; });"
+      },
+      "1290_4": {
+        "description": "50% more damage and 50% less cast time with [Meteor Assault]",
+        "bonus": "(function (x,y) { x.skillAtk[\"Meteor Assault\"] += 50;x.skillCastRate[\"Meteor Assault\"] += 50; });"
+      },
+      "1290_5": {
+        "description": "25% more damage and 50% less cast time with [Soul Breaker]",
+        "bonus": "(function (x,y) { x.skillAtk[\"Soul Breaker\"] += 25;x.skillCastRate[\"Soul Breaker\"] += 50; });"
+      },
+      "1290_6": {
+        "description": "[Enchant Poison] endows Shadow instead of Poison, 10% more damage against Holy Element during [Enchant Poison] (toggle)",
+        "bonus": "(function (x,y) { x.subRace.demon += 10; });"
+      },
+      "1290_7": {
+        "description": "Add a 15% chance to inflict Deadly Poison status on the target when attacking, Deadly Poison interval reduced by 75%.",
+        "bonus": ""
+      },
+      "1290_8": {
+        "description": "Demon Race, Insect Race, and Detector Mobs can no longer see you when hidden; Fails against boss monsters",
+        "bonus": ""
+      },
+      "1290_9": {
+        "description": "[Soul Breaker] inflicts more damage depending on the target's Defense",
+        "bonus": ""
+      },
+      "1290_10": {
+        "description": "While under [Cloaking]; 25% faster base movement speed",
+        "bonus": ""
+      },
+      "1290_11": {
+        "description": "While under [Cloaking]; Immunity to [Quagmire] and [Slow Grace]; Dispel Cloak on unequip",
+        "bonus": ""
+      },
+      "1290_12": {
+        "description": "PvM: [Assassin Spirit] remains after death",
+        "bonus": ""
+      }
+    }
   },
   {
     "ID": 1291,
@@ -15009,7 +15117,65 @@
     "isVanillaPvp": false,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Axe",
-    "location": "Weapon"
+    "location": "Weapon",
+    "sqiBonus": {
+      "1320_0": {
+        "description": "+15% MaxHP",
+        "bonus": "(function (x,y) { x.maxHpRate += 15; });"
+      },
+      "1320_1": {
+        "description": "+5 INT",
+        "bonus": "(function (x,y) { x.int += 5; });"
+      },
+      "1320_2": {
+        "description": "5% chance to reflect 40% of damage for 8 seconds when attacked",
+        "bonus": ""
+      },
+      "1320_3": {
+        "description": "5% chance to use Stone Curse status on the enemy while receiving damage",
+        "bonus": "(function (x,y) { x.addEffectWhenHit.stone += 5; });"
+      },
+      "1320_4": {
+        "description": "+20% MATK, enables use of Level 6 [Fire Bolt] and 5% chance to auto cast Level 6 [Firebolt] when attacking, ",
+        "bonus": "(function (x,y) { x.enableSkill[\"Fire Bolt\"] = { skillLv: 6, isOffensive: true} }); "
+      },
+      "1320_5": {
+        "description": "+50% more damage and 75% reduced zeny cost with [Mammonite]",
+        "bonus": "(function (x,y) { x.skillAtk[\"Mammonite\"] += 50; });"
+      },
+      "1320_6": {
+        "description": "[Demonstration] damage interval reduced by 75% (every 0.25 secs instead of 1 sec). Remove [Demonstration] on unequip",
+        "bonus": ""
+      },
+      "1320_7": {
+        "description": "20% chance to ignore potion cost with [Potion Pitcher] and [Slim Potion Pitcher]",
+        "bonus": ""
+      },
+      "1320_8": {
+        "description": "PvM: Ignore [Acid Terror] Acid Bottle cost and [Demonstration] Fire Bottle cost",
+        "bonus": ""
+      },
+      "1320_9": {
+        "description": "Chemical Protection Skills (except FCP) have double duration and a 25% chance to ignore Glistening Coat cost",
+        "bonus": ""
+      },
+      "1320_10": {
+        "description": "[Bio Cannibalize] plants receive 40% less damage, ASPD/ATK x2, and HIT/HP x3; destroy bio plants on equip/unequip",
+        "bonus": ""
+      },
+      "1320_11": {
+        "description": "PvM: [Acid Terror] takes on the element of the user's weapon",
+        "bonus": ""
+      },
+      "1320_12": {
+        "description": "PvM: [Demonstration] takes on the element of the user's weapon",
+        "bonus": ""
+      },
+      "1320_13": {
+        "description": "PvM: Endow Neutral Element",
+        "bonus": ""
+      }
+    }
   },
   {
     "ID": 1351,
@@ -16747,7 +16913,61 @@
     "isVanillaPvp": false,
     "type": "Weapon One-Hand",
     "subType": "One-Handed Spear",
-    "location": "Weapon"
+    "location": "Weapon",
+    "sqiBonus": {
+      "1430_0": {
+        "description": "CRIT + 15, 10% more damage with Critical Hits",
+        "bonus": "(function (x,y) { x.crit += 15;x.criticalAtkRate += 10; });"
+      },
+      "1430_1": {
+        "description": "15% Aftercast Reduction",
+        "bonus": "(function (x,y) { x.delayRate += 15; });"
+      },
+      "1430_2": {
+        "description": "Increase damage inflicted on Large size monster by 15% when using [Pierce] or [Brandish Spear]",
+        "bonus": ""
+      },
+      "1430_3": {
+        "description": "5% chance to add ASPD + 12% and [Pierce] HIT Rate + 25% for 15 seconds after using [Pierce] (Toggle)",
+        "bonus": "(function (x,y) { x.aspdRate += 12; });"
+      },
+      "1430_4": {
+        "description": "20% more damage with [Pierce]",
+        "bonus": "(function (x,y) { x.skillAtk[\"Pierce\"] += 20; });"
+      },
+      "1430_5": {
+        "description": "100% more damage with [Joint Beat], 50% more damage with [Head Crush]",
+        "bonus": "(function (x,y) { x.skillAtk[\"Joint Beat\"] += 100;x.skillAtk[\"Head Crush\"] += 50; });"
+      },
+      "1430_6": {
+        "description": "50% more damage [Brandish Spear] and inflict full damage regardless of AoE position",
+        "bonus": "(function (x,y) { x.skillAtk[\"Brandish Spear\"] += 50; });"
+      },
+      "1430_7": {
+        "description": "50% less cast time with  [Brandish Spear] and has an additional attack range + 1",
+        "bonus": "(function (x,y) { x.skillCastRate[\"Brandish Spear\"] += 50; });"
+      },
+      "1430_8": {
+        "description": "25% chance to auto-cast level 5 [Decrease Agility] on the enemy after using [Spear Boomerang]",
+        "bonus": ""
+      },
+      "1430_9": {
+        "description": "25% chance to auto-cast level 1 [Critical Wounds] after using [Head Crush]",
+        "bonus": ""
+      },
+      "1430_10": {
+        "description": "50% less cast time with [Spiral Pierce]; but disables Berzebub Card",
+        "bonus": "(function (x,y) { x.skillCastRate[\"Spiral Pierce\"] += 50; });"
+      },
+      "1430_11": {
+        "description": "10% chance to auto-cast [Pierce] or [Joint Beat] at the levels learned during [Frenzy]",
+        "bonus": ""
+      },
+      "1430_12": {
+        "description": "[Endure] has no hit limit when used",
+        "bonus": ""
+      }
+    }
   },
   {
     "ID": 1433,
@@ -18550,7 +18770,65 @@
     "isVanillaPvp": false,
     "type": "Weapon One-Hand",
     "subType": "Mace",
-    "location": "Weapon"
+    "location": "Weapon",
+    "sqiBonus": {
+      "1530_0": {
+        "description": "10% Ranged damage reduction",
+        "bonus": "(function (x,y) { x.longAtkDef += 10; });"
+      },
+      "1530_1": {
+        "description": "+15 CRIT, +20% more damage with Critical Hits",
+        "bonus": "(function (x,y) { x.crit += 15;x.criticalAtkRate += 20; });"
+      },
+      "1530_2": {
+        "description": "Reduce [Cart Termination] and [Mammonite] SP costs by 50%",
+        "bonus": ""
+      },
+      "1530_3": {
+        "description": "Spend 75% less zeny with all Zeny Skills",
+        "bonus": ""
+      },
+      "1530_4": {
+        "description": "Triple the duration of [Cart Boost] and [Melt Down]",
+        "bonus": ""
+      },
+      "1530_5": {
+        "description": "[Over-Thrust] won't break party member weapons. Enable [Full Adrenaline Rush] without [Blacksmith Spirit]",
+        "bonus": ""
+      },
+      "1530_6": {
+        "description": "MATK + 20%. 30% chance to auto-cast level 2 [Lightning Jolt] with 100% more damage when attacking normally",
+        "bonus": ""
+      },
+      "1530_7": {
+        "description": "40% chance to auto-cast level 1 [Wide Silence] when using [Hammerfall]",
+        "bonus": ""
+      },
+      "1530_8": {
+        "description": "Enables use of level 1 [Charge Attack] and 30% less cast time with [Charge Attack]",
+        "bonus": "(function (x,y) { x.enableSkill[\"Charge Attack\"] = { skillLv: 1, isOffensive: true} }); "
+      },
+      "1530_9": {
+        "description": "+200% more damage with Throw Tomahawk, enables [Throw Tomahawk] to work together with the [Melt Down] status.",
+        "bonus": "(function (x,y) { x.skillAtk[\"Throw Tomahawk\"] += 200; });"
+      },
+      "1530_10": {
+        "description": "For each mastered Forge Passive add ATK + 10 and DEF Pierce + 2%; but reduce HP Leech Script total amount by 50%",
+        "bonus": ""
+      },
+      "1530_11": {
+        "description": "Assume max weight for [Cart Revolution] and [Cart Termination] regardless of cart weight",
+        "bonus": ""
+      },
+      "1530_12": {
+        "description": "Enable [Weapon Perfection] and [Power Maximize] effects all the time with no SP costs when these skills are mastered",
+        "bonus": ""
+      },
+      "1530_13": {
+        "description": "PvM: Endow Neutral Element",
+        "bonus": ""
+      }
+    }
   },
   {
     "ID": 1531,
@@ -19007,7 +19285,65 @@
     "isVanillaPvp": false,
     "type": "Weapon One-Hand",
     "subType": "Mace",
-    "location": "Weapon"
+    "location": "Weapon",
+    "sqiBonus": {
+      "1549_0": {
+        "description": "MaxSP + 20%. Reduce SP consumption of skills by 10%",
+        "bonus": "(function (x,y) { x.maxSpRate += 20;x.spCostReductionRate += -10; });"
+      },
+      "1549_1": {
+        "description": "30% Freeze and Stone Curse Resistance",
+        "bonus": "(function (x,y) { x.resEffect.freeze += 30;x.resEffect.stone += 30; });"
+      },
+      "1549_2": {
+        "description": "Convert [Magnus Exorcismus] delay into a cooldown",
+        "bonus": ""
+      },
+      "1549_3": {
+        "description": "20% chance to cause Sleep status when attacking",
+        "bonus": "(function (x,y) { x.addEffect.sleep += 20; });"
+      },
+      "1549_4": {
+        "description": "Increase effectiveness of Sanctuary by 20%",
+        "bonus": "(function (x,y) { x.healPower.sanctuary += 20; });"
+      },
+      "1549_5": {
+        "description": "Enables use of Level 10 [Frost Nova]",
+        "bonus": "(function (x,y) { x.enableSkill[\"Frost Nova\"] = { skillLv: 10, isOffensive: true} }); "
+      },
+      "1549_6": {
+        "description": "Enables use of [Free Cast] and casting can't be interrupted",
+        "bonus": ""
+      },
+      "1549_7": {
+        "description": "50% cast time reduction for [Magnificat], [Kyrie Elesion], [Assumptio] and [Safety Wall]",
+        "bonus": ""
+      },
+      "1549_8": {
+        "description": "Add a 20% chance to auto-cast level 6 [Cold Bolt] when attacking normally. If [Demon Bane] is mastered, chance to auto-cast level 10 [Holy Cross] instead",
+        "bonus": "(function (x,y) { x.autospell[\"Cold Bolt\"] = { type: \"onSkill\", rate: 20, skillLv: 6, isOffensive: true, trigger: \"First Aid\"} }); "
+      },
+      "1549_9": {
+        "description": "Add a 15% chance to double cast [Heal] at the level learned",
+        "bonus": ""
+      },
+      "1549_10": {
+        "description": "[Resurrection] works on Undead armor players",
+        "bonus": ""
+      },
+      "1549_11": {
+        "description": "Triple the duration of [Gloria]",
+        "bonus": ""
+      },
+      "1549_12": {
+        "description": "[Priest Spirit] remains after death",
+        "bonus": ""
+      },
+      "1549_13": {
+        "description": "PvM: Endow Neutral Element",
+        "bonus": ""
+      }
+    }
   },
   {
     "ID": 1550,
@@ -19848,7 +20184,61 @@
     "isVanillaPvp": false,
     "type": "Weapon One-Hand",
     "subType": "Book",
-    "location": "Weapon"
+    "location": "Weapon",
+    "sqiBonus": {
+      "1590_0": {
+        "description": "+20% MaxHP",
+        "bonus": "(function (x,y) { x.maxHpRate += 20; });"
+      },
+      "1590_1": {
+        "description": "Increase [Wall of Fog] limit to 3. Remove [Wall of Fog] on unequip",
+        "bonus": ""
+      },
+      "1590_2": {
+        "description": "Enables use of level 10 [Soul Drain] and regain 2 SP for each normal attack.",
+        "bonus": "(function (x,y) { x.maxSpRate += 20; });"
+      },
+      "1590_3": {
+        "description": "Enables use of level 3 [Strip Shield]",
+        "bonus": "(function (x,y) { x.enableSkill[\"Strip Shield\"] = { skillLv: 3, isOffensive: true} }); "
+      },
+      "1590_4": {
+        "description": "No cast time with [Memorize] and [Double Bolt]",
+        "bonus": ""
+      },
+      "1590_5": {
+        "description": "Pierce 10% of enemy MDEF when using [Fire Bolt], [Cold Bolt], [Lightning Bolt], or [Earth Spike]",
+        "bonus": ""
+      },
+      "1590_6": {
+        "description": "15% Aftercast Reduction with [Fire Bolt], [Cold Bolt], and [Lightning Bolt]",
+        "bonus": "(function (x,y) { x.skillCastDelay[\"Fire Bolt\"] += 15;x.skillCastDelay[\"Cold Bolt\"] += 15;x.skillCastDelay[\"Lightning Bolt\"] += 15; });"
+      },
+      "1590_7": {
+        "description": "Earth Spike Mastered: Add a 50% chance to cause Stone Curse status after using [Earth Spike]",
+        "bonus": ""
+      },
+      "1590_8": {
+        "description": "Autospell Mastered: Add ASPD + 12% and FLEE + 15 during [Autospell]",
+        "bonus": ""
+      },
+      "1590_9": {
+        "description": "Endow Skills have 100% success rate regardless of skill level. Instances/PvP/WoE: Consume no catalyst",
+        "bonus": ""
+      },
+      "1590_10": {
+        "description": "Increase the AoE of [Volcano], [Deluge], and [Violent Gale] to 11x11. Cancel these skills on unequip",
+        "bonus": ""
+      },
+      "1590_11": {
+        "description": "PvM: 80% Aftercast Reduction with [Soul Exchange] and restore 50% more SP with [Health Conversion]",
+        "bonus": ""
+      },
+      "1590_12": {
+        "description": "25% more damage with [Thunderstorm] and [Heaven's Drive]. 200% more damage with [Fire Ball]",
+        "bonus": "(function (x,y) { x.skillAtk[\"Fire Ball\"] += 200;x.skillAtk[\"Thunder Storm\"] += 25;x.skillAtk[\"Heaven's Drive\"] += 25; });"
+      }
+    }
   },
   {
     "ID": 1599,
@@ -21049,7 +21439,61 @@
     "isVanillaPvp": false,
     "type": "Weapon One-Hand",
     "subType": "Staff",
-    "location": "Weapon"
+    "location": "Weapon",
+    "sqiBonus": {
+      "1650_0": {
+        "description": "+20% MaxHP",
+        "bonus": "(function (x,y) { x.maxHpRate += 20; });"
+      },
+      "1650_1": {
+        "description": "+5 DEX",
+        "bonus": "(function (x,y) { x.dex += 5; });"
+      },
+      "1650_2": {
+        "description": "20% ranged damage reduction",
+        "bonus": "(function (x,y) { x.longAtkDef += 20; });"
+      },
+      "1650_3": {
+        "description": "20% chance to auto cast Curse status when attacking. [Gravitation Field] has a 20% chance to cause Stone Curse status, [Gravitation Field] no longer damages targets under the Stone Curse status.",
+        "bonus": "(function (x,y) { x.addEffect.curse += 20; });"
+      },
+      "1650_4": {
+        "description": "Enable movement during [Gravitation Field]. Remove [Gravitation Field] on unequip",
+        "bonus": ""
+      },
+      "1650_5": {
+        "description": "Amplify Magic Power casts 75% faster",
+        "bonus": ""
+      },
+      "1650_6": {
+        "description": "Ignore Demi-Human defense. 100% more damage with [Magic Crasher]. 10% chance to auto cast [Ganbantein] at no cost of gemstones",
+        "bonus": "(function (x,y) { x.ignoreDefRace.demiHuman += 1;x.skillAtk[\"Magic Crasher\"] += 100; });"
+      },
+      "1650_7": {
+        "description": "Enable level 10 [Water Ball] when it and [Cold Bolt] are mastered",
+        "bonus": "(function (x,y) { x.enableSkill[\"Water Ball\"] = { skillLv: 10, isOffensive: true} }); "
+      },
+      "1650_8": {
+        "description": "25% more damage with [Napalm Vulcan], [Napalm Vulcan] no longer split damage",
+        "bonus": "(function (x,y) { x.skillAtk[\"Napalm Vulcan\"] += 25; });"
+      },
+      "1650_9": {
+        "description": "100% more damage with [Earth Spike], 50% more damage with [Heaven's Drive]",
+        "bonus": "(function (x,y) { x.skillAtk[\"Earth Spike\"] += 100;x.skillAtk[\"Heaven's Drive\"] += 50; });"
+      },
+      "1650_10": {
+        "description": "50% more damage with [Lord of Vermillion]. 25% more damage with [Thunderstorm]. Convert their delays into cooldowns",
+        "bonus": "(function (x,y) { x.skillAtk[\"Thunder Storm\"] += 25;x.skillAtk[\"Lord of Vermillion\"] += 50; });"
+      },
+      "1650_11": {
+        "description": "Ignore [Fire Pillar] and [Safety Wall] Blue Gemstone cost",
+        "bonus": ""
+      },
+      "1650_12": {
+        "description": "Increase [Quagmire] limit to 5. Remove [Quagmire] on unequip",
+        "bonus": ""
+      }
+    }
   },
   {
     "ID": 1651,
@@ -21072,7 +21516,61 @@
     "isVanillaPvp": false,
     "type": "Weapon One-Hand",
     "subType": "Staff",
-    "location": "Weapon"
+    "location": "Weapon",
+    "sqiBonus": {
+      "1651_0": {
+        "description": "Enables level 5 duration and SP cost on all Soul Link Skills regardless of current skill level",
+        "bonus": ""
+      },
+      "1651_1": {
+        "description": "Reduces SP consumption of skills by 20% and reduces [Kaahi] SP consumption for yourself by 30%",
+        "bonus": "(function (x,y) { x.spCostReductionRate += -20; });"
+      },
+      "1651_2": {
+        "description": "Replace [Eska] effect with 20% MDEF Reduction on the target for 10 seconds",
+        "bonus": ""
+      },
+      "1651_3": {
+        "description": "20% chance to cause Curse with normal attacks or [Estin]",
+        "bonus": "(function (x,y) { x.addEffect.curse += 20; });"
+      },
+      "1651_4": {
+        "description": "Soul Links casted on others last 50% longer",
+        "bonus": ""
+      },
+      "1651_5": {
+        "description": "+10% more damage with [Esma]",
+        "bonus": "(function (x,y) { x.skillAtk[\"Esma\"] += 10; });"
+      },
+      "1651_6": {
+        "description": "50% less cast time with [Kaupe], [Kaite], [Eswoo] and [Esma]. Casting can't be interrupted",
+        "bonus": "(function (x,y) { x.skillCastRate[\"Kaupe\"] += 50;x.skillCastRate[\"Kaite\"] += 50;x.skillCastRate[\"Esma\"] += 50;x.skillCastRate[\"Eswoo\"] += 50; });"
+      },
+      "1651_7": {
+        "description": "[Peaceful Rest] and [Enjoyable Rest] always enabled and ignores overweight tick penalties below 90%; But disables GEC Effect!",
+        "bonus": ""
+      },
+      "1651_8": {
+        "description": "[Priest Link] adds heal 20% more with [Heal] and 15% with [Sanctuary]",
+        "bonus": ""
+      },
+      "1651_9": {
+        "description": "[Wizard Link] adds ignore 50% of Holy/Shadow element Fire/Water/Wind/Earth Resistance",
+        "bonus": ""
+      },
+      "1651_10": {
+        "description": "[Kaite] Ignores boss/level restriction, but no damage is reflected in that case, instead, damage is ignored. Only works on yourself, fails against Earthquake",
+        "bonus": ""
+      },
+      "1651_11": {
+        "description": "Auto-Cast [Acid Terror] when attacking at [Alchemist Spirit] level, auto-Cast [Holy Cross] when attacking at [Crusader Spirit] level",
+        "bonus": ""
+      },
+      "1651_12": {
+        "description": "Auto-Cast [Frost Joker] when attacking at [Bard Dancer Spirit] level",
+        "bonus": ""
+      }
+    }
   },
   {
     "ID": 1652,
@@ -22325,7 +22823,61 @@
     "isVanillaPvp": false,
     "type": "Weapon Two-Hand",
     "subType": "Bow",
-    "location": "Weapon"
+    "location": "Weapon",
+    "sqiBonus": {
+      "1745_0": {
+        "description": "+15% MaxHP",
+        "bonus": "(function (x,y) { x.maxHpRate += 15; });"
+      },
+      "1745_1": {
+        "description": "+10% MaxSP, 25% chance to ignore arrow costs when using skills or attacking normally",
+        "bonus": "(function (x,y) { x.maxSpRate += 15; });"
+      },
+      "1745_2": {
+        "description": "20% Magic Resistance",
+        "bonus": "(function (x,y) { x.magicAtkDef += 20; });"
+      },
+      "1745_3": {
+        "description": "10% more damage with auto-attack and [Sharpshoot] Critical Hits",
+        "bonus": "(function (x,y) { x.criticalAtkRate += 10; });"
+      },
+      "1745_4": {
+        "description": "100% more damage with [Claymore Trap], [Blast Mine] and [Land Mine], [Blast Mine] and [Land Mine] durations are increased to 100 seconds when mastered",
+        "bonus": "(function (x,y) { x.skillAtk[\"Land Mine\"] += 100;x.skillAtk[\"Blast Mine\"] += 100;x.skillAtk[\"Claymore Trap\"] += 100; });"
+      },
+      "1745_5": {
+        "description": "Increase Trap Skill Trigger AoE (except Ankle Snare) to 5x5. Increase [Claymore Trap], [Land Mine], and [Blast Mine] splash AoE to 7x7",
+        "bonus": ""
+      },
+      "1745_6": {
+        "description": "Add a 20% chance to auto-cast Level 2 [NPC_BLEEDING] when attacking normally (not calced)",
+        "bonus": ""
+      },
+      "1745_7": {
+        "description": "FLEE + 15 on [Wind Walk]",
+        "bonus": ""
+      },
+      "1745_8": {
+        "description": "10% more damage with [Double Strafing], reduces Thanatos Card effect by 15% for each equipped Thanatos Card.",
+        "bonus": "(function (x,y) { x.skillAtk[\"Double Strafe\"] += 10; });"
+      },
+      "1745_9": {
+        "description": "Triple [True Sight] duration",
+        "bonus": ""
+      },
+      "1745_10": {
+        "description": "[Blitz Beat] and [Falcon Assault] ignore Neutral Resist",
+        "bonus": ""
+      },
+      "1745_11": {
+        "description": "25% more damage and 20% less aftercast delay with [Falcon Assault]",
+        "bonus": "(function (x,y) { x.skillAtk[\"Falcon Assault\"] += 25;x.skillCastDelay[\"Falcon Assault\"] += 20; });"
+      },
+      "1745_12": {
+        "description": "Auto [Blitz Beat] doesn't draw aggro against slave mobs. [Blitz Beat] no longer splits damage",
+        "bonus": ""
+      }
+    }
   },
   {
     "ID": 1746,
@@ -22348,7 +22900,61 @@
     "isVanillaPvp": false,
     "type": "Weapon Two-Hand",
     "subType": "Bow",
-    "location": "Weapon"
+    "location": "Weapon",
+    "sqiBonus": {
+      "1746_0": {
+        "description": "MaxSP + 10%. Add a 25% chance to ignore ammo costs when attacking normally or using skills",
+        "bonus": "(function (x,y) { x.maxSpRate += 10; });"
+      },
+      "1746_1": {
+        "description": "Reduce SP Consumption of skills by 15%",
+        "bonus": "(function (x,y) { x.spCostReductionRate += -15; });"
+      },
+      "1746_2": {
+        "description": "Ignore 10% of enemy MDEF",
+        "bonus": "(function (x,y) { x.ignoreMdefClass.all += 10; });"
+      },
+      "1746_3": {
+        "description": "20% Melee Resistance, 20% Magic Resistance",
+        "bonus": "(function (x,y) { x.nearAtkDef += 20;x.magicAtkDef += 20; });"
+      },
+      "1746_4": {
+        "description": "MaxHP + 15%",
+        "bonus": "(function (x,y) { x.maxHpRate += 15; });"
+      },
+      "1746_5": {
+        "description": "CRIT + 15, 10% more damage with Critical Hits",
+        "bonus": "(function (x,y) { x.weaponElement = 'water'5;x.criticalAtkRate += 10; });"
+      },
+      "1746_6": {
+        "description": "Enable [Double Attack] usage, [Double Attack] and [Triple Attack] Rate + 10%",
+        "bonus": ""
+      },
+      "1746_7": {
+        "description": "PvP: Add a 10% chance to auto-cast level 1 [Strip Armor] when attacking with long range. PvM: 5% chance for [Strip Shield] instead at the level learned",
+        "bonus": "(function (x,y) { x.autospell[\"Strip Armor\"] = { type: \"onSkill\", rate: 20, skillLv: 1, isOffensive: true, trigger: \"First Aid\"} }); "
+      },
+      "1746_8": {
+        "description": "Add a 5% chance to auto-cast level 3 [Critical Wounds] when attacking with long range",
+        "bonus": ""
+      },
+      "1746_9": {
+        "description": "Demon Race, Insect Race, and Detector Mobs can no longer see you when hidden; Fails against boss monsters",
+        "bonus": ""
+      },
+      "1746_10": {
+        "description": "[Strip Armor] increases MvP VIT by 20%. Strip Skills (except Full Strip) have a 50% longer duration (toggle)",
+        "bonus": ""
+      },
+      "1746_11": {
+        "description": "[Preserve] remains after death",
+        "bonus": ""
+      },
+      "1746_12": {
+        "description": "Add a 10% chance to auto-cast [Double Strafing] when attacking normally at the level learned",
+        "bonus": ""
+      }
+    }
   },
   {
     "ID": 1747,
@@ -23757,7 +24363,65 @@
     "isVanillaPvp": false,
     "type": "Weapon One-Hand",
     "subType": "Knuckle",
-    "location": "Weapon"
+    "location": "Weapon",
+    "sqiBonus": {
+      "1840_0": {
+        "description": "30% Freeze and Stone Curse Resistance",
+        "bonus": "(function (x,y) { x.resEffect.freeze += 30;x.resEffect.stone += 30; });"
+      },
+      "1840_1": {
+        "description": "5% chance to Freeze the target when attacking",
+        "bonus": "(function (x,y) { x.addEffect.freeze += 5; });"
+      },
+      "1840_2": {
+        "description": "Gain effect of [Monk Spirit] status all the time",
+        "bonus": ""
+      },
+      "1840_3": {
+        "description": "[Spirits Recovery] always enabled, ignores weight tick penalties under 90%, and restores three times as much; disabled in Steel Body and disables GEC Effect!",
+        "bonus": ""
+      },
+      "1840_4": {
+        "description": "[Raging Palm Strike] pushes back an additional 2 cells",
+        "bonus": ""
+      },
+      "1840_5": {
+        "description": "100% more damage with Triple Attack, Chain Combo and Combo Finish, 50% more damage with Tiger Knuckle and Chain Crush Combo",
+        "bonus": "(function (x,y) { x.skillAtk[\"Triple Attack\"] += 100;x.skillAtk[\"Chain Combo\"] += 100;x.skillAtk[\"Combo Finish\"] += 100;x.skillAtk[\"Tiger Knuckle Fist\"] += 50;x.skillAtk[\"Chain Crush Combo\"] += 50; });"
+      },
+      "1840_6": {
+        "description": "Add a 100% chance to auto cast [Dangerous Soul Collect] after using [Fury]",
+        "bonus": ""
+      },
+      "1840_7": {
+        "description": "Ignore Spirit Sphere requirement for All Combo Skills. [Triple Attack] Ignores Delay",
+        "bonus": ""
+      },
+      "1840_8": {
+        "description": "PvM: Convert [Finger Offensive] delay into a cooldown. PvP: Add a 15% chance to auto cast [Dangerous Soul Collect] after using [Finger Offensive]",
+        "bonus": ""
+      },
+      "1840_9": {
+        "description": "Add a 25% chance to auto cast [Call Spirits] after using [Investigate]",
+        "bonus": ""
+      },
+      "1840_10": {
+        "description": "20% more damage with [Investigate]. PvP/WoE: Reduce to 10%",
+        "bonus": "(function (x,y) { x.skillAtk[\"Investigate\"] += 20; });"
+      },
+      "1840_11": {
+        "description": "PvM: 33% of your current SP (not max) remains after using [Asura Strike]",
+        "bonus": ""
+      },
+      "1840_12": {
+        "description": "Combo Skills ignore 30% of enemy Defense",
+        "bonus": ""
+      },
+      "1840_13": {
+        "description": "PvM: Endow Neutral Element",
+        "bonus": ""
+      }
+    }
   },
   {
     "ID": 1901,
@@ -24056,7 +24720,61 @@
     "isVanillaPvp": false,
     "type": "Weapon One-Hand",
     "subType": "Musical Instrument",
-    "location": "Weapon"
+    "location": "Weapon",
+    "sqiBonus": {
+      "1913_0": {
+        "description": "+20% MaxHP",
+        "bonus": "(function (x,y) { x.maxHpRate += 20; });"
+      },
+      "1913_1": {
+        "description": "30% Freeze and Stone Curse Resistance",
+        "bonus": "(function (x,y) { x.resEffect.freeze += 30;x.resEffect.stone += 30; });"
+      },
+      "1913_2": {
+        "description": "20% more damage with Long Range attacks",
+        "bonus": "(function (x,y) { x.longAtkRate += 20; });"
+      },
+      "1913_3": {
+        "description": "35% more damage with [Musical Strike]",
+        "bonus": "(function (x,y) { x.skillAtk[\"Musical Strike\"] += 35; });"
+      },
+      "1913_4": {
+        "description": "35% more damage with [Arrow Vulcan]",
+        "bonus": "(function (x,y) { x.skillAtk[\"Arrow Vulcan\"] += 35; });"
+      },
+      "1913_5": {
+        "description": "Immobilize the target for 2 seconds after using [Arrow Vulcan]; Fails against MvP monsters and in WoE",
+        "bonus": ""
+      },
+      "1913_6": {
+        "description": "Add a 10% chance of auto-casting level 10 [Jupitel Thunder] when attacked with short range physical attacks",
+        "bonus": ""
+      },
+      "1913_7": {
+        "description": "[The Apple of Idun] MaxHP Rate + 1% for every level. Heals three times as often and as much",
+        "bonus": ""
+      },
+      "1913_8": {
+        "description": "[A Whistle] FLEE Rate + 20 and Perfect Dodge Rate + 5",
+        "bonus": ""
+      },
+      "1913_9": {
+        "description": "[Poem of Bragi] Aftercast Rate + 2%",
+        "bonus": ""
+      },
+      "1913_10": {
+        "description": "Increase [Jupitel Thunder] level to 10",
+        "bonus": ""
+      },
+      "1913_11": {
+        "description": "[Assassin Cross of Sunset] adds 10% more Wind Magic Damage instead of ASPD",
+        "bonus": ""
+      },
+      "1913_12": {
+        "description": "Double the duration of [Bard and Dancer Spirits] and remains after death",
+        "bonus": ""
+      }
+    }
   },
   {
     "ID": 1914,
@@ -25422,7 +26140,61 @@
     "isVanillaPvp": false,
     "type": "Weapon One-Hand",
     "subType": "Whip",
-    "location": "Weapon"
+    "location": "Weapon",
+    "sqiBonus": {
+      "1990_0": {
+        "description": "+20% MaxHP",
+        "bonus": "(function (x,y) { x.maxHpRate += 20; });"
+      },
+      "1990_1": {
+        "description": "+15 CRIT, 20% more damage with Critical Hits",
+        "bonus": "(function (x,y) { x.crit += 15;x.criticalAtkRate += 20; });"
+      },
+      "1990_2": {
+        "description": "20% more damage with Long Range attacks",
+        "bonus": "(function (x,y) { x.longAtkRate += 20; });"
+      },
+      "1990_3": {
+        "description": "35% more damage with [Throw Arrow]",
+        "bonus": "(function (x,y) { x.skillAtk[\"Throw Arrow\"] += 35; });"
+      },
+      "1990_4": {
+        "description": "35% more damage with [Arrow Vulcan]",
+        "bonus": "(function (x,y) { x.skillAtk[\"Arrow Vulcan\"] += 35; });"
+      },
+      "1990_5": {
+        "description": "Immobilize the target for 2 seconds after using [Arrow Vulcan]; Fails against MvP monsters and in WoE",
+        "bonus": ""
+      },
+      "1990_6": {
+        "description": "15% chance to cause Stone Curse or Sleep status when attacking",
+        "bonus": "(function (x,y) { x.addEffect.sleep += 15;x.addEffect.stone += 15; });"
+      },
+      "1990_7": {
+        "description": "[Ugly Dance] reduces enemy INT by 20% for 7 seconds. (Toggle)",
+        "bonus": ""
+      },
+      "1990_8": {
+        "description": "[Service for You] restores 2 SP per skill level (+20 at level 10) every 2 seconds for everyone in its area.",
+        "bonus": ""
+      },
+      "1990_9": {
+        "description": "[Fortune's Kiss] CRIT Rate + 1 for every level; and buffs yourself without [Bard and Dancer Spirits]; when its user leaves the AoE it lasts 40 seconds",
+        "bonus": ""
+      },
+      "1990_10": {
+        "description": "[Humming] HIT boost is doubled",
+        "bonus": ""
+      },
+      "1990_11": {
+        "description": "Double the duration of [Bard and Dancer Spirits] and remains after death",
+        "bonus": ""
+      },
+      "1990_12": {
+        "description": "30% Freeze and Stone Curse Resistance",
+        "bonus": "(function (x,y) { x.resEffect.freeze += 30;x.resEffect.stone += 30; });"
+      }
+    }
   },
   {
     "ID": 2000,
@@ -26703,7 +27475,55 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Shield",
-    "location": "Shield"
+    "location": "Shield",
+    "sqiBonus": {
+      "2150_0": {
+        "description": "50% Stone Curse Resistance",
+        "bonus": "(function (x,y) { x.resEffect.stone += 50; });"
+      },
+      "2150_1": {
+        "description": "Reflect 15% of all melee damage.",
+        "bonus": "(function (x,y) { x.reflectShortWeaponDamage += 15; });"
+      },
+      "2150_2": {
+        "description": "15% Aftercast Reduction",
+        "bonus": "(function (x,y) { x.delayRate += 15; });"
+      },
+      "2150_3": { "description": "Full HP/SP when resurrected", "bonus": "" },
+      "2150_4": { "description": "Cast can't be interrupted", "bonus": "" },
+      "2150_5": {
+        "description": "20% more damage with [Holy Cross] and [Grand Cross]",
+        "bonus": "(function (x,y) { x.skillAtk[\"Holy Cross\"] += 20;x.skillAtk[\"Grand Cross\"] += 20; });"
+      },
+      "2150_6": {
+        "description": "20% more damage with [Shield Boomerang] and [Shield Chain]",
+        "bonus": "(function (x,y) { x.skillAtk[\"Shield Boomerang\"] += 20;x.skillAtk[\"Shield Boomerang [Soul Linked]\"] += 20;x.skillAtk[\"Shield Chain\"] += 20; });"
+      },
+      "2150_7": {
+        "description": "[Shield Chain] and [Shield Boomerang] ignores Neutral Resist",
+        "bonus": ""
+      },
+      "2150_8": {
+        "description": "Ignore [Grand Cross] holy self-damage, inflict full damage regardless of AoE position.",
+        "bonus": ""
+      },
+      "2150_9": {
+        "description": "Increase effectiveness of [Heal] by 20% (10% in PvP/WoE)",
+        "bonus": "(function (x,y) { x.healPower.all += 20; });"
+      },
+      "2150_10": {
+        "description": "50% less cast time with [Shield Chain]; but disables Berzebub Card",
+        "bonus": "(function (x,y) { x.skillCastRate[\"Shield Chain\"] += 50; });"
+      },
+      "2150_11": {
+        "description": "[Crusader Spirit] remains after death",
+        "bonus": ""
+      },
+      "2150_12": {
+        "description": "[Endure] has no hit limit when used",
+        "bonus": ""
+      }
+    }
   },
   {
     "ID": 2151,
@@ -71986,7 +72806,61 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearMiddle"
+    "location": "HeadgearMiddle",
+    "sqiBonus": {
+      "5600_0": {
+        "description": "20% Magic Resistance",
+        "bonus": "(function (x,y) { x.magicAtkDef += 20; });"
+      },
+      "5600_1": {
+        "description": "Reduce SP Consumption of skills by 20%",
+        "bonus": "(function (x,y) { x.spCostReductionRate += -20; });"
+      },
+      "5600_2": {
+        "description": "CRIT + 15 (30 with Rifles) and 20% more damage with Critical Hits",
+        "bonus": "(function (x,y) { x.crit += 15;x.criticalAtkRate += 20; });"
+      },
+      "5600_3": {
+        "description": "Shotgun Equipped: ASPD + 25%. 20% more damage with [Full Buster]. 50% more damage with [Spread Attack]",
+        "bonus": ""
+      },
+      "5600_4": {
+        "description": "Grenade Launcher Equipped: 50% more damage with [Triple Action]. [Ground Drift] Duration + 30s. PvP: 50% more damage with [Ground Drift], PvM: Add 4 more Mines, AoE becomes 5x5.",
+        "bonus": ""
+      },
+      "5600_5": {
+        "description": "Gatling Gun Equipped: 20% more damage with Long Range Attacks and Critical Hits. Ignore [Gatling Fever] FLEE and Movement Speed penalties, dispelled on unequip",
+        "bonus": ""
+      },
+      "5600_6": {
+        "description": "Enables use of level 1 [Hyper Spirit Sphere]",
+        "bonus": ""
+      },
+      "5600_7": {
+        "description": "5% chance to auto cast Stone Curse status when attacking",
+        "bonus": "(function (x,y) { x.autospell[\"Stone Curse\"] = { type: \"onSkill\", rate: 5, skillLv: 1, isOffensive: true, trigger: \"First Aid\"} }); "
+      },
+      "5600_8": {
+        "description": "Add a 25% chance to ignore ammo costs when using skills or attacking normally. Skills that consume more than 2 bullets only consume 2 bullets",
+        "bonus": ""
+      },
+      "5600_9": {
+        "description": "Rifle Equipped: 25% more damage with [Piercing Shot] and [Tracking]. 25% less cast time with [Tracking]",
+        "bonus": ""
+      },
+      "5600_10": {
+        "description": "Triple the duration of [Madness Canceller] and [Adjustment]",
+        "bonus": ""
+      },
+      "5600_11": {
+        "description": "15% Aftercast Reduction",
+        "bonus": "(function (x,y) {  });"
+      },
+      "5600_12": {
+        "description": "Immunity to Blind Status. Base AGI >= 87: Immunity to Stun Status. Base VIT >= 87: Immunity to Sleep Status",
+        "bonus": "(function (x,y) { x.resEffect.blind += 100; });"
+      }
+    }
   },
   {
     "ID": 5601,
@@ -153186,7 +154060,65 @@
     "isVanillaPvp": false,
     "type": "Weapon Two-Hand",
     "subType": "Fuuma Shuriken",
-    "location": "Weapon"
+    "location": "Weapon",
+    "sqiBonus": {
+      "13320_0": {
+        "description": "20% Magic Resistance",
+        "bonus": "(function (x,y) { x.magicAtkDef += 20; });"
+      },
+      "13320_1": {
+        "description": "20% Demi-Human Resistance",
+        "bonus": "(function (x,y) { x.addElement.shadow += 20; });"
+      },
+      "13320_2": {
+        "description": "20% Cast Time Reduction",
+        "bonus": "(function (x,y) { x.castRate += -20; });"
+      },
+      "13320_3": {
+        "description": "Enables use of level 1 [Hiding]. 50% more damage and add a 20% chance to inflict Sleep status with [Mist Slash]",
+        "bonus": "(function (x,y) { x.enableSkill[\"Hiding\"] = { skillLv: 1, isOffensive: false} }); "
+      },
+      "13320_4": {
+        "description": "CRIT + 25, 20% more damage with auto-attack and [Shadow Slash] Critical Hits",
+        "bonus": "(function (x,y) { x.crit += 25;x.criticalAtkRate += 20; });"
+      },
+      "13320_5": {
+        "description": "[Final Strike] ignores enemy DEF. 10% of your current HP (not max) remains after using [Final Strike]",
+        "bonus": "(function (x,y) { x.skillAtk[\"Final Strike\"] += 20;x.skillAtk[\"Final Strike [Max HP]\"] += 20; });"
+      },
+      "13320_6": {
+        "description": "2 Cell Knockback and 50% more damage with [Crimson Fire Formation]",
+        "bonus": "(function (x,y) { x.skillAtk[\"Crimson Fire Formation\"] += 50; });"
+      },
+      "13320_7": {
+        "description": "50% more damage with [Throw Humma Shuriken], [Throw Shuriken], and [Throw Kunai]. [Throw Huuma Shuriken] no longer split damage and delay converted into a cooldown",
+        "bonus": "(function (x,y) { x.skillAtk[\"Throw Shuriken\"] += 50;x.skillAtk[\"Throw Kunai\"] += 50;x.skillAtk[\"Throw Huuma Shuriken\"] += 50; });"
+      },
+      "13320_8": {
+        "description": "20% more damage with [Dragon Fire Formation] and [Falling Ice Pillar] and convert their delays into cooldowns; 8 Cells Knockback with [Falling Ice Pillar]",
+        "bonus": "(function (x,y) { x.skillAtk[\"Dragon Fire Formation\"] += 20;x.skillAtk[\"Falling Ice Pillar\"] += 20; });"
+      },
+      "13320_9": {
+        "description": "25% chance to auto-cast level 2 [Critical Wounds] after using [Wind Blade] and convert delay into cooldown",
+        "bonus": ""
+      },
+      "13320_10": {
+        "description": "Reduce SP consumption of skills by 20%",
+        "bonus": "(function (x,y) { x.spCostReductionRate += -20; });"
+      },
+      "13320_11": {
+        "description": "15% aftercast reduction",
+        "bonus": "(function (x,y) { x.delayRate += 15; });"
+      },
+      "13320_12": {
+        "description": "10% more damage with [Lightning Spear of Ice], [Crimson Fire Blossom], and [North Wind]. Additional 10% if base STR >= 90",
+        "bonus": "(function (x,y) { x.skillAtk[\"Lightning Spear of Ice\"] += 10;x.skillAtk[\"Crimson Fire Blossom\"] += 10;x.skillAtk[\"North Wind\"] += 10; });"
+      },
+      "13320_13": {
+        "description": "PvM: Endow Neutral Element",
+        "bonus": ""
+      }
+    }
   },
   {
     "ID": 13321,
