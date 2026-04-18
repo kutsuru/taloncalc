@@ -133,10 +133,17 @@ export class TTSessionInfoV3Service {
             if (this._core.$loaded()) {
                 const allJobs = this._core.allJobNames;
                 // this.jobClassName.set(allJobs[0]);
-                this.jobClassName.set('Lord Knight');   // FIXME: debug
-                this.updateRightHandType("One-Handed Spear");
-                this.updateEquipmentId("rightHand", 1430);
-                this._sqiBonusState.set(["1430_12", "1430_8"]);
+
+                // DEBUG BUILD 1
+                // this.jobClassName.set('Lord Knight');   // FIXME: debug
+                // this.updateRightHandType("One-Handed Spear");
+                // this.updateEquipmentId("rightHand", 1430);
+                // this._sqiBonusState.set(["1430_12", "1430_8"]);
+
+                // DEBUG BUILD 2
+                this.jobClassName.set('Novice');
+                this.updateRightHandType("Dagger");
+                this.updateEquipmentId('rightHand', 1190);
             }
         })
 
@@ -833,6 +840,7 @@ export class TTSessionInfoV3Service {
         const foodsStat = this._foodsStatsState();
         const foodsOther = this._foodsOtherState();
         const speedPot = this.speedPotion();
+        const sqiBonis = this._sqiBonusState();
         // FIXME: how to handle getskilllv of active skills? not needed?
 
         // job level stats bonus
@@ -889,6 +897,19 @@ export class TTSessionInfoV3Service {
                 }
             }
         }
+        /* SQI bonus */
+        const sqiID = untracked(() => this.sqiEquipped());
+        if (sqiID > 0) {
+            const SQI = this._core.itemDB.get(sqiID);
+            if (SQI && SQI.sqiBonus) {
+                for (const bonusID of sqiBonis) {
+                    const curSQIBonus = SQI.sqiBonus[bonusID];
+                    // FIXME: fix all bonus scripts
+                    this._bonusSession.applyBonus(curSQIBonus.bonus);
+                }
+            }
+        }
+
 
         /* combo bonus */
         // FIXME: refines for combos?

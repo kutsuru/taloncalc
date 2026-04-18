@@ -3235,7 +3235,7 @@
     "requiredLv": 40,
     "description": "[NPC Buyable] A special tonic that combats the effects of drowsiness. Temporarily increases Attack Speed.",
     "itemScript": "sc_start SC_ASPDPOTION1,1800000,0;",
-    "jobMask": "0xfe1fff7",
+    "jobMask": "0xFE1FFFF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Usable",
@@ -10066,7 +10066,7 @@
     "requiredLv": 2,
     "description": "[NPC Buyable] A basic one-handed sword.",
     "itemScript": "None",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -10089,7 +10089,7 @@
     "requiredLv": 2,
     "description": "A basic one-handed sword.",
     "itemScript": "None",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -10112,7 +10112,7 @@
     "requiredLv": 2,
     "description": "A basic one-handed sword.",
     "itemScript": "None",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -10135,7 +10135,7 @@
     "requiredLv": 2,
     "description": "[NPC Buyable] An one-handed sword with a rounded blade.",
     "itemScript": "None",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -10158,7 +10158,7 @@
     "requiredLv": 2,
     "description": "An one-handed sword with a rounded blade.",
     "itemScript": "None",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -10181,7 +10181,7 @@
     "requiredLv": 2,
     "description": "An one-handed sword with a rounded blade.",
     "itemScript": "None",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -10204,7 +10204,7 @@
     "requiredLv": 2,
     "description": "[NPC Buyable] An one-handed sword with a thick, flat blade.",
     "itemScript": "None",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -10227,7 +10227,7 @@
     "requiredLv": 2,
     "description": "An one-handed sword with a thick, flat blade.",
     "itemScript": "None",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -10250,7 +10250,7 @@
     "requiredLv": 2,
     "description": "An one-handed sword with a thick, flat blade.",
     "itemScript": "None",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -10273,7 +10273,7 @@
     "requiredLv": 14,
     "description": "[NPC Buyable] An one-handed sword with an elegant blade and crossguard.",
     "itemScript": "None",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -10296,7 +10296,7 @@
     "requiredLv": 14,
     "description": "An one-handed sword with an elegant blade and crossguard.",
     "itemScript": "None",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -10319,7 +10319,7 @@
     "requiredLv": 14,
     "description": "An one-handed sword with an elegant blade and crossguard.",
     "itemScript": "None",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -10342,7 +10342,7 @@
     "requiredLv": 14,
     "description": "[NPC Buyable] A strong, swift one-handed sword with a curved blade.",
     "itemScript": "None",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -10365,7 +10365,7 @@
     "requiredLv": 14,
     "description": "A strong, swift one-handed sword with a curved blade.",
     "itemScript": "None",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -10388,7 +10388,7 @@
     "requiredLv": 14,
     "description": "A strong, swift one-handed sword with a curved blade.",
     "itemScript": "None",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -10595,7 +10595,7 @@
     "requiredLv": 5,
     "description": "Crafted by Orcish smiths and used by Orc Warriors, this one-handed sword is symbolic to the Orc tribe. Indestructible (except in upgrade attempts).",
     "itemScript": "bonus bUnbreakableWeapon;",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -11149,7 +11149,7 @@
     "requiredLv": 30,
     "description": "[NPC Buyable] A common, humbly made sword that is intended for the use of those without any special sword expertise.",
     "itemScript": "None",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -11172,7 +11172,7 @@
     "requiredLv": 30,
     "description": "A common, humbly made sword that is intended for the use of those without any special sword expertise.",
     "itemScript": "None",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -11195,7 +11195,7 @@
     "requiredLv": 45,
     "description": "[SQI Ingredient] A special sword whose blade is made from a fallen meteorite. During the night, the blade part is said to shine brightly like a star. Causes Stun effect to enemies by 5% chance. Indestructible (except in upgrade attempts).",
     "itemScript": "bonus2 bAddEff,Eff_Stun,500; bonus bUnbreakableWeapon;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -12217,7 +12217,7 @@
     "requiredLv": 1,
     "description": "A large,incredibly strong dagger which belies its light weight. A favoured support weapon of the Einherjar, blessed with the power to expand its user's mind. 20% Resistance against all damage types. MaxHP + 50%, MaxSP + 1250. MATK + 25%, STR + 10, HIT + 50 [This item can be upgraded with bonuses]",
     "itemScript": "bonus bMatkRate,25; bonus bStr,10; bonus bHit,50; bonus bMaxHPRate,50; bonus bMaxSP,1250; bonus bNearAtkDef,20; bonus bLongAtkDef,20; bonus bMagicAtkDef,20; bonus bMiscAtkDef,20; if(BaseJob == Job_Super_Novice && sqi_option_v3 >= 32) callfunc \"F_SQI\";",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": false,
     "isVanillaPvp": false,
     "type": "Weapon One-Hand",
@@ -12226,43 +12226,43 @@
     "sqiBonus": {
       "1190_0": {
         "description": "Enables use of level 1 [Cart Revolution]. 100% more damage with [Cart Revolution]. 200% more damage with [Magnum Break]",
-        "bonus": "(function (x,y) { x.enableSkill[\"Cart Revolution\"] = { skillLv: 1, isOffensive: true} }); "
+        "bonus": "skill MC_CARTREVOLUTION,1; bonus2 bSkillAtk,MC_CARTREVOLUTION,100; bonus2 bSkillAtk,SM_MAGNUM,200"
       },
       "1190_1": {
         "description": "+25 CRIT, 20% more damage with Critical Hits",
-        "bonus": "(function (x,y) { x.crit += 25;x.criticalAtkRate += 20; });"
+        "bonus": "bonus bCritical,25; bonus bCritAtkRate,20;"
       },
       "1190_2": {
         "description": "15% Aftercast Reduction",
-        "bonus": "(function (x,y) { x.delayRate += 15; });"
+        "bonus": "bonus bDelayrate,-15"
       },
       "1190_3": {
         "description": "Ignore 10% of enemy MDEF",
-        "bonus": "(function (x,y) { x.ignoreMdefClass.all += 10; });"
+        "bonus": "bonus2 bIgnoreMdefClassRate,Class_All,10"
       },
       "1190_4": {
         "description": "Enables use of level 5 [Heaven's Drive]. 25% more damage with [Heaven's Drive] and [Thunderstorm]. 200% more damage with [Fire Ball].",
-        "bonus": "(function (x,y) { x.enableSkill[\"Heaven's Drive\"] = { skillLv: 5, isOffensive: true} }); "
+        "bonus": "skill WZ_HEAVENDRIVE,5; bonus2 bSkillAtk,WZ_HEAVENDRIVE,25; bonus2 bSkillAtk,MG_THUNDERSTORM,25; bonus2 bSkillAtk,MG_FIREBALL,200"
       },
       "1190_5": {
         "description": "50% more damage with [Mammonite]. 75% reduced zeny cost with [Mammonite] and enable use of level 1 [Fatal Blow]",
-        "bonus": "(function (x,y) { x.skillAtk[\"Mammonite\"] += 50; });"
+        "bonus": "bonus2 bSkillAtk,MC_MAMMONITE,50; skill SM_FATALBLOW,1; bonus2 bZenyCost,MC_MAMMONITE,75"
       },
       "1190_6": {
         "description": "Enables use of level 5  [Aspersio]",
-        "bonus": ""
+        "bonus": "skill PR_ASPERSIO,5"
       },
       "1190_7": {
         "description": "Enables use of Level 10 [Auto Spell]",
-        "bonus": ""
+        "bonus": "skill SA_AUTOSPELL,10"
       },
       "1190_8": {
         "description": "Enables use of level 10 [Grand Cross]",
-        "bonus": "(function (x,y) { x.enableSkill[\"Grand Cross\"] = { skillLv: 10, isOffensive: true} }); "
+        "bonus": "skill CR_GRANDCROSS,10"
       },
       "1190_9": {
-        "description": "Enables use of Level 5  [Aura Blade] (Toggle)",
-        "bonus": ""
+        "description": "Enables use of Level 5  [Aura Blade]",
+        "bonus": "skill LK_AURABLADE,5"
       },
       "1190_10": {
         "description": "Double the duration of [Super Novice Spirit] and remains after death. Death record isn't increased during [Super Novice Spirit]",
@@ -12270,7 +12270,7 @@
       },
       "1190_11": {
         "description": "[Double Attack] Rate + 10%",
-        "bonus": ""
+        "bonus": "bonus bDoubleAttackRate,10"
       },
       "1190_12": {
         "description": "Convert [Fire Bolt], [Cold Bolt], [Lightning Bolt], and [Magnum Break] delays into cooldowns",
@@ -12487,7 +12487,7 @@
     "requiredLv": 1,
     "description": "[NPC Buyable] A simple knife.",
     "itemScript": "None",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -12510,7 +12510,7 @@
     "requiredLv": 1,
     "description": "A simple knife.",
     "itemScript": "None",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -12533,7 +12533,7 @@
     "requiredLv": 1,
     "description": "A simple knife.",
     "itemScript": "None",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -12556,7 +12556,7 @@
     "requiredLv": 1,
     "description": "[NPC Buyable] A knife used for cutting enemies.",
     "itemScript": "None",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -12579,7 +12579,7 @@
     "requiredLv": 1,
     "description": "A knife used for cutting enemies.",
     "itemScript": "None",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -12602,7 +12602,7 @@
     "requiredLv": 1,
     "description": "A knife used for cutting enemies.",
     "itemScript": "None",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -12625,7 +12625,7 @@
     "requiredLv": 1,
     "description": "[NPC Buyable] A French dagger that is usually held in the left hand to parry attacks.",
     "itemScript": "None",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -12648,7 +12648,7 @@
     "requiredLv": 1,
     "description": "A French dagger that is usually held in the left hand to parry attacks.",
     "itemScript": "None",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -12671,7 +12671,7 @@
     "requiredLv": 1,
     "description": "A French dagger that is usually held in the left hand to parry attacks.",
     "itemScript": "None",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -12694,7 +12694,7 @@
     "requiredLv": 12,
     "description": "[NPC Buyable] An ancient knife used by highlanders in Scotland.",
     "itemScript": "None",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -12717,7 +12717,7 @@
     "requiredLv": 12,
     "description": "An ancient knife used by highlanders in Scotland.",
     "itemScript": "None",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -12740,7 +12740,7 @@
     "requiredLv": 12,
     "description": "An ancient knife used by highlanders in Scotland.",
     "itemScript": "None",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -12763,7 +12763,7 @@
     "requiredLv": 12,
     "description": "[NPC Buyable] Knife used for stabbing.",
     "itemScript": "None",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -12786,7 +12786,7 @@
     "requiredLv": 12,
     "description": "Knife used for stabbing.",
     "itemScript": "None",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -12809,7 +12809,7 @@
     "requiredLv": 12,
     "description": "Knife used for stabbing.",
     "itemScript": "None",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -12832,7 +12832,7 @@
     "requiredLv": 12,
     "description": "[NPC Buyable] A long, thin blade that is known to be used as a concealed weapon by Assassins.",
     "itemScript": "None",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -12855,7 +12855,7 @@
     "requiredLv": 12,
     "description": "A long, thin blade that is known to be used as a concealed weapon by Assassins.",
     "itemScript": "None",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -12878,7 +12878,7 @@
     "requiredLv": 12,
     "description": "A long, thin blade that is known to be used as a concealed weapon by Assassins.",
     "itemScript": "None",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -13521,7 +13521,7 @@
     "requiredLv": 1,
     "description": "[NPC Buyable] An exclusive Main Gauche for new adventurers. +60 ATK, +20 Hit Impossible to refine this item.",
     "itemScript": "bonus bBaseAtk,60; bonus bHit,20;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -13571,7 +13571,7 @@
     "requiredLv": 30,
     "description": "[NPC Buyable] A wide bladed dagger that was crafted by Italian artisans.",
     "itemScript": "None",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -13594,7 +13594,7 @@
     "requiredLv": 30,
     "description": "[SQI Ingredient] A wide bladed dagger that was crafted by Italian artisans.",
     "itemScript": "None",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -13617,7 +13617,7 @@
     "requiredLv": 1,
     "description": "[NPC Buyable] This dagger has been used many times as a poker, and ended up being enchanted with a Fire Property.",
     "itemScript": "bonus bAtkEle,Ele_Fire;",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -13640,7 +13640,7 @@
     "requiredLv": 1,
     "description": "[NPC Buyable] A dagger made from a mysterious black stone called ''Obsidian''. Although the blade is made from stone, it cuts well.",
     "itemScript": "bonus bAtkEle,Ele_Earth;",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -13663,7 +13663,7 @@
     "requiredLv": 1,
     "description": "[NPC Buyable] A dagger used by fishermen to catch shellfish and oysters from the ocean.",
     "itemScript": "bonus bAtkEle,Ele_Water;",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -14659,55 +14659,55 @@
     "location": "Weapon",
     "sqiBonus": {
       "1290_0": {
-        "description": "20% Magic Resistance",
-        "bonus": "(function (x,y) { x.magicAtkDef += 20; });"
+        "description": "(FIXME) 20% Magic Resistance",
+        "bonus": ""
       },
       "1290_1": {
-        "description": "30% Freeze and Stone Curse Resistance",
-        "bonus": "(function (x,y) { x.resEffect.freeze += 30;x.resEffect.stone += 30; });"
+        "description": "(FIXME) 30% Freeze and Stone Curse Resistance",
+        "bonus": ""
       },
       "1290_2": {
-        "description": "20% more damage with Critical Hits",
-        "bonus": "(function (x,y) { x.criticalAtkRate += 20; });"
+        "description": "(FIXME) 20% more damage with Critical Hits",
+        "bonus": ""
       },
       "1290_3": {
-        "description": "25% more damage with [Grimtooth]",
-        "bonus": "(function (x,y) { x.skillAtk[\"Grimtooth\"] += 25; });"
+        "description": "(FIXME) 25% more damage with [Grimtooth]",
+        "bonus": ""
       },
       "1290_4": {
-        "description": "50% more damage and 50% less cast time with [Meteor Assault]",
-        "bonus": "(function (x,y) { x.skillAtk[\"Meteor Assault\"] += 50;x.skillCastRate[\"Meteor Assault\"] += 50; });"
+        "description": "(FIXME) 50% more damage and 50% less cast time with [Meteor Assault]",
+        "bonus": ""
       },
       "1290_5": {
-        "description": "25% more damage and 50% less cast time with [Soul Breaker]",
-        "bonus": "(function (x,y) { x.skillAtk[\"Soul Breaker\"] += 25;x.skillCastRate[\"Soul Breaker\"] += 50; });"
+        "description": "(FIXME) 25% more damage and 50% less cast time with [Soul Breaker]",
+        "bonus": ""
       },
       "1290_6": {
-        "description": "[Enchant Poison] endows Shadow instead of Poison, 10% more damage against Holy Element during [Enchant Poison] (toggle)",
-        "bonus": "(function (x,y) { x.subRace.demon += 10; });"
+        "description": "(FIXME) [Enchant Poison] endows Shadow instead of Poison, 10% more damage against Holy Element during [Enchant Poison] (toggle)",
+        "bonus": ""
       },
       "1290_7": {
-        "description": "Add a 15% chance to inflict Deadly Poison status on the target when attacking, Deadly Poison interval reduced by 75%.",
+        "description": "(FIXME) Add a 15% chance to inflict Deadly Poison status on the target when attacking, Deadly Poison interval reduced by 75%.",
         "bonus": ""
       },
       "1290_8": {
-        "description": "Demon Race, Insect Race, and Detector Mobs can no longer see you when hidden; Fails against boss monsters",
+        "description": "(FIXME) Demon Race, Insect Race, and Detector Mobs can no longer see you when hidden; Fails against boss monsters",
         "bonus": ""
       },
       "1290_9": {
-        "description": "[Soul Breaker] inflicts more damage depending on the target's Defense",
+        "description": "(FIXME) [Soul Breaker] inflicts more damage depending on the target's Defense",
         "bonus": ""
       },
       "1290_10": {
-        "description": "While under [Cloaking]; 25% faster base movement speed",
+        "description": "(FIXME) While under [Cloaking]; 25% faster base movement speed",
         "bonus": ""
       },
       "1290_11": {
-        "description": "While under [Cloaking]; Immunity to [Quagmire] and [Slow Grace]; Dispel Cloak on unequip",
+        "description": "(FIXME) While under [Cloaking]; Immunity to [Quagmire] and [Slow Grace]; Dispel Cloak on unequip",
         "bonus": ""
       },
       "1290_12": {
-        "description": "PvM: [Assassin Spirit] remains after death",
+        "description": "(FIXME) PvM: [Assassin Spirit] remains after death",
         "bonus": ""
       }
     }
@@ -14805,7 +14805,7 @@
     "requiredLv": 3,
     "description": "[NPC Buyable] A common axe.",
     "itemScript": "None",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -14828,7 +14828,7 @@
     "requiredLv": 3,
     "description": "A common axe.",
     "itemScript": "None",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -14851,7 +14851,7 @@
     "requiredLv": 3,
     "description": "A common axe.",
     "itemScript": "None",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -14874,7 +14874,7 @@
     "requiredLv": 3,
     "description": "An axe crafted by Orcish smiths for Orcish warriors.",
     "itemScript": "None",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -14970,7 +14970,7 @@
     "requiredLv": 45,
     "description": "Not much is known about the mysterious Golden Axe.",
     "itemScript": "None",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -14993,7 +14993,7 @@
     "requiredLv": 3,
     "description": "An axe crafted by Orcish smiths for Orcish warriors.",
     "itemScript": "None",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -15066,7 +15066,7 @@
     "requiredLv": 1,
     "description": "Rental Items An axe crafted by Orcish smiths for Orcish warriors. Increases damage against small, medium, large size monsters by 70%.",
     "itemScript": "bonus2 bAddSize,Size_All,70;",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -15089,7 +15089,7 @@
     "requiredLv": 1,
     "description": "... STR + 2.",
     "itemScript": "bonus bStr,2;",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -15120,59 +15120,59 @@
     "location": "Weapon",
     "sqiBonus": {
       "1320_0": {
-        "description": "+15% MaxHP",
-        "bonus": "(function (x,y) { x.maxHpRate += 15; });"
+        "description": "(FIXME) +15% MaxHP",
+        "bonus": ""
       },
       "1320_1": {
-        "description": "+5 INT",
-        "bonus": "(function (x,y) { x.int += 5; });"
+        "description": "(FIXME) +5 INT",
+        "bonus": ""
       },
       "1320_2": {
-        "description": "5% chance to reflect 40% of damage for 8 seconds when attacked",
+        "description": "(FIXME) 5% chance to reflect 40% of damage for 8 seconds when attacked",
         "bonus": ""
       },
       "1320_3": {
-        "description": "5% chance to use Stone Curse status on the enemy while receiving damage",
-        "bonus": "(function (x,y) { x.addEffectWhenHit.stone += 5; });"
+        "description": "(FIXME) 5% chance to use Stone Curse status on the enemy while receiving damage",
+        "bonus": ""
       },
       "1320_4": {
-        "description": "+20% MATK, enables use of Level 6 [Fire Bolt] and 5% chance to auto cast Level 6 [Firebolt] when attacking, ",
-        "bonus": "(function (x,y) { x.enableSkill[\"Fire Bolt\"] = { skillLv: 6, isOffensive: true} }); "
+        "description": "(FIXME) +20% MATK, enables use of Level 6 [Fire Bolt] and 5% chance to auto cast Level 6 [Firebolt] when attacking, ",
+        "bonus": ""
       },
       "1320_5": {
-        "description": "+50% more damage and 75% reduced zeny cost with [Mammonite]",
-        "bonus": "(function (x,y) { x.skillAtk[\"Mammonite\"] += 50; });"
+        "description": "(FIXME) +50% more damage and 75% reduced zeny cost with [Mammonite]",
+        "bonus": ""
       },
       "1320_6": {
-        "description": "[Demonstration] damage interval reduced by 75% (every 0.25 secs instead of 1 sec). Remove [Demonstration] on unequip",
+        "description": "(FIXME) [Demonstration] damage interval reduced by 75% (every 0.25 secs instead of 1 sec). Remove [Demonstration] on unequip",
         "bonus": ""
       },
       "1320_7": {
-        "description": "20% chance to ignore potion cost with [Potion Pitcher] and [Slim Potion Pitcher]",
+        "description": "(FIXME) 20% chance to ignore potion cost with [Potion Pitcher] and [Slim Potion Pitcher]",
         "bonus": ""
       },
       "1320_8": {
-        "description": "PvM: Ignore [Acid Terror] Acid Bottle cost and [Demonstration] Fire Bottle cost",
+        "description": "(FIXME) PvM: Ignore [Acid Terror] Acid Bottle cost and [Demonstration] Fire Bottle cost",
         "bonus": ""
       },
       "1320_9": {
-        "description": "Chemical Protection Skills (except FCP) have double duration and a 25% chance to ignore Glistening Coat cost",
+        "description": "(FIXME) Chemical Protection Skills (except FCP) have double duration and a 25% chance to ignore Glistening Coat cost",
         "bonus": ""
       },
       "1320_10": {
-        "description": "[Bio Cannibalize] plants receive 40% less damage, ASPD/ATK x2, and HIT/HP x3; destroy bio plants on equip/unequip",
+        "description": "(FIXME) [Bio Cannibalize] plants receive 40% less damage, ASPD/ATK x2, and HIT/HP x3; destroy bio plants on equip/unequip",
         "bonus": ""
       },
       "1320_11": {
-        "description": "PvM: [Acid Terror] takes on the element of the user's weapon",
+        "description": "(FIXME) PvM: [Acid Terror] takes on the element of the user's weapon",
         "bonus": ""
       },
       "1320_12": {
-        "description": "PvM: [Demonstration] takes on the element of the user's weapon",
+        "description": "(FIXME) PvM: [Demonstration] takes on the element of the user's weapon",
         "bonus": ""
       },
       "1320_13": {
-        "description": "PvM: Endow Neutral Element",
+        "description": "(FIXME) PvM: Endow Neutral Element",
         "bonus": ""
       }
     }
@@ -16916,55 +16916,55 @@
     "location": "Weapon",
     "sqiBonus": {
       "1430_0": {
-        "description": "CRIT + 15, 10% more damage with Critical Hits",
-        "bonus": "(function (x,y) { x.crit += 15;x.criticalAtkRate += 10; });"
+        "description": "(FIXME) CRIT + 15, 10% more damage with Critical Hits",
+        "bonus": ""
       },
       "1430_1": {
-        "description": "15% Aftercast Reduction",
-        "bonus": "(function (x,y) { x.delayRate += 15; });"
+        "description": "(FIXME) 15% Aftercast Reduction",
+        "bonus": ""
       },
       "1430_2": {
-        "description": "Increase damage inflicted on Large size monster by 15% when using [Pierce] or [Brandish Spear]",
+        "description": "(FIXME) Increase damage inflicted on Large size monster by 15% when using [Pierce] or [Brandish Spear]",
         "bonus": ""
       },
       "1430_3": {
-        "description": "5% chance to add ASPD + 12% and [Pierce] HIT Rate + 25% for 15 seconds after using [Pierce] (Toggle)",
-        "bonus": "(function (x,y) { x.aspdRate += 12; });"
+        "description": "(FIXME) 5% chance to add ASPD + 12% and [Pierce] HIT Rate + 25% for 15 seconds after using [Pierce] (Toggle)",
+        "bonus": ""
       },
       "1430_4": {
-        "description": "20% more damage with [Pierce]",
-        "bonus": "(function (x,y) { x.skillAtk[\"Pierce\"] += 20; });"
+        "description": "(FIXME) 20% more damage with [Pierce]",
+        "bonus": ""
       },
       "1430_5": {
-        "description": "100% more damage with [Joint Beat], 50% more damage with [Head Crush]",
-        "bonus": "(function (x,y) { x.skillAtk[\"Joint Beat\"] += 100;x.skillAtk[\"Head Crush\"] += 50; });"
+        "description": "(FIXME) 100% more damage with [Joint Beat], 50% more damage with [Head Crush]",
+        "bonus": ""
       },
       "1430_6": {
-        "description": "50% more damage [Brandish Spear] and inflict full damage regardless of AoE position",
-        "bonus": "(function (x,y) { x.skillAtk[\"Brandish Spear\"] += 50; });"
+        "description": "(FIXME) 50% more damage [Brandish Spear] and inflict full damage regardless of AoE position",
+        "bonus": ""
       },
       "1430_7": {
-        "description": "50% less cast time with  [Brandish Spear] and has an additional attack range + 1",
-        "bonus": "(function (x,y) { x.skillCastRate[\"Brandish Spear\"] += 50; });"
+        "description": "(FIXME) 50% less cast time with  [Brandish Spear] and has an additional attack range + 1",
+        "bonus": ""
       },
       "1430_8": {
-        "description": "25% chance to auto-cast level 5 [Decrease Agility] on the enemy after using [Spear Boomerang]",
+        "description": "(FIXME) 25% chance to auto-cast level 5 [Decrease Agility] on the enemy after using [Spear Boomerang]",
         "bonus": ""
       },
       "1430_9": {
-        "description": "25% chance to auto-cast level 1 [Critical Wounds] after using [Head Crush]",
+        "description": "(FIXME) 25% chance to auto-cast level 1 [Critical Wounds] after using [Head Crush]",
         "bonus": ""
       },
       "1430_10": {
-        "description": "50% less cast time with [Spiral Pierce]; but disables Berzebub Card",
-        "bonus": "(function (x,y) { x.skillCastRate[\"Spiral Pierce\"] += 50; });"
+        "description": "(FIXME) 50% less cast time with [Spiral Pierce]; but disables Berzebub Card",
+        "bonus": ""
       },
       "1430_11": {
-        "description": "10% chance to auto-cast [Pierce] or [Joint Beat] at the levels learned during [Frenzy]",
+        "description": "(FIXME) 10% chance to auto-cast [Pierce] or [Joint Beat] at the levels learned during [Frenzy]",
         "bonus": ""
       },
       "1430_12": {
-        "description": "[Endure] has no hit limit when used",
+        "description": "(FIXME) [Endure] has no hit limit when used",
         "bonus": ""
       }
     }
@@ -18074,7 +18074,7 @@
     "requiredLv": 2,
     "description": "[NPC Buyable] A heavy bludgeon that makes a handy weapon in a pinch.",
     "itemScript": "None",
-    "jobMask": "0x1f80e07",
+    "jobMask": "0x1F80E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -18097,7 +18097,7 @@
     "requiredLv": 2,
     "description": "A heavy bludgeon that makes a handy weapon in a pinch.",
     "itemScript": "None",
-    "jobMask": "0x1f80e07",
+    "jobMask": "0x1F80E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -18120,7 +18120,7 @@
     "requiredLv": 2,
     "description": "A heavy bludgeon that makes a handy weapon in a pinch.",
     "itemScript": "None",
-    "jobMask": "0x1f80e07",
+    "jobMask": "0x1F80E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -18143,7 +18143,7 @@
     "requiredLv": 2,
     "description": "[NPC Buyable] A flanged, solid club that is effective for simple smashing.",
     "itemScript": "None",
-    "jobMask": "0x1f80e07",
+    "jobMask": "0x1F80E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -18166,7 +18166,7 @@
     "requiredLv": 2,
     "description": "A flanged, solid club that is effective for simple smashing.",
     "itemScript": "None",
-    "jobMask": "0x1f80e07",
+    "jobMask": "0x1F80E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -18189,7 +18189,7 @@
     "requiredLv": 2,
     "description": "A flanged, solid club that is effective for simple smashing.",
     "itemScript": "None",
-    "jobMask": "0x1f80e07",
+    "jobMask": "0x1F80E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -18212,7 +18212,7 @@
     "requiredLv": 14,
     "description": "[NPC Buyable] Basically a big hammer with spikes, this mace is excellent for breaking all sorts of things.",
     "itemScript": "None",
-    "jobMask": "0x1f80e07",
+    "jobMask": "0x1F80E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -18235,7 +18235,7 @@
     "requiredLv": 14,
     "description": "Basically a big hammer with spikes, this mace is excellent for breaking all sorts of things.",
     "itemScript": "None",
-    "jobMask": "0x1f80e07",
+    "jobMask": "0x1F80E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -18258,7 +18258,7 @@
     "requiredLv": 14,
     "description": "Basically a big hammer with spikes, this mace is excellent for breaking all sorts of things.",
     "itemScript": "None",
-    "jobMask": "0x1f80e07",
+    "jobMask": "0x1F80E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -18773,59 +18773,59 @@
     "location": "Weapon",
     "sqiBonus": {
       "1530_0": {
-        "description": "10% Ranged damage reduction",
-        "bonus": "(function (x,y) { x.longAtkDef += 10; });"
+        "description": "(FIXME) 10% Ranged damage reduction",
+        "bonus": ""
       },
       "1530_1": {
-        "description": "+15 CRIT, +20% more damage with Critical Hits",
-        "bonus": "(function (x,y) { x.crit += 15;x.criticalAtkRate += 20; });"
+        "description": "(FIXME) +15 CRIT, +20% more damage with Critical Hits",
+        "bonus": ""
       },
       "1530_2": {
-        "description": "Reduce [Cart Termination] and [Mammonite] SP costs by 50%",
+        "description": "(FIXME) Reduce [Cart Termination] and [Mammonite] SP costs by 50%",
         "bonus": ""
       },
       "1530_3": {
-        "description": "Spend 75% less zeny with all Zeny Skills",
+        "description": "(FIXME) Spend 75% less zeny with all Zeny Skills",
         "bonus": ""
       },
       "1530_4": {
-        "description": "Triple the duration of [Cart Boost] and [Melt Down]",
+        "description": "(FIXME) Triple the duration of [Cart Boost] and [Melt Down]",
         "bonus": ""
       },
       "1530_5": {
-        "description": "[Over-Thrust] won't break party member weapons. Enable [Full Adrenaline Rush] without [Blacksmith Spirit]",
+        "description": "(FIXME) [Over-Thrust] won't break party member weapons. Enable [Full Adrenaline Rush] without [Blacksmith Spirit]",
         "bonus": ""
       },
       "1530_6": {
-        "description": "MATK + 20%. 30% chance to auto-cast level 2 [Lightning Jolt] with 100% more damage when attacking normally",
+        "description": "(FIXME) MATK + 20%. 30% chance to auto-cast level 2 [Lightning Jolt] with 100% more damage when attacking normally",
         "bonus": ""
       },
       "1530_7": {
-        "description": "40% chance to auto-cast level 1 [Wide Silence] when using [Hammerfall]",
+        "description": "(FIXME) 40% chance to auto-cast level 1 [Wide Silence] when using [Hammerfall]",
         "bonus": ""
       },
       "1530_8": {
-        "description": "Enables use of level 1 [Charge Attack] and 30% less cast time with [Charge Attack]",
-        "bonus": "(function (x,y) { x.enableSkill[\"Charge Attack\"] = { skillLv: 1, isOffensive: true} }); "
+        "description": "(FIXME) Enables use of level 1 [Charge Attack] and 30% less cast time with [Charge Attack]",
+        "bonus": ""
       },
       "1530_9": {
-        "description": "+200% more damage with Throw Tomahawk, enables [Throw Tomahawk] to work together with the [Melt Down] status.",
-        "bonus": "(function (x,y) { x.skillAtk[\"Throw Tomahawk\"] += 200; });"
+        "description": "(FIXME) +200% more damage with Throw Tomahawk, enables [Throw Tomahawk] to work together with the [Melt Down] status.",
+        "bonus": ""
       },
       "1530_10": {
-        "description": "For each mastered Forge Passive add ATK + 10 and DEF Pierce + 2%; but reduce HP Leech Script total amount by 50%",
+        "description": "(FIXME) For each mastered Forge Passive add ATK + 10 and DEF Pierce + 2%; but reduce HP Leech Script total amount by 50%",
         "bonus": ""
       },
       "1530_11": {
-        "description": "Assume max weight for [Cart Revolution] and [Cart Termination] regardless of cart weight",
+        "description": "(FIXME) Assume max weight for [Cart Revolution] and [Cart Termination] regardless of cart weight",
         "bonus": ""
       },
       "1530_12": {
-        "description": "Enable [Weapon Perfection] and [Power Maximize] effects all the time with no SP costs when these skills are mastered",
+        "description": "(FIXME) Enable [Weapon Perfection] and [Power Maximize] effects all the time with no SP costs when these skills are mastered",
         "bonus": ""
       },
       "1530_13": {
-        "description": "PvM: Endow Neutral Element",
+        "description": "(FIXME) PvM: Endow Neutral Element",
         "bonus": ""
       }
     }
@@ -19115,7 +19115,7 @@
     "requiredLv": 80,
     "description": "A deadly mace that is usually worn by the best fighter. It seems to be capable of giving damage through an enemy's armor. It is specially designed for battles against humanoids. STR + 3, AGI + 2 Increases physical attack against DemiHuman monster by 75%. Ignore 25% of DemiHuman Defense. There is a 2% chance to add ASPD + 10% when attacking normally for 20 seconds. [Refine Level +8 or Higher] ATK + 30 [Monk] Reduces physical attack against DemiHuman monster by 20%.",
     "itemScript": "bonus bStr,3; bonus bAgi,2; bonus2 bAddRace,RC_DemiHuman,75; bonus2 bAddRace,RC_Player_Human,75; bonus2 bIgnoreDefRaceRate,RC_DemiHuman,25; bonus2 bIgnoreDefRaceRate,RC_Player_Human,25; autobonus \"{ bonus bAspdRate,10; }\",20,20000,0,\"{ specialeffect2 EF_POTION_BERSERK; }\"; if (getrefine() >= 8) bonus bBaseAtk,30; if (BaseJob==Job_Monk) { bonus2 bAddRace,RC_DemiHuman,-20; bonus2 bAddRace,RC_Player_Human,-20; }",
-    "jobMask": "0x1f80e07",
+    "jobMask": "0x1F80E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -19138,7 +19138,7 @@
     "requiredLv": 80,
     "description": "A deadly mace that is usually worn by the best fighter. It seems to be capable of giving damage through an enemy's armor. It is specially designed for battles against humanoids. STR + 5, DEX + 2 Increases physical attack against DemiHuman monster by 75%. Adds a 5% chance to inflict the Stun status when attacking. [Merchant Class] ASPD + 10% [Refine Level +8 or Higher] ATK + 50 Increases effectiveness of [Potion Pitcher] by 15% and [Slim Potion Pitcher] by 5%.",
     "itemScript": "bonus bStr,5; bonus bDex,2; bonus2 bAddRace,RC_DemiHuman,75; bonus2 bAddRace,RC_Player_Human,75; bonus2 bAddEff,Eff_Stun,500; if (BaseClass == Job_Merchant) { bonus bAspdRate,10; if (getrefine() >= 8) { bonus bBaseAtk,50; bonus2 bSkillHeal,\"AM_POTIONPITCHER\",15; bonus2 bSkillHeal,\"CR_SLIMPITCHER\",5; } }",
-    "jobMask": "0x1f80e07",
+    "jobMask": "0x1F80E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -19184,7 +19184,7 @@
     "requiredLv": 2,
     "description": "A flanged, solid club that is effective for simple smashing. Impossible to refine this item.",
     "itemScript": "None",
-    "jobMask": "0x1f80e07",
+    "jobMask": "0x1F80E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -19207,7 +19207,7 @@
     "requiredLv": 80,
     "description": "[Only PvP/BG/WoE] Increases physical attack against Players by 75%. Ignore 25% of Player Defense. Add a 5% chance to Stun when attacking. [Every Refine Level] ASPD + 1% Add an extra 1% Stun chance. [Monk] Reduce physical attack against Players by 20%.",
     "itemScript": ".@i = getrefine(); bonus2 bAddRace,RC_Player_Human,75; bonus2 bIgnoreDefRaceRate,RC_Player_Human,25; bonus bAspdRate,.@i; bonus2 bAddEff,Eff_Stun,(500+.@i*100); if (BaseJob == Job_Monk) bonus2 bAddRace,RC_Player_Human,-20;",
-    "jobMask": "0x1f80e07",
+    "jobMask": "0x1F80E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -19288,59 +19288,59 @@
     "location": "Weapon",
     "sqiBonus": {
       "1549_0": {
-        "description": "MaxSP + 20%. Reduce SP consumption of skills by 10%",
-        "bonus": "(function (x,y) { x.maxSpRate += 20;x.spCostReductionRate += -10; });"
+        "description": "(FIXME) MaxSP + 20%. Reduce SP consumption of skills by 10%",
+        "bonus": ""
       },
       "1549_1": {
-        "description": "30% Freeze and Stone Curse Resistance",
-        "bonus": "(function (x,y) { x.resEffect.freeze += 30;x.resEffect.stone += 30; });"
+        "description": "(FIXME) 30% Freeze and Stone Curse Resistance",
+        "bonus": ""
       },
       "1549_2": {
-        "description": "Convert [Magnus Exorcismus] delay into a cooldown",
+        "description": "(FIXME) Convert [Magnus Exorcismus] delay into a cooldown",
         "bonus": ""
       },
       "1549_3": {
-        "description": "20% chance to cause Sleep status when attacking",
-        "bonus": "(function (x,y) { x.addEffect.sleep += 20; });"
+        "description": "(FIXME) 20% chance to cause Sleep status when attacking",
+        "bonus": ""
       },
       "1549_4": {
-        "description": "Increase effectiveness of Sanctuary by 20%",
-        "bonus": "(function (x,y) { x.healPower.sanctuary += 20; });"
+        "description": "(FIXME) Increase effectiveness of Sanctuary by 20%",
+        "bonus": ""
       },
       "1549_5": {
-        "description": "Enables use of Level 10 [Frost Nova]",
-        "bonus": "(function (x,y) { x.enableSkill[\"Frost Nova\"] = { skillLv: 10, isOffensive: true} }); "
+        "description": "(FIXME) Enables use of Level 10 [Frost Nova]",
+        "bonus": ""
       },
       "1549_6": {
-        "description": "Enables use of [Free Cast] and casting can't be interrupted",
+        "description": "(FIXME) Enables use of [Free Cast] and casting can't be interrupted",
         "bonus": ""
       },
       "1549_7": {
-        "description": "50% cast time reduction for [Magnificat], [Kyrie Elesion], [Assumptio] and [Safety Wall]",
+        "description": "(FIXME) 50% cast time reduction for [Magnificat], [Kyrie Elesion], [Assumptio] and [Safety Wall]",
         "bonus": ""
       },
       "1549_8": {
-        "description": "Add a 20% chance to auto-cast level 6 [Cold Bolt] when attacking normally. If [Demon Bane] is mastered, chance to auto-cast level 10 [Holy Cross] instead",
-        "bonus": "(function (x,y) { x.autospell[\"Cold Bolt\"] = { type: \"onSkill\", rate: 20, skillLv: 6, isOffensive: true, trigger: \"First Aid\"} }); "
+        "description": "(FIXME) Add a 20% chance to auto-cast level 6 [Cold Bolt] when attacking normally. If [Demon Bane] is mastered, chance to auto-cast level 10 [Holy Cross] instead",
+        "bonus": ""
       },
       "1549_9": {
-        "description": "Add a 15% chance to double cast [Heal] at the level learned",
+        "description": "(FIXME) Add a 15% chance to double cast [Heal] at the level learned",
         "bonus": ""
       },
       "1549_10": {
-        "description": "[Resurrection] works on Undead armor players",
+        "description": "(FIXME) [Resurrection] works on Undead armor players",
         "bonus": ""
       },
       "1549_11": {
-        "description": "Triple the duration of [Gloria]",
+        "description": "(FIXME) Triple the duration of [Gloria]",
         "bonus": ""
       },
       "1549_12": {
-        "description": "[Priest Spirit] remains after death",
+        "description": "(FIXME) [Priest Spirit] remains after death",
         "bonus": ""
       },
       "1549_13": {
-        "description": "PvM: Endow Neutral Element",
+        "description": "(FIXME) PvM: Endow Neutral Element",
         "bonus": ""
       }
     }
@@ -20187,56 +20187,56 @@
     "location": "Weapon",
     "sqiBonus": {
       "1590_0": {
-        "description": "+20% MaxHP",
-        "bonus": "(function (x,y) { x.maxHpRate += 20; });"
+        "description": "(FIXME) +20% MaxHP",
+        "bonus": ""
       },
       "1590_1": {
-        "description": "Increase [Wall of Fog] limit to 3. Remove [Wall of Fog] on unequip",
+        "description": "(FIXME) Increase [Wall of Fog] limit to 3. Remove [Wall of Fog] on unequip",
         "bonus": ""
       },
       "1590_2": {
-        "description": "Enables use of level 10 [Soul Drain] and regain 2 SP for each normal attack.",
-        "bonus": "(function (x,y) { x.maxSpRate += 20; });"
+        "description": "(FIXME) Enables use of level 10 [Soul Drain] and regain 2 SP for each normal attack.",
+        "bonus": ""
       },
       "1590_3": {
-        "description": "Enables use of level 3 [Strip Shield]",
-        "bonus": "(function (x,y) { x.enableSkill[\"Strip Shield\"] = { skillLv: 3, isOffensive: true} }); "
+        "description": "(FIXME) Enables use of level 3 [Strip Shield]",
+        "bonus": ""
       },
       "1590_4": {
-        "description": "No cast time with [Memorize] and [Double Bolt]",
+        "description": "(FIXME) No cast time with [Memorize] and [Double Bolt]",
         "bonus": ""
       },
       "1590_5": {
-        "description": "Pierce 10% of enemy MDEF when using [Fire Bolt], [Cold Bolt], [Lightning Bolt], or [Earth Spike]",
+        "description": "(FIXME) Pierce 10% of enemy MDEF when using [Fire Bolt], [Cold Bolt], [Lightning Bolt], or [Earth Spike]",
         "bonus": ""
       },
       "1590_6": {
-        "description": "15% Aftercast Reduction with [Fire Bolt], [Cold Bolt], and [Lightning Bolt]",
-        "bonus": "(function (x,y) { x.skillCastDelay[\"Fire Bolt\"] += 15;x.skillCastDelay[\"Cold Bolt\"] += 15;x.skillCastDelay[\"Lightning Bolt\"] += 15; });"
+        "description": "(FIXME) 15% Aftercast Reduction with [Fire Bolt], [Cold Bolt], and [Lightning Bolt]",
+        "bonus": ""
       },
       "1590_7": {
-        "description": "Earth Spike Mastered: Add a 50% chance to cause Stone Curse status after using [Earth Spike]",
+        "description": "(FIXME) Earth Spike Mastered: Add a 50% chance to cause Stone Curse status after using [Earth Spike]",
         "bonus": ""
       },
       "1590_8": {
-        "description": "Autospell Mastered: Add ASPD + 12% and FLEE + 15 during [Autospell]",
+        "description": "(FIXME) Autospell Mastered: Add ASPD + 12% and FLEE + 15 during [Autospell]",
         "bonus": ""
       },
       "1590_9": {
-        "description": "Endow Skills have 100% success rate regardless of skill level. Instances/PvP/WoE: Consume no catalyst",
+        "description": "(FIXME) Endow Skills have 100% success rate regardless of skill level. Instances/PvP/WoE: Consume no catalyst",
         "bonus": ""
       },
       "1590_10": {
-        "description": "Increase the AoE of [Volcano], [Deluge], and [Violent Gale] to 11x11. Cancel these skills on unequip",
+        "description": "(FIXME) Increase the AoE of [Volcano], [Deluge], and [Violent Gale] to 11x11. Cancel these skills on unequip",
         "bonus": ""
       },
       "1590_11": {
-        "description": "PvM: 80% Aftercast Reduction with [Soul Exchange] and restore 50% more SP with [Health Conversion]",
+        "description": "(FIXME) PvM: 80% Aftercast Reduction with [Soul Exchange] and restore 50% more SP with [Health Conversion]",
         "bonus": ""
       },
       "1590_12": {
-        "description": "25% more damage with [Thunderstorm] and [Heaven's Drive]. 200% more damage with [Fire Ball]",
-        "bonus": "(function (x,y) { x.skillAtk[\"Fire Ball\"] += 200;x.skillAtk[\"Thunder Storm\"] += 25;x.skillAtk[\"Heaven's Drive\"] += 25; });"
+        "description": "(FIXME) 25% more damage with [Thunderstorm] and [Heaven's Drive]. 200% more damage with [Fire Ball]",
+        "bonus": ""
       }
     }
   },
@@ -20279,7 +20279,7 @@
     "requiredLv": 1,
     "description": "[NPC Buyable] A simple magic wand. MATK + 15%",
     "itemScript": "bonus bMatkRate,15;",
-    "jobMask": "0x387027",
+    "jobMask": "0x38702F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -20302,7 +20302,7 @@
     "requiredLv": 1,
     "description": "A simple magic wand. MATK + 15%",
     "itemScript": "bonus bMatkRate,15;",
-    "jobMask": "0x387027",
+    "jobMask": "0x38702F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -20325,7 +20325,7 @@
     "requiredLv": 1,
     "description": "A simple magic wand. MATK + 15%",
     "itemScript": "bonus bMatkRate,15;",
-    "jobMask": "0x387027",
+    "jobMask": "0x38702F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -20348,7 +20348,7 @@
     "requiredLv": 12,
     "description": "[NPC Buyable] A rough-hewn wand that's effective enough for the casting of magic spells. INT + 1, MATK + 15%",
     "itemScript": "bonus bInt,1; bonus bMatkRate,15;",
-    "jobMask": "0x387027",
+    "jobMask": "0x38702F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -20371,7 +20371,7 @@
     "requiredLv": 12,
     "description": "A rough-hewn wand that's effective enough for the casting of magic spells. INT + 1, MATK + 15%",
     "itemScript": "bonus bInt,1; bonus bMatkRate,15;",
-    "jobMask": "0x387027",
+    "jobMask": "0x38702F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -20394,7 +20394,7 @@
     "requiredLv": 12,
     "description": "A rough-hewn wand that's effective enough for the casting of magic spells. INT + 1, MATK + 15%",
     "itemScript": "bonus bInt,1; bonus bMatkRate,15;",
-    "jobMask": "0x387027",
+    "jobMask": "0x38702F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -20743,7 +20743,7 @@
     "requiredLv": 30,
     "description": "A staff that hypnotizes the Novice and makes him feel like he is a great Wizard. INT + 1, MATK + 25%",
     "itemScript": "bonus bInt,1; bonus bMatkRate,25;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -20766,7 +20766,7 @@
     "requiredLv": 30,
     "description": "A staff that hypnotizes the Novice and makes him feel like he is a great Wizard. INT + 1, MATK + 25%",
     "itemScript": "bonus bInt,1; bonus bMatkRate,25;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -21004,7 +21004,7 @@
     "requiredLv": 80,
     "description": "A rod that has been modified for brave magicians who fight on the battlefield. It is specially designed for battles against humanoids. MATK + 15% INT + 4, DEX + 3 Ignore 25% of Demi-Human MDEF. [Refine Level +8 or Higher] Adds a 5% chance to Stun targets with your magic. [Refine Level +8 or Higher] Reduce [Mystical Amplification] cast time by 50%.",
     "itemScript": ".@i = getrefine(); bonus bInt,4; bonus bDex,3; bonus bMatkRate,15; bonus2 bIgnoreMdefRaceRate,RC_DemiHuman,25; bonus2 bIgnoreMdefRaceRate,RC_Player_Human,25; bonus bUnbreakableWeapon; if(.@i >= 7) bonus3 bAddEff,Eff_Stun,500,ATF_SKILL; if(.@i >= 8) bonus2 bCastrate,\"HW_MAGICPOWER\",-50;",
-    "jobMask": "0x387027",
+    "jobMask": "0x38702F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -21027,7 +21027,7 @@
     "requiredLv": 80,
     "description": "A rod that has been modified for brave magicians who fight on the battlefield. It is specially designed for battles against humanoids. MATK + 15% INT + 3, DEX + 3 Cast Time - 5% Increases MATK against Demi-Human monsters by 10%. Ignore 10% of Demi-Human MDEF. [Refine Level +8 or Higher] Adds a 10% chance to Sleep targets with [Magic Crasher]. [Refine Level +8 or Higher] Reduce [Mystical Amplification] cast time by 50%.",
     "itemScript": ".@i = getrefine(); bonus bInt,3; bonus bDex,3; bonus bMatkRate,15; bonus bCastrate,-5; bonus2 bMagicAddRace,RC_DemiHuman,10; bonus2 bMagicAddRace,RC_Player_Human,10; bonus2 bIgnoreMdefRaceRate,RC_DemiHuman,10; bonus2 bIgnoreMdefRaceRate,RC_Player_Human,10; if (.@i >= 7) bonus3 bAddEffOnSkill,\"HW_MAGICCRASHER\",Eff_Sleep,1000; if (.@i >= 8) bonus2 bCastrate,\"HW_MAGICPOWER\",-50;",
-    "jobMask": "0x387027",
+    "jobMask": "0x38702F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -21050,7 +21050,7 @@
     "requiredLv": 80,
     "description": "A rod that is intended to heal people in battle. It gives special treatment for serious wounds. MATK + 15% Increases effectiveness of [Heal] and [Sanctuary] by 14%. Recover 5 SP every 10 seconds.",
     "itemScript": "bonus bMatkRate,15; bonus bHealPower,14; bonus2 bSPRegenRate,5,10000;",
-    "jobMask": "0x387027",
+    "jobMask": "0x38702F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -21073,7 +21073,7 @@
     "requiredLv": 80,
     "description": "A rod that is intended to heal people in battle. It has been optimized to heal more rapidly. INT + 2, DEX + 2 Recover 25 HP and 10 SP every 10 seconds. 10% Aftercast Reduction. [Acolyte Class] INT + 3 [Refine Level +8 or Higher] 10% Ranged Reduction at the cost of increasing SP Consumption by 10% when using skills.",
     "itemScript": "bonus bInt,2; bonus bDex,2; bonus bDelayRate,-10; bonus2 bHPRegenRate,25,10000; bonus2 bSPRegenRate,10,10000; if (BaseClass == Job_Acolyte) { bonus bInt,3; if (getrefine() >= 8) { bonus bLongAtkDef,10; bonus bUseSPrate,10; } }",
-    "jobMask": "0x387027",
+    "jobMask": "0x38702F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -21196,7 +21196,7 @@
     "requiredLv": 80,
     "description": "[Only PvP/BG/WoE] DEX + 5 Increase MATK against Players by 20%. Ignore 20% of Player MDEF. [Every Refine Level] INT + 1 Cast Time - 1% [Every 2 Refine Levels] Aftercast Delay - 1% Increase MATK against Players by 1%. [Super Novice] MATK + 20%",
     "itemScript": ".@i = getrefine(); .@j = .@i/2; bonus bDex,5; bonus bInt,.@i; bonus bCastrate,-.@i; bonus bDelayRate,-.@j; bonus2 bMagicAddRace,RC_Player_Human,20+.@j; bonus2 bIgnoreMdefRaceRate,RC_Player_Human,20; if ( Class == Job_Super_Novice ) bonus bMatkRate,20;",
-    "jobMask": "0x387027",
+    "jobMask": "0x38702F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -21411,7 +21411,7 @@
     "requiredLv": 90,
     "description": "A staff crafted using a magic stone from the Lapine tribe. Each refine reduces your casting time by 1%. MATK + 20%.",
     "itemScript": "bonus bMatkRate,20; bonus bCastrate,-(getrefine());",
-    "jobMask": "0x387026",
+    "jobMask": "0x38702E",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -21442,55 +21442,55 @@
     "location": "Weapon",
     "sqiBonus": {
       "1650_0": {
-        "description": "+20% MaxHP",
-        "bonus": "(function (x,y) { x.maxHpRate += 20; });"
+        "description": "(FIXME) +20% MaxHP",
+        "bonus": ""
       },
       "1650_1": {
-        "description": "+5 DEX",
-        "bonus": "(function (x,y) { x.dex += 5; });"
+        "description": "(FIXME) +5 DEX",
+        "bonus": ""
       },
       "1650_2": {
-        "description": "20% ranged damage reduction",
-        "bonus": "(function (x,y) { x.longAtkDef += 20; });"
+        "description": "(FIXME) 20% ranged damage reduction",
+        "bonus": ""
       },
       "1650_3": {
-        "description": "20% chance to auto cast Curse status when attacking. [Gravitation Field] has a 20% chance to cause Stone Curse status, [Gravitation Field] no longer damages targets under the Stone Curse status.",
-        "bonus": "(function (x,y) { x.addEffect.curse += 20; });"
+        "description": "(FIXME) 20% chance to auto cast Curse status when attacking. [Gravitation Field] has a 20% chance to cause Stone Curse status, [Gravitation Field] no longer damages targets under the Stone Curse status.",
+        "bonus": ""
       },
       "1650_4": {
-        "description": "Enable movement during [Gravitation Field]. Remove [Gravitation Field] on unequip",
+        "description": "(FIXME) Enable movement during [Gravitation Field]. Remove [Gravitation Field] on unequip",
         "bonus": ""
       },
       "1650_5": {
-        "description": "Amplify Magic Power casts 75% faster",
+        "description": "(FIXME) Amplify Magic Power casts 75% faster",
         "bonus": ""
       },
       "1650_6": {
-        "description": "Ignore Demi-Human defense. 100% more damage with [Magic Crasher]. 10% chance to auto cast [Ganbantein] at no cost of gemstones",
-        "bonus": "(function (x,y) { x.ignoreDefRace.demiHuman += 1;x.skillAtk[\"Magic Crasher\"] += 100; });"
+        "description": "(FIXME) Ignore Demi-Human defense. 100% more damage with [Magic Crasher]. 10% chance to auto cast [Ganbantein] at no cost of gemstones",
+        "bonus": ""
       },
       "1650_7": {
-        "description": "Enable level 10 [Water Ball] when it and [Cold Bolt] are mastered",
-        "bonus": "(function (x,y) { x.enableSkill[\"Water Ball\"] = { skillLv: 10, isOffensive: true} }); "
+        "description": "(FIXME) Enable level 10 [Water Ball] when it and [Cold Bolt] are mastered",
+        "bonus": ""
       },
       "1650_8": {
-        "description": "25% more damage with [Napalm Vulcan], [Napalm Vulcan] no longer split damage",
-        "bonus": "(function (x,y) { x.skillAtk[\"Napalm Vulcan\"] += 25; });"
+        "description": "(FIXME) 25% more damage with [Napalm Vulcan], [Napalm Vulcan] no longer split damage",
+        "bonus": ""
       },
       "1650_9": {
-        "description": "100% more damage with [Earth Spike], 50% more damage with [Heaven's Drive]",
-        "bonus": "(function (x,y) { x.skillAtk[\"Earth Spike\"] += 100;x.skillAtk[\"Heaven's Drive\"] += 50; });"
+        "description": "(FIXME) 100% more damage with [Earth Spike], 50% more damage with [Heaven's Drive]",
+        "bonus": ""
       },
       "1650_10": {
-        "description": "50% more damage with [Lord of Vermillion]. 25% more damage with [Thunderstorm]. Convert their delays into cooldowns",
-        "bonus": "(function (x,y) { x.skillAtk[\"Thunder Storm\"] += 25;x.skillAtk[\"Lord of Vermillion\"] += 50; });"
+        "description": "(FIXME) 50% more damage with [Lord of Vermillion]. 25% more damage with [Thunderstorm]. Convert their delays into cooldowns",
+        "bonus": ""
       },
       "1650_11": {
-        "description": "Ignore [Fire Pillar] and [Safety Wall] Blue Gemstone cost",
+        "description": "(FIXME) Ignore [Fire Pillar] and [Safety Wall] Blue Gemstone cost",
         "bonus": ""
       },
       "1650_12": {
-        "description": "Increase [Quagmire] limit to 5. Remove [Quagmire] on unequip",
+        "description": "(FIXME) Increase [Quagmire] limit to 5. Remove [Quagmire] on unequip",
         "bonus": ""
       }
     }
@@ -21519,55 +21519,55 @@
     "location": "Weapon",
     "sqiBonus": {
       "1651_0": {
-        "description": "Enables level 5 duration and SP cost on all Soul Link Skills regardless of current skill level",
+        "description": "(FIXME) Enables level 5 duration and SP cost on all Soul Link Skills regardless of current skill level",
         "bonus": ""
       },
       "1651_1": {
-        "description": "Reduces SP consumption of skills by 20% and reduces [Kaahi] SP consumption for yourself by 30%",
-        "bonus": "(function (x,y) { x.spCostReductionRate += -20; });"
+        "description": "(FIXME) Reduces SP consumption of skills by 20% and reduces [Kaahi] SP consumption for yourself by 30%",
+        "bonus": ""
       },
       "1651_2": {
-        "description": "Replace [Eska] effect with 20% MDEF Reduction on the target for 10 seconds",
+        "description": "(FIXME) Replace [Eska] effect with 20% MDEF Reduction on the target for 10 seconds",
         "bonus": ""
       },
       "1651_3": {
-        "description": "20% chance to cause Curse with normal attacks or [Estin]",
-        "bonus": "(function (x,y) { x.addEffect.curse += 20; });"
+        "description": "(FIXME) 20% chance to cause Curse with normal attacks or [Estin]",
+        "bonus": ""
       },
       "1651_4": {
-        "description": "Soul Links casted on others last 50% longer",
+        "description": "(FIXME) Soul Links casted on others last 50% longer",
         "bonus": ""
       },
       "1651_5": {
-        "description": "+10% more damage with [Esma]",
-        "bonus": "(function (x,y) { x.skillAtk[\"Esma\"] += 10; });"
+        "description": "(FIXME) +10% more damage with [Esma]",
+        "bonus": ""
       },
       "1651_6": {
-        "description": "50% less cast time with [Kaupe], [Kaite], [Eswoo] and [Esma]. Casting can't be interrupted",
-        "bonus": "(function (x,y) { x.skillCastRate[\"Kaupe\"] += 50;x.skillCastRate[\"Kaite\"] += 50;x.skillCastRate[\"Esma\"] += 50;x.skillCastRate[\"Eswoo\"] += 50; });"
+        "description": "(FIXME) 50% less cast time with [Kaupe], [Kaite], [Eswoo] and [Esma]. Casting can't be interrupted",
+        "bonus": ""
       },
       "1651_7": {
-        "description": "[Peaceful Rest] and [Enjoyable Rest] always enabled and ignores overweight tick penalties below 90%; But disables GEC Effect!",
+        "description": "(FIXME) [Peaceful Rest] and [Enjoyable Rest] always enabled and ignores overweight tick penalties below 90%; But disables GEC Effect!",
         "bonus": ""
       },
       "1651_8": {
-        "description": "[Priest Link] adds heal 20% more with [Heal] and 15% with [Sanctuary]",
+        "description": "(FIXME) [Priest Link] adds heal 20% more with [Heal] and 15% with [Sanctuary]",
         "bonus": ""
       },
       "1651_9": {
-        "description": "[Wizard Link] adds ignore 50% of Holy/Shadow element Fire/Water/Wind/Earth Resistance",
+        "description": "(FIXME) [Wizard Link] adds ignore 50% of Holy/Shadow element Fire/Water/Wind/Earth Resistance",
         "bonus": ""
       },
       "1651_10": {
-        "description": "[Kaite] Ignores boss/level restriction, but no damage is reflected in that case, instead, damage is ignored. Only works on yourself, fails against Earthquake",
+        "description": "(FIXME) [Kaite] Ignores boss/level restriction, but no damage is reflected in that case, instead, damage is ignored. Only works on yourself, fails against Earthquake",
         "bonus": ""
       },
       "1651_11": {
-        "description": "Auto-Cast [Acid Terror] when attacking at [Alchemist Spirit] level, auto-Cast [Holy Cross] when attacking at [Crusader Spirit] level",
+        "description": "(FIXME) Auto-Cast [Acid Terror] when attacking at [Alchemist Spirit] level, auto-Cast [Holy Cross] when attacking at [Crusader Spirit] level",
         "bonus": ""
       },
       "1651_12": {
-        "description": "Auto-Cast [Frost Joker] when attacking at [Bard Dancer Spirit] level",
+        "description": "(FIXME) Auto-Cast [Frost Joker] when attacking at [Bard Dancer Spirit] level",
         "bonus": ""
       }
     }
@@ -21588,7 +21588,7 @@
     "requiredLv": 1,
     "description": "... MATK + 15%, INT + 2, AGI + 1.",
     "itemScript": "bonus bInt,2; bonus bAgi,1;",
-    "jobMask": "0x387027",
+    "jobMask": "0x38702F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -22826,55 +22826,55 @@
     "location": "Weapon",
     "sqiBonus": {
       "1745_0": {
-        "description": "+15% MaxHP",
-        "bonus": "(function (x,y) { x.maxHpRate += 15; });"
+        "description": "(FIXME) +15% MaxHP",
+        "bonus": ""
       },
       "1745_1": {
-        "description": "+10% MaxSP, 25% chance to ignore arrow costs when using skills or attacking normally",
-        "bonus": "(function (x,y) { x.maxSpRate += 15; });"
+        "description": "(FIXME) +10% MaxSP, 25% chance to ignore arrow costs when using skills or attacking normally",
+        "bonus": ""
       },
       "1745_2": {
-        "description": "20% Magic Resistance",
-        "bonus": "(function (x,y) { x.magicAtkDef += 20; });"
+        "description": "(FIXME) 20% Magic Resistance",
+        "bonus": ""
       },
       "1745_3": {
-        "description": "10% more damage with auto-attack and [Sharpshoot] Critical Hits",
-        "bonus": "(function (x,y) { x.criticalAtkRate += 10; });"
+        "description": "(FIXME) 10% more damage with auto-attack and [Sharpshoot] Critical Hits",
+        "bonus": ""
       },
       "1745_4": {
-        "description": "100% more damage with [Claymore Trap], [Blast Mine] and [Land Mine], [Blast Mine] and [Land Mine] durations are increased to 100 seconds when mastered",
-        "bonus": "(function (x,y) { x.skillAtk[\"Land Mine\"] += 100;x.skillAtk[\"Blast Mine\"] += 100;x.skillAtk[\"Claymore Trap\"] += 100; });"
+        "description": "(FIXME) 100% more damage with [Claymore Trap], [Blast Mine] and [Land Mine], [Blast Mine] and [Land Mine] durations are increased to 100 seconds when mastered",
+        "bonus": ""
       },
       "1745_5": {
-        "description": "Increase Trap Skill Trigger AoE (except Ankle Snare) to 5x5. Increase [Claymore Trap], [Land Mine], and [Blast Mine] splash AoE to 7x7",
+        "description": "(FIXME) Increase Trap Skill Trigger AoE (except Ankle Snare) to 5x5. Increase [Claymore Trap], [Land Mine], and [Blast Mine] splash AoE to 7x7",
         "bonus": ""
       },
       "1745_6": {
-        "description": "Add a 20% chance to auto-cast Level 2 [NPC_BLEEDING] when attacking normally (not calced)",
+        "description": "(FIXME) Add a 20% chance to auto-cast Level 2 [NPC_BLEEDING] when attacking normally (not calced)",
         "bonus": ""
       },
       "1745_7": {
-        "description": "FLEE + 15 on [Wind Walk]",
+        "description": "(FIXME) FLEE + 15 on [Wind Walk]",
         "bonus": ""
       },
       "1745_8": {
-        "description": "10% more damage with [Double Strafing], reduces Thanatos Card effect by 15% for each equipped Thanatos Card.",
-        "bonus": "(function (x,y) { x.skillAtk[\"Double Strafe\"] += 10; });"
+        "description": "(FIXME) 10% more damage with [Double Strafing], reduces Thanatos Card effect by 15% for each equipped Thanatos Card.",
+        "bonus": ""
       },
       "1745_9": {
-        "description": "Triple [True Sight] duration",
+        "description": "(FIXME) Triple [True Sight] duration",
         "bonus": ""
       },
       "1745_10": {
-        "description": "[Blitz Beat] and [Falcon Assault] ignore Neutral Resist",
+        "description": "(FIXME) [Blitz Beat] and [Falcon Assault] ignore Neutral Resist",
         "bonus": ""
       },
       "1745_11": {
-        "description": "25% more damage and 20% less aftercast delay with [Falcon Assault]",
-        "bonus": "(function (x,y) { x.skillAtk[\"Falcon Assault\"] += 25;x.skillCastDelay[\"Falcon Assault\"] += 20; });"
+        "description": "(FIXME) 25% more damage and 20% less aftercast delay with [Falcon Assault]",
+        "bonus": ""
       },
       "1745_12": {
-        "description": "Auto [Blitz Beat] doesn't draw aggro against slave mobs. [Blitz Beat] no longer splits damage",
+        "description": "(FIXME) Auto [Blitz Beat] doesn't draw aggro against slave mobs. [Blitz Beat] no longer splits damage",
         "bonus": ""
       }
     }
@@ -22903,55 +22903,55 @@
     "location": "Weapon",
     "sqiBonus": {
       "1746_0": {
-        "description": "MaxSP + 10%. Add a 25% chance to ignore ammo costs when attacking normally or using skills",
-        "bonus": "(function (x,y) { x.maxSpRate += 10; });"
+        "description": "(FIXME) MaxSP + 10%. Add a 25% chance to ignore ammo costs when attacking normally or using skills",
+        "bonus": ""
       },
       "1746_1": {
-        "description": "Reduce SP Consumption of skills by 15%",
-        "bonus": "(function (x,y) { x.spCostReductionRate += -15; });"
+        "description": "(FIXME) Reduce SP Consumption of skills by 15%",
+        "bonus": ""
       },
       "1746_2": {
-        "description": "Ignore 10% of enemy MDEF",
-        "bonus": "(function (x,y) { x.ignoreMdefClass.all += 10; });"
+        "description": "(FIXME) Ignore 10% of enemy MDEF",
+        "bonus": ""
       },
       "1746_3": {
-        "description": "20% Melee Resistance, 20% Magic Resistance",
-        "bonus": "(function (x,y) { x.nearAtkDef += 20;x.magicAtkDef += 20; });"
+        "description": "(FIXME) 20% Melee Resistance, 20% Magic Resistance",
+        "bonus": ""
       },
       "1746_4": {
-        "description": "MaxHP + 15%",
-        "bonus": "(function (x,y) { x.maxHpRate += 15; });"
+        "description": "(FIXME) MaxHP + 15%",
+        "bonus": ""
       },
       "1746_5": {
-        "description": "CRIT + 15, 10% more damage with Critical Hits",
-        "bonus": "(function (x,y) { x.weaponElement = 'water'5;x.criticalAtkRate += 10; });"
+        "description": "(FIXME) CRIT + 15, 10% more damage with Critical Hits",
+        "bonus": ""
       },
       "1746_6": {
-        "description": "Enable [Double Attack] usage, [Double Attack] and [Triple Attack] Rate + 10%",
+        "description": "(FIXME) Enable [Double Attack] usage, [Double Attack] and [Triple Attack] Rate + 10%",
         "bonus": ""
       },
       "1746_7": {
-        "description": "PvP: Add a 10% chance to auto-cast level 1 [Strip Armor] when attacking with long range. PvM: 5% chance for [Strip Shield] instead at the level learned",
-        "bonus": "(function (x,y) { x.autospell[\"Strip Armor\"] = { type: \"onSkill\", rate: 20, skillLv: 1, isOffensive: true, trigger: \"First Aid\"} }); "
+        "description": "(FIXME) PvP: Add a 10% chance to auto-cast level 1 [Strip Armor] when attacking with long range. PvM: 5% chance for [Strip Shield] instead at the level learned",
+        "bonus": ""
       },
       "1746_8": {
-        "description": "Add a 5% chance to auto-cast level 3 [Critical Wounds] when attacking with long range",
+        "description": "(FIXME) Add a 5% chance to auto-cast level 3 [Critical Wounds] when attacking with long range",
         "bonus": ""
       },
       "1746_9": {
-        "description": "Demon Race, Insect Race, and Detector Mobs can no longer see you when hidden; Fails against boss monsters",
+        "description": "(FIXME) Demon Race, Insect Race, and Detector Mobs can no longer see you when hidden; Fails against boss monsters",
         "bonus": ""
       },
       "1746_10": {
-        "description": "[Strip Armor] increases MvP VIT by 20%. Strip Skills (except Full Strip) have a 50% longer duration (toggle)",
+        "description": "(FIXME) [Strip Armor] increases MvP VIT by 20%. Strip Skills (except Full Strip) have a 50% longer duration (toggle)",
         "bonus": ""
       },
       "1746_11": {
-        "description": "[Preserve] remains after death",
+        "description": "(FIXME) [Preserve] remains after death",
         "bonus": ""
       },
       "1746_12": {
-        "description": "Add a 10% chance to auto-cast [Double Strafing] when attacking normally at the level learned",
+        "description": "(FIXME) Add a 10% chance to auto-cast [Double Strafing] when attacking normally at the level learned",
         "bonus": ""
       }
     }
@@ -24366,59 +24366,59 @@
     "location": "Weapon",
     "sqiBonus": {
       "1840_0": {
-        "description": "30% Freeze and Stone Curse Resistance",
-        "bonus": "(function (x,y) { x.resEffect.freeze += 30;x.resEffect.stone += 30; });"
+        "description": "(FIXME) 30% Freeze and Stone Curse Resistance",
+        "bonus": ""
       },
       "1840_1": {
-        "description": "5% chance to Freeze the target when attacking",
-        "bonus": "(function (x,y) { x.addEffect.freeze += 5; });"
+        "description": "(FIXME) 5% chance to Freeze the target when attacking",
+        "bonus": ""
       },
       "1840_2": {
-        "description": "Gain effect of [Monk Spirit] status all the time",
+        "description": "(FIXME) Gain effect of [Monk Spirit] status all the time",
         "bonus": ""
       },
       "1840_3": {
-        "description": "[Spirits Recovery] always enabled, ignores weight tick penalties under 90%, and restores three times as much; disabled in Steel Body and disables GEC Effect!",
+        "description": "(FIXME) [Spirits Recovery] always enabled, ignores weight tick penalties under 90%, and restores three times as much; disabled in Steel Body and disables GEC Effect!",
         "bonus": ""
       },
       "1840_4": {
-        "description": "[Raging Palm Strike] pushes back an additional 2 cells",
+        "description": "(FIXME) [Raging Palm Strike] pushes back an additional 2 cells",
         "bonus": ""
       },
       "1840_5": {
-        "description": "100% more damage with Triple Attack, Chain Combo and Combo Finish, 50% more damage with Tiger Knuckle and Chain Crush Combo",
-        "bonus": "(function (x,y) { x.skillAtk[\"Triple Attack\"] += 100;x.skillAtk[\"Chain Combo\"] += 100;x.skillAtk[\"Combo Finish\"] += 100;x.skillAtk[\"Tiger Knuckle Fist\"] += 50;x.skillAtk[\"Chain Crush Combo\"] += 50; });"
+        "description": "(FIXME) 100% more damage with Triple Attack, Chain Combo and Combo Finish, 50% more damage with Tiger Knuckle and Chain Crush Combo",
+        "bonus": ""
       },
       "1840_6": {
-        "description": "Add a 100% chance to auto cast [Dangerous Soul Collect] after using [Fury]",
+        "description": "(FIXME) Add a 100% chance to auto cast [Dangerous Soul Collect] after using [Fury]",
         "bonus": ""
       },
       "1840_7": {
-        "description": "Ignore Spirit Sphere requirement for All Combo Skills. [Triple Attack] Ignores Delay",
+        "description": "(FIXME) Ignore Spirit Sphere requirement for All Combo Skills. [Triple Attack] Ignores Delay",
         "bonus": ""
       },
       "1840_8": {
-        "description": "PvM: Convert [Finger Offensive] delay into a cooldown. PvP: Add a 15% chance to auto cast [Dangerous Soul Collect] after using [Finger Offensive]",
+        "description": "(FIXME) PvM: Convert [Finger Offensive] delay into a cooldown. PvP: Add a 15% chance to auto cast [Dangerous Soul Collect] after using [Finger Offensive]",
         "bonus": ""
       },
       "1840_9": {
-        "description": "Add a 25% chance to auto cast [Call Spirits] after using [Investigate]",
+        "description": "(FIXME) Add a 25% chance to auto cast [Call Spirits] after using [Investigate]",
         "bonus": ""
       },
       "1840_10": {
-        "description": "20% more damage with [Investigate]. PvP/WoE: Reduce to 10%",
-        "bonus": "(function (x,y) { x.skillAtk[\"Investigate\"] += 20; });"
+        "description": "(FIXME) 20% more damage with [Investigate]. PvP/WoE: Reduce to 10%",
+        "bonus": ""
       },
       "1840_11": {
-        "description": "PvM: 33% of your current SP (not max) remains after using [Asura Strike]",
+        "description": "(FIXME) PvM: 33% of your current SP (not max) remains after using [Asura Strike]",
         "bonus": ""
       },
       "1840_12": {
-        "description": "Combo Skills ignore 30% of enemy Defense",
+        "description": "(FIXME) Combo Skills ignore 30% of enemy Defense",
         "bonus": ""
       },
       "1840_13": {
-        "description": "PvM: Endow Neutral Element",
+        "description": "(FIXME) PvM: Endow Neutral Element",
         "bonus": ""
       }
     }
@@ -24723,55 +24723,55 @@
     "location": "Weapon",
     "sqiBonus": {
       "1913_0": {
-        "description": "+20% MaxHP",
-        "bonus": "(function (x,y) { x.maxHpRate += 20; });"
+        "description": "(FIXME) +20% MaxHP",
+        "bonus": ""
       },
       "1913_1": {
-        "description": "30% Freeze and Stone Curse Resistance",
-        "bonus": "(function (x,y) { x.resEffect.freeze += 30;x.resEffect.stone += 30; });"
+        "description": "(FIXME) 30% Freeze and Stone Curse Resistance",
+        "bonus": ""
       },
       "1913_2": {
-        "description": "20% more damage with Long Range attacks",
-        "bonus": "(function (x,y) { x.longAtkRate += 20; });"
+        "description": "(FIXME) 20% more damage with Long Range attacks",
+        "bonus": ""
       },
       "1913_3": {
-        "description": "35% more damage with [Musical Strike]",
-        "bonus": "(function (x,y) { x.skillAtk[\"Musical Strike\"] += 35; });"
+        "description": "(FIXME) 35% more damage with [Musical Strike]",
+        "bonus": ""
       },
       "1913_4": {
-        "description": "35% more damage with [Arrow Vulcan]",
-        "bonus": "(function (x,y) { x.skillAtk[\"Arrow Vulcan\"] += 35; });"
+        "description": "(FIXME) 35% more damage with [Arrow Vulcan]",
+        "bonus": ""
       },
       "1913_5": {
-        "description": "Immobilize the target for 2 seconds after using [Arrow Vulcan]; Fails against MvP monsters and in WoE",
+        "description": "(FIXME) Immobilize the target for 2 seconds after using [Arrow Vulcan]; Fails against MvP monsters and in WoE",
         "bonus": ""
       },
       "1913_6": {
-        "description": "Add a 10% chance of auto-casting level 10 [Jupitel Thunder] when attacked with short range physical attacks",
+        "description": "(FIXME) Add a 10% chance of auto-casting level 10 [Jupitel Thunder] when attacked with short range physical attacks",
         "bonus": ""
       },
       "1913_7": {
-        "description": "[The Apple of Idun] MaxHP Rate + 1% for every level. Heals three times as often and as much",
+        "description": "(FIXME) [The Apple of Idun] MaxHP Rate + 1% for every level. Heals three times as often and as much",
         "bonus": ""
       },
       "1913_8": {
-        "description": "[A Whistle] FLEE Rate + 20 and Perfect Dodge Rate + 5",
+        "description": "(FIXME) [A Whistle] FLEE Rate + 20 and Perfect Dodge Rate + 5",
         "bonus": ""
       },
       "1913_9": {
-        "description": "[Poem of Bragi] Aftercast Rate + 2%",
+        "description": "(FIXME) [Poem of Bragi] Aftercast Rate + 2%",
         "bonus": ""
       },
       "1913_10": {
-        "description": "Increase [Jupitel Thunder] level to 10",
+        "description": "(FIXME) Increase [Jupitel Thunder] level to 10",
         "bonus": ""
       },
       "1913_11": {
-        "description": "[Assassin Cross of Sunset] adds 10% more Wind Magic Damage instead of ASPD",
+        "description": "(FIXME) [Assassin Cross of Sunset] adds 10% more Wind Magic Damage instead of ASPD",
         "bonus": ""
       },
       "1913_12": {
-        "description": "Double the duration of [Bard and Dancer Spirits] and remains after death",
+        "description": "(FIXME) Double the duration of [Bard and Dancer Spirits] and remains after death",
         "bonus": ""
       }
     }
@@ -26143,56 +26143,56 @@
     "location": "Weapon",
     "sqiBonus": {
       "1990_0": {
-        "description": "+20% MaxHP",
-        "bonus": "(function (x,y) { x.maxHpRate += 20; });"
+        "description": "(FIXME) +20% MaxHP",
+        "bonus": ""
       },
       "1990_1": {
-        "description": "+15 CRIT, 20% more damage with Critical Hits",
-        "bonus": "(function (x,y) { x.crit += 15;x.criticalAtkRate += 20; });"
+        "description": "(FIXME) +15 CRIT, 20% more damage with Critical Hits",
+        "bonus": ""
       },
       "1990_2": {
-        "description": "20% more damage with Long Range attacks",
-        "bonus": "(function (x,y) { x.longAtkRate += 20; });"
+        "description": "(FIXME) 20% more damage with Long Range attacks",
+        "bonus": ""
       },
       "1990_3": {
-        "description": "35% more damage with [Throw Arrow]",
-        "bonus": "(function (x,y) { x.skillAtk[\"Throw Arrow\"] += 35; });"
+        "description": "(FIXME) 35% more damage with [Throw Arrow]",
+        "bonus": ""
       },
       "1990_4": {
-        "description": "35% more damage with [Arrow Vulcan]",
-        "bonus": "(function (x,y) { x.skillAtk[\"Arrow Vulcan\"] += 35; });"
+        "description": "(FIXME) 35% more damage with [Arrow Vulcan]",
+        "bonus": ""
       },
       "1990_5": {
-        "description": "Immobilize the target for 2 seconds after using [Arrow Vulcan]; Fails against MvP monsters and in WoE",
+        "description": "(FIXME) Immobilize the target for 2 seconds after using [Arrow Vulcan]; Fails against MvP monsters and in WoE",
         "bonus": ""
       },
       "1990_6": {
-        "description": "15% chance to cause Stone Curse or Sleep status when attacking",
-        "bonus": "(function (x,y) { x.addEffect.sleep += 15;x.addEffect.stone += 15; });"
+        "description": "(FIXME) 15% chance to cause Stone Curse or Sleep status when attacking",
+        "bonus": ""
       },
       "1990_7": {
-        "description": "[Ugly Dance] reduces enemy INT by 20% for 7 seconds. (Toggle)",
+        "description": "(FIXME) [Ugly Dance] reduces enemy INT by 20% for 7 seconds. (Toggle)",
         "bonus": ""
       },
       "1990_8": {
-        "description": "[Service for You] restores 2 SP per skill level (+20 at level 10) every 2 seconds for everyone in its area.",
+        "description": "(FIXME) [Service for You] restores 2 SP per skill level (+20 at level 10) every 2 seconds for everyone in its area.",
         "bonus": ""
       },
       "1990_9": {
-        "description": "[Fortune's Kiss] CRIT Rate + 1 for every level; and buffs yourself without [Bard and Dancer Spirits]; when its user leaves the AoE it lasts 40 seconds",
+        "description": "(FIXME) [Fortune's Kiss] CRIT Rate + 1 for every level; and buffs yourself without [Bard and Dancer Spirits]; when its user leaves the AoE it lasts 40 seconds",
         "bonus": ""
       },
       "1990_10": {
-        "description": "[Humming] HIT boost is doubled",
+        "description": "(FIXME) [Humming] HIT boost is doubled",
         "bonus": ""
       },
       "1990_11": {
-        "description": "Double the duration of [Bard and Dancer Spirits] and remains after death",
+        "description": "(FIXME) Double the duration of [Bard and Dancer Spirits] and remains after death",
         "bonus": ""
       },
       "1990_12": {
-        "description": "30% Freeze and Stone Curse Resistance",
-        "bonus": "(function (x,y) { x.resEffect.freeze += 30;x.resEffect.stone += 30; });"
+        "description": "(FIXME) 30% Freeze and Stone Curse Resistance",
+        "bonus": ""
       }
     }
   },
@@ -26412,7 +26412,7 @@
     "requiredLv": 50,
     "description": "[Event Item] A useful tool popularized by treasure hunters. Useful for finding and fighting against metal. MATK + 15% INT + 2 DEX + 2 MATK + 5% vs Kiel Dungeon Monsters (except Alice), Juperos Ruins Monsters, and Guardians. Pierce 10% MDEF of Kiel Dungeon Monsters (except Alice), Juperos Ruins Monsters, and Guardians. [Every Refine Level] MDEF Pierce and MATK% theming bonuses increase by 1%.",
     "itemScript": ".@i = getrefine(); bonus bMatkRate,15; bonus bInt,2; bonus bDex,2; bonus2 bMagicAddRace2,RC2_Robot,5+.@i; bonus2 bIgnoreMdefRace2Rate,RC2_Robot,10+.@i;",
-    "jobMask": "0x387027",
+    "jobMask": "0x38702F",
     "isVanillaPvm": true,
     "isVanillaPvp": false,
     "type": "Weapon One-Hand",
@@ -26688,7 +26688,7 @@
     "requiredLv": 0,
     "description": "An exclusive shield for new adventurers. +400 HP Impossible to refine this item.",
     "itemScript": "bonus bMaxHP,400;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -26711,7 +26711,7 @@
     "requiredLv": 40,
     "description": "[NPC Buyable] A cute shield made out of a special metal for Novices. Add a 20% resistance against property attacks (All except Neutral).",
     "itemScript": "bonus2 bSubEle,Ele_Water,20; bonus2 bSubEle,Ele_Earth,20; bonus2 bSubEle,Ele_Fire,20; bonus2 bSubEle,Ele_Wind,20; bonus2 bSubEle,Ele_Poison,20; bonus2 bSubEle,Ele_Ghost,20; bonus2 bSubEle,Ele_Holy,20; bonus2 bSubEle,Ele_Dark,20; bonus2 bSubEle,Ele_Undead,20;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -26780,7 +26780,7 @@
     "requiredLv": 20,
     "description": "Super Novice Guardian Angel's shield which contains holy power that can nullify evil. Reduce 5% damage from Demon monster. [Angelic Protection, Angel's Reincarnation, Angelic Guard, Angelic Cardigan & Angel's Kiss Equip Set]",
     "itemScript": "bonus2 bSubRace,RC_Demon,5;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -27478,49 +27478,55 @@
     "location": "Shield",
     "sqiBonus": {
       "2150_0": {
-        "description": "50% Stone Curse Resistance",
-        "bonus": "(function (x,y) { x.resEffect.stone += 50; });"
+        "description": "(FIXME) 50% Stone Curse Resistance",
+        "bonus": ""
       },
       "2150_1": {
-        "description": "Reflect 15% of all melee damage.",
-        "bonus": "(function (x,y) { x.reflectShortWeaponDamage += 15; });"
+        "description": "(FIXME) Reflect 15% of all melee damage.",
+        "bonus": ""
       },
       "2150_2": {
-        "description": "15% Aftercast Reduction",
-        "bonus": "(function (x,y) { x.delayRate += 15; });"
+        "description": "(FIXME) 15% Aftercast Reduction",
+        "bonus": ""
       },
-      "2150_3": { "description": "Full HP/SP when resurrected", "bonus": "" },
-      "2150_4": { "description": "Cast can't be interrupted", "bonus": "" },
+      "2150_3": {
+        "description": "(FIXME) Full HP/SP when resurrected",
+        "bonus": ""
+      },
+      "2150_4": {
+        "description": "(FIXME) Cast can't be interrupted",
+        "bonus": ""
+      },
       "2150_5": {
-        "description": "20% more damage with [Holy Cross] and [Grand Cross]",
-        "bonus": "(function (x,y) { x.skillAtk[\"Holy Cross\"] += 20;x.skillAtk[\"Grand Cross\"] += 20; });"
+        "description": "(FIXME) 20% more damage with [Holy Cross] and [Grand Cross]",
+        "bonus": ""
       },
       "2150_6": {
-        "description": "20% more damage with [Shield Boomerang] and [Shield Chain]",
-        "bonus": "(function (x,y) { x.skillAtk[\"Shield Boomerang\"] += 20;x.skillAtk[\"Shield Boomerang [Soul Linked]\"] += 20;x.skillAtk[\"Shield Chain\"] += 20; });"
+        "description": "(FIXME) 20% more damage with [Shield Boomerang] and [Shield Chain]",
+        "bonus": ""
       },
       "2150_7": {
-        "description": "[Shield Chain] and [Shield Boomerang] ignores Neutral Resist",
+        "description": "(FIXME) [Shield Chain] and [Shield Boomerang] ignores Neutral Resist",
         "bonus": ""
       },
       "2150_8": {
-        "description": "Ignore [Grand Cross] holy self-damage, inflict full damage regardless of AoE position.",
+        "description": "(FIXME) Ignore [Grand Cross] holy self-damage, inflict full damage regardless of AoE position.",
         "bonus": ""
       },
       "2150_9": {
-        "description": "Increase effectiveness of [Heal] by 20% (10% in PvP/WoE)",
-        "bonus": "(function (x,y) { x.healPower.all += 20; });"
+        "description": "(FIXME) Increase effectiveness of [Heal] by 20% (10% in PvP/WoE)",
+        "bonus": ""
       },
       "2150_10": {
-        "description": "50% less cast time with [Shield Chain]; but disables Berzebub Card",
-        "bonus": "(function (x,y) { x.skillCastRate[\"Shield Chain\"] += 50; });"
+        "description": "(FIXME) 50% less cast time with [Shield Chain]; but disables Berzebub Card",
+        "bonus": ""
       },
       "2150_11": {
-        "description": "[Crusader Spirit] remains after death",
+        "description": "(FIXME) [Crusader Spirit] remains after death",
         "bonus": ""
       },
       "2150_12": {
-        "description": "[Endure] has no hit limit when used",
+        "description": "(FIXME) [Endure] has no hit limit when used",
         "bonus": ""
       }
     }
@@ -27691,7 +27697,7 @@
     "requiredLv": 80,
     "description": "Very unique, square formed shield with a special jewel on it which protects from physical power. [PvP/BG/WoE Only] MDEF - 10 Receive 10% more damage from All Elements except Neutral. [Every Refine Level] Receive 2% less damage from [Asura Strike]. [BG Only] Receive additional 10% more damage from All Elements except Neutral. Receive 30% less damage from [Asura Strike].",
     "itemScript": "bonus bMdef,-10; bonus2 bSubEle,Ele_All,-10; bonus2 bSubEle,Ele_Neutral,10; bonus2 bSubSkill,\"MO_EXTREMITYFIST\",getrefine()*2; if ( getmapflag(strcharinfo(3),MF_BATTLEGROUND) ) { bonus2 bSubEle,Ele_All,-10; bonus2 bSubEle,Ele_Neutral,10; bonus2 bSubSkill,\"MO_EXTREMITYFIST\",30; }",
-    "jobMask": "0xfffb1f7",
+    "jobMask": "0xFFFB1FF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -27829,7 +27835,7 @@
     "requiredLv": 80,
     "description": "Super Novice Guardian Angel's shield which contains holy power that can nullify evil. Reduce 5% damage from Demon monster. Reduce 5% damage from all element attacks except Neutral type attacks. [Advanced Angelic Guard & Advanced Angel's Reincarnation set] All Stats + 2",
     "itemScript": "bonus2 bSubRace,RC_Demon,5; bonus2 bSubEle,Ele_All,5; bonus2 bSubEle,Ele_Neutral,-5;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -31150,7 +31156,7 @@
     "requiredLv": 10,
     "description": "[NPC Buyable] A piece of armor that covers the chest of a Novice. MaxHP + 2000.",
     "itemScript": "bonus bMaxHP,2000;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -31444,7 +31450,7 @@
     "requiredLv": 0,
     "description": "[NPC Buyable] An exclusive armor for new adventurers. +700 HP Impossible to refine this item.",
     "itemScript": "bonus bMaxHP,700;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -31513,7 +31519,7 @@
     "requiredLv": 40,
     "description": "Super Novice Guardian Angel's robe. MDEF + 20 [+ Angelic Protection, Angel's Reincarnation, Angelic Guard, Angelic Cardigan & Angel's Kiss] Maximum HP + 900, Maximum SP + 100 Add a 3% chance of auto casting Level 1 Assumptio on the user when the user receives Physical Damage.",
     "itemScript": "bonus bMdef,20;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -32847,7 +32853,7 @@
     "requiredLv": 0,
     "description": "[NPC Buyable] Exclusive shoe for new adventurers. Impossible to refine this item.",
     "itemScript": "None",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -32893,7 +32899,7 @@
     "requiredLv": 40,
     "description": "[NPC Buyable] A pair of shoes made exclusively for brand new adventurers. Maximum HP + 5%",
     "itemScript": "bonus bMaxHPrate,5;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -32985,7 +32991,7 @@
     "requiredLv": 25,
     "description": "Heavenly sandals worn by the Guardian Angel of Super Novices. Maximum HP + 100 [Angelic Protection, Angel's Reincarnation, Angelic Guard, Angelic Cardigan & Angel's Kiss Equip Set]",
     "itemScript": "bonus bMaxHP,100;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -34282,7 +34288,7 @@
     "requiredLv": 0,
     "description": "[NPC Buyable] An exclusive garment for new adventurers. Increase resistance to Neutral Property attacks by 20%. Impossible to refine this item.",
     "itemScript": "bonus2 bSubEle,Ele_Neutral,20;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -34328,7 +34334,7 @@
     "requiredLv": 40,
     "description": "[NPC Buyable] A cute, durable and lightweight manteau for beginning adventurers. Reduce 10% of Neutral Property damage.",
     "itemScript": "bonus2 bSubEle,Ele_Neutral,10;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -34535,7 +34541,7 @@
     "requiredLv": 20,
     "description": "Super Novice Guardian Angel's warm and comfortable cardigan. HP Recovery + 5% [Angelic Protection, Angel's Reincarnation, Angelic Guard, Angelic Cardigan & Angel's Kiss Equip Set]",
     "itemScript": "bonus bHPrecovRate,5;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -36255,7 +36261,7 @@
     "requiredLv": 1,
     "description": "[NPC Buyable] An easy to wear bracelet made just for young Novices. STR + 1, INT + 1, LUK + 1",
     "itemScript": "bonus bStr,1; bonus bInt,1; bonus bLuk,1;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -38647,7 +38653,7 @@
     "requiredLv": 0,
     "description": "It will be disappeared after 1 hour. A directive letter says about the mission from canyon battle. _",
     "itemScript": "None",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -38670,7 +38676,7 @@
     "requiredLv": 0,
     "description": "It will be disappeared after 1 hour. A directive letter says about the mission from the arena battle. _",
     "itemScript": "None",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -39314,7 +39320,7 @@
     "requiredLv": 0,
     "description": "A figure made representing the Novice Class. If you look at it, somehow you feel energized. MaxHP + 200, MaxSP + 100. [91+ Base INT] Reduces After Cast Delay by 10%. MATK + 25. 15% more damage with [Fire Bolt], [Cold Bolt], and [Lightning Bolt]. [91+ Base STR] 15% more damage with [Bash], [Mammonite], and [Magnum Break]. Reduces After Cast Delay of [Magnum Break] by 10%.",
     "itemScript": "bonus bMaxHP,200; bonus bMaxSP,100; if(readparam(bInt)>=90) { bonus bDelayRate, -10; bonus bMatk, 25; bonus2 bSkillAtk,\"MG_FIREBOLT\",15; bonus2 bSkillAtk,\"MG_COLDBOLT\",15; bonus2 bSkillAtk,\"MG_LIGHTNINGBOLT\",15; } if(readparam(bStr)>=90) { bonus2 bSkillDelayrate,\"SM_MAGNUM\", 10; bonus2 bSkillAtk,\"MC_MAMMONITE\",15; bonus2 bSkillAtk,\"SM_BASH\",15; bonus2 bSkillAtk,\"SM_MAGNUM\",15; }",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -40418,7 +40424,7 @@
     "requiredLv": 1,
     "description": "A guide to help experience the basic skill of Swordman. SP + 100.",
     "itemScript": "bonus bMaxSP,100; skill \"SM_BASH\",1; skill \"SM_PROVOKE\",1; skill \"SM_MAGNUM\",1;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -40441,7 +40447,7 @@
     "requiredLv": 1,
     "description": "A guide to help experience the basic skill of Thief. SP + 100.",
     "itemScript": "bonus bMaxSP,100; skill \"TF_DOUBLE\",3; bonus bDoubleRate,15; skill \"TF_STEAL\",1; skill \"TF_HIDING\",1; skill \"TF_POISON\",1;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -40464,7 +40470,7 @@
     "requiredLv": 1,
     "description": "A guide to help experience the basic skill of Acolyte. SP + 100.",
     "itemScript": "bonus bMaxSP,100; skill \"AL_HEAL\",1; skill \"AL_INCAGI\",1; skill \"AL_BLESSING\",1;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -40487,7 +40493,7 @@
     "requiredLv": 1,
     "description": "A guide to help experience the basic skill of Archer. SP + 100.",
     "itemScript": "bonus bMaxSP,100; skill \"AC_OWL\",1; skill \"AC_CONCENTRATION\",1;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -40510,7 +40516,7 @@
     "requiredLv": 1,
     "description": "A guide to help experience the basic skill of Merchant. SP + 100.",
     "itemScript": "bonus bMaxSP,100; skill \"MC_DISCOUNT\",1; skill \"MC_OVERCHARGE\",10; skill \"MC_IDENTIFY\",1; skill \"MC_MAMMONITE\",1;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -40533,7 +40539,7 @@
     "requiredLv": 1,
     "description": "A guide to help experience the basic skill of Magician. SP + 100.",
     "itemScript": "bonus bMaxSP,100; skill \"MG_SRECOVERY\",1; skill \"MG_COLDBOLT\",1; skill \"MG_FIREWALL\",1; skill \"MG_FIREBOLT\",1;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -60263,7 +60269,7 @@
     "requiredLv": 0,
     "description": "[NPC Buyable] An exclusive helmet for new adventurers. +80 SP Impossible to refine this item.",
     "itemScript": "bonus bMaxSP,80;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -61574,7 +61580,7 @@
     "requiredLv": 40,
     "description": "[NPC Buyable] A hat that happens to match the Super Novice costume ... absolutely perfectly! All Stats + 1",
     "itemScript": "bonus bAllStats,1;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -61735,7 +61741,7 @@
     "requiredLv": 40,
     "description": "A hat that happens to match the Super Novice costume... absolutely perfectly! All Stats + 1",
     "itemScript": "bonus bAllStats,1;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -61873,7 +61879,7 @@
     "requiredLv": 50,
     "description": "A hair ornament that was kissed by the Super Novice's Guardian Angel. SP Recovery + 5% [Angelic Protection, Angel's Reincarnation, Angelic Guard, Angelic Cardigan & Angel's Kiss Equip Set]",
     "itemScript": "bonus bSPrecovRate,5;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -72809,56 +72815,56 @@
     "location": "HeadgearMiddle",
     "sqiBonus": {
       "5600_0": {
-        "description": "20% Magic Resistance",
-        "bonus": "(function (x,y) { x.magicAtkDef += 20; });"
+        "description": "(FIXME) 20% Magic Resistance",
+        "bonus": ""
       },
       "5600_1": {
-        "description": "Reduce SP Consumption of skills by 20%",
-        "bonus": "(function (x,y) { x.spCostReductionRate += -20; });"
+        "description": "(FIXME) Reduce SP Consumption of skills by 20%",
+        "bonus": ""
       },
       "5600_2": {
-        "description": "CRIT + 15 (30 with Rifles) and 20% more damage with Critical Hits",
-        "bonus": "(function (x,y) { x.crit += 15;x.criticalAtkRate += 20; });"
+        "description": "(FIXME) CRIT + 15 (30 with Rifles) and 20% more damage with Critical Hits",
+        "bonus": ""
       },
       "5600_3": {
-        "description": "Shotgun Equipped: ASPD + 25%. 20% more damage with [Full Buster]. 50% more damage with [Spread Attack]",
+        "description": "(FIXME) Shotgun Equipped: ASPD + 25%. 20% more damage with [Full Buster]. 50% more damage with [Spread Attack]",
         "bonus": ""
       },
       "5600_4": {
-        "description": "Grenade Launcher Equipped: 50% more damage with [Triple Action]. [Ground Drift] Duration + 30s. PvP: 50% more damage with [Ground Drift], PvM: Add 4 more Mines, AoE becomes 5x5.",
+        "description": "(FIXME) Grenade Launcher Equipped: 50% more damage with [Triple Action]. [Ground Drift] Duration + 30s. PvP: 50% more damage with [Ground Drift], PvM: Add 4 more Mines, AoE becomes 5x5.",
         "bonus": ""
       },
       "5600_5": {
-        "description": "Gatling Gun Equipped: 20% more damage with Long Range Attacks and Critical Hits. Ignore [Gatling Fever] FLEE and Movement Speed penalties, dispelled on unequip",
+        "description": "(FIXME) Gatling Gun Equipped: 20% more damage with Long Range Attacks and Critical Hits. Ignore [Gatling Fever] FLEE and Movement Speed penalties, dispelled on unequip",
         "bonus": ""
       },
       "5600_6": {
-        "description": "Enables use of level 1 [Hyper Spirit Sphere]",
+        "description": "(FIXME) Enables use of level 1 [Hyper Spirit Sphere]",
         "bonus": ""
       },
       "5600_7": {
-        "description": "5% chance to auto cast Stone Curse status when attacking",
-        "bonus": "(function (x,y) { x.autospell[\"Stone Curse\"] = { type: \"onSkill\", rate: 5, skillLv: 1, isOffensive: true, trigger: \"First Aid\"} }); "
+        "description": "(FIXME) 5% chance to auto cast Stone Curse status when attacking",
+        "bonus": ""
       },
       "5600_8": {
-        "description": "Add a 25% chance to ignore ammo costs when using skills or attacking normally. Skills that consume more than 2 bullets only consume 2 bullets",
+        "description": "(FIXME) Add a 25% chance to ignore ammo costs when using skills or attacking normally. Skills that consume more than 2 bullets only consume 2 bullets",
         "bonus": ""
       },
       "5600_9": {
-        "description": "Rifle Equipped: 25% more damage with [Piercing Shot] and [Tracking]. 25% less cast time with [Tracking]",
+        "description": "(FIXME) Rifle Equipped: 25% more damage with [Piercing Shot] and [Tracking]. 25% less cast time with [Tracking]",
         "bonus": ""
       },
       "5600_10": {
-        "description": "Triple the duration of [Madness Canceller] and [Adjustment]",
+        "description": "(FIXME) Triple the duration of [Madness Canceller] and [Adjustment]",
         "bonus": ""
       },
       "5600_11": {
-        "description": "15% Aftercast Reduction",
-        "bonus": "(function (x,y) {  });"
+        "description": "(FIXME) 15% Aftercast Reduction",
+        "bonus": ""
       },
       "5600_12": {
-        "description": "Immunity to Blind Status. Base AGI >= 87: Immunity to Stun Status. Base VIT >= 87: Immunity to Sleep Status",
-        "bonus": "(function (x,y) { x.resEffect.blind += 100; });"
+        "description": "(FIXME) Immunity to Blind Status. Base AGI >= 87: Immunity to Stun Status. Base VIT >= 87: Immunity to Sleep Status",
+        "bonus": ""
       }
     }
   },
@@ -121921,7 +121927,7 @@
     "requiredLv": 1,
     "description": "A dagger only meant for novices. It gives you a high ATK.",
     "itemScript": "if(BaseLevel < 40) { bonus bBaseAtk,195; bonus2 bAddClass,Class_All,20; }",
-    "jobMask": "0x5",
+    "jobMask": "0xD",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -123256,7 +123262,7 @@
     "requiredLv": 1,
     "description": "A dagger only meant for novices. It gives you a high ASPD.",
     "itemScript": "bonus bAspdRate,75; bonus bHit,100;",
-    "jobMask": "0x5",
+    "jobMask": "0xD",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -123279,7 +123285,7 @@
     "requiredLv": 1,
     "description": "A staff only meant for novices. It gives you Instant Cast Jupitel Thunder. Minimize the skill window to see the skill.",
     "itemScript": "bonus bInt,20; bonus bCastrate,-100; skill \"WZ_JUPITEL\",5; bonus bUseSPrate,-75; bonus bAspdRate,50;",
-    "jobMask": "0x5",
+    "jobMask": "0xD",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -149292,7 +149298,7 @@
     "requiredLv": 1,
     "description": "[NPC Buyable] A dagger whose hilt was made when lightning struck the Jujube tree. You can still feel the power of the thunder in it.",
     "itemScript": "bonus bAtkEle,Ele_Wind;",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -149315,7 +149321,7 @@
     "requiredLv": 60,
     "description": "A dagger made from a dragon fang that can slash a dragon's tough skin without any difficulty. Pierces Defense of Dragon monster. Receive 10% more Experience Points from Dragon monsters. [Dragon Killer & Dragon's Breath Equip Set]",
     "itemScript": "bonus bIgnoreDefRace,RC_Dragon; bonus2 bExpAddRace,RC_Dragon,10;",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -149338,7 +149344,7 @@
     "requiredLv": 70,
     "description": "A dagger with an unnaturally dark colored blade. Those who hold it instinctively sense the danger and risk of wielding this weapon. Blind an enemy when you attack (Success Chance 5%). Blind yourself when attacking (Success Chance 0.5%).",
     "itemScript": "bonus bAtkEle,Ele_Dark; bonus2 bAddEff,Eff_Blind,500; bonus2 bAddEff2,Eff_Blind,50;",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -149407,7 +149413,7 @@
     "requiredLv": 50,
     "description": "Not much is known about the mysterious Angelic Wing Dagger.",
     "itemScript": "None",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -149733,7 +149739,7 @@
     "requiredLv": 70,
     "description": "A dagger with an unnaturally dark colored blade. Those who hold it instinctively sense the danger and risk of wielding this weapon. Blind an enemy when you attack (Success Chance 5%). Blind yourself when attacking (Success Chance 0.5%).",
     "itemScript": "bonus bAtkEle,Ele_Dark; bonus2 bAddEff,Eff_Blind,500; bonus2 bAddEff2,Eff_Blind,50;",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -149986,7 +149992,7 @@
     "requiredLv": 60,
     "description": "A dagger made from a dragon fang that can slash a dragon's tough skin without any difficulty. Pierces Defense of Dragon monster. Receive 10% more Experience Points from Dragon monsters. [Dragon Killer & Dragon's Breath Equip Set]",
     "itemScript": "bonus bIgnoreDefRace,RC_Dragon; bonus2 bExpAddRace,RC_Dragon,10;",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -150140,7 +150146,7 @@
     "requiredLv": 80,
     "description": "A dagger that is specialized for assassination and killing humanoids. Indestructible (except during upgrade attempts). AGI + 5 Increases physical attack against Demi-Human monster by 75%. Ignore 20% of Demi-Human Defense. [Rogue] MATK + 15%, DEX + 2 10% more damage with [Backstab] and [Raid]. [Ninja] MATK + 15%, DEX + 2 CRIT + 20 10% more damage with Critical Hits and [Shadow Slash] CRITs. [Soul Linker] CRIT + 50, ASPD + 5% [Crusader Class] Add 5% more damage with [Shield Chain].",
     "itemScript": "bonus bUnbreakableWeapon; bonus bAgi,5; bonus2 bAddRace,RC_DemiHuman,75; bonus2 bAddRace,RC_Player_Human,75; bonus2 bIgnoreDefRaceRate,RC_DemiHuman,20; bonus2 bIgnoreDefRaceRate,RC_Player_Human,20; if (BaseJob == Job_Rogue) { bonus bMatkRate,15; bonus bDex,2; bonus2 bSkillAtk,\"RG_BACKSTAP\",10; bonus2 bSkillAtk,\"RG_RAID\",10; } else if (BaseJob == Job_Ninja) { bonus bMatkRate,15; bonus bDex,2; bonus bCritical,20; bonus bCritAtkRate,10; bonus2 bSkillCritAtkRate,\"NJ_KIRIKAGE\",10; } else if (BaseJob == Job_Soul_Linker) { bonus bCritical,50; bonus bAspdRate,5; } else if (BaseJob == Job_Crusader) { bonus2 bSkillAtk,\"PA_SHIELDCHAIN\",5; }",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -150163,7 +150169,7 @@
     "requiredLv": 80,
     "description": "A dagger that is specialized for assassination and killing humanoids. Indestructible (except during upgrade attempts). STR + 1, AGI + 3 ASPD + 5%, HIT + 15 Cast Time - 5% Increases physical attack against Demi-Human monster by 75%. [Ninja, Rogue] MATK + 15%, DEX + 1 When using magic, there is a 3% chance that you will add MATK + 10% and ASPD + 20% for 6 seconds. [Refine level +6 or Higher] Additional DEX + 2 [Refine level +9 or Higher] MATK + 5%, ATK + 5% DEX + 3 [Assassin] [Every Refine level +8~10] When attacking, there is a 1% chance per refine level that for 5 seconds, the weapon will be endowed with the Ice Pick effect.",
     "itemScript": ".@i = getrefine(); bonus bUnbreakableWeapon; bonus bStr,1; bonus bAgi,3; bonus bAspdRate,5; bonus bHit,15; bonus bCastrate,-5; bonus2 bAddRace,RC_DemiHuman,75; bonus2 bAddRace,RC_Player_Human,75; if (BaseJob == Job_Rogue || BaseJob == Job_Ninja) { bonus bMatkRate,15; bonus bDex,1; autobonus \"{ bonus bMatkRate,10; bonus bAspdRate,20; }\",30,6000,BF_MAGIC,\"{ specialeffect2 EF_HASTEUP; }\"; if (.@i >= 6) bonus bDex,2; if (.@i >= 9) { bonus bMatkRate,5; bonus2 bAddClass,Class_All,5; bonus bDex,3; } } else if (BaseJob == Job_Assassin && .@i >= 8) { .@j = (.@i - 7) * 10; autobonus \"{ bonus bDefRatioAtkClass,Class_All; }\",.@j,5000,BF_WEAPON,\"{ specialeffect2 EF_HASTEUP; }\"; }",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -150232,7 +150238,7 @@
     "requiredLv": 1,
     "description": "A knife used for cutting enemies. Impossible to refine this item.",
     "itemScript": "None",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -150255,7 +150261,7 @@
     "requiredLv": 1,
     "description": "A French dagger that is usually held in the left hand to parry attacks. Impossible to refine this item.",
     "itemScript": "None",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -150278,7 +150284,7 @@
     "requiredLv": 80,
     "description": "[Only PvP/BG/WoE] Indestructible (except during upgrade attempts). INT + 5, ASPD + 10% Increases physical attack against Players by 75%. Ignore 20% of Player Defense. Increases MATK against Players by 20%. Add a 2% chance of auto-casting level 1 [Lex Divina] when attacking normally or when using [Throw Shuriken]. [Every Refine Level] Increases physical attack against Players by 1%. 3% more damage with [Falcon Assault]. Rogue or Ninja: MATK + 2% Ninja or Soul Linker: ASPD + 2% Soul Linker: CRIT + 10 [Rogue, Soul Linker, Ninja] DEX + 5",
     "itemScript": ".@i = getrefine(); .@r = (BaseJob == Job_Rogue) ? 1 : 0; .@n = (BaseJob == Job_Ninja) ? 1 : 0; .@s = (BaseJob == Job_Soul_Linker) ? 1 : 0; bonus bUnbreakableWeapon; bonus bInt,5; bonus bAspdRate,10; bonus2 bAddRace,RC_Player_Human,75+.@i; bonus2 bIgnoreDefRaceRate,RC_Player_Human,20; bonus2 bMagicAddRace,RC_Player_Human,20; bonus3 bAutoSpell,\"PR_LEXDIVINA\",1,20; bonus4 bAutoSpellOnSkill,\"NJ_SYURIKEN\",\"PR_LEXDIVINA\",1,20; bonus2 bSkillAtk,\"SN_FALCONASSAULT\",.@i*3; if (.@r || .@n) bonus bMatkRate,.@i*2; if (.@n || .@s) bonus bAspdRate,.@i*2; if (.@s) bonus bCritical,.@i*10; if (.@r || .@n || .@s) bonus bDex,5;",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -150447,7 +150453,7 @@
     "requiredLv": 1,
     "description": "... Adds low probability of inflicting stun effect when received physical & magical attack. Reduced SP consumption of all skills by 5%. MATK + 5%.",
     "itemScript": "None",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -150470,7 +150476,7 @@
     "requiredLv": 26,
     "description": "A practical dagger that is made by the Eden Group. This dagger is very useful for beginning adventurers. MATK + 5% HIT + 10 Impossible to refine this item.",
     "itemScript": "bonus bMatkRate,5; bonus bHit,10;",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -150493,7 +150499,7 @@
     "requiredLv": 40,
     "description": "A practical dagger that is made by the Eden Group. It's suitable for an intermediate who has handled a dagger before. MATK + 7% HIT + 10 Impossible to refine this item.",
     "itemScript": "bonus bMatkRate,7; bonus bHit,10;",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -150516,7 +150522,7 @@
     "requiredLv": 1,
     "description": "... AGI + 2",
     "itemScript": "bonus bAgi,2;",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -150616,7 +150622,7 @@
     "requiredLv": 60,
     "description": "A practical dagger that is made by the Eden Group. It's suitable for those who have experience handling daggers. MATK + 10% HIT + 10 Impossible to refine this item.",
     "itemScript": "bonus bMatkRate,10; bonus bHit,10;",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -150644,7 +150650,7 @@
     "requiredLv": 30,
     "description": "Jati Tribe of Dewata Island's sacred sword recreated by the Whitesmith Guild because the original recipe was lost. MATK +10%. Enable a 5% chance of gaining 10% of the damage inflicted on an enemy as HP with each attack.",
     "itemScript": "bonus bMatkRate,10; bonus2 bHpDrainRate,50,10;",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -150667,7 +150673,7 @@
     "requiredLv": 50,
     "description": "Rental Item MATK + 20%. Mackerel fish that's known to be used in many cooking recipes. It's frozen solid. When using a melee attack, has a chance of adding ATK + 30 for 7 seconds. When doing a magical attack, has a chance of adding MATK + 10% for 7 seconds. [Base Level 95+] ATK + 10, MATK + 5%.",
     "itemScript": "bonus bMatkRate,20; bonus bAgi,3; bonus bUnbreakableWeapon; autobonus \"{ bonus bBaseAtk,30; }\",10,7000,BF_WEAPON,\"{ specialeffect2 EF_ENHANCE; }\"; autobonus \"{ bonus bMatkRate,10; }\",10,7000,BF_MAGIC,\"{ specialeffect2 EF_SUFFRAGIUM; }\"; if(BaseLevel>=95) { bonus bBaseAtk,10; bonus bMatkRate,5; }",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -150767,7 +150773,7 @@
     "requiredLv": 1,
     "description": "A Dagger decorated with Gold. It looks so old that you can hardly read any of the writing on it. The writing says 'For the prosperity of the Gaebolg royal family.' Indestructible (except in upgrade attempts). MATK + 15% AGI + 5 30% more damage with [Mammonite]. Spend 25% less zeny when using [Mammonite]. [Every Refine Level] 2% more damage with [Mammonite].",
     "itemScript": "bonus bUnbreakableWeapon; bonus bMatkRate,15; bonus bAgi,5; bonus2 bSkillAtk,\"MC_MAMMONITE\",30+getrefine()*2; bonus2 bZenyCost,\"MC_MAMMONITE\",25;",
-    "jobMask": "0xfc7fea7",
+    "jobMask": "0xFC7FEAF",
     "isVanillaPvm": true,
     "isVanillaPvp": false,
     "type": "Weapon One-Hand",
@@ -154063,59 +154069,59 @@
     "location": "Weapon",
     "sqiBonus": {
       "13320_0": {
-        "description": "20% Magic Resistance",
-        "bonus": "(function (x,y) { x.magicAtkDef += 20; });"
+        "description": "(FIXME) 20% Magic Resistance",
+        "bonus": ""
       },
       "13320_1": {
-        "description": "20% Demi-Human Resistance",
-        "bonus": "(function (x,y) { x.addElement.shadow += 20; });"
+        "description": "(FIXME) 20% Demi-Human Resistance",
+        "bonus": ""
       },
       "13320_2": {
-        "description": "20% Cast Time Reduction",
-        "bonus": "(function (x,y) { x.castRate += -20; });"
+        "description": "(FIXME) 20% Cast Time Reduction",
+        "bonus": ""
       },
       "13320_3": {
-        "description": "Enables use of level 1 [Hiding]. 50% more damage and add a 20% chance to inflict Sleep status with [Mist Slash]",
-        "bonus": "(function (x,y) { x.enableSkill[\"Hiding\"] = { skillLv: 1, isOffensive: false} }); "
+        "description": "(FIXME) Enables use of level 1 [Hiding]. 50% more damage and add a 20% chance to inflict Sleep status with [Mist Slash]",
+        "bonus": ""
       },
       "13320_4": {
-        "description": "CRIT + 25, 20% more damage with auto-attack and [Shadow Slash] Critical Hits",
-        "bonus": "(function (x,y) { x.crit += 25;x.criticalAtkRate += 20; });"
+        "description": "(FIXME) CRIT + 25, 20% more damage with auto-attack and [Shadow Slash] Critical Hits",
+        "bonus": ""
       },
       "13320_5": {
-        "description": "[Final Strike] ignores enemy DEF. 10% of your current HP (not max) remains after using [Final Strike]",
-        "bonus": "(function (x,y) { x.skillAtk[\"Final Strike\"] += 20;x.skillAtk[\"Final Strike [Max HP]\"] += 20; });"
+        "description": "(FIXME) [Final Strike] ignores enemy DEF. 10% of your current HP (not max) remains after using [Final Strike]",
+        "bonus": ""
       },
       "13320_6": {
-        "description": "2 Cell Knockback and 50% more damage with [Crimson Fire Formation]",
-        "bonus": "(function (x,y) { x.skillAtk[\"Crimson Fire Formation\"] += 50; });"
+        "description": "(FIXME) 2 Cell Knockback and 50% more damage with [Crimson Fire Formation]",
+        "bonus": ""
       },
       "13320_7": {
-        "description": "50% more damage with [Throw Humma Shuriken], [Throw Shuriken], and [Throw Kunai]. [Throw Huuma Shuriken] no longer split damage and delay converted into a cooldown",
-        "bonus": "(function (x,y) { x.skillAtk[\"Throw Shuriken\"] += 50;x.skillAtk[\"Throw Kunai\"] += 50;x.skillAtk[\"Throw Huuma Shuriken\"] += 50; });"
+        "description": "(FIXME) 50% more damage with [Throw Humma Shuriken], [Throw Shuriken], and [Throw Kunai]. [Throw Huuma Shuriken] no longer split damage and delay converted into a cooldown",
+        "bonus": ""
       },
       "13320_8": {
-        "description": "20% more damage with [Dragon Fire Formation] and [Falling Ice Pillar] and convert their delays into cooldowns; 8 Cells Knockback with [Falling Ice Pillar]",
-        "bonus": "(function (x,y) { x.skillAtk[\"Dragon Fire Formation\"] += 20;x.skillAtk[\"Falling Ice Pillar\"] += 20; });"
+        "description": "(FIXME) 20% more damage with [Dragon Fire Formation] and [Falling Ice Pillar] and convert their delays into cooldowns; 8 Cells Knockback with [Falling Ice Pillar]",
+        "bonus": ""
       },
       "13320_9": {
-        "description": "25% chance to auto-cast level 2 [Critical Wounds] after using [Wind Blade] and convert delay into cooldown",
+        "description": "(FIXME) 25% chance to auto-cast level 2 [Critical Wounds] after using [Wind Blade] and convert delay into cooldown",
         "bonus": ""
       },
       "13320_10": {
-        "description": "Reduce SP consumption of skills by 20%",
-        "bonus": "(function (x,y) { x.spCostReductionRate += -20; });"
+        "description": "(FIXME) Reduce SP consumption of skills by 20%",
+        "bonus": ""
       },
       "13320_11": {
-        "description": "15% aftercast reduction",
-        "bonus": "(function (x,y) { x.delayRate += 15; });"
+        "description": "(FIXME) 15% aftercast reduction",
+        "bonus": ""
       },
       "13320_12": {
-        "description": "10% more damage with [Lightning Spear of Ice], [Crimson Fire Blossom], and [North Wind]. Additional 10% if base STR >= 90",
-        "bonus": "(function (x,y) { x.skillAtk[\"Lightning Spear of Ice\"] += 10;x.skillAtk[\"Crimson Fire Blossom\"] += 10;x.skillAtk[\"North Wind\"] += 10; });"
+        "description": "(FIXME) 10% more damage with [Lightning Spear of Ice], [Crimson Fire Blossom], and [North Wind]. Additional 10% if base STR >= 90",
+        "bonus": ""
       },
       "13320_13": {
-        "description": "PvM: Endow Neutral Element",
+        "description": "(FIXME) PvM: Endow Neutral Element",
         "bonus": ""
       }
     }
@@ -154397,7 +154403,7 @@
     "requiredLv": 80,
     "description": "A sword favored by gladiators. It is specially designed for battles against humanoids. Indestructible (except during upgrade attempts). STR + 3, AGI + 5 DEX + 2 Increases physical attack against Demi-Human monster by 75%. Ignore 20% of Demi-Human Defense. 10% more damage with [Bash] and [Mammonite]. [Refine Level +7 or Higher] 20% more damage with [Bash] and [Mammonite].",
     "itemScript": "bonus bUnbreakableWeapon; bonus bStr,3; bonus bAgi,5; bonus bDex,2; bonus2 bAddRace,RC_DemiHuman,75; bonus2 bAddRace,RC_Player_Human,75; bonus2 bIgnoreDefRaceRate,RC_DemiHuman,20; bonus2 bIgnoreDefRaceRate,RC_Player_Human,20; bonus2 bSkillAtk,\"SM_BASH\",10; bonus2 bSkillAtk,\"MC_MAMMONITE\",10; if (getrefine() >= 7) { bonus2 bSkillAtk,\"SM_BASH\",20; bonus2 bSkillAtk,\"MC_MAMMONITE\",20; }",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -154420,7 +154426,7 @@
     "requiredLv": 80,
     "description": "A sword favored by gladiators. It is specially designed for battles against humanoids. Indestructible (except during upgrade attempts). STR + 1, DEX + 3 MATK + 15% Increases physical attack against Demi-Human monster by 75%. [Crusader] MATK + 10% 20% more damage with [Holy Cross]. [Refine Level +7 or Higher] 10% more damage with [Holy Cross]. [Refine Level +9 or Higher] 10% more damage with [Holy Cross].",
     "itemScript": ".@i = getrefine(); bonus bUnbreakableWeapon; bonus bStr,1; bonus bDex,3; bonus bMatkRate,15; bonus2 bAddRace,RC_DemiHuman,75; bonus2 bAddRace,RC_Player_Human,75; if (BaseJob == Rogue || BaseJob == Crusader) { bonus bMatkRate,10; bonus2 bSkillAtk,\"CR_HOLYCROSS\",20; if (.@i >= 7) bonus2 bSkillAtk,\"CR_HOLYCROSS\",10; if (.@i >= 9) bonus2 bSkillAtk,\"CR_HOLYCROSS\",10; }",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -154512,7 +154518,7 @@
     "requiredLv": 2,
     "description": "An one-handed sword with a rounded blade. Impossible to refine this item.",
     "itemScript": "None",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -154535,7 +154541,7 @@
     "requiredLv": 80,
     "description": "[Only PvP/BG/WoE] Indestructible (except in upgrade attempts). Increases physical attack against Players by 75%. Ignore 20% of Player Defense. [Every Refine Level] Ignore 1% of Player Defense. Increases physical attack against Players by 1%. 5% more damage with [Bash] and [Mammonite]. ASPD + 3% [Refine Level +6 or higher] Add a 5% chance of auto-casting level 1 [Critical Wounds] when using [Bash] or [Mammonite]. [Super Novice] Enables use of level 1 [Fatal Blow] Add a 5% chance to auto-cast level 1 [Bowling Bash] when attacking normally. Increase to level 10 if [Bash] and [Sword Mastery] are mastered. [Refine Level +8 or Higher] [Critical Wounds] auto-cast level increases to 2.",
     "itemScript": ".@i = getrefine(); .@j = (Class == Job_Super_Novice && .@i >= 8) ? 2 : 1; bonus bUnbreakableWeapon; bonus bAspdRate,.@i*3; bonus2 bAddRace,RC_Player_Human,75+.@i; bonus2 bIgnoreDefRaceRate,RC_Player_Human,20+.@i; bonus2 bSkillAtk,\"SM_BASH\",.@i*5; bonus2 bSkillAtk,\"MC_MAMMONITE\",.@i*5; if (.@i >= 6) { bonus4 bAutoSpellOnSkill,\"SM_BASH\",\"NPC_CRITICALWOUND\",.@j,50; bonus4 bAutoSpellOnSkill,\"MC_MAMMONITE\",\"NPC_CRITICALWOUND\",.@j,50; } if ( Class == Job_Super_Novice ) { .@k = (getskilllv(\"SM_SWORD\") >= 10 && getskilllv(\"SM_BASH\") >= 10) ? 10 : 1; skill \"SM_FATALBLOW\",1; bonus3 bAutoSpell,\"KN_BOWLINGBASH\",.@k,50; }",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -154558,7 +154564,7 @@
     "requiredLv": 80,
     "description": "[Only PvP/BG/WoE] Indestructible (Except in upgrade attempts). MATK + 10% Every time you attack you gain 3 SP. [Every Refine Level] INT + 1 Aftercast Delay - 1% [Refine Level +8 or Higher] Reduces SP consumption of skills by 10%. Increase effectiveness of [Potion Pitcher] by 10% and [Slim Potion Pitcher] by 5%. [Alchemist] INT + 4, DEX + 3",
     "itemScript": ".@i = getrefine(); bonus bUnbreakableWeapon; bonus bInt,.@i; bonus bMatkRate,10; bonus bDelayRate,-.@i; bonus bSPDrainValue,3; if (.@i >= 7) { bonus bUseSPrate,-10; bonus2 bSkillHeal2,\"AM_POTIONPITCHER\",10; bonus2 bSkillHeal2,\"CR_SLIMPITCHER\",5; } if (BaseJob == Job_Alchemist) { bonus bInt,4; bonus bDex,3; }",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -154700,7 +154706,7 @@
     "requiredLv": 26,
     "description": "A one-handed sword that is made by the Eden Group. A weapon that can be used by anyone easily. HIT + 10 Impossible to refine this item.",
     "itemScript": "bonus bHit,10;",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -154723,7 +154729,7 @@
     "requiredLv": 40,
     "description": "A one-handed sword that is made by the Eden Group. It's suitable for an intermediate sword handler. HIT + 10 Impossible to refine this item.",
     "itemScript": "bonus bHit,10;",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -154746,7 +154752,7 @@
     "requiredLv": 1,
     "description": "... STR + 1, DEX + 1.",
     "itemScript": "bonus bStr,1; bonus bDex,1;",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -154796,7 +154802,7 @@
     "requiredLv": 60,
     "description": "A one-handed sword that is made by the Eden Group. It's suitable for an experienced sword handler. HIT + 10 Impossible to refine this item.",
     "itemScript": "bonus bHit,10;",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -154824,7 +154830,7 @@
     "requiredLv": 40,
     "description": "A ceremonial sword for high class nobles. Engraving on it says - ''To commemorate the wedding of my sister Nerious. R. Raina'' MATK + 15% ASPD + 10% HIT + 10 25% more damage with [Holy Cross]. [Every Refine Level] On every successful [Auto Guard] block against short range physical attacks, auto-cast [Holy Cross] at a level equal to this weapon's refine level. If not actively in combat with single target offensive attacks, nothing happens.",
     "itemScript": "bonus bMatkRate,15; bonus bAspdRate,10; bonus bHit,10; bonus2 bSkillAtk,\"CR_HOLYCROSS\",25; bonus4 bAutoSpellOnBlock,\"CR_AUTOGUARD\",\"CR_HOLYCROSS\",getrefine(),1000;",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": false,
     "type": "Weapon One-Hand",
@@ -173454,7 +173460,7 @@
     "requiredLv": 40,
     "description": "A special tonic that combats the effects of drowsiness. Temporarily increases Attack Speed.",
     "itemScript": "sc_start SC_ASPDPOTION1,1800000,0;",
-    "jobMask": "0xfe1fff7",
+    "jobMask": "0xFE1FFFF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Usable",
@@ -176457,7 +176463,7 @@
     "requiredLv": 80,
     "description": "Super Novice Guardian Angel's robe. MDEF + 20 [Advanced Angelic Protection & Advanced Angelic Cardigan set] Reduce 5% damage from Neutral type attacks. [Advanced Angelic Protection, Advanced Angel's Reincarnation, Advanced Angelic Guard, Advanced Angelic Cardigan & Advanced Angel's Kiss Equip Set] Maximum HP + 900, Maximum SP + 100 Add a 3% chance of auto casting Level 2 Assumptio on the user when the user receives Physical Damage.",
     "itemScript": "bonus bMdef,20;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -176606,7 +176612,7 @@
     "requiredLv": 26,
     "description": "A beginner's mace that is made exclusively by the Eden Group. HIT + 10 Impossible to refine this item.",
     "itemScript": "bonus bHit,10;",
-    "jobMask": "0x1f80e07",
+    "jobMask": "0x1F80E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -176629,7 +176635,7 @@
     "requiredLv": 40,
     "description": "A mace that is made by the Eden Group. HIT + 10 Impossible to refine this item.",
     "itemScript": "bonus bHit,10;",
-    "jobMask": "0x1f80e07",
+    "jobMask": "0x1F80E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -176652,7 +176658,7 @@
     "requiredLv": 1,
     "description": "... INT + 1, AGI + 1.",
     "itemScript": "bonus bInt,1; bonus bAgi,1;",
-    "jobMask": "0x1f80e07",
+    "jobMask": "0x1F80E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -176748,7 +176754,7 @@
     "requiredLv": 60,
     "description": "A mace that is made by the Eden Group. It's suitable for an experienced mace wielder. HIT + 10 Impossible to refine this item.",
     "itemScript": "bonus bHit,10;",
-    "jobMask": "0x1f80e07",
+    "jobMask": "0x1F80E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -176776,7 +176782,7 @@
     "requiredLv": 1,
     "description": "A cat hand shaped club which doesn't seem hurt. Increases physical damage against Brute monsters by 15%. Has a chance of casting [Wink of Charm] while physically attacking.",
     "itemScript": "bonus2 bAddRace,RC_Brute,15; bonus3 bAutoSpell,\"DC_WINKCHARM\",1,10;",
-    "jobMask": "0x1f80e07",
+    "jobMask": "0x1F80E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -176799,7 +176805,7 @@
     "requiredLv": 50,
     "description": "Rental Item High Quality fish that's known to be used in all of the food recipes. It's frozen solid. When attacking, has a chance to Stun the enemy or cast Level 5[Bash]. [Base Level 95+] ATK + 20.",
     "itemScript": "bonus bUnbreakableWeapon; bonus2 bAddEff,Eff_Stun,150; bonus3 bAutoSpell,\"SM_BASH\",5,20; if(BaseLevel>=95) bonus bBaseAtk,20;",
-    "jobMask": "0x1f80e07",
+    "jobMask": "0x1F80E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -176849,7 +176855,7 @@
     "requiredLv": 50,
     "description": "[Event Item] The cursed spoon... So the legends were true! ASPD + 8% Add a 2% chance of auto casting Curse on the enemy when attacking. [Every Refine Level] HIT + 3",
     "itemScript": "bonus bHit,getrefine()*3; bonus bAspdRate,8; bonus2 bAddEff,Eff_Curse,200;",
-    "jobMask": "0x1f80e07",
+    "jobMask": "0x1F80E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": false,
     "type": "Weapon One-Hand",
@@ -176872,7 +176878,7 @@
     "requiredLv": 50,
     "description": "[Event Item] An empty liquor bottle! If you break it, it could be really sharp. Inflict 10% more damage with Critical attacks. Add a 3% chance of auto casting External Bleeding on the enemy when attacking. CRIT + 3 [Every Refine Level] CRIT + 1 [+Beer Hat] FLEE + 20 HP/SP Recovery levels are increased to 10. Enable use of level 1 [Moving HP Recovery]",
     "itemScript": "bonus bCritical,3+getrefine(); bonus bCritAtkRate,10; bonus2 bAddEff,Eff_Bleeding,300;",
-    "jobMask": "0x1f80e07",
+    "jobMask": "0x1F80E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": false,
     "type": "Weapon One-Hand",
@@ -183176,7 +183182,7 @@
     "requiredLv": 80,
     "description": "A hair ornament that was kissed by the Super Novice's Guardian Angel. SP Recovery + 30% [Advanced Angels Kiss & Advanced Angelic Cardigan set] ATK + 10",
     "itemScript": "bonus bSPrecovRate,30;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -207953,7 +207959,7 @@
     "requiredLv": 80,
     "description": "Super Novice Guardian Angel's warm and comfortable cardigan. HP Recovery + 50% [Advanced Angelic Cardigan & Advanced Angelic Protection set] AGI + 5, FLEE + 10",
     "itemScript": "bonus bHPrecovRate,50;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -214140,7 +214146,7 @@
     "requiredLv": 80,
     "description": "Heavenly sandals worn by the Guardian Angel of Super Novices. Maximum HP + 500, Maximum SP + 100 [Advanced Angels Reincarnation & Advanced Angels Kiss set] MATK + 5%",
     "itemScript": "bonus bMaxHP,500; bonus bMaxSP,100;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -230493,7 +230499,7 @@
     "requiredLv": 40,
     "description": "A sacred axe which belonged to the diety Apis. It has incredible utility and strength. Increases damage with ranged attacks by 10%. [Refine Level +7 or Higher] Increases damage with ranged attacks by 5%. [Refine Level +9 or Higher] Increases damage with ranged attacks by 5%. [Novice Class, Merchant Class] Enables use of level 1 [Throw Tomahawk].",
     "itemScript": ".@i = getrefine(); bonus bLongAtkRate,10; if (.@i >= 7) bonus bLongAtkRate,5; if (.@i >= 9) bonus bLongAtkRate,5; if (BaseClass == Job_Novice || BaseClass == Job_Merchant) skill \"ITM_TOMAHAWK\",1;",
-    "jobMask": "0xfc00e07",
+    "jobMask": "0xFC00E0F",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Weapon One-Hand",
@@ -234150,7 +234156,7 @@
     "requiredLv": 1,
     "description": "The royal axe of a powerful shield maiden. Though its power is mighty, it is easy to handle, even by those less experienced. 10% more physical and magical damage against Valkyrie Geiravor. 25% more damage with [Cart Revolution] and [Cart Termination].",
     "itemScript": "bonus2 bAddDamageClass,3834,15; bonus2 bAddMagicDamageClass,3834,15; bonus2 bSkillAtk,\"MC_CARTREVOLUTION\",25; bonus2 bSkillAtk,\"WS_CARTTERMINATION\",25;",
-    "jobMask": "0x1c00e07",
+    "jobMask": "0x1C00E0F",
     "isVanillaPvm": false,
     "isVanillaPvp": false,
     "type": "Weapon One-Hand",
@@ -238704,7 +238710,7 @@
     "requiredLv": 0,
     "description": "Special earrings that let you put on a different outfit for your class! Does not work in PvP environments.",
     "itemScript": "setlook LOOK_BODY2,1;",
-    "jobMask": "0xdb76de7",
+    "jobMask": "0xDB76DEF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Shadow Equipment",
@@ -245029,7 +245035,7 @@
     "requiredLv": 0,
     "description": "A box containing 1 Body Style Earrings. Does not work in PvP environments. Rental period: 1 Day. _ Once this item is purchased, termination of contract is impossible. Also, this item is not refundable. _",
     "itemScript": "rentitem 30070,86400;",
-    "jobMask": "0xdb76de7",
+    "jobMask": "0xDB76DEF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Item Container",
@@ -245052,7 +245058,7 @@
     "requiredLv": 0,
     "description": "A box containing 1 Body Style Earrings. Does not work in PvP environments. Rental period: 3 Days. _ Once this item is purchased, termination of contract is impossible. Also, this item is not refundable. _",
     "itemScript": "rentitem 30070,259200;",
-    "jobMask": "0xdb76de7",
+    "jobMask": "0xDB76DEF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Item Container",
@@ -245075,7 +245081,7 @@
     "requiredLv": 0,
     "description": "A box containing 1 Body Style Earrings. Does not work in PvP environments. Rental period: 7 Days. _ Once this item is purchased, termination of contract is impossible. Also, this item is not refundable. _",
     "itemScript": "rentitem 30070,604800;",
-    "jobMask": "0xdb76de7",
+    "jobMask": "0xDB76DEF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Item Container",
@@ -245098,7 +245104,7 @@
     "requiredLv": 0,
     "description": "A box containing 1 Body Style Earrings. Does not work in PvP environments. Rental period: 14 Days. _ Once this item is purchased, termination of contract is impossible. Also, this item is not refundable. _",
     "itemScript": "rentitem 30070,1209600;",
-    "jobMask": "0xdb76de7",
+    "jobMask": "0xDB76DEF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Item Container",
@@ -245121,7 +245127,7 @@
     "requiredLv": 0,
     "description": "A box containing 1 Body Style Earrings. Does not work in PvP environments. Rental period: 30 Days. _ Once this item is purchased, termination of contract is impossible. Also, this item is not refundable. _",
     "itemScript": "rentitem 30070,2592000;",
-    "jobMask": "0xdb76de7",
+    "jobMask": "0xDB76DEF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Item Container",
@@ -245305,7 +245311,7 @@
     "requiredLv": 80,
     "description": "Designed for new soldiers to be fully prepared for combat. It gives off multiple effects when compounded as a set. MDEF + 2 MaxHP + 2000 Reduces damage from Players by 2%. [Fledgling Manteau & Fledgling Boots Equip Set] CRIT + 25 ASPD + 10% MaxHP + 15% MaxSP + 300 All Stats + 2 Reduces after-cast delay by 10% Increases damage from all Non-Demi-Human monsters by 300%",
     "itemScript": "bonus bMaxHP,2000; bonus bMdef,2; bonus2 bSubRace,RC_Player_Human,2;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -245328,7 +245334,7 @@
     "requiredLv": 80,
     "description": "A manteau designed to aid new recruits in battle. - MDEF + 2 - MaxHP + 400 - Reduces damage from Players by 2%.",
     "itemScript": "bonus bMaxHP,400; bonus bMdef,2; bonus2 bSubRace,RC_Player_Human,2;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -245351,7 +245357,7 @@
     "requiredLv": 80,
     "description": "Combat boots for new trainees to travel in all types of terrain with ease. MDEF + 1 MaxHP + 300 Reduces damage from Players by 1%.",
     "itemScript": "bonus bMaxHP,300; bonus bMdef,1; bonus2 bSubRace,RC_Player_Human,1;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",
@@ -245374,7 +245380,7 @@
     "requiredLv": 80,
     "description": "Battlegrounds reward item. ATK + 5% MDEF + 6 MATK + 5% ASPD + 5% MaxHP + 500 MaxSP + 100 Add 1% chance of auto casting Level 1 [Dragon Fear] when attacking. [+ Glorious Ring] ATK + 5% MATK + 5% Increases [Heal], [Sanctuary], and [Potion Pitcher] effectiveness by 10%.",
     "itemScript": "bonus bMaxHP,500; bonus bMaxSP,100; bonus bMdef,6; bonus bAspdRate,5; bonus bMatkRate,5; bonus2 bAddClass,Class_All,5; bonus3 bAutoSpell,\"NPC_DRAGONFEAR\",1,10;",
-    "jobMask": "0x7",
+    "jobMask": "0xF",
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Armor",

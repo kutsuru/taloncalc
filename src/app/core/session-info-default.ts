@@ -30,7 +30,7 @@ export function createEmptySessionBonus(): SessionBonus {
             breakArmorRate: 0, breakWeaponRate: 0,
             freeCastMoveRate: 0, addItemHealRate: 0, hpGainValue: 0, tripleAddRate: 0,
             spGainValue: 0, useSPrate: 0, scAtkPotion: 0, scMatkPotion: 0, scIncCrit: 0,
-            scCastRate: 0
+            scCastRate: 0, doubleAttackRate: 0
         },
         // initialze maps
         addRace: new DefaultMap(0), addEle: new DefaultMap(0), addSize: new DefaultMap(0), addClass: new DefaultMap(0), addRace2: new DefaultMap(0),

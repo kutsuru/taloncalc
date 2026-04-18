@@ -223,6 +223,7 @@ export type SessionBonus = {
     freeCastMoveRate: number; addItemHealRate: number;
     useSPrate: number; scAtkPotion: number; scMatkPotion: number;
     scIncCrit: number; scCastRate: number;
+    doubleAttackRate: number;
   };
 
   /* Mappings for bonus2 und bonus3 */
