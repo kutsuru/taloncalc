@@ -18,6 +18,9 @@ export const INLINE_FUNCTIONS: Record<string, InlineFunction> = {
         const diff: number = max - min;
         return Math.floor(Math.random() * diff + min);
     },
+    floor: (be, opts, value: number): number => {
+        return Math.floor(value);
+    },
     callfunc: (be, opts, name: string, ...args: any[]) => {
         switch (name) {
             case 'F_Map_VS':

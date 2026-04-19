@@ -438,6 +438,14 @@ export type DBEnchant = {
   name: string,
   itemId: number
 }
+/**************/
+/*** PET DB ***/
+export type DBPet = {
+  ID: number;
+  name: string;
+  desc: string;
+  bonus: string;
+}
 
 /***********/
 /*** SQI ***/

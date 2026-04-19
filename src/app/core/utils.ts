@@ -43,6 +43,41 @@ export class DefaultMap<K extends string | number | symbol, T> {
         return result;
     }
 }
+/*** Map with sorted values ***/
+type Comperator<V> = (a: V, b: V) => number;
+export class SuperMap<K, V> extends Map<K, V> {
+    #comp: Comperator<V>;
+    #sorted: V[] | null = null;
+
+    constructor(compare: Comperator<V>, entries?: Iterable<readonly [K, V]>) {
+        super(entries);
+        this.#comp = compare;
+    }
+
+    /*** overrides ***/
+    override clear(): void {
+        this.#sorted = null;
+        super.clear();
+    }
+    override delete(key: K): boolean {
+        this.#sorted = null;
+        return super.delete(key);
+    }
+    override set(key: K, value: V): this {
+        this.#sorted = null;
+        return super.set(key, value);
+    }
+
+    /*** public functions ***/
+    valuesSorted(): V[] {
+        /* sort of if not cached */
+        if (this.#sorted === null) {
+            this.#sorted = [...this.values()].sort(this.#comp);
+        }
+        /* destruct so its always a copy */
+        return [...this.#sorted];
+    }
+}
 
 /*** execute a math-formula with +,-,*,/ (Shunting-Yard-Algo) ***/
 type MathOperator = '+' | '-' | '*' | '/';

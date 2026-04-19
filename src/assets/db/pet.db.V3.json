@@ -1,0 +1,1782 @@
+[
+  {
+    "ID": 9001,
+    "name": "Poring",
+    "desc": "LUK + 2, CRIT + 1.",
+    "bonus": "bonus bLuk,2; bonus bCritical,1;"
+  },
+  {
+    "ID": 9002,
+    "name": "Drops",
+    "desc": "HIT + 3, ATK + 3.",
+    "bonus": "bonus bHit,3; bonus bBaseAtk,3;"
+  },
+  {
+    "ID": 9003,
+    "name": "Poporing",
+    "desc": "LUK + 2, Increases resistance against the Poison status by 10%.",
+    "bonus": "bonus bLuk,2; bonus2 bSubEle,Ele_Poison,10;"
+  },
+  {
+    "ID": 9004,
+    "name": "Lunatic",
+    "desc": "CRIT + 2, ATK + 2.",
+    "bonus": "bonus bCritical,2; bonus bBaseAtk,2;"
+  },
+  {
+    "ID": 9005,
+    "name": "Picky",
+    "desc": "STR + 1, ATK + 5.",
+    "bonus": "bonus bStr,1; bonus bBaseAtk,5;"
+  },
+  {
+    "ID": 9006,
+    "name": "Chonchon",
+    "desc": "AGI + 1, FLEE + 2.",
+    "bonus": "bonus bAgi,1; bonus bFlee,2;"
+  },
+  {
+    "ID": 9007,
+    "name": "Steel Chonchon",
+    "desc": "FLEE + 6, AGI - 1.",
+    "bonus": "bonus bFlee,6; bonus bAgi,-1;"
+  },
+  {
+    "ID": 9008,
+    "name": "Hunter Fly",
+    "desc": "Perfect Dodge + 2, FLEE - 5.",
+    "bonus": "bonus bFlee,-5; bonus bFlee2,2;"
+  },
+  {
+    "ID": 9009,
+    "name": "Savage Babe",
+    "desc": "VIT + 1, MaxHP + 50.",
+    "bonus": "bonus bVit,1; bonus bMaxHP,50;"
+  },
+  {
+    "ID": 9010,
+    "name": "Baby Desert Wolf",
+    "desc": "INT + 1, MaxSP + 50.",
+    "bonus": "bonus bInt,1; bonus bMaxSP,50;"
+  },
+  {
+    "ID": 9011,
+    "name": "Rocker",
+    "desc": "HP Recovery - 5%, MaxHP + 25.",
+    "bonus": "bonus bHPrecovRate,5; bonus bMaxHP,25;"
+  },
+  {
+    "ID": 9012,
+    "name": "Spore",
+    "desc": "HIT + 5, ATK -2.",
+    "bonus": "bonus bHit,5; bonus bBaseAtk,-2;"
+  },
+  {
+    "ID": 9013,
+    "name": "Poison Spore",
+    "desc": "STR + 1, INt + 1.",
+    "bonus": "bonus bStr,1; bonus bInt,1;"
+  },
+  {
+    "ID": 9014,
+    "name": "Peco Peco",
+    "desc": "MaxHP + 150, MaxSP - 10.",
+    "bonus": "bonus bMaxHP,150; bonus bMaxSP,-10;"
+  },
+  {
+    "ID": 9015,
+    "name": "Smokie",
+    "desc": "AGI + 1, Perfect Dodge + 1.",
+    "bonus": "bonus bAgi,1; bonus bFlee2,1;"
+  },
+  {
+    "ID": 9016,
+    "name": "Yoyo",
+    "desc": "CRIT + 3, LUK - 1.",
+    "bonus": "bonus bCritical,3; bonus bLuk,-1;"
+  },
+  {
+    "ID": 9017,
+    "name": "Orc Warrior",
+    "desc": "ATK + 10, DEF - 3.",
+    "bonus": "bonus bBaseAtk,10; bonus bDef,-3;"
+  },
+  {
+    "ID": 9018,
+    "name": "Munak",
+    "desc": "INT + 1, DEF + 1.",
+    "bonus": "bonus bInt,1; bonus bDef,1;"
+  },
+  {
+    "ID": 9019,
+    "name": "Dokebi",
+    "desc": "MATK + 1%, ATK - 1%.",
+    "bonus": "bonus bMatkRate,1; bonus bAtkRate,-1;"
+  },
+  {
+    "ID": 9020,
+    "name": "Sohee",
+    "desc": "STR + 1, DEX + 1.",
+    "bonus": "bonus bStr,1; bonus bDex,1;"
+  },
+  {
+    "ID": 9021,
+    "name": "Isis",
+    "desc": "ATK + 1%, MATK - 1%.",
+    "bonus": "bonus bMatkRate,-1; bonus bAtkRate,1;"
+  },
+  {
+    "ID": 9022,
+    "name": "Green Petite",
+    "desc": "ASPD + 1%, DEF/MDEF -2.",
+    "bonus": "bonus bDef,-2; bonus bMdef,-2; bonus bAspdRate,1;"
+  },
+  {
+    "ID": 9023,
+    "name": "Deviruchi",
+    "desc": "ATK + 1%, MATK + 1%, MaxHP/MaxSP -3%.",
+    "bonus": "bonus bMatkRate,1; bonus bAtkRate,1; bonus bMaxHPrate,-3; bonus bMaxSPrate,-3;"
+  },
+  {
+    "ID": 9024,
+    "name": "Bapho Jr.",
+    "desc": "DEF + 1, MDEF + 1, Adds a 1% resistance against Stun.",
+    "bonus": "bonus bDef,1; bonus bMdef,1; bonus2 bResEff,Eff_Stun,-100;"
+  },
+  {
+    "ID": 9025,
+    "name": "Bongun",
+    "desc": "VIT + 1, Adds a 1% resistance against Stun.",
+    "bonus": "bonus bVit,1; bonus2 bResEff,Eff_Stun,100;"
+  },
+  {
+    "ID": 9026,
+    "name": "Zherlthsh",
+    "desc": "Increases physical and magical damage inflicted on DemiHuman by 2%.",
+    "bonus": "bonus2 bAddRace,RC_Demihuman,2; bonus2 bMagicAddRace,RC_DemiHuman,2; bonus2 bAddRace,RC_Player_Human,2; bonus2 bMagicAddRace,RC_Player_Human,2;"
+  },
+  {
+    "ID": 9027,
+    "name": "Alice",
+    "desc": "MDEF + 1, Reduces damage from DemiHuman enemies by 1%.",
+    "bonus": "bonus bMdef,1; bonus2 bSubRace,RC_DemiHuman,1; bonus2 bSubRace,RC_Player_Human,1;"
+  },
+  {
+    "ID": 9028,
+    "name": "Rice Cake",
+    "desc": "Increase resistance to Neutral Property attacks by 1% and Fire Property attacks by 2%. Increases damage against Neutral Property monsters by 1% and Fire Property monsters by 2%. Increases magical damage against Fire Property monsters by 2%.",
+    "bonus": "bonus2 bSubEle,Ele_Neutral,1; bonus2 bAddEle,Ele_Neutral,1; bonus2 bAddEle,Ele_Fire,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bMagicAddEle,Ele_Fire,2;"
+  },
+  {
+    "ID": 9029,
+    "name": "Christmas Goblin",
+    "desc": "HP + 30,Increase resistance against Water Property by 1%.",
+    "bonus": "bonus bMaxHP,30; bonus2 bSubEle,Ele_Water,1;"
+  },
+  {
+    "ID": 9030,
+    "name": "Chung E",
+    "desc": "DEF + 1, Reduces damage from DemiHuman enemies by 1%.",
+    "bonus": "bonus bDef,1; bonus2 bSubRace,RC_DemiHuman,1; bonus2 bSubRace,RC_Player_Human,1;"
+  },
+  {
+    "ID": 9031,
+    "name": "Eclipse",
+    "desc": ""
+  },
+  {
+    "ID": 9032,
+    "name": "Knife Goblin",
+    "desc": ""
+  },
+  {
+    "ID": 9033,
+    "name": "Flail Goblin",
+    "desc": ""
+  },
+  {
+    "ID": 9034,
+    "name": "Hammer Goblin",
+    "desc": ""
+  },
+  {
+    "ID": 9035,
+    "name": "Earth Deleter",
+    "desc": ""
+  },
+  {
+    "ID": 9036,
+    "name": "Diabolic",
+    "desc": ""
+  },
+  {
+    "ID": 9037,
+    "name": "Wanderer",
+    "desc": "",
+    "bonus": "bonus bAgi,3; bonus bDex,1;"
+  },
+  {
+    "ID": 9038,
+    "name": "New Year Doll",
+    "desc": "",
+    "bonus": "bonus bDex,1; bonus bAgi,2; bonus bInt,2; bonus2 bSkillHeal2,\"AL_HEAL\",5; bonus2 bSkillHeal2,\"PR_SANCTUARY\",5; bonus2 bSkillHeal2,\"AM_POTIONPITCHER\",5;"
+  },
+  {
+    "ID": 9039,
+    "name": "Bacsojin",
+    "desc": ""
+  },
+  {
+    "ID": 9040,
+    "name": "Civil Servant",
+    "desc": "MaxSP + 10.",
+    "bonus": "bonus bMaxSP,10;"
+  },
+  {
+    "ID": 9041,
+    "name": "Leaf Cat",
+    "desc": "Decreases damage from Brute monster by 3%.",
+    "bonus": "bonus2 bSubRace,RC_Brute,3;"
+  },
+  {
+    "ID": 9042,
+    "name": "Loli Ruri",
+    "desc": "Adds chance of auto casting Level 1 Heal on the user when the user receives Physical Damage. MaxHP + 3%.",
+    "bonus": "bonus bMaxHPRate,3; bonus3 bAutoSpellWhenHit,\"AL_HEAL\",1,50;"
+  },
+  {
+    "ID": 9043,
+    "name": "Marionette",
+    "desc": "SP Recovery + 3%.",
+    "bonus": "bonus bSPrecovRate,3;"
+  },
+  {
+    "ID": 9044,
+    "name": "Shinobi",
+    "desc": "AGI + 2.",
+    "bonus": "bonus bAgi,2;"
+  },
+  {
+    "ID": 9045,
+    "name": "Whisper",
+    "desc": "FLEE + 7, DEF - 3.",
+    "bonus": "bonus bFlee,7; bonus bDef,-3;"
+  },
+  {
+    "ID": 9046,
+    "name": "Goblin Leader",
+    "desc": "Increases damage against DemiHuman monster by 3%.",
+    "bonus": "bonus2 bAddRace,RC_DemiHuman,3; bonus2 bAddRace,RC_Player_Human,3;"
+  },
+  {
+    "ID": 9047,
+    "name": "Wicked Nymph",
+    "desc": "MaxSP + 30, SP Recovery + 5%.",
+    "bonus": "bonus bMaxSP,30; bonus bSPrecovRate,5;"
+  },
+  {
+    "ID": 9048,
+    "name": "Miyabi Ningyo",
+    "desc": "INT + 1, Reduce Casting Time by 3%.",
+    "bonus": "bonus bInt,1; bonus bCastrate,-3;"
+  },
+  {
+    "ID": 9049,
+    "name": "Dullahan",
+    "desc": "CRIT damage + 5%.",
+    "bonus": "bonus bCritAtkRate,5;"
+  },
+  {
+    "ID": 9050,
+    "name": "Medusa",
+    "desc": "VIT + 1, Increase resistance to Stone Curse status by 5%.",
+    "bonus": "bonus bVit,1; bonus2 bResEff,Eff_Stone,500;"
+  },
+  {
+    "ID": 9051,
+    "name": "Stone Shooter",
+    "desc": "Add a 3% resistance against Fire Property attacks.",
+    "bonus": "bonus2 bSubEle,Ele_Fire,3;"
+  },
+  {
+    "ID": 9052,
+    "name": "Incubus",
+    "desc": "MaxSP + 5%.",
+    "bonus": "bonus bMaxSPRate,5;"
+  },
+  {
+    "ID": 9053,
+    "name": "Golem",
+    "desc": "HP + 100, FLEE - 5.",
+    "bonus": "bonus bMaxHP,100; bonus bFlee,-5;"
+  },
+  {
+    "ID": 9054,
+    "name": "Nightmare Terror",
+    "desc": "Gain immunity to Sleep status.",
+    "bonus": "bonus2 bResEff,Eff_Sleep,10000;"
+  },
+  {
+    "ID": 9055,
+    "name": "Succubus",
+    "desc": "Enable a 5% chance of gaining 5% of the damage inflicted on an enemy as HP with each attack.",
+    "bonus": "bonus2 bHpDrainRate,50,5;"
+  },
+  {
+    "ID": 9056,
+    "name": "Imp",
+    "desc": "Increases damage against Fire Property monsters by 2%. Add a 2% resistance to the Fire Property.",
+    "bonus": "bonus2 bSubEle,Ele_Fire,2; bonus2 bAddEle,Ele_Fire,2;"
+  },
+  {
+    "ID": 9057,
+    "name": "Taini",
+    "desc": "DEX + 2.",
+    "bonus": "bonus bDex,2;"
+  },
+  {
+    "ID": 9059,
+    "name": "Tikbalang",
+    "desc": "Increase physical damage to Bakonawa, Bangungot and Buwaya by 10%.",
+    "bonus": "bonus2 bAddDamageClass,2317,10; bonus2 bAddDamageClass,2318,10; bonus2 bAddDamageClass,2319,10; bonus2 bAddDamageClass,2320,10; bonus2 bAddDamageClass,2321,10; bonus2 bAddDamageClass,2322,10; bonus2 bAddDamageClass,2327,10; bonus2 bAddDamageClass,2332,10; bonus2 bAddDamageClass,2333,10;"
+  },
+  {
+    "ID": 9061,
+    "name": "Domovoi",
+    "desc": "Agi + 2.",
+    "bonus": "bonus bAgi,2;"
+  },
+  {
+    "ID": 9062,
+    "name": "Little Poring",
+    "desc": "LUK + 2, CRIT + 1.",
+    "bonus": "bonus bLuk,2; bonus bCritical,1;"
+  },
+  {
+    "ID": 9063,
+    "name": "Woodie",
+    "desc": "VIT + 3. Increases effectiveness of your Heal, Sanctuary and Potion Pitcher by 5%.",
+    "bonus": "bonus2 bSkillHeal,\"AL_HEAL\",5; bonus2 bSkillHeal,\"PR_SANCTUARY\",5; bonus2 bSkillHeal,\"AM_POTIONPITCHER\",5; bonus bVit,3;"
+  },
+  {
+    "ID": 9200,
+    "name": "Acidus",
+    "desc": "FLEE + 10",
+    "bonus": "bonus bFlee,10;"
+  },
+  {
+    "ID": 9201,
+    "name": "Garm Baby",
+    "desc": "Increase resistance against Water Property by 7%.",
+    "bonus": "bonus2 bSubEle,Ele_Water,7;"
+  },
+  {
+    "ID": 9202,
+    "name": "Orc Baby",
+    "desc": "Receive 15% less damage from Small size monster.",
+    "bonus": "bonus2 bSubSize,Size_Small,15;"
+  },
+  {
+    "ID": 9203,
+    "name": "Baby Leopard",
+    "desc": "ASPD + 5%",
+    "bonus": "bonus bAspdRate,5;"
+  },
+  {
+    "ID": 9204,
+    "name": "Zipper Bear",
+    "desc": "Attack +10",
+    "bonus": "bonus bBaseAtk,10;"
+  },
+  {
+    "ID": 9205,
+    "name": "Jakk",
+    "desc": "Add a 3% resistance against Shadow Property attacks. Receive 3% more damage from Holy Property attacks.",
+    "bonus": "bonus2 bSubEle,Ele_Dark,3; bonus2 bSubEle,Ele_Holy,-3;"
+  },
+  {
+    "ID": 9206,
+    "name": "Deviling",
+    "desc": "Add a 3% resistance against Shadow Property attacks.",
+    "bonus": "bonus2 bSubEle,Ele_Dark,3;"
+  },
+  {
+    "ID": 9207,
+    "name": "Myst Case",
+    "desc": "Add a 3% resistance against Holy Property attacks. Receive 3% more damage from Shadow Property attacks.",
+    "bonus": "bonus2 bSubEle,Ele_Holy,3; bonus2 bSubEle,Ele_Dark,-3;"
+  },
+  {
+    "ID": 9208,
+    "name": "Pinguicula",
+    "desc": "Add +1 to all stats when combined with Poring Anniversary Cake."
+  },
+  {
+    "ID": 9209,
+    "name": "Headless Mule",
+    "desc": "DEX + 1, Add a 3% resistance against Shadow Property attacks.",
+    "bonus": "bonus2 bSubEle,Ele_Dark,3; bonus bDex,1;"
+  },
+  {
+    "ID": 9210,
+    "name": "Xmas Lunatic",
+    "desc": "Agi + 2.",
+    "bonus": "bonus bAgi,2;"
+  },
+  {
+    "ID": 9211,
+    "name": "Thanatos Dolor",
+    "desc": "Flee + 5, Str + 1, Int + 1, Dex + 1.",
+    "bonus": "bonus bFlee,5; bonus bStr,1; bonus bInt,1; bonus bDex,1;"
+  },
+  {
+    "ID": 9212,
+    "name": "Teddy Bear",
+    "desc": "Vit + 2.",
+    "bonus": "bonus bVit,2;"
+  },
+  {
+    "ID": 9213,
+    "name": "Siroma",
+    "desc": "Luk + 2.",
+    "bonus": "bonus bLuk,2;"
+  },
+  {
+    "ID": 9214,
+    "name": "Tatacho",
+    "desc": "Str + 2.",
+    "bonus": "bonus bStr,2;"
+  },
+  {
+    "ID": 9215,
+    "name": "Zhu Po Long",
+    "desc": "Increase damage against Plant and Formless monsters by 3%.",
+    "bonus": "bonus2 bAddRace,RC_Plant,3; bonus2 bAddRace,RC_Formless,3;"
+  },
+  {
+    "ID": 9216,
+    "name": "Ferus",
+    "desc": "Increase damage against Dragon monsters by 5% and Undead monsters by 2%.",
+    "bonus": "bonus2 bAddRace,RC_Dragon,5; bonus2 bAddRace,RC_Undead,2;"
+  },
+  {
+    "ID": 9217,
+    "name": "Bathory",
+    "desc": "VIT + 1, Add a 2% resistance against Shadow Property attacks.",
+    "bonus": "bonus2 bSubEle,Ele_Dark,2; bonus bVit,1;"
+  },
+  {
+    "ID": 9218,
+    "name": "Chepet",
+    "desc": "LUK + 1, Add a 2% resistance against Holy Property attacks.",
+    "bonus": "bonus2 bSubEle,Ele_Holy,2; bonus bLuk,1;"
+  },
+  {
+    "ID": 9219,
+    "name": "Freezer",
+    "desc": "STR + 1, Add a 2% resistance against Water Property attacks.",
+    "bonus": "bonus2 bSubEle,Ele_Water,2; bonus bStr,1;"
+  },
+  {
+    "ID": 9220,
+    "name": "Dumpling Child",
+    "desc": "Increase resistance to Neutral Property attacks by 1%.",
+    "bonus": "bonus2 bSubEle,Ele_Neutral,1;"
+  },
+  {
+    "ID": 9221,
+    "name": "Mavka",
+    "desc": "Increase resistance to Earth Property attacks by 2%. Increases damage against Fire Property monsters by 1%.",
+    "bonus": "bonus2 bSubEle,Ele_Earth,2; bonus2 bAddEle,Ele_Fire,1;"
+  },
+  {
+    "ID": 9222,
+    "name": "Tiyanak",
+    "desc": "STR + 1, LUK + 1. Increase resistance to Shadow Property attacks by 2%.",
+    "bonus": "bonus bStr,1; bonus bLuk,1; bonus2 bSubEle,Ele_Dark,1;"
+  },
+  {
+    "ID": 9223,
+    "name": "Garden Keeper",
+    "desc": "INT + 1, AGI + 1. Increase resistance to Holy Property attacks by 2%.",
+    "bonus": "bonus bInt,1; bonus bAgi,1; bonus2 bSubEle,Ele_Holy,1;"
+  },
+  {
+    "ID": 9224,
+    "name": "Snow Bunny",
+    "desc": "ASPD + 1%, DEX + 1.",
+    "bonus": "bonus bAspdRate,1; bonus bDex,1;"
+  },
+  {
+    "ID": 9225,
+    "name": "Snowier",
+    "desc": "ASPD + 1%, STR + 1.",
+    "bonus": "bonus bAspdRate,1; bonus bStr,1;"
+  },
+  {
+    "ID": 9226,
+    "name": "Cornus",
+    "desc": "ASPD + 2%, ATK - 1%.",
+    "bonus": "bonus bAspdRate,2; bonus2 bAddClass,Class_All,-1;"
+  },
+  {
+    "ID": 9227,
+    "name": "Eggyra",
+    "desc": "AGI + 3.",
+    "bonus": "bonus bAgi,3;"
+  },
+  {
+    "ID": 9228,
+    "name": "Pandaring",
+    "desc": "VIT + 2, if equipped with Panda Hat, INT + 4.",
+    "bonus": "bonus bVit,2; if(isequipped(5030)) bonus bInt,4;"
+  },
+  {
+    "ID": 9229,
+    "name": "Galapago",
+    "desc": "AGI + 2, if equipped with Galapago Cap, LUK + 4.",
+    "bonus": "bonus bAgi,2; if(isequipped(5111)) bonus bLuk,4;"
+  },
+  {
+    "ID": 9230,
+    "name": "Mermaid",
+    "desc": "DEX + 1, INT + 1, chance to get Heart of Mermaid when killing Fish monsters.",
+    "bonus": "bonus bDex,1; bonus bInt,1; bonus3 bAddMonsterDropItem,950,RC_Fish,50;"
+  },
+  {
+    "ID": 9231,
+    "name": "Pouring",
+    "desc": "STR + 2, small chance to get Cold Medicine when killing Dragon monsters. Cold Medicine drop does not work in Magma Dungeon 2.",
+    "bonus": "bonus bStr,2; if(strcharinfo(3) != \"mag_dun02\") bonus3 bAddMonsterDropItem,12257,RC_Dragon,20;"
+  },
+  {
+    "ID": 9232,
+    "name": "Hylozoist",
+    "desc": "LUK + 2. Increase resistance to Ghost Property by 2%.",
+    "bonus": "bonus bLuk,2; bonus2 bSubEle,Ele_Ghost,2;"
+  },
+  {
+    "ID": 9233,
+    "name": "Lude",
+    "desc": "INT + 2. Increase resistance to Ghost Property by 2%.",
+    "bonus": "bonus bInt,2; bonus2 bSubEle,Ele_Ghost,2;"
+  },
+  {
+    "ID": 9234,
+    "name": "Beary Punny Bear",
+    "desc": "Flee + 5, Str + 1, Int + 1, Dex + 1.",
+    "bonus": "bonus bFlee,5; bonus bStr,1; bonus bInt,1; bonus bDex,1;"
+  },
+  {
+    "ID": 9235,
+    "name": "Aqua Elemental",
+    "desc": "ASPD + 1%, Reduces damage from Water attacks by 2%.",
+    "bonus": "bonus bAspdRate,1; bonus2 bSubEle,Ele_Water,2;"
+  },
+  {
+    "ID": 9236,
+    "name": "Blue Unicorn",
+    "desc": "INT + 1, Reduces damage from Holy attacks by 2%.",
+    "bonus": "bonus bInt,1; bonus2 bSubEle,Ele_Holy,2;"
+  },
+  {
+    "ID": 9237,
+    "name": "White Goat",
+    "desc": "Add a 1.5% chance to cast Level 2 Bash when doing a physical attack. Increases the healing value of Carrots by 100%.",
+    "bonus": "bonus3 bAutoSpell,\"SM_BASH\",2,15; bonus2 bAddItemHealRate,515,100;"
+  },
+  {
+    "ID": 9238,
+    "name": "Eremes Guile",
+    "desc": "Increases your Demi-Human resistance by 2%.",
+    "bonus": "bonus2 bSubRace,RC_DemiHuman,2; bonus2 bSubRace,RC_Player_Human,2;"
+  },
+  {
+    "ID": 9239,
+    "name": "Jejeling",
+    "desc": "VIT + 2, if equipped with Baseball Cap, DEX + 4.",
+    "bonus": "bonus bVit,2; if(isequipped(5147) || isequipped(8002)) bonus bDex,4;"
+  },
+  {
+    "ID": 9240,
+    "name": "Wild Rider",
+    "desc": "AGI + 2, if equipped with Drooping Cat, DEX + 3.",
+    "bonus": "bonus bAgi,2; if(isequipped(5058)) bonus bDex,3;"
+  },
+  {
+    "ID": 9241,
+    "name": "Sedora",
+    "desc": "LUK + 2, add a chance to obtain Immortal Heart when killing a fish-type monster.",
+    "bonus": "bonus bLuk,2; bonus3 bAddMonsterDropItem,929,RC_Fish,50;"
+  },
+  {
+    "ID": 9242,
+    "name": "Sea Otter",
+    "desc": "Add a chance to obtain Sapphire when killing a fish-type monster.",
+    "bonus": "bonus3 bAddMonsterDropItem,726,RC_Fish,50;"
+  },
+  {
+    "ID": 9243,
+    "name": "Hell Poodle",
+    "desc": "DEF + 1, VIT + 2. Increase resistance to Shadow Property attacks by 1%.",
+    "bonus": "bonus bDef,1; bonus bVit,2; bonus2 bSubEle,Ele_Dark,1;"
+  },
+  {
+    "ID": 9244,
+    "name": "Gibbet",
+    "desc": "Perfect Dodge + 1, AGI + 2. Increase resistance to Shadow Property attacks by 1%.",
+    "bonus": "bonus bFlee2,1; bonus bAgi,2; bonus2 bSubEle,Ele_Dark,1;"
+  },
+  {
+    "ID": 9245,
+    "name": "Elephant",
+    "desc": "Perfect Dodge + 2, VIT + 3.",
+    "bonus": "bonus bFlee2,2; bonus bVit,3;"
+  },
+  {
+    "ID": 9246,
+    "name": "Gorilla",
+    "desc": "STR + 2, VIT + 3.",
+    "bonus": "bonus bStr,2; bonus bVit,3;"
+  },
+  {
+    "ID": 9247,
+    "name": "Lion",
+    "desc": "Flee + 5, VIT + 3.",
+    "bonus": "bonus bFlee,5; bonus bVit,3;"
+  },
+  {
+    "ID": 9248,
+    "name": "Rhino",
+    "desc": "Attack + 5, VIT + 3.",
+    "bonus": "bonus bBaseAtk,5; bonus bVit,3;"
+  },
+  {
+    "ID": 9249,
+    "name": "Little Fatum",
+    "desc": "ASPD + 1%, DEX + 1.",
+    "bonus": "bonus bAspdRate,1; bonus bDex,1;"
+  },
+  {
+    "ID": 9250,
+    "name": "Grand Peco",
+    "desc": "Max HP + 500, Max SP + 25. Add a chance to drop Special Bonbon upon killing a Boss monster.",
+    "bonus": "bonus bMaxHP,500; bonus bMaxSP,25; bonus3 bAddClassDropItem,20526,Class_Boss,25;"
+  },
+  {
+    "ID": 9251,
+    "name": "High Orc",
+    "desc": "ATK Rate + 2%. Add a chance to drop Special Bonbon upon killing a Boss monster.",
+    "bonus": "bonus2 bAddClass,Class_All,2; bonus3 bAddClassDropItem,20526,Class_Boss,25;"
+  },
+  {
+    "ID": 9252,
+    "name": "Savage",
+    "desc": "Max HP + 300, VIT + 5. Add a chance to drop Special Bonbon upon killing a Boss monster.",
+    "bonus": "bonus bVit,5; bonus bMaxHP,300; bonus3 bAddClassDropItem,20526,Class_Boss,25;"
+  },
+  {
+    "ID": 9253,
+    "name": "Desert Wolf",
+    "desc": "INT + 2, Max SP + 100. Add a chance to drop Special Bonbon upon killing a Boss monster.",
+    "bonus": "bonus bInt,2; bonus bMaxSP,100; bonus3 bAddClassDropItem,20526,Class_Boss,25;"
+  },
+  {
+    "ID": 9254,
+    "name": "Condor",
+    "desc": "STR + 3, ATK + 6. Add a chance to drop Special Bonbon upon killing a Boss monster.",
+    "bonus": "bonus bStr,3; bonus bBaseAtk,6; bonus3 bAddClassDropItem,20526,Class_Boss,25;"
+  },
+  {
+    "ID": 9255,
+    "name": "Choco",
+    "desc": "ASPD + 3%. Add a chance to drop Special Bonbon upon killing a Boss monster.",
+    "bonus": "bonus bAspdRate,3; bonus3 bAddClassDropItem,20526,Class_Boss,25;"
+  },
+  {
+    "ID": 9256,
+    "name": "Yao Jun",
+    "desc": "INT + 1, VIT + 1, DEF + 1, MDEF + 1, Max HP + 150, Max SP + 10. Add a chance to drop Special Bonbon upon killing a Boss monster.",
+    "bonus": "bonus bInt,1; bonus bDef,1; bonus bMdef,1; bonus bVit,1; bonus bMaxHP,150; bonus bMaxSP,10; bonus3 bAddClassDropItem,20526,Class_Boss,25;"
+  },
+  {
+    "ID": 9257,
+    "name": "Am Mut",
+    "desc": "MATK + 2%. Add a chance to drop Special Bonbon upon killing a Boss monster.",
+    "bonus": "bonus bMatkRate,2; bonus3 bAddClassDropItem,20526,Class_Boss,25;"
+  },
+  {
+    "ID": 9258,
+    "name": "Alicel",
+    "desc": "DEF + 1, MDEF + 1. Reduce damage from Demi Human monsters by 2%. Add a chance to drop Special Bonbon upon killing a Boss monster.",
+    "bonus": "bonus bDef,1; bonus bMdef,1; bonus2 bSubRace,RC_DemiHuman,2; bonus2 bSubRace,RC_Player_Human,2; bonus3 bAddClassDropItem,20526,Class_Boss,25;"
+  },
+  {
+    "ID": 9259,
+    "name": "Evil Marionette",
+    "desc": "Max HP + 50, Max SP + 10. HP/SP Recovery Rate + 10%. Add a chance to drop Special Bonbon upon killing a Boss monster.",
+    "bonus": "bonus bSPrecovRate,10; bonus bHPrecovRate,10; bonus bMaxHP,50; bonus bMaxSP,10; bonus3 bAddClassDropItem,20526,Class_Boss,25;"
+  },
+  {
+    "ID": 9260,
+    "name": "Christmas Cookie",
+    "desc": "INT + 1, Reduces damage from Water attacks by 2%.",
+    "bonus": "bonus bInt,1; bonus2 bSubEle,Ele_Water,2;"
+  },
+  {
+    "ID": 9261,
+    "name": "Ballooling",
+    "desc": "Adds a chance of gaining Love You Firecracker when killing Formless monsters. Increases effectiveness of Heal, Sanctuary and Potion Pitcher on yourself by 2%.",
+    "bonus": "bonus3 bAddMonsterDropItem,14546,RC_Formless,50; bonus2 bSkillHeal2,\"AL_HEAL\",2; bonus2 bSkillHeal2,\"PR_SANCTUARY\",2; bonus2 bSkillHeal2,\"AM_POTIONPITCHER\",2;"
+  },
+  {
+    "ID": 9262,
+    "name": "Giant Whisper",
+    "desc": "FLEE + 10, Perfect Dodge + 1. Add a chance to drop Special Bonbon upon killing a Boss monster.",
+    "bonus": "bonus bFlee,10; bonus bFlee2,1; bonus3 bAddClassDropItem,20526,Class_Boss,25;"
+  },
+  {
+    "ID": 9263,
+    "name": "Draco",
+    "desc": "VIT + 1, MDEF + 1, ASPD + 2%. Add a chance to drop Special Bonbon upon killing a Boss monster.",
+    "bonus": "bonus bVit,1; bonus bMdef,1; bonus bAspdRate,2; bonus3 bAddClassDropItem,20526,Class_Boss,25;"
+  },
+  {
+    "ID": 9264,
+    "name": "Bradium Golem",
+    "desc": "MaxHP + 250, FLEE + 10. Add a chance to drop Special Bonbon upon killing a Boss monster.",
+    "bonus": "bonus bMaxHP,250; bonus bFlee,10; bonus3 bAddClassDropItem,20526,Class_Boss,25;"
+  },
+  {
+    "ID": 9265,
+    "name": "Jaguar",
+    "desc": "ASPD + 5%. Add a chance to drop Special Bonbon upon killing a Boss monster.",
+    "bonus": "bonus bAspdRate,5; bonus3 bAddClassDropItem,20526,Class_Boss,25;"
+  },
+  {
+    "ID": 9266,
+    "name": "Scatleton",
+    "desc": "VIT + 1. Increase resistance to Shadow Property attacks by 1%. Increase resistance to Ghost Property attacks by 2%.",
+    "bonus": "bonus2 bSubEle,Ele_Dark,1; bonus2 bSubEle,Ele_Ghost,2; bonus bVit,1;"
+  },
+  {
+    "ID": 9267,
+    "name": "Lucky Case",
+    "desc": "[Mage, Archer, Acolyte Class] MaxHP + 175, Perfect Dodge + 1. [Swordman, Merchant, Thief Class] MaxSP + 50, VIT + 2.",
+    "bonus": "if(BaseClass==Job_Mage || BaseClass==Job_Archer || BaseClass==Job_Acolyte) { bonus bMaxHP,175; bonus bFlee2,1;"
+  },
+  {
+    "ID": 9268,
+    "name": "Mini Ice Titan",
+    "desc": "ASPD + 1%. Adds a chance to Freeze an enemy when doing physical attacks.",
+    "bonus": "bonus bAspdRate,1; bonus2 bAddEff,Eff_Freeze,200;"
+  },
+  {
+    "ID": 9269,
+    "name": "Miming",
+    "desc": "INT + 1, VIT + 1. Increases effectiveness of your Heal, Sanctuary and Potion Pitcher by 5%.",
+    "bonus": "bonus2 bSkillHeal,\"AL_HEAL\",5; bonus2 bSkillHeal,\"PR_SANCTUARY\",5; bonus2 bSkillHeal,\"AM_POTIONPITCHER\",5; bonus bInt,1; bonus bVit,1;"
+  },
+  {
+    "ID": 9270,
+    "name": "Angeling",
+    "desc": "Reduces damage from Angel-race monsters by 2%. MDEF + 2.",
+    "bonus": "bonus2 bSubRace,RC_Angel,2; bonus bMdef,2;"
+  },
+  {
+    "ID": 9271,
+    "name": "Golden Grand Peco",
+    "desc": "Add a chance to get a Juicy Mango when killing a monster.",
+    "bonus": "bonus2 bAddMonsterDropItem,20495,20;"
+  },
+  {
+    "ID": 9272,
+    "name": "Mystic Grand Peco",
+    "desc": "Add a chance to get a Juicy Mango when killing a monster.",
+    "bonus": "bonus2 bAddMonsterDropItem,20495,20;"
+  },
+  {
+    "ID": 9273,
+    "name": "Poringa",
+    "desc": "Add a chance to get a Chocolate Pie when killing a monster.",
+    "bonus": "bonus2 bAddMonsterDropItem,12322,50;"
+  },
+  {
+    "ID": 9274,
+    "name": "Lora",
+    "desc": "MDEF + 1. Increases effectiveness of Heal, Sanctuary and Potion Pitcher on yourself by 2%.",
+    "bonus": "bonus bMdef,1; bonus2 bSkillHeal2,\"AL_HEAL\",2; bonus2 bSkillHeal2,\"PR_SANCTUARY\",2; bonus2 bSkillHeal2,\"AM_POTIONPITCHER\",2;"
+  },
+  {
+    "ID": 9275,
+    "name": "Casual Pope",
+    "desc": "MDEF + 1, INT + 1, VIT + 1. Decreases damage received from Holy element attacks by 1%.",
+    "bonus": "bonus bMdef,1; bonus bInt,1; bonus bVit,1; bonus2 bSubEle,Ele_Holy,1;"
+  },
+  {
+    "ID": 9276,
+    "name": "Angry Penguin",
+    "desc": "Increases effectiveness of your Heal, Sanctuary and Potion Pitcher by 3%. Reduces SP usage of skills by 5%.",
+    "bonus": "bonus2 bSkillHeal,\"AL_HEAL\",3; bonus2 bSkillHeal,\"PR_SANCTUARY\",3; bonus2 bSkillHeal,\"AM_POTIONPITCHER\",3; bonus bUseSPrate,-5;"
+  },
+  {
+    "ID": 9277,
+    "name": "Elvira",
+    "desc": "Reduces after-cast delay by 3%.",
+    "bonus": "bonus bDelayRate,-3;"
+  },
+  {
+    "ID": 9278,
+    "name": "Eggring",
+    "desc": "Increases duration of Stat foods by 50%.",
+    "bonus": "bonus2 bStatusDuration,SC_STRFOOD,600000; bonus2 bStatusDuration,SC_AGIFOOD,600000; bonus2 bStatusDuration,SC_VITFOOD,600000; bonus2 bStatusDuration,SC_INTFOOD,600000; bonus2 bStatusDuration,SC_DEXFOOD,600000; bonus2 bStatusDuration,SC_LUKFOOD,600000;"
+  },
+  {
+    "ID": 9279,
+    "name": "Toucan",
+    "desc": "DEX + 1. Flee + 5.",
+    "bonus": "bonus bDex,1; bonus bFlee,5;"
+  },
+  {
+    "ID": 9280,
+    "name": "Tiny Agni",
+    "desc": "Increase Physical and Magical damage against Fire element monsters by 2%.",
+    "bonus": "bonus2 bAddEle,Ele_Fire,2; bonus2 bMagicAddEle,Ele_Fire,2;"
+  },
+  {
+    "ID": 9281,
+    "name": "Agni",
+    "desc": "Increase Physical and Magical damage against Fire element monsters by 2%. Increases resistance to Fire element by 2%.",
+    "bonus": "bonus2 bSubEle,Ele_Fire,2; bonus2 bAddEle,Ele_Fire,2; bonus2 bMagicAddEle,Ele_Fire,2;"
+  },
+  {
+    "ID": 9282,
+    "name": "Tiny Aqua",
+    "desc": "Increase Physical and Magical damage against Water element monsters by 2%.",
+    "bonus": "bonus2 bAddEle,Ele_Water,2; bonus2 bMagicAddEle,Ele_Water,2;"
+  },
+  {
+    "ID": 9283,
+    "name": "Aqua",
+    "desc": "Increase Physical and Magical damage against Water element monsters by 2%. Increases resistance to Water element by 2%.",
+    "bonus": "bonus2 bSubEle,Ele_Water,2; bonus2 bAddEle,Ele_Water,2; bonus2 bMagicAddEle,Ele_Water,2;"
+  },
+  {
+    "ID": 9284,
+    "name": "Tiny Ventus",
+    "desc": "Increase Physical and Magical damage against Wind element monsters by 2%.",
+    "bonus": "bonus2 bAddEle,Ele_Wind,2; bonus2 bMagicAddEle,Ele_Wind,2;"
+  },
+  {
+    "ID": 9285,
+    "name": "Ventus",
+    "desc": "Increase Physical and Magical damage against Wind element monsters by 2%. Increases resistance to Wind element by 2%.",
+    "bonus": "bonus2 bSubEle,Ele_Wind,2; bonus2 bAddEle,Ele_Wind,2; bonus2 bMagicAddEle,Ele_Wind,2;"
+  },
+  {
+    "ID": 9286,
+    "name": "Bandit",
+    "desc": "MaxSP + 25. Add a 2.5% chance of casting Level 1 Steal when doing a physical attack. Increase resistance to Shadow Property attacks by 1%.",
+    "bonus": "bonus bMaxSP,25; bonus2 bSubEle,Ele_Dark,1; bonus3 bAutoSpell,\"TF_STEAL\",1,25;"
+  },
+  {
+    "ID": 9287,
+    "name": "Skelion",
+    "desc": "MaxHP + 250, MDEF + 1, ASPD + 2%. Increase resistance to Ghost Property attacks by 2%.",
+    "bonus": "bonus bMaxHP,250; bonus bMdef,1; bonus bAspdRate,2; bonus2 bSubEle,Ele_Ghost,2;"
+  },
+  {
+    "ID": 9288,
+    "name": "Eira",
+    "desc": "Increases effectiveness of your Heal, Sanctuary and Potion Pitcher by 5%. Add a 2% chance of gaining 5% of the damage inflicted on an enemy as HP with each attack.",
+    "bonus": "bonus2 bSkillHeal,\"AL_HEAL\",5; bonus2 bSkillHeal,\"PR_SANCTUARY\",5; bonus2 bSkillHeal,\"AM_POTIONPITCHER\",5; bonus2 bHpDrainRate,20,5;"
+  },
+  {
+    "ID": 9289,
+    "name": "Baby Skoll",
+    "desc": "[Swordman, Thief, Merchant class] Recovers 3 SP every 2 seconds, SP regeneration +20% [Archer, Acolyte, Magician class] Recovers 3 HP every 2 seconds, HP regeneration +20% [Extended class] Recovers 2 HP/SP every 2.5 seconds, HP/SP regeneration +10%, Perfect Dodge +3",
+    "bonus": "if(BaseClass==Job_Mage || BaseClass==Job_Archer || BaseClass==Job_Acolyte) { bonus bHPrecovRate,20; bonus2 bHPRegenRate,3,2000;"
+  },
+  {
+    "ID": 9290,
+    "name": "Moonlight Flower",
+    "desc": "ASPD + 2%, INT + 1, MaxHP + 2%.",
+    "bonus": "bonus bAspdRate,2; bonus bInt,1; bonus bMaxHPRate,2;"
+  },
+  {
+    "ID": 9291,
+    "name": "Sweets Drops",
+    "desc": "LUK + 2, Increases effectiveness of healing items by 3%.",
+    "bonus": "bonus bLuk,2; bonus bAddItemHealRate,3;"
+  },
+  {
+    "ID": 9292,
+    "name": "Clover Lunatic",
+    "desc": "AGI + 2, ASPD + 2%.",
+    "bonus": "bonus bAgi,2; bonus bAspdRate,2;"
+  },
+  {
+    "ID": 9293,
+    "name": "Nydhog Memory",
+    "desc": "INT + 1. Increases effectiveness of Heal, Sanctuary and Potion Pitcher on yourself by 2%.",
+    "bonus": "bonus bInt,1; bonus2 bSkillHeal2,\"AL_HEAL\",2; bonus2 bSkillHeal2,\"PR_SANCTUARY\",2; bonus2 bSkillHeal2,\"AM_POTIONPITCHER\",2;"
+  },
+  {
+    "ID": 9294,
+    "name": "Lune",
+    "desc": "HIT + 5, Flee + 3, DEX + 1, ASPD + 2%.",
+    "bonus": "bonus bHit,5; bonus bFlee,3; bonus bDex,1; bonus bAspdRate,2;"
+  },
+  {
+    "ID": 9295,
+    "name": "Trans Spore",
+    "desc": "HIT + 5, STR + 1, INT + 1.",
+    "bonus": "bonus bHit,5; bonus bStr,1; bonus bInt,1;"
+  },
+  {
+    "ID": 9296,
+    "name": "Rhyncho",
+    "desc": "ASPD + 1%. Increases physical damage dealing to Water Property by 2%.",
+    "bonus": "bonus bAspdRate,1; bonus2 bAddEle,Ele_Water,2;"
+  },
+  {
+    "ID": 9297,
+    "name": "Phylla",
+    "desc": "ASPD + 2%. Increases physical damage dealing to Water Property by 2%.",
+    "bonus": "bonus bAspdRate,2; bonus2 bSubEle,Ele_Water,2;"
+  },
+  {
+    "ID": 9298,
+    "name": "Red Eruma",
+    "desc": "ASPD + 2%. Increases physical damage dealing to Water Property by 2%.",
+    "bonus": "bonus bAspdRate,2; bonus2 bSubEle,Ele_Water,2;"
+  },
+  {
+    "ID": 9299,
+    "name": "Pere",
+    "desc": "Increases effectiveness of your Heal, Sanctuary and Potion Pitcher by 5%. Add a 2% chance of gaining 5% of the damage inflicted on an enemy as HP with each attack.",
+    "bonus": "bonus2 bSkillHeal,\"AL_HEAL\",5; bonus2 bSkillHeal,\"PR_SANCTUARY\",5; bonus2 bSkillHeal,\"AM_POTIONPITCHER\",5; bonus2 bHpDrainRate,20,5;"
+  },
+  {
+    "ID": 9312,
+    "name": "Sprouting",
+    "desc": "Add a 2% chance of gaining 5% of the damage inflicted on an enemy as HP with each attack. HP/SP regeneration + 10%. MaxHP + 300.",
+    "bonus": "bonus2 bHpDrainRate,20,5; bonus bHPrecovRate,10; bonus bSPrecovRate,10; bonus bMaxHP,300;"
+  },
+  {
+    "ID": 9313,
+    "name": "Tamadora",
+    "desc": "LUK + 2. Increases effectiveness of Heal, Sanctuary and Potion Pitcher on yourself by 3%.",
+    "bonus": "bonus bLuk,2; bonus bAddItemHealRate,3;"
+  },
+  {
+    "ID": 9314,
+    "name": "Observation",
+    "desc": "AGI + 2, ASPD + 2%.",
+    "bonus": "bonus bAgi,2; bonus bAspdRate,2;"
+  },
+  {
+    "ID": 9315,
+    "name": "Poriwing",
+    "desc": "HIT + 5, STR + 1, INT + 1.",
+    "bonus": "bonus bHit,5; bonus bStr,1; bonus bInt,1;"
+  },
+  {
+    "ID": 9316,
+    "name": "Garling",
+    "desc": "Add a 2% resistance against Shadow Property attacks. Add 2% more damage against Undead race monsters when doing physical attacks.",
+    "bonus": "bonus2 bSubEle,Ele_Dark,2; bonus2 bAddRace,RC_Undead,2;"
+  },
+  {
+    "ID": 9317,
+    "name": "Abandoned Teddy Bear",
+    "desc": "ASPD + 1%. Increases physical damage dealing to Water Property by 2%.",
+    "bonus": "bonus bAspdRate,2; bonus2 bSubEle,Ele_Water,2;"
+  },
+  {
+    "ID": 9318,
+    "name": "Blue Meowring",
+    "desc": "HIT + 5, Flee + 3, DEX + 1, ASPD + 2%.",
+    "bonus": "bonus bHit,5; bonus bFlee,3; bonus bDex,1; bonus bAspdRate,2;"
+  },
+  {
+    "ID": 9319,
+    "name": "Sppo",
+    "desc": "Increase resistance against Water Property by 2%. Increase Physical and Magical damage against Water element monsters by 2%. Add a chance to get a Glacial Heart when killing a monster.",
+    "bonus": "bonus2 bAddMonsterDropItem,7561,20; bonus2 bSubEle,Ele_Water,2; bonus2 bAddEle,Ele_Water,2; bonus2 bMagicAddEle,Ele_Water,2;"
+  },
+  {
+    "ID": 9320,
+    "name": "Normal Pope",
+    "desc": "Increases effectiveness of your Heal, Sanctuary and Potion Pitcher by 5%. Add a 2% chance of gaining 5% of the damage inflicted on an enemy as HP with each attack.",
+    "bonus": "bonus2 bSkillHeal,\"AL_HEAL\",5; bonus2 bSkillHeal,\"PR_SANCTUARY\",5; bonus2 bSkillHeal,\"AM_POTIONPITCHER\",5; bonus2 bHpDrainRate,20,5;"
+  },
+  {
+    "ID": 9321,
+    "name": "Pink Mavka",
+    "desc": "Increase resistance to Earth Property attacks by 2%. Increases damage against Fire Property monsters by 1%.",
+    "bonus": "bonus2 bSubEle,Ele_Earth,2; bonus2 bAddEle,Ele_Fire,1;"
+  },
+  {
+    "ID": 9322,
+    "name": "Celine Kimi",
+    "desc": "HIT + 5, DEF + 1, ATK + 7. Adds a low chance of dropping Izidor when defeating a Boss-type monster.",
+    "bonus": "bonus bHit,5; bonus bDef,1; bonus bBaseAtk,7; bonus3 bAddClassDropItem,709,Class_Boss,7;"
+  },
+  {
+    "ID": 9323,
+    "name": "Shroud",
+    "desc": "Adds a 0.25% chance of inflicting Curse status on opponent when attacking.",
+    "bonus": "bonus2 bAddEff,Eff_Curse,25;"
+  },
+  {
+    "ID": 9324,
+    "name": "Geiravor Disciple",
+    "desc": "FLEE + 7. ASPD + 2%.",
+    "bonus": "bonus bFlee,7; bonus bAspdRate,2;"
+  },
+  {
+    "ID": 9325,
+    "name": "Geiravor Partisan",
+    "desc": "Adds a 2% chance of casting Level 5 Dark Strike when casting magic attacks.",
+    "bonus": "bonus5 bAutoSpell,\"NPC_DARKSTRIKE\",5,20,BF_MAGIC,1;"
+  },
+  {
+    "ID": 9326,
+    "name": "Saga",
+    "desc": "Increases damage against Plant and Insect Race monsters by 3%. Increases damage against Water Property monsters by 2%.",
+    "bonus": "bonus2 bAddRace,RC_Plant,3; bonus2 bAddRace,RC_Insect,3; bonus2 bAddEle,Ele_Water,2;"
+  },
+  {
+    "ID": 9327,
+    "name": "Rainbow",
+    "desc": "Increases damage with Holy Light and Magnus Exorcismus by 7%.",
+    "bonus": "bonus2 bSkillAtk,\"PR_MAGNUS\",7; bonus2 bSkillAtk,\"AL_HOLYLIGHT\",7;"
+  },
+  {
+    "ID": 9328,
+    "name": "Soheon",
+    "desc": "ASPD + 2%. +3% Critical damage.",
+    "bonus": "bonus bCritAtkRate,3; bonus bAspdRate,2;"
+  },
+  {
+    "ID": 9329,
+    "name": "Rudo",
+    "desc": "MaxHP + 2%. Increases Natural SP Recovery by 10%. Reduces damage from DemiHuman monster by 1%.",
+    "bonus": "bonus bSPrecovRate,10; bonus bMaxHPrate,2; bonus2 bSubRace,RC_DemiHuman,1; bonus2 bSubRace,RC_Player_Human,1;"
+  },
+  {
+    "ID": 9330,
+    "name": "Tink",
+    "desc": "Reduces damage from Angel race monsters by 2%. Reduces damage from Dark element monsters by 2%.",
+    "bonus": "bonus2 bSubRace,RC_Angel,2; bonus2 bAddEle,Ele_Dark,2;"
+  },
+  {
+    "ID": 9331,
+    "name": "Stapo",
+    "desc": "Reduces damage from Earth Property attacks by 2%. Increases damage against Earth Property monsters by 2%. When killing a Brute race monster, adds a chance to drop Stone Heart.",
+    "bonus": "bonus2 bSubEle,Ele_Earth,2; bonus2 bAddEle,Ele_Earth,2; bonus3 bAddMonsterDropItem,953,RC_Brute,25;"
+  },
+  {
+    "ID": 9332,
+    "name": "Gloom Under Night",
+    "desc": "MATK + 1%. Increase Physical and Magical damage against Fire and Ghost element monsters by 2%.",
+    "bonus": "bonus bMatkRate,1; bonus2 bAddEle,Ele_Fire,2; bonus2 bMagicAddEle,Ele_Fire,2; bonus2 bAddEle,Ele_Ghost,2; bonus2 bMagicAddEle,Ele_Ghost,2;"
+  },
+  {
+    "ID": 9333,
+    "name": "Child Admin Beta",
+    "desc": "",
+    "bonus": "bonus bDex,1; bonus bAgi,2; bonus bInt,2; bonus2 bSkillHeal,\"AL_HEAL\",5; bonus2 bSkillHeal,\"PR_SANCTUARY\",5; bonus2 bSkillHeal,\"AM_POTIONPITCHER\",5;"
+  },
+  {
+    "ID": 9334,
+    "name": "Child Admin Alpha",
+    "desc": "INT + 1. Increases magical damage to Dark element monsters by 2%.",
+    "bonus": "bonus bInt,1; bonus2 bMagicAddEle,Ele_Dark,2;"
+  },
+  {
+    "ID": 9335,
+    "name": "Wandering Duck Doll",
+    "desc": "AGI + 2, DEX + 1.",
+    "bonus": "bonus bAgi,2; bonus bDex,1;"
+  },
+  {
+    "ID": 9336,
+    "name": "Phreeoni",
+    "desc": "HIT + 5. Increase Physical and Magical damage against Earth element monsters by 3%.",
+    "bonus": "bonus bHit,5; bonus2 bAddEle,Ele_Earth,3; bonus2 bMagicAddEle,Ele_Earth,3;"
+  },
+  {
+    "ID": 9337,
+    "name": "High Orc Baby",
+    "desc": "Receive 15% less damage from Small size monster.",
+    "bonus": "bonus2 bSubSize,Size_Small,15;"
+  },
+  {
+    "ID": 9338,
+    "name": "Orc HeroEgg",
+    "desc": "STR + 2 Increases Physical Damage to DemiHuman monsters by 2% Decreases Physical Damage from DemiHuman monsters by 1%",
+    "bonus": "bonus bStr,2; bonus2 bAddRace,RC_DemiHuman,2; bonus2 bAddRace,RC_Player_Human,2; bonus2 bSubRace,RC_DemiHuman,1; bonus2 bSubRace,RC_Player_Human,1;"
+  },
+  {
+    "ID": 9339,
+    "name": "Blue Moon Loli Ruri",
+    "desc": "Adds chance of auto casting Level 2 Heal on the user when the user receives Physical Damage. MaxHP + 3%.",
+    "bonus": "bonus bMaxHPRate,3; bonus3 bAutoSpellWhenHit,\"AL_HEAL\",2,50;"
+  },
+  {
+    "ID": 9340,
+    "name": "Ghost Quve",
+    "desc": "Perfect Dodge + 1, AGI + 2 Reduces damage from Dark Property attacks by 2%.",
+    "bonus": "bonus bFlee2,1; bonus bAgi,2; bonus2 bSubEle,Ele_Dark,2;"
+  },
+  {
+    "ID": 9341,
+    "name": "Grote",
+    "desc": "DEF + 1, VIT + 2 Reduces damage from Dark Property attacks by 2%.",
+    "bonus": "bonus bDef,1; bonus bVit,2; bonus2 bSubEle,Ele_Dark,2;"
+  },
+  {
+    "ID": 9342,
+    "name": "Garling Lude",
+    "desc": "MaxHP + 250, MDEF + 1, ASPD + 2%. Increase resistance to Ghost Property attacks by 2%",
+    "bonus": "bonus bMaxHP,250; bonus bMdef,1; bonus bAspdRate,2; bonus2 bSubEle,Ele_Ghost,2;"
+  },
+  {
+    "ID": 9343,
+    "name": "Papare",
+    "desc": "AGI + 1 Reduces after-cast delay by 3%.",
+    "bonus": "bonus bAgi,1; bonus bDelayRate,-3;"
+  },
+  {
+    "ID": 9344,
+    "name": "Kiel D-01",
+    "desc": "Increases duration of Stat foods by 25%.",
+    "bonus": "bonus2 bStatusDuration,SC_STRFOOD,300000; bonus2 bStatusDuration,SC_AGIFOOD,300000; bonus2 bStatusDuration,SC_VITFOOD,300000; bonus2 bStatusDuration,SC_INTFOOD,300000; bonus2 bStatusDuration,SC_DEXFOOD,300000; bonus2 bStatusDuration,SC_LUKFOOD,300000;"
+  },
+  {
+    "ID": 9345,
+    "name": "Pierrotzoist",
+    "desc": "HIT + 5, FLEE + 3, ASPD + 2%",
+    "bonus": "bonus bHit,5; bonus bFlee,3; bonus bAspdRate,2;"
+  },
+  {
+    "ID": 9346,
+    "name": "Deviruchiling",
+    "desc": "Add a 3% resistance against Shadow Property attacks.",
+    "bonus": "bonus2 bSubEle,Ele_Dark,3;"
+  },
+  {
+    "ID": 9347,
+    "name": "Pumpkinring",
+    "desc": "AGI + 2, ASPD + 2%.",
+    "bonus": "bonus bAgi,2; bonus bAspdRate,2;"
+  },
+  {
+    "ID": 9348,
+    "name": "Capoo",
+    "desc": "AGI + 2, ASPD + 2%.",
+    "bonus": "bonus bAgi,2; bonus bAspdRate,2;"
+  },
+  {
+    "ID": 9349,
+    "name": "Smile Giver",
+    "desc": "Decreases damage received from Holy element attacks by 2%. Increases physical damage to Holy element monsters by 2%. When killing a Boss monster, adds a chance to drop Holy Water.",
+    "bonus": "bonus2 bSubEle,Ele_Holy,2; bonus2 bAddEle,Ele_Holy,2; bonus3 bAddClassDropItem,523,Class_Boss,40;"
+  },
+  {
+    "ID": 9350,
+    "name": "War Nut",
+    "desc": "Increases duration of Stat foods by 50%.",
+    "bonus": "bonus2 bStatusDuration,SC_STRFOOD,600000; bonus2 bStatusDuration,SC_AGIFOOD,600000; bonus2 bStatusDuration,SC_VITFOOD,600000; bonus2 bStatusDuration,SC_INTFOOD,600000; bonus2 bStatusDuration,SC_DEXFOOD,600000; bonus2 bStatusDuration,SC_LUKFOOD,600000;"
+  },
+  {
+    "ID": 9351,
+    "name": "Potted Geographer",
+    "desc": "Increase Physical and Magical damage against Fire element monsters by 2%. Increase resistance to Earth Property attacks by 2%.",
+    "bonus": "bonus2 bSubEle,Ele_Earth,2; bonus2 bAddEle,Ele_Fire,2; bonus2 bMagicAddEle,Ele_Fire,2;"
+  },
+  {
+    "ID": 9352,
+    "name": "Menblatt",
+    "desc": "VIT + 2 Increase Physical and Magical damage against Wind element monsters by 2%.",
+    "bonus": "bonus bVit,2; bonus2 bAddEle,Ele_Wind,2; bonus2 bMagicAddEle,Ele_Wind,2;"
+  },
+  {
+    "ID": 9353,
+    "name": "Petal",
+    "desc": "Increase Physical and Magical damage against Fire element monsters by 2%. Increase resistance to Earth Property attacks by 2%.",
+    "bonus": "bonus2 bSubEle,Ele_Earth,2; bonus2 bAddEle,Ele_Fire,2; bonus2 bMagicAddEle,Ele_Fire,2;"
+  },
+  {
+    "ID": 9354,
+    "name": "Boiled Rice",
+    "desc": "Adds a chance to drop Rice Ball when killing Fish race monsters. Increase resistance to Water Property attacks by 2%.",
+    "bonus": "bonus2 bSubEle,Ele_Water,2; bonus3 bAddMonsterDropItem,564,RC_Fish,150;"
+  },
+  {
+    "ID": 9355,
+    "name": "Shellfish",
+    "desc": "Adds a chance to drop Fresh Fish when killing Fish race monsters. Increase resistance to Water Property attacks by 2%.",
+    "bonus": "bonus2 bSubEle,Ele_Water,2; bonus3 bAddMonsterDropItem,579,RC_Fish,200;"
+  },
+  {
+    "ID": 9356,
+    "name": "Wooden Fairy",
+    "desc": "INT + 1, VIT + 1 Increases healing effectiveness of Heal, Sanctuary and Potion Pitcher by 5%.",
+    "bonus": "bonus bInt,1; bonus bVit,1; bonus bHealPower,5;"
+  },
+  {
+    "ID": 9357,
+    "name": "Creeper",
+    "desc": "STR + 2, VIT + 2 Increases resistance to Wind element by 2%.",
+    "bonus": "bonus bStr,2; bonus bVit,2; bonus2 bSubEle,Ele_Wind,2;"
+  },
+  {
+    "ID": 9358,
+    "name": "Chimera Litus",
+    "desc": "Increases duration of Stat foods by 25%.",
+    "bonus": "bonus2 bStatusDuration,SC_STRFOOD,300000; bonus2 bStatusDuration,SC_AGIFOOD,300000; bonus2 bStatusDuration,SC_VITFOOD,300000; bonus2 bStatusDuration,SC_INTFOOD,300000; bonus2 bStatusDuration,SC_DEXFOOD,300000; bonus2 bStatusDuration,SC_LUKFOOD,300000;"
+  },
+  {
+    "ID": 9359,
+    "name": "Volcaring",
+    "desc": "VIT + 1 Increase Physical and Magical damage against Fire element monsters by 3%.",
+    "bonus": "bonus bVit,1; bonus2 bAddEle,Ele_Fire,3; bonus2 bMagicAddEle,Ele_Fire,3;"
+  },
+  {
+    "ID": 9360,
+    "name": "Firewind Kite",
+    "desc": "Increase Physical and Magical damage against Fire element monsters by 2%. Increase Physical and Magical damage against Wind element monsters by 2%.",
+    "bonus": "bonus2 bAddEle,Ele_Fire,2; bonus2 bMagicAddEle,Ele_Fire,2; bonus2 bAddEle,Ele_Wind,2; bonus2 bMagicAddEle,Ele_Wind,2;"
+  },
+  {
+    "ID": 9361,
+    "name": "Omega Cleaner",
+    "desc": "HIT + 5, FLEE + 3, DEX + 1, ASPD + 2%.",
+    "bonus": "bonus bHit,5; bonus bFlee,3; bonus bDex,1; bonus bAspdRate,2;"
+  },
+  {
+    "ID": 9362,
+    "name": "Empathizer",
+    "desc": "VIT + 2 Increases your magic attack power by 2%. Increases magical damage to DemiHuman monsters by 2%.",
+    "bonus": "bonus bVit,2; bonus2 bAddRace,RC_Demihuman,2; bonus2 bMagicAddRace,RC_DemiHuman,2; bonus2 bAddRace,RC_Player_Human,2; bonus2 bMagicAddRace,RC_Player_Human,2;"
+  },
+  {
+    "ID": 9363,
+    "name": "Wild Rose",
+    "desc": "VIT + 2, AGI + 2, ASPD + 2%.",
+    "bonus": "bonus bVit,2; bonus bAgi,2; bonus bAspdRate,2;"
+  },
+  {
+    "ID": 9364,
+    "name": "Eddga",
+    "desc": "Increase Physical and Magical damage against Fire element monsters by 3%. Increases resistance to Fire element by 2%.",
+    "bonus": "bonus2 bSubEle,Ele_Fire,2; bonus2 bAddEle,Ele_Fire,3; bonus2 bMagicAddEle,Ele_Fire,3;"
+  },
+  {
+    "ID": 9365,
+    "name": "Pom Spider",
+    "desc": "Adds a chance of dropping Grape Juice when defeating a Boss-type monster.",
+    "bonus": "bonus3 bAddClassDropItem,533,Class_Boss,200;"
+  },
+  {
+    "ID": 9366,
+    "name": "Blazer",
+    "desc": "Increase Physical and Magical damage against Fire element monsters by 2%. Increases resistance to Fire element by 2%.",
+    "bonus": "bonus2 bSubEle,Ele_Fire,2; bonus2 bAddEle,Ele_Fire,2; bonus2 bMagicAddEle,Ele_Fire,2;"
+  },
+  {
+    "ID": 9367,
+    "name": "Baby Lunar Beast",
+    "desc": "LUK + 2. Adds a 6% chance of dropping Holy Water when defeating an Angel race monster. Adds a 15% chance of dropping Meat when defeating a DemiHuman race monster. Adds a 3% chance of dropping Honey when defeating a Insect race monster.",
+    "bonus": "bonus bLuk,2; bonus3 bAddMonsterDropItem,523,RC_Angel,200; bonus3 bAddMonsterDropItem,517,RC_DemiHuman,500; bonus3 bAddMonsterDropItem,518,RC_Insect,100;"
+  },
+  {
+    "ID": 9368,
+    "name": "Familiar",
+    "desc": "LUK + 2, VIT + 2, ASPD + 2%.",
+    "bonus": "bonus bLuk,2; bonus bVit,2; bonus bAspdRate,2;"
+  },
+  {
+    "ID": 9369,
+    "name": "Cake Poring",
+    "desc": "MaxHP + 3%. Increase healing rate of Well-baked Cookie by 25%.",
+    "bonus": "bonus bMaxHPRate,3; bonus2 bAddItemHealRate,538,25;"
+  },
+  {
+    "ID": 9370,
+    "name": "Plant Poring",
+    "desc": "VIT + 3. Increases healing effectiveness of Heal, Sanctuary, and Potion Pitcher by 5%.",
+    "bonus": "bonus2 bSkillHeal,\"AL_HEAL\",5; bonus2 bSkillHeal,\"PR_SANCTUARY\",5; bonus2 bSkillHeal,\"AM_POTIONPITCHER\",5; bonus bVit,3;"
+  },
+  {
+    "ID": 9371,
+    "name": "Plant Poring Purple",
+    "desc": "VIT + 3. Increases healing effectiveness of Heal, Sanctuary, and Potion Pitcher by 6%.",
+    "bonus": "bonus2 bSkillHeal,\"AL_HEAL\",6; bonus2 bSkillHeal,\"PR_SANCTUARY\",6; bonus2 bSkillHeal,\"AM_POTIONPITCHER\",6; bonus bVit,3;"
+  },
+  {
+    "ID": 9372,
+    "name": "Mummy",
+    "desc": "Adds a 15% chance of dropping Meat when defeating a DemiHuman race monster. Increases physical and magical damage against DemiHuman monster by 2%.",
+    "bonus": "bonus3 bAddMonsterDropItem,517,RC_DemiHuman,500; bonus2 bAddRace,RC_Demihuman,2; bonus2 bMagicAddRace,RC_DemiHuman,2; bonus2 bAddRace,RC_Player_Human,2; bonus2 bMagicAddRace,RC_Player_Human,2;"
+  },
+  {
+    "ID": 9373,
+    "name": "Ancient Mummy",
+    "desc": "Adds a 0.75% chance of dropping Silver Ring when defeating a DemiHuman race monster. Increases physical and magical damage against DemiHuman monster by 3%.",
+    "bonus": "bonus3 bAddMonsterDropItem,2611,RC_DemiHuman,25; bonus2 bAddRace,RC_Demihuman,3; bonus2 bMagicAddRace,RC_DemiHuman,3; bonus2 bAddRace,RC_Player_Human,3; bonus2 bMagicAddRace,RC_Player_Human,3;"
+  },
+  {
+    "ID": 9374,
+    "name": "Mummy Spaghetti",
+    "desc": "Increases duration of Stat foods by 50%.",
+    "bonus": "bonus2 bStatusDuration,SC_STRFOOD,600000; bonus2 bStatusDuration,SC_AGIFOOD,600000; bonus2 bStatusDuration,SC_VITFOOD,600000; bonus2 bStatusDuration,SC_INTFOOD,600000; bonus2 bStatusDuration,SC_DEXFOOD,600000; bonus2 bStatusDuration,SC_LUKFOOD,600000;"
+  },
+  {
+    "ID": 9375,
+    "name": "Easter Poring",
+    "desc": "When killing a Boss monster, adds a chance to drop Strawberry.",
+    "bonus": "bonus3 bAddClassDropItem,578,Class_Boss,50;"
+  },
+  {
+    "ID": 9376,
+    "name": "Black Lunatic",
+    "desc": "When killing a Boss monster, adds a chance to drop Orange.",
+    "bonus": "bonus3 bAddClassDropItem,582,Class_Boss,50;"
+  },
+  {
+    "ID": 9377,
+    "name": "Copo",
+    "desc": "AGI + 2, ASPD + 2%.",
+    "bonus": "bonus bAgi,2; bonus bAspdRate,2;"
+  },
+  {
+    "ID": 9378,
+    "name": "Gray Icewind",
+    "desc": "3% more damage with [Cold Bolt] skill. MATK + 1%",
+    "bonus": "bonus bMatkRate,1; bonus2 bSkillAtk,\"MG_COLDBOLT\",3;"
+  },
+  {
+    "ID": 9379,
+    "name": "Icewind",
+    "desc": "2% more damage with [Cold Bolt] skill. MATK + 1%",
+    "bonus": "bonus bMatkRate,1; bonus2 bSkillAtk,\"MG_COLDBOLT\",2;"
+  },
+  {
+    "ID": 9380,
+    "name": "Ash Toad",
+    "desc": "Increase resistance to Earth Property attacks by 2% and Fire Property attacks by 1%. Increase Physical damage to Earth Property monsters by 2% and Fire Property monsters by 1%.",
+    "bonus": "bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Fire,1; bonus2 bAddEle,Ele_Earth,2; bonus2 bAddEle,Ele_Fire,1;"
+  },
+  {
+    "ID": 9381,
+    "name": "Spark",
+    "desc": "DEX + 1 Increase Physical and Magical damage against Fire element monsters by 2%. Increase resistance to Fire Property attacks by 2%.",
+    "bonus": "bonus bDex,1; bonus2 bSubEle,Ele_Fire,2; bonus2 bAddEle,Ele_Fire,2; bonus2 bMagicAddEle,Ele_Fire,2;"
+  },
+  {
+    "ID": 9382,
+    "name": "Ashring",
+    "desc": "Increase resistance to Neutral and Fire Property attacks by 1%. Increase Physical damage to Neutral and Fire Property monsters by 1%.",
+    "bonus": "bonus2 bSubEle,Ele_Neutral,1; bonus2 bSubEle,Ele_Fire,1; bonus2 bAddEle,Ele_Neutral,1; bonus2 bAddEle,Ele_Fire,1;"
+  },
+  {
+    "ID": 9383,
+    "name": "Book Fairy",
+    "desc": "Increase Magical damage against Fire, Water and Wind element monsters by 2%.",
+    "bonus": "bonus2 bMagicAddEle,Ele_Water,2; bonus2 bMagicAddEle,Ele_Fire,2; bonus2 bMagicAddEle,Ele_Wind,2;"
+  },
+  {
+    "ID": 9384,
+    "name": "Egg Hat Copo",
+    "desc": "AGI + 1, ASPD + 2%, CRIT + 1.",
+    "bonus": "bonus bAgi,1; bonus bAspdRate,2; bonus bCritical,1;"
+  },
+  {
+    "ID": 9385,
+    "name": "Rabbit Iceslug",
+    "desc": "DEX + 1 Increase Physical and Magical damage against Water element monsters by 2%. Increase resistance to Water Property attacks by 2%.",
+    "bonus": "bonus bDex,1; bonus2 bSubEle,Ele_Water,2; bonus2 bAddEle,Ele_Water,2; bonus2 bMagicAddEle,Ele_Water,2;"
+  },
+  {
+    "ID": 9386,
+    "name": "Melibe Iceslug",
+    "desc": "STR + 1 Increase Physical and Magical damage against Water element monsters by 2%. Increase resistance to Water Property attacks by 2%.",
+    "bonus": "bonus bStr,1; bonus2 bSubEle,Ele_Water,2; bonus2 bAddEle,Ele_Water,2; bonus2 bMagicAddEle,Ele_Water,2;"
+  },
+  {
+    "ID": 9387,
+    "name": "Cocopo",
+    "desc": "AGI + 2, ASPD + 3%.",
+    "bonus": "bonus bAgi,2; bonus bAspdRate,3;"
+  },
+  {
+    "ID": 9388,
+    "name": "Nyar",
+    "desc": "When killing a Boss monster, adds a chance to drop Piece of Cake.",
+    "bonus": "bonus3 bAddClassDropItem,539,Class_Boss,50;"
+  },
+  {
+    "ID": 9389,
+    "name": "Egg Armor Copo",
+    "desc": "AGI + 1, ASPD + 2%, CRIT + 1.",
+    "bonus": "bonus bAgi,1; bonus bAspdRate,2; bonus bCritical,1;"
+  },
+  {
+    "ID": 9390,
+    "name": "Dark Lord",
+    "desc": "INT + 2 Increases Physical Damage to DemiHuman monsters by 2% Decreases Physical Damage from DemiHuman monsters by 1%",
+    "bonus": "bonus bInt,2; bonus2 bAddRace,RC_DemiHuman,2; bonus2 bAddRace,RC_Player_Human,2; bonus2 bSubRace,RC_DemiHuman,1; bonus2 bSubRace,RC_Player_Human,1;"
+  },
+  {
+    "ID": 9391,
+    "name": "Baphomet",
+    "desc": "VIT + 2 Increases Physical Damage to DemiHuman monsters by 2% Decreases Physical Damage from DemiHuman monsters by 1%",
+    "bonus": "bonus bVit,2; bonus2 bAddRace,RC_DemiHuman,2; bonus2 bAddRace,RC_Player_Human,2; bonus2 bSubRace,RC_DemiHuman,1; bonus2 bSubRace,RC_Player_Human,1;"
+  },
+  {
+    "ID": 9392,
+    "name": "Dark Illusion",
+    "desc": "INT + 1, VIT + 1 Increases Physical Damage to DemiHuman monsters by 2% Decreases Physical Damage from DemiHuman monsters by 1%",
+    "bonus": "bonus bInt,1; bonus bVit,1; bonus2 bAddRace,RC_DemiHuman,2; bonus2 bAddRace,RC_Player_Human,2; bonus2 bSubRace,RC_DemiHuman,1; bonus2 bSubRace,RC_Player_Human,1;"
+  },
+  {
+    "ID": 9393,
+    "name": "Pink Pitaya",
+    "desc": "MDEF + 1. Increases effectiveness of Heal, Sanctuary and Potion Pitcher on yourself by 3%.",
+    "bonus": "bonus bMdef,1; bonus2 bSkillHeal2,\"AL_HEAL\",3; bonus2 bSkillHeal2,\"PR_SANCTUARY\",3; bonus2 bSkillHeal2,\"AM_POTIONPITCHER\",3;"
+  },
+  {
+    "ID": 9394,
+    "name": "Blue Pitaya",
+    "desc": "MDEF + 1. Increases effectiveness of Heal, Sanctuary and Potion Pitcher on yourself by 3%.",
+    "bonus": "bonus bMdef,1; bonus2 bSkillHeal2,\"AL_HEAL\",3; bonus2 bSkillHeal2,\"PR_SANCTUARY\",3; bonus2 bSkillHeal2,\"AM_POTIONPITCHER\",3;"
+  },
+  {
+    "ID": 9395,
+    "name": "Hosangto",
+    "desc": "MATK + 1%. Increase Physical and Magical damage against Fire and Water element monsters by 1%.",
+    "bonus": "bonus bMatkRate,1; bonus2 bAddEle,Ele_Fire,1; bonus2 bMagicAddEle,Ele_Fire,1; bonus2 bAddEle,Ele_Water,1; bonus2 bMagicAddEle,Ele_Water,1;"
+  },
+  {
+    "ID": 9396,
+    "name": "Dark Priest",
+    "desc": "HIT + 5, FLEE + 3, ASPD + 2%",
+    "bonus": "bonus bHit,5; bonus bFlee,3; bonus bAspdRate,2;"
+  },
+  {
+    "ID": 9397,
+    "name": "Cute Pope",
+    "desc": "Increase Magical damage against Fire, Water and Wind element monsters by 2%.",
+    "bonus": "bonus2 bMagicAddEle,Ele_Water,2; bonus2 bMagicAddEle,Ele_Fire,2; bonus2 bMagicAddEle,Ele_Wind,2;"
+  },
+  {
+    "ID": 9398,
+    "name": "Adventurer Pope",
+    "desc": "Increase Magical damage against Fire, Water and Wind element monsters by 2%.",
+    "bonus": "bonus2 bMagicAddEle,Ele_Water,2; bonus2 bMagicAddEle,Ele_Fire,2; bonus2 bMagicAddEle,Ele_Wind,2;"
+  },
+  {
+    "ID": 9399,
+    "name": "Usagi",
+    "desc": "Increases duration of Stat foods by 25%.",
+    "bonus": "bonus2 bStatusDuration,SC_STRFOOD,300000; bonus2 bStatusDuration,SC_AGIFOOD,300000; bonus2 bStatusDuration,SC_VITFOOD,300000; bonus2 bStatusDuration,SC_INTFOOD,300000; bonus2 bStatusDuration,SC_DEXFOOD,300000; bonus2 bStatusDuration,SC_LUKFOOD,300000;"
+  },
+  {
+    "ID": 9400,
+    "name": "Piske",
+    "desc": "Increases duration of Stat foods by 25%.",
+    "bonus": "bonus2 bStatusDuration,SC_STRFOOD,300000; bonus2 bStatusDuration,SC_AGIFOOD,300000; bonus2 bStatusDuration,SC_VITFOOD,300000; bonus2 bStatusDuration,SC_INTFOOD,300000; bonus2 bStatusDuration,SC_DEXFOOD,300000; bonus2 bStatusDuration,SC_LUKFOOD,300000;"
+  },
+  {
+    "ID": 9401,
+    "name": "Stormy Knight",
+    "desc": "FLEE + 10 Increase Physical and Magical damage against Water element monsters by 2%. Increases resistance to Water element by 2%.",
+    "bonus": "bonus bFlee,10; bonus2 bSubEle,Ele_Water,2; bonus2 bAddEle,Ele_Water,2; bonus2 bMagicAddEle,Ele_Water,2;"
+  },
+  {
+    "ID": 9402,
+    "name": "Mistress",
+    "desc": "CRIT + 2. Increases resistance to Water, Fire, Wind and Earth element by 2%.",
+    "bonus": "bonus bCritical,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Wind,2; bonus2 bSubEle,Ele_Earth,2;"
+  },
+  {
+    "ID": 9403,
+    "name": "Dragoring",
+    "desc": "MATK + 1%. Increase Magical damage against Water, Fire, Wind and Earth element monsters by 2%.",
+    "bonus": "bonus bMatkRate,1; bonus2 bMagicAddEle,Ele_Water,1; bonus2 bMagicAddEle,Ele_Fire,1; bonus2 bMagicAddEle,Ele_Wind,1; bonus2 bMagicAddEle,Ele_Earth,1;"
+  },
+  {
+    "ID": 9404,
+    "name": "Chao",
+    "desc": "Increase Physical and Magical damage against All Element monsters by 1%. Increases resistance to All Elements by 1%.",
+    "bonus": "bonus2 bAddEle,Ele_All,1; bonus2 bSubEle,Ele_All,1;"
+  },
+  {
+    "ID": 9405,
+    "name": "Giant Hornet",
+    "desc": "AGI + 1, CRIT + 2. Increases resistance to Water, Fire, Wind and Earth element by 1%.",
+    "bonus": "bonus bAgi,1; bonus bCritical,2; bonus2 bSubEle,Ele_Water,1; bonus2 bSubEle,Ele_Fire,1; bonus2 bSubEle,Ele_Wind,1; bonus2 bSubEle,Ele_Earth,1;"
+  },
+  {
+    "ID": 9406,
+    "name": "Hornet",
+    "desc": "AGI + 1, CRIT + 1. Increases resistance to Water, Fire, Wind and Earth element by 1%.",
+    "bonus": "bonus bAgi,1; bonus bCritical,1; bonus2 bSubEle,Ele_Water,1; bonus2 bSubEle,Ele_Fire,1; bonus2 bSubEle,Ele_Wind,1; bonus2 bSubEle,Ele_Earth,1;"
+  },
+  {
+    "ID": 9407,
+    "name": "Dr Eggling",
+    "desc": "Reduces damage from Angel-race monsters by 2%. Increases damage to Angel-race monsters by 2%. MDEF + 1.",
+    "bonus": "bonus2 bSubRace,RC_Angel,2; bonus2 bAddRace,RC_Angel,2; bonus bMdef,1;"
+  },
+  {
+    "ID": 9408,
+    "name": "Dr Egg Boiler",
+    "desc": "3% more damage with [Fire Bolt] skill. MATK + 1%",
+    "bonus": "bonus bMatkRate,1; bonus2 bSkillAtk,\"MG_FIREBOLT\",3;"
+  },
+  {
+    "ID": 9409,
+    "name": "Seawind",
+    "desc": "3% more damage with [Cold Bolt] skill. MATK + 1%",
+    "bonus": "bonus bMatkRate,1; bonus2 bSkillAtk,\"MG_COLDBOLT\",3;"
+  },
+  {
+    "ID": 9410,
+    "name": "Scalleg",
+    "desc": "CRIT + 2, ASPD + 2% Every time you attack, 1% chance to cause External Bleeding status ailment.",
+    "bonus": "bonus2 bAddEff,Eff_Bleeding,100; bonus bAspdRate,2; bonus bCritical,2;"
+  },
+  {
+    "ID": 9411,
+    "name": "Ice Seahorse",
+    "desc": "Increase Physical and Magical damage against All Element monsters by 1%. Increases resistance to All Elements by 1%.",
+    "bonus": "bonus2 bAddEle,Ele_All,1; bonus2 bSubEle,Ele_All,1;"
+  },
+  {
+    "ID": 9412,
+    "name": "Cliolima",
+    "desc": "MATK + 1% 1% more damage with [Fire Bolt], [Cold Bolt], [Lightning Bolt], and [Earth Spike].",
+    "bonus": "bonus bMatkRate,1; bonus2 bSkillAtk,\"MG_COLDBOLT\",1; bonus2 bSkillAtk,\"MG_FIREBOLT\",1; bonus2 bSkillAtk,\"MG_LIGHTNINGBOLT\",1; bonus2 bSkillAtk,\"WZ_EARTHSPIKE\",1;"
+  },
+  {
+    "ID": 9413,
+    "name": "Icehorn",
+    "desc": "Increase Physical and Magical damage against All Element monsters by 2%. Increases resistance to All Elements by 1%.",
+    "bonus": "bonus2 bAddEle,Ele_All,2; bonus2 bSubEle,Ele_All,1;"
+  },
+  {
+    "ID": 9414,
+    "name": "Vacation Pope",
+    "desc": "Increases effectiveness of your Heal, Sanctuary and Potion Pitcher by 5%. Decreases damage received from Holy element attacks by 3%. VIT + 1",
+    "bonus": "bonus2 bSkillHeal,\"AL_HEAL\",5; bonus2 bSkillHeal,\"PR_SANCTUARY\",5; bonus2 bSkillHeal,\"AM_POTIONPITCHER\",5; bonus bVit,1; bonus2 bSubEle,Ele_Holy,3;"
+  },
+  {
+    "ID": 9415,
+    "name": "Watermelonring",
+    "desc": "Increase resistance against Water Property by 3%. Increase Physical and Magical damage against Water element monsters by 2%.",
+    "bonus": "bonus2 bSubEle,Ele_Water,3; bonus2 bAddEle,Ele_Water,2; bonus2 bMagicAddEle,Ele_Water,2;"
+  },
+  {
+    "ID": 9416,
+    "name": "Cute Shiba Inu",
+    "desc": "Increases duration of Stat foods by 25%.",
+    "bonus": "bonus2 bStatusDuration,SC_STRFOOD,300000; bonus2 bStatusDuration,SC_AGIFOOD,300000; bonus2 bStatusDuration,SC_VITFOOD,300000; bonus2 bStatusDuration,SC_INTFOOD,300000; bonus2 bStatusDuration,SC_DEXFOOD,300000; bonus2 bStatusDuration,SC_LUKFOOD,300000;"
+  },
+  {
+    "ID": 9417,
+    "name": "Cute Grey Cat",
+    "desc": "Increases duration of Stat foods by 25%.",
+    "bonus": "bonus2 bStatusDuration,SC_STRFOOD,300000; bonus2 bStatusDuration,SC_AGIFOOD,300000; bonus2 bStatusDuration,SC_VITFOOD,300000; bonus2 bStatusDuration,SC_INTFOOD,300000; bonus2 bStatusDuration,SC_DEXFOOD,300000; bonus2 bStatusDuration,SC_LUKFOOD,300000;"
+  },
+  {
+    "ID": 9418,
+    "name": "Wooden Fairy II",
+    "desc": "INT + 2, VIT + 2 Increases healing effectiveness of Heal, Sanctuary and Potion Pitcher by 5%.",
+    "bonus": "bonus bInt,2; bonus bVit,2; bonus bHealPower,5;"
+  },
+  {
+    "ID": 9419,
+    "name": "Creeper II",
+    "desc": "STR + 2, VIT + 2 Increases resistance to Wind element by 2%.",
+    "bonus": "bonus bStr,2; bonus bVit,2; bonus2 bSubEle,Ele_Wind,2;"
+  },
+  {
+    "ID": 9420,
+    "name": "Atroce",
+    "desc": "STR + 2, INT + 2, DEX + 1 Increases Physical and Magical damage against Rachel Sanctuary monsters by 10%.",
+    "bonus": "bonus bStr,2; bonus bInt,2; bonus bDex,1; bonus2 bAddRace2,RC2_RACHEL,10; bonus2 bMagicAddRace2,RC2_RACHEL,10;"
+  },
+  {
+    "ID": 9421,
+    "name": "Ghostring",
+    "desc": "FLEE + 10, HIT + 5. Increase resistance to Ghost Property by 2%.",
+    "bonus": "bonus bFlee,10; bonus bHit,5; bonus2 bSubEle,Ele_Ghost,2;"
+  },
+  {
+    "ID": 9422,
+    "name": "Spiding",
+    "desc": "STR + 1, INT + 1, DEX + 1 Chance to get Cheese when killing Formless monsters. Increases Physical and Magical damage against Formless monsters by 4%.",
+    "bonus": "bonus3 bAddMonsterDropItem,548,RC_Formless,100; bonus2 bAddRace,RC_Formless,4; bonus2 bMagicAddRace,RC_Formless,4; bonus bStr,1; bonus bInt,1; bonus bDex,1;"
+  },
+  {
+    "ID": 9423,
+    "name": "Liamette",
+    "desc": "STR + 1, INT + 1, DEX + 1 Increases duration of Blessing and Increase Agility cast on you by 1 minute.",
+    "bonus": "bonus2 bStatusDuration,SC_BLESSING,60000; bonus2 bStatusDuration,SC_INCREASEAGI,60000; bonus bStr,1; bonus bInt,1; bonus bDex,1;"
+  },
+  {
+    "ID": 9424,
+    "name": "Medjed",
+    "desc": "Increases duration of Military Ration B and C by 5 minutes.",
+    "bonus": "bonus2 bStatusDuration,SC_BG_RATION_MILITARY_B,300000; bonus2 bStatusDuration,SC_BG_RATION_MILITARY_C,300000;"
+  },
+  {
+    "ID": 9425,
+    "name": "Nightmare Piamette",
+    "desc": "MaxHP + 3%. Increases damage against Boss and Non-Boss monsters by 2%. Increases duration of Assumptio cast on you by 20 seconds.",
+    "bonus": "bonus bMaxHPRate,3; bonus2 bAddClass,Class_All,2; bonus2 bStatusDuration,SC_ASSUMPTIO,20000;"
+  },
+  {
+    "ID": 9426,
+    "name": "Hell Tree",
+    "desc": "Base ATK + 8, VIT + 3. Increases duration of Impositio Manus by 10 seconds.",
+    "bonus": "bonus bBaseAtk,8; bonus bVit,3; bonus2 bStatusDuration,SC_IMPOSITIO,10000;"
+  },
+  {
+    "ID": 9427,
+    "name": "Melted Poring",
+    "desc": "ASPD + 3%, Base ATK + 5. Add a chance of gaining a restorative item each time a monster is killed.",
+    "bonus": "bonus2 bAddMonsterDropItemGroup,IG_Recovery,60; bonus bAspdRate,3; bonus bBaseAtk,5;"
+  },
+  {
+    "ID": 9428,
+    "name": "Blood Sucker",
+    "desc": "DEF + 1, MDEF + 1, MaxHP + 2%. Increases Physical and Magical damage against DemiHuman and Player monsters by 1%.",
+    "bonus": "bonus bDef,1; bonus bMdef,1; bonus bMaxHPRate,2; bonus2 bAddRace,RC_DemiHuman,1; bonus2 bAddRace,RC_Player_Human,1; bonus2 bMagicAddRace,RC_DemiHuman,1; bonus2 bMagicAddRace,RC_Player_Human,1;"
+  },
+  {
+    "ID": 9429,
+    "name": "Manduring",
+    "desc": "ASPD + 3%, Base ATK + 5. Add a chance of gaining a restorative item each time a monster is killed.",
+    "bonus": "bonus2 bAddMonsterDropItemGroup,IG_Recovery,60; bonus bAspdRate,3; bonus bBaseAtk,5;"
+  },
+  {
+    "ID": 9430,
+    "name": "Sapling",
+    "desc": "MaxHP + 2%. Increases effectiveness of Heal, Sanctuary and Potion Pitcher on yourself by 5%. Increases duration of Blessing and Increase Agility cast on you by 30 seconds. Add a chance to get a Aloe Leaflet when killing a monster.",
+    "bonus": "bonus bMaxHPRate,2; bonus2 bSkillHeal2,\"AL_HEAL\",5; bonus2 bSkillHeal2,\"PR_SANCTUARY\",5; bonus2 bSkillHeal2,\"AM_POTIONPITCHER\",5; bonus2 bAddMonsterDropItem,521,50; bonus2 bStatusDuration,SC_BLESSING,30000; bonus2 bStatusDuration,SC_INCREASEAGI,30000;"
+  },
+  {
+    "ID": 9431,
+    "name": "Ice Poring",
+    "desc": "ASPD + 3%. Add a chance of gaining a restorative item each time a monster is killed. Increase Physical and Magical damage against Water element monsters by 2%.",
+    "bonus": "bonus2 bAddMonsterDropItemGroup,IG_Recovery,60; bonus bAspdRate,3; bonus2 bAddEle,Ele_Water,2; bonus2 bMagicAddEle,Ele_Water,2;"
+  },
+  {
+    "ID": 9432,
+    "name": "Thanatos",
+    "desc": "Increases your DemiHuman resistance by 1%. Increases magical and physical damage to DemiHuman monsters by 2%. Increases duration of Blessing and Increase Agility cast on you by 30 seconds.",
+    "bonus": "bonus2 bAddRace,RC_DemiHuman,2; bonus2 bAddRace,RC_Player_Human,2; bonus2 bMagicAddRace,RC_DemiHuman,2; bonus2 bMagicAddRace,RC_Player_Human,2; bonus2 bSubRace,RC_DemiHuman,1; bonus2 bSubRace,RC_Player_Human,1; bonus2 bStatusDuration,SC_BLESSING,30000; bonus2 bStatusDuration,SC_INCREASEAGI,30000;"
+  },
+  {
+    "ID": 9433,
+    "name": "Tumblering",
+    "desc": "MaxHP + 1%. Increase resistance against Holy element attacks by 2%. Increase Physical and Magical damage against Holy element monsters by 2%.",
+    "bonus": "bonus bMaxHPRate,1; bonus2 bSubEle,Ele_Holy,2; bonus2 bAddEle,Ele_Holy,2; bonus2 bMagicAddEle,Ele_Holy,2;"
+  },
+  {
+    "ID": 9434,
+    "name": "Yggring",
+    "desc": "MaxHP + 2%. Increases effectiveness of Heal, Sanctuary and Potion Pitcher on yourself by 5%.",
+    "bonus": "bonus bMaxHPRate,2; bonus2 bSkillHeal2,\"AL_HEAL\",5; bonus2 bSkillHeal2,\"PR_SANCTUARY\",5; bonus2 bSkillHeal2,\"AM_POTIONPITCHER\",5;"
+  },
+  {
+    "ID": 9435,
+    "name": "Leafeing",
+    "desc": "MaxHP + 1%. Increase resistance against Wind element attacks by 2%. Increase Physical and Magical damage against Wind element monsters by 2%.",
+    "bonus": "bonus bMaxHPRate,1; bonus2 bSubEle,Ele_Wind,2; bonus2 bAddEle,Ele_Wind,2; bonus2 bMagicAddEle,Ele_Wind,2;"
+  },
+  {
+    "ID": 9436,
+    "name": "Charcoaring",
+    "desc": "MaxHP + 1%. Increases your Brute resistance by 2%. Increases magical and physical damage to Brute monsters by 2%.",
+    "bonus": "bonus bMaxHPRate,1; bonus2 bSubRace,RC_Brute,2; bonus2 bAddRace,RC_Brute,2; bonus2 bMagicAddRace,RC_Brute,2;"
+  },
+  {
+    "ID": 9437,
+    "name": "Vulring",
+    "desc": "Increase Physical and Magical damage against Fire element monsters by 2%. Increases resistance to Fire element by 2%.",
+    "bonus": "bonus2 bSubEle,Ele_Fire,2; bonus2 bAddEle,Ele_Fire,2; bonus2 bMagicAddEle,Ele_Fire,2;"
+  },
+  {
+    "ID": 9438,
+    "name": "Doughkun",
+    "desc": "Increase Physical and Magical damage against All Element monsters by 2%. Increases resistance to All Elements by 1%.",
+    "bonus": "bonus2 bAddEle,Ele_All,2; bonus2 bSubEle,Ele_All,1;"
+  },
+  {
+    "ID": 9439,
+    "name": "Fumi Hausu",
+    "desc": "MaxHP + 2%. Increases effectiveness of Heal, Sanctuary and Potion Pitcher on yourself by 5%.",
+    "bonus": "bonus bMaxHPRate,2; bonus2 bSkillHeal2,\"AL_HEAL\",5; bonus2 bSkillHeal2,\"PR_SANCTUARY\",5; bonus2 bSkillHeal2,\"AM_POTIONPITCHER\",5;"
+  },
+  {
+    "ID": 9440,
+    "name": "Aqua Wisp",
+    "desc": "DEX + 1 Increases magical and physical damage to Formless monsters by 2%.",
+    "bonus": "bonus bDex,1; bonus2 bAddRace,RC_Formless,2; bonus2 bMagicAddRace,RC_Formless,2;"
+  },
+  {
+    "ID": 9441,
+    "name": "Tatsi",
+    "desc": "DEX + 1 Increases magical and physical damage to Fish monsters by 2%.",
+    "bonus": "bonus bDex,1; bonus2 bAddRace,RC_Fish,2; bonus2 bMagicAddRace,RC_Fish,2;"
+  },
+  {
+    "ID": 9442,
+    "name": "Sirena",
+    "desc": "DEX + 1 Increases magical and physical damage to DemiHuman monsters by 2%.",
+    "bonus": "bonus bDex,1; bonus2 bAddRace,RC_Demihuman,2; bonus2 bMagicAddRace,RC_DemiHuman,2; bonus2 bAddRace,RC_Player_Human,2; bonus2 bMagicAddRace,RC_Player_Human,2;"
+  },
+  {
+    "ID": 9443,
+    "name": "Firafflesia",
+    "desc": "MaxHP + 3%. Increases duration of Blessing and Increase Agility cast on you by 30 seconds.",
+    "bonus": "bonus bMaxHPRate,3; bonus2 bStatusDuration,SC_BLESSING,30000; bonus2 bStatusDuration,SC_INCREASEAGI,30000;"
+  },
+  {
+    "ID": 9444,
+    "name": "Time Holder",
+    "desc": "INT + 2, AGI + 2 Increases Physical Damage to DemiHuman monsters by 2% Decreases Physical Damage from DemiHuman monsters by 1% Increases duration of Blessing and Increase Agility cast on you by 20 seconds.",
+    "bonus": "bonus bInt,2; bonus bAgi,2; bonus2 bAddRace,RC_DemiHuman,2; bonus2 bAddRace,RC_Player_Human,2; bonus2 bSubRace,RC_DemiHuman,1; bonus2 bSubRace,RC_Player_Human,1;"
+  },
+  {
+    "ID": 9445,
+    "name": "Satan Morroc",
+    "desc": "STR + 1 Increases your Dark Element resistance by 2%. Increases magical and physical damage to Angel monsters by 2%. Increases duration of Blessing and Increase Agility cast on you by 30 seconds.",
+    "bonus": "bonus bStr,1; bonus2 bAddRace,RC_Angel,2; bonus2 bMagicAddRace,RC_Angel,2; bonus2 bSubEle,Ele_Dark,3; bonus2 bStatusDuration,SC_BLESSING,30000; bonus2 bStatusDuration,SC_INCREASEAGI,30000;"
+  },
+  {
+    "ID": 9446,
+    "name": "Demigod Morroc",
+    "desc": "DEX + 1 Increases your Dark Element resistance by 2%. Increases magical and physical damage to Angel monsters by 2%. Increases duration of Blessing and Increase Agility cast on you by 30 seconds.",
+    "bonus": "bonus bDex,1; bonus2 bAddRace,RC_Angel,2; bonus2 bMagicAddRace,RC_Angel,2; bonus2 bSubEle,Ele_Dark,3; bonus2 bStatusDuration,SC_BLESSING,30000; bonus2 bStatusDuration,SC_INCREASEAGI,30000;"
+  },
+  {
+    "ID": 9447,
+    "name": "Despair God Morroc",
+    "desc": "INT + 1 Increases your Dark Element resistance by 2%. Increases magical and physical damage to Angel monsters by 2%. Increases duration of Blessing and Increase Agility cast on you by 30 seconds.",
+    "bonus": "bonus bInt,1; bonus2 bAddRace,RC_Angel,2; bonus2 bMagicAddRace,RC_Angel,2; bonus2 bSubEle,Ele_Dark,3; bonus2 bStatusDuration,SC_BLESSING,30000; bonus2 bStatusDuration,SC_INCREASEAGI,30000;"
+  },
+  {
+    "ID": 9448,
+    "name": "Abysmal Knight",
+    "desc": "FLEE + 10 Increase Physical and Magical damage against Dark element monsters by 2%. Increases resistance to Dark element by 2%.",
+    "bonus": "bonus bFlee,10; bonus2 bSubEle,Ele_Dark,2; bonus2 bAddEle,Ele_Dark,2; bonus2 bMagicAddEle,Ele_Dark,2; bonus2 bStatusDuration,SC_BLESSING,20000; bonus2 bStatusDuration,SC_INCREASEAGI,20000;"
+  }
+]

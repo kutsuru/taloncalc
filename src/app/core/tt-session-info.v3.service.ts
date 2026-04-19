@@ -42,6 +42,7 @@ export class TTSessionInfoV3Service {
 
     /* base stats */
     baseStats: WritableSignal<BaseStatsAs<number>> = signal({ ...SESSION_INFO_DEFAULT.baseStats });
+    statPointsRemaining: Signal<number>;
 
     /* total stats */
     totalStats: Signal<BaseStatsAs<number>>;
@@ -106,8 +107,9 @@ export class TTSessionInfoV3Service {
     private _foodsOtherState = signal<number[]>([]);
     foodsOther = this._foodsOtherState.asReadonly();
 
+    /* others */
     speedPotion: WritableSignal<number> = signal(0);
-
+    pet: WritableSignal<number> = signal(0);
 
     /* battle calcs */
     private _battleCalcID: number = 0; // for generating unique IDs for battle calcs
@@ -248,6 +250,29 @@ export class TTSessionInfoV3Service {
             const equipedIDs = Object.values(equip).map(_ => _.item);
 
             return equipedIDs.includes(sqiID) ? sqiID : 0;
+        });
+        this.statPointsRemaining = computed(() => {
+            const baseStats = this.baseStats();
+            const baseLevel = this.level().base;
+            const job = this.jobClass();
+
+            /* total calc */
+            let total = 48;
+            if (job && job.isTrans) {
+                total = 100;
+            }
+            for (let lvl = 1; lvl < baseLevel; lvl++) {
+                total += Math.floor(lvl / 5) + 3;
+            }
+            /* used calc */
+            let used = 0;
+            for (const curStatVal of Object.values(baseStats)) {
+                for (let i = 2; i <= curStatVal; i++) {
+                    used += Math.floor((i - 2) / 10) + 2;
+                }
+            }
+
+            return total - used;
         });
 
         /* effects */
@@ -841,6 +866,7 @@ export class TTSessionInfoV3Service {
         const foodsOther = this._foodsOtherState();
         const speedPot = this.speedPotion();
         const sqiBonis = this._sqiBonusState();
+        const petId = this.pet();
         // FIXME: how to handle getskilllv of active skills? not needed?
 
         // job level stats bonus
@@ -936,6 +962,13 @@ export class TTSessionInfoV3Service {
                 if (food && food.itemScript) {
                     this._bonusSession.applyBonus(food.itemScript);
                 }
+            }
+        }
+        /* pet */
+        if (petId > 0) {
+            const pet = this._core.petDB.get(petId);
+            if (pet) {
+                this._bonusSession.applyBonus(pet.bonus);
             }
         }
 

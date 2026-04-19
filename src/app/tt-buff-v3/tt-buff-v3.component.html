@@ -7,6 +7,15 @@
         }
     </mat-select>
 </mat-form-field>
+<!-- pet -->
+<mat-form-field>
+    <mat-label>Pet</mat-label>
+    <mat-select [value]="session.pet()" (selectionChange)="updatePet($event.value)">
+        @for (pet of pets(); track $index) {
+            <mat-option [value]="pet.value">{{pet.name}}</mat-option>
+        }
+    </mat-select>
+</mat-form-field>
 <!-- buffs-->
 @for (buff of session.skillsBuff(); track $index) {
 @switch (buff.type) {

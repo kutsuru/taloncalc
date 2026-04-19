@@ -28,7 +28,7 @@ export class TtCardSelectV3Component {
     /* card list */
     cardList = computed(() => {
         let res: DBItem[] = [];
-        for (const [id, item] of this._core.cardDB) {
+        for (const item of this._core.cardDB.valuesSorted()) {
             if (item.subType === this.data.type) {
                 res.push(item);
             }

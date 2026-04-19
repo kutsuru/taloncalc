@@ -1,8 +1,12 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable, signal, WritableSignal } from "@angular/core";
 import { forkJoin, Observable } from "rxjs";
-import { AmmoType, DBAmmo, DBFood, DBItem, DBItemCombo, DBJob, DBMob, DBSkill, DBWeaponType, ElementDBV3, FoodCategory, FoodStatsNames, JSONFood, DBMobClass, DBWeaponTypeKey, DBWeaponTypeEntry, DBEnchantTypes, DBEnchant, EnchantDBV3 } from "./tt-models.v3";
-import { DefaultMap } from "./utils";
+import { AmmoType, DBAmmo, DBFood, DBItem, DBItemCombo, DBJob, DBMob, DBSkill, DBWeaponType, ElementDBV3, FoodCategory, FoodStatsNames, JSONFood, DBMobClass, DBWeaponTypeKey, DBWeaponTypeEntry, DBEnchantTypes, DBEnchant, EnchantDBV3, DBPet } from "./tt-models.v3";
+import { DefaultMap, SuperMap } from "./utils";
+
+const compareByName = <V extends { name: string }>(a: V, b: V): number => {
+    return a.name.localeCompare(b.name);
+}
 
 @Injectable({ providedIn: 'root' })
 export class TTCoreServiceV3 {
@@ -21,7 +25,7 @@ export class TTCoreServiceV3 {
     private _garmentDB: Map<number, DBItem> = new Map();
     private _shoesDB: Map<number, DBItem> = new Map();
     private _accessoryDB: Map<number, DBItem> = new Map();
-    private _cardDB: Map<number, DBItem> = new Map();
+    private _cardDB: SuperMap<number, DBItem> = new SuperMap(compareByName);
     private _itemCombo: DBItemCombo[] = [];
 
     /* other databases */
@@ -34,6 +38,7 @@ export class TTCoreServiceV3 {
     private _ammoDB: Map<string, DBAmmo> = new Map();
     private _foodDB: Map<number, DBFood> = new Map();
     private _enchantDB: Map<DBEnchantTypes, DBEnchant[]> = new Map();
+    private _petDB: SuperMap<number, DBPet> = new SuperMap(compareByName);
 
 
     /*** public functions ***/
@@ -55,6 +60,7 @@ export class TTCoreServiceV3 {
                     this._loadDB('assets/db/ammo.db.json'),             // 7
                     this._loadDB('assets/db/food.db.V3.json'),          // 8
                     this._loadDB('assets/db/enchant.db.V3.json'),       // 9
+                    this._loadDB('assets/db/pet.db.V3.json'),           // 10
                 ])
                     .subscribe((dbRes) => {
                         /* Item DB */
@@ -213,6 +219,9 @@ export class TTCoreServiceV3 {
                                 this._enchantDB.get(enchantGr as DBEnchantTypes)!.push(entry);
                             }
                         }
+                        /* pet DB */
+                        const pets = dbRes[10] as DBPet[];
+                        pets.forEach(pet => this._petDB.set(pet.ID, pet));
 
                         /* done */
                         this._loaded.set(true);
@@ -224,7 +233,7 @@ export class TTCoreServiceV3 {
         })
     }
     public canWearItem(jobMask: number, item: DBItem): boolean {
-        return (Number(item.jobMask) & jobMask) == jobMask
+        return (Number(item.jobMask) & jobMask) == jobMask;
     }
     public getMobClass(mob: DBMob): DBMobClass {
         if (mob.mode.isBoss || mob.mode.isMvP) return 'boss';
@@ -304,5 +313,8 @@ export class TTCoreServiceV3 {
     }
     get enchantDB() {
         return this._enchantDB;
+    }
+    get petDB() {
+        return this._petDB;
     }
 }

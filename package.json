@@ -11,7 +11,8 @@
     "e2e": "ng e2e",
     "scrap:db": "ts-node --project tools/tsconfig.tools.json tools/itemDBScraper.ts",
     "migrate:db": "ts-node --project tools/tsconfig.tools.json tools/migrate_scaped_to_db.ts",
-    "migrate:skill:enum":"ts-node --project tools/tsconfig.tools.json tools/addSkillEnumsToDB.ts"
+    "migrate:skill:enum":"ts-node --project tools/tsconfig.tools.json tools/addSkillEnumsToDB.ts",
+    "scrap:petdb": "ts-node --project tools/tsconfig.tools.json tools/createPetDbV3.ts"
   },
   "dependencies": {
     "@angular/animations": "^21.1.4",

@@ -43,13 +43,29 @@ export class TtBuffV3Component {
       }
     }
     return res;
-  })
+  });
+
+  pets: Signal<SimpelSelect<number>[]> = computed(() => {
+    this._core.$loaded();
+
+    const res: SimpelSelect<number>[] = [{ name: 'No pet', value: 0 }];
+    for (const pet of this._core.petDB.valuesSorted()) {
+      res.push({
+        name: `${pet.name} (${pet.desc.substring(0, 25)})`,
+        value: pet.ID
+      });
+    }
+    return res;
+  });
 
   /*** public functions ***/
   updateBuffValue(skillId: number, value: number | boolean) {
     this.session.updateSkillBuff(skillId, value);
   }
-  updateSpeedPoition(foodId: number){
+  updateSpeedPoition(foodId: number) {
     this.session.speedPotion.set(foodId);
+  }
+  updatePet(petId: number) {
+    this.session.pet.set(petId);
   }
 }
