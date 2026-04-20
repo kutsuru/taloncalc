@@ -5,6 +5,23 @@ import { createEmptySessionBonus, defaultEquipState } from '../core/session-info
 import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
 import { BaseStatsAs, DBItem, SessionBonus } from '../core/tt-models.v3';
 import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
+import { BuildData } from '../core/tt-body-builder.service';
+
+const BUILD_1: BuildData = {
+  jobClassName: 'Lord Knight',
+  level: { base: 99, job: 70 },
+  baseStats: { agi: 10, dex: 20, int: 30, luk: 40, str: 50, vit: 60 },
+  equip: {
+    rightHand: {
+      item: 1430,
+      cards: [4142,4305,4305],
+      enchants: [],
+      refine: 7
+    }
+  },
+  pet: 9203,
+  speedPotion: 657
+}
 
 @Component({
   selector: 'app-debug',
@@ -65,5 +82,9 @@ export class DebugComponent {
 
     this.unknownScriptElements.set(this.be.getUnknownElements());
     this.debugBonus.set(session);
+  }
+
+  loadBuild1() {
+    this.se.applyBuild(BUILD_1);
   }
 }

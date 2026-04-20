@@ -118,7 +118,7 @@ export type DBJob = {
   hpTable: number[],
   spTable: number[],
   baseAspd: {
-    [key: string]: number
+    [key in DBWeaponTypeKey]?: number
   },
   jobBonus: {
     [key in BaseStatsNames]: number[]

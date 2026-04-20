@@ -6,6 +6,7 @@ import { TTCoreService } from "./tt-core.service";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
 import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, CLASS_SPECIFIC_SQI, ClassWithSQI, DBItemCombo, DBJob, DBSkill, DBWeaponTypeKey, DBWeaponTypeLeft, EQUIP_META, EquipSlotState, EquipState, FoodStatsNames, ItemLocations, SessionBonus, SkillBuff } from "./tt-models.v3";
 import { DefaultMap, isTwoHandedWeapon } from "./utils";
+import { BuildData } from "./tt-body-builder.service";
 
 /** Dependencies 
  * BaseStats        Pure-Stats without any bonus
@@ -517,6 +518,46 @@ export class TTSessionInfoV3Service {
             }
         })
     }
+    public applyBuild(builder: BuildData) {
+        // FIXME: destruct maybe?
+        this.jobClassName.set(builder.jobClassName);
+        this.level.set(builder.level);
+        this.baseStats.set(builder.baseStats);
+
+        /* equip */
+        if (builder.equip) {
+            /* base equip */
+            for (const slot in builder.equip) {
+                const equip = builder.equip[slot as ItemLocations]!;
+                this.updateEquipment(slot as ItemLocations, equip);
+            }
+            /* update rightHandType */
+            if (builder.equip.rightHand) {
+                const item = this.#core.itemDB.get(builder.equip.rightHand.item);
+                if (item) {
+                    this.rightHandType.set(item.subType as DBWeaponTypeKey);
+                }
+            }
+            /* update leftHandType */
+            if (builder.equip.leftHand) {
+                const item = this.#core.itemDB.get(builder.equip.leftHand.item);
+                if (item) {
+                    this.leftHandType.set(item.subType as DBWeaponTypeLeft);    // this is either a weapon or shield
+                }
+            }
+        }
+        else {
+            // FIXME: reset equip??
+            // Object.fromEntries(
+            //     Object.keys(EQUIP_META).map(slot => [slot, defaultEquipSlotState()])
+            // ) as EquipState
+        }
+
+        /* rest */
+        if (builder.sqiBonus) this.#sqiBonusState.set(builder.sqiBonus);
+        if (builder.speedPotion) this.speedPotion.set(builder.speedPotion);
+        if (builder.pet) this.pet.set(builder.pet);
+    }
 
     /*** private functions ***/
     #computeHpSp(mode: 'HP' | 'SP'): number {
@@ -693,7 +734,7 @@ export class TTSessionInfoV3Service {
         //     this._sessionInfoData.activeBonus.scIncAspdRate;
 
         if (job) {
-            attackMotion = job.baseAspd[rhType];
+            attackMotion = job.baseAspd[rhType]!;   // FIXME: maybe default backup value
 
             if (this.isDualWielding())
                 attackMotion = Math.floor(
