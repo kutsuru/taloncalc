@@ -1,5 +1,5 @@
 <!-- Left & right hand -->
-<div>
+<div class="option-container">
     <mat-form-field>
         <mat-label>Waepon Type</mat-label>
         <mat-select [value]="session.rightHandType()" (selectionChange)="session.updateRightHandType($event.value)">
@@ -18,6 +18,25 @@
     </mat-form-field>
 </div>
 <!-- Equips -->
-@for (equipSlot of equip(); track equipSlot.slot) {
+<div class="equip-container">
+    <div class="equip-left">
+        <tt-equip-slot [slot]="equip.upperHg.slot" [meta]="equip.upperHg.meta" />
+        <tt-equip-slot [slot]="equip.lowerHg.slot" [meta]="equip.lowerHg.meta" />
+        <tt-equip-slot [slot]="equip.rightHand.slot" [meta]="equip.rightHand.meta" />
+        <tt-equip-slot [slot]="equip.garment.slot" [meta]="equip.garment.meta" />
+        <tt-equip-slot [slot]="equip.rhAccessory.slot" [meta]="equip.rhAccessory.meta" />
+    </div>
+    <div class="equip-avatar">
+        <class-avatar />
+    </div>
+    <div class="equip-right">
+        <tt-equip-slot [slot]="equip.middleHg.slot" [meta]="equip.middleHg.meta" />
+        <tt-equip-slot [slot]="equip.armor.slot" [meta]="equip.armor.meta" />
+        <tt-equip-slot [slot]="equip.leftHand.slot" [meta]="equip.leftHand.meta" />
+        <tt-equip-slot [slot]="equip.shoes.slot" [meta]="equip.shoes.meta" />
+        <tt-equip-slot [slot]="equip.lhAccessory.slot" [meta]="equip.lhAccessory.meta" />
+    </div>
+</div>
+<!-- @for (equipSlot of equip(); track equipSlot.slot) {
 <tt-equip-slot [slot]="equipSlot.slot" [meta]="equipSlot.meta" />
-}
+} -->

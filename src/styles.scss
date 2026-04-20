@@ -96,3 +96,12 @@ body {
 .filler {
   flex: 1 0 auto;
 }
+
+/* custome theming */
+.expansion-outlined {
+  @include mat.expansion-overrides((
+    container-elevation-shadow: none,
+  ));
+
+  border: 1px solid var(--mat-sys-outline-variant);
+}

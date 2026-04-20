@@ -3,11 +3,10 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { ClassAvatarComponent } from "../class-avatar/class-avatar.component";
 import { TTCoreService } from '../core/tt-core.service';
-import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
-import { BaseStatsAs } from '../core/tt-models.v3';
 import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
+import { BaseStatsAs } from '../core/tt-models.v3';
+import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
 import { TtValueComponent } from "../tt-value/tt-value.component";
 
 @Component({
@@ -16,9 +15,8 @@ import { TtValueComponent } from "../tt-value/tt-value.component";
     MatFormFieldModule,
     MatSelectModule,
     ReactiveFormsModule,
-    ClassAvatarComponent,
     TtValueComponent
-],
+  ],
   templateUrl: './tt-stats-v3.component.html',
   styleUrl: './tt-stats-v3.component.scss',
 })
@@ -81,7 +79,7 @@ export class TtStatsV3Component {
 
     /* form events */
     this.selectedJob.valueChanges.pipe(takeUntilDestroyed()).subscribe((val) => {
-      this.session.jobClassName.set(val);
+      if (val.length > 0) this.session.jobClassName.set(val);
     });
     this.levels.valueChanges.pipe(takeUntilDestroyed()).subscribe((val) => {
       this.session.level.set({

@@ -3165,7 +3165,8 @@
     "isBuff": true,
     "type": "list",
     "job": "0x0",
-    "enum": "PR_IMPOSITIO"
+    "enum": "PR_IMPOSITIO",
+    "itemScript":"bonus bWeaponAtk,subSkillLvl*5;"
   },
   "Suffragium": {
     "id": 91,
@@ -9305,7 +9306,7 @@
     "isBuff": true,
     "type": "list",
     "job": "0x10002",
-    "itemScript": "bonus bFlee,subSkillLvl/2",
+    "itemScript": "bonus bFlee,round(subSkillLvl/2)",
     "enum": "SN_WINDWALK"
   },
   "Soul Drain": {

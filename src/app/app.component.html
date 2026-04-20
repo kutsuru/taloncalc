@@ -25,11 +25,11 @@
     <header>Stats Info</header>
     <tt-stats-info-v3 />
   </tt-card>
-  <tt-card [expanded]="true" class="full">
+  <tt-card [expanded]="false" class="full">
     <header>Equipment</header>
     <tt-equip-v3 />
   </tt-card>
-  <tt-card [expanded]="true">
+  <tt-card [expanded]="false">
     <header>SQI Bonus</header>
     <!-- FIXME only if equipped?-->
      <tt-sqi-bonus />
@@ -46,7 +46,7 @@
     <header>Food</header>
     <tt-food-v3 />
   </tt-card>
-  <tt-card [expanded]="false" class="full">
+  <tt-card [expanded]="true" class="full">
     <header>Battle Calculation</header>
     <tt-battle-calc-v3 />
   </tt-card>
@@ -86,7 +86,7 @@
   <!-- DEBUG (V2) -->
   <!-- ####################### V2 END ####################### -->
   <!-- mask generator -->
-  <tt-mask-generator></tt-mask-generator>
+  <!-- <tt-mask-generator></tt-mask-generator> -->
 </div>
 <!-- sidenav -->
 <div class="drawer-sidenav">

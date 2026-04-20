@@ -185,7 +185,7 @@ export type SessionBonus = {
     hpLossRate: number; spLossRate: number;
 
     // physical offensive
-    atk: number; atk2: number; atkRate: number; baseAtk: number;
+    atk: number; atk2: number; atkRate: number; baseAtk: number; weaponAtk: number;
     hit: number; hitRate: number;
     critical: number; critAtkRate: number; criticalLong: number;
     aspd: number; aspdRate: number;
@@ -281,7 +281,7 @@ export type SessionBonus = {
   addItemSPHealRate: DefaultMap<string, number>; //item ID
   skillDefRatioAtkClass: DefaultMap<string, DBMobClass>; // skill enum FIXME: special talon bonus
   skillWeaponElement: DefaultMap<string, DBElement>;  // skill enum FIXME: special talon bonus
-  
+
   /* flags */
   flags: DefaultMap<SessionBonusFlag, boolean>
 };

@@ -38,10 +38,7 @@ import { TTBattleSessionServiceV3 } from '../core/tt-battle-session.v3.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [TTBattleSessionServiceV3]
 })
-export class TtBattleCalcPvmV3Component implements OnDestroy {
-  ngOnDestroy(): void {
-    console.log('Im dead');
-  }
+export class TtBattleCalcPvmV3Component {
   /* injects */
   private readonly _core = inject(TTCoreServiceV3);
   readonly session = inject(TTSessionInfoV3Service);
@@ -70,7 +67,7 @@ export class TtBattleCalcPvmV3Component implements OnDestroy {
   skillHasLvl: WritableSignal<boolean> = signal(false);
 
   /* refresh */
-  autoRefresh = signal(false);
+  autoRefresh = signal(true);
   refreshTrigger = linkedSignal(() => {
     this.autoRefresh();
     return 0;

@@ -21,6 +21,9 @@ export const INLINE_FUNCTIONS: Record<string, InlineFunction> = {
     floor: (be, opts, value: number): number => {
         return Math.floor(value);
     },
+    round: (be, opts, value: number): number => {
+        return Math.round(value);
+    },
     callfunc: (be, opts, name: string, ...args: any[]) => {
         switch (name) {
             case 'F_Map_VS':

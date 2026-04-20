@@ -1,0 +1,25 @@
+.option-container {
+    display: flex;
+    justify-content: center;
+}
+
+.equip-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    &>div {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.equip-left {
+    align-items: end;
+}
+
+.equip-avatar {
+    align-items: center;
+    justify-content: center;
+}
+
+.equip-right {}

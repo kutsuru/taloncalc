@@ -10,7 +10,7 @@ export function createEmptySessionBonus(): SessionBonus {
             maxHP: 0, maxSP: 0, maxHPRate: 0, maxSPRate: 0,
             hpRegenRate: 0, spRegenRate: 0, hpRecovRate: 0, spRecovRate: 0,
             hpLossRate: 0, spLossRate: 0,
-            atk: 0, atk2: 0, atkRate: 0, baseAtk: 0,
+            atk: 0, atk2: 0, atkRate: 0, baseAtk: 0, weaponAtk: 0,
             hit: 0, hitRate: 0, critical: 0, critAtkRate: 0, criticalLong: 0,
             aspd: 0, aspdRate: 0, longAtkRate: 0, shortAtkRate: 0,
             atkEle: 'neutral', atkRange: 0, splashRange: 0,

@@ -1,23 +1,26 @@
-import { ChangeDetectionStrategy, Component, computed, effect, inject, Signal, untracked } from '@angular/core';
-import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, computed, inject, Signal, untracked } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { DBItem, EquipLocation, RefineLocations, DBWeaponTypeKey, DBWeaponTypeLeft, EQUIP_META } from '../core/tt-models.v3';
-import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
-import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
-import { TtCardSlotV3Component } from "../tt-card-slot-v3/tt-card-slot-v3.component";
+import { ClassAvatarComponent } from "../class-avatar/class-avatar.component";
 import { ItemLocations } from '../core/models';
+import { DBWeaponTypeKey, DBWeaponTypeLeft, EQUIP_META, EquipSlotMeta } from '../core/tt-models.v3';
+import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
 import { TtEquipSlotComponent } from '../tt-equip-slot/tt-equip-slot.component';
 
-type GearItem = Pick<DBItem, 'ID' | 'name'>;
+type EquipUI = {
+  slot: ItemLocations,
+  meta: EquipSlotMeta
+};
+
 @Component({
   selector: 'tt-equip-v3',
   imports: [
     MatFormFieldModule,
     ReactiveFormsModule,
     MatSelectModule,
-    TtEquipSlotComponent
+    TtEquipSlotComponent,
+    ClassAvatarComponent
   ],
   templateUrl: './tt-equip-v3.component.html',
   styleUrl: './tt-equip-v3.component.scss',
@@ -25,17 +28,14 @@ type GearItem = Pick<DBItem, 'ID' | 'name'>;
 })
 export class TtEquipV3Component {
   /*** injects ***/
-  private readonly _core = inject(TTCoreServiceV3);
   readonly session = inject(TTSessionInfoV3Service);
 
   /*** varbs ***/
   /* equipment */
-  equip = computed(() => {
-    return (Object.keys(EQUIP_META) as ItemLocations[]).map(slot => ({
-      slot,
-      meta: EQUIP_META[slot]
-    }))
-  });
+  readonly equip = Object.keys(EQUIP_META).reduce((res, slot) => {
+    res[slot] = { slot, meta: EQUIP_META[slot] };
+    return res;
+  }, {} as Record<ItemLocations, EquipUI>);
 
   /* gear lists */
   weaponTypes: Signal<DBWeaponTypeKey[]>;

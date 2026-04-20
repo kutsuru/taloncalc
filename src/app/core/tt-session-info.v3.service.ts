@@ -25,8 +25,8 @@ export const SQI_BONUS_CNT_MAX = 4;
 @Injectable({ providedIn: 'root' })
 export class TTSessionInfoV3Service {
     /* injects */
-    private readonly _core = inject(TTCoreServiceV3);
-    private readonly _bonusSession = inject(TTBonusEngineService);
+    readonly #core = inject(TTCoreServiceV3);
+    readonly #bonusSession = inject(TTBonusEngineService);
 
     /* job data */
     jobClassName = signal('');
@@ -66,13 +66,12 @@ export class TTSessionInfoV3Service {
     bonus: Signal<SessionBonus>;
 
     /* equip */
-    // FIXME: when job changed, check if items still wearable
-    private _equipmentState: WritableSignal<EquipState> = signal(
+    #equipmentState: WritableSignal<EquipState> = signal(
         Object.fromEntries(
             Object.keys(EQUIP_META).map(slot => [slot, defaultEquipSlotState()])
         ) as EquipState
     );
-    equipment = this._equipmentState.asReadonly();
+    equipment = this.#equipmentState.asReadonly();
     // FIXME: react on job changes
     rightHandType: WritableSignal<DBWeaponTypeKey> = signal('Unarmed');
     leftHandType: WritableSignal<DBWeaponTypeLeft> = signal('Shield');
@@ -80,21 +79,21 @@ export class TTSessionInfoV3Service {
     isDualWielding: Signal<boolean>;
     /* sqi */
     sqiEquipped: Signal<number>;
-    private _sqiBonusState: WritableSignal<string[]> = signal([]);
-    sqiBonus = this._sqiBonusState.asReadonly();
+    #sqiBonusState: WritableSignal<string[]> = signal([]);
+    sqiBonus = this.#sqiBonusState.asReadonly();
 
     /* item combos */
     itemCombos: Signal<DBItemCombo[]>;
 
     /* skills */
     skillsJob: Signal<DBSkill[]>;
-    private _skillsBuffState: WritableSignal<SkillBuff[]> = signal([]);
-    skillsBuff = this._skillsBuffState.asReadonly();
-    private _skillsPassiveState: WritableSignal<SkillBuff[]> = signal([]);
-    skillsPassive = this._skillsPassiveState.asReadonly();
+    #skillsBuffState: WritableSignal<SkillBuff[]> = signal([]);
+    skillsBuff = this.#skillsBuffState.asReadonly();
+    #skillsPassiveState: WritableSignal<SkillBuff[]> = signal([]);
+    skillsPassive = this.#skillsPassiveState.asReadonly();
 
     /* foods */
-    private _foodsStatsState: WritableSignal<{ [key in FoodStatsNames]: number }> = signal({
+    #foodsStatsState: WritableSignal<{ [key in FoodStatsNames]: number }> = signal({
         AGI: 0,
         DEX: 0,
         INT: 0,
@@ -102,18 +101,18 @@ export class TTSessionInfoV3Service {
         VIT: 0,
         LUK: 0
     });
-    foodsStats = this._foodsStatsState.asReadonly();
+    foodsStats = this.#foodsStatsState.asReadonly();
 
-    private _foodsOtherState = signal<number[]>([]);
-    foodsOther = this._foodsOtherState.asReadonly();
+    #foodsOtherState = signal<number[]>([]);
+    foodsOther = this.#foodsOtherState.asReadonly();
 
     /* others */
     speedPotion: WritableSignal<number> = signal(0);
     pet: WritableSignal<number> = signal(0);
 
     /* battle calcs */
-    private _battleCalcID: number = 0; // for generating unique IDs for battle calcs
-    private _battleCalcsPVM: WritableSignal<BattleCalcEntry[]> = signal([
+    #battleCalcID: number = 0; // for generating unique IDs for battle calcs
+    #battleCalcsPVM: WritableSignal<BattleCalcEntry[]> = signal([
         // {
         //     ID: this._getBattleCalcID(),
         //     target: 1751
@@ -123,18 +122,18 @@ export class TTSessionInfoV3Service {
         //     target: 1708
         // },
         {
-            ID: this._getBattleCalcID(),
-            target: 1918
+            ID: this.#getBattleCalcID(),
+            target: 1002
         }
     ]);
-    battleCalcsPVM = this._battleCalcsPVM.asReadonly();
+    battleCalcsPVM = this.#battleCalcsPVM.asReadonly();
 
     constructor() {
         /* wait for core to be loaded */
         effect(() => {
-            if (this._core.$loaded()) {
-                const allJobs = this._core.allJobNames;
-                // this.jobClassName.set(allJobs[0]);
+            if (this.#core.$loaded()) {
+                const allJobs = this.#core.allJobNames;
+                this.jobClassName.set(allJobs[0]);
 
                 // DEBUG BUILD 1
                 // this.jobClassName.set('Lord Knight');   // FIXME: debug
@@ -151,7 +150,7 @@ export class TTSessionInfoV3Service {
 
         /* create computed signals */
         this.jobClass = computed(() => {
-            let newClass = this._core.jobDB.get(this.jobClassName());
+            let newClass = this.#core.jobDB.get(this.jobClassName());
             return newClass;
         })
         this.skillsJob = computed(() => {
@@ -159,7 +158,7 @@ export class TTSessionInfoV3Service {
             if (job) {
                 const jobMask = Number(job.mask);
                 const skillList: DBSkill[] = [];
-                for (const [skillId, skill] of this._core.skillDB) {
+                for (const [skillId, skill] of this.#core.skillDB) {
                     if (
                         skill.isActive &&
                         (Number(skill.job) & jobMask) == jobMask
@@ -212,20 +211,20 @@ export class TTSessionInfoV3Service {
             }
 
         });
-        this.bonus = computed(() => this._computeBonus());
-        this.itemCombos = computed(() => this._computeItemCombos());
-        this.maxHp = computed(() => this._computeHpSp('HP'));
-        this.maxSp = computed(() => this._computeHpSp('SP'));
-        this.baseAtk = computed(() => this._computeBaseAtk());
-        this.weaponAtk = computed(() => this._computeWeaponAtk());
-        this.atk = computed(() => this._computeAtk());
-        this.hit = computed(() => this._computeHit());
-        this.flee = computed(() => this._computeFlee());
-        this.aspd = computed(() => this._computeAspd());
-        this.crit = computed(() => this._computeCrit());
-        this.perfectDodge = computed(() => this._computePerfectDodge());
-        this.matkMin = computed(() => this._computeMatk('MIN'));
-        this.matkMax = computed(() => this._computeMatk('MAX'));
+        this.bonus = computed(() => this.#computeBonus());
+        this.itemCombos = computed(() => this.#computeItemCombos());
+        this.maxHp = computed(() => this.#computeHpSp('HP'));
+        this.maxSp = computed(() => this.#computeHpSp('SP'));
+        this.baseAtk = computed(() => this.#computeBaseAtk());
+        this.weaponAtk = computed(() => this.#computeWeaponAtk());
+        this.atk = computed(() => this.#computeAtk());
+        this.hit = computed(() => this.#computeHit());
+        this.flee = computed(() => this.#computeFlee());
+        this.aspd = computed(() => this.#computeAspd());
+        this.crit = computed(() => this.#computeCrit());
+        this.perfectDodge = computed(() => this.#computePerfectDodge());
+        this.matkMin = computed(() => this.#computeMatk('MIN'));
+        this.matkMax = computed(() => this.#computeMatk('MAX'));
         this.isDualWielding = computed(() => {
             // FIXME
             const lhType = this.leftHandType();
@@ -236,10 +235,10 @@ export class TTSessionInfoV3Service {
                 return true;
             }
         });
-        this.def = computed(() => this._computeDEF());
+        this.def = computed(() => this.#computeDEF());
         this.sqiEquipped = computed(() => {
             // FIXME: make a object with "job specifc SQi instead?"
-            const equip = this._equipmentState();
+            const equip = this.#equipmentState();
             const jobClassName = this.jobClassName();
 
             if (!(jobClassName in CLASS_SPECIFIC_SQI)) return 0;    // class without SQI
@@ -304,14 +303,14 @@ export class TTSessionInfoV3Service {
             const job = this.jobClass();
             if (job) {
                 untracked(() => {
-                    const equipUpdated = { ...this._equipmentState() };
+                    const equipUpdated = { ...this.#equipmentState() };
                     const jobMask = Number(job.mask);
                     let update = false;
                     for (const slot in equipUpdated) {
                         const equipSlot = equipUpdated[slot as ItemLocations];
                         if (equipSlot.item > 0) {
-                            const item = this._core.itemDB.get(equipSlot.item);
-                            if (!item || !this._core.canWearItem(jobMask, item)) {
+                            const item = this.#core.itemDB.get(equipSlot.item);
+                            if (!item || !this.#core.canWearItem(jobMask, item)) {
                                 // cant wear create new empty item
                                 equipUpdated[slot] = defaultEquipSlotState();
                                 update = true;
@@ -319,7 +318,7 @@ export class TTSessionInfoV3Service {
                         }
                     }
                     if (update) {
-                        this._equipmentState.set(equipUpdated);
+                        this.#equipmentState.set(equipUpdated);
                     }
                 })
             }
@@ -327,9 +326,9 @@ export class TTSessionInfoV3Service {
 
         // load and map buff skills
         effect(() => {
-            this._core.$loaded();
+            this.#core.$loaded();
             const resBuff: SkillBuff[] = [];
-            for (const [skillID, skill] of this._core.skillDB) {
+            for (const [skillID, skill] of this.#core.skillDB) {
                 let value: number | boolean;
                 if (skill.isBuff && skill.type) {
                     if (skill.type === 'check') {
@@ -348,16 +347,16 @@ export class TTSessionInfoV3Service {
                     });
                 }
             }
-            this._skillsBuffState.set(resBuff);
+            this.#skillsBuffState.set(resBuff);
         });
         // load and map passive skills
         effect(() => {
-            this._core.$loaded();
+            this.#core.$loaded();
             const job = this.jobClass();
             if (!job) return;
             const jobMask = Number(job.mask);
             const resPassive: SkillBuff[] = [];
-            for (const [skillID, skill] of this._core.skillDB) {
+            for (const [skillID, skill] of this.#core.skillDB) {
                 let value: number | boolean;
                 if (skill.isPassive) {
                     /* passive skill */
@@ -373,18 +372,18 @@ export class TTSessionInfoV3Service {
                     }
                 }
             }
-            this._skillsPassiveState.set(resPassive);
+            this.#skillsPassiveState.set(resPassive);
         });
         // clear SQI bonus, if the SQI changes
         effect(() => {
             const sqiID = this.sqiEquipped(); // everytime it changes
             if (sqiID === 0) {
                 /* set to empty */
-                this._sqiBonusState.set([]);
+                this.#sqiBonusState.set([]);
             }
             else {
                 /* remove bonis of wrong SQI */
-                this._sqiBonusState.update(bonis => {
+                this.#sqiBonusState.update(bonis => {
                     return bonis.filter(b => b.startsWith(sqiID.toString()));
                 });
             }
@@ -394,7 +393,7 @@ export class TTSessionInfoV3Service {
     /*** public functions ***/
     public updateEquipment(slot: ItemLocations, update: Partial<EquipSlotState>) {
         // FIXME: correct slots etc
-        this._equipmentState.update(old => ({
+        this.#equipmentState.update(old => ({
             ...old,
             [slot]: { ...old[slot], ...update }
         }));
@@ -402,7 +401,7 @@ export class TTSessionInfoV3Service {
     public updateEquipmentId(slot: ItemLocations, itemId: number) {
         let newItem = defaultEquipSlotState();
         if (itemId > 0) {
-            const dbItem = this._core.itemDB.get(itemId);
+            const dbItem = this.#core.itemDB.get(itemId);
             newItem.item = itemId;
             if (dbItem) {
                 if (newItem.cards.length != dbItem.slots) {
@@ -416,11 +415,11 @@ export class TTSessionInfoV3Service {
         this.updateEquipment(slot, newItem);
     }
     public updateCard(slot: ItemLocations, cardId: number, cardSlot: number = 0) {
-        let cards = this._equipmentState()[slot].cards.map((val, idx) => idx === cardSlot ? cardId : val);
+        let cards = this.#equipmentState()[slot].cards.map((val, idx) => idx === cardSlot ? cardId : val);
         this.updateEquipment(slot, { cards });
     }
     public updateEnchant(slot: ItemLocations, enchantSlot: number, enchantId: number) {
-        const enchants = this._equipmentState()[slot].enchants.map((val, idx) => idx === enchantSlot ? enchantId : val);
+        const enchants = this.#equipmentState()[slot].enchants.map((val, idx) => idx === enchantSlot ? enchantId : val);
         this.updateEquipment(slot, { enchants })
     }
     public updateRightHandType(newType: DBWeaponTypeKey) {
@@ -438,31 +437,31 @@ export class TTSessionInfoV3Service {
 
     public addBattleCalcPVM(target: number) {
         const newEntry: BattleCalcEntry = {
-            ID: this._getBattleCalcID(),
+            ID: this.#getBattleCalcID(),
             target: target
         };
-        this._battleCalcsPVM.update(prev => [...prev, newEntry]);
+        this.#battleCalcsPVM.update(prev => [...prev, newEntry]);
     }
     public removeBattleCalcPVM(id: number) {
-        this._battleCalcsPVM.update(prev => prev.filter(e => e.ID !== id));    // TODO: does it trigger change detection if we filter the same array? or do we need to spread it like [...prev.filter(...)]?
+        this.#battleCalcsPVM.update(prev => prev.filter(e => e.ID !== id));    // TODO: does it trigger change detection if we filter the same array? or do we need to spread it like [...prev.filter(...)]?
     }
     public updateBattleCalcPVM(id: number, target: number) {
-        this._battleCalcsPVM.update(prev => prev.map(e => e.ID === id ? { ...e, target: target } : e));
+        this.#battleCalcsPVM.update(prev => prev.map(e => e.ID === id ? { ...e, target: target } : e));
     }
     public updateSkillBuff(skillId: number, value: number | boolean) {
-        this._skillsBuffState.update(skills =>
+        this.#skillsBuffState.update(skills =>
             skills.map(s => s.id === skillId ? { ...s, value: value } : s)
         )
     }
     public updateSkillPassive(skillId: number, value: number) {
         // all skils will be saved as numbers
-        this._skillsPassiveState.update(skills =>
+        this.#skillsPassiveState.update(skills =>
             skills.map(s => s.id === skillId ? { ...s, value: value } : s)
         )
     }
     public getSkillLvlOfSkillPassive(skillId: number): number {
         let lvl = 0;
-        const skill = this._skillsPassiveState().find(_ => _.id === skillId);
+        const skill = this.#skillsPassiveState().find(_ => _.id === skillId);
         if (skill) {
             lvl = skill.value as number;    // FIXME: define passive skills always as numbers?
         }
@@ -470,7 +469,7 @@ export class TTSessionInfoV3Service {
     }
     public getSkillLvlOfSkillBuff(skillId: number): number {
         let lvl = 0;
-        const skill = this._skillsBuffState().find(_ => _.id === skillId);
+        const skill = this.#skillsBuffState().find(_ => _.id === skillId);
         if (skill) {
             if (typeof skill.value === 'boolean') {
                 lvl = skill.value ? 1 : 0;
@@ -482,7 +481,7 @@ export class TTSessionInfoV3Service {
         return lvl;
     }
     public updateStatFood(stat: FoodStatsNames, foodId: number) {
-        this._foodsStatsState.update(foods => {
+        this.#foodsStatsState.update(foods => {
             return {
                 ...foods,
                 [stat]: foodId
@@ -490,7 +489,7 @@ export class TTSessionInfoV3Service {
         })
     }
     public toogleOtherFood(foodId: number) {
-        this._foodsOtherState.update(foods => {
+        this.#foodsOtherState.update(foods => {
             if (foods.includes(foodId)) {
                 /* remove */
                 return foods.filter(f => f !== foodId);
@@ -503,7 +502,7 @@ export class TTSessionInfoV3Service {
 
     }
     public toggleSQIBonus(bonusId: string) {
-        this._sqiBonusState.update(bonis => {
+        this.#sqiBonusState.update(bonis => {
             if (bonis.includes(bonusId)) {
                 /* remove */
                 return bonis.filter(b => b !== bonusId);
@@ -520,7 +519,7 @@ export class TTSessionInfoV3Service {
     }
 
     /*** private functions ***/
-    private _computeHpSp(mode: 'HP' | 'SP'): number {
+    #computeHpSp(mode: 'HP' | 'SP'): number {
         /* triggers */
         const stats = this.totalStats();
         const level = this.level();
@@ -563,7 +562,7 @@ export class TTSessionInfoV3Service {
             return 0;
         }
     }
-    private _computeBaseAtk(): number {
+    #computeBaseAtk(): number {
         /* triggers */
         const stats = this.totalStats();
         const bonus = this.bonus();
@@ -599,32 +598,32 @@ export class TTSessionInfoV3Service {
 
         return baseAtk;
     }
-    private _computeWeaponAtk(): number {
+    #computeWeaponAtk(): number {
         /* triggers */
-        const equip = this._equipmentState();
+        const equip = this.#equipmentState();
         const bonus = this.bonus();
 
         // right hand
         let rhWeaponAtk: number = 0;
-        const rhWeapon = this._core.weaponDB.get(equip.rightHand.item);
+        const rhWeapon = this.#core.weaponDB.get(equip.rightHand.item);
         if (rhWeapon) {
             rhWeaponAtk = rhWeapon.attack;
         }
 
         // left hand
         let lhWeaponAtk: number = 0;
-        const lhWeapon = this._core.weaponDB.get(equip.leftHand.item);
+        const lhWeapon = this.#core.weaponDB.get(equip.leftHand.item);
         if (lhWeapon) {
             lhWeaponAtk = lhWeapon.attack;
         }
         // but SC_INCATKRATE is also applied on weapon attack
 
-        let weaponAtk = rhWeaponAtk + lhWeaponAtk + bonus.stats.scIncAtkRate;
+        let weaponAtk = rhWeaponAtk + lhWeaponAtk + bonus.stats.scIncAtkRate + bonus.stats.weaponAtk;
 
         return weaponAtk;
     }
 
-    private _computeAtk(): number {
+    #computeAtk(): number {
         /* triggers */
         const baseAtk = this.baseAtk();
         const weaponAtk = this.weaponAtk();
@@ -638,7 +637,7 @@ export class TTSessionInfoV3Service {
 
         return atk;
     }
-    private _computeHit(): number {
+    #computeHit(): number {
         /* trigger */
         const level = this.level();
         const stats = this.totalStats();
@@ -656,7 +655,7 @@ export class TTSessionInfoV3Service {
         // this._sessionInfoData.activeBonus.flee
         return hit;
     }
-    private _computeFlee(): number {
+    #computeFlee(): number {
         /* triggers */
         const level = this.level();
         const stats = this.totalStats();
@@ -674,7 +673,7 @@ export class TTSessionInfoV3Service {
 
         return flee;
     }
-    private _computeAspd(): number {
+    #computeAspd(): number {
         /* triggers */
         const job = this.jobClass();
         const stats = this.totalStats();
@@ -712,7 +711,7 @@ export class TTSessionInfoV3Service {
 
         return aspd;
     }
-    private _computeCrit(): number {
+    #computeCrit(): number {
         /* triggers */
         const stats = this.totalStats();
         const bonus = this.bonus();
@@ -729,7 +728,7 @@ export class TTSessionInfoV3Service {
 
         return crit;
     }
-    private _computePerfectDodge(): number {
+    #computePerfectDodge(): number {
         /* triggers */
         const stats = this.totalStats();
         const bonus = this.bonus();
@@ -746,7 +745,7 @@ export class TTSessionInfoV3Service {
 
         return pd;
     }
-    private _computeMatk(mode: 'MIN' | 'MAX'): number {
+    #computeMatk(mode: 'MIN' | 'MAX'): number {
         /* triggers */
         const stats = this.totalStats();
         const bonus = this.bonus();
@@ -779,8 +778,8 @@ export class TTSessionInfoV3Service {
         return matk;
     }
 
-    private _computeDEF(): number {
-        const equip = this._equipmentState();
+    #computeDEF(): number {
+        const equip = this.#equipmentState();
         const bonus = this.bonus();
         const lhType = this.leftHandType();
 
@@ -795,7 +794,7 @@ export class TTSessionInfoV3Service {
                 (equipSlotKey === 'leftHand' && lhType !== 'Shield')) continue;
 
             /* gear DEF */
-            const gear = this._core.itemDB.get(equip[equipSlotKey].item);
+            const gear = this.#core.itemDB.get(equip[equipSlotKey].item);
             if (gear) {
                 def += gear.defense;
             }
@@ -809,10 +808,10 @@ export class TTSessionInfoV3Service {
 
         return def;
     }
-    private _computeItemCombos(): DBItemCombo[] {
+    #computeItemCombos(): DBItemCombo[] {
         const res: DBItemCombo[] = [];
         /* trigger */
-        const equip = this._equipmentState();
+        const equip = this.#equipmentState();
 
         /* create map with item ids and counter how many of each */
         const itemCnt = new DefaultMap(0);
@@ -833,7 +832,7 @@ export class TTSessionInfoV3Service {
          * - n = max("cnt of all needed items")
          * - add combo n*times to list
          */
-        for (const combo of this._core.itemComboDB) {
+        for (const combo of this.#core.itemComboDB) {
             let amount = 0;
             for (const itemId of combo.items) {
                 let curCnt = itemCnt.get(itemId);
@@ -852,20 +851,20 @@ export class TTSessionInfoV3Service {
         return res;
     }
 
-    private _computeBonus() {
+    #computeBonus() {
         const res: SessionBonus = createEmptySessionBonus();
         // trigers
         const jobClass = this.jobClass();
         const level = this.level();
-        const equip = this._equipmentState();
+        const equip = this.#equipmentState();
         const baseStats = this.baseStats();
         const combos = this.itemCombos();
-        const skillsBuffs = this._skillsBuffState();
-        const skillsPassive = this._skillsPassiveState();
-        const foodsStat = this._foodsStatsState();
-        const foodsOther = this._foodsOtherState();
+        const skillsBuffs = this.#skillsBuffState();
+        const skillsPassive = this.#skillsPassiveState();
+        const foodsStat = this.#foodsStatsState();
+        const foodsOther = this.#foodsOtherState();
         const speedPot = this.speedPotion();
-        const sqiBonis = this._sqiBonusState();
+        const sqiBonis = this.#sqiBonusState();
         const petId = this.pet();
         // FIXME: how to handle getskilllv of active skills? not needed?
 
@@ -888,7 +887,7 @@ export class TTSessionInfoV3Service {
         const bonusSubs: Partial<BonusSubstitution> = {
         }
         /* reset bonus engine */
-        this._bonusSession.resetBonus(res, {
+        this.#bonusSession.resetBonus(res, {
             level: { ...level },
             baseStats: baseStats,
             equip: equip,
@@ -903,35 +902,35 @@ export class TTSessionInfoV3Service {
         for (let equipSlotKey in equip) {
             const equipSlot = equip[equipSlotKey as ItemLocations];
             /* item bonus */
-            let item = this._core.itemDB.get(equipSlot.item);
+            let item = this.#core.itemDB.get(equipSlot.item);
             if (item && item.itemScript) {
-                this._bonusSession.applyBonus(item.itemScript, { refine: equipSlot.refine });
+                this.#bonusSession.applyBonus(item.itemScript, { refine: equipSlot.refine });
             }
             /* card bonus */
             for (const cardId of equipSlot.cards) {
-                const card = this._core.cardDB.get(cardId);
+                const card = this.#core.cardDB.get(cardId);
                 if (card && card.itemScript) {
                     // use refine of located equip
-                    this._bonusSession.applyBonus(card.itemScript, { refine: equipSlot.refine });
+                    this.#bonusSession.applyBonus(card.itemScript, { refine: equipSlot.refine });
                 }
             }
             /* enchants */
             for (const enchantId of equipSlot.enchants) {
-                const enchant = this._core.itemDB.get(enchantId);
+                const enchant = this.#core.itemDB.get(enchantId);
                 if (enchant && enchant.itemScript) {
-                    this._bonusSession.applyBonus(enchant.itemScript);
+                    this.#bonusSession.applyBonus(enchant.itemScript);
                 }
             }
         }
         /* SQI bonus */
         const sqiID = untracked(() => this.sqiEquipped());
         if (sqiID > 0) {
-            const SQI = this._core.itemDB.get(sqiID);
+            const SQI = this.#core.itemDB.get(sqiID);
             if (SQI && SQI.sqiBonus) {
                 for (const bonusID of sqiBonis) {
                     const curSQIBonus = SQI.sqiBonus[bonusID];
                     // FIXME: fix all bonus scripts
-                    this._bonusSession.applyBonus(curSQIBonus.bonus);
+                    this.#bonusSession.applyBonus(curSQIBonus.bonus);
                 }
             }
         }
@@ -941,7 +940,7 @@ export class TTSessionInfoV3Service {
         // FIXME: refines for combos?
         for (const combo of combos) {
             if (combo.effect) {
-                this._bonusSession.applyBonus(combo.effect);
+                this.#bonusSession.applyBonus(combo.effect);
             }
         }
 
@@ -950,25 +949,25 @@ export class TTSessionInfoV3Service {
         for (const statFood in foodsStat) {
             const foodId = foodsStat[statFood as FoodStatsNames];
             if (foodId > 0) {
-                const food = this._core.itemDB.get(foodId);
+                const food = this.#core.itemDB.get(foodId);
                 if (food && food.itemScript) {
-                    this._bonusSession.applyBonus(food.itemScript);
+                    this.#bonusSession.applyBonus(food.itemScript);
                 }
             }
         }
         for (const foodId of foodsOther) {
             if (foodId > 0) {
-                const food = this._core.itemDB.get(foodId);
+                const food = this.#core.itemDB.get(foodId);
                 if (food && food.itemScript) {
-                    this._bonusSession.applyBonus(food.itemScript);
+                    this.#bonusSession.applyBonus(food.itemScript);
                 }
             }
         }
         /* pet */
         if (petId > 0) {
-            const pet = this._core.petDB.get(petId);
+            const pet = this.#core.petDB.get(petId);
             if (pet) {
-                this._bonusSession.applyBonus(pet.bonus);
+                this.#bonusSession.applyBonus(pet.bonus);
             }
         }
 
@@ -983,7 +982,7 @@ export class TTSessionInfoV3Service {
                 else {
                     lvl = buff.value;
                 }
-                this._bonusSession.applyBonus(buff.itemScript, {
+                this.#bonusSession.applyBonus(buff.itemScript, {
                     customSubs: {
                         subSkillLvl: lvl
                     }
@@ -998,9 +997,9 @@ export class TTSessionInfoV3Service {
         }
         /* speed potion */
         if (speedPot > 0) {
-            const item = this._core.itemDB.get(speedPot);
+            const item = this.#core.itemDB.get(speedPot);
             if (item && item.itemScript) {
-                this._bonusSession.applyBonus(item.itemScript);
+                this.#bonusSession.applyBonus(item.itemScript);
             }
         }
 
@@ -1010,7 +1009,7 @@ export class TTSessionInfoV3Service {
         return res;
     }
 
-    private _getBattleCalcID(): number {
-        return this._battleCalcID++;
+    #getBattleCalcID(): number {
+        return this.#battleCalcID++;
     }
 }
