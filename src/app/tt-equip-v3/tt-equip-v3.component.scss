@@ -5,11 +5,12 @@
 
 .equip-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 200px 1fr;
 
     &>div {
         display: flex;
         flex-direction: column;
+        gap: 8px;
     }
 }
 
@@ -22,4 +23,6 @@
     justify-content: center;
 }
 
-.equip-right {}
+.equip-right {
+    align-items: start;
+}

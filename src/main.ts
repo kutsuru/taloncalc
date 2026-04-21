@@ -6,13 +6,16 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { FilteredKeyValuePipe } from './app/core/filtered-key-value.pipe';
 import { TtLvArrayPipe } from './app/core/tt-lv-array.pipe';
 import { environment } from './environments/environment';
-
-
 import { AppComponent } from './app/app.component';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions } from '@angular/material/core';
 
 if (environment.production) {
   enableProdMode();
+}
+
+const globalRippleConfig: RippleGlobalOptions = {
+  terminateOnPointerUp: true
 }
 
 bootstrapApplication(AppComponent, {
@@ -22,7 +25,8 @@ bootstrapApplication(AppComponent, {
     TtLvArrayPipe,
     provideHttpClient(withInterceptorsFromDi()),
     provideAnimations(),
-    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
+    { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig }
   ]
 })
   .catch((err) => console.error(err));

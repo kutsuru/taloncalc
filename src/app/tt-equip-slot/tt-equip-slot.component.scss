@@ -1,3 +1,19 @@
-.refine-select {
-    width: 110px;
+:host {
+    position: relative;
+    display: inline-block;
+}
+
+.equip-tile {
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.placeholder {
+    font: var(--mat-sys-headline-large);
 }

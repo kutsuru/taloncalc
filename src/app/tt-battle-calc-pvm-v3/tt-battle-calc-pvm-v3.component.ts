@@ -67,7 +67,7 @@ export class TtBattleCalcPvmV3Component {
   skillHasLvl: WritableSignal<boolean> = signal(false);
 
   /* refresh */
-  autoRefresh = signal(true);
+  autoRefresh = signal(false);
   refreshTrigger = linkedSignal(() => {
     this.autoRefresh();
     return 0;

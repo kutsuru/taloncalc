@@ -1,0 +1,85 @@
+.backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    background-color: var(--mat-sys-inverse-surface);
+    opacity: 0.25;
+}
+
+.popup {
+    position: absolute;
+    z-index: 11;
+    min-width: 240px;
+    background: var(--mat-sys-background);
+    border: 1px solid var(--mat-sys-outline-variant);
+    border-radius: var(--mat-sys-corner-medium);
+    padding: 12px;
+
+    &--bottom {
+        top: calc(100% + 10px);
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &--top {
+        bottom: calc(100% + 10px);
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &--right {
+        left: calc(100% + 10px);
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &--left {
+        right: calc(100% + 10px);
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.arrow {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    transform: rotate(45deg);
+
+    .popup--bottom & {
+        top: -6px;
+        left: 50%;
+        margin-left: -5px;
+        border-left: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+    }
+
+    .popup--top & {
+        bottom: -6px;
+        left: 50%;
+        margin-left: -5px;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .popup--right & {
+        left: -6px;
+        top: 50%;
+        margin-top: -5px;
+        border-left: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .popup--left & {
+        right: -6px;
+        top: 50%;
+        margin-top: -5px;
+        border-right: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+    }
+}
+
+.refine-select {
+    width: 110px;
+}

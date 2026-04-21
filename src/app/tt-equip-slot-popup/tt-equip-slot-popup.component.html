@@ -1,0 +1,31 @@
+<div class="backdrop" (click)="closed.emit()"></div>
+<div class="popup popup--right">
+    <div class="arrow"></div>
+    <!-- refine -->
+    @if(meta().canRefine){
+    <mat-form-field class="refine-select">
+        <mat-select (selectionChange)="changeRefine($event.value)" [value]="state().refine">
+            @for (ref of maxRefines; track $index) {
+            <mat-option [value]="ref">+{{ref}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    }
+    <!-- item -->
+    <mat-form-field>
+        <mat-label>{{meta().label}}</mat-label>
+        <mat-select (selectionChange)="changeItem($event.value)" [value]="state().item">
+            @for(item of jobItems(); track $index){
+            <mat-option [value]="item.ID">{{item.name}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <!-- cards -->
+    @for (cardId of state().cards; track $index) {
+    <tt-card-slot-v3 [cardId]="cardId" [cardType]="cardType()" (cardIdChange)="changeCard($index, $event)" />
+    }
+    <!-- enchants -->
+    @for (enchant of enchants(); track $index) {
+    <tt-enchant-slot [variant]="enchant.type" [value]="enchant.itemId" (valueChange)="changeEnchant($index, $event)" />
+    }
+</div>
