@@ -108287,7 +108287,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8089,
@@ -108310,7 +108311,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8090,
@@ -108357,7 +108359,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8092,
@@ -108380,7 +108383,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8093,
@@ -108403,7 +108407,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8094,
@@ -108474,7 +108479,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8098,
@@ -109337,7 +109343,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8135,
@@ -109408,7 +109415,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8138,
@@ -109575,7 +109583,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8145,
@@ -110777,7 +110786,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8197,
@@ -110848,7 +110858,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8200,
@@ -111015,7 +111026,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8207,
@@ -111486,7 +111498,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8227,
@@ -111533,7 +111546,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8229,
@@ -111816,7 +111830,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8241,
@@ -112666,7 +112681,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8277,
@@ -112689,7 +112705,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8278,
@@ -112808,7 +112825,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8283,
@@ -113191,7 +113209,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8299,
@@ -113666,7 +113685,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8319,
@@ -113809,7 +113829,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8325,
@@ -114092,7 +114113,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8337,
@@ -114163,7 +114185,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8340,
@@ -114186,7 +114209,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8341,
@@ -114209,7 +114233,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8342,
@@ -114444,7 +114469,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8352,
@@ -114947,7 +114973,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8373,
@@ -115354,7 +115381,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8390,
@@ -115925,7 +115953,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8414,
@@ -116836,7 +116865,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8452,
@@ -117188,7 +117218,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8467,
@@ -117379,7 +117410,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8475,
@@ -117426,7 +117458,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8477,
@@ -117473,7 +117506,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8479,
@@ -117520,7 +117554,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8481,
@@ -117735,7 +117770,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8490,
@@ -117782,7 +117818,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8492,
@@ -117805,7 +117842,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8493,
@@ -119216,7 +119254,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8556,
@@ -119551,7 +119590,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8570,
@@ -120054,7 +120094,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8591,
@@ -120149,7 +120190,8 @@
     "isVanillaPvp": false,
     "type": "Armor",
     "subType": "Headgear",
-    "location": "HeadgearLower"
+    "location": "HeadgearLower",
+    "disabled": true
   },
   {
     "ID": 8595,

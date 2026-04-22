@@ -43,6 +43,13 @@ export class TtEquipSlotComponent {
     else return 'outlined';
   });
   isOpen = signal(false);
+  imgItemId = computed(() => {
+    const itemDb = this.#core.itemDB.get(this.state().item);
+    if (itemDb) {
+      return itemDb.iconId ? itemDb.iconId : itemDb.ID;
+    }
+    return 0;
+  });
 
   /**
    * signals for popup

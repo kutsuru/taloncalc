@@ -61,10 +61,12 @@ export class TTCoreServiceV3 {
                     this._loadDB('assets/db/food.db.V3.json'),          // 8
                     this._loadDB('assets/db/enchant.db.V3.json'),       // 9
                     this._loadDB('assets/db/pet.db.V3.json'),           // 10
+                    this._loadDB('assets/db/item-custom.db.V3.json'),   // 11
                 ])
                     .subscribe((dbRes) => {
                         /* Item DB */
-                        for (const item of dbRes[0] as DBItem[]) {
+                        const itemDbFull = [...dbRes[0] as DBItem[], ...dbRes[11] as DBItem[]]; // merge normal & custom
+                        for (const item of itemDbFull) {
                             if (item.disabled) continue; // skip items which are disabled
                             /* remove "None" item scripts */
                             if (item.itemScript === 'None') item.itemScript = "";

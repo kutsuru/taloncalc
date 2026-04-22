@@ -101,7 +101,8 @@ export type DBItem = {
   location: EquipLocation,
   disabled?: boolean,
   enchant?: DBEnchantTypes[],
-  sqiBonus?: Record<string, DBSQIBonus>
+  sqiBonus?: Record<string, DBSQIBonus>,
+  iconId?: number;  // used for display purpose for custome items
 }
 export type DBItemCombo = {
   items: number[];

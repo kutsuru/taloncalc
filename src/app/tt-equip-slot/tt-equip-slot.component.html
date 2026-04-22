@@ -2,7 +2,7 @@
     [matRippleDisabled]="disabled()">
     @if (itemSelected()) {
     <!-- item selected -->
-    <img [src]="state().item|talonurl" />
+    <img [src]="imgItemId()|talonurl" />
     }
     @else {
     <!-- no item -->
