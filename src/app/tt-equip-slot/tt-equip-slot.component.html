@@ -1,4 +1,5 @@
-<mat-card (click)="toggle()" [appearance]="appearance()" class="equip-tile" matRipple>
+<mat-card (click)="toggle()" [appearance]="appearance()" class="equip-tile" [class.disabled]="disabled()" matRipple
+    [matRippleDisabled]="disabled()">
     @if (itemSelected()) {
     <!-- item selected -->
     <img [src]="state().item|talonurl" />
@@ -9,5 +10,5 @@
     }
 </mat-card>
 @if (isOpen()) {
-    <tt-equip-slot-popup [meta]="meta()" [slot]="slot()" (closed)="toggle()"/>
+<tt-equip-slot-popup [slot]="slot()" [jobItems]="jobItems()" [cardType]="cardType()" (closed)="toggle()" />
 }

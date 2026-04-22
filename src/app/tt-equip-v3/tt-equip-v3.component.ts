@@ -4,9 +4,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { ClassAvatarComponent } from "../class-avatar/class-avatar.component";
 import { ItemLocations } from '../core/models';
-import { DBWeaponTypeKey, DBWeaponTypeLeft, EQUIP_META, EquipSlotMeta } from '../core/tt-models.v3';
+import { DBWeaponTypeKey, DBWeaponTypeLeft, EquipSlotMeta } from '../core/tt-models.v3';
 import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
 import { TtEquipSlotComponent } from '../tt-equip-slot/tt-equip-slot.component';
+import { isTwoHandedWeapon } from '../core/utils';
 
 type EquipUI = {
   slot: ItemLocations,
@@ -30,16 +31,15 @@ export class TtEquipV3Component {
   /*** injects ***/
   readonly session = inject(TTSessionInfoV3Service);
 
-  /*** varbs ***/
-  /* equipment */
-  readonly equip = Object.keys(EQUIP_META).reduce((res, slot) => {
-    res[slot] = { slot, meta: EQUIP_META[slot] };
-    return res;
-  }, {} as Record<ItemLocations, EquipUI>);
-
+  /*** signals ***/
   /* gear lists */
   weaponTypes: Signal<DBWeaponTypeKey[]>;
   leftHandTypes: Signal<DBWeaponTypeLeft[]>;
+
+  isTwoHanded: Signal<boolean> = computed(() => {
+    const rhT = this.session.rightHandType();
+    return isTwoHandedWeapon(rhT);
+  });
 
   constructor() {
     this.weaponTypes = computed(() => {
