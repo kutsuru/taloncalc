@@ -1,0 +1,8 @@
+<button matIconButton (click)="dec()"><mat-icon>arrow_back_ios</mat-icon></button>
+<mat-slider [min]="min()" [max]="max()" [discrete]="true" [displayWith]="displayWith()">
+    <input matSliderThumb [value]="value()" (valueChange)="change($event)" />
+</mat-slider>
+<button matIconButton (click)="inc()"><mat-icon>arrow_forward_ios</mat-icon></button>
+@if (print()) {
+<span class="print">{{displayWith()(value())}}</span>
+}

@@ -6,6 +6,7 @@ import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
 import { BaseStatsAs, DBItem, SessionBonus } from '../core/tt-models.v3';
 import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
 import { BuildData } from '../core/tt-body-builder.service';
+import { TtSliderComponent } from "../tt-slider/tt-slider.component";
 
 const BUILD_1: BuildData = {
   jobClassName: 'Lord Knight',
@@ -14,7 +15,7 @@ const BUILD_1: BuildData = {
   equip: {
     rightHand: {
       item: 1430,
-      cards: [4142,4305,4305],
+      cards: [4142, 4305, 4305],
       enchants: [],
       refine: 7
     }
@@ -25,7 +26,7 @@ const BUILD_1: BuildData = {
 
 @Component({
   selector: 'app-debug',
-  imports: [JsonPipe],
+  imports: [JsonPipe, TtSliderComponent],
   templateUrl: './debug.component.html',
   styleUrl: './debug.component.scss',
 })
@@ -38,6 +39,8 @@ export class DebugComponent {
   statusItems: WritableSignal<string> = signal('');
   unknownScriptElements: WritableSignal<string[]> = signal([]);
   debugBonus: WritableSignal<SessionBonus> = signal(createEmptySessionBonus());
+
+  sliderVal = signal(4);
 
   testItemScripts() {
     const session = createEmptySessionBonus();
@@ -86,5 +89,9 @@ export class DebugComponent {
 
   loadBuild1() {
     this.se.applyBuild(BUILD_1);
+  }
+
+  dispRefine(val: number){
+    return `+ ${val}`;
   }
 }

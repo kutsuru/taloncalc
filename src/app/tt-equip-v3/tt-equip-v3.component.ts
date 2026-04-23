@@ -9,11 +9,6 @@ import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
 import { TtEquipSlotComponent } from '../tt-equip-slot/tt-equip-slot.component';
 import { isTwoHandedWeapon } from '../core/utils';
 
-type EquipUI = {
-  slot: ItemLocations,
-  meta: EquipSlotMeta
-};
-
 @Component({
   selector: 'tt-equip-v3',
   imports: [

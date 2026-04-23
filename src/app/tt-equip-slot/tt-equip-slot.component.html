@@ -1,5 +1,5 @@
-<mat-card (click)="toggle()" [appearance]="appearance()" class="equip-tile" [class.disabled]="disabled()" matRipple
-    [matRippleDisabled]="disabled()">
+<mat-card (click)="toggle()" [appearance]="appearance()" class="equip-tile" [class.disabled]="disabled()"
+    [matTooltip]="fullName()">
     @if (itemSelected()) {
     <!-- item selected -->
     <img [src]="imgItemId()|talonurl" />

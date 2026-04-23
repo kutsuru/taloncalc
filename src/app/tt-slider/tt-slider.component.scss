@@ -1,0 +1,11 @@
+:host {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.print {
+    border: 1px solid var(--mat-sys-outline-variant);
+    border-radius: var(--mat-sys-corner-medium);
+    padding: 6px;
+}

@@ -3,19 +3,15 @@
     <div class="arrow"></div>
     <!-- refine -->
     @if(meta().canRefine){
-    <mat-form-field class="refine-select">
-        <mat-select (selectionChange)="changeRefine($event.value)" [value]="state().refine">
-            @for (ref of maxRefines; track $index) {
-            <mat-option [value]="ref">+{{ref}}</mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
+    <tt-slider min="0" max="10" [value]="state().refine" (valueChange)="changeRefine($event)" [displayWith]="dispRefine"
+        [print]="true" />
     }
     <!-- item -->
+    <!-- FIXME: mat-select renders all items which is very slow -->
     <mat-form-field>
         <mat-label>{{meta().label}}</mat-label>
         <mat-select (selectionChange)="changeItem($event.value)" [value]="state().item">
-            @for(item of jobItems(); track $index){
+            @for (item of jobItems(); track $index) {
             <mat-option [value]="item.ID">{{item.name}}</mat-option>
             }
         </mat-select>

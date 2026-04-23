@@ -7,6 +7,7 @@ import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
 import { TTTalonURLPipe } from '../core/tt-url.pipe';
 import { TtEquipSlotPopupComponent } from '../tt-equip-slot-popup/tt-equip-slot-popup.component';
 import { getCardTypeForEquipLocation } from '../core/utils';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 export type EquipItem = Pick<DBItem, 'ID' | 'name'>;
 
@@ -16,7 +17,8 @@ export type EquipItem = Pick<DBItem, 'ID' | 'name'>;
     MatCardModule,
     TTTalonURLPipe,
     TtEquipSlotPopupComponent,
-    MatRippleModule
+    MatRippleModule,
+    MatTooltipModule
   ],
   templateUrl: './tt-equip-slot.component.html',
   styleUrl: './tt-equip-slot.component.scss',
@@ -49,6 +51,36 @@ export class TtEquipSlotComponent {
       return itemDb.iconId ? itemDb.iconId : itemDb.ID;
     }
     return 0;
+  });
+  fullName = computed(() => {
+    const state = this.state();
+    const meta = this.meta();
+    if (state.item > 0) {
+      let name = '';
+      // refine
+      if (state.refine > 0) name += `+${state.refine}`;
+      // item name FIXME: maybe signal in component to avoid multiple lookups
+      const item = this.#core.itemDB.get(state.item)!;
+      name += ` ${item.name}`
+      // cards
+      let cards: string[] = [];
+      for (const cardId of state.cards) {
+        if (cardId > 0) {
+          const card = this.#core.itemDB.get(cardId);
+          if (card) {
+            let shortedName = card.name.substring(0, card.name.lastIndexOf(" Card"));
+            cards.push(shortedName);
+          }
+        }
+      }
+      if (cards.length > 0) name += ` [${cards.join(', ')}]`;
+
+      // return
+      return name;
+    }
+    else {
+      return `No ${meta.label}`;
+    }
   });
 
   /**

@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, model, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, model, Signal } from '@angular/core';
 import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
 import { DBEnchant, DBEnchantTypes } from '../core/tt-models.v3';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -12,6 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
   ],
   templateUrl: './tt-enchant-slot.component.html',
   styleUrl: './tt-enchant-slot.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TtEnchantSlotComponent {
   /* injects */

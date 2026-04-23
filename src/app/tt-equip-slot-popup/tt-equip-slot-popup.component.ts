@@ -1,13 +1,16 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, output, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, output, signal, Signal } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
-import { CardTypes, DBEnchantTypes, DBItem, EQUIP_META, EquipItemFilter, EquipSlotMeta, ItemLocations } from '../core/tt-models.v3';
+import { CardTypes, DBEnchantTypes, EQUIP_META, ItemLocations } from '../core/tt-models.v3';
 import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
-
 import { TtCardSlotV3Component } from '../tt-card-slot-v3/tt-card-slot-v3.component';
 import { TtEnchantSlotComponent } from '../tt-enchant-slot/tt-enchant-slot.component';
 import { EquipItem } from '../tt-equip-slot/tt-equip-slot.component';
+import { TtSliderComponent } from '../tt-slider/tt-slider.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatInputModule } from '@angular/material/input';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 type EquipEnchant = { type: DBEnchantTypes, itemId: number };
 
@@ -17,7 +20,11 @@ type EquipEnchant = { type: DBEnchantTypes, itemId: number };
     MatFormFieldModule,
     MatSelectModule,
     TtCardSlotV3Component,
-    TtEnchantSlotComponent
+    TtEnchantSlotComponent,
+    TtSliderComponent,
+    ScrollingModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   templateUrl: './tt-equip-slot-popup.component.html',
   styleUrl: './tt-equip-slot-popup.component.scss',
@@ -35,9 +42,6 @@ export class TtEquipSlotPopupComponent {
 
   /* outputs */
   closed = output<void>();
-
-  /* varbs */
-  readonly maxRefines = Array.from({ length: 10 + 1 }, (_, i) => i);
 
   /* signals */
   meta = computed(() => EQUIP_META[this.slot()]);
@@ -58,6 +62,9 @@ export class TtEquipSlotPopupComponent {
   });
 
   /*** public functions ***/
+  public dispRefine(val: number) {
+    return `+${val}`;
+  }
   public changeItem(id: number) {
     this.#session.updateEquipmentId(this.slot(), id);
   }
