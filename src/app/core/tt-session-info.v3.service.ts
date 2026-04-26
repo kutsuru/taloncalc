@@ -5,7 +5,7 @@ import { createEmptySessionBonus, defaultEquipSlotState, SESSION_INFO_DEFAULT } 
 import { TTCoreService } from "./tt-core.service";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
 import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, CLASS_SPECIFIC_SQI, ClassWithSQI, DBItemCombo, DBJob, DBSkill, DBWeaponTypeKey, DBWeaponTypeLeft, EQUIP_META, EquipSlotState, EquipState, FoodStatsNames, ItemLocations, SessionBonus, SkillBuff } from "./tt-models.v3";
-import { DefaultMap, isTwoHandedWeapon } from "./utils";
+import { DefaultMap, DefaultMaxMap, isTwoHandedWeapon } from "./utils";
 import { BuildData } from "./tt-body-builder.service";
 
 /** Dependencies 
@@ -1012,10 +1012,15 @@ export class TTSessionInfoV3Service {
             }
         }
 
-        // FIXME: merge skills with bonused enabled skills
-        /* buffs */
+        /* SKILLS */
+        // loop over skills from equip/sqi/... and map them into one list and map skill enum into skill id
+        const skillsAll = new DefaultMaxMap<number>(0);
+        for (const [skillid, level] of res.skills.entries()) {
+            skillsAll.set(skillid, level);
+        }
+        // now merge skills from UI into the list */
         for (const buff of skillsBuffs) {
-            if (buff.value && buff.itemScript) {
+            if (buff.value) {
                 let lvl: number;
                 if (typeof buff.value === 'boolean') {
                     lvl = 1;
@@ -1023,19 +1028,34 @@ export class TTSessionInfoV3Service {
                 else {
                     lvl = buff.value;
                 }
-                this.#bonusSession.applyBonus(buff.itemScript, {
-                    customSubs: {
-                        subSkillLvl: lvl
-                    }
-                })
+                skillsAll.set(buff.id, lvl);
             }
         }
-        /* passive skills */
         for (const passive of skillsPassive) {
             if (passive.value) {
-                // FIXME
+                let lvl: number;
+                if (typeof passive.value === 'boolean') {
+                    lvl = 1;
+                }
+                else {
+                    lvl = passive.value;
+                }
+                skillsAll.set(passive.id, lvl);
             }
         }
+
+        // now run the scripts
+        for (const [skillId, level] of skillsAll.entries()) {
+            if (level > 0) {
+                const skill = this.#core.skillDB.get(skillId);
+                if (skill && skill.itemScript) {
+                    this.#bonusSession.applyBonus(skill.itemScript, {
+                        customSubs: { subSkillLvl: level }
+                    });
+                }
+            }
+        }
+
         /* speed potion */
         if (speedPot > 0) {
             const item = this.#core.itemDB.get(speedPot);

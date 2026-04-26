@@ -35,12 +35,22 @@ export class DefaultMap<K extends string | number | symbol, T> {
         this._map.set(key, value);
         return this;    // FIXME: needed?
     }
+    public entries() {
+        return this._map.entries();
+    }
     public toJSON(): Record<K, T> {
         let result: Record<K, T> = {} as any;
         this._map.forEach((value, key) => {
             result[key] = value;
         });
         return result;
+    }
+}
+/*** Map with default value and only max. value will be stored */
+export class DefaultMaxMap<K extends string | number | symbol> extends DefaultMap<K, number> {
+    override set(key: K, value: number): this {
+        const val = Math.max(this.get(key), value);
+        return super.set(key, val);
     }
 }
 /*** Map with sorted values ***/

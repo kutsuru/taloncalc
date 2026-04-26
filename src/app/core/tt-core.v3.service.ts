@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable, signal, WritableSignal } from "@angular/core";
 import { forkJoin, Observable } from "rxjs";
-import { AmmoType, DBAmmo, DBFood, DBItem, DBItemCombo, DBJob, DBMob, DBSkill, DBWeaponType, ElementDBV3, FoodCategory, FoodStatsNames, JSONFood, DBMobClass, DBWeaponTypeKey, DBWeaponTypeEntry, DBEnchantTypes, DBEnchant, EnchantDBV3, DBPet } from "./tt-models.v3";
+import { AmmoType, DBAmmo, DBFood, DBItem, DBItemCombo, DBJob, DBMob, DBSkill, DBWeaponType, ElementDBV3, FoodCategory, FoodStatsNames, JSONFood, DBMobClass, DBWeaponTypeKey, DBWeaponTypeEntry, DBEnchantTypes, DBEnchant, EnchantDBV3, DBPet, DBSkillEnum } from "./tt-models.v3";
 import { DefaultMap, SuperMap } from "./utils";
 
 const compareByName = <V extends { name: string }>(a: V, b: V): number => {
@@ -242,7 +242,7 @@ export class TTCoreServiceV3 {
         // FIXME: guardian?
         return 'normal';
     }
-    public getSkillIDs(skillEnum: string): number[] {
+    public getSkillIDs(skillEnum: DBSkillEnum): number[] {
         return this._skillEnumToId.get(skillEnum);
     }
 

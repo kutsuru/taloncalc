@@ -1,9 +1,11 @@
-import { Component, inject, Pipe, PipeTransform } from '@angular/core';
+import { Component, computed, inject, Pipe, PipeTransform, Signal } from '@angular/core';
 import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
 import { LevelArrayPipe } from '../tt-buff-v3/tt-buff-v3.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { SkillBuff } from '../core/tt-models.v3';
+import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
 
 @Pipe({ name: 'booly' })
 export class BoolyPipe implements PipeTransform {
@@ -23,6 +25,29 @@ export class BoolyPipe implements PipeTransform {
 export class TtPassiveV3Component {
   /* injects */
   readonly session = inject(TTSessionInfoV3Service);
+  readonly #core = inject(TTCoreServiceV3);
+
+  /* signals */
+  // FIXME: merge bonus and job skills into one to avoid double display
+  bonusSkills: Signal<SkillBuff[]> = computed(() => {
+    const bonusSkills = this.session.bonus().skills;
+
+    let res: SkillBuff[] = [];
+    for (const [skillID, level] of bonusSkills.entries()) {
+      const skill = this.#core.skillDB.get(skillID)!; // it only is in the map if the skill exsists
+      if (!skill.isPassive) continue;
+      res.push({
+        id: skillID,
+        maxLevel: level,
+        name: skill.name,
+        type: skill.type ?? 'list',
+        value: level,
+        itemScript: skill.itemScript
+      });
+    }
+
+    return res;
+  });
 
   /*** public functions ***/
   public updateNumberValue(skillId: number, value: number) {

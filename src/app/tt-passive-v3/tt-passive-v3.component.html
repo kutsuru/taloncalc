@@ -1,3 +1,4 @@
+<!-- job skills -->
 @for (passive of session.skillsPassive(); track $index) {
 @if(passive.maxLevel > 1){
 <mat-form-field>
@@ -12,5 +13,20 @@
 @else {
 <mat-slide-toggle [checked]="passive.value|booly"
     (change)="updateBooleanValue(passive.id, $event.checked)">{{passive.name}}</mat-slide-toggle>
+}
+}
+<!-- extra skills from bonus -->
+<p>Bonus skills</p>
+@for (skill of bonusSkills(); track $index) {
+@if(skill.maxLevel > 1){
+<mat-form-field>
+    <mat-label>{{skill.name}}</mat-label>
+    <mat-select [value]="skill.value" disabled>
+        <mat-option [value]="skill.value">{{skill.value}}</mat-option>
+    </mat-select>
+</mat-form-field>
+}
+@else {
+<mat-slide-toggle [checked]="skill.value|booly" disabled>{{skill}}</mat-slide-toggle>
 }
 }

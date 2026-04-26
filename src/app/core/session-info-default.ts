@@ -1,7 +1,7 @@
 import { SessionInfoV2 } from "./models";
 import { EQUIP_META, EquipSlotState, EquipState, SessionBonus } from "./tt-models.v3";
 import { TTCoreService } from "./tt-core.service";
-import { DefaultMap } from "./utils";
+import { DefaultMap, DefaultMaxMap } from "./utils";
 
 export function createEmptySessionBonus(): SessionBonus {
     return {
@@ -46,7 +46,8 @@ export function createEmptySessionBonus(): SessionBonus {
         addItemSPHealRate: new DefaultMap(0), skillDelayrate: new DefaultMap(0), skillHeal2: new DefaultMap(0), criticalAddEle: new DefaultMap(0),
         castrate: new DefaultMap(0), skillDefRatioAtkClass: new DefaultMap('all'), skillWeaponElement: new DefaultMap('neutral'),
         // falgs will start empty
-        flags: new DefaultMap(false)
+        flags: new DefaultMap(false),
+        skills: new DefaultMaxMap(0)
     };
 }
 export function defaultEquipSlotState(): EquipSlotState {

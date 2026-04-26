@@ -218,8 +218,6 @@ const isBonusFlag = (key: string): key is SessionBonusFlag => {
 /**
  * FIXME
  * bonus bDefRatioAtkClass,c;   make use of c (class) parameter
- * bonus bAtkEle,e;          	the player's attacks element e
- * bonus bDefEle,e;          	the player's defense element e
  * SC_ASPDPOTION0/1/2           Merge into one "custome" command?
  * set var,value                Handle as Assignment too
  */
@@ -660,7 +658,13 @@ export class TTBonusEngineService {
     }
     // FIXME: add skills to list of available skills?
     private _computeSkill(args: string[]) {
-        console.log('Skill', args);
+        const skillEnum = args[0];
+        let level = this._resolveExpr(args[1]) as number;
+        const skillIDs = this.core.getSkillIDs(skillEnum);
+        // FIXME: we only use first skillID
+        if (skillIDs.length > 0) {
+            this.session.skills.set(skillIDs[0], level);  // auto. use the max. value if already present
+        }
     }
     // FIXME: add autobonus to session and allow user to manuelly enable it?
     private _computeAutobonus(args: string[]) {

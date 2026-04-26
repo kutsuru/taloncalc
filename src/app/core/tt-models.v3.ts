@@ -1,6 +1,6 @@
 /**********/
 import { JobKey, WeaponType, ItemType, StatusEffect } from "./rAthena/ra-models";
-import { DefaultMap } from "./utils";
+import { DefaultMap, DefaultMaxMap } from "./utils";
 
 /* Global */
 export type BaseStatsNames = "str" | "agi" | "vit" | "int" | "dex" | "luk";
@@ -265,26 +265,29 @@ export type SessionBonus = {
   ignoreMdefEleRate: DefaultMap<DBElement, number>;
 
   skillAtk: DefaultMap<string, number>;
-  skillUseSP: DefaultMap<string, number>; // skill enum
+  skillUseSP: DefaultMap<DBSkillEnum, number>;
   skillCooldown: Record<string | number, number>;
   skillFixedCast: Record<string | number, number>;
   skillVariableCast: Record<string | number, number>;
   skillCritAtkRate: DefaultMap<string, number>;
-  skillDelayrate: DefaultMap<string, number>; // skill enum
-  castrate: DefaultMap<string, number>; // skill enum
+  skillDelayrate: DefaultMap<DBSkillEnum, number>;
+  castrate: DefaultMap<DBSkillEnum, number>;
 
   resEff: DefaultMap<StatusEffect, number>;
-  skillHeal: DefaultMap<string, number>; // skill enum
-  skillHeal2: DefaultMap<string, number>; // skill enum
+  skillHeal: DefaultMap<DBSkillEnum, number>;
+  skillHeal2: DefaultMap<DBSkillEnum, number>;
   expAddRace: DefaultMap<DBMobRace, number>;
   expAddClass: DefaultMap<DBMobClass, number>;
-  kickAddRate: DefaultMap<string, number>;  // skill enum
+  kickAddRate: DefaultMap<DBSkillEnum, number>;
   addItemSPHealRate: DefaultMap<string, number>; //item ID
-  skillDefRatioAtkClass: DefaultMap<string, DBMobClass>; // skill enum FIXME: special talon bonus
-  skillWeaponElement: DefaultMap<string, DBElement>;  // skill enum FIXME: special talon bonus
+  skillDefRatioAtkClass: DefaultMap<DBSkillEnum, DBMobClass>; // skill enum FIXME: special talon bonus
+  skillWeaponElement: DefaultMap<DBSkillEnum, DBElement>;  // skill enum FIXME: special talon bonus
 
   /* flags */
-  flags: DefaultMap<SessionBonusFlag, boolean>
+  flags: DefaultMap<SessionBonusFlag, boolean>;
+
+  /* skills: SkillEnum: Level */
+  skills: DefaultMaxMap<number>;  // SkillId
 };
 
 /*******************/
@@ -336,10 +339,11 @@ export type DBMob = {
 /*** SKILL DB  ***/
 export type SkillElement = DBElement | "weapon";
 export type SkillSubType = 'check' | 'list';
+export type DBSkillEnum = string; // Helper Type to make clear its a enum for a skill and not only a string
 export type DBSkill = {
   name: string,
   id: number,
-  enum: string,
+  enum: DBSkillEnum,
   maxLevel: number,
   spCost: number[],
   element: SkillElement,  // FIXME: in DB File the elements are numbers instead of strings
