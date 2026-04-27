@@ -280,7 +280,9 @@ export type SessionBonus = {
   expAddClass: DefaultMap<DBMobClass, number>;
   kickAddRate: DefaultMap<DBSkillEnum, number>;
   addItemSPHealRate: DefaultMap<string, number>; //item ID
-  skillDefRatioAtkClass: DefaultMap<DBSkillEnum, DBMobClass>; // skill enum FIXME: special talon bonus
+  /* specials maps*/
+  defRatioAtkClass: DefaultMap<DBMobClass, boolean>;
+  skillDefRatioAtkClass: DefaultMap<DBSkillEnum, DBMobClass>; // skill enum FIXME: special talon bonus, maybe array of DBMobClass?
   skillWeaponElement: DefaultMap<DBSkillEnum, DBElement>;  // skill enum FIXME: special talon bonus
 
   /* flags */

@@ -194,6 +194,9 @@ const BONUS2_TO_IGNORE = new Set([
     'sPVanishRate', // maybe for PVP
     'zenyCost'
 ]);
+const BONUS2_SPECIAL = new Set([
+    'skillDefRatioAtkClass'
+]);
 
 /*** helper functions ***/
 const transformKey = (key: string) => {
@@ -220,6 +223,7 @@ const isBonusFlag = (key: string): key is SessionBonusFlag => {
  * bonus bDefRatioAtkClass,c;   make use of c (class) parameter
  * SC_ASPDPOTION0/1/2           Merge into one "custome" command?
  * set var,value                Handle as Assignment too
+ * defRatioAtkClass for skills  
  */
 
 /*** service ***/
@@ -526,6 +530,9 @@ export class TTBonusEngineService {
                     else {
                         this.session.flags.set('noRegenSP', true);
                     }
+                case 'defRatioAtkClass':
+                    this.session.defRatioAtkClass.set(valRaw as DBMobClass, true);
+                    break;
                 default:
                     console.log("Special bonus type not implemented", bonusType, args);
             }
@@ -557,8 +564,19 @@ export class TTBonusEngineService {
         //FIXME: check for args length
         let value = this._resolveExpr(valRaw) as number;
 
+        /* check if special bonus2 */
+        if (BONUS2_SPECIAL.has(bonusType)) {
+            switch (bonusType) {
+                case 'skillDefRatioAtkClass':
+                    this.session.skillDefRatioAtkClass.set(key, valRaw as DBMobClass);
+                    break;
+                default:
+                    console.log("Special bonus type not implemented", bonusType, args);
+
+            }
+        }
         /* check if bonusType is present in session */
-        if (bonusType in this.session) {
+        else if (bonusType in this.session) {
             const map = (this.session[bonusType] as DefaultMap<any, number>);
             map.set(key, map.get(key) + value);
             return;

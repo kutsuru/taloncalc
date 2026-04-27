@@ -14659,55 +14659,55 @@
     "location": "Weapon",
     "sqiBonus": {
       "1290_0": {
-        "description": "(FIXME) 20% Magic Resistance",
-        "bonus": ""
+        "description": "20% Magic Resistance",
+        "bonus": "bonus bMagicAtkDef,20;"
       },
       "1290_1": {
         "description": "(FIXME) 30% Freeze and Stone Curse Resistance",
         "bonus": ""
       },
       "1290_2": {
-        "description": "(FIXME) 20% more damage with Critical Hits",
-        "bonus": ""
+        "description": "20% more damage with Critical Hits",
+        "bonus": "bonus bCritAtkRate,20;"
       },
       "1290_3": {
-        "description": "(FIXME) 25% more damage with [Grimtooth]",
-        "bonus": ""
+        "description": "25% more damage with [Grimtooth]",
+        "bonus": "bonus2 bSkillAtk,AS_GRIMTOOTH,25;"
       },
       "1290_4": {
-        "description": "(FIXME) 50% more damage and 50% less cast time with [Meteor Assault]",
-        "bonus": ""
+        "description": "50% more damage and 50% less cast time with [Meteor Assault]",
+        "bonus": "bonus2 bSkillAtk,ASC_METEORASSAULT,50; bonus2 bCastrate,ASC_METEORASSAULT,-50;"
       },
       "1290_5": {
-        "description": "(FIXME) 25% more damage and 50% less cast time with [Soul Breaker]",
-        "bonus": ""
+        "description": "25% more damage and 50% less cast time with [Soul Breaker]",
+        "bonus": "bonus2 bSkillAtk,ASC_BREAKER,25; bonus2 bCastrate,ASC_BREAKER,-50;"
       },
       "1290_6": {
-        "description": "(FIXME) [Enchant Poison] endows Shadow instead of Poison, 10% more damage against Holy Element during [Enchant Poison] (toggle)",
-        "bonus": ""
+        "description": "[Enchant Poison] endows Shadow instead of Poison, 10% more damage against Holy Element during [Enchant Poison] (toggle)",
+        "bonus": "bonus bAtkEle,Ele_Dark; bonus2 bAddEle,Ele_Holy,10"
       },
       "1290_7": {
         "description": "(FIXME) Add a 15% chance to inflict Deadly Poison status on the target when attacking, Deadly Poison interval reduced by 75%.",
         "bonus": ""
       },
       "1290_8": {
-        "description": "(FIXME) Demon Race, Insect Race, and Detector Mobs can no longer see you when hidden; Fails against boss monsters",
+        "description": "Demon Race, Insect Race, and Detector Mobs can no longer see you when hidden; Fails against boss monsters",
         "bonus": ""
       },
       "1290_9": {
-        "description": "(FIXME) [Soul Breaker] inflicts more damage depending on the target's Defense",
-        "bonus": ""
+        "description": "[Soul Breaker] inflicts more damage depending on the target's Defense",
+        "bonus": "bonus2 bSkillDefRatioAtkClass,ASC_BREAKER,Class_All;"
       },
       "1290_10": {
-        "description": "(FIXME) While under [Cloaking]; 25% faster base movement speed",
-        "bonus": ""
+        "description": "(FIXME) While under [Cloaking]; 25% faster base movement speed (toogle)",
+        "bonus": "bonus bSpeedRate,25;"
       },
       "1290_11": {
-        "description": "(FIXME) While under [Cloaking]; Immunity to [Quagmire] and [Slow Grace]; Dispel Cloak on unequip",
+        "description": "While under [Cloaking]; Immunity to [Quagmire] and [Slow Grace]; Dispel Cloak on unequip",
         "bonus": ""
       },
       "1290_12": {
-        "description": "(FIXME) PvM: [Assassin Spirit] remains after death",
+        "description": "PvM: [Assassin Spirit] remains after death",
         "bonus": ""
       }
     }
