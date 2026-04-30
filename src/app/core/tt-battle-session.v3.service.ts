@@ -390,17 +390,8 @@ export class TTBattleSessionServiceV3 {
     private _applyAsuraSoftCap(asuraDamage: number): number {
         let softCap = 200000;
 
-        if (asuraDamage > softCap) {
-            let overflowDamage = asuraDamage - softCap;
-            let smoothedDamage =
-                1.323031 +
-                0.5996693 * overflowDamage -
-                0.000001183789 * overflowDamage ** 2 +
-                2.125968e-12 * overflowDamage ** 3 -
-                2.736422e-18 * overflowDamage ** 4 +
-                1.647955e-24 * overflowDamage ** 5;
-            asuraDamage = Math.floor(200000 + smoothedDamage);
-        }
+        if (asuraDamage > softCap) // Apply soft-cap
+				asuraDamage = Math.floor(asuraDamage / (asuraDamage + 300000) * 500000);
 
         return asuraDamage;
     }
