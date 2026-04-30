@@ -8,6 +8,17 @@ import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, CLASS_SPECIFIC_SQI, Class
 import { DefaultMap, DefaultMaxMap, isTwoHandedWeapon } from "./utils";
 import { BuildData } from "./tt-body-builder.service";
 
+/**
+ * FIXME FIXME FIXME FIXME FIXME 
+ * FIXME #### Generel #### FIXME
+ * FIXME FIXME FIXME FIXME FIXME
+ * - Soul-Link (bonus) effects
+ *      - [Priest Link] adds heal 20% more with [Heal] and 15% with [Sanctuary]
+ *      - [Wizard Link] adds ignore 50% of Holy/Shadow element Fire/Water/Wind/Earth Resistance
+ *      - Auto-Cast [Acid Terror] when attacking at [Alchemist Spirit] level, auto-Cast [Holy Cross] when attacking at [Crusader Spirit] level
+ *      - Auto-Cast [Frost Joker] when attacking at [Bard Dancer Spirit] level
+ */
+
 /** Dependencies 
  * BaseStats        Pure-Stats without any bonus
  * Equip            Pure equip,cards,refines,enchants
@@ -62,6 +73,7 @@ export class TTSessionInfoV3Service {
     weaponAtk: Signal<number>;
     perfectDodge: Signal<number>;
     def: Signal<number>;
+    // mdef: Signal<number>;    // FIXME
 
     /* bonus VERY BIG ONE */
     bonus: Signal<SessionBonus>;
@@ -143,9 +155,10 @@ export class TTSessionInfoV3Service {
                 // this._sqiBonusState.set(["1430_12", "1430_8"]);
 
                 // DEBUG BUILD 2
-                this.jobClassName.set('Novice');
-                this.updateRightHandType("Dagger");
-                this.updateEquipmentId('rightHand', 1190);
+                this.jobClassName.set('Paladin');
+                // this.updateRightHandType("Whip");
+                // this.updateEquipmentId('rightHand', 1990);
+                this.updateEquipmentId('leftHand',2150);
             }
         })
 
@@ -1014,6 +1027,7 @@ export class TTSessionInfoV3Service {
 
         /* SKILLS */
         // loop over skills from equip/sqi/... and map them into one list and map skill enum into skill id
+        // the DefaultMaxMap makes sure, the highest values stays, if same skills are in the list multiple times
         const skillsAll = new DefaultMaxMap<number>(0);
         for (const [skillid, level] of res.skills.entries()) {
             skillsAll.set(skillid, level);

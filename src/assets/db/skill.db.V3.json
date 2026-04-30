@@ -10528,7 +10528,7 @@
     "job": "0x9",
     "enum": "NO_ENUM"
   },
-  "<Font size=2>Number of mastered Smith XYZ Skills [for Veteran Axe Bonus]</Font>": {
+  "Number of mastered Smith XYZ Skills [for Veteran Axe Bonus / SQI]": {
     "id": 311,
     "maxLevel": 7,
     "spCost": [],
@@ -10557,7 +10557,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x800003",
-    "enum": "NO_ENUM"
+    "enum": "TT_SMITH_MASTERED"
   },
   "Dark Strike": {
     "id": 312,
