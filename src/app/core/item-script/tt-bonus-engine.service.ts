@@ -50,7 +50,7 @@ const FUNC_REGEX = /(\w+)\(([^()]*)\)/g;
 const WEAPON_TYPE_REGEX = /(?<![A-Za-z])W_\w+/g;
 const ITEM_TYPE_REGEX = /(?<![A-Za-z])IT_[\w]+/g;
 const WHITESPACE_REGEX = / /g;
-const PURE_STR_REGEX = /^\w+$/;
+const PURE_STR_REGEX = /^(?!(true|false)$)\w+$/;
 const IS_CONDITION_REGEX = /==|!=|<=?|>=?|&/;
 const WORD_WO_QUOTES_REGEX = /(?<!")\b([A-Za-z_][A-Za-z0-9_]*)\b(?!")/g;
 
@@ -223,7 +223,8 @@ const isBonusFlag = (key: string): key is SessionBonusFlag => {
  * bonus bDefRatioAtkClass,c;   make use of c (class) parameter
  * SC_ASPDPOTION0/1/2           Merge into one "custome" command?
  * set var,value                Handle as Assignment too
- * defRatioAtkClass for skills  
+ * defRatioAtkClass for skills
+ * bonus3 bSkillNoRequire,\"ASC_EDP\",NoReq_Item,3300; for SinX bonus maybe?  
  */
 
 /*** service ***/
@@ -445,7 +446,7 @@ export class TTBonusEngineService {
         });
         // local
         s = s.replace(LOCAL_VARB_REG, (_, name: string) => {
-            console.log('Found', name);
+            // console.log('Found', name);
             return `${VARB_PREFIX}${name.charAt(0).toUpperCase()}${name.slice(1)}`;
         });
 
@@ -693,6 +694,7 @@ export class TTBonusEngineService {
         /* remove () if present and only use first arg(all is there) */
         let argsExt = args[0].replace(/[()]/g, '').split(',');
         const fnName = argsExt.shift()!;
+        // console.log('callfunc', fnName);
         if (COMMAND_CALL_FUNC_TO_IGNORE.has(fnName)) return;
 
         switch (fnName) {
@@ -767,7 +769,7 @@ export class TTBonusEngineService {
         }
 
         /* 7) (safe) eval */
-        console.log('Expr. to eval ', expression);
+        // console.log('Expr. to eval ', expression);
         const result = Function(`"use strict"; return (${expression});`)();
         return typeof result === 'boolean' ? result : Number(result);
     }

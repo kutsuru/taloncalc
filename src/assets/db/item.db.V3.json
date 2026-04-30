@@ -15120,12 +15120,12 @@
     "location": "Weapon",
     "sqiBonus": {
       "1320_0": {
-        "description": "(FIXME) +15% MaxHP",
-        "bonus": ""
+        "description": "+15% MaxHP",
+        "bonus": "bonus bMaxHPrate,15;"
       },
       "1320_1": {
-        "description": "(FIXME) +5 INT",
-        "bonus": ""
+        "description": "+5 INT",
+        "bonus": "bonus bInt,5;"
       },
       "1320_2": {
         "description": "(FIXME) 5% chance to reflect 40% of damage for 8 seconds when attacked",
@@ -15136,31 +15136,31 @@
         "bonus": ""
       },
       "1320_4": {
-        "description": "(FIXME) +20% MATK, enables use of Level 6 [Fire Bolt] and 5% chance to auto cast Level 6 [Firebolt] when attacking, ",
-        "bonus": ""
+        "description": "+20% MATK, enables use of Level 6 [Fire Bolt] and 5% chance to auto cast Level 6 [Firebolt] when attacking, ",
+        "bonus": "bonus bMatkRate,20; skill MG_FIREBOLT,6; bonus3 bAutoSpell,MG_FIREBOLT,6,50"
       },
       "1320_5": {
-        "description": "(FIXME) +50% more damage and 75% reduced zeny cost with [Mammonite]",
-        "bonus": ""
+        "description": "+50% more damage and 75% reduced zeny cost with [Mammonite]",
+        "bonus": "bonus2 bSkillAtk,MC_MAMMONITE,50; bonus2 bZenyCost,MC_MAMMONITE,75;"
       },
       "1320_6": {
         "description": "(FIXME) [Demonstration] damage interval reduced by 75% (every 0.25 secs instead of 1 sec). Remove [Demonstration] on unequip",
         "bonus": ""
       },
       "1320_7": {
-        "description": "(FIXME) 20% chance to ignore potion cost with [Potion Pitcher] and [Slim Potion Pitcher]",
+        "description": "20% chance to ignore potion cost with [Potion Pitcher] and [Slim Potion Pitcher]",
         "bonus": ""
       },
       "1320_8": {
-        "description": "(FIXME) PvM: Ignore [Acid Terror] Acid Bottle cost and [Demonstration] Fire Bottle cost",
+        "description": "PvM: Ignore [Acid Terror] Acid Bottle cost and [Demonstration] Fire Bottle cost",
         "bonus": ""
       },
       "1320_9": {
-        "description": "(FIXME) Chemical Protection Skills (except FCP) have double duration and a 25% chance to ignore Glistening Coat cost",
+        "description": "Chemical Protection Skills (except FCP) have double duration and a 25% chance to ignore Glistening Coat cost",
         "bonus": ""
       },
       "1320_10": {
-        "description": "(FIXME) [Bio Cannibalize] plants receive 40% less damage, ASPD/ATK x2, and HIT/HP x3; destroy bio plants on equip/unequip",
+        "description": "(Needed?) [Bio Cannibalize] plants receive 40% less damage, ASPD/ATK x2, and HIT/HP x3; destroy bio plants on equip/unequip",
         "bonus": ""
       },
       "1320_11": {
@@ -15172,8 +15172,8 @@
         "bonus": ""
       },
       "1320_13": {
-        "description": "(FIXME) PvM: Endow Neutral Element",
-        "bonus": ""
+        "description": "PvM: Endow Neutral Element",
+        "bonus": "bonus bAtkEle,Ele_Neutral;"
       }
     }
   },
@@ -16916,36 +16916,36 @@
     "location": "Weapon",
     "sqiBonus": {
       "1430_0": {
-        "description": "(FIXME) CRIT + 15, 10% more damage with Critical Hits",
-        "bonus": ""
+        "description": "CRIT + 15, 10% more damage with Critical Hits",
+        "bonus": "bonus bCritical,15; bonus bCritAtkRate,10;"
       },
       "1430_1": {
-        "description": "(FIXME) 15% Aftercast Reduction",
-        "bonus": ""
+        "description": "15% Aftercast Reduction",
+        "bonus": "bonus bDelayRate,-15"
       },
       "1430_2": {
-        "description": "(FIXME) Increase damage inflicted on Large size monster by 15% when using [Pierce] or [Brandish Spear]",
-        "bonus": ""
+        "description": "Increase damage inflicted on Large size monster by 15% when using [Pierce] or [Brandish Spear]",
+        "bonus": "bonus3 bSkillSizeBonus,KN_PIERCE,Size_Large,15; bonus3 bSkillSizeBonus,KN_BRANDISHSPEAR,Size_Large,15;"
       },
       "1430_3": {
-        "description": "(FIXME) 5% chance to add ASPD + 12% and [Pierce] HIT Rate + 25% for 15 seconds after using [Pierce] (Toggle)",
-        "bonus": ""
+        "description": "(FIXME HIT for pierce) 5% chance to add ASPD + 12% and [Pierce] HIT Rate + 25% for 15 seconds after using [Pierce] (Toggle)",
+        "bonus": "bonus bAspdRate;12"
       },
       "1430_4": {
-        "description": "(FIXME) 20% more damage with [Pierce]",
-        "bonus": ""
+        "description": "20% more damage with [Pierce]",
+        "bonus": "bonus2 bSkillAtk,KN_PIERCE,20;"
       },
       "1430_5": {
-        "description": "(FIXME) 100% more damage with [Joint Beat], 50% more damage with [Head Crush]",
-        "bonus": ""
+        "description": "100% more damage with [Joint Beat], 50% more damage with [Head Crush]",
+        "bonus": "bonus2 bSkillAtk,LK_JOINTBEAT,100; bonus2 bSkillAtk,LK_HEADCRUSH,50;"
       },
       "1430_6": {
-        "description": "(FIXME) 50% more damage [Brandish Spear] and inflict full damage regardless of AoE position",
-        "bonus": ""
+        "description": "(FIXME AoE Calc) 50% more damage [Brandish Spear] and inflict full damage regardless of AoE position",
+        "bonus": "bonus2 bSkillAtk,KN_BRANDISHSPEAR,50;"
       },
       "1430_7": {
-        "description": "(FIXME) 50% less cast time with  [Brandish Spear] and has an additional attack range + 1",
-        "bonus": ""
+        "description": "(FIXME range) 50% less cast time with  [Brandish Spear] and has an additional attack range + 1",
+        "bonus": "bonus2 bCastrate,KN_BRANDISHSPEAR,-50;"
       },
       "1430_8": {
         "description": "(FIXME) 25% chance to auto-cast level 5 [Decrease Agility] on the enemy after using [Spear Boomerang]",
@@ -16956,15 +16956,15 @@
         "bonus": ""
       },
       "1430_10": {
-        "description": "(FIXME) 50% less cast time with [Spiral Pierce]; but disables Berzebub Card",
-        "bonus": ""
+        "description": "(FIXME correct?) 50% less cast time with [Spiral Pierce]; but disables Berzebub Card",
+        "bonus": "bonus2 bCastrate,LK_SPIRALPIERCE,-50; bonus bCastrate,isequippedcnt(4145)*30;"
       },
       "1430_11": {
         "description": "(FIXME) 10% chance to auto-cast [Pierce] or [Joint Beat] at the levels learned during [Frenzy]",
         "bonus": ""
       },
       "1430_12": {
-        "description": "(FIXME) [Endure] has no hit limit when used",
+        "description": "[Endure] has no hit limit when used",
         "bonus": ""
       }
     }
@@ -18773,16 +18773,16 @@
     "location": "Weapon",
     "sqiBonus": {
       "1530_0": {
-        "description": "(FIXME) 10% Ranged damage reduction",
-        "bonus": ""
+        "description": "10% Ranged damage reduction",
+        "bonus": "bonus bLongAtkDef,10;"
       },
       "1530_1": {
-        "description": "(FIXME) +15 CRIT, +20% more damage with Critical Hits",
-        "bonus": ""
+        "description": "+15 CRIT, +20% more damage with Critical Hits",
+        "bonus": "bonus bCritical,15; bonus bCritAtkRate,20;"
       },
       "1530_2": {
-        "description": "(FIXME) Reduce [Cart Termination] and [Mammonite] SP costs by 50%",
-        "bonus": ""
+        "description": "Reduce [Cart Termination] and [Mammonite] SP costs by 50%",
+        "bonus": "bonus2 bSkillUseSPrate,WS_CARTTERMINATION,50; bonus2 bSkillUseSPrate,MC_MAMMONITE,50;"
       },
       "1530_3": {
         "description": "(FIXME) Spend 75% less zeny with all Zeny Skills",
@@ -18793,40 +18793,40 @@
         "bonus": ""
       },
       "1530_5": {
-        "description": "(FIXME) [Over-Thrust] won't break party member weapons. Enable [Full Adrenaline Rush] without [Blacksmith Spirit]",
-        "bonus": ""
+        "description": "[Over-Thrust] won't break party member weapons. Enable [Full Adrenaline Rush] without [Blacksmith Spirit]",
+        "bonus": "skill BS_ADRENALINE2,1;"
       },
       "1530_6": {
-        "description": "(FIXME) MATK + 20%. 30% chance to auto-cast level 2 [Lightning Jolt] with 100% more damage when attacking normally",
-        "bonus": ""
+        "description": "(FIXME auto-cast) MATK + 20%. 30% chance to auto-cast level 2 [Lightning Jolt] with 100% more damage when attacking normally",
+        "bonus": "bonus bMatkRate,20; bonus2 bSkillAtk,NJ_RAIGEKISAI,100;"
       },
       "1530_7": {
         "description": "(FIXME) 40% chance to auto-cast level 1 [Wide Silence] when using [Hammerfall]",
         "bonus": ""
       },
       "1530_8": {
-        "description": "(FIXME) Enables use of level 1 [Charge Attack] and 30% less cast time with [Charge Attack]",
-        "bonus": ""
+        "description": "Enables use of level 1 [Charge Attack] and 30% less cast time with [Charge Attack]",
+        "bonus": "skill KN_CHARGEATK,1; bonus2 bCastrate,KN_CHARGEATK,-30;"
       },
       "1530_9": {
-        "description": "(FIXME) +200% more damage with Throw Tomahawk, enables [Throw Tomahawk] to work together with the [Melt Down] status.",
-        "bonus": ""
+        "description": "+200% more damage with Throw Tomahawk, enables [Throw Tomahawk] to work together with the [Melt Down] status.",
+        "bonus": "bonus2 bSkillAtk,ITM_TOMAHAWK,200;"
       },
       "1530_10": {
-        "description": "(FIXME) For each mastered Forge Passive add ATK + 10 and DEF Pierce + 2%; but reduce HP Leech Script total amount by 50%",
-        "bonus": ""
+        "description": "(FIXME leech) For each mastered Forge Passive add ATK + 10 and DEF Pierce + 2%; but reduce HP Leech Script total amount by 50%",
+        "bonus": ".@i = getskilllv(TT_SMITH_MASTERED); bonus bBaseAtk,.@i*10; bonus2 bIgnoreDefClassRate,Class_All,.@i*2;"
       },
       "1530_11": {
         "description": "(FIXME) Assume max weight for [Cart Revolution] and [Cart Termination] regardless of cart weight",
         "bonus": ""
       },
       "1530_12": {
-        "description": "(FIXME) Enable [Weapon Perfection] and [Power Maximize] effects all the time with no SP costs when these skills are mastered",
+        "description": "Enable [Weapon Perfection] and [Power Maximize] effects all the time with no SP costs when these skills are mastered",
         "bonus": ""
       },
       "1530_13": {
-        "description": "(FIXME) PvM: Endow Neutral Element",
-        "bonus": ""
+        "description": "PvM: Endow Neutral Element",
+        "bonus": "if(!callfunc(F_Map_VS)) bonus bAtkEle,Ele_Neutral;"
       }
     }
   },
@@ -19288,8 +19288,8 @@
     "location": "Weapon",
     "sqiBonus": {
       "1549_0": {
-        "description": "(FIXME) MaxSP + 20%. Reduce SP consumption of skills by 10%",
-        "bonus": ""
+        "description": "MaxSP + 20%. Reduce SP consumption of skills by 10%",
+        "bonus": "bonus bMaxSPRate,20; bonus bUseSPrate,-10;"
       },
       "1549_1": {
         "description": "(FIXME) 30% Freeze and Stone Curse Resistance",
@@ -19304,44 +19304,44 @@
         "bonus": ""
       },
       "1549_4": {
-        "description": "(FIXME) Increase effectiveness of Sanctuary by 20%",
-        "bonus": ""
+        "description": "Increase effectiveness of Sanctuary by 20%",
+        "bonus": "bonus2 bSkillHeal,PR_SANCTUARY,20;"
       },
       "1549_5": {
-        "description": "(FIXME) Enables use of Level 10 [Frost Nova]",
-        "bonus": ""
+        "description": "Enables use of Level 10 [Frost Nova]",
+        "bonus": "skill WZ_FROSTNOVA,10;"
       },
       "1549_6": {
-        "description": "(FIXME) Enables use of [Free Cast] and casting can't be interrupted",
-        "bonus": ""
+        "description": "Enables use of [Free Cast] and casting can't be interrupted",
+        "bonus": "bonus bNoCastCancel;"
       },
       "1549_7": {
-        "description": "(FIXME) 50% cast time reduction for [Magnificat], [Kyrie Elesion], [Assumptio] and [Safety Wall]",
-        "bonus": ""
+        "description": "50% cast time reduction for [Magnificat], [Kyrie Elesion], [Assumptio] and [Safety Wall]",
+        "bonus": "bonus2 bCastrate,PR_MAGNIFICAT,-50; bonus2 bCastrate,PR_KYRIE,-50; bonus2 bCastrate,HP_ASSUMPTIO,-50; bonus2 bCastrate,MG_SAFETYWALL,-50;"
       },
       "1549_8": {
         "description": "(FIXME) Add a 20% chance to auto-cast level 6 [Cold Bolt] when attacking normally. If [Demon Bane] is mastered, chance to auto-cast level 10 [Holy Cross] instead",
         "bonus": ""
       },
       "1549_9": {
-        "description": "(FIXME) Add a 15% chance to double cast [Heal] at the level learned",
+        "description": "Add a 15% chance to double cast [Heal] at the level learned",
         "bonus": ""
       },
       "1549_10": {
-        "description": "(FIXME) [Resurrection] works on Undead armor players",
+        "description": "[Resurrection] works on Undead armor players",
         "bonus": ""
       },
       "1549_11": {
-        "description": "(FIXME) Triple the duration of [Gloria]",
+        "description": "Triple the duration of [Gloria]",
         "bonus": ""
       },
       "1549_12": {
-        "description": "(FIXME) [Priest Spirit] remains after death",
+        "description": "[Priest Spirit] remains after death",
         "bonus": ""
       },
       "1549_13": {
-        "description": "(FIXME) PvM: Endow Neutral Element",
-        "bonus": ""
+        "description": "PvM: Endow Neutral Element",
+        "bonus": "bonus bAtkEle,Ele_Neutral;"
       }
     }
   },
@@ -20187,56 +20187,56 @@
     "location": "Weapon",
     "sqiBonus": {
       "1590_0": {
-        "description": "(FIXME) +20% MaxHP",
-        "bonus": ""
+        "description": "+20% MaxHP",
+        "bonus": "bonus bMaxHPrate,20;"
       },
       "1590_1": {
-        "description": "(FIXME) Increase [Wall of Fog] limit to 3. Remove [Wall of Fog] on unequip",
+        "description": "Increase [Wall of Fog] limit to 3. Remove [Wall of Fog] on unequip",
         "bonus": ""
       },
       "1590_2": {
-        "description": "(FIXME) Enables use of level 10 [Soul Drain] and regain 2 SP for each normal attack.",
-        "bonus": ""
+        "description": "Enables use of level 10 [Soul Drain] and regain 2 SP for each normal attack.",
+        "bonus": "skill HW_SOULDRAIN,10; bonus bSPDrainValue,2;"
       },
       "1590_3": {
-        "description": "(FIXME) Enables use of level 3 [Strip Shield]",
-        "bonus": ""
+        "description": "Enables use of level 3 [Strip Shield]",
+        "bonus": "skill RG_STRIPSHIELD,3; "
       },
       "1590_4": {
-        "description": "(FIXME) No cast time with [Memorize] and [Double Bolt]",
-        "bonus": ""
+        "description": "No cast time with [Memorize] and [Double Bolt]",
+        "bonus": "bonus2 bCastrate,PF_MEMORIZE,-100; bonus2 bCastrate,PF_DOUBLECASTING,-100;"
       },
       "1590_5": {
-        "description": "(FIXME) Pierce 10% of enemy MDEF when using [Fire Bolt], [Cold Bolt], [Lightning Bolt], or [Earth Spike]",
+        "description": "(FIXME script not skill based) Pierce 10% of enemy MDEF when using [Fire Bolt], [Cold Bolt], [Lightning Bolt], or [Earth Spike]",
         "bonus": ""
       },
       "1590_6": {
-        "description": "(FIXME) 15% Aftercast Reduction with [Fire Bolt], [Cold Bolt], and [Lightning Bolt]",
-        "bonus": ""
+        "description": "15% Aftercast Reduction with [Fire Bolt], [Cold Bolt], and [Lightning Bolt]",
+        "bonus": "bonus2 bSkillDelayrate,MG_FIREBOLT,-15; bonus2 bSkillDelayrate,MG_COLDBOLT,-15; bonus2 bSkillDelayrate,MG_LIGHTNINGBOLT,-15;"
       },
       "1590_7": {
         "description": "(FIXME) Earth Spike Mastered: Add a 50% chance to cause Stone Curse status after using [Earth Spike]",
         "bonus": ""
       },
       "1590_8": {
-        "description": "(FIXME) Autospell Mastered: Add ASPD + 12% and FLEE + 15 during [Autospell]",
-        "bonus": ""
+        "description": "Autospell Mastered: Add ASPD + 12% and FLEE + 15 during [Autospell]",
+        "bonus": "if(getskilllv(SA_AUTOSPELL)==10) { bonus bAspdRate,12; bonus bFlee,15; }"
       },
       "1590_9": {
-        "description": "(FIXME) Endow Skills have 100% success rate regardless of skill level. Instances/PvP/WoE: Consume no catalyst",
+        "description": "Endow Skills have 100% success rate regardless of skill level. Instances/PvP/WoE: Consume no catalyst",
         "bonus": ""
       },
       "1590_10": {
-        "description": "(FIXME) Increase the AoE of [Volcano], [Deluge], and [Violent Gale] to 11x11. Cancel these skills on unequip",
+        "description": "Increase the AoE of [Volcano], [Deluge], and [Violent Gale] to 11x11. Cancel these skills on unequip",
         "bonus": ""
       },
       "1590_11": {
-        "description": "(FIXME) PvM: 80% Aftercast Reduction with [Soul Exchange] and restore 50% more SP with [Health Conversion]",
-        "bonus": ""
+        "description": "(FIXME PVM needed as condition?) PvM: 80% Aftercast Reduction with [Soul Exchange] and restore 50% more SP with [Health Conversion]",
+        "bonus": "bonus2 bSkillDelayrate,PF_SOULCHANGE,-80; "
       },
       "1590_12": {
-        "description": "(FIXME) 25% more damage with [Thunderstorm] and [Heaven's Drive]. 200% more damage with [Fire Ball]",
-        "bonus": ""
+        "description": "25% more damage with [Thunderstorm] and [Heaven's Drive]. 200% more damage with [Fire Ball]",
+        "bonus": "bonus2 bSkillAtk,MG_THUNDERSTORM,25; bonus2 bSkillAtk,WZ_HEAVENDRIVE,25; bonus2 bSkillAtk,MG_FIREBALL,200;"
       }
     }
   },
@@ -21442,55 +21442,55 @@
     "location": "Weapon",
     "sqiBonus": {
       "1650_0": {
-        "description": "(FIXME) +20% MaxHP",
-        "bonus": ""
+        "description": "+20% MaxHP",
+        "bonus": "bonus bMaxHPRate,20;"
       },
       "1650_1": {
-        "description": "(FIXME) +5 DEX",
-        "bonus": ""
+        "description": "+5 DEX",
+        "bonus": "bonus bDex,5;"
       },
       "1650_2": {
-        "description": "(FIXME) 20% ranged damage reduction",
-        "bonus": ""
+        "description": "20% ranged damage reduction",
+        "bonus": "bonus bLongAtkDef,20;"
       },
       "1650_3": {
         "description": "(FIXME) 20% chance to auto cast Curse status when attacking. [Gravitation Field] has a 20% chance to cause Stone Curse status, [Gravitation Field] no longer damages targets under the Stone Curse status.",
         "bonus": ""
       },
       "1650_4": {
-        "description": "(FIXME) Enable movement during [Gravitation Field]. Remove [Gravitation Field] on unequip",
+        "description": "Enable movement during [Gravitation Field]. Remove [Gravitation Field] on unequip",
         "bonus": ""
       },
       "1650_5": {
-        "description": "(FIXME) Amplify Magic Power casts 75% faster",
-        "bonus": ""
+        "description": "Amplify Magic Power casts 75% faster",
+        "bonus": "bonus2 bSkillDelayrate,HW_MAGICPOWER,-75;"
       },
       "1650_6": {
-        "description": "(FIXME) Ignore Demi-Human defense. 100% more damage with [Magic Crasher]. 10% chance to auto cast [Ganbantein] at no cost of gemstones",
-        "bonus": ""
+        "description": "(FIXME autocast) Ignore Demi-Human defense. 100% more damage with [Magic Crasher]. 10% chance to auto cast [Ganbantein] at no cost of gemstones",
+        "bonus": "bonus bIgnoreDefRace,RC_DemiHuman; bonus bIgnoreDefRace,RC_Player_Human; bonus2 bSkillAtk,HW_MAGICCRASHER,100;"
       },
       "1650_7": {
-        "description": "(FIXME) Enable level 10 [Water Ball] when it and [Cold Bolt] are mastered",
-        "bonus": ""
+        "description": "Enable level 10 [Water Ball] when it and [Cold Bolt] are mastered",
+        "bonus": "skill WZ_WATERBALL,10;"
       },
       "1650_8": {
-        "description": "(FIXME) 25% more damage with [Napalm Vulcan], [Napalm Vulcan] no longer split damage",
-        "bonus": ""
+        "description": "(FIXME split DMG?) 25% more damage with [Napalm Vulcan], [Napalm Vulcan] no longer split damage",
+        "bonus": "bonus2 bSkillAtk,HW_NAPALMVULCAN,25;"
       },
       "1650_9": {
-        "description": "(FIXME) 100% more damage with [Earth Spike], 50% more damage with [Heaven's Drive]",
-        "bonus": ""
+        "description": "100% more damage with [Earth Spike], 50% more damage with [Heaven's Drive]",
+        "bonus": "bonus2 bSkillAtk,WZ_EARTHSPIKE,100; bonus2 bSkillAtk,WZ_HEAVENDRIVE,50;"
       },
       "1650_10": {
-        "description": "(FIXME) 50% more damage with [Lord of Vermillion]. 25% more damage with [Thunderstorm]. Convert their delays into cooldowns",
-        "bonus": ""
+        "description": "(FIXME skill ids) 50% more damage with [Lord of Vermillion]. 25% more damage with [Thunderstorm]. Convert their delays into cooldowns",
+        "bonus": "bonus2 bSkillAtk,WZ_VERMILION,50; bonus2 bSkillAtk,MG_THUNDERSTORM,25; bonus bSkillDelayToCooldown,127; bonus bSkillDelayToCooldown,57;"
       },
       "1650_11": {
-        "description": "(FIXME) Ignore [Fire Pillar] and [Safety Wall] Blue Gemstone cost",
+        "description": "Ignore [Fire Pillar] and [Safety Wall] Blue Gemstone cost",
         "bonus": ""
       },
       "1650_12": {
-        "description": "(FIXME) Increase [Quagmire] limit to 5. Remove [Quagmire] on unequip",
+        "description": "Increase [Quagmire] limit to 5. Remove [Quagmire] on unequip",
         "bonus": ""
       }
     }
@@ -21519,15 +21519,15 @@
     "location": "Weapon",
     "sqiBonus": {
       "1651_0": {
-        "description": "(FIXME) Enables level 5 duration and SP cost on all Soul Link Skills regardless of current skill level",
+        "description": "Enables level 5 duration and SP cost on all Soul Link Skills regardless of current skill level",
         "bonus": ""
       },
       "1651_1": {
-        "description": "(FIXME) Reduces SP consumption of skills by 20% and reduces [Kaahi] SP consumption for yourself by 30%",
-        "bonus": ""
+        "description": "Reduces SP consumption of skills by 20% and reduces [Kaahi] SP consumption for yourself by 30%",
+        "bonus": "bonus bUseSPrate,-20;"
       },
       "1651_2": {
-        "description": "(FIXME) Replace [Eska] effect with 20% MDEF Reduction on the target for 10 seconds",
+        "description": "(FIXME needed?) Replace [Eska] effect with 20% MDEF Reduction on the target for 10 seconds",
         "bonus": ""
       },
       "1651_3": {
@@ -21535,39 +21535,39 @@
         "bonus": ""
       },
       "1651_4": {
-        "description": "(FIXME) Soul Links casted on others last 50% longer",
+        "description": "Soul Links casted on others last 50% longer",
         "bonus": ""
       },
       "1651_5": {
-        "description": "(FIXME) +10% more damage with [Esma]",
-        "bonus": ""
+        "description": "+10% more damage with [Esma]",
+        "bonus": "bonus2 bSkillAtk,SL_SMA,10;"
       },
       "1651_6": {
-        "description": "(FIXME) 50% less cast time with [Kaupe], [Kaite], [Eswoo] and [Esma]. Casting can't be interrupted",
-        "bonus": ""
+        "description": "50% less cast time with [Kaupe], [Kaite], [Eswoo] and [Esma]. Casting can't be interrupted",
+        "bonus": "bonus2 bCastrate,SL_KAUPE,-50; bonus2 bCastrate,SL_KAITE,-50; bonus2 bCastrate,SL_SWOO,-50; bonus2 bCastrate,SL_SMA,-50;"
       },
       "1651_7": {
-        "description": "(FIXME) [Peaceful Rest] and [Enjoyable Rest] always enabled and ignores overweight tick penalties below 90%; But disables GEC Effect!",
+        "description": "(FIXME needed?) [Peaceful Rest] and [Enjoyable Rest] always enabled and ignores overweight tick penalties below 90%; But disables GEC Effect!",
         "bonus": ""
       },
       "1651_8": {
-        "description": "(FIXME) [Priest Link] adds heal 20% more with [Heal] and 15% with [Sanctuary]",
+        "description": "[Priest Link] adds heal 20% more with [Heal] and 15% with [Sanctuary]",
         "bonus": ""
       },
       "1651_9": {
-        "description": "(FIXME) [Wizard Link] adds ignore 50% of Holy/Shadow element Fire/Water/Wind/Earth Resistance",
+        "description": "[Wizard Link] adds ignore 50% of Holy/Shadow element Fire/Water/Wind/Earth Resistance",
         "bonus": ""
       },
       "1651_10": {
-        "description": "(FIXME) [Kaite] Ignores boss/level restriction, but no damage is reflected in that case, instead, damage is ignored. Only works on yourself, fails against Earthquake",
+        "description": "[Kaite] Ignores boss/level restriction, but no damage is reflected in that case, instead, damage is ignored. Only works on yourself, fails against Earthquake",
         "bonus": ""
       },
       "1651_11": {
-        "description": "(FIXME) Auto-Cast [Acid Terror] when attacking at [Alchemist Spirit] level, auto-Cast [Holy Cross] when attacking at [Crusader Spirit] level",
+        "description": "Auto-Cast [Acid Terror] when attacking at [Alchemist Spirit] level, auto-Cast [Holy Cross] when attacking at [Crusader Spirit] level",
         "bonus": ""
       },
       "1651_12": {
-        "description": "(FIXME) Auto-Cast [Frost Joker] when attacking at [Bard Dancer Spirit] level",
+        "description": "Auto-Cast [Frost Joker] when attacking at [Bard Dancer Spirit] level",
         "bonus": ""
       }
     }
@@ -22826,27 +22826,27 @@
     "location": "Weapon",
     "sqiBonus": {
       "1745_0": {
-        "description": "(FIXME) +15% MaxHP",
-        "bonus": ""
+        "description": "+15% MaxHP",
+        "bonus": "bonus bMaxHPRate,15;"
       },
       "1745_1": {
-        "description": "(FIXME) +10% MaxSP, 25% chance to ignore arrow costs when using skills or attacking normally",
-        "bonus": ""
+        "description": "+10% MaxSP, 25% chance to ignore arrow costs when using skills or attacking normally",
+        "bonus": "bonus bMaxSPRate,10"
       },
       "1745_2": {
-        "description": "(FIXME) 20% Magic Resistance",
-        "bonus": ""
+        "description": "20% Magic Resistance",
+        "bonus": "bonus bMdefRate,20;"
       },
       "1745_3": {
-        "description": "(FIXME) 10% more damage with auto-attack and [Sharpshoot] Critical Hits",
-        "bonus": ""
+        "description": "10% more damage with auto-attack and [Sharpshoot] Critical Hits",
+        "bonus": "bonus bCritAtkRate,10; bonus2 bSkillCritAtkRate,SN_SHARPSHOOTING,10;"
       },
       "1745_4": {
-        "description": "(FIXME) 100% more damage with [Claymore Trap], [Blast Mine] and [Land Mine], [Blast Mine] and [Land Mine] durations are increased to 100 seconds when mastered",
-        "bonus": ""
+        "description": "100% more damage with [Claymore Trap], [Blast Mine] and [Land Mine], [Blast Mine] and [Land Mine] durations are increased to 100 seconds when mastered",
+        "bonus": "bonus2 bSkillAtk,HT_CLAYMORETRAP,100; bonus2 bSkillAtk,HT_BLASTMINE,100; bonus2 bSkillAtk,HT_LANDMINE,100;"
       },
       "1745_5": {
-        "description": "(FIXME) Increase Trap Skill Trigger AoE (except Ankle Snare) to 5x5. Increase [Claymore Trap], [Land Mine], and [Blast Mine] splash AoE to 7x7",
+        "description": "Increase Trap Skill Trigger AoE (except Ankle Snare) to 5x5. Increase [Claymore Trap], [Land Mine], and [Blast Mine] splash AoE to 7x7",
         "bonus": ""
       },
       "1745_6": {
@@ -22854,27 +22854,27 @@
         "bonus": ""
       },
       "1745_7": {
-        "description": "(FIXME) FLEE + 15 on [Wind Walk]",
-        "bonus": ""
+        "description": "FLEE + 15 on [Wind Walk]",
+        "bonus": "if(getskilllv(SN_WINDWALK)>0) bonus bFlee,15;"
       },
       "1745_8": {
-        "description": "(FIXME) 10% more damage with [Double Strafing], reduces Thanatos Card effect by 15% for each equipped Thanatos Card.",
-        "bonus": ""
+        "description": "(FIXME Thana effect) 10% more damage with [Double Strafing], reduces Thanatos Card effect by 15% for each equipped Thanatos Card.",
+        "bonus": ".@i = isequippedcnt(4399); bonus2 bSkillAtk,AC_DOUBLE,10; bonus3 bIgnoreDefClassRate,Class_Normal,-25*.@i,BF_LONG; bonus3 bIgnoreDefClassRate,Class_Boss,-20*.@i,BF_LONG;"
       },
       "1745_9": {
-        "description": "(FIXME) Triple [True Sight] duration",
+        "description": "Triple [True Sight] duration",
         "bonus": ""
       },
       "1745_10": {
-        "description": "(FIXME) [Blitz Beat] and [Falcon Assault] ignore Neutral Resist",
-        "bonus": ""
+        "description": "[Blitz Beat] and [Falcon Assault] ignore Neutral Resist",
+        "bonus": "bonus3 bSkillIgnoreDefEle,HT_BLITZBEAT,Ele_Neutral; bonus3 bSkillIgnoreDefEle,SN_FALCONASSAULT,Ele_Neutral"
       },
       "1745_11": {
-        "description": "(FIXME) 25% more damage and 20% less aftercast delay with [Falcon Assault]",
-        "bonus": ""
+        "description": "25% more damage and 20% less aftercast delay with [Falcon Assault]",
+        "bonus": "bonus2 bSkillAtk,SN_FALCONASSAULT,25; bonus2 bSkillDelayrate,SN_FALCONASSAULT,-20;"
       },
       "1745_12": {
-        "description": "(FIXME) Auto [Blitz Beat] doesn't draw aggro against slave mobs. [Blitz Beat] no longer splits damage",
+        "description": "(FIXME split DMG?) Auto [Blitz Beat] doesn't draw aggro against slave mobs. [Blitz Beat] no longer splits damage",
         "bonus": ""
       }
     }
@@ -22903,32 +22903,32 @@
     "location": "Weapon",
     "sqiBonus": {
       "1746_0": {
-        "description": "(FIXME) MaxSP + 10%. Add a 25% chance to ignore ammo costs when attacking normally or using skills",
-        "bonus": ""
+        "description": "MaxSP + 10%. Add a 25% chance to ignore ammo costs when attacking normally or using skills",
+        "bonus": "bonus bMaxSPRate,10;"
       },
       "1746_1": {
-        "description": "(FIXME) Reduce SP Consumption of skills by 15%",
-        "bonus": ""
+        "description": "Reduce SP Consumption of skills by 15%",
+        "bonus": "bonus bUseSPrate,-15;"
       },
       "1746_2": {
-        "description": "(FIXME) Ignore 10% of enemy MDEF",
-        "bonus": ""
+        "description": "Ignore 10% of enemy MDEF",
+        "bonus": "bonus2 bIgnoreMdefClassRate,Class_All,10;"
       },
       "1746_3": {
-        "description": "(FIXME) 20% Melee Resistance, 20% Magic Resistance",
-        "bonus": ""
+        "description": "20% Melee Resistance, 20% Magic Resistance",
+        "bonus": "bonus bNearAtkDef,20; bonus bMagicAtkDef,20;"
       },
       "1746_4": {
-        "description": "(FIXME) MaxHP + 15%",
-        "bonus": ""
+        "description": "MaxHP + 15%",
+        "bonus": "bonus bMaxHPRate,15;"
       },
       "1746_5": {
-        "description": "(FIXME) CRIT + 15, 10% more damage with Critical Hits",
-        "bonus": ""
+        "description": "CRIT + 15, 10% more damage with Critical Hits",
+        "bonus": "bonus bCritical,15; bonus bCritAtkRate,10;"
       },
       "1746_6": {
-        "description": "(FIXME) Enable [Double Attack] usage, [Double Attack] and [Triple Attack] Rate + 10%",
-        "bonus": ""
+        "description": "Enable [Double Attack] usage, [Double Attack] and [Triple Attack] Rate + 10%",
+        "bonus": "skill TF_DOUBLE,10; bonus bDoubleAttackRate,10; bonus bTripleAddRate,10;"
       },
       "1746_7": {
         "description": "(FIXME) PvP: Add a 10% chance to auto-cast level 1 [Strip Armor] when attacking with long range. PvM: 5% chance for [Strip Shield] instead at the level learned",
@@ -22939,7 +22939,7 @@
         "bonus": ""
       },
       "1746_9": {
-        "description": "(FIXME) Demon Race, Insect Race, and Detector Mobs can no longer see you when hidden; Fails against boss monsters",
+        "description": "Demon Race, Insect Race, and Detector Mobs can no longer see you when hidden; Fails against boss monsters",
         "bonus": ""
       },
       "1746_10": {
@@ -22947,7 +22947,7 @@
         "bonus": ""
       },
       "1746_11": {
-        "description": "(FIXME) [Preserve] remains after death",
+        "description": "[Preserve] remains after death",
         "bonus": ""
       },
       "1746_12": {
@@ -24382,15 +24382,15 @@
         "bonus": ""
       },
       "1840_4": {
-        "description": "(FIXME) [Raging Palm Strike] pushes back an additional 2 cells",
-        "bonus": ""
+        "description": "[Raging Palm Strike] pushes back an additional 2 cells",
+        "bonus": "bonus2 bAddSkillBlow,CH_PALMSTRIKE,5;"
       },
       "1840_5": {
-        "description": "(FIXME) 100% more damage with Triple Attack, Chain Combo and Combo Finish, 50% more damage with Tiger Knuckle and Chain Crush Combo",
-        "bonus": ""
+        "description": "100% more damage with Triple Attack, Chain Combo and Combo Finish, 50% more damage with Tiger Knuckle and Chain Crush Combo",
+        "bonus": "bonus2 bSkillAtk,MO_TRIPLEATTACK,100; bonus2 bSkillAtk,MO_CHAINCOMBO,100; bonus2 bSkillAtk,MO_COMBOFINISH,100; bonus2 bSkillAtk,CH_TIGERFIST,50; bonus2 bSkillAtk,CH_CHAINCRUSH,50;"
       },
       "1840_6": {
-        "description": "(FIXME) Add a 100% chance to auto cast [Dangerous Soul Collect] after using [Fury]",
+        "description": "Add a 100% chance to auto cast [Dangerous Soul Collect] after using [Fury]",
         "bonus": ""
       },
       "1840_7": {
@@ -24398,19 +24398,19 @@
         "bonus": ""
       },
       "1840_8": {
-        "description": "(FIXME) PvM: Convert [Finger Offensive] delay into a cooldown. PvP: Add a 15% chance to auto cast [Dangerous Soul Collect] after using [Finger Offensive]",
+        "description": "PvM: Convert [Finger Offensive] delay into a cooldown. PvP: Add a 15% chance to auto cast [Dangerous Soul Collect] after using [Finger Offensive]",
         "bonus": ""
       },
       "1840_9": {
-        "description": "(FIXME) Add a 25% chance to auto cast [Call Spirits] after using [Investigate]",
+        "description": "Add a 25% chance to auto cast [Call Spirits] after using [Investigate]",
         "bonus": ""
       },
       "1840_10": {
-        "description": "(FIXME) 20% more damage with [Investigate]. PvP/WoE: Reduce to 10%",
-        "bonus": ""
+        "description": "20% more damage with [Investigate]. PvP/WoE: Reduce to 10%",
+        "bonus": "if(callfunc(F_Map_VS)) { bonus2 bSkillAtk,MO_INVESTIGATE,10; } else { bonus2 bSkillAtk,MO_INVESTIGATE,20; }"
       },
       "1840_11": {
-        "description": "(FIXME) PvM: 33% of your current SP (not max) remains after using [Asura Strike]",
+        "description": "PvM: 33% of your current SP (not max) remains after using [Asura Strike]",
         "bonus": ""
       },
       "1840_12": {
@@ -24418,8 +24418,8 @@
         "bonus": ""
       },
       "1840_13": {
-        "description": "(FIXME) PvM: Endow Neutral Element",
-        "bonus": ""
+        "description": "PvM: Endow Neutral Element",
+        "bonus": "bonus bAtkEle,Ele_Neutral;"
       }
     }
   },
@@ -24723,27 +24723,27 @@
     "location": "Weapon",
     "sqiBonus": {
       "1913_0": {
-        "description": "(FIXME) +20% MaxHP",
-        "bonus": ""
+        "description": "+20% MaxHP",
+        "bonus": "bonus bMaxHPRate,20;"
       },
       "1913_1": {
         "description": "(FIXME) 30% Freeze and Stone Curse Resistance",
         "bonus": ""
       },
       "1913_2": {
-        "description": "(FIXME) 20% more damage with Long Range attacks",
-        "bonus": ""
+        "description": "20% more damage with Long Range attacks",
+        "bonus": "bonus bLongAtkRate,20;"
       },
       "1913_3": {
-        "description": "(FIXME) 35% more damage with [Musical Strike]",
-        "bonus": ""
+        "description": "35% more damage with [Musical Strike]",
+        "bonus": "bonus2 bSkillAtk,BA_MUSICALSTRIKE,35;"
       },
       "1913_4": {
-        "description": "(FIXME) 35% more damage with [Arrow Vulcan]",
-        "bonus": ""
+        "description": "35% more damage with [Arrow Vulcan]",
+        "bonus": "bonus2 bSkillAtk,CG_ARROWVULCAN,35;"
       },
       "1913_5": {
-        "description": "(FIXME) Immobilize the target for 2 seconds after using [Arrow Vulcan]; Fails against MvP monsters and in WoE",
+        "description": "Immobilize the target for 2 seconds after using [Arrow Vulcan]; Fails against MvP monsters and in WoE",
         "bonus": ""
       },
       "1913_6": {
@@ -24751,27 +24751,27 @@
         "bonus": ""
       },
       "1913_7": {
-        "description": "(FIXME) [The Apple of Idun] MaxHP Rate + 1% for every level. Heals three times as often and as much",
+        "description": "[The Apple of Idun] MaxHP Rate + 1% for every level. Heals three times as often and as much",
         "bonus": ""
       },
       "1913_8": {
-        "description": "(FIXME) [A Whistle] FLEE Rate + 20 and Perfect Dodge Rate + 5",
+        "description": "[A Whistle] FLEE Rate + 20 and Perfect Dodge Rate + 5",
         "bonus": ""
       },
       "1913_9": {
-        "description": "(FIXME) [Poem of Bragi] Aftercast Rate + 2%",
+        "description": "[Poem of Bragi] Aftercast Rate + 2%",
         "bonus": ""
       },
       "1913_10": {
-        "description": "(FIXME) Increase [Jupitel Thunder] level to 10",
-        "bonus": ""
+        "description": "Increase [Jupitel Thunder] level to 10",
+        "bonus": "skill WZ_JUPITEL,10;"
       },
       "1913_11": {
-        "description": "(FIXME) [Assassin Cross of Sunset] adds 10% more Wind Magic Damage instead of ASPD",
+        "description": "[Assassin Cross of Sunset] adds 10% more Wind Magic Damage instead of ASPD",
         "bonus": ""
       },
       "1913_12": {
-        "description": "(FIXME) Double the duration of [Bard and Dancer Spirits] and remains after death",
+        "description": "Double the duration of [Bard and Dancer Spirits] and remains after death",
         "bonus": ""
       }
     }
@@ -26143,27 +26143,27 @@
     "location": "Weapon",
     "sqiBonus": {
       "1990_0": {
-        "description": "(FIXME) +20% MaxHP",
-        "bonus": ""
+        "description": "+20% MaxHP",
+        "bonus": "bonus bMaxHPRate,20;"
       },
       "1990_1": {
-        "description": "(FIXME) +15 CRIT, 20% more damage with Critical Hits",
-        "bonus": ""
+        "description": "+15 CRIT, 20% more damage with Critical Hits",
+        "bonus": "bonus bCritical,15; bonus bCritAtkRate,20;"
       },
       "1990_2": {
-        "description": "(FIXME) 20% more damage with Long Range attacks",
-        "bonus": ""
+        "description": "20% more damage with Long Range attacks",
+        "bonus": "bonus bLongAtkRate,20;"
       },
       "1990_3": {
-        "description": "(FIXME) 35% more damage with [Throw Arrow]",
-        "bonus": ""
+        "description": "35% more damage with [Throw Arrow]",
+        "bonus": "bonus2 bSkillAtk,DC_THROWARROW,35;"
       },
       "1990_4": {
-        "description": "(FIXME) 35% more damage with [Arrow Vulcan]",
-        "bonus": ""
+        "description": "35% more damage with [Arrow Vulcan]",
+        "bonus": "bonus2 bSkillAtk,CG_ARROWVULCAN,35;"
       },
       "1990_5": {
-        "description": "(FIXME) Immobilize the target for 2 seconds after using [Arrow Vulcan]; Fails against MvP monsters and in WoE",
+        "description": "Immobilize the target for 2 seconds after using [Arrow Vulcan]; Fails against MvP monsters and in WoE",
         "bonus": ""
       },
       "1990_6": {
@@ -26175,7 +26175,7 @@
         "bonus": ""
       },
       "1990_8": {
-        "description": "(FIXME) [Service for You] restores 2 SP per skill level (+20 at level 10) every 2 seconds for everyone in its area.",
+        "description": "[Service for You] restores 2 SP per skill level (+20 at level 10) every 2 seconds for everyone in its area.",
         "bonus": ""
       },
       "1990_9": {
@@ -26183,11 +26183,11 @@
         "bonus": ""
       },
       "1990_10": {
-        "description": "(FIXME) [Humming] HIT boost is doubled",
+        "description": "[Humming] HIT boost is doubled",
         "bonus": ""
       },
       "1990_11": {
-        "description": "(FIXME) Double the duration of [Bard and Dancer Spirits] and remains after death",
+        "description": "Double the duration of [Bard and Dancer Spirits] and remains after death",
         "bonus": ""
       },
       "1990_12": {
@@ -27482,51 +27482,51 @@
         "bonus": ""
       },
       "2150_1": {
-        "description": "(FIXME) Reflect 15% of all melee damage.",
-        "bonus": ""
+        "description": "Reflect 15% of all melee damage.",
+        "bonus": "bonus bShortWeaponDamageReturn,15;"
       },
       "2150_2": {
-        "description": "(FIXME) 15% Aftercast Reduction",
-        "bonus": ""
+        "description": "15% Aftercast Reduction",
+        "bonus": "bonus bDelayRate,-15;"
       },
       "2150_3": {
-        "description": "(FIXME) Full HP/SP when resurrected",
+        "description": "Full HP/SP when resurrected",
         "bonus": ""
       },
       "2150_4": {
-        "description": "(FIXME) Cast can't be interrupted",
-        "bonus": ""
+        "description": "Cast can't be interrupted",
+        "bonus": "bonus bNoCastCancel;"
       },
       "2150_5": {
-        "description": "(FIXME) 20% more damage with [Holy Cross] and [Grand Cross]",
-        "bonus": ""
+        "description": "20% more damage with [Holy Cross] and [Grand Cross]",
+        "bonus": "bonus2 bSkillAtk,CR_HOLYCROSS,20; bonus2 bSkillAtk,CR_GRANDCROSS,20;"
       },
       "2150_6": {
-        "description": "(FIXME) 20% more damage with [Shield Boomerang] and [Shield Chain]",
-        "bonus": ""
+        "description": "20% more damage with [Shield Boomerang] and [Shield Chain]",
+        "bonus": "bonus2 bSkillAtk,CR_SHIELDBOOMERANG,20; bonus2 bSkillAtk,PA_SHIELDCHAIN,20;"
       },
       "2150_7": {
-        "description": "(FIXME) [Shield Chain] and [Shield Boomerang] ignores Neutral Resist",
-        "bonus": ""
+        "description": "[Shield Chain] and [Shield Boomerang] ignores Neutral Resist",
+        "bonus": "bonus2 bSkillIgnoreDefEle,PA_SHIELDCHAIN,Ele_Neutral; bonus2 bSkillIgnoreDefEle,CR_SHIELDBOOMERANG,Ele_Neutral;"
       },
       "2150_8": {
         "description": "(FIXME) Ignore [Grand Cross] holy self-damage, inflict full damage regardless of AoE position.",
         "bonus": ""
       },
       "2150_9": {
-        "description": "(FIXME) Increase effectiveness of [Heal] by 20% (10% in PvP/WoE)",
-        "bonus": ""
+        "description": "Increase effectiveness of [Heal] by 20% (10% in PvP/WoE)",
+        "bonus": "if(callfunc(F_Map_VS)) { bonus2 bSkillHeal,AL_HEAL,10; } else {bonus2 bSkillHeal,AL_HEAL,20;}"
       },
       "2150_10": {
-        "description": "(FIXME) 50% less cast time with [Shield Chain]; but disables Berzebub Card",
-        "bonus": ""
+        "description": "50% less cast time with [Shield Chain]; but disables Berzebub Card",
+        "bonus": "bonus2 bCastrate,PA_SHIELDCHAIN,-50; bonus bCastrate,isequippedcnt(4145)*30;"
       },
       "2150_11": {
-        "description": "(FIXME) [Crusader Spirit] remains after death",
+        "description": "[Crusader Spirit] remains after death",
         "bonus": ""
       },
       "2150_12": {
-        "description": "(FIXME) [Endure] has no hit limit when used",
+        "description": "[Endure] has no hit limit when used",
         "bonus": ""
       }
     }

@@ -873,7 +873,7 @@
       "isTrans": false,
       "maxJobLv": 50,
       "mask": "0x20001",
-      "compatibleWeapons": ["Unarmed", "Dagger", "Bow", "Musical Instrument'"],
+      "compatibleWeapons": ["Unarmed", "Dagger", "Bow", "Musical Instrument"],
       "hpTable": [
         40, 47, 54, 62, 71, 81, 91, 102, 114, 127, 140, 154, 169, 180, 196, 212,
         224, 242, 260, 278, 296, 316, 330, 350, 371, 393, 415, 438, 451, 477, 503,
@@ -897,7 +897,7 @@
         "Unarmed": 400,
         "Dagger": 550,
         "Bow": 650,
-        "Musical Instrument'": 575
+        "Musical Instrument": 575
       },
       "jobBonus": {
         "str": [3, 28],
@@ -1963,7 +1963,7 @@
       "isTrans": true,
       "maxJobLv": 70,
       "mask": "0x20002",
-      "compatibleWeapons": ["Unarmed", "Dagger", "Bow", "Musical Instrument'"],
+      "compatibleWeapons": ["Unarmed", "Dagger", "Bow", "Musical Instrument"],
       "hpTable": [
         40, 47, 54, 62, 71, 81, 91, 102, 114, 127, 140, 154, 169, 180, 196, 212,
         224, 242, 260, 278, 296, 316, 330, 350, 371, 393, 415, 438, 451, 477, 503,
@@ -1987,7 +1987,7 @@
         "Unarmed": 400,
         "Dagger": 550,
         "Bow": 650,
-        "Musical Instrument'": 575
+        "Musical Instrument": 575
       },
       "jobBonus": {
         "str": [5, 10, 19, 33, 45, 54, 62, 70],

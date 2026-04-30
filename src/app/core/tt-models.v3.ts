@@ -171,6 +171,7 @@ export const SESSION_BONUS_FLAGS = new Set([
   'noRegenHP', 'noRegenSP', // bonus bNoRegen,x;       		Stops HP or SP regeneration (x: 1=HP, 2=SP)
 ] as const);
 export type SessionBonusFlag = typeof SESSION_BONUS_FLAGS extends Set<infer T> ? T : never;
+// FIXME: Maps where we use Element or class only have one value; do we need to have it as arrays??
 export type SessionBonus = {
   /* numiercs sums or highest only */
   stats: {
@@ -257,6 +258,7 @@ export type SessionBonus = {
   ignoreDefRace: DefaultMap<DBMobRace, boolean>;
   ignoreDefRaceRate: DefaultMap<DBMobRace, number>;
   ignoreDefClass: DefaultMap<DBMobClass, boolean>;
+  ignoreDefClassRate: DefaultMap<DBMobClass, number>;
   ignoreMdefRace: Record<string | number, number>;
   ignoreMdefRaceRate: DefaultMap<DBMobRace, number>;
   ignoreMdefClass: Record<string | number, number>;
@@ -269,7 +271,7 @@ export type SessionBonus = {
   skillCooldown: Record<string | number, number>;
   skillFixedCast: Record<string | number, number>;
   skillVariableCast: Record<string | number, number>;
-  skillCritAtkRate: DefaultMap<string, number>;
+  skillCritAtkRate: DefaultMap<DBSkillEnum, number>;
   skillDelayrate: DefaultMap<DBSkillEnum, number>;
   castrate: DefaultMap<DBSkillEnum, number>;
 
@@ -284,12 +286,13 @@ export type SessionBonus = {
   defRatioAtkClass: DefaultMap<DBMobClass, boolean>;
   skillDefRatioAtkClass: DefaultMap<DBSkillEnum, DBMobClass>; // skill enum FIXME: special talon bonus, maybe array of DBMobClass?
   skillWeaponElement: DefaultMap<DBSkillEnum, DBElement>;  // skill enum FIXME: special talon bonus
+  skillIgnoreDefEle: DefaultMap<DBSkillEnum, DBElement[]>; // FIXME: use it somewhere
 
   /* flags */
   flags: DefaultMap<SessionBonusFlag, boolean>;
 
-  /* skills: SkillEnum: Level */
-  skills: DefaultMaxMap<number>;  // SkillId
+  /* skills: SkillID (not enum): Level */
+  skills: DefaultMaxMap<DBSkillID>;  // SkillId
 };
 
 /*******************/
@@ -342,9 +345,10 @@ export type DBMob = {
 export type SkillElement = DBElement | "weapon";
 export type SkillSubType = 'check' | 'list';
 export type DBSkillEnum = string; // Helper Type to make clear its a enum for a skill and not only a string
+export type DBSkillID = number; // Helper Type to make clear its a skill ID and not only a number
 export type DBSkill = {
   name: string,
-  id: number,
+  id: DBSkillID,
   enum: DBSkillEnum,
   maxLevel: number,
   spCost: number[],

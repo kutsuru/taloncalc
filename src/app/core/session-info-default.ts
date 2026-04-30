@@ -44,9 +44,10 @@ export function createEmptySessionBonus(): SessionBonus {
         skillHeal: new DefaultMap(0), expAddRace: new DefaultMap(0), addMagicDamageClass: new DefaultMap(0), ignoreMdefEleRate: new DefaultMap(0),
         expAddClass: new DefaultMap(0), addDefMonster: new DefaultMap(0), kickAddRate: new DefaultMap(0),
         addItemSPHealRate: new DefaultMap(0), skillDelayrate: new DefaultMap(0), skillHeal2: new DefaultMap(0), criticalAddEle: new DefaultMap(0),
-        castrate: new DefaultMap(0),
+        castrate: new DefaultMap(0), ignoreDefClassRate: new DefaultMap(0),
         /* specials maps*/
         defRatioAtkClass: new DefaultMap(false), skillDefRatioAtkClass: new DefaultMap('all'), skillWeaponElement: new DefaultMap('neutral'),
+        skillIgnoreDefEle: new DefaultMap(() => []),
         // falgs will start empty
         flags: new DefaultMap(false),
         skills: new DefaultMaxMap(0)

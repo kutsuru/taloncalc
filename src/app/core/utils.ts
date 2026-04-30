@@ -20,27 +20,35 @@ export const debounce = <F extends (...args: Parameters<F>) => void>(callback: F
 
 /*** Map with default Value ***/
 export class DefaultMap<K extends string | number | symbol, T> {
-    private _map: Map<K, T> = new Map();
-    private _default: T;
+    #map: Map<K, T> = new Map();
+    #factory: () => T;
 
-    constructor(defaultValue: T) { this._default = defaultValue }
+    constructor(defaultValue: T | (() => T)) {
+        this.#factory =
+            typeof defaultValue === 'function'
+                ? (defaultValue as () => T)
+                : () => defaultValue;
+    }
 
     public has(key: K) {
-        return this._map.has(key);
+        return this.#map.has(key);
     }
     public get(key: K) {
-        return this._map.get(key) ?? this._default;
+        if (!this.#map.has(key)) {
+            this.#map.set(key, this.#factory());
+        }
+        return this.#map.get(key)!;
     }
     public set(key: K, value: T) {
-        this._map.set(key, value);
+        this.#map.set(key, value);
         return this;    // FIXME: needed?
     }
     public entries() {
-        return this._map.entries();
+        return this.#map.entries();
     }
     public toJSON(): Record<K, T> {
         let result: Record<K, T> = {} as any;
-        this._map.forEach((value, key) => {
+        this.#map.forEach((value, key) => {
             result[key] = value;
         });
         return result;

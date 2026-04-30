@@ -29,6 +29,7 @@ export class TtPassiveV3Component {
 
   /* signals */
   // FIXME: merge bonus and job skills into one to avoid double display
+  // FIXME: if skill is already present, somehow ignore / remove it from the "extra" list and just use "max" value in the main list?
   bonusSkills: Signal<SkillBuff[]> = computed(() => {
     const bonusSkills = this.session.bonus().skills;
 
@@ -45,7 +46,6 @@ export class TtPassiveV3Component {
         itemScript: skill.itemScript
       });
     }
-
     return res;
   });
 
