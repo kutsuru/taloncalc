@@ -1,7 +1,8 @@
 <!-- header / toolbar -->
 <mat-toolbar>
   <img src="/assets/img/ttcalc_logo.png" id="toolbar-logo" />
-  <div id="ttToolbarMenu" fxLayout="row" fxLayoutAlign="end center"></div>
+  <span class="filler"></span>
+  <tt-themer-v3 />
 </mat-toolbar>
 <!-- main content -->
 <div class="drawer-content">
@@ -32,7 +33,7 @@
   <tt-card [expanded]="true">
     <header>SQI Bonus</header>
     <!-- FIXME only if equipped?-->
-     <tt-sqi-bonus />
+    <tt-sqi-bonus />
   </tt-card>
   <tt-card [expanded]="false">
     <header>Buffs</header>

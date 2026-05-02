@@ -11,8 +11,6 @@ import { TtPageLoaderService } from './tt-page-loader/tt-page-loader.service';
 import { TtPopupGroupComponent } from './tt-popup/tt-popup-group.component';
 import { TtSettingsService } from './tt-settings/tt-settings.service';
 import { TtStatsInfoComponent } from './tt-stats-info/tt-stats-info.component';
-import { TTThemerService } from './tt-themer/tt-themer.service';
-
 import { TTCoreServiceV3 } from './core/tt-core.v3.service';
 import { TTSessionInfoV3Service } from './core/tt-session-info.v3.service';
 import { DebugComponent } from './debug/debug.component';
@@ -28,6 +26,7 @@ import { TtSettingsComponent } from './tt-settings/tt-settings.component';
 import { TtStatsInfoV3Component } from './tt-stats-info-v3/tt-stats-info-v3.component';
 import { TtStatsV3Component } from './tt-stats-v3/tt-stats-v3.component';
 import { TtSqiBonusComponent } from "./tt-sqi-bonus/tt-sqi-bonus.component";
+import { TtThemerV3Component } from './tt-themer/tt-themer-v3.component';
 
 @Component({
   selector: 'app-root',
@@ -54,8 +53,9 @@ import { TtSqiBonusComponent } from "./tt-sqi-bonus/tt-sqi-bonus.component";
     TtPassiveV3Component,
     TtFoodV3Component,
     DebugComponent,
-    TtSqiBonusComponent
-]
+    TtSqiBonusComponent,
+    TtThemerV3Component
+  ]
 })
 export class AppComponent implements OnInit, OnDestroy {
   readonly se = inject(TTSessionInfoV3Service);
@@ -65,7 +65,6 @@ export class AppComponent implements OnInit, OnDestroy {
   private settingsPopupSub!: Subscription;
   @ViewChild(TtPopupGroupComponent) popupGroup!: TtPopupGroupComponent;
   constructor(
-    public themer: TTThemerService,
     private ttLoaderService: TtPageLoaderService,
     protected ttSettings: TtSettingsService,
     private session: TTSessionInfoV2Service

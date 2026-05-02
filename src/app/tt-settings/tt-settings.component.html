@@ -5,19 +5,6 @@
     <div class="settings-content">
         <mat-card>
             <mat-card-content>
-                <mat-action-list dense>
-                    <h2 matSubheader>Theme</h2>
-                    @for (theme of themer.themes; track theme) {
-<button mat-list-item (click)="themer.setTheme(theme)">
-                        <mat-icon matListIcon
-                            [style.visibility]="(themer.activeTheme$ | async)?.name == theme.name ? 'unset' : 'hidden'">
-                            check
-                        </mat-icon>
-                        <span matLine>{{theme.name}}</span>
-                    </button>
-}
-                </mat-action-list>
-
                 <mat-selection-list dense (selectionChange)="changePopupSetting($event)">
                     <h2 matSubheader>Display as Popup</h2>
                     <mat-list-option [selected]="ttSettings.popup.statsInfo" value="statsInfo">Stats
