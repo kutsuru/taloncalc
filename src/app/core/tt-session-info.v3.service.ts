@@ -962,7 +962,7 @@ export class TTSessionInfoV3Service {
             }
             /* card bonus */
             for (const cardId of equipSlot.cards) {
-                const card = this.#core.cardDB.get(cardId);
+                const card = this.#core.itemDB.get(cardId);
                 if (card && card.itemScript) {
                     // use refine of located equip
                     this.#bonusSession.applyBonus(card.itemScript, { refine: equipSlot.refine });
