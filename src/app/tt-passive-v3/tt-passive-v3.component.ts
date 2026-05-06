@@ -4,7 +4,7 @@ import { LevelArrayPipe } from '../tt-buff-v3/tt-buff-v3.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { SkillBuff } from '../core/tt-models.v3';
+import { DBSkillEnum, SkillBuff } from '../core/tt-models.v3';
 import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
 
 @Pipe({ name: 'booly' })
@@ -41,6 +41,7 @@ export class TtPassiveV3Component {
         id: skillID,
         maxLevel: level,
         name: skill.name,
+        enum: skill.enum,
         type: skill.type ?? 'list',
         value: level,
         itemScript: skill.itemScript
@@ -50,11 +51,11 @@ export class TtPassiveV3Component {
   });
 
   /*** public functions ***/
-  public updateNumberValue(skillId: number, value: number) {
-    this.session.updateSkillPassive(skillId, value);
+  public updateNumberValue(skillEnum: DBSkillEnum, value: number) {
+    this.session.updateSkillPassive(skillEnum, value);
   }
-  public updateBooleanValue(skillId: number, value: boolean) {
+  public updateBooleanValue(skillEnum: DBSkillEnum, value: boolean) {
     let valAsNumb = value ? 1 : 0;
-    this.updateNumberValue(skillId, valAsNumb);
+    this.updateNumberValue(skillEnum, valAsNumb);
   }
 }

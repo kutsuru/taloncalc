@@ -3,7 +3,7 @@
 @if(passive.maxLevel > 1){
 <mat-form-field>
     <mat-label>{{passive.name}}</mat-label>
-    <mat-select [value]="passive.value" (selectionChange)="updateNumberValue(passive.id, $event.value)">
+    <mat-select [value]="passive.value" (selectionChange)="updateNumberValue(passive.enum, $event.value)">
         @for(lvl of passive.maxLevel|levelArray; track $index){
         <mat-option [value]="lvl">{{lvl}}</mat-option>
         }
@@ -12,7 +12,7 @@
 }
 @else {
 <mat-slide-toggle [checked]="passive.value|booly"
-    (change)="updateBooleanValue(passive.id, $event.checked)">{{passive.name}}</mat-slide-toggle>
+    (change)="updateBooleanValue(passive.enum, $event.checked)">{{passive.name}}</mat-slide-toggle>
 }
 }
 <!-- extra skills from bonus -->

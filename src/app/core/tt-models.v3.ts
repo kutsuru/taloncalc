@@ -380,7 +380,7 @@ export type DBSkill = {
   type?: SkillSubType,
   itemScript?: string,
 }
-export type SkillBuff = Pick<DBSkill, 'id' | 'name' | 'maxLevel' | 'itemScript'> & {
+export type SkillBuff = Pick<DBSkill, 'id' | 'enum' | 'name' | 'maxLevel' | 'itemScript'> & {
   value: number | boolean
   type: SkillSubType
 }

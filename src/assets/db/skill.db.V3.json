@@ -434,7 +434,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0xe03",
-    "enum": "SM_AUTOBERSERK"
+    "enum": "SC_AUTOBERSERK"
   },
   "Double Attack": {
     "id": 13,
@@ -5365,7 +5365,7 @@
     "isBuff": true,
     "type": "list",
     "job": "0x800003",
-    "enum": "BS_OVERTHRUST"
+    "enum": "SC_OVERTHRUST"
   },
   "Power Maximize": {
     "id": 155,
@@ -5397,7 +5397,7 @@
     "isBuff": false,
     "type": "check",
     "job": "0x800003",
-    "enum": "BS_MAXIMIZE"
+    "enum": "SC_MAXIMIZEPOWER"
   },
   "Faith": {
     "id": 156,
@@ -8766,7 +8766,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x402",
-    "enum": "SM_AUTOBERSERK"
+    "enum": "SC_BERSERK"
   },
   "Spiral Pierce": {
     "id": 259,
@@ -10912,7 +10912,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x800002",
-    "enum": "WS_OVERTHRUSTMAX"
+    "enum": "SC_MAXOVERTHRUST"
   },
   "Acid Demonstration": {
     "id": 328,
@@ -12163,7 +12163,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x41",
-    "enum": "NO_ENUM"
+    "enum": "SC_MIRACLE"
   },
   "Angel of the Sun,Moon and Stars": {
     "id": 366,

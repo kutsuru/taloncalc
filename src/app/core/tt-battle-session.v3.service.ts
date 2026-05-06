@@ -419,39 +419,22 @@ export class TTBattleSessionServiceV3 {
                     misc = this._sessionData.maxSp - 1;    //FIXME:
                     break;
             }
-            skillRatio = eval(skillRatio)(this._skillLvl, misc);
+            skillRatio = eval(skillRatio)(this._skillLvl, misc) as number;
         }
-        return (skillRatio as number) * 100;
+
+        if ("PA_SACRIFICE" != this._skill!.enum) {
+            skillRatio += this._session.getSkillPassiveLvl("SC_OVERTHRUST"); // val3
+            skillRatio += this._session.getSkillPassiveLvl("SC_MAXOVERTHRUST"); // val2
+            if (this._session.getSkillPassiveLvl("SC_BERSERK"))
+                skillRatio += 1;
+        }
+        return skillRatio * 100;
     }
 
     private _applyMagicalSkillDamageRatio(damage: number[]): number[] {
-        // FIXME
-        // Skill damage bonus - bSkillAtk
-        // FIXME: same modifier than for physical damage, merge ?
+        let skillAtkModifier = this._session.bonus().skillAtk.get(this._skill!.enum)
 
-        let skillModifier = 100; /* + StPlusCalc2(5000 + this._skill!.id) + StPlusCard(5000 + this._skill!.id);
-
-      // [Mage Class] - Increases damage of the skills [Soul Strike], [Napalm Beat] and [Napalm Vulcan] by 20%
-      if (n_A_JobSearch()==5 && (46 == this._skill!.id || 47 == this._skill!.id || 277 == this._skill!.id))
-          skillModifier += 20 * CardNumSearch(474);
-
-      // RJC Katyusha Flower#1146 - [Every Refine] Increases damage of [Heaven's Drive] and [Earth Spike] by 1%
-      if ((132 == this._skill!.id || 133 == this._skill!.id) && EquipNumSearch(1146))
-          skillModifier += this._si['refine']['rightHand'];
-
-      // Lacrima Stick#1169 - [Every Refine] Increases damage of [Storm Gust] by 1%
-      if (131 == this._skill!.id && EquipNumSearch(1169))
-          skillModifier += this._si['refine']['rightHand'];
-
-      // Chilly Spell Book#1653 - [Every Refine] Increases damage of [Storm Gust] and [Cold Bolt] by 3%
-      if ((54 == this._skill!.id || 131 == this._skill!.id) && EquipNumSearch(1653))
-          skillModifier += 3 * this._si['refine']['rightHand'];
-
-      // Noah's Hat#1247 - [Acolyte Class] Increases damage of [Holy Light] by 5% [Refine Rate > 7] Increases damage of [Holy Light] by 5%
-      if (n_A_JobSearch() == 3 && (37 == this._skill!.id || 387 == this._skill!.id) && EquipNumSearch(1247))
-          skillModifier += 5 + 5 * Math.floor(n_A_HEAD_DEF_PLUS / 8);
-      */
-        return this._applyDamageModifier(damage, skillModifier);
+        return this._applyDamageModifier(damage, 100 + skillAtkModifier);
     }
 
     private _applyMagicalDefenseReduction(damage: number[], ignoreDef: boolean): number[] {
@@ -665,257 +648,27 @@ export class TTBattleSessionServiceV3 {
     }
 
     private _applyPhysicalSkillDamageModifiers(damage: number[]): number[] {
-        // FIXME
-        let skillModifier = 100;
-
-        // Hatred
+        // Equivalent to pc_skillatk_bonus
+        let skillAtkModifier = this._session.bonus().skillAtk.get(this._skill!.enum);
+        
+        // Manage Star Gladiator Anger damage bonus
+        // Should be handled in battle_attack_sc_bonus FIXME
         /*
-        if (this._isPvp) // PvP
-        {
-          if (SkillSearch(354))
-            skillModifier += (this._baseLv + this._str + this._luk + this._dex) / (12 - SkillSearch(354) *3);
-          else if(SkillSearch(352))
-            skillModifier += (this._baseLv + this._luk + this._dex) / (12 - SkillSearch(352) *3);
-          else if(SkillSearch(353))
-            skillModifier += (this._baseLv + this._luk + this._dex) / (12 - SkillSearch(353) *3);
-        }
-        else // PvM
-        {
-          if (SkillSearch(354) && SkillSearch(365))
-            skillModifier += (this._baseLv + this._str + this._luk + this._dex) / (12 - SkillSearch(354) *3);
-          else if (SkillSearch(354) && "Large" === this._target['size'] && n_B[6] >= 17392)
-            skillModifier += (this._baseLv + this._str + this._luk + this._dex) / (12 - SkillSearch(354) *3);
-          else if (SkillSearch(352) && "Small" === this._target['size'])
-            skillModifier += (this._baseLv + this._luk + this._dex) / (12 - SkillSearch(352) *3);
-          else if (SkillSearch(353) && "Medium" === this._target['size'] && n_B[6] >= 5218)
-            skillModifier += (this._baseLv + this._luk + this._dex) / (12 - SkillSearch(353) *3);
-        }
-    
-        // Berserk#258 - Double damage
-        if (SkillSearch(258))
-          skillModifier += 100;
-    
-        // Poison React[Counter]#86
-        if (this._skill!.id == 86 && (50 <= n_B[3] && n_B[3] < 60))
-          skillModifier += 30 * this._skill!.idLV;
-    
-        if (this._skill!.id == 6 && n_A_SHOES_DEF_PLUS >= 9 && CardNumSearch(362))
-          skillModifier += 10;
-    
-        if (this._skill!.id == 76 && (n_A_WeaponType == 2 || n_A_WeaponType == 3))
-          skillModifier += 25 * CardNumSearch(464);
-    
-        if (this._skill!.id == 41 && n_A_WeaponType == 10)
-          skillModifier += 50 * CardNumSearch(465);
-    
-        if (this._skill!.id == 40 && this._si['refine']['rightHand'] >= 9 && EquipNumSearch(1089))
-          skillModifier += 20;
-    
-        //custom TalonRO rental - Bow of Evil: Double Strafe damage +25%
-        if (this._skill!.id == 40 && EquipNumSearch(1332))
-          skillModifier += 25;
-    
-        //custom TalonRO rental - Katar of Speed: Sonic Blow damage +25%
-        if ((this._skill!.id == 83 || this._skill!.id == 388) && EquipNumSearch(1342))
-          skillModifier += 25;
-    
-        //custom TalonRO rental - Mace of Madness: Cart Revolution damage +25%
-        if (this._skill!.id == 66 && EquipNumSearch(1343))
-          skillModifier += 25;
-    
-        //custom TalonRO rental - Monk Knuckle: Finger Offensive damage +25%
-        if (this._skill!.id == 192 && EquipNumSearch(1346))
-          skillModifier += 25;
-    
-        //custom TalonRO rental - Phenomena Whip: Throw Arrow damage +25%
-        if (this._skill!.id == 207 && EquipNumSearch(1349))
-          skillModifier += 25;
-    
-        //custom TalonRO rental - Spear of Excellent: Magnum Break damage +25%
-        if (this._skill!.id == 7 && EquipNumSearch(1352))
-          skillModifier += 25;
-    
-        if (this._skill!.id == 272 && EquipNumSearch(1045))
-          skillModifier += this._si['refine']['rightHand'] * 3;
-    
-        //custom TalonRO Imperial Guard: Shield Chain damage +2% each refine above 6
-        if(this._skill!.id == 324 && n_A_LEFT_DEF_PLUS > 6 && EquipNumSearch(1459))
-          skillModifier += 2*(n_A_LEFT_DEF_PLUS-6);
-    
-        // Back Stab#169
-        if (this._skill!.id == 169)
-        {
-          //custom TalonRO Black Wing: Back Stab damage +2% each refine
-          if (EquipNumSearch(1463))
-            skillModifier += 2 * this._si['refine']['rightHand'];
-    
-          //brave assassin damascus [Loa] 2018-07-24
-          if(EquipNumSearch(897) && n_A_JobSearch2() == 14)
-            skillModifier += 10;
-        }
-    
-        // Raid#171
-        if (this._skill!.id == 171 && EquipNumSearch(897) && n_A_JobSearch2() == 14)
-          skillModifier += 10;
-    
-        // Cannon Spear#1516 - [Every 3 Refine] Increases Head Crush damage by 5%
-        if (this._skill!.id == 260 && EquipNumSearch(1516))
-          skillModifier += 5 * Math.floor(this._si['refine']['rightHand'] / 3);
-    
-        // Assaulter Spear#903 - [Refine level 8-10] Increase damage of Spiral Pierce by 20%
-        if (EquipNumSearch(903) && this._si['refine']['rightHand'] >= 8 && this._skill!.id == 259)
-          skillModifier += 20;
-    
-        // Glorious Tablet#1094 - Increase damage with [Flying Side Kick] by 10%.
-        if (EquipNumSearch(1094) && (this._skill!.id == 339 || this._skill!.id == 305))
-          skillModifier += 10;
-    
-        // Brave Assassin Damascus#897 - [Crusader Class] Add 5% more damage with [Shield Chain]
-        if (EquipNumSearch(897) && n_A_JobSearch2() == 13 && this._skill!.id == 324)
-          skillModifier += 5;
-    
-        // Soldier Grenade Launcher#929 - [Refine level 6-10] Increase damage of [Ground Drift] by 25%
-        if (EquipNumSearch(929) && this._si['refine']['rightHand'] >= 6 && this._skill!.id == 437)
-          skillModifier += 25;
-    
-        // Brave Gladiator Blade#900 - [Rogue and Crusader Classes]
-        if (this._skill!.id == 161 	&& (n_A_JobSearch2() == 13 || n_A_JobSearch2() == 14)
-                      && EquipNumSearch(900))
-        {
-          // Add 15% more damage with [Holy Cross] skill
-          skillModifier += 15;
-    
-          // [Refine level 7-10] Add an additional 5% more damage with [Holy Cross] skill
-          if (this._si['refine']['rightHand'] >= 7)
-            skillModifier += 5;
-    
-          // For every refine +8 or higher, add 1% more damage with [Holy Cross] skill
-          if (this._si['refine']['rightHand'] >= 8)
-            skillModifier += this._si['refine']['rightHand'] - 7;
-        }
-    
-        // Glorious Holy Avenger#1079 - [Refine Rate 7~10] Increases damage with [Holy Cross] by 15%
-        if (this._skill!.id == 161 && this._si['refine']['rightHand'] >= 7 && EquipNumSearch(1079))
-          skillModifier += 15;
-    
-        if (this._skill!.id == 428 && this._si['refine']['rightHand'] >= 9 && EquipNumSearch(1099))
-          skillModifier += 2 * this._si['refine']['rightHand'];
-    
-        if (this._skill!.id == 430 && this._si['refine']['rightHand'] >= 9 && EquipNumSearch(1100))
-          skillModifier += 3 * this._si['refine']['rightHand'];
-    
-        if (this._skill!.id == 436 && this._si['refine']['rightHand'] >= 9 && EquipNumSearch(1102))
-          skillModifier += 2 * this._si['refine']['rightHand'];
-    
-        if (this._skill!.id == 437 && this._si['refine']['rightHand'] >= 9 && EquipNumSearch(1103))
-          skillModifier += 2 * this._si['refine']['rightHand'];
-    
-        if ((this._skill!.id == 6 || this._skill!.id == 76) && this._activeSkill['lv'] == 10 && EquipNumSearch(1159))
-          skillModifier += 50;
-    
-        if (this._skill!.id == 65 && (SU_LUK >= 90 || SU_DEX >= 90) && EquipNumSearch(1164))
-          skillModifier += 15;
-    
-        if (this._skill!.id == 264 && EquipNumSearch(1176) && SkillSearch(81) == 10)
-          skillModifier += 20;
-    
-        if (TyouEnkakuSousa3dan == -1 && EquipNumSearch(639))
-          skillModifier += 15;
-    
-        // Meteor Assault#264
-        if (this._skill!.id == 264)
-        {
-          // Enforcer Cape#1699 - [Every Refine Level] Increase [Meteor Assault] damage by 1%
-          skillModifier += n_A_SHOULDER_DEF_PLUS * EquipNumSearch(1699)
-    
-          // Brave Carnage Katar#909 - [Refine level 7~10] Increase [Meteor Assault] damage by 15%
-          if(this._si['refine']['rightHand'] >= 7)
-            skillModifier += 15 * EquipNumSearch(909);
-        }
-    
-        // Glorious Claw#1096
-        if (EquipNumSearch(1096))
-        {
-          // [Every Refine Level] Increase [Triple Attack], [Chain Combo] and [Combo Finish] damage by 5%
-          if (this._skill!.id >= 187 || this._skill!.id <= 189)
-            skillModifier += 5 * this._si['refine']['rightHand'];
-    
-          // [Every Refine Level Above +5]  Increase [Tiger Knuckle Fist] and [Chain Crush Combo] damage by 5%
-          if (this._skill!.id == 289 || this._skill!.id == 290)
-            skillModifier += 5 * Math.max(0, this._si['refine']['rightHand'] - 5);
-        }
-    
-        // Glorious Claymore#1080 - [Every Refine Level] Increase [Bowling Bash] and [Charge Attack] damage by 1% [Amor]
-        if (this._skill!.id == 76 || this._skill!.id == 308)
-          skillModifier += this._si['refine']['rightHand'] * EquipNumSearch(1080);
-    
-        // Mammonite#65
-        if (this._skill!.id == 65)
-        {
-          // Glorious Two Handed Axe#1087 - [Every Refine Level] Increase [Mammonite] damage by 2% [Amor]
-          skillModifier += 2 * this._si['refine']['rightHand'] * EquipNumSearch(1087);
-    
-          // Glorious Cleaver#1088 - [Every Refine Level] Increase [Mammonite] damage by 1% [Amor]
-          skillModifier += this._si['refine']['rightHand'] * EquipNumSearch(1088);
-        }
-    
-        // Glorious Flamberge#1077 - [Every Refine Level] Increase [Bash], [Mammonite] and [Back Stab] damage by 2% [Amor]
-        if (this._skill!.id == 65 || this._skill!.id == 6 || this._skill!.id == 169)
-          skillModifier += 2 * this._si['refine']['rightHand'] * EquipNumSearch(1077);
-    
-        // Glorious Grenade Launcher#1103 - [Every Refine Level] Increase [Ground Drift] damage by 2% [Amor]
-        if (this._skill!.id == 437)
-          skillModifier += 2 * this._si['refine']['rightHand'] * EquipNumSearch(1103);
-    
-        // Triple Action#418
-        if (this._skill!.id == 418)
-        {
-          // Glorious Grenade Launcher#1103 - [Every Refine Level] Increase [Triple Action] damage by 1% [Amor]
-          skillModifier += this._si['refine']['rightHand'] * EquipNumSearch(1103);
-    
-          // Glorious Grenade Launcher#1103, Glorious Rifle#1100, Glorious Shotgun#1102 - [If Scouter Is Not Equipped] Increase [Triple Action] damage by 30%
-          if (!EquipNumSearch(1387))
-            skillModifier += 30 * (EquipNumSearch(1103) + EquipNumSearch(1100) + EquipNumSearch(1102));
-        }
-    
-        // Glorious Huuma Shuriken#1098 - [Every Refine Level] Increase [Throw Huuma Shuriken] damage by 3% [Amor]
-        if (this._skill!.id == 396)
-          skillModifier += 3 * this._si['refine']['rightHand'] * EquipNumSearch(1098);
-    
-        // Glorious Revolver#1099 - [Every Refine Level] Increase [Rapid Shower] damage by 1% [Amor]
-        if (this._skill!.id == 428)
-          skillModifier += this._si['refine']['rightHand'] * EquipNumSearch(1099);
-    
-        // Glorious Rifle#1100 - [Every Refine Level] Increase [Tracking] and [Piercing Shot] damage by 3% [Amor]
-        if (this._skill!.id == 430 || this._skill!.id == 432)
-          skillModifier += 3 * this._si['refine']['rightHand'] * EquipNumSearch(1100);
-    
-        // Glorious Shotgun#1102 - [Every Refine Level] Increase [Spread Attack] damage by 2% [Amor]
-        if (this._skill!.id == 436)
-          skillModifier += 2 * this._si['refine']['rightHand'] * EquipNumSearch(1102);
-    
-        // Valorous Battle CrossBow#913 - [Refine level 8-10] Increase damage with [Sharp Shooting] by 10%] [Gawk]
-        if (this._skill!.id == 272 && this._si['refine']['rightHand'] >= 8)
-          skillModifier += 10 * EquipNumSearch(913);
-    
-        // Glorious Hunter Bow#1089 - [Every Refine] Increases [Double Strafing] damage by 2%] [Gawk]
-        if (this._skill!.id == 40)
-          skillModifier += 2 * this._si['refine']['rightHand'] * EquipNumSearch(1089);
-    
-        // Valorous Carnage Katar#910 - [Refine Level 6~10] Increases damage with [Sonic Blow] by 10%.
-        if (this._si['refine']['rightHand'] >= 6 && this._skill!.id == 83 && EquipNumSearch(910))
-        {
-          skillModifier += 10;
-    
-          // [Refine Level 9~10] - Increases damage with [Sonic Blow] by 20%.
-          if (this._si['refine']['rightHand'] >= 9)
-            skillModifier += 20;
-        }
-    
-        skillModifier += StPlusCalc2(5000 + this._skill!.id) + StPlusCard(5000 + this._skill!.id);
+        if (sc->data[SC_MIRACLE])
+	        anger_id = 2;
+
+        uint16 anger_level;
+        if (sd != nullptr && anger_id < MAX_PC_FEELHATE && (anger_level = pc_checkskill(sd, sg_info[anger_id].anger_id))) {
+            int skillratio = sd->status.base_level + sstatus->dex + sstatus->luk;
+
+            if (anger_id == 2)
+                skillratio += sstatus->str; // SG_STAR_ANGER additionally has STR added in its formula.
+            if (anger_level < 4)
+                skillratio /= 12 - 3 * anger_level;
+            ATK_ADDRATE(wd->damage, wd->damage2, skillratio);
         */
 
-        return this._applyDamageModifier(damage, skillModifier);
+        return this._applyDamageModifier(damage, 100 + skillAtkModifier);
     }
 
     private _applyMiscDamageBonus(damage: number[]): number[] {

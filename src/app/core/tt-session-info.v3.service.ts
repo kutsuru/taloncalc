@@ -4,7 +4,7 @@ import { BonusSubstitution, TTBonusEngineService } from "./item-script/tt-bonus-
 import { createEmptySessionBonus, defaultEquipSlotState, SESSION_INFO_DEFAULT } from "./session-info-default";
 import { TTCoreService } from "./tt-core.service";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
-import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, CLASS_SPECIFIC_SQI, ClassWithSQI, DBItemCombo, DBJob, DBSkill, DBWeaponTypeKey, DBWeaponTypeLeft, EQUIP_META, EquipSlotState, EquipState, FoodStatsNames, ItemLocations, SessionBonus, SkillBuff } from "./tt-models.v3";
+import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, CLASS_SPECIFIC_SQI, ClassWithSQI, DBItemCombo, DBJob, DBSkill, DBSkillEnum, DBWeaponTypeKey, DBWeaponTypeLeft, EQUIP_META, EquipSlotState, EquipState, FoodStatsNames, ItemLocations, SessionBonus, SkillBuff } from "./tt-models.v3";
 import { DefaultMap, DefaultMaxMap, isTwoHandedWeapon } from "./utils";
 import { BuildData } from "./tt-body-builder.service";
 
@@ -355,6 +355,7 @@ export class TTSessionInfoV3Service {
                         id: skill.id,
                         maxLevel: skill.maxLevel,
                         name: skill.name,
+                        enum: skill.enum,
                         value: value,
                         type: skill.type,
                         itemScript: skill.itemScript
@@ -379,6 +380,7 @@ export class TTSessionInfoV3Service {
                         resPassive.push({
                             id: skill.id,
                             name: skill.name,
+                            enum: skill.enum,
                             maxLevel: skill.maxLevel,
                             type: 'list',   // FIXME: allow boolean values somehow?
                             value: 0
@@ -467,10 +469,10 @@ export class TTSessionInfoV3Service {
             skills.map(s => s.id === skillId ? { ...s, value: value } : s)
         )
     }
-    public updateSkillPassive(skillId: number, value: number) {
+    public updateSkillPassive(skillEnum: DBSkillEnum, value: number) {
         // all skils will be saved as numbers
         this.#skillsPassiveState.update(skills =>
-            skills.map(s => s.id === skillId ? { ...s, value: value } : s)
+            skills.map(s => s.enum === skillEnum ? { ...s, value: value } : s)
         )
     }
     public getSkillLvlOfSkillPassive(skillId: number): number {
@@ -481,6 +483,15 @@ export class TTSessionInfoV3Service {
         }
         return lvl;
     }
+    public getSkillPassiveLvl(skillEnum: DBSkillEnum): number {
+        let lvl = 0;
+        const skill = this.#skillsPassiveState().find(_ => _.enum === skillEnum);
+        if (skill) {
+            lvl = skill.value as number;    // FIXME: define passive skills always as numbers?
+        }
+        return lvl;
+    }
+
     public getSkillLvlOfSkillBuff(skillId: number): number {
         let lvl = 0;
         const skill = this.#skillsBuffState().find(_ => _.id === skillId);
