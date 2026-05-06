@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable, signal, WritableSignal } from "@angular/core";
 import { forkJoin, Observable } from "rxjs";
-import { AmmoType, DBAmmo, DBFood, DBItem, DBItemCombo, DBJob, DBMob, DBSkill, DBWeaponType, ElementDBV3, FoodCategory, FoodStatsNames, JSONFood, DBMobClass, DBWeaponTypeKey, DBWeaponTypeEntry, DBEnchantTypes, DBEnchant, EnchantDBV3, DBPet, DBSkillEnum } from "./tt-models.v3";
+import { AmmoType, DBAmmo, DBFood, DBItem, DBItemCombo, DBJob, DBMob, DBSkill, DBWeaponType, ElementDBV3, FoodCategory, FoodStatsNames, JSONFood, DBMobClass, DBWeaponTypeKey, DBWeaponTypeEntry, DBEnchantTypes, DBEnchant, EnchantDBV3, DBPet, DBSkillEnum, CardTypes } from "./tt-models.v3";
 import { DefaultMap, SuperMap } from "./utils";
 
 const compareByName = <V extends { name: string }>(a: V, b: V): number => {
@@ -11,40 +11,50 @@ const compareByName = <V extends { name: string }>(a: V, b: V): number => {
 @Injectable({ providedIn: 'root' })
 export class TTCoreServiceV3 {
     /* injects */
-    private readonly _http = inject(HttpClient);
+    readonly #http = inject(HttpClient);
 
     /* varbs */
-    private _loaded: WritableSignal<boolean> = signal(false);
+    #loaded: WritableSignal<boolean> = signal(false);
 
     /* item databases */
-    private _itemDB: Map<number, DBItem> = new Map();
-    private _headgearDB: Map<number, DBItem> = new Map();
-    private _armorDB: Map<number, DBItem> = new Map();
-    private _waeponDB: Map<number, DBItem> = new Map();
-    private _shieldDB: Map<number, DBItem> = new Map();
-    private _garmentDB: Map<number, DBItem> = new Map();
-    private _shoesDB: Map<number, DBItem> = new Map();
-    private _accessoryDB: Map<number, DBItem> = new Map();
-    private _cardDB: SuperMap<number, DBItem> = new SuperMap(compareByName);
-    private _itemCombo: DBItemCombo[] = [];
+    itemDB: Map<number, DBItem> = new Map();
+    headgearDB: Map<number, DBItem> = new Map();
+    armorDB: Map<number, DBItem> = new Map();
+    weaponDB: Map<number, DBItem> = new Map();
+    shieldDB: Map<number, DBItem> = new Map();
+    garmentDB: Map<number, DBItem> = new Map();
+    shoesDB: Map<number, DBItem> = new Map();
+    accessoryDB: Map<number, DBItem> = new Map();
+    itemComboDB: DBItemCombo[] = [];
+    // cardDB: SuperMap<number, DBItem> = new SuperMap(compareByName);
+    cardDB: Record<CardTypes | 'None', SuperMap<number, DBItem>> = {    // 'None' is used for enchants like DEF+4
+        Headgear: new SuperMap(compareByName),
+        Armor: new SuperMap(compareByName),
+        Weapon: new SuperMap(compareByName),
+        Shield: new SuperMap(compareByName),
+        Garment: new SuperMap(compareByName),
+        Shoes: new SuperMap(compareByName),
+        Accessory: new SuperMap(compareByName),
+        None: new SuperMap(compareByName)
+    }
 
     /* other databases */
-    private _jobDB: Map<string, DBJob> = new Map();
-    private _mobDB: Map<number, DBMob> = new Map();
-    private _skillDB: Map<number, DBSkill> = new Map();
-    private _skillEnumToId: DefaultMap<string, number[]> = new DefaultMap([]);    // key=enum, value=skill ids
-    private _elementDB: ElementDBV3 = {} as any;    // FIXME: provide function for "target" "source" ele ...
-    private _weaponTypeDB: Map<DBWeaponTypeKey, DBWeaponTypeEntry> = new Map();
-    private _ammoDB: Map<string, DBAmmo> = new Map();
-    private _foodDB: Map<number, DBFood> = new Map();
-    private _enchantDB: Map<DBEnchantTypes, DBEnchant[]> = new Map();
-    private _petDB: SuperMap<number, DBPet> = new SuperMap(compareByName);
+    jobDB: Map<string, DBJob> = new Map();
+    mobDB: Map<number, DBMob> = new Map();
+    skillDB: Map<number, DBSkill> = new Map();
+    #skillEnumToId: DefaultMap<DBSkillEnum, number[]> = new DefaultMap([]);    // key=enum, value=skill ids
+    elementDB: ElementDBV3 = {} as any;    // FIXME: provide function for "target" "source" ele ...
+    weaponTypeDB: Map<DBWeaponTypeKey, DBWeaponTypeEntry> = new Map();
+    ammoDB: Map<string, DBAmmo> = new Map();
+    foodDB: Map<number, DBFood> = new Map();
+    enchantDB: Map<DBEnchantTypes, DBEnchant[]> = new Map();
+    petDB: SuperMap<number, DBPet> = new SuperMap(compareByName);
 
 
     /*** public functions ***/
     initializeCore$() {
         return new Observable<boolean>((obs) => {
-            if (this._loaded()) {
+            if (this.#loaded()) {
                 obs.next(true);
                 obs.complete();
             } else {
@@ -70,31 +80,31 @@ export class TTCoreServiceV3 {
                             if (item.disabled) continue; // skip items which are disabled
                             /* remove "None" item scripts */
                             if (item.itemScript === 'None') item.itemScript = "";
-                            this._itemDB.set(item.ID, item);
+                            this.itemDB.set(item.ID, item);
                             switch (item.type) {
                                 case 'Weapon One-Hand':
                                 case 'Weapon Two-Hand':
-                                    this._waeponDB.set(item.ID, item);
+                                    this.weaponDB.set(item.ID, item);
                                     break;
                                 case 'Armor':
                                     switch (item.subType) {
                                         case 'Headgear':
-                                            this._headgearDB.set(item.ID, item);
+                                            this.headgearDB.set(item.ID, item);
                                             break;
                                         case 'Armor':
-                                            this._armorDB.set(item.ID, item);
+                                            this.armorDB.set(item.ID, item);
                                             break;
                                         case 'Shield':
-                                            this._shieldDB.set(item.ID, item);
+                                            this.shieldDB.set(item.ID, item);
                                             break;
                                         case 'Garment':
-                                            this._garmentDB.set(item.ID, item);
+                                            this.garmentDB.set(item.ID, item);
                                             break;
                                         case 'Shoes':
-                                            this._shoesDB.set(item.ID, item);
+                                            this.shoesDB.set(item.ID, item);
                                             break;
                                         case 'Accessory':
-                                            this._accessoryDB.set(item.ID, item);
+                                            this.accessoryDB.set(item.ID, item);
                                             break;
                                         case 'Costume':
                                             // ignore?
@@ -105,23 +115,23 @@ export class TTCoreServiceV3 {
                                     }
                                     break;
                                 case 'Card':
-                                    this._cardDB.set(item.ID, item);
+                                    this.cardDB[item.subType as CardTypes].set(item.ID, item);
                                     break;
                             }
                         }
 
                         /* Job DB */
                         for (const jobName in dbRes[1] as Record<string, DBJob>) {
-                            this._jobDB.set(jobName, dbRes[1][jobName]);
+                            this.jobDB.set(jobName, dbRes[1][jobName]);
                         }
 
                         /* item Combo */
-                        this._itemCombo = dbRes[2] as DBItemCombo[];
+                        this.itemComboDB = dbRes[2] as DBItemCombo[];
 
                         /* Mob DB */
                         const mobDbFromFile = dbRes[3] as Record<string, Omit<DBMob, 'name'>>;
                         for (const mobName in mobDbFromFile) {
-                            this._mobDB.set(mobDbFromFile[mobName].mid, {
+                            this.mobDB.set(mobDbFromFile[mobName].mid, {
                                 ...mobDbFromFile[mobName],
                                 name: mobName
                             });
@@ -131,25 +141,25 @@ export class TTCoreServiceV3 {
                         const skillDbFromFile = dbRes[4] as Record<string, Omit<DBSkill, 'name'>>;
                         for (const skillName in skillDbFromFile) {
                             const skill = skillDbFromFile[skillName];
-                            this._skillDB.set(skill.id, {
+                            this.skillDB.set(skill.id, {
                                 ...skill,
                                 name: skillName
                             });
 
                             /* add to mapping DB */
-                            if (!this._skillEnumToId.has(skill.enum)) {
-                                this._skillEnumToId.set(skill.enum, []);
+                            if (!this.#skillEnumToId.has(skill.enum)) {
+                                this.#skillEnumToId.set(skill.enum, []);
                             }
-                            this._skillEnumToId.get(skill.enum)!.push(skill.id);
+                            this.#skillEnumToId.get(skill.enum)!.push(skill.id);
                         }
 
                         /* Element DB */
-                        this._elementDB = dbRes[5] as ElementDBV3;
+                        this.elementDB = dbRes[5] as ElementDBV3;
 
                         /* Weapon Type DB */
                         const wTFromFile = dbRes[6] as Record<DBWeaponTypeKey, DBWeaponTypeEntry>;
                         for (const wT in wTFromFile) {
-                            this._weaponTypeDB.set(wT as DBWeaponTypeKey, wTFromFile[wT]);
+                            this.weaponTypeDB.set(wT as DBWeaponTypeKey, wTFromFile[wT]);
                         }
 
                         /* Ammo DB */
@@ -157,7 +167,7 @@ export class TTCoreServiceV3 {
                         for (const curType in ammoDBFromFile) {
                             for (const curAmmoName in ammoDBFromFile[curType]) {
                                 const curAmmo = ammoDBFromFile[curType as AmmoType][curAmmoName];
-                                this._ammoDB.set(curAmmoName, {
+                                this.ammoDB.set(curAmmoName, {
                                     ...curAmmo,
                                     type: curType as AmmoType
                                 });
@@ -176,7 +186,7 @@ export class TTCoreServiceV3 {
                                 for (const foodStat in foodDBFromFile[foodCat]) {
                                     for (const foodName in foodDBFromFile[foodCat][foodStat as FoodStatsNames]) {
                                         const food = foodDBFromFile[foodCat][foodStat][foodName] as JSONFood;
-                                        this._foodDB.set(food.gid, {
+                                        this.foodDB.set(food.gid, {
                                             ID: food.gid,
                                             name: foodName,
                                             itemName: food.name,
@@ -194,7 +204,7 @@ export class TTCoreServiceV3 {
                                 /* all other foods */
                                 for (const foodName in foodDBFromFile[foodCat]) {
                                     const food = foodDBFromFile[foodCat][foodName] as JSONFood;
-                                    this._foodDB.set(food.gid, {
+                                    this.foodDB.set(food.gid, {
                                         ID: food.gid,
                                         name: foodName,
                                         category: foodCat as FoodCategory,
@@ -210,23 +220,23 @@ export class TTCoreServiceV3 {
                         const enchants = dbRes[9] as EnchantDBV3;
 
                         for (const enchantGr in enchants) {
-                            if (!this._enchantDB.has(enchantGr as DBEnchantTypes)) {
-                                this._enchantDB.set(enchantGr as DBEnchantTypes, []);
+                            if (!this.enchantDB.has(enchantGr as DBEnchantTypes)) {
+                                this.enchantDB.set(enchantGr as DBEnchantTypes, []);
                             }
                             for (const enchantName in enchants[enchantGr]) {
                                 const entry: DBEnchant = {
                                     itemId: enchants[enchantGr][enchantName],
                                     name: enchantName
                                 };
-                                this._enchantDB.get(enchantGr as DBEnchantTypes)!.push(entry);
+                                this.enchantDB.get(enchantGr as DBEnchantTypes)!.push(entry);
                             }
                         }
                         /* pet DB */
                         const pets = dbRes[10] as DBPet[];
-                        pets.forEach(pet => this._petDB.set(pet.ID, pet));
+                        pets.forEach(pet => this.petDB.set(pet.ID, pet));
 
                         /* done */
-                        this._loaded.set(true);
+                        this.#loaded.set(true);
                         obs.next(true);
                         obs.complete();
                     });
@@ -243,80 +253,21 @@ export class TTCoreServiceV3 {
         return 'normal';
     }
     public getSkillIDs(skillEnum: DBSkillEnum): number[] {
-        return this._skillEnumToId.get(skillEnum);
+        return this.#skillEnumToId.get(skillEnum);
     }
 
     /*** private functions ***/
     private _loadDB(path: string) {
-        return this._http.get(path);
+        return this.#http.get(path);
     }
 
     /*** getter ***/
     get $loaded() {
-        return this._loaded.asReadonly();
+        return this.#loaded.asReadonly();
     }
 
     // derived
     get allJobNames() {
-        return Array.from(this._jobDB.keys());
-    }
-
-    // pure
-    get jobDB() {
-        return this._jobDB;
-    }
-    get itemDB() {
-        return this._itemDB;
-    }
-    get headgearDB() {
-        return this._headgearDB;
-    }
-    get armorDB() {
-        return this._armorDB;
-    }
-    get weaponDB() {
-        return this._waeponDB;
-    }
-    get shieldDB() {
-        return this._shieldDB;
-    }
-    get garmentDB() {
-        return this._garmentDB;
-    }
-    get shoesDB() {
-        return this._shoesDB;
-    }
-    get accessoryDB() {
-        return this._accessoryDB;
-    }
-    get cardDB() {
-        return this._cardDB;
-    }
-    get itemComboDB() {
-        return this._itemCombo;
-    }
-    get mobDB() {
-        return this._mobDB;
-    }
-    get skillDB() {
-        return this._skillDB;
-    }
-    get elementDB() {
-        return this._elementDB;
-    }
-    get weaponTypeDB() {
-        return this._weaponTypeDB;
-    }
-    get ammoDB() {
-        return this._ammoDB;
-    }
-    get foodDB() {
-        return this._foodDB;
-    }
-    get enchantDB() {
-        return this._enchantDB;
-    }
-    get petDB() {
-        return this._petDB;
+        return Array.from(this.jobDB.keys());
     }
 }

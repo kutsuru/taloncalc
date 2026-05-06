@@ -21,19 +21,13 @@ export type CardSelectV3Input = {
 })
 export class TtCardSelectV3Component {
     /* injects */
-    private readonly _core = inject(TTCoreServiceV3);
+    readonly #core = inject(TTCoreServiceV3);
     readonly data = inject<CardSelectV3Input>(MAT_DIALOG_DATA);
-    private readonly _diaRef = inject(MatDialogRef<TtCardSelectV3Component>);
+    readonly #diaRef = inject(MatDialogRef<TtCardSelectV3Component>);
 
     /* card list */
     cardList = computed(() => {
-        let res: DBItem[] = [];
-        for (const item of this._core.cardDB.valuesSorted()) {
-            if (item.subType === this.data.type) {
-                res.push(item);
-            }
-        }
-        return res;
+        return this.#core.cardDB[this.data.type].valuesSorted();
     });
 
     /* form control */
@@ -41,9 +35,9 @@ export class TtCardSelectV3Component {
 
     /* public functions */
     selectCard() {
-        this._diaRef.close(this.cardForm.value);
+        this.#diaRef.close(this.cardForm.value);
     }
     unselectCard() {
-        this._diaRef.close(0);
+        this.#diaRef.close(0);
     }
 }

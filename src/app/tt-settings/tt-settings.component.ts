@@ -1,30 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { MatSelectionListChange, MatActionList, MatListSubheaderCssMatStyler, MatListItem, MatSelectionList, MatListOption } from '@angular/material/list';
-import { TTThemerService } from '../tt-themer/tt-themer.service';
-import { PopupSetting, TtSettingsService } from './tt-settings.service';
-import { MatCard, MatCardContent } from '@angular/material/card';
 import { AsyncPipe } from '@angular/common';
-import { MatIcon } from '@angular/material/icon';
-import { MatLine } from '@angular/material/core';
+import { Component, OnInit } from '@angular/core';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { MatListOption, MatListSubheaderCssMatStyler, MatSelectionList, MatSelectionListChange } from '@angular/material/list';
+import { PopupSetting, TtSettingsService } from './tt-settings.service';
 
 @Component({
-    selector: 'tt-settings',
-    templateUrl: './tt-settings.component.html',
-    styleUrls: ['./tt-settings.component.scss'],
-    imports: [MatCard, MatCardContent, MatActionList, MatListSubheaderCssMatStyler, MatListItem, MatIcon, MatLine, MatSelectionList, MatListOption, AsyncPipe]
+  selector: 'tt-settings',
+  templateUrl: './tt-settings.component.html',
+  styleUrls: ['./tt-settings.component.scss'],
+  imports: [MatCard, MatCardContent, MatListSubheaderCssMatStyler, MatSelectionList, MatListOption, AsyncPipe]
 })
 export class TtSettingsComponent implements OnInit {
-  constructor(
-    protected themer:TTThemerService,
-    protected ttSettings: TtSettingsService
-    ) { 
-
-    }
+  constructor(protected ttSettings: TtSettingsService) { }
 
   ngOnInit(): void {
   }
 
-  changePopupSetting(ev: MatSelectionListChange){
+  changePopupSetting(ev: MatSelectionListChange) {
     const popupName = ev.options[0].value as keyof PopupSetting;
     this.ttSettings.setPopup(popupName, ev.options[0].selected);
   }
