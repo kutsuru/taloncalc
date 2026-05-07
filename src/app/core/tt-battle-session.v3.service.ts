@@ -828,7 +828,7 @@ export class TTBattleSessionServiceV3 {
         // FIXME: Use weapon type object instead of db access
         // Large size weapon modifier while riding with spears should be applied for medium-size target
         if (
-            this._session.getSkillLvlOfSkillPassive(78) && //Cavalier Mastery#78
+            this._session.getSkillPassiveLvl("KN_CAVALIERMASTERY") &&
             (
                 'One-Handed Spear' === this._sessionData.rightHandType ||
                 'Two-Handed Spear' === this._sessionData.rightHandType

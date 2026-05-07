@@ -2718,7 +2718,7 @@
   },
   "Cavalier Mastery": {
     "id": 78,
-    "maxLevel": 6,
+    "maxLevel": 5,
     "spCost": [],
     "element": "weapon",
     "hits": 1,
