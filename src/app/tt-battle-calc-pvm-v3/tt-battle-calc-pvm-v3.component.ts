@@ -15,8 +15,10 @@ import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
 import { SelectMobDialogData, TtSelectMobDialogComponent } from '../tt-select-mob-dialog/tt-select-mob-dialog.component';
 import { TtValueComponent } from '../tt-value/tt-value.component';
 import { TTBattleSessionServiceV3 } from '../core/tt-battle-session.v3.service';
-import { DBElement, EndowValue } from '../core/tt-models.v3';
+import { AmmoType, DBAmmo, DBElement, DBItem, EndowValue } from '../core/tt-models.v3';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ItemDB } from '../core/models';
+import { SuperMap } from '../core/utils';
 
 @Component({
   selector: 'tt-battle-calc-pvm-v3',
@@ -72,6 +74,10 @@ export class TtBattleCalcPvmV3Component {
   skillLvlList: WritableSignal<number[]> = signal([]);
   skillHasLvl: WritableSignal<boolean> = signal(false);
 
+  // Fill ammunition list for selection
+  ammo = new FormControl<DBItem | undefined>(undefined);
+  ammos = signal<SuperMap<number, DBItem> | undefined>(undefined);
+
   /* refresh */
   autoRefresh = signal(false);
   refreshTrigger = linkedSignal(() => {
@@ -125,13 +131,36 @@ export class TtBattleCalcPvmV3Component {
       }
     );
 
-    /* update skill selection if job changes */
+    this.ammo.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(
+      (newAmmo) => {
+        this.battleSession.updateAmmo(newAmmo ? newAmmo : undefined);
+        
+        if (this.autoRefresh()) {
+          this.refresh();
+        }
+      }
+    );
+    
+
+    /* Update skill selection if job changes */
     effect(() => {
       this.session.jobClass();
-      this.skillID.setValue(0);  //FIXME: only change if skill not longer present?
+      this.skillID.setValue(0);  //FIXME: only change if skill not longer present?\
+
+      // Retrieve current weapon type
+      const rightHandType = this.session.rightHandType()
+
+      // Check if there is any ammunition required for this weapon type
+      const ammoType = this._core.weaponTypeDB.get(rightHandType)?.ammoType;
+      
+      const ammos = ammoType ? this._core.ammoDB[ammoType] : undefined;
+  
+      this.ammos.set(ammos);
+      if (!ammos) this.ammo.setValue(undefined); // Reset when no ammunition required
+      else this.ammo.setValue(ammos.values().next().value);
     });
 
-    /* update skill level in battle session */
+    /* Update skill level in battle session */
     this.skillLvl.valueChanges.subscribe((newLvl) => {
       this.battleSession.updateSkill(this.skillID.value, newLvl);
       if (this.autoRefresh()) {

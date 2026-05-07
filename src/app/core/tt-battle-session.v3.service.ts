@@ -1,7 +1,8 @@
 import { inject, Injectable, signal } from "@angular/core";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
-import { BaseStatsAs, DBAmmo, DBElement, DBMob, DBSkill, DBWeaponTypeKey, DBWeaponTypeLeft, EquipState, SessionBonus } from "./tt-models.v3";
+import { BaseStatsAs, DBAmmo, DBElement, DBItem, DBMob, DBSkill, DBWeaponTypeKey, DBWeaponTypeLeft, EquipState, SessionBonus } from "./tt-models.v3";
 import { TTSessionInfoV3Service } from "./tt-session-info.v3.service";
+import { TTBonusEngineService } from "./item-script/tt-bonus-engine.service";
 
 type SessionData = {
     level: { base: number, job: number },
@@ -28,6 +29,7 @@ export class TTBattleSessionServiceV3 {
     /* injects */
     private readonly _core = inject(TTCoreServiceV3);
     private readonly _session = inject(TTSessionInfoV3Service);
+    private readonly _scriptEngine = inject(TTBonusEngineService);
 
     /* results */
     minDamage = signal(0);
@@ -38,7 +40,7 @@ export class TTBattleSessionServiceV3 {
     private _skillLvl = 0;
     private _target: DBMob | undefined;
     private _isPvp = false; // FIXME
-    private _ammo: DBAmmo | undefined;  // FIXME
+    private _ammo: DBItem | undefined;
     private _appliedEndow: DBElement | undefined;
     private _sessionData!: SessionData;
 
@@ -91,11 +93,22 @@ export class TTBattleSessionServiceV3 {
         this._appliedEndow = endow;
     }
 
+    public updateAmmo(ammo: DBItem | undefined) {
+        this._ammo = ammo;
+    }
+
     /*** private functions ***/
     private _calcAttackDmg(isCritAtk: boolean, isDualWielding: boolean): number[] {
         let damage = [0, 0];  // 0: Min, 1: Max
 
-        /* mange misc skill with fixed damage */
+        // In case ammunition are used, apply script bonus
+        if (this._ammo) this._scriptEngine.applyBonus(this._ammo.itemScript);
+        /*
+            FIXME: Handle ammunition as an input to the battle calc service, as multiple calc instances
+            could use different ammunitions.
+        */
+
+        /* Manage misc skill with fixed damage */
         if (this._skill!.id == 22)
             // Throw Stone#22
             return damage.map(() => 50);
@@ -469,13 +482,10 @@ export class TTBattleSessionServiceV3 {
 
             if ('weapon' === this._skill!.element) {
                 // Element is managed in terms of priority
-                // 1- Equipment element
+                // First Equipment/Ammunition element
                 activeElement = this._session.bonus().stats.atkEle;
 
-                // 2- Ammunition element
-                if (this._ammo) activeElement = this._ammo['element'];
-
-                // 3- Finally endow element
+                // Finally endow element
                 if (this._appliedEndow) activeElement = this._appliedEndow;
             }
             else {
@@ -912,11 +922,11 @@ export class TTBattleSessionServiceV3 {
         ) {
             // Add arrow base attack, except for Stalker melee skills
             // Add ammunition base attack, except for Bowling Bash
-            let ammoBaseAtk = this._ammo ? this._ammo['attack'] : 0;
+            let ammoBaseAtk = this._ammo ? this._ammo.attack : 0;
             if (isCriticalAttack) {
                 minDamage += ammoBaseAtk;
                 maxDamage += ammoBaseAtk;
-            } else maxDamage += ammoBaseAtk - 1;
+            } else maxDamage += Math.max(0, ammoBaseAtk - 1); // In case arrow does not have any attack
         }
 
         return [minDamage, maxDamage];

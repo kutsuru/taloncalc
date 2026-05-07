@@ -96,7 +96,7 @@
       "medium": 1,
       "large": 0.75
     },
-    "ammoType": "arrow",
+    "ammoType": "Arrow",
     "isTwoHanded": true
   },
   "Katar": {
@@ -160,7 +160,7 @@
       "medium": 1,
       "large": 1
     },
-    "ammoType": "bullet",
+    "ammoType": "Bullet",
     "isTwoHanded": true
   },
   "Rifle": {
@@ -170,7 +170,7 @@
       "medium": 1,
       "large": 1
     },
-    "ammoType": "bullet",
+    "ammoType": "Bullet",
     "isTwoHanded": true
   },
   "Shotgun": {
@@ -180,7 +180,7 @@
       "medium": 1,
       "large": 1
     },
-    "ammoType": "bullet",
+    "ammoType": "Bullet",
     "isTwoHanded": true
   },
   "Gatling Gun": {
@@ -190,7 +190,7 @@
       "medium": 1,
       "large": 1
     },
-    "ammoType": "bullet",
+    "ammoType": "Bullet",
     "isTwoHanded": true
   },
   "Grenade Launcher": {
@@ -200,7 +200,7 @@
       "medium": 1,
       "large": 1
     },
-    "ammoType": "grenade",
+    "ammoType": "Grenade",
     "isTwoHanded": true
   },
   "Two-handed staves": {
