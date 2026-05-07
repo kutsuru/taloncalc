@@ -45,7 +45,15 @@ export class TTCoreServiceV3 {
     #skillEnumToId: DefaultMap<DBSkillEnum, number[]> = new DefaultMap([]);    // key=enum, value=skill ids
     elementDB: ElementDBV3 = {} as any;    // FIXME: provide function for "target" "source" ele ...
     weaponTypeDB: Map<DBWeaponTypeKey, DBWeaponTypeEntry> = new Map();
-    ammoDB: Map<string, DBAmmo> = new Map();
+    ammoDB: Record<AmmoType, SuperMap<number, DBItem>> = {
+        Arrow: new SuperMap(compareByName),
+        Bullet: new SuperMap(compareByName),
+        Grenade: new SuperMap(compareByName),
+        Kunai: new SuperMap(compareByName),
+        Shuriken: new SuperMap(compareByName),
+        Cannonballs: new SuperMap(compareByName),
+        ThrowableItem: new SuperMap(compareByName)
+    };
     foodDB: Map<number, DBFood> = new Map();
     enchantDB: Map<DBEnchantTypes, DBEnchant[]> = new Map();
     petDB: SuperMap<number, DBPet> = new SuperMap(compareByName);
@@ -117,6 +125,9 @@ export class TTCoreServiceV3 {
                                 case 'Card':
                                     this.cardDB[item.subType as CardTypes].set(item.ID, item);
                                     break;
+                                case 'Ammo':
+                                    this.ammoDB[item.subType as AmmoType].set(item.ID, item);
+                                    break;
                             }
                         }
 
@@ -162,7 +173,7 @@ export class TTCoreServiceV3 {
                             this.weaponTypeDB.set(wT as DBWeaponTypeKey, wTFromFile[wT]);
                         }
 
-                        /* Ammo DB */
+                        /* Ammo DB 
                         const ammoDBFromFile: { [key in AmmoType]: { [key: string]: Omit<DBAmmo, 'type'> } } = dbRes[7] as any;
                         for (const curType in ammoDBFromFile) {
                             for (const curAmmoName in ammoDBFromFile[curType]) {
@@ -172,7 +183,7 @@ export class TTCoreServiceV3 {
                                     type: curType as AmmoType
                                 });
                             }
-                        }
+                        }*/
 
                         /* Food DB */
                         const foodDBFromFile = dbRes[8] as {

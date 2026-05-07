@@ -23532,7 +23532,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwing Dagger",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -152971,7 +152971,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -152994,7 +152994,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153017,7 +153017,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153040,7 +153040,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153063,7 +153063,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153086,7 +153086,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153109,7 +153109,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153132,7 +153132,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153155,7 +153155,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153178,7 +153178,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153201,7 +153201,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153224,7 +153224,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153247,7 +153247,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153270,7 +153270,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153293,7 +153293,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153316,7 +153316,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153339,7 +153339,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153362,7 +153362,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153385,7 +153385,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153408,7 +153408,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153431,7 +153431,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153454,7 +153454,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153477,7 +153477,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153500,7 +153500,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153523,7 +153523,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153546,7 +153546,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153569,7 +153569,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153592,7 +153592,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153615,7 +153615,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153638,7 +153638,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {
@@ -153661,7 +153661,7 @@
     "isVanillaPvm": true,
     "isVanillaPvp": true,
     "type": "Ammo",
-    "subType": "Throwable Item (Sling Item)",
+    "subType": "ThrowableItem",
     "location": "None"
   },
   {

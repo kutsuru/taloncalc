@@ -407,7 +407,7 @@ export type DBWeaponTypeEntry = {
 
 /*****************/
 /*** AMMO DB  ***/
-export type AmmoType = "arrow" | "bullet" | "grenade" | "shuriken" | "kunai";
+export type AmmoType = "Arrow" | "Bullet" | "Grenade" | "Shuriken" | "Kunai" | "Cannonballs" | "ThrowableItem";
 export type DBAmmo = {
   type: AmmoType,
   attack: number,
