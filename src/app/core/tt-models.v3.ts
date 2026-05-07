@@ -14,6 +14,7 @@ export type DBMobRace2 = "goblin" | "golem" | "orc" | "kobold" | "manuk" | "sple
 export type DBElement = "neutral" | "water" | "earth" | "fire" | "wind" | "poison" | "holy" | "shadow" | "ghost" | "undead" | "all";
 export type DBMobSize = "small" | "medium" | "large" | "all";
 export type DBMobClass = "normal" | "boss" | "guardian" | "all";
+export type EndowValue = Exclude<DBElement, "all"> | "none";
 export type PartialRecord<K extends keyof any, T> = {
   [P in K]?: T
 }

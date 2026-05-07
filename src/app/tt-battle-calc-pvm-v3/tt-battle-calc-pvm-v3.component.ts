@@ -1,5 +1,5 @@
 import { DecimalPipe, TitleCasePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, effect, inject, input, linkedSignal, OnDestroy, signal, untracked, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, DestroyRef, effect, inject, input, linkedSignal, OnDestroy, signal, untracked, WritableSignal } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -15,6 +15,8 @@ import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
 import { SelectMobDialogData, TtSelectMobDialogComponent } from '../tt-select-mob-dialog/tt-select-mob-dialog.component';
 import { TtValueComponent } from '../tt-value/tt-value.component';
 import { TTBattleSessionServiceV3 } from '../core/tt-battle-session.v3.service';
+import { DBElement, EndowValue } from '../core/tt-models.v3';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'tt-battle-calc-pvm-v3',
@@ -44,6 +46,7 @@ export class TtBattleCalcPvmV3Component {
   readonly session = inject(TTSessionInfoV3Service);
   private readonly _dialog = inject(MatDialog);
   readonly battleSession = inject(TTBattleSessionServiceV3);
+  private destroyRef = inject(DestroyRef);
 
   /* inputs */
   calcID = input.required<number>();
@@ -61,6 +64,9 @@ export class TtBattleCalcPvmV3Component {
 
   /* skill */
   // TODO: fetch somehow from session?
+  endow = new FormControl<EndowValue>("none", { nonNullable: true })
+  endows = ["none", "neutral", "water", "earth", "fire", "wind", "poison", "holy", "shadow", "ghost", "undead"] as const
+
   skillID = new FormControl<number>(0, { nonNullable: true });
   skillLvl = new FormControl<number>(0, { nonNullable: true });
   skillLvlList: WritableSignal<number[]> = signal([]);
@@ -108,6 +114,16 @@ export class TtBattleCalcPvmV3Component {
         this.refresh();
       }
     });
+
+    this.endow.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(
+      (newEndow) => {
+        this.battleSession.updateEndow(newEndow === 'none' ? undefined : newEndow);
+        
+        if (this.autoRefresh()) {
+          this.refresh();
+        }
+      }
+    );
 
     /* update skill selection if job changes */
     effect(() => {

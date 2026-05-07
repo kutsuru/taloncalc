@@ -87,6 +87,10 @@ export class TTBattleSessionServiceV3 {
         this._target = target;
     }
 
+    public updateEndow(endow: DBElement | undefined) {
+        this._appliedEndow = endow;
+    }
+
     /*** private functions ***/
     private _calcAttackDmg(isCritAtk: boolean, isDualWielding: boolean): number[] {
         let damage = [0, 0];  // 0: Min, 1: Max
@@ -464,15 +468,25 @@ export class TTBattleSessionServiceV3 {
             // console.log(this.ttCoreService.elementDb);
 
             if ('weapon' === this._skill!.element) {
+                // Element is managed in terms of priority
+                // 1- Equipment element
+                activeElement = this._session.bonus().stats.atkEle;
+
+                // 2- Ammunition element
+                if (this._ammo) activeElement = this._ammo['element'];
+
+                // 3- Finally endow element
                 if (this._appliedEndow) activeElement = this._appliedEndow;
-                // else if (this._ammo) activeElement = this._ammo['element'];  // FIXME
-                // else activeElement = this._rhWeapon['element'];  // FIXME: get weapon ele from session.stats.atkEle??
             }
             else {
                 activeElement = this._skill!.element;
             }
+            
             // TargetEle -> ActiveEle -> TargetEleLevel
-            let elementModifier = this._core.elementDB[this._target!.element][activeElement][this._target!.elementLv - 1];
+            let elementModifier = 1;
+            if (activeElement)
+                elementModifier = this._core.elementDB[this._target!.element][activeElement][this._target!.elementLv - 1];
+            
             elementRatio *= Math.max(elementModifier, 0);
         }
 
