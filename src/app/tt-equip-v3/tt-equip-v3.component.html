@@ -1,7 +1,7 @@
 <!-- Left & right hand -->
 <div class="option-container">
     <mat-form-field>
-        <mat-label>Waepon Type</mat-label>
+        <mat-label>Weapon Type</mat-label>
         <mat-select [value]="session.rightHandType()" (selectionChange)="session.updateRightHandType($event.value)">
             @for (wT of weaponTypes(); track $index) {
             <mat-option [value]="wT"> {{wT}} </mat-option>
