@@ -30,59 +30,53 @@
         (selectionChange)="onSkillSelection()"
       >
         @for (item of ttSessionInfo.activeSkills | keyvalue; track item) {
-<mat-option
-         
-          [value]="item.key"
-        >
-          {{ item.key }}
-        </mat-option>
-}
+          <mat-option [value]="item.key">
+            {{ item.key }}
+          </mat-option>
+        }
       </mat-select>
     </mat-form-field>
     @if (selectedSkillLvs.length) {
-<mat-form-field class="skill-lv-select">
-      <mat-label>Skill Lv</mat-label>
-      <mat-select
-        [(value)]="selectedSkillLv"
-        (selectionChange)="updateBattleSimulation()"
-      >
-        @for (item of selectedSkillLvs; track item) {
-<mat-option [value]="item">
-          {{ item }}
-        </mat-option>
-}
-      </mat-select>
-    </mat-form-field>
-}
-    @if (currentAmmoType) {
-<mat-form-field class="ammo-select">
-      <mat-label>Ammunition Selection</mat-label>
-      <mat-select
-        [(value)]="selectedAmmo"
-        (selectionChange)="updateBattleSimulation()"
-      >
-        @for (item of ttCore.ammoDb[currentAmmoType] | keyvalue; track item) {
-<mat-option
-         
-          [value]="item.value"
+      <mat-form-field class="skill-lv-select">
+        <mat-label>Skill Lv</mat-label>
+        <mat-select
+          [(value)]="selectedSkillLv"
+          (selectionChange)="updateBattleSimulation()"
         >
-          {{ item.key }}
-        </mat-option>
-}
-      </mat-select>
-    </mat-form-field>
-}
-    <mat-form-field class="Endow-select">
+          @for (item of selectedSkillLvs; track item) {
+            <mat-option [value]="item">
+              {{ item }}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    }
+    @if (currentAmmoType) {
+      <mat-form-field class="ammo-select">
+        <mat-label>Ammunition Selection</mat-label>
+        <mat-select
+          [(value)]="selectedAmmo"
+          (selectionChange)="updateBattleSimulation()"
+        >
+          @for (item of ttCore.ammoDb[currentAmmoType] | keyvalue; track item) {
+            <mat-option [value]="item.value">
+              {{ item.key }}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    }
+    <mat-form-field class="endow-select">
       <mat-label>Endow Selection</mat-label>
       <mat-select
         [(value)]="selectedEndow"
         (selectionChange)="updateBattleSimulation()"
       >
         @for (item of endows; track item) {
-<mat-option [value]="item">
-          {{ item }}
-        </mat-option>
-}
+          <mat-option [value]="item">
+            {{ item }}
+          </mat-option>`
+        }
       </mat-select>
     </mat-form-field>
     <br />
