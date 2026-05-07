@@ -8,22 +8,6 @@ import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
 import { BuildData } from '../core/tt-body-builder.service';
 import { TtSliderComponent } from "../tt-slider/tt-slider.component";
 
-const BUILD_1: BuildData = {
-  jobClassName: 'Lord Knight',
-  level: { base: 99, job: 70 },
-  baseStats: { agi: 10, dex: 20, int: 30, luk: 40, str: 50, vit: 60 },
-  equip: {
-    rightHand: {
-      item: 1430,
-      cards: [4142, 4305, 4305],
-      enchants: [],
-      refine: 7
-    }
-  },
-  pet: 9203,
-  speedPotion: 657
-}
-
 @Component({
   selector: 'app-debug',
   imports: [JsonPipe, TtSliderComponent],
@@ -35,6 +19,160 @@ export class DebugComponent {
   readonly se = inject(TTSessionInfoV3Service);
   readonly core = inject(TTCoreServiceV3);
   readonly be = inject(TTBonusEngineService);
+
+  /* hard coded builds - FIXME define a proper backend test/debug suite */
+  readonly BUILD_1: BuildData = {
+    jobClassName: 'Lord Knight',
+    level: { base: 99, job: 70 },
+    baseStats: { agi: 10, dex: 20, int: 30, luk: 40, str: 50, vit: 60 },
+    equip: {
+      rightHand: {
+        item: 1430,
+        cards: [4142, 4305, 4305],
+        enchants: [],
+        refine: 7
+      }
+    },
+    pet: 9203,
+    speedPotion: 657
+  }
+
+  readonly BUILD_2: BuildData = {
+    jobClassName: 'High Wizard',
+    level: { base: 99, job: 70 },
+    baseStats: { agi: 15, dex: 90, int: 99, luk: 1, str: 1, vit: 40 },
+    equip: {
+      rightHand: {
+        item: 1650,
+        cards: [4142],
+        enchants: [],
+        refine: 7
+      },
+      leftHand: {
+        item: 2161,
+        cards: [],
+        enchants: [4710, 4720],
+        refine: 7,
+      },
+      upperHg: {
+        item: 5013,
+        cards: [],
+        enchants: [],
+        refine: 7,
+      },
+      middleHg: {
+        item: 8348,
+        cards: [],
+        enchants: [4710],
+        refine: 0,
+      },
+      lowerHg: {
+        item: 5463,
+        cards: [],
+        enchants: [],
+        refine: 0,
+      },
+      armor: {
+        item: 2374,
+        cards: [4451],
+        enchants: [4712],
+        refine: 7,
+      },
+      garment: {
+        item: 2592,
+        cards: [4520],
+        enchants: [],
+        refine: 0,
+      },
+      shoes: {
+        item: 8049,
+        cards: [],
+        enchants: [],
+        refine: 0,
+      },
+      lhAccessory: {
+        item: 2630,
+        cards: [4226],
+        enchants: [],
+        refine: 0,
+      },
+      rhAccessory: {
+        item: 2630,
+        cards: [4226],
+        enchants: [],
+        refine: 0,
+      }
+    },
+    speedPotion: 657
+  }
+  readonly BUILD_HW_ENDGAME: BuildData = {
+    jobClassName: 'High Wizard',
+    level: { base: 99, job: 70 },
+    baseStats: { agi: 15, dex: 90, int: 99, luk: 1, str: 1, vit: 40 },
+    equip: {
+      rightHand: {
+        item: 1650,
+        cards: [4142, 27384, 4526],
+        enchants: [],
+        refine: 7
+      },
+      leftHand: {
+        item: 2161,
+        cards: [4592],
+        enchants: [4710, 4720],
+        refine: 7,
+      },
+      upperHg: {
+        item: 5013,
+        cards: [],
+        enchants: [],
+        refine: 7,
+      },
+      middleHg: {
+        item: 8348,
+        cards: [4374],
+        enchants: [4710],
+        refine: 0,
+      },
+      lowerHg: {
+        item: 5463,
+        cards: [],
+        enchants: [],
+        refine: 0,
+      },
+      armor: {
+        item: 2374,
+        cards: [4451],
+        enchants: [4712],
+        refine: 7,
+      },
+      garment: {
+        item: 2592,
+        cards: [4520],
+        enchants: [],
+        refine: 0,
+      },
+      shoes: {
+        item: 8049,
+        cards: [4376],
+        enchants: [],
+        refine: 0,
+      },
+      lhAccessory: {
+        item: 2630,
+        cards: [4226],
+        enchants: [],
+        refine: 0,
+      },
+      rhAccessory: {
+        item: 2630,
+        cards: [4226],
+        enchants: [],
+        refine: 0,
+      }
+    },
+    speedPotion: 657
+  }
 
   statusItems: WritableSignal<string> = signal('');
   unknownScriptElements: WritableSignal<string[]> = signal([]);
@@ -87,8 +225,8 @@ export class DebugComponent {
     this.debugBonus.set(session);
   }
 
-  loadBuild1() {
-    this.se.applyBuild(BUILD_1);
+  loadBuild(build : BuildData) {
+    this.se.applyBuild(build);
   }
 
   dispRefine(val: number){
