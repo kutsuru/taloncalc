@@ -440,7 +440,7 @@ export type JSONFood = {
 }
 /****************/
 /*** ENCHANTS ***/
-export type DBEnchantTypes = "kris" | "hidden" | "malangdo" | "malangdo_staff" | "malangdo_nerf" | "biolab_weapon" | "biolab_armor" | "eden_hat" | "eden_armor_1st" | "eden_armor_2nd" | "eden_weapon_1st" | "eden_weapon_2nd" | "eden_weapon_3rd" | "el_discastel_1st" | "el_discastel_2nd" | "el_discastel_3rd" | "el_discastel_light_2rd_3rd" | "mora_1st" | "mora_2nd" | "mora_3rd";
+export type DBEnchantTypes = "kris" | "hidden" | "malangdo" | "malangdo_staff" | "malangdo_nerf" | "biolab_weapon" | "biolab_armor" | "eden_hat" | "eden_armor_1st" | "eden_armor_2nd" | "eden_weapon_1st" | "eden_weapon_2nd" | "eden_weapon_3rd" | "el_discastel_1st" | "el_discastel_2nd" | "el_discastel_3rd" | "el_discastel_light_2rd_3rd" | "mora_1st" | "mora_2nd" | "mora_3rd" | "temporal_1st" | "temporal_2nd" | "temporal_3rd";
 export type EnchantDBV3 = {
   [key in DBEnchantTypes]: {
     [key: string]: number
