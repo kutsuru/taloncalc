@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from "@angular/core";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
-import { BaseStatsAs, DBAmmo, DBElement, DBItem, DBMob, DBSkill, DBWeaponTypeKey, DBWeaponTypeLeft, EquipState, SessionBonus } from "./tt-models.v3";
+import { BaseStatsAs, DBAmmo, DBElement, DBItem, DBMob, DBMobSize, DBSkill, DBSkillEnum, DBWeaponTypeKey, DBWeaponTypeLeft, EquipState, SessionBonus } from "./tt-models.v3";
 import { TTSessionInfoV3Service } from "./tt-session-info.v3.service";
 import { TTBonusEngineService } from "./item-script/tt-bonus-engine.service";
 
@@ -23,6 +23,43 @@ type SessionData = {
         magnumBreak: number
     }
 }
+
+const MOB_SIZE_INDEX: Record<DBMobSize, number> = {
+  small:  0,
+  medium: 1,
+  large:  2,
+  all:    0, // fallback, adjust as needed
+};
+
+const SKILL_HITS: Partial<Record<DBSkillEnum, (lvl: number) => number>> = {
+  // Level based
+  SL_SMA:               lvl => lvl,
+  PR_MAGNUS:            lvl => lvl,
+  NJ_KOUENKA:           lvl => lvl,
+  MG_FIREBOLT:          lvl => lvl,
+  MG_COLDBOLT:          lvl => lvl,
+  WZ_EARTHSPIKE:        lvl => lvl,
+  WZ_HEAVENDRIVE:       lvl => lvl,
+  MG_THUNDERSTORM:      lvl => lvl,
+  HW_NAPALMVULCAN:      lvl => lvl,
+  MG_LIGHTNINGBOLT:     lvl => lvl,
+  CR_ACIDDEMONSTRATION: lvl => lvl,
+  // Level + offset
+  NJ_HUUJIN:     lvl => lvl + 1,
+  WZ_JUPITEL:    lvl => lvl + 2,
+  WZ_FIREPILLAR: lvl => lvl + 2,
+  NJ_HYOUSENSOU: lvl => lvl + 2,
+  MG_FIREWALL:   lvl => lvl + 4,
+  HW_GRAVITATION:lvl => lvl + 4,
+  // Floor based
+  MG_SOULSTRIKE:  lvl => Math.floor(lvl / 2),
+  NPC_DARKSTRIKE: lvl => Math.floor(lvl / 2),
+  NJ_HUUMA:       lvl => Math.floor(lvl / 2) + 2,
+  NJ_KAENSIN:     lvl => Math.floor(lvl / 2) + 4,
+  // Complex
+  WZ_WATERBALL: lvl => lvl > 3 ? 25 : lvl > 1 ? 9 : 1,
+  WZ_METEOR:    lvl => Math.floor(lvl / 2) * (Math.floor(lvl / 2) + 2),
+};
 
 @Injectable()
 export class TTBattleSessionServiceV3 {
@@ -142,11 +179,36 @@ export class TTBattleSessionServiceV3 {
 
         // console.log('after: calcPhysicalAttackDamage');
         // console.log(damage);
+
         // FIXME: hits is sometimes a "script" solve this
+        // Alternative would be to use new Function() during skill db parsing
+        let skillHits = 1;
+        const skillEnum = this._skill!.enum;
+        if (skillEnum in SKILL_HITS) {
+            skillHits = SKILL_HITS[skillEnum]!(this._skillLvl);
+        } else {
+            switch (skillEnum) {
+                case "KN_PIERCE":
+                    skillHits = MOB_SIZE_INDEX[this._target!.size] + 1;
+                    break;
+                case "WZ_STORMGUST":
+                    skillHits = 3; // FIXME: undead/boss = 10 hits
+                    break;
+                case "MO_FINGEROFFENSIVE":
+                    skillHits = 5; // FIXME: sphere amount
+                    break;
+                case "GS_DESPERADO":
+                    skillHits = 1; // FIXME: hit box
+                    break;
+                default:
+                    skillHits = this._skill!.hits;
+            }
+        }
+
         damage = damage.map((x) => {
              return this._skill!.isConsideredAsSingleHit
-                 ? x - (x % this._skill!.hits)
-                 : x * this._skill!.hits;
+                 ? x - (x % skillHits)
+                 : x * skillHits;
         });
 
         // FIXME: Lex Aeterna
