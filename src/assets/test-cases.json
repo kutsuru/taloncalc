@@ -1,0 +1,63 @@
+[
+  {
+    "id": 1,
+    "description": "High Wizard - Storm Gust Lv10 vs Stalatic Golem",
+    "buildData": {
+      "jobClassName": "High Wizard",
+      "level": { "base": 99, "job": 70 },
+      "baseStats": { "agi": 15, "dex": 90, "int": 99, "luk": 1, "str": 1, "vit": 40 },
+      "equip": {
+        "rightHand": { "item": 1650, "cards": [4142, 27384, 4526], "enchants": [], "refine": 7 },
+        "leftHand": { "item": 2161, "cards": [4592], "enchants": [4710, 4720], "refine": 7 },
+        "upperHg": { "item": 5013, "cards": [], "enchants": [], "refine": 7 },
+        "middleHg": { "item": 8348, "cards": [4374], "enchants": [4710], "refine": 0 },
+        "lowerHg": { "item": 5463, "cards": [], "enchants": [], "refine": 0 },
+        "armor": { "item": 2374, "cards": [4451], "enchants": [4712], "refine": 7 },
+        "garment": { "item": 2592, "cards": [4520], "enchants": [], "refine": 0 },
+        "shoes": { "item": 8049, "cards": [4376], "enchants": [], "refine": 0 },
+        "lhAccessory": { "item": 2630, "cards": [4226], "enchants": [], "refine": 0 },
+        "rhAccessory": { "item": 2630, "cards": [4226], "enchants": [], "refine": 0 }
+      },
+      "speedPotion": 657
+    },
+    "monsterID": 1278,
+    "skillID": 131,
+    "skillLevel": 10,
+    "ammoID": null,
+    "endow": "none",
+    "expectedMinDamage": 50000,
+    "expectedMaxDamage": 60000,
+    "tolerancePct": 5
+  },
+  {
+    "id": 2,
+    "description": "Paladin - Shield Chain Lv5 vs Hodremlin",
+    "buildData": {
+      "jobClassName": "Paladin",
+      "level": { "base": 99, "job": 70 },
+      "baseStats": { "agi": 1, "dex": 95, "int": 1, "luk": 1, "str": 97, "vit": 40 },
+      "equip": {
+        "rightHand": { "item": 21845, "cards": [4305, 4305, 4305, 4305], "enchants": [], "refine": 7 },
+        "leftHand": { "item": 2150, "cards": [4565], "enchants": [], "refine": 4 },
+        "upperHg": { "item": 5013, "cards": [], "enchants": [], "refine": 4 },
+        "middleHg": { "item": 8007, "cards": [4148], "enchants": [4700], "refine": 0 },
+        "lowerHg": { "item": 5051, "cards": [], "enchants": [], "refine": 0 },
+        "armor": { "item": 15014, "cards": [4324], "enchants": [4902], "refine": 7 },
+        "garment": { "item": 2537, "cards": [4174], "enchants": [], "refine": 7 },
+        "shoes": { "item": 8049, "cards": [4352], "enchants": [4822,0,22154], "refine": 0 },
+        "lhAccessory": { "item": 2629, "cards": [], "enchants": [], "refine": 0 },
+        "rhAccessory": { "item": 2629, "cards": [], "enchants": [], "refine": 0 }
+      },
+      "speedPotion": 0,
+      "sqiBonus": ["2150_6"]
+    },
+    "monsterID": 1773,
+    "skillID": 324,
+    "skillLevel": 5,
+    "ammoID": null,
+    "endow": "none",
+    "expectedMinDamage": 25320,
+    "expectedMaxDamage": 25320,
+    "tolerancePct": 5
+  }
+]
