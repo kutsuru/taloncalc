@@ -27,6 +27,7 @@ import { TtStatsInfoV3Component } from './tt-stats-info-v3/tt-stats-info-v3.comp
 import { TtStatsV3Component } from './tt-stats-v3/tt-stats-v3.component';
 import { TtSqiBonusComponent } from "./tt-sqi-bonus/tt-sqi-bonus.component";
 import { TtThemerV3Component } from './tt-themer/tt-themer-v3.component';
+import { TtBattleTestRunnerComponent } from './tt-battle-test-runner/tt-battle-test-runner.component';
 
 @Component({
   selector: 'app-root',
@@ -54,7 +55,8 @@ import { TtThemerV3Component } from './tt-themer/tt-themer-v3.component';
     TtFoodV3Component,
     DebugComponent,
     TtSqiBonusComponent,
-    TtThemerV3Component
+    TtThemerV3Component,
+    TtBattleTestRunnerComponent
   ]
 })
 export class AppComponent implements OnInit, OnDestroy {

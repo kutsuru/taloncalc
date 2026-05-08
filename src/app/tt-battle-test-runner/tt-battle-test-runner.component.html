@@ -1,0 +1,156 @@
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>
+      <mat-icon>science</mat-icon>
+      Battle Test Runner
+    </mat-card-title>
+    <mat-card-subtitle>
+      @if (testCases().length > 0) {
+        {{ testCases().length }} tests —
+        <span class="text-green">{{ passCount() }} passed</span> /
+        <span class="text-red">{{ failCount() }} failed</span> /
+        <span class="text-muted">{{ pendingCount() }} pending</span>
+      } @else {
+        Load a test file to begin
+      }
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <button mat-stroked-button (click)="fileInput.click()">
+        <mat-icon>upload_file</mat-icon>
+        Load JSON
+      </button>
+      <input #fileInput type="file" accept=".json" style="display:none" (change)="loadFile($event)" />
+
+      <span class="filler"></span>
+
+      @if (testCases().length > 0) {
+        <button mat-stroked-button
+                [disabled]="selectedIndex() === null || isRunning()"
+                (click)="runSelected()"
+                matTooltip="Run selected test">
+          <mat-icon>play_arrow</mat-icon>
+          Run
+        </button>
+
+        <button mat-flat-button
+                [disabled]="isRunning()"
+                (click)="runAll()"
+                matTooltip="Run all tests sequentially">
+          <mat-icon>playlist_play</mat-icon>
+          Run All
+        </button>
+      }
+    </div>
+
+    @if (isRunning()) {
+      <mat-progress-bar mode="indeterminate" />
+    }
+
+    <mat-divider />
+
+    @if (testCases().length > 0) {
+      <div class="test-layout">
+
+        <!-- Test list -->
+        <div class="test-list">
+          @for (result of results(); track result.testCase.id) {
+            <div class="test-item"
+                 [class.selected]="selectedIndex() === $index"
+                 (click)="selectTest($index)">
+              <mat-icon [class]="statusColor(result.status)">
+                {{ statusIcon(result.status) }}
+              </mat-icon>
+              <span class="test-description">{{ result.testCase.description }}</span>
+            </div>
+          }
+        </div>
+
+        <mat-divider vertical />
+
+        <!-- Test detail -->
+        @let detail = selectedResult();
+        @if (detail) {
+          <div class="test-detail">
+            <div class="detail-header">
+              <span class="detail-title">{{ detail.testCase.description }}</span>
+              <mat-icon [class]="statusColor(detail.status)" class="detail-status-icon">
+                {{ statusIcon(detail.status) }}
+              </mat-icon>
+            </div>
+
+            <mat-divider />
+
+            <!-- Config -->
+            <div class="detail-section-title">Configuration</div>
+            <mat-card-title-group>
+              <div class="detail-grid">
+                <span class="label">Monster ID</span>
+                <span>{{ detail.testCase.monsterID }}</span>
+                <span class="label">Skill</span>
+                <span>{{ detail.testCase.skillID }} (Lv {{ detail.testCase.skillLevel }})</span>
+                <span class="label">Ammo</span>
+                <span>{{ detail.testCase.ammoID ?? 'None' }}</span>
+                <span class="label">Endow</span>
+                <span>{{ detail.testCase.endow | titlecase }}</span>
+                <span class="label">Tolerance</span>
+                <span>± {{ detail.testCase.tolerancePct }}%</span>
+              </div>
+              <img mat-card-sm-image 
+                  [src]="'https://talontales.com/panel/data/monsters/' + [detail.testCase.monsterID] + '.gif'" />
+            </mat-card-title-group>
+
+            <mat-divider />
+
+            <!-- Results -->
+            <div class="detail-section-title">Results</div>
+            <div class="result-grid">
+
+              <!-- Min Damage -->
+              <div class="result-card" [class.result-pass]="detail.minWithinTolerance" [class.result-fail]="detail.minWithinTolerance === false">
+                <div class="result-label">Min Damage</div>
+                <div class="result-expected">Expected: {{ detail.testCase.expectedMinDamage | number }}</div>
+                @if (detail.actualMin !== undefined) {
+                  <div class="result-actual">Actual: {{ detail.actualMin | number }}</div>
+                  <div class="result-diff" [class.positive]="(detail.minDiff ?? 0) >= 0" [class.negative]="(detail.minDiff ?? 0) < 0">
+                    {{ diffLabel(detail.minDiff) }}
+                  </div>
+                  <mat-icon class="result-icon">{{ detail.minWithinTolerance ? 'check_circle' : 'cancel' }}</mat-icon>
+                } @else {
+                  <div class="result-actual text-muted">Not run yet</div>
+                }
+              </div>
+
+              <!-- Max Damage -->
+              <div class="result-card" [class.result-pass]="detail.maxWithinTolerance" [class.result-fail]="detail.maxWithinTolerance === false">
+                <div class="result-label">Max Damage</div>
+                <div class="result-expected">Expected: {{ detail.testCase.expectedMaxDamage | number }}</div>
+                @if (detail.actualMax !== undefined) {
+                  <div class="result-actual">Actual: {{ detail.actualMax | number }}</div>
+                  <div class="result-diff" [class.positive]="(detail.maxDiff ?? 0) >= 0" [class.negative]="(detail.maxDiff ?? 0) < 0">
+                    {{ diffLabel(detail.maxDiff) }}
+                  </div>
+                  <mat-icon class="result-icon">{{ detail.maxWithinTolerance ? 'check_circle' : 'cancel' }}</mat-icon>
+                } @else {
+                  <div class="result-actual text-muted">Not run yet</div>
+                }
+              </div>
+
+            </div>
+          </div>
+        } @else {
+          <div class="no-selection">
+            <mat-icon>arrow_back</mat-icon>
+            Select a test to view details
+          </div>
+        }
+
+      </div>
+    }
+
+  </mat-card-content>
+</mat-card>
