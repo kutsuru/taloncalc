@@ -143,11 +143,11 @@ export class TTBattleSessionServiceV3 {
         // console.log('after: calcPhysicalAttackDamage');
         // console.log(damage);
         // FIXME: hits is sometimes a "script" solve this
-        // damage = damage.map((x) => {
-        //     return this._skill!.isConsideredAsSingleHit
-        //         ? x - (x % this._skill!.hits)
-        //         : x * this._skill!.hits;
-        // });
+        damage = damage.map((x) => {
+             return this._skill!.isConsideredAsSingleHit
+                 ? x - (x % this._skill!.hits)
+                 : x * this._skill!.hits;
+        });
 
         // FIXME: Lex Aeterna
         // if (this._si['activeStatus']['Lex Aeterna']) {
