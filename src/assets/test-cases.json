@@ -5,20 +5,21 @@
     "buildData": {
       "jobClassName": "High Wizard",
       "level": { "base": 99, "job": 70 },
-      "baseStats": { "agi": 15, "dex": 90, "int": 99, "luk": 1, "str": 1, "vit": 40 },
+      "baseStats": { "agi": 25, "dex": 90, "int": 99, "luk": 1, "str": 1, "vit": 2 },
       "equip": {
         "rightHand": { "item": 1650, "cards": [4142, 27384, 4526], "enchants": [], "refine": 7 },
         "leftHand": { "item": 2161, "cards": [4592], "enchants": [4710, 4720], "refine": 7 },
         "upperHg": { "item": 5013, "cards": [], "enchants": [], "refine": 7 },
-        "middleHg": { "item": 8348, "cards": [4374], "enchants": [4710], "refine": 0 },
+        "middleHg": { "item": 8009, "cards": [8229], "enchants": [4710], "refine": 0 },
         "lowerHg": { "item": 5463, "cards": [], "enchants": [], "refine": 0 },
-        "armor": { "item": 2374, "cards": [4451], "enchants": [4712], "refine": 7 },
-        "garment": { "item": 2592, "cards": [4520], "enchants": [], "refine": 0 },
-        "shoes": { "item": 8049, "cards": [4376], "enchants": [], "refine": 0 },
-        "lhAccessory": { "item": 2630, "cards": [4226], "enchants": [], "refine": 0 },
-        "rhAccessory": { "item": 2630, "cards": [4226], "enchants": [], "refine": 0 }
+        "armor": { "item": 2322, "cards": [4451], "enchants": [4712], "refine": 7 },
+        "garment": { "item": 2592, "cards": [4520], "enchants": [], "refine": 7 },
+        "shoes": { "item": 8049, "cards": [4561], "enchants": [22147,0,22113], "refine": 7 },
+        "lhAccessory": { "item": 2630, "cards": [27164], "enchants": [], "refine": 0 },
+        "rhAccessory": { "item": 2630, "cards": [27166], "enchants": [], "refine": 0 }
       },
-      "speedPotion": 657
+      "speedPotion": 657,
+      "sqiBonus": ["1650_0", "1650_1", "1650_2", "1650_5"]
     },
     "monsterID": 1278,
     "skillID": 131,
@@ -58,6 +59,66 @@
     "endow": "none",
     "expectedMinDamage": 25320,
     "expectedMaxDamage": 25320,
+    "tolerancePct": 5
+  },
+  {
+    "id": 3,
+    "description": "Sniper - Double Strafe vs Draco",
+    "buildData": {
+      "jobClassName": "Sniper",
+      "level": { "base": 99, "job": 70 },
+      "baseStats": { "agi": 56, "dex": 96, "int": 1, "luk": 76, "str": 1, "vit": 33 },
+      "equip": {
+        "rightHand": { "item": 1745, "cards": [4305, 4305, 4305], "enchants": [], "refine": 4 },
+        "upperHg": { "item": 5467, "cards": [], "enchants": [], "refine": 4 },
+        "middleHg": { "item": 8188, "cards": [4163], "enchants": [4730], "refine": 0 },
+        "lowerHg": { "item": 18867, "cards": [], "enchants": [], "refine": 0 },
+        "armor": { "item": 2367, "cards": [27126], "enchants": [], "refine": 4 },
+        "garment": { "item": 2553, "cards": [4174], "enchants": [], "refine": 7 },
+        "shoes": { "item": 2474, "cards": [4352], "enchants": [], "refine": 7 },
+        "lhAccessory": { "item": 2630, "cards": [4040], "enchants": [], "refine": 0 },
+        "rhAccessory": {}
+      },
+      "speedPotion": 0,
+      "sqiBonus": []
+    },
+    "monsterID": 2013,
+    "skillID": 40,
+    "skillLevel": 10,
+    "ammoID": 1752,
+    "endow": "none",
+    "expectedMinDamage": 8150,
+    "expectedMaxDamage": 8470,
+    "tolerancePct": 5
+  },
+  {
+    "id": 4,
+    "description": "Sniper - SharpShoot vs Draco",
+    "buildData": {
+      "jobClassName": "Sniper",
+      "level": { "base": 99, "job": 70 },
+      "baseStats": { "agi": 56, "dex": 96, "int": 1, "luk": 76, "str": 1, "vit": 33 },
+      "equip": {
+        "rightHand": { "item": 1745, "cards": [4305, 4305, 4305], "enchants": [], "refine": 4 },
+        "upperHg": { "item": 5467, "cards": [], "enchants": [], "refine": 4 },
+        "middleHg": { "item": 8188, "cards": [4163], "enchants": [4730], "refine": 0 },
+        "lowerHg": { "item": 18867, "cards": [], "enchants": [], "refine": 0 },
+        "armor": { "item": 2367, "cards": [27126], "enchants": [], "refine": 4 },
+        "garment": { "item": 2553, "cards": [4174], "enchants": [], "refine": 7 },
+        "shoes": { "item": 2474, "cards": [4352], "enchants": [], "refine": 7 },
+        "lhAccessory": { "item": 2630, "cards": [4040], "enchants": [], "refine": 0 },
+        "rhAccessory": {}
+      },
+      "speedPotion": 0,
+      "sqiBonus": []
+    },
+    "monsterID": 2013,
+    "skillID": 272,
+    "skillLevel": 5,
+    "ammoID": 1752,
+    "endow": "none",
+    "expectedMinDamage": 9829,
+    "expectedMaxDamage": 11295,
     "tolerancePct": 5
   }
 ]
