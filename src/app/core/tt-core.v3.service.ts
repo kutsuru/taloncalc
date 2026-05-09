@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable, signal, WritableSignal } from "@angular/core";
 import { forkJoin, Observable } from "rxjs";
-import { AmmoType, DBAmmo, DBFood, DBItem, DBItemCombo, DBJob, DBMob, DBSkill, DBWeaponType, ElementDBV3, FoodCategory, FoodStatsNames, JSONFood, DBMobClass, DBWeaponTypeKey, DBWeaponTypeEntry, DBEnchantTypes, DBEnchant, EnchantDBV3, DBPet, DBSkillEnum, CardTypes } from "./tt-models.v3";
+import { AmmoType, DBAmmo, DBFood, DBItem, DBItemCombo, DBJob, DBMob, DBSkill, DBWeaponType, ElementDBV3, FoodCategory, FoodStatsNames, JSONFood, DBMobClass, DBWeaponTypeKey, DBWeaponTypeEntry, DBEnchantTypes, DBEnchant, EnchantDBV3, DBPet, DBSkillEnum, CardTypes, SkillMisc } from "./tt-models.v3";
 import { DefaultMap, SuperMap } from "./utils";
 
 const compareByName = <V extends { name: string }>(a: V, b: V): number => {
@@ -151,7 +151,14 @@ export class TTCoreServiceV3 {
                         /* Skill DB */
                         const skillDbFromFile = dbRes[4] as Record<string, Omit<DBSkill, 'name'>>;
                         for (const skillName in skillDbFromFile) {
-                            const skill = skillDbFromFile[skillName];
+
+                            let skill = skillDbFromFile[skillName];
+
+                            if (typeof skill.ratio === 'string') {
+                                skill.ratioFn = new Function('skill_lv', 'misc', skill.ratio
+                                ) as (skill_lv: number, misc: SkillMisc) => number;
+                            }
+
                             this.skillDB.set(skill.id, {
                                 ...skill,
                                 name: skillName

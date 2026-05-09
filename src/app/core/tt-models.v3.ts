@@ -345,6 +345,14 @@ export type DBMob = {
 /*** SKILL DB  ***/
 export type SkillElement = DBElement | "weapon";
 export type SkillSubType = 'check' | 'list';
+export interface SkillMisc {
+  maxSp?: number;
+  maxHp?: number;
+  sphereCount?: number;
+  underTarget?: boolean;
+  cartWeight?: number;
+}
+
 export type DBSkillEnum = string; // Helper Type to make clear its a enum for a skill and not only a string
 export type DBSkillID = number; // Helper Type to make clear its a skill ID and not only a number
 export type DBSkill = {
@@ -355,7 +363,7 @@ export type DBSkill = {
   spCost: number[],
   element: SkillElement,  // FIXME: in DB File the elements are numbers instead of strings
   hits: number,
-  ratio: string,
+  ratio: number | string,
   motion_delay: number,
   forced_motion: number,
   castTime: string,
@@ -380,6 +388,7 @@ export type DBSkill = {
   job: string,
   type?: SkillSubType,
   itemScript?: string,
+  ratioFn?: (skill_lv: number, misc: SkillMisc) => number;
 }
 export type SkillBuff = Pick<DBSkill, 'id' | 'enum' | 'name' | 'maxLevel' | 'itemScript'> & {
   value: number | boolean

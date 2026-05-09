@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from "@angular/core";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
-import { BaseStatsAs, DBAmmo, DBElement, DBItem, DBMob, DBMobSize, DBSkill, DBSkillEnum, DBWeaponTypeKey, DBWeaponTypeLeft, EquipState, SessionBonus } from "./tt-models.v3";
+import { BaseStatsAs, DBAmmo, DBElement, DBItem, DBMob, DBMobSize, DBSkill, DBSkillEnum, DBWeaponTypeKey, DBWeaponTypeLeft, EquipState, SessionBonus, SkillMisc } from "./tt-models.v3";
 import { TTSessionInfoV3Service } from "./tt-session-info.v3.service";
 import { TTBonusEngineService } from "./item-script/tt-bonus-engine.service";
 
@@ -484,22 +484,18 @@ export class TTBattleSessionServiceV3 {
     }
 
     private _retrieveSkillRatio(): number {
-        let skillRatio: string | number = this._skill!.ratio;
-        let misc = 0; // additinal flag to compute skill ratio
-
-        // FIXME Hatred/Brandish
         // FIXME Set misc for dedicated skills
+        let misc: SkillMisc = {};
 
-        if (typeof skillRatio === 'string') {
-            // FIXME: eval is evil, find a better way to compute the formula
-            switch (this._skill!.id) {
-                case 197:
-                case 321:
-                    misc = this._sessionData.maxSp - 1;    //FIXME:
-                    break;
-            }
-            skillRatio = eval(skillRatio)(this._skillLvl, misc) as number;
+        switch (this._skill!.enum) {
+            case "EXTREMITY_FIST":
+                misc.maxSp = this._sessionData.maxSp - 1;
+                break;
         }
+
+        let skillRatio: number = this._skill!.ratioFn 
+            ? this._skill!.ratioFn(this._skillLvl, misc)
+            : this._skill!.ratio as number;
 
         if ("PA_SACRIFICE" != this._skill!.enum) {
             skillRatio += this._session.getSkillPassiveLvl("SC_OVERTHRUST"); // val3
