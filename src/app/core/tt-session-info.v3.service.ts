@@ -868,7 +868,7 @@ export class TTSessionInfoV3Service {
 
         /* bonus */
         def += bonus.stats.def;
-        def = def * (1 + bonus.stats.defRate / 100);
+        def = Math.floor(def * (1 + bonus.stats.defRate / 100));
 
         return def;
     }
