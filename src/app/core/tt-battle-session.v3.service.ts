@@ -350,12 +350,7 @@ export class TTBattleSessionServiceV3 {
         return damage;
     }
     private _calcPhysicalAttackDamage(isCritAtk: boolean, isDualWielding: boolean): number[] {
-        // check if dex based by looking for ammoType
-        let isDexBased = false;
-        const weaponTypeData = this._core.weaponTypeDB.get(this._sessionData.rightHandType);
-        if (weaponTypeData && weaponTypeData.ammoType) {
-            isDexBased = true;
-        }
+        const isDexBased = !!this._core.weaponTypeDB.get(this._sessionData.rightHandType)?.isDexBased;
 
         let damage = this._calcSkillBaseDamage(
             this._sessionData.baseAtk,

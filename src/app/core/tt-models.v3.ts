@@ -410,6 +410,7 @@ export type DBWeaponTypeEntry = {
   sizeModifier: {
     [key in DBMobSize]: number
   },
+  isDexBased: boolean,
   isTwoHanded: boolean,
   ammoType?: AmmoType
 }

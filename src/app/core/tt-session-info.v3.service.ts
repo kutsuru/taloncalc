@@ -636,8 +636,7 @@ export class TTSessionInfoV3Service {
         let baseAtk = 0;
         let datk = 0;
 
-        // TODO
-        let isDexBased = false;
+        const isDexBased = !!this.#core.weaponTypeDB.get(this.rightHandType())?.isDexBased;
 
         if (isDexBased) {
             datk = Math.floor(stats.dex / 10) * Math.floor(stats.dex / 10);
