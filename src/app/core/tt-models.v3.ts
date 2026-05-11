@@ -217,6 +217,7 @@ export type SessionBonus = {
 
     // Utility & Spezial
     speedRate: number;
+    craftRate: number;
     hpDrainRate: number; spDrainRate: number;
     hpDrainValue: number; spDrainValue: number;
     magicSPGainValue: number; magicHPGainValue: number;
