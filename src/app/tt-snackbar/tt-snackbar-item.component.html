@@ -1,0 +1,21 @@
+<div class="snack" [class]="'snack--'+snack().severity">
+    @if (icon()) {
+    <mat-icon class="snack-icon">{{ icon() }}</mat-icon>
+    }
+
+    <span class="snack-message mat-body-medium">{{ snack().message }}</span>
+
+    @if (snack().action) {
+    <button mat-button class="snack-action" (click)="onAction()">
+        {{ snack().action!.label }}
+    </button>
+    }
+
+    <button mat-icon-button class="snack-close" (click)="close()" aria-label="Close">
+        <mat-icon>close</mat-icon>
+    </button>
+
+    @if(snack().duration){
+    <div class="snack-progress" [style.animation-duration]="snack().duration + 'ms'"></div>
+    }
+</div>

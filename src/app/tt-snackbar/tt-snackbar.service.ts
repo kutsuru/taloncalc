@@ -31,7 +31,7 @@ export class TTSnackbarService {
         options: Partial<Pick<TTSnackbarMessage, 'duration' | 'action'>> = {}
     ): string {
         const id = crypto.randomUUID();
-        this.#ensureContainer().add({ id, message, severity, duration: 4000, ...options });
+        this.#ensureContainer().add({ id, message, severity, ...options });
         return id;
     }
 

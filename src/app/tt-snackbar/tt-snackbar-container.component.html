@@ -1,0 +1,5 @@
+<div class="snackbar-stack" aria-live="polite" aria-atomic="false">
+    @for (msg of messages(); track msg.id) {
+    <tt-snackbar-item animate.enter="snack-enter" animate.leave="snack-leave" [snack]="msg" (closed)="remove($event)" />
+    }
+</div>
