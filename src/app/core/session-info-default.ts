@@ -22,7 +22,7 @@ export function createEmptySessionBonus(): SessionBonus {
             defEle: 'neutral', flee: 0, flee2: 0, fleeRate: 0, longAtkDef: 0, nearAtkDef: 0,
             magicAtkDef: 0, miscAtkDef: 0, reduceMagicReturn: 0, reduceMeleeReturn: 0,
             skillLongAtkDef: 0, noWeaponDamage: 0, noMagicDamage: 0,
-            res: 0, mres: 0, speedRate: 0,
+            res: 0, mres: 0, speedRate: 0, craftRate: 0,
             magicHPGainValue: 0, magicSPGainValue: 0,
             hpDrainRate: 0, spDrainRate: 0, hpDrainValue: 0, spDrainValue: 0,
             shortWeaponDamageReturn: 0, longWeaponDamageReturn: 0, magicDamageReturn: 0,
