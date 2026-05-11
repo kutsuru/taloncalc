@@ -1192,12 +1192,17 @@ export class TTBattleSessionServiceV3 {
                 this._sessionData.bonus.addClass.get(this._core.getMobClass(this._target!)) +
                 this._sessionData.bonus.addClass.get('all')
 
-            // FIXME : Ensure that Sharp Shooting#401 benefits from this modifier
-            // bCritAtkRate - Increases critical damage modifier
-            let criticalModifier = 100;
-            if (isCriticalAttack && this._skill!.id != 401) {
-                criticalModifier += this._sessionData.bonus.stats.critAtkRate;
-            }
+            /*
+                Manage critical rate modifier 
+                - bSkillCritAtkRate : Apply skill critical attack rate bonus
+                (mainly for SN_SHARPSHOOTING and NJ_KIRIKAGE)
+
+                - bCritAtkRate : Increases critical damage modifier on normal attack only
+            */
+            const criticalModifier = !isCriticalAttack ? 100 :
+                this._skill!.id > 0
+                    ? 100 + this._sessionData.bonus.skillCritAtkRate.get(this._skill!.enum)
+                    : 100 + this._sessionData.bonus.stats.critAtkRate;
 
             // bAddRace2 - damage modifier against dedicated monster race
             let race2Modifier = 100 + this._sessionData.bonus.addRace2.get(this._target!.race2);
@@ -1258,10 +1263,10 @@ export class TTBattleSessionServiceV3 {
         // Manage skills increasing critical rate
         switch (this._skill!.enum) {
             case "SN_SHARPSHOOTING":
-                criticalRate += 200 + this._sessionData.bonus.skillCritAtkRate.get("SN_SHARPSHOOTING");
+                criticalRate += 200;
                 break;
             case "NJ_KIRIKAGE":
-                criticalRate += 250 + 50 * this._skillLvl +  this._sessionData.bonus.skillCritAtkRate.get("NJ_KIRIKAGE");
+                criticalRate += 250 + 50 * this._skillLvl;
                 break;
         }
         
