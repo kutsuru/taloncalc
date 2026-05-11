@@ -790,6 +790,10 @@ export class TTSessionInfoV3Service {
             // this._sessionInfo['activeBonus']['scIncCrit']
         );
 
+        // Double critical rate if Katar type weapon is equipped
+        if (this.rightHandType() === "Katar")
+            crit *= 2;
+
         return crit;
     }
     #computePerfectDodge(): number {
