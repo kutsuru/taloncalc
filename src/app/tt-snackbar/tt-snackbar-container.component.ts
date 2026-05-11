@@ -1,7 +1,8 @@
-import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy, inject } from '@angular/core';
 import { TTSnackbarItemComponent } from './tt-snackbar-item.component';
 import { TTSnackbarMessage } from './tt-snackbar.model';
 import { environment } from 'src/environments/environment';
+import { TtSettingsService } from '../tt-settings/tt-settings.service';
 
 @Component({
     selector: 'tt-snackbar-container',
@@ -12,10 +13,11 @@ import { environment } from 'src/environments/environment';
     templateUrl: './tt-snackbar-container.component.html',
 })
 export class TTSnackbarContainerComponent {
+    readonly #ttSettings = inject(TtSettingsService);
     messages = signal<TTSnackbarMessage[]>([]);
 
     add(msg: TTSnackbarMessage): void {
-        if (msg.severity === 'debug' && environment.production) return;
+        if (msg.severity === 'debug' && !this.#ttSettings.debug()) return;
         this.messages.update(m => [...m, msg]);
     }
 

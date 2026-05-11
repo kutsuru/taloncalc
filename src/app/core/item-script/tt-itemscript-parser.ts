@@ -113,9 +113,10 @@ export class TTItemScriptParser {
                     break;
                 }
 
-                currentExpr += this._consume();
+                currentExpr += ' ' + this._consume();
             }
             args.push(currentExpr.trim());
+            // args.push(currentExpr);
 
             // if "," is coming, we consume it and continie with the next arg
             if (this._peek() === ",") {

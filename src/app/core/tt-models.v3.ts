@@ -1,4 +1,5 @@
 /**********/
+import { BonusID } from "./item-script/tt-bonus-engine.service";
 import { JobKey, WeaponType, ItemType, StatusEffect } from "./rAthena/ra-models";
 import { DefaultMap, DefaultMaxMap } from "./utils";
 
@@ -295,6 +296,9 @@ export type SessionBonus = {
 
   /* skills: SkillID (not enum): Level */
   skills: DefaultMaxMap<DBSkillID>;  // SkillId
+
+  /* autobonus effects */
+  autoBonus: Map<BonusID, string[]>; // every "item" could have multiple autobonus scripts
 };
 
 /*******************/

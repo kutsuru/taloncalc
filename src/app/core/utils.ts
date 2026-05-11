@@ -1,4 +1,5 @@
 /*** imports ***/
+import { BonusID, BonusSource } from "./item-script/tt-bonus-engine.service";
 import { EquipIndexKey, MobClass, MobRace2 } from "./rAthena/ra-models";
 import { DBWeaponType, DBMobClass, DBWeaponTypeKey, DBWeaponTypeValue, DBElement, ItemLocations, DBMobRace, DBMobRace2, DBMobSize, EquipLocation, CardTypes } from "./tt-models.v3";
 
@@ -323,5 +324,13 @@ export const getCardTypeForEquipLocation = (loc: EquipLocation): CardTypes => {
         default:
             /* all other juse go for Armor */
             return 'Armor';
+    }
+}
+/*** extract bonus into source and id */
+export const extractBonusID = (bonus: BonusID): { source: BonusSource, id: number | string } => {
+    let parts = bonus.split(':');
+    return {
+        source: parts[0] as BonusSource,
+        id: parts[1]
     }
 }

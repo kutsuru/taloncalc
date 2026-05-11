@@ -1,4 +1,4 @@
-import { Injectable, ApplicationRef, createComponent, EnvironmentInjector, inject } from '@angular/core';
+import { Injectable, ApplicationRef, createComponent, EnvironmentInjector, inject, untracked } from '@angular/core';
 import { TTSnackbarContainerComponent } from './tt-snackbar-container.component';
 import { TTSnackbarMessage, TTSnackbarSeverity } from './tt-snackbar.model';
 
@@ -31,7 +31,7 @@ export class TTSnackbarService {
         options: Partial<Pick<TTSnackbarMessage, 'duration' | 'action'>> = {}
     ): string {
         const id = crypto.randomUUID();
-        this.#ensureContainer().add({ id, message, severity, ...options });
+        untracked(() => { this.#ensureContainer().add({ id, message, severity, ...options }); })
         return id;
     }
 

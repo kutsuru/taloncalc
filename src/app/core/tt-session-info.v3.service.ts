@@ -1,6 +1,6 @@
 /*** imports ***/
 import { computed, effect, inject, Injectable, Signal, signal, untracked, WritableSignal } from "@angular/core";
-import { BonusSubstitution, TTBonusEngineService } from "./item-script/tt-bonus-engine.service";
+import { BonusID, BonusSubstitution, TTBonusEngineService } from "./item-script/tt-bonus-engine.service";
 import { createEmptySessionBonus, defaultEquipSlotState, SESSION_INFO_DEFAULT } from "./session-info-default";
 import { TTCoreService } from "./tt-core.service";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
@@ -122,6 +122,12 @@ export class TTSessionInfoV3Service {
     /* others */
     speedPotion: WritableSignal<number> = signal(0);
     pet: WritableSignal<number> = signal(0);
+
+    /* autobonus map */
+    // FIXME: add to builder
+    // FIXME: cleanup when autobonus is no longer present
+    #autoBonusState = signal<BonusID[]>([]);
+    autoBonus = this.#autoBonusState.asReadonly();
 
     /* battle calcs */
     #battleCalcID: number = 0; // for generating unique IDs for battle calcs
@@ -542,6 +548,16 @@ export class TTSessionInfoV3Service {
             }
         })
     }
+    public toggleAutoBonus(bonus: BonusID) {
+        this.#autoBonusState.update(ab => {
+            if (ab.includes(bonus)) {
+                return ab.filter(b => b !== bonus);
+            }
+            else {
+                return [...ab, bonus];
+            }
+        })
+    }
     public applyBuild(builder: BuildData) {
         // FIXME: destruct maybe?
         this.jobClassName.set(builder.jobClassName);
@@ -934,6 +950,7 @@ export class TTSessionInfoV3Service {
         const speedPot = this.speedPotion();
         const sqiBonis = this.#sqiBonusState();
         const petId = this.pet();
+        const autoBonus = this.#autoBonusState();
         // FIXME: how to handle getskilllv of active skills? not needed?
 
         // job level stats bonus
@@ -1087,6 +1104,18 @@ export class TTSessionInfoV3Service {
             const item = this.#core.itemDB.get(speedPot);
             if (item && item.itemScript) {
                 this.#bonusSession.applyBonus('item', item.ID, item.itemScript);
+            }
+        }
+
+        /* autobonus */
+        for (const abID of autoBonus) {
+            const abScripts = res.autoBonus.get(abID);
+            if (abScripts) {
+                console.log('Apply autobonus for', abID);
+                console.log(abScripts);
+                for (const script of abScripts) {
+                    this.#bonusSession.applyBonus('autoBonus', abID, script);
+                }
             }
         }
 
