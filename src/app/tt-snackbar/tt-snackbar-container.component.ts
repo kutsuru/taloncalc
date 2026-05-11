@@ -8,40 +8,8 @@ import { environment } from 'src/environments/environment';
     standalone: true,
     imports: [TTSnackbarItemComponent],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    template: `
-    <div class="snackbar-stack" aria-live="polite" aria-atomic="false">
-      @for (msg of messages(); track msg.id) {
-        <tt-snackbar-item
-          [snack]="msg"
-          (closed)="remove($event)"
-        />
-      }
-    </div>
-  `,
-    styles: [`
-    .snackbar-stack {
-      position: fixed;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column-reverse;
-      gap: 8px;
-      z-index: 9999;
-      pointer-events: none;
-      align-items: center;
-    }
-
-    @media (max-width: 599px) {
-      .snackbar-stack {
-        bottom: 0;
-        left: 0;
-        transform: none;
-        width: 100%;
-        padding: 0;
-      }
-    }
-  `],
+    styleUrl: './tt-snackbar-container.component.scss',
+    templateUrl: './tt-snackbar-container.component.html',
 })
 export class TTSnackbarContainerComponent {
     messages = signal<TTSnackbarMessage[]>([]);

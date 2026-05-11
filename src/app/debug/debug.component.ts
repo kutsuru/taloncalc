@@ -7,6 +7,7 @@ import { BaseStatsAs, DBItem, SessionBonus } from '../core/tt-models.v3';
 import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
 import { BuildData } from '../core/tt-body-builder.service';
 import { TtSliderComponent } from "../tt-slider/tt-slider.component";
+import { TTSnackbarService } from '../tt-snackbar/tt-snackbar.service';
 
 @Component({
   selector: 'app-debug',
@@ -19,6 +20,7 @@ export class DebugComponent {
   readonly se = inject(TTSessionInfoV3Service);
   readonly core = inject(TTCoreServiceV3);
   readonly be = inject(TTBonusEngineService);
+  readonly snackbar = inject(TTSnackbarService);
 
   /* hard coded builds - FIXME define a proper backend test/debug suite */
   readonly BUILD_1: BuildData = {
@@ -225,11 +227,20 @@ export class DebugComponent {
     this.debugBonus.set(session);
   }
 
-  loadBuild(build : BuildData) {
+  loadBuild(build: BuildData) {
     this.se.applyBuild(build);
   }
 
-  dispRefine(val: number){
+  dispRefine(val: number) {
     return `+ ${val}`;
+  }
+
+  showSnack() {
+    this.snackbar.show('Debug Message yeeah', 'debug');
+    this.snackbar.show('Debug Message yeeah', 'default', { duration: 1000 });
+    this.snackbar.show('Debug Message yeeah', 'error', { duration: 1500 });
+    this.snackbar.show('Debug Message yeeah', 'info', { duration: 2000 });
+    this.snackbar.show('Debug Message yeeah', 'success', { duration: 2500 });
+    this.snackbar.show('Debug Message yeeah', 'warning', { duration: 3000 });
   }
 }
