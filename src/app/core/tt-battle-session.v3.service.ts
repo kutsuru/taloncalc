@@ -1232,4 +1232,41 @@ export class TTBattleSessionServiceV3 {
 
         return this._applyDamageModifier(damage, modifiers);
     }
+
+    private _canAttackCrit() : boolean {
+        let criticalRate = this._session.crit();
+
+        // Multiple hits skills do not crit
+        // FIXME: New GS update allowing Chain Action to crit
+
+        // Manage bCriticalAddRace
+        criticalRate += this._sessionData.bonus.criticalAddRace.get(this._target!.race);
+        // Manage bCriticalAddEle
+        criticalRate += this._sessionData.bonus.criticalAddEle.get(this._target!.element);
+        // Manage bCriticalLong
+        criticalRate += this._sessionData.bonus.stats.criticalLong;
+        // Manage bCriticalRate - Unused
+
+        // FIXME: Manage Status Change (SC) impacting critical rate
+        // Source under SC_CAMOUFLAGE
+
+        // In between those 2 SCs, target critical shield is considered as twice the target's luk 
+        criticalRate -= this._target!.luk * 2;
+
+        // Target under SC_SLEEP
+
+        // Manage skills increasing critical rate
+        switch (this._skill!.enum) {
+            case "SN_SHARPSHOOTING":
+                criticalRate += 200 + this._sessionData.bonus.skillCritAtkRate.get("SN_SHARPSHOOTING");
+                break;
+            case "NJ_KIRIKAGE":
+                criticalRate += 250 + 50 * this._skillLvl +  this._sessionData.bonus.skillCritAtkRate.get("NJ_KIRIKAGE");
+                break;
+        }
+        
+        // FIXME Consider target critical defense SP_CRITICAL_DEF for PvP purpose?
+
+        // FIXME: Maybe simply return the critical rate value to display it in each battle calc instance
+        return criticalRate > 0;    }
 }
