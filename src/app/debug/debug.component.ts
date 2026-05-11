@@ -207,7 +207,7 @@ export class DebugComponent {
     let bad = 0;
     for (const item of itemsWithScript) {
       try {
-        this.be.applyBonus(item.itemScript);
+        this.be.applyBonus('item', item.ID, item.itemScript);
         good++;
       }
       catch (e) {

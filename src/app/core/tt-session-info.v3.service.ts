@@ -158,7 +158,7 @@ export class TTSessionInfoV3Service {
                 this.jobClassName.set('Paladin');
                 // this.updateRightHandType("Whip");
                 // this.updateEquipmentId('rightHand', 1990);
-                this.updateEquipmentId('leftHand',2150);
+                this.updateEquipmentId('leftHand', 2150);
             }
         })
 
@@ -968,21 +968,21 @@ export class TTSessionInfoV3Service {
             /* item bonus */
             let item = this.#core.itemDB.get(equipSlot.item);
             if (item && item.itemScript) {
-                this.#bonusSession.applyBonus(item.itemScript, { refine: equipSlot.refine });
+                this.#bonusSession.applyBonus('item', item.ID, item.itemScript, { refine: equipSlot.refine });
             }
             /* card bonus */
             for (const cardId of equipSlot.cards) {
                 const card = this.#core.itemDB.get(cardId);
                 if (card && card.itemScript) {
                     // use refine of located equip
-                    this.#bonusSession.applyBonus(card.itemScript, { refine: equipSlot.refine });
+                    this.#bonusSession.applyBonus('item', card.ID, card.itemScript, { refine: equipSlot.refine });
                 }
             }
             /* enchants */
             for (const enchantId of equipSlot.enchants) {
                 const enchant = this.#core.itemDB.get(enchantId);
                 if (enchant && enchant.itemScript) {
-                    this.#bonusSession.applyBonus(enchant.itemScript);
+                    this.#bonusSession.applyBonus('item', enchant.ID, enchant.itemScript);
                 }
             }
         }
@@ -994,7 +994,7 @@ export class TTSessionInfoV3Service {
                 for (const bonusID of sqiBonis) {
                     const curSQIBonus = SQI.sqiBonus[bonusID];
                     // FIXME: fix all bonus scripts
-                    this.#bonusSession.applyBonus(curSQIBonus.bonus);
+                    this.#bonusSession.applyBonus('sqiBonus', bonusID, curSQIBonus.bonus);
                 }
             }
         }
@@ -1004,7 +1004,7 @@ export class TTSessionInfoV3Service {
         // FIXME: refines for combos?
         for (const combo of combos) {
             if (combo.effect) {
-                this.#bonusSession.applyBonus(combo.effect);
+                this.#bonusSession.applyBonus('itemCombo', 0, combo.effect);    // FIXME: if we need it...
             }
         }
 
@@ -1015,7 +1015,7 @@ export class TTSessionInfoV3Service {
             if (foodId > 0) {
                 const food = this.#core.itemDB.get(foodId);
                 if (food && food.itemScript) {
-                    this.#bonusSession.applyBonus(food.itemScript);
+                    this.#bonusSession.applyBonus('item', food.ID, food.itemScript);
                 }
             }
         }
@@ -1023,7 +1023,7 @@ export class TTSessionInfoV3Service {
             if (foodId > 0) {
                 const food = this.#core.itemDB.get(foodId);
                 if (food && food.itemScript) {
-                    this.#bonusSession.applyBonus(food.itemScript);
+                    this.#bonusSession.applyBonus('item', food.ID, food.itemScript);
                 }
             }
         }
@@ -1031,7 +1031,7 @@ export class TTSessionInfoV3Service {
         if (petId > 0) {
             const pet = this.#core.petDB.get(petId);
             if (pet) {
-                this.#bonusSession.applyBonus(pet.bonus);
+                this.#bonusSession.applyBonus('pet', pet.ID, pet.bonus);
             }
         }
 
@@ -1073,9 +1073,7 @@ export class TTSessionInfoV3Service {
             if (level > 0) {
                 const skill = this.#core.skillDB.get(skillId);
                 if (skill && skill.itemScript) {
-                    this.#bonusSession.applyBonus(skill.itemScript, {
-                        customSubs: { subSkillLvl: level }
-                    });
+                    this.#bonusSession.applyBonus('skill', skill.id, skill.itemScript, { customSubs: { subSkillLvl: level } });
                 }
             }
         }
@@ -1084,7 +1082,7 @@ export class TTSessionInfoV3Service {
         if (speedPot > 0) {
             const item = this.#core.itemDB.get(speedPot);
             if (item && item.itemScript) {
-                this.#bonusSession.applyBonus(item.itemScript);
+                this.#bonusSession.applyBonus('item', item.ID, item.itemScript);
             }
         }
 

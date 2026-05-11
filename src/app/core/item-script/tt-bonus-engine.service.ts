@@ -10,6 +10,9 @@ import { SC_FUNCTIONS, SCFunction } from "./sc.functions";
 import { ASTNode, IfNode, TTItemScriptParser, VARB_PREFIX } from "./tt-itemscript-parser";
 
 /*** types ***/
+type BonusSource = 'item' | 'itemCombo' | 'skill' | 'pet' | 'sqiBonus';    // maybe mercanary?? or homucu??
+type BonusID = `${BonusSource}:${number | string}`;
+
 export type BonusSubstitution = {
     'subSkillLvl': number,  /* level of the current skill */
 }
@@ -238,6 +241,7 @@ export class TTBonusEngineService {
     private _localOpts: LocalOptions = {};  // is only valid for one "apply cycle"
     private _inlineFuncs: Map<string, InlineFunction> = new Map();
     private _scFuncs: Map<string, SCFunction> = new Map();
+    #currentApplier: BonusID | undefined;
     public session: SessionBonus;
     public sessionOpts: SessionOptions;
 
@@ -311,8 +315,11 @@ export class TTBonusEngineService {
         this.session = session;
         this.sessionOpts = opts;
     }
-    public applyBonus(bonus: string, opts: LocalOptions = {}) {
+    public applyBonus(source: BonusSource, id: number | string, bonus: string, opts: LocalOptions = {}) {
+        /* save local data */
         this._localOpts = opts;
+        this.#currentApplier = `${source}:${id}`;
+
         let bonusPrepared = this._prepareBonus(bonus, opts.customSubs);
         let parser = new TTItemScriptParser(bonusPrepared);
         let bonusAST = parser.parse();
@@ -322,8 +329,10 @@ export class TTBonusEngineService {
         this._localVarbs.clear();
         /* run script */
         this._evaluateNodes(bonusAST);
-        /* reset local opts */
+
+        /* reset local data */
         this._localOpts = {};
+        this.#currentApplier = undefined;
     }
     // DEBUG
     public addUnknownEle(type: string, ele: string) {

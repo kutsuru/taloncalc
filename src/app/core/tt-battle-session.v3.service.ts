@@ -25,40 +25,40 @@ type SessionData = {
 }
 
 const MOB_SIZE_INDEX: Record<DBMobSize, number> = {
-  small:  0,
-  medium: 1,
-  large:  2,
-  all:    0, // fallback, adjust as needed
+    small: 0,
+    medium: 1,
+    large: 2,
+    all: 0, // fallback, adjust as needed
 };
 
 const SKILL_HITS: Partial<Record<DBSkillEnum, (lvl: number) => number>> = {
-  // Level based
-  SL_SMA:               lvl => lvl,
-  PR_MAGNUS:            lvl => lvl,
-  NJ_KOUENKA:           lvl => lvl,
-  MG_FIREBOLT:          lvl => lvl,
-  MG_COLDBOLT:          lvl => lvl,
-  WZ_EARTHSPIKE:        lvl => lvl,
-  WZ_HEAVENDRIVE:       lvl => lvl,
-  MG_THUNDERSTORM:      lvl => lvl,
-  HW_NAPALMVULCAN:      lvl => lvl,
-  MG_LIGHTNINGBOLT:     lvl => lvl,
-  CR_ACIDDEMONSTRATION: lvl => lvl,
-  // Level + offset
-  NJ_HUUJIN:     lvl => lvl + 1,
-  WZ_JUPITEL:    lvl => lvl + 2,
-  WZ_FIREPILLAR: lvl => lvl + 2,
-  NJ_HYOUSENSOU: lvl => lvl + 2,
-  MG_FIREWALL:   lvl => lvl + 4,
-  HW_GRAVITATION:lvl => lvl + 4,
-  // Floor based
-  MG_SOULSTRIKE:  lvl => Math.floor(lvl / 2),
-  NPC_DARKSTRIKE: lvl => Math.floor(lvl / 2),
-  NJ_HUUMA:       lvl => Math.floor(lvl / 2) + 2,
-  NJ_KAENSIN:     lvl => Math.floor(lvl / 2) + 4,
-  // Complex
-  WZ_WATERBALL: lvl => lvl > 3 ? 25 : lvl > 1 ? 9 : 1,
-  WZ_METEOR:    lvl => Math.floor(lvl / 2) * (Math.floor(lvl / 2) + 2),
+    // Level based
+    SL_SMA: lvl => lvl,
+    PR_MAGNUS: lvl => lvl,
+    NJ_KOUENKA: lvl => lvl,
+    MG_FIREBOLT: lvl => lvl,
+    MG_COLDBOLT: lvl => lvl,
+    WZ_EARTHSPIKE: lvl => lvl,
+    WZ_HEAVENDRIVE: lvl => lvl,
+    MG_THUNDERSTORM: lvl => lvl,
+    HW_NAPALMVULCAN: lvl => lvl,
+    MG_LIGHTNINGBOLT: lvl => lvl,
+    CR_ACIDDEMONSTRATION: lvl => lvl,
+    // Level + offset
+    NJ_HUUJIN: lvl => lvl + 1,
+    WZ_JUPITEL: lvl => lvl + 2,
+    WZ_FIREPILLAR: lvl => lvl + 2,
+    NJ_HYOUSENSOU: lvl => lvl + 2,
+    MG_FIREWALL: lvl => lvl + 4,
+    HW_GRAVITATION: lvl => lvl + 4,
+    // Floor based
+    MG_SOULSTRIKE: lvl => Math.floor(lvl / 2),
+    NPC_DARKSTRIKE: lvl => Math.floor(lvl / 2),
+    NJ_HUUMA: lvl => Math.floor(lvl / 2) + 2,
+    NJ_KAENSIN: lvl => Math.floor(lvl / 2) + 4,
+    // Complex
+    WZ_WATERBALL: lvl => lvl > 3 ? 25 : lvl > 1 ? 9 : 1,
+    WZ_METEOR: lvl => Math.floor(lvl / 2) * (Math.floor(lvl / 2) + 2),
 };
 
 @Injectable()
@@ -139,7 +139,7 @@ export class TTBattleSessionServiceV3 {
         let damage = [0, 0];  // 0: Min, 1: Max
 
         // In case ammunition are used, apply script bonus
-        if (this._ammo) this._scriptEngine.applyBonus(this._ammo.itemScript);
+        if (this._ammo) this._scriptEngine.applyBonus('item', this._ammo.ID, this._ammo.itemScript);
         /*
             FIXME: Handle ammunition as an input to the battle calc service, as multiple calc instances
             could use different ammunitions.
@@ -206,9 +206,9 @@ export class TTBattleSessionServiceV3 {
         }
 
         damage = damage.map((x) => {
-             return this._skill!.isConsideredAsSingleHit
-                 ? x - (x % skillHits)
-                 : x * skillHits;
+            return this._skill!.isConsideredAsSingleHit
+                ? x - (x % skillHits)
+                : x * skillHits;
         });
 
         // FIXME: Lex Aeterna
@@ -465,7 +465,7 @@ export class TTBattleSessionServiceV3 {
         let softCap = 200000;
 
         if (asuraDamage > softCap) // Apply soft-cap
-				asuraDamage = Math.floor(asuraDamage / (asuraDamage + 300000) * 500000);
+            asuraDamage = Math.floor(asuraDamage / (asuraDamage + 300000) * 500000);
 
         return asuraDamage;
     }
@@ -488,7 +488,7 @@ export class TTBattleSessionServiceV3 {
                 break;
         }
 
-        let skillRatio: number = this._skill!.ratioFn 
+        let skillRatio: number = this._skill!.ratioFn
             ? this._skill!.ratioFn(this._skillLvl, misc)
             : this._skill!.ratio as number;
 
@@ -544,12 +544,12 @@ export class TTBattleSessionServiceV3 {
             else {
                 activeElement = this._skill!.element;
             }
-            
+
             // TargetEle -> ActiveEle -> TargetEleLevel
             let elementModifier = 1;
             if (activeElement)
                 elementModifier = this._core.elementDB[this._target!.element][activeElement][this._target!.elementLv - 1];
-            
+
             elementRatio *= Math.max(elementModifier, 0);
         }
 
@@ -727,12 +727,12 @@ export class TTBattleSessionServiceV3 {
     private _applyPhysicalSkillDamageModifiers(damage: number[]): number[] {
         // Equivalent to pc_skillatk_bonus
         let skillAtkModifier = this._session.bonus().skillAtk.get(this._skill!.enum);
-        
+
         // Manage Star Gladiator Anger damage bonus
         // Should be handled in battle_attack_sc_bonus FIXME
         /*
         if (sc->data[SC_MIRACLE])
-	        anger_id = 2;
+            anger_id = 2;
 
         uint16 anger_level;
         if (sd != nullptr && anger_id < MAX_PC_FEELHATE && (anger_level = pc_checkskill(sd, sg_info[anger_id].anger_id))) {
