@@ -117,8 +117,8 @@ export class TtBattleTestRunnerComponent {
     let resultFields: any[] = []
     if (detail) {
       resultFields = [
-      { label: 'Min. Damage', expected: detail.testCase.expectedMinDamage, actual: detail.actualMin, diff: detail.minDiff, within: detail.minWithinTolerance },
-      { label: 'Max. Damage', expected: detail.testCase.expectedMaxDamage, actual: detail.actualMax, diff: detail.maxDiff, within: detail.maxWithinTolerance },
+        { label: 'Min. Damage', expected: detail.testCase.expectedMinDamage, actual: detail.actualMin, diff: detail.minDiff, within: detail.minWithinTolerance },
+        { label: 'Max. Damage', expected: detail.testCase.expectedMaxDamage, actual: detail.actualMax, diff: detail.maxDiff, within: detail.maxWithinTolerance },
       ];
 
       if (this.battleSession.battleReport().critRate)
