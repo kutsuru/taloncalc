@@ -113,13 +113,19 @@ export class TtBattleTestRunnerComponent {
 
   resultFields = computed(() => {
     const detail = this.selectedResult();
-    if (!detail) return [];
 
-    return [
+    let resultFields: any[] = []
+    if (detail) {
+      resultFields = [
       { label: 'Min. Damage', expected: detail.testCase.expectedMinDamage, actual: detail.actualMin, diff: detail.minDiff, within: detail.minWithinTolerance },
       { label: 'Max. Damage', expected: detail.testCase.expectedMaxDamage, actual: detail.actualMax, diff: detail.maxDiff, within: detail.maxWithinTolerance },
-      { label: 'Crit. Damage', expected: detail.testCase.expectedCritDamage, actual: detail.actualCrit, diff: detail.critDiff, within: detail.critWithinTolerance },
-    ];
+      ];
+
+      if (this.battleSession.battleReport().critRate)
+        resultFields.push({ label: 'Crit. Damage', expected: detail.testCase.expectedCritDamage, actual: detail.actualCrit, diff: detail.critDiff, within: detail.critWithinTolerance })
+    }
+
+    return resultFields;
   });
 
   /* derived */
