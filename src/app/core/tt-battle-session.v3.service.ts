@@ -130,6 +130,13 @@ export class TTBattleSessionServiceV3 {
             if (critRate)
                 critDamage = this._calcAttackDmg(true, false);
 
+            // Manage dual wielding
+            if (this._session.leftHandType() === "Dagger") {
+                lhDamage = this._calcAttackDmg(false, true);
+
+                this._manageDualWielding(damage, lhDamage);
+            }
+
             const hitRate = this._canAttackHit(critRate);
 
             this.battleReport.set({
@@ -161,7 +168,7 @@ export class TTBattleSessionServiceV3 {
     }
 
     /*** private functions ***/
-    private _calcAttackDmg(isCriticalAttack: boolean, isDualWielding: boolean): number[] {
+    private _calcAttackDmg(isCriticalAttack: boolean, isLeftHand: boolean): number[] {
         let damage = [0, 0];  // 0: Min, 1: Max
 
         // In case ammunition are used, apply script bonus
@@ -201,7 +208,7 @@ export class TTBattleSessionServiceV3 {
         if (this._skill!.isMagicAttack)
             damage = this._calcMagicalAttackDamage(damage);
         else
-            damage = this._calcPhysicalAttackDamage(isCriticalAttack, isDualWielding);
+            damage = this._calcPhysicalAttackDamage(isCriticalAttack, isLeftHand);
 
         // console.log('after: calcPhysicalAttackDamage');
         // console.log(damage);
@@ -375,13 +382,13 @@ export class TTBattleSessionServiceV3 {
 
         return damage;
     }
-    private _calcPhysicalAttackDamage(isCriticalAttack: boolean, isDualWielding: boolean): number[] {
+    private _calcPhysicalAttackDamage(isCriticalAttack: boolean, isLeftHand: boolean): number[] {
         const isDexBased = !!this._core.weaponTypeDB.get(this._sessionData.rightHandType)?.isDexBased;
 
         let damage = this._calcSkillBaseDamage(
             this._sessionData.baseAtk,
             isCriticalAttack,
-            isDualWielding,
+            isLeftHand,
             isDexBased
         );
 
@@ -402,7 +409,7 @@ export class TTBattleSessionServiceV3 {
         damage = this._applyDefenseReduction(damage, isCriticalAttack);
         // console.log('after: applyDefenseReduction');
         // console.log(damage);
-        damage = this._applyPostDefenseDamageBonus(damage, isDualWielding);
+        damage = this._applyPostDefenseDamageBonus(damage, isLeftHand);
         // console.log('after: applyPostDefenseDamageBonus');
         // console.log(damage);
         damage = this._applyElementDamageRatio(damage);
@@ -604,7 +611,7 @@ export class TTBattleSessionServiceV3 {
     private _calcSkillBaseDamage(
         baseAtk: number,
         isCriticalAttack: boolean,
-        isDualWielding: boolean,
+        isLeftHand: boolean,
         isDexBased: boolean
     ): number[] {
         let damage = [0, 0];
@@ -692,7 +699,7 @@ export class TTBattleSessionServiceV3 {
                 damage = this._calcBaseAtk(
                     baseAtk,
                     isCriticalAttack,
-                    isDualWielding,
+                    isLeftHand,
                     isDexBased
                 );
                 // console.log('after: calcBaseAtk');
@@ -915,7 +922,7 @@ export class TTBattleSessionServiceV3 {
     private _calcBaseAtk(
         baseAtk: number,
         isCriticalAttack: boolean,
-        isDualWielding: boolean,
+        isLeftHand: boolean,
         isDexBased: boolean
     ) {
         let sizeModifier: number;
@@ -946,7 +953,7 @@ export class TTBattleSessionServiceV3 {
 
         let weaponLv: number;
         let weaponRefine: number;
-        if (isDualWielding && this._sessionData.equip.leftHand.item > 0) {
+        if (isLeftHand && this._sessionData.equip.leftHand.item > 0) {
             weaponLv = this._core.weaponDB.get(this._sessionData.equip.leftHand.item)?.weaponLevel ?? 0;
             weaponRefine = this._sessionData.equip.leftHand.refine;
         }
@@ -1026,11 +1033,11 @@ export class TTBattleSessionServiceV3 {
         return refineDamageBonus;
     }
 
-    private _applyPostDefenseDamageBonus(damage: number[], isDualWielding: boolean) {
+    private _applyPostDefenseDamageBonus(damage: number[], isLeftHand: boolean) {
         let damageBonus = 0;
         let weaponRefineBonus = 0;
 
-        if (isDualWielding) {
+        if (isLeftHand) {
             const lhWeapon = this._core.weaponDB.get(this._sessionData.equip.leftHand.item);
             weaponRefineBonus = this._calcWeaponRefineBonus(
                 this._sessionData.equip.leftHand.refine,
@@ -1079,7 +1086,7 @@ export class TTBattleSessionServiceV3 {
             damage = this._applyDamageModifier(damage, 110);
         }
 
-        damage = this._applyMasteryBonus(damage);
+        damage = this._applyMasteryBonus(damage, isLeftHand);
 
         return damage;
     }
@@ -1095,12 +1102,12 @@ export class TTBattleSessionServiceV3 {
         return refineDamageBonus;
     }
 
-    private _applyMasteryBonus(damage: number[]): number[] {
+    private _applyMasteryBonus(damage: number[], isLeftHand: boolean): number[] {
         let masteryAtkBonus = 0;
 
         if (this._skill!.enableMasteries) {
             // Masteries related to weapons
-            switch (this._sessionData.rightHandType) {
+            switch (isLeftHand? this._sessionData.leftHandType : this._sessionData.rightHandType) {
                 case 'Dagger': // Dagger
                 case 'One-Handed Sword': // One-handed Sword
                     masteryAtkBonus += 4 * this._session.getSkillLvlOfSkillPassive(3); // One-handed Sword Mastery#3
@@ -1320,5 +1327,18 @@ export class TTBattleSessionServiceV3 {
 		hitRate = Math.floor(100 * Math.min(100, criticalRate + nonCriticalRate * hitRate / 100)) / 100;
 
         return hitRate;
+    }
+
+    private _manageDualWielding(rhDamage: number[], lhDamage: number[]): [number[], number[]] {
+        // FIXME: Left hand is not dealing damage on Katar when multi hits skills are triggered
+        // AS_RIGHT - Righthand mastery
+        const rhMasteryLvl: number = 5; // FIXME: Retrieve Passive info
+        this._applyDamageModifier(rhDamage, 50 + rhMasteryLvl * 10); 
+
+        // AS_LEFT - Lefthand mastery
+        const lhMasteryLvl: number = 5; // FIXME: Retrieve Passive info
+        this._applyDamageModifier(rhDamage, 30 + lhMasteryLvl * 10); 
+        
+        return [rhDamage, lhDamage];
     }
 }
