@@ -161,7 +161,7 @@ export class TTBattleSessionServiceV3 {
     }
 
     /*** private functions ***/
-    private _calcAttackDmg(isCritAtk: boolean, isDualWielding: boolean): number[] {
+    private _calcAttackDmg(isCriticalAttack: boolean, isDualWielding: boolean): number[] {
         let damage = [0, 0];  // 0: Min, 1: Max
 
         // In case ammunition are used, apply script bonus
@@ -201,7 +201,7 @@ export class TTBattleSessionServiceV3 {
         if (this._skill!.isMagicAttack)
             damage = this._calcMagicalAttackDamage(damage);
         else
-            damage = this._calcPhysicalAttackDamage(isCritAtk, isDualWielding);
+            damage = this._calcPhysicalAttackDamage(isCriticalAttack, isDualWielding);
 
         // console.log('after: calcPhysicalAttackDamage');
         // console.log(damage);
@@ -375,12 +375,12 @@ export class TTBattleSessionServiceV3 {
 
         return damage;
     }
-    private _calcPhysicalAttackDamage(isCritAtk: boolean, isDualWielding: boolean): number[] {
+    private _calcPhysicalAttackDamage(isCriticalAttack: boolean, isDualWielding: boolean): number[] {
         const isDexBased = !!this._core.weaponTypeDB.get(this._sessionData.rightHandType)?.isDexBased;
 
         let damage = this._calcSkillBaseDamage(
             this._sessionData.baseAtk,
-            isCritAtk,
+            isCriticalAttack,
             isDualWielding,
             isDexBased
         );
@@ -399,7 +399,7 @@ export class TTBattleSessionServiceV3 {
         damage = this._applyOffensiveStatusChange(damage);
         // console.log('after: applyOffensiveStatusChange');
         // console.log(damage);
-        damage = this._applyDefenseReduction(damage);
+        damage = this._applyDefenseReduction(damage, isCriticalAttack);
         // console.log('after: applyDefenseReduction');
         // console.log(damage);
         damage = this._applyPostDefenseDamageBonus(damage, isDualWielding);
@@ -477,7 +477,7 @@ export class TTBattleSessionServiceV3 {
         if ([159, 324, 385].findIndex((x) => x == this._skill!.id) > -1)
             damage = damage.map((x) => x + this._sessionData.equip.leftHand.refine * 10);
 
-        damage = this._applyPhysicalDamageModifiers(damage, isCritAtk);
+        damage = this._applyPhysicalDamageModifiers(damage, isCriticalAttack);
 
         // Soul Breaker#263 misc damage part based on source INT
         if (263 == this._skill!.id) {
@@ -603,7 +603,7 @@ export class TTBattleSessionServiceV3 {
 
     private _calcSkillBaseDamage(
         baseAtk: number,
-        isCritAtk: boolean,
+        isCriticalAttack: boolean,
         isDualWielding: boolean,
         isDexBased: boolean
     ): number[] {
@@ -691,7 +691,7 @@ export class TTBattleSessionServiceV3 {
             default:
                 damage = this._calcBaseAtk(
                     baseAtk,
-                    isCritAtk,
+                    isCriticalAttack,
                     isDualWielding,
                     isDexBased
                 );
@@ -699,7 +699,7 @@ export class TTBattleSessionServiceV3 {
                 // console.log(damage);
 
                 // Critical Attack Rate damage bonus
-                if (isCritAtk)
+                if (isCriticalAttack)
                     damage = this._applyDamageModifier(
                         damage,
                         100 + this._sessionData.bonus.stats.critAtkRate
@@ -855,8 +855,8 @@ export class TTBattleSessionServiceV3 {
         return damage;
     }
 
-    private _applyDefenseReduction(damage: number[]): number[] {
-        if (!this._skill!.ignoreDefense) {
+    private _applyDefenseReduction(damage: number[], isCriticalAttack: boolean): number[] {
+        if (!this._skill!.ignoreDefense && !isCriticalAttack) {
             // FIXME: replace with target_info for def reduction
             // FIXME: VITDEF formula different for players
             let def2 = this._target!.vit;
