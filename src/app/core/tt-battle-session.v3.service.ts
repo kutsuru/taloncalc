@@ -95,6 +95,7 @@ export class TTBattleSessionServiceV3 {
     }
     public simulate() {
         let damage: number[] = [0, 0];
+        let lhDamage: number[] = [0, 0];
         let critDamage: number[] = [0, 0];
 
         if (this._skill && this._target) {
@@ -134,7 +135,7 @@ export class TTBattleSessionServiceV3 {
             if (this._session.leftHandType() === "Dagger") {
                 lhDamage = this._calcAttackDmg(false, true);
 
-                this._manageDualWielding(damage, lhDamage);
+                [damage, lhDamage] = this._manageDualWielding(damage, lhDamage);
             }
 
             const hitRate = this._canAttackHit(critRate);
