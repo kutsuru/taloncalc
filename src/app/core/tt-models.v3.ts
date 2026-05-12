@@ -519,6 +519,8 @@ export type BattleReport = {
   hitRate: number;
   minDamage: number;
   maxDamage: number;
+  lhMinDamage: number;
+  lhMaxDamage: number;
   critRate: number;
   critDamage: number;
   motionDelay: number;

@@ -73,6 +73,8 @@ export class TTBattleSessionServiceV3 {
         hitRate: 100,
         minDamage: 0,
         maxDamage: 0,
+        lhMinDamage: 0,
+        lhMaxDamage: 0,
         critRate: 0, 
         critDamage: 0,
         motionDelay: 0,
@@ -144,6 +146,8 @@ export class TTBattleSessionServiceV3 {
                 hitRate: hitRate,
                 minDamage: damage[0],
                 maxDamage: damage[1],
+                lhMinDamage: lhDamage[0],
+                lhMaxDamage: lhDamage[1],
                 critRate: critRate, 
                 critDamage: critDamage[1],
                 motionDelay: 0,
@@ -936,7 +940,7 @@ export class TTBattleSessionServiceV3 {
             sizeModifier = rhWeaponTypeData.sizeModifier[this._target!.size]
         }
 
-        // FIXME: Use weapon type object instead of db access
+        
         // Large size weapon modifier while riding with spears should be applied for medium-size target
         if (
             this._session.getSkillPassiveLvl("KN_CAVALIERMASTERY") &&
@@ -949,18 +953,26 @@ export class TTBattleSessionServiceV3 {
             sizeModifier = rhWeaponTypeData.sizeModifier.large;
         }
 
-        let minAtk = 0;
-        let maxAtk = this._sessionData.weaponAtk;
-
-        let weaponLv: number;
-        let weaponRefine: number;
+        let minAtk: number = 0;
+        let maxAtk: number = 0;
+        let weaponLv: number = 0;
+        let weaponRefine: number = 0;
+        let weapon: DBItem | undefined;
+        
+        // FIXME: Use weapon type object instead of db access, this._session.weaponAtk cannot be used
+        // FIXME: Investigate SC_INCATKRATE, should it be considered at this stage
         if (isLeftHand && this._sessionData.equip.leftHand.item > 0) {
-            weaponLv = this._core.weaponDB.get(this._sessionData.equip.leftHand.item)?.weaponLevel ?? 0;
             weaponRefine = this._sessionData.equip.leftHand.refine;
+            weapon = this._core.weaponDB.get(this._sessionData.equip.leftHand.item);
         }
         else {
-            weaponLv = this._core.weaponDB.get(this._sessionData.equip.rightHand.item)?.weaponLevel ?? 0;
             weaponRefine = this._sessionData.equip.rightHand.refine;
+            weapon = this._core.weaponDB.get(this._sessionData.equip.rightHand.item);
+        }
+
+        if (weapon) {
+            maxAtk = weapon.attack;
+            weaponLv = weapon.weaponLevel;
         }
 
         // if the attack is not a critical hit at the exception of arrows attack
@@ -1317,7 +1329,7 @@ export class TTBattleSessionServiceV3 {
         // FIXME: New GS update allowing Chain Action to crit
         let nonCriticalRate: number = 0;
 
-        return Math.floor(criticalRate);
+        return Math.max(0, Math.floor(criticalRate));
     }
 
     private _canAttackHit(criticalRate: number): number {
@@ -1334,11 +1346,11 @@ export class TTBattleSessionServiceV3 {
         // FIXME: Left hand is not dealing damage on Katar when multi hits skills are triggered
         // AS_RIGHT - Righthand mastery
         const rhMasteryLvl: number = 5; // FIXME: Retrieve Passive info
-        this._applyDamageModifier(rhDamage, 50 + rhMasteryLvl * 10); 
+        rhDamage = this._applyDamageModifier(rhDamage, 50 + rhMasteryLvl * 10); 
 
         // AS_LEFT - Lefthand mastery
         const lhMasteryLvl: number = 5; // FIXME: Retrieve Passive info
-        this._applyDamageModifier(rhDamage, 30 + lhMasteryLvl * 10); 
+        lhDamage = this._applyDamageModifier(lhDamage, 30 + lhMasteryLvl * 10); 
         
         return [rhDamage, lhDamage];
     }

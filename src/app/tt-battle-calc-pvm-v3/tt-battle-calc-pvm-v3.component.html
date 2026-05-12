@@ -72,8 +72,18 @@
         <div style="text-align: left;">Combat Results</div>
         <mat-divider />
         <div class="basic-data">
-            <tt-value title="Min. Damage">{{battleSession.battleReport().minDamage | number}}</tt-value>
-            <tt-value title="Max. Damage">{{battleSession.battleReport().maxDamage | number}}</tt-value>
+            <tt-value title="Min. Damage">
+                {{battleSession.battleReport().minDamage | number}}
+                @if (battleSession.battleReport().lhMinDamage) {
+                    ({{battleSession.battleReport().lhMinDamage | number}})
+                }
+            </tt-value>
+            <tt-value title="Max. Damage">
+                {{battleSession.battleReport().maxDamage | number}}
+                @if (battleSession.battleReport().lhMaxDamage) {
+                    ({{battleSession.battleReport().lhMaxDamage | number}})
+                }
+            </tt-value>
             @if (battleSession.battleReport().critRate) {
                 <tt-value title="Crit. Rate">{{battleSession.battleReport().critRate}}%</tt-value>
                 <tt-value title="Crit. Damage">{{battleSession.battleReport().critDamage | number}}</tt-value>

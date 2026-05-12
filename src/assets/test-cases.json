@@ -124,5 +124,68 @@
     "expectedMaxDamage": 10295,
     "expectedCritDamage": 11295,
     "tolerancePct": 5
+  },
+    {
+    "id": 5,
+    "description": "Sinx - DD vs Porcelio",
+    "buildData": {
+      "jobClassName": "Assassin Cross",
+      "level": { "base": 99, "job": 70 },
+      "baseStats": { "agi": 99, "dex": 56, "int": 1, "luk": 1, "str": 83, "vit": 1 },
+      "equip": {
+        "rightHand": { "item": 13027, "cards": [4142, 4305, 4507], "enchants": [], "refine": 9 },
+        "leftHand": { "item": 1208, "cards": [4142, 4305, 4263, 4263], "enchants": [], "refine": 10 },
+        "upperHg": { "item": 5013, "cards": [], "enchants": [], "refine": 4 },
+        "middleHg": { "item": 8188, "cards": [4320], "enchants": [4700], "refine": 0 },
+        "lowerHg": { "item": 5767, "cards": [], "enchants": [], "refine": 0 },
+        "armor": { "item": 2399, "cards": [4119], "enchants": [], "refine": 4 },
+        "garment": { "item": 2553, "cards": [4174], "enchants": [], "refine": 7 },
+        "shoes": { "item": 8049, "cards": [4207], "enchants": [], "refine": 4 },
+        "rhAccessory": { "item": 2631, "cards": [], "enchants": [], "refine": 0 },
+        "lhAccessory": { "item": 2631, "cards": [], "enchants": [], "refine": 0 }
+      },
+      "speedPotion": 657,
+      "sqiBonus": []
+    },
+    "monsterID": 1619,
+    "skillID": 0,
+    "skillLevel": 0,
+    "ammoID": null,
+    "endow": "fire",
+    "expectedMinDamage": 2006,
+    "expectedMaxDamage": 2205,
+    "expectedCritDamage": 2271,
+    "tolerancePct": 5
+  },
+    {
+    "id": 6,
+    "description": "Sinx - DD vs Poring",
+    "buildData": {
+      "jobClassName": "Assassin Cross",
+      "level": { "base": 99, "job": 70 },
+      "baseStats": { "agi": 88, "dex": 9, "int": 1, "luk": 21, "str": 84, "vit": 62 },
+      "equip": {
+        "rightHand": { "item": 13027, "cards": [4142, 4305, 4305], "enchants": [], "refine": 7 },
+        "leftHand": { "item": 1208, "cards": [4142, 4147, 4367, 4367], "enchants": [], "refine": 10 },
+        "upperHg": { "item": 8048, "cards": [4534], "enchants": [], "refine": 4 },
+        "middleHg": { "item": 20161, "cards": [], "enchants": [], "refine": 0 },
+        "lowerHg": { "item": 18643, "cards": [], "enchants": [], "refine": 0 },
+        "armor": { "item": 2349, "cards": [4408], "enchants": [4911], "refine": 4 },
+        "garment": { "item": 2537, "cards": [4174], "enchants": [], "refine": 7 },
+        "rhAccessory": { "item": 2630, "cards": [4430], "enchants": [], "refine": 0 },
+        "lhAccessory": { "item": 2729, "cards": [4430], "enchants": [], "refine": 0 }
+      },
+      "speedPotion": 657,
+      "sqiBonus": []
+    },
+    "monsterID": 1002,
+    "skillID": 0,
+    "skillLevel": 0,
+    "ammoID": null,
+    "endow": "none",
+    "expectedMinDamage": 523,
+    "expectedMaxDamage": 535,
+    "expectedCritDamage": 543,
+    "tolerancePct": 5
   }
 ]
