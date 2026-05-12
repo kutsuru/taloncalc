@@ -1,7 +1,8 @@
 import { TemplatePortal } from "@angular/cdk/portal";
 
-import { EventEmitter, Inject, Injectable, DOCUMENT } from "@angular/core";
+import { EventEmitter, Inject, Injectable, DOCUMENT, signal } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
+import { environment } from "src/environments/environment";
 
 export interface PopupSetting {
     buffs: boolean,
@@ -19,6 +20,9 @@ export class TtSettingsService {
     /* overlay / container */
     private _showSettings: BehaviorSubject<boolean>;
     public showSettings$: Observable<boolean>;
+
+    /* signals */
+    debug = signal(false);
 
     constructor() {
         this._showSettings = new BehaviorSubject(false);

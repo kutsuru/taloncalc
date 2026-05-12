@@ -3,12 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatListOption, MatListSubheaderCssMatStyler, MatSelectionList, MatSelectionListChange } from '@angular/material/list';
 import { PopupSetting, TtSettingsService } from './tt-settings.service';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'tt-settings',
   templateUrl: './tt-settings.component.html',
   styleUrls: ['./tt-settings.component.scss'],
-  imports: [MatCard, MatCardContent, MatListSubheaderCssMatStyler, MatSelectionList, MatListOption, AsyncPipe]
+  imports: [MatCard, MatCardContent, MatListSubheaderCssMatStyler, MatSelectionList, MatListOption, AsyncPipe, MatSlideToggleModule]
 })
 export class TtSettingsComponent implements OnInit {
   constructor(protected ttSettings: TtSettingsService) { }

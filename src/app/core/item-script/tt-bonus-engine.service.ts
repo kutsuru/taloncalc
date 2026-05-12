@@ -8,10 +8,11 @@ import { DefaultMap, parseDBElement, parseDBMobClass, parseDBMobRace, parseDBMob
 import { INLINE_FUNCTIONS, InlineFunction } from "./inline.functions";
 import { SC_FUNCTIONS, SCFunction } from "./sc.functions";
 import { ASTNode, IfNode, TTItemScriptParser, VARB_PREFIX } from "./tt-itemscript-parser";
+import { TTSnackbarService } from "src/app/tt-snackbar/tt-snackbar.service";
 
 /*** types ***/
-type BonusSource = 'item' | 'itemCombo' | 'skill' | 'pet' | 'sqiBonus';    // maybe mercanary?? or homucu??
-type BonusID = `${BonusSource}:${number | string}`;
+export type BonusSource = 'item' | 'itemCombo' | 'skill' | 'pet' | 'sqiBonus' | 'autoBonus';    // maybe mercanary?? or homucu??
+export type BonusID = `${BonusSource}:${number | string}`;
 
 export type BonusSubstitution = {
     'subSkillLvl': number,  /* level of the current skill */
@@ -56,6 +57,7 @@ const WHITESPACE_REGEX = / /g;
 const PURE_STR_REGEX = /^(?!(true|false)$)\w+$/;
 const IS_CONDITION_REGEX = /==|!=|<=?|>=?|&/;
 const WORD_WO_QUOTES_REGEX = /(?<!")\b([A-Za-z_][A-Za-z0-9_]*)\b(?!")/g;
+const NESTED_SCRIPT_REGEX = /\{([^}]+)\}/;
 
 /*** definitions ***/
 const CANONICAL_KEYS: Record<string, string> = {};
@@ -94,7 +96,7 @@ const COMMAND_TO_INGORE = new Set([
     'setfont', 'heal', 'end', 'playbgm', 'getitembound', 'buyingstore',
     'warp', 'getgroupitem', 'setmounting', 'transform', 'makerune',
     'rentitem', 'hateffect', 'dispbottom', 'setlook', 'showscript',
-    'announce', 'unittalk', 'addhomintimacy', 'vip_time'
+    'announce', 'unittalk', 'addhomintimacy', 'vip_time', 'skilleffect'
 ]);
 /* callFunc xxx */
 const COMMAND_CALL_FUNC_TO_IGNORE = new Set([
@@ -235,6 +237,7 @@ const isBonusFlag = (key: string): key is SessionBonusFlag => {
 export class TTBonusEngineService {
     /* injects */
     public readonly core = inject(TTCoreServiceV3);
+    readonly #snackbar = inject(TTSnackbarService);
 
     /* varbs */
     private _localVarbs: Map<string, number> = new Map();   //FIXME: allow more types? Use DefaultMap?
@@ -254,18 +257,18 @@ export class TTBonusEngineService {
         bonus5: (args) => this._computeBonus5(args),
         bonus6: (args) => this._computeBonus6(args),
         sc_start: (args) => this._computeStatusEffectFunc(args),
+        sc_start2: (args) => this._computeStatusEffectFunc2(args),
+        sc_start4: (args) => this._computeStatusEffectFunc4(args),
         itemskill: (args) => this._computeItemSkill(args),
         set: (args) => this._computeSet(args),
         skill: (args) => this._computeSkill(args),
-        autobonus: (args) => this._computeAutobonus(args),
         callfunc: (args) => this._computeCommandCallFunc(args),
         bonus_script: (args) => this._computeBonusScript(args),
+        autobonus: (args) => this._computeAutobonus(args),
         autobonus2: (args) => this._computeAutobonus2(args),
         autobonus3: (args) => this._computeAutobonus3(args),
         autobonus4: (args) => this._computeAutobonus4(args),
-        sc_start4: (args) => this._computeStatusEffectFunc4(args),
         skilleffect: (args) => this._computeSkillEffect(args),
-        sc_start2: (args) => this._computeStatusEffectFunc2(args)
     }
 
     /* debug */
@@ -388,16 +391,25 @@ export class TTBonusEngineService {
     private _evaluateNodes(nodes: ASTNode[]) {
         for (let node of nodes) {
             // console.log(node);
-            switch (node.type) {
-                case 'Command':
-                    this._computeCommand(node.command, node.args);
-                    break;
-                case 'Assignment':
-                    this._computeAssignment(node.name, node.value);
-                    break;
-                case 'IfStatement':
-                    this._computeIfStatement(node);
-                    break;
+            try {
+                switch (node.type) {
+                    case 'Command':
+                        this._computeCommand(node.command, node.args);
+                        break;
+                    case 'Assignment':
+                        this._computeAssignment(node.name, node.value);
+                        break;
+                    case 'IfStatement':
+                        this._computeIfStatement(node);
+                        break;
+                }
+            }
+            catch (e) {
+                let err = 'Unknown error happend';
+                if (e instanceof Error) {
+                    err = e.message;
+                }
+                this.#snackbar.show(`${this.#currentApplier}: ${err}`, 'debug', { duration: 5000 });
             }
         }
     }
@@ -544,7 +556,7 @@ export class TTBonusEngineService {
                     this.session.defRatioAtkClass.set(valRaw as DBMobClass, true);
                     break;
                 default:
-                    console.log("Special bonus type not implemented", bonusType, args);
+                    throw new Error(`Special bonus "${bonusType}" not implemented`);
             }
             return;
         }
@@ -581,8 +593,7 @@ export class TTBonusEngineService {
                     this.session.skillDefRatioAtkClass.set(key, valRaw as DBMobClass);
                     break;
                 default:
-                    console.log("Special bonus type not implemented", bonusType, args);
-
+                    throw new Error(`Special bonus "${bonusType}" not implemented`);
             }
         }
         /* check if bonusType is present in session */
@@ -605,40 +616,81 @@ export class TTBonusEngineService {
         }
     }
 
+    //FIXME
     private _computeBonus3(args: string[]) {
-        console.log('Bonus3', args);
-    }
+        let [bonusTypeRaw, key, valRaw1, valRaw2] = args;
+        const bonusType = transformKey(bonusTypeRaw);
 
+        throw new Error(`bonus3 ${bonusType} not implemented`);
+    }
+    //FIXME
     private _computeBonus4(args: string[]) {
-        console.log('Bonus4', args);
-    }
+        let [bonusTypeRaw, key, valRaw1, valRaw2, valRaw3] = args;
+        const bonusType = transformKey(bonusTypeRaw);
 
+        throw new Error(`bonus4 ${bonusType} not implemented`);
+    }
+    //FIXME
     private _computeBonus5(args: string[]) {
-        console.log('Bonus5', args);
-    }
+        let [bonusTypeRaw, key, valRaw1, valRaw2, valRaw3, valRaw4] = args;
+        const bonusType = transformKey(bonusTypeRaw);
 
+        throw new Error(`bonus5 ${bonusType} not implemented`);
+    }
+    //FIXME sofar only ID: 1641 uses it; custom talon
     private _computeBonus6(args: string[]) {
-        console.log('Bonus6', args);
+        let [bonusTypeRaw, key, valRaw1, valRaw2, valRaw3, valRaw4, valRaw5] = args;
+        const bonusType = transformKey(bonusTypeRaw);
+
+        throw new Error(`bonus6 ${bonusType} not implemented`);
     }
 
+    private _computeAutobonus(args: string[]) {
+        let [script, ...rest] = args;
+        // console.log(script);
+        script = this.#extractNestedScript(script);
+        /* get current scripts */
+        let scripts = this.session.autoBonus.get(this.#currentApplier!);
+        if (!scripts) {
+            scripts = [];
+        }
+        scripts.push(script);
+
+        /* save / override current scripts */
+        this.session.autoBonus.set(this.#currentApplier!, scripts);
+    }
+    // FIXME: add autobonus2 to session and allow user to manuelly enable it?
     private _computeAutobonus2(args: string[]) {
-        console.log('Autobonus2', args);
-    }
+        let [script, ...rest] = args;
+        script = this.#extractNestedScript(script);
 
+        throw new Error(`Autobonus2 not implemented (${script})`);
+    }
+    // FIXME: add autobonus3 to session and allow user to manuelly enable it?
     private _computeAutobonus3(args: string[]) {
-        console.log('Autobonus3', args);
-    }
+        let [script, ...rest] = args;
+        script = this.#extractNestedScript(script);
 
+        throw new Error(`Autobonus3 not implemented (${script})`);
+    }
+    // FIXME: add autobonus4 to session and allow user to manuelly enable it?
     private _computeAutobonus4(args: string[]) {
-        console.log('Autobonus4', args);
-    }
+        let [script, ...rest] = args;
+        script = this.#extractNestedScript(script);
 
+        throw new Error(`Autobonus4 not implemented (${script})`);
+    }
+    // FIXME: only usables so far
     private _computeStatusEffectFunc2(args: string[]) {
-        console.log('SC_START2', args);
-    }
+        let [func, ...rest] = args;
 
+        throw new Error(`sc_start2 not implemented (${func})`);
+    }
+    // FIXME: eclage food use this
     private _computeStatusEffectFunc4(args: string[]) {
-        console.log('SC_START4', args);
+        let [func, ...rest] = args;
+
+        throw new Error(`sc_start4 not implemented (${func})`);
     }
 
     private _computeSkillEffect(args: string[]) {
@@ -678,13 +730,12 @@ export class TTBonusEngineService {
         console.log('Item skill', args);
     }
 
-    // FIXME
     private _computeSet(args: string[]) {
         const [name, valRaw] = args;
         const val = this._resolveExpr(valRaw) as number;
         this._localVarbs.set(name, val);
     }
-    // FIXME: add skills to list of available skills?
+
     private _computeSkill(args: string[]) {
         const skillEnum = args[0];
         let level = this._resolveExpr(args[1]) as number;
@@ -694,10 +745,7 @@ export class TTBonusEngineService {
             this.session.skills.set(skillIDs[0], level);  // auto. use the max. value if already present
         }
     }
-    // FIXME: add autobonus to session and allow user to manuelly enable it?
-    private _computeAutobonus(args: string[]) {
-        console.log('Autobonus', args);
-    }
+
     // FIXME: handle the functions
     private _computeCommandCallFunc(args: string[]) {
         /* remove () if present and only use first arg(all is there) */
@@ -714,7 +762,9 @@ export class TTBonusEngineService {
     }
     // FIXME: this needs antoher AST parsing and handling
     private _computeBonusScript(args: string[]) {
-        console.log('Bonus-Script', args);
+        let [script, ...rest] = args;
+        script = this.#extractNestedScript(script);
+        throw new Error(`bonus_script not implemented (${script})`);
     }
 
     // FIXME: return type as generic?
@@ -788,5 +838,15 @@ export class TTBonusEngineService {
         if (typeof val === 'number') return val !== 0;
         if (typeof val === 'string') return val !== '';
         return false;
+    }
+
+    /* extract script */
+    #extractNestedScript(script: string): string {
+        let res = script;
+        const match = script.match(NESTED_SCRIPT_REGEX);
+        if (match) {
+            res = match[1];
+        }
+        return res;
     }
 }

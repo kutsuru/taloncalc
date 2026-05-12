@@ -50,7 +50,9 @@ export function createEmptySessionBonus(): SessionBonus {
         skillIgnoreDefEle: new DefaultMap(() => []),
         // falgs will start empty
         flags: new DefaultMap(false),
-        skills: new DefaultMaxMap(0)
+        
+        skills: new DefaultMaxMap(0),
+        autoBonus: new Map()        
     };
 }
 export function defaultEquipSlotState(): EquipSlotState {
