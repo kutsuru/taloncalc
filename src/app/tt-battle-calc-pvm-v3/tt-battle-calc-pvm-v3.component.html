@@ -3,7 +3,10 @@
 <mat-card appearance="outlined">
     <mat-card-header>
         <mat-card-title-group>
-            <mat-card-title>{{targetData.name}}</mat-card-title>
+            <mat-card-title>
+                {{targetData.name}}
+                <button matIconButton (click)="changeTarget()" matTooltip="Change Target"><mat-icon>edit</mat-icon></button>
+            </mat-card-title>
             <mat-card-subtitle>
                 ID: {{targetData.mid}}
                 <a class="btn-link"
@@ -26,18 +29,8 @@
             <tt-value title="Race">{{targetData.race|titlecase}}</tt-value>
             <tt-value title="Element">{{targetData.element|titlecase}} {{targetData.elementLv}}</tt-value>
         </div>
-        <div style="text-align: left;">Combat Results</div>
         <mat-divider />
-        <div class="basic-data">
-            <tt-value title="Min. Damage">{{battleSession.battleReport().minDamage | number}}</tt-value>
-            <tt-value title="Max. Damage">{{battleSession.battleReport().maxDamage | number}}</tt-value>
-            @if (battleSession.battleReport().critRate) {
-                <tt-value title="Crit. Rate">{{battleSession.battleReport().critRate}}%</tt-value>
-                <tt-value title="Crit. Damage">{{battleSession.battleReport().critDamage | number}}</tt-value>
-            }
-            <tt-value title="Hit Rate">{{battleSession.battleReport().hitRate | number}}%</tt-value>
-        </div>
-        <div>
+        <div style="margin-top: 10px;">
             <mat-form-field>
                 <mat-label>Skill</mat-label>
                 <mat-select [formControl]="skillID">
@@ -76,9 +69,19 @@
                 </mat-select>
             </mat-form-field>
         </div>
+        <div style="text-align: left;">Combat Results</div>
+        <mat-divider />
+        <div class="basic-data">
+            <tt-value title="Min. Damage">{{battleSession.battleReport().minDamage | number}}</tt-value>
+            <tt-value title="Max. Damage">{{battleSession.battleReport().maxDamage | number}}</tt-value>
+            @if (battleSession.battleReport().critRate) {
+                <tt-value title="Crit. Rate">{{battleSession.battleReport().critRate}}%</tt-value>
+                <tt-value title="Crit. Damage">{{battleSession.battleReport().critDamage | number}}</tt-value>
+            }
+            <tt-value title="Hit Rate">{{battleSession.battleReport().hitRate | number}}%</tt-value>
+        </div>
     </mat-card-content>
     <mat-card-actions>
-        <button matButton (click)="changeTarget()">Change Mob</button>
         <button matIconButton (click)="close()" matTooltip="Delete"><mat-icon>close</mat-icon></button>
         <span class="filler"></span>
         @if(!autoRefresh()){
