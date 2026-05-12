@@ -108,39 +108,22 @@
 
             <!-- Results -->
             <div class="detail-section-title">Results</div>
-            <div class="result-grid">
-
-              <!-- Min Damage -->
-              <div class="result-card" [class.result-pass]="detail.minWithinTolerance" [class.result-fail]="detail.minWithinTolerance === false">
-                <div class="result-label">Min Damage</div>
-                <div class="result-expected">Expected: {{ detail.testCase.expectedMinDamage | number }}</div>
-                @if (detail.actualMin !== undefined) {
-                  <div class="result-actual">Actual: {{ detail.actualMin | number }}</div>
-                  <div class="result-diff" [class.positive]="(detail.minDiff ?? 0) >= 0" [class.negative]="(detail.minDiff ?? 0) < 0">
-                    {{ diffLabel(detail.minDiff) }}
+              <div class="result-grid">
+                @for (field of resultFields(); track field.label) {
+                  <div class="result-card" [class.result-pass]="field.within" [class.result-fail]="field.within === false">
+                    <div class="result-label">{{ field.label }}</div>
+                    <div class="result-expected">Expected: {{ field.expected | number }}</div>
+                    @if (field.actual !== undefined) {
+                      <div class="result-actual">Actual: {{ field.actual | number }}</div>
+                      <div class="result-diff" [class.positive]="(field.diff ?? 0) >= 0" [class.negative]="(field.diff ?? 0) < 0">
+                        {{ diffLabel(field.diff) }}
+                      </div>
+                    } @else {
+                      <div class="result-actual text-muted">Not run yet</div>
+                    }
                   </div>
-                  <mat-icon class="result-icon">{{ detail.minWithinTolerance ? 'check_circle' : 'cancel' }}</mat-icon>
-                } @else {
-                  <div class="result-actual text-muted">Not run yet</div>
                 }
               </div>
-
-              <!-- Max Damage -->
-              <div class="result-card" [class.result-pass]="detail.maxWithinTolerance" [class.result-fail]="detail.maxWithinTolerance === false">
-                <div class="result-label">Max Damage</div>
-                <div class="result-expected">Expected: {{ detail.testCase.expectedMaxDamage | number }}</div>
-                @if (detail.actualMax !== undefined) {
-                  <div class="result-actual">Actual: {{ detail.actualMax | number }}</div>
-                  <div class="result-diff" [class.positive]="(detail.maxDiff ?? 0) >= 0" [class.negative]="(detail.maxDiff ?? 0) < 0">
-                    {{ diffLabel(detail.maxDiff) }}
-                  </div>
-                  <mat-icon class="result-icon">{{ detail.maxWithinTolerance ? 'check_circle' : 'cancel' }}</mat-icon>
-                } @else {
-                  <div class="result-actual text-muted">Not run yet</div>
-                }
-              </div>
-
-            </div>
           </div>
         } @else {
           <div class="no-selection">

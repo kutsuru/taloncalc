@@ -28,6 +28,7 @@
     "endow": "none",
     "expectedMinDamage": 50000,
     "expectedMaxDamage": 60000,
+    "expectedCritDamageDamage": 0,
     "tolerancePct": 5
   },
   {
@@ -59,6 +60,7 @@
     "endow": "none",
     "expectedMinDamage": 25320,
     "expectedMaxDamage": 25320,
+    "expectedCritDamage": 0,
     "tolerancePct": 5
   },
   {
@@ -89,6 +91,7 @@
     "endow": "none",
     "expectedMinDamage": 8150,
     "expectedMaxDamage": 8470,
+    "expectedCritDamage": 0,
     "tolerancePct": 5
   },
   {
@@ -118,7 +121,8 @@
     "ammoID": 1752,
     "endow": "none",
     "expectedMinDamage": 9829,
-    "expectedMaxDamage": 11295,
+    "expectedMaxDamage": 10295,
+    "expectedCritDamage": 11295,
     "tolerancePct": 5
   }
 ]

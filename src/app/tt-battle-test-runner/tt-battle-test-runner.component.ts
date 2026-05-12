@@ -58,6 +58,7 @@ export interface TestCase {
   endow: string;
   expectedMinDamage: number;
   expectedMaxDamage: number;
+  expectedCritDamage: number;
   tolerancePct: number;
 }
 
@@ -68,10 +69,13 @@ export interface TestResult {
   status: TestStatus;
   actualMin?: number;
   actualMax?: number;
+  actualCrit?: number
   minDiff?: number;
   maxDiff?: number;
+  critDiff?: number;
   minWithinTolerance?: boolean;
   maxWithinTolerance?: boolean;
+  critWithinTolerance?: boolean;
 }
 
 /* ------------------------------------------------------------------ */
@@ -106,6 +110,17 @@ export class TtBattleTestRunnerComponent {
   results = signal<TestResult[]>([]);
   selectedIndex = signal<number | null>(null);
   isRunning = signal(false);
+
+  resultFields = computed(() => {
+    const detail = this.selectedResult();
+    if (!detail) return [];
+
+    return [
+      { label: 'Min. Damage', expected: detail.testCase.expectedMinDamage, actual: detail.actualMin, diff: detail.minDiff, within: detail.minWithinTolerance },
+      { label: 'Max. Damage', expected: detail.testCase.expectedMaxDamage, actual: detail.actualMax, diff: detail.maxDiff, within: detail.maxWithinTolerance },
+      { label: 'Crit. Damage', expected: detail.testCase.expectedCritDamage, actual: detail.actualCrit, diff: detail.critDiff, within: detail.critWithinTolerance },
+    ];
+  });
 
   /* derived */
   selectedResult = computed(() => {
@@ -199,24 +214,31 @@ export class TtBattleTestRunnerComponent {
       // Read results
       const actualMin = this.battleSession.battleReport().minDamage;
       const actualMax = this.battleSession.battleReport().maxDamage;
+      const actualCrit = this.battleSession.battleReport().critDamage;
 
       const minDiff = actualMin - tc.expectedMinDamage;
       const maxDiff = actualMax - tc.expectedMaxDamage;
+      const critDiff = actualCrit - tc.expectedCritDamage;
       const minPct = Math.abs(minDiff / tc.expectedMinDamage) * 100;
       const maxPct = Math.abs(maxDiff / tc.expectedMaxDamage) * 100;
+      const critPct = Math.abs(critDiff / tc.expectedMaxDamage) * 100;
 
       const minWithinTolerance = minPct <= tc.tolerancePct;
       const maxWithinTolerance = maxPct <= tc.tolerancePct;
-      const status: TestStatus = minWithinTolerance && maxWithinTolerance ? 'pass' : 'fail';
+      const critWithinTolerance = critDiff <= tc.tolerancePct || !this.battleSession.battleReport().critRate;
+      const status: TestStatus = minWithinTolerance && maxWithinTolerance && critWithinTolerance ? 'pass' : 'fail';
 
       this._updateResult(index, {
         status,
         actualMin,
         actualMax,
+        actualCrit,
         minDiff,
         maxDiff,
+        critDiff,
         minWithinTolerance,
         maxWithinTolerance,
+        critWithinTolerance
       });
     } catch (err) {
       console.error(`Test ${tc.id} error:`, err);
