@@ -197,8 +197,8 @@ export class TtBattleTestRunnerComponent {
       this.battleSession.simulate();
 
       // Read results
-      const actualMin = this.battleSession.minDamage();
-      const actualMax = this.battleSession.maxDamage();
+      const actualMin = this.battleSession.battleReport().minDamage;
+      const actualMax = this.battleSession.battleReport().maxDamage;
 
       const minDiff = actualMin - tc.expectedMinDamage;
       const maxDiff = actualMax - tc.expectedMaxDamage;

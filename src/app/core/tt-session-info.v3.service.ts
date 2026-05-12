@@ -789,6 +789,8 @@ export class TTSessionInfoV3Service {
             // this._sessionInfo['activeBonus']['crit'] +
             // this._sessionInfo['activeBonus']['scIncCrit']
         );
+        // FIXME: Manage following SC
+        // SC_INCCRI, SC_CRIFOOD, SC_EXPLOSIONSPIRITS, SC_FORTUNE, SC_TRUESIGHT, SC_CLOAKING, SC_STRIKING
 
         // Double critical rate if Katar type weapon is equipped
         if (this.rightHandType() === "Katar")

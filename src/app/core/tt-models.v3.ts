@@ -509,3 +509,15 @@ export const CLASS_SPECIFIC_SQI = {
   "Soul Linker": 1651
 } as const;
 export type ClassWithSQI = keyof typeof CLASS_SPECIFIC_SQI;
+
+// Battle Report Definition
+export type BattleReport = {
+  hitRate: number;
+  minDamage: number;
+  maxDamage: number;
+  critRate: number;
+  critDamage: number;
+  motionDelay: number;
+  skillDelay: number;
+  skillCastTime: number;
+}

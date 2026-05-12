@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from "@angular/core";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
-import { BaseStatsAs, DBAmmo, DBElement, DBItem, DBMob, DBMobSize, DBSkill, DBSkillEnum, DBWeaponTypeKey, DBWeaponTypeLeft, EquipState, SessionBonus, SkillMisc } from "./tt-models.v3";
+import { BaseStatsAs, BattleReport, DBAmmo, DBElement, DBItem, DBMob, DBMobSize, DBSkill, DBSkillEnum, DBWeaponTypeKey, DBWeaponTypeLeft, EquipState, SessionBonus, SkillMisc } from "./tt-models.v3";
 import { TTSessionInfoV3Service } from "./tt-session-info.v3.service";
 import { TTBonusEngineService } from "./item-script/tt-bonus-engine.service";
 
@@ -69,8 +69,16 @@ export class TTBattleSessionServiceV3 {
     private readonly _scriptEngine = inject(TTBonusEngineService);
 
     /* results */
-    minDamage = signal(0);
-    maxDamage = signal(0);
+    battleReport = signal<BattleReport>({
+        hitRate: 100,
+        minDamage: 0,
+        maxDamage: 0,
+        critRate: 0, 
+        critDamage: 0,
+        motionDelay: 0,
+        skillDelay: 0,
+        skillCastTime: 0,
+    });
 
     /* varbs */
     private _skill: DBSkill | undefined;
@@ -86,7 +94,9 @@ export class TTBattleSessionServiceV3 {
         /* init data without calculation */
     }
     public simulate() {
-        let damage: number[] = [];
+        let damage: number[] = [0, 0];
+        let critDamage: number[] = [0, 0];
+
         if (this._skill && this._target) {
             /* fetch all data */
             this._sessionData = {
@@ -111,12 +121,28 @@ export class TTBattleSessionServiceV3 {
                     magnumBreak: 0
                 }
             }
-            /* start calc */
+            // Run default simulation
+            // FIXME, manage dual wielding
             damage = this._calcAttackDmg(false, false);
+
+            // Run simulation for critical damage only attack can crit
+            const critRate = this._canAttackCrit();
+            if (critRate)
+                critDamage = this._calcAttackDmg(true, false);
+
+            const hitRate = this._canAttackHit(critRate);
+
+            this.battleReport.set({
+                hitRate: hitRate,
+                minDamage: damage[0],
+                maxDamage: damage[1],
+                critRate: critRate, 
+                critDamage: critDamage[1],
+                motionDelay: 0,
+                skillDelay: 0,
+                skillCastTime: 0,
+            } as BattleReport);
         }
-        // FIXME, manage dual wielding
-        this.minDamage.set(damage[0]);
-        this.maxDamage.set(damage[1]);
     }
     public updateSkill(skillId: number, skillLvl: number) {
         this._skill = this._core.skillDB.get(skillId);
@@ -1238,40 +1264,61 @@ export class TTBattleSessionServiceV3 {
         return this._applyDamageModifier(damage, modifiers);
     }
 
-    private _canAttackCrit() : boolean {
-        let criticalRate = this._session.crit();
-
-        // Multiple hits skills do not crit
-        // FIXME: New GS update allowing Chain Action to crit
-
-        // Manage bCriticalAddRace
-        criticalRate += this._sessionData.bonus.criticalAddRace.get(this._target!.race);
-        // Manage bCriticalAddEle
-        criticalRate += this._sessionData.bonus.criticalAddEle.get(this._target!.element);
-        // Manage bCriticalLong
-        criticalRate += this._sessionData.bonus.stats.criticalLong;
-        // Manage bCriticalRate - Unused
-
-        // FIXME: Manage Status Change (SC) impacting critical rate
-        // Source under SC_CAMOUFLAGE
-
-        // In between those 2 SCs, target critical shield is considered as twice the target's luk 
-        criticalRate -= this._target!.luk * 2;
-
-        // Target under SC_SLEEP
-
-        // Manage skills increasing critical rate
-        switch (this._skill!.enum) {
-            case "SN_SHARPSHOOTING":
-                criticalRate += 200;
-                break;
-            case "NJ_KIRIKAGE":
-                criticalRate += 250 + 50 * this._skillLvl;
-                break;
-        }
+    private _canAttackCrit() : number {
+        let criticalRate = 0;
         
-        // FIXME Consider target critical defense SP_CRITICAL_DEF for PvP purpose?
+        // Only normal attacks and following skills can crit
+        if (!this._skill!.id||
+            ["SN_SHARPSHOOTING", "NJ_KIRIKAGE", "GS_CHAINACTION"].includes(this._skill!.enum)) {
+            criticalRate = Math.floor(this._session.crit()); // rA using integer for all stats variables
 
-        // FIXME: Maybe simply return the critical rate value to display it in each battle calc instance
-        return criticalRate > 0;    }
+            // Manage bCriticalAddRace
+            criticalRate += this._sessionData.bonus.criticalAddRace.get(this._target!.race);
+            // Manage bCriticalAddEle
+            criticalRate += this._sessionData.bonus.criticalAddEle.get(this._target!.element);
+            // Manage bCriticalLong
+            criticalRate += this._sessionData.bonus.stats.criticalLong;
+            // Manage bCriticalRate - Unused
+
+            // FIXME: Manage Status Change (SC) impacting critical rate
+            // Source under SC_CAMOUFLAGE
+
+            // In between those 2 SCs, target critical shield is considered as twice the target's luk 
+            criticalRate -= this._target!.luk * 0.2;
+
+            // Target under SC_SLEEP
+
+            // Manage skills increasing critical rate
+            switch (this._skill!.enum) {
+                case "SN_SHARPSHOOTING":
+                    criticalRate += 20;
+                    break;
+                case "NJ_KIRIKAGE":
+                    criticalRate += 25 + 5 * this._skillLvl;
+                    break;
+            }
+            
+            // FIXME Consider target critical defense SP_CRITICAL_DEF for PvP purpose?
+
+            // FIXME: Maybe simply return the critical rate value to display it in each battle calc instance
+        }
+
+        // Due to trigger sequence of multi-hits skills such as Double Attack, Triple Attack and Chain Action
+        // Critical rate should reflect the proc rate of such skills as they do not crit
+
+        // FIXME: New GS update allowing Chain Action to crit
+        let nonCriticalRate: number = 0;
+
+        return Math.floor(criticalRate);
+    }
+
+    private _canAttackHit(criticalRate: number): number {
+        // FIXME: Add precomputed flee to target
+        const nonCriticalRate: number = Math.max(0, 100 - criticalRate);
+        let hitRate: number = this._session.hit() + 80 - (this._target!.agi + this._target!.lv);
+
+		hitRate = Math.floor(100 * Math.min(100, criticalRate + nonCriticalRate * hitRate / 100)) / 100;
+
+        return hitRate;
+    }
 }
