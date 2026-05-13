@@ -1,0 +1,149 @@
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: hidden;
+  padding: 0 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.search-field {
+    width: 100%;
+}
+
+.sort-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  overflow: hidden;
+
+  .sort-label {
+    font-size: 12px;
+    color: var(--mat-sys-outline);
+    flex-shrink: 0;
+  }
+
+  .sort-btn {
+    height: 28px;
+    padding: 0 8px;
+    min-width: unset;
+    font-size: 12px;
+    flex-shrink: 0;
+
+    mat-icon { font-size: 14px; width: 14px; height: 14px; }
+    &.active {
+      background: var(--mat-sys-secondary-container);
+      border-color: var(--mat-sys-secondary);
+    }
+  }
+}
+
+.mob-viewport {
+  height: 480px;
+  width: 100%;
+}
+
+.mob-img-container {
+    width: 70px;
+    max-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mob-img {
+    max-width: 70px;
+    max-height: 70px;
+
+    img {
+        overflow: hidden;
+    }
+}
+
+.mob-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 72px;
+  margin: 4px 0;
+  padding: 0 12px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid var(--mat-sys-outline-variant);
+  background: var(--mat-sys-surface);
+  cursor: pointer;
+  overflow: hidden;
+  transition: background 0.15s, border-color 0.15s;
+  width: 100%;
+
+  &:hover { background: var(--mat-sys-surface-variant); }
+  &.selected {
+    border-color: var(--mat-sys-secondary);
+    background: var(--mat-sys-secondary-container);
+  }
+}
+
+.mob-identity {
+  display: flex;
+  flex-direction: column;
+  width: 160px;
+  flex-shrink: 0;
+  overflow: hidden;
+
+  .mob-name {
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .mob-id { font-size: 11px; color: var(--mat-sys-outline); }
+}
+
+/* Stats hide progressively based on available space */
+.mob-stats {
+  display: flex;
+  gap: 16px;
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+  min-width: 0;
+
+  .stat-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--mat-sys-outline);
+    white-space: nowrap;
+  }
+  .stat-value {
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* Hide stats progressively on smaller screens */
+  &.hide-below-700 { display: none; }
+  &.hide-below-600 { display: none; }
+  &.hide-below-500 { display: none; }
+}
+
+/* Show stats progressively as dialog grows */
+@media (min-width: 500px) {
+  .hide-below-500 { display: flex !important; }
+}
+@media (min-width: 600px) {
+  .hide-below-600 { display: flex !important; }
+}
+@media (min-width: 700px) {
+  .hide-below-700 { display: flex !important; }
+}

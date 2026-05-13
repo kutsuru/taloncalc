@@ -1,14 +1,85 @@
-<h2 mat-dialog-title>Select a monster</h2>
+<h2 mat-dialog-title>Select a Monster</h2>
+
 <mat-dialog-content>
-    <mat-form-field>
-        <mat-select [formControl]="selectedMob">
-            @for (mob of mobsAll(); track $index) {
-            <mat-option [value]="mob.mid">{{mob.name}} [{{mob.mid}}]</mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
+  <!-- Search + Sort -->
+  <mat-form-field appearance="outline" class="search-field" style="margin-top: 5px;">
+    <mat-label>Search by name or ID</mat-label>
+    <input matInput [formControl]="searchControl" placeholder="e.g. Poring or 1002" />
+    @if (searchControl.value) {
+      <button matIconButton matSuffix (click)="searchControl.setValue('')">
+        <mat-icon>close</mat-icon>
+      </button>
+    } @else {
+      <mat-icon matSuffix>search</mat-icon>
+    }
+  </mat-form-field>
+
+  <div class="sort-bar">
+    <span class="sort-label">Sort:</span>
+    @for (col of sortColumns; track col.key) {
+      <button mat-stroked-button class="sort-btn"
+              [class.active]="sortKey() === col.key"
+              (click)="setSort(col.key)">
+        {{ col.label }}
+        @if (sortKey() === col.key) {
+          <mat-icon>{{ sortAsc() ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+        }
+      </button>
+    }
+  </div>
+
+  @if (!searchControl.value) {
+    <div class="empty-state">
+      <mat-icon>manage_search</mat-icon>
+      <span>Type to search monsters</span>
+    </div>
+  } @else if (filteredMobs().length === 0) {
+    <div class="empty-state">
+      <mat-icon>search_off</mat-icon>
+      <span>No monsters found</span>
+    </div>
+  } @else {
+    <div class="results-count">{{ filteredMobs().length }} monster{{ filteredMobs().length !== 1 ? 's' : '' }} found</div>
+    <div class="mob-viewport">
+    <cdk-virtual-scroll-viewport itemSize="80" style="height: 100%;">
+        <div *cdkVirtualFor="let mob of filteredMobs(); trackBy: trackByMid"
+            class="mob-row"
+            [class.selected]="selectedMob.value === mob.mid"
+            (click)="selectedMob.setValue(mob.mid)">
+
+        <div class="mob-img-container">
+            <img class="mob-img"
+                [src]="'https://talontales.com/panel/data/monsters/' + mob.mid + '.gif'"
+                [alt]="mob.name"
+                (error)="onImgError($event)" />
+        </div>
+
+        <div class="mob-identity">
+            <span class="mob-name">{{ mob.name }}</span>
+            <span class="mob-id">#{{ mob.mid }}</span>
+        </div>
+
+        <div class="mob-stats">
+            <div class="stat"><span class="stat-label">HP</span><span class="stat-value">{{ formatNumber(mob.hp) }}</span></div>
+            <div class="stat"><span class="stat-label">ATK</span><span class="stat-value">{{ formatNumber(mob.minAtk) }}~{{ formatNumber(mob.maxAtk) }}</span></div>
+            <div class="stat"><span class="stat-label">DEF</span><span class="stat-value">{{ mob.def }}</span></div>
+            <div class="stat"><span class="stat-label">MDEF</span><span class="stat-value">{{ mob.mdef }}</span></div>
+            <div class="stat"><span class="stat-label">Race</span><span class="stat-value">{{ mob.race | titlecase }}</span></div>
+            <div class="stat"><span class="stat-label">Element</span><span class="stat-value">{{ mob.element | titlecase }} {{ mob.elementLv }}</span></div>
+            <div class="stat"><span class="stat-label">Size</span><span class="stat-value">{{ mob.size | titlecase }}</span></div>
+        </div>
+
+        @if (selectedMob.value === mob.mid) {
+            <mat-icon class="selected-icon">check_circle</mat-icon>
+        }
+
+        </div>
+    </cdk-virtual-scroll-viewport>
+    </div>
+  }
 </mat-dialog-content>
+
 <mat-dialog-actions align="end">
-    <button matButton [mat-dialog-close]="undefined">Cancel</button>
-    <button matButton [mat-dialog-close]="selectedMob.value" cdkFocusInitial>OK</button>
+  <button matButton [mat-dialog-close]="undefined">Cancel</button>
+  <button matButton [mat-dialog-close]="selectedMob.value" [disabled]="selectedMob.value === null">OK</button>
 </mat-dialog-actions>

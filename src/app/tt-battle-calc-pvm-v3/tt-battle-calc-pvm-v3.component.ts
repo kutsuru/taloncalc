@@ -12,7 +12,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TTCoreServiceV3 } from '../core/tt-core.v3.service';
 import { TTSessionInfoV3Service } from '../core/tt-session-info.v3.service';
-import { SelectMobDialogData, TtSelectMobDialogComponent } from '../tt-select-mob-dialog/tt-select-mob-dialog.component';
+import { TtSelectMobDialogComponent } from '../tt-select-mob-dialog/tt-select-mob-dialog.component';
 import { TtValueComponent } from '../tt-value/tt-value.component';
 import { TTBattleSessionServiceV3 } from '../core/tt-battle-session.v3.service';
 import { AmmoType, DBAmmo, DBElement, DBItem, EndowValue } from '../core/tt-models.v3';
@@ -171,10 +171,7 @@ export class TtBattleCalcPvmV3Component {
 
   /*** public functions ***/
   changeTarget() {
-    this._dialog.open<TtSelectMobDialogComponent, SelectMobDialogData, number | undefined>(TtSelectMobDialogComponent, {
-      data: {
-        target: this.calcTarget()
-      }
+    this._dialog.open<TtSelectMobDialogComponent>(TtSelectMobDialogComponent, {
     })
       .afterClosed().subscribe((newMobId) => {
         if (newMobId !== undefined) {
