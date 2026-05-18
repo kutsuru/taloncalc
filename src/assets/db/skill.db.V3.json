@@ -10495,7 +10495,7 @@
     "isPassive": true,
     "isBuff": false,
     "job": "0x9",
-    "enum": "NO_ENUM"
+    "enum": "SN_NO_DEATH_BONUS"
   },
   "Married [All Stats - 1]": {
     "id": 310,

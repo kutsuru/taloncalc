@@ -1,7 +1,7 @@
 /*** imports ***/
 import { computed, effect, inject, Injectable, Signal, signal, untracked, WritableSignal } from "@angular/core";
 import { BonusID, BonusSubstitution, TTBonusEngineService } from "./item-script/tt-bonus-engine.service";
-import { createEmptySessionBonus, defaultEquipSlotState, SESSION_INFO_DEFAULT } from "./session-info-default";
+import { createEmptySessionBonus, defaultBaseStats, defaultEquipSlotState, SESSION_INFO_DEFAULT } from "./session-info-default";
 import { TTCoreService } from "./tt-core.service";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
 import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, CLASS_SPECIFIC_SQI, ClassWithSQI, DBItemCombo, DBJob, DBSkill, DBSkillEnum, DBWeaponTypeKey, DBWeaponTypeLeft, EQUIP_META, EquipSlotState, EquipState, FoodStatsNames, ItemLocations, SessionBonus, SkillBuff } from "./tt-models.v3";
@@ -53,7 +53,8 @@ export class TTSessionInfoV3Service {
     });
 
     /* base stats */
-    baseStats: WritableSignal<BaseStatsAs<number>> = signal({ ...SESSION_INFO_DEFAULT.baseStats });
+    baseStatsPure: WritableSignal<BaseStatsAs<number>> = signal(defaultBaseStats());
+    baseStats: Signal<BaseStatsAs<number>>;
     statPointsRemaining: Signal<number>;
 
     /* total stats */
@@ -193,6 +194,22 @@ export class TTSessionInfoV3Service {
                 return [];
             }
         });
+        this.baseStats = computed(() => {
+            const baseStatsPure = this.baseStatsPure();
+            const stats = { ...baseStatsPure };
+
+            /* SN no death bonus counts as base stats */
+            if (this.getSkillPassiveLvl('SN_NO_DEATH_BONUS') > 0) {
+                stats.agi += 10;
+                stats.dex += 10;
+                stats.int += 10;
+                stats.luk += 10;
+                stats.str += 10;
+                stats.vit += 10;
+            }
+
+            return stats;
+        })
         this.totalStats = computed(() => {
             let bonus = this.bonus();
             let baseStats = this.baseStats();
@@ -562,7 +579,7 @@ export class TTSessionInfoV3Service {
         // FIXME: destruct maybe?
         this.jobClassName.set(builder.jobClassName);
         this.level.set(builder.level);
-        this.baseStats.set(builder.baseStats);
+        this.baseStatsPure.set(builder.baseStats);
 
         /* equip */
         if (builder.equip) {

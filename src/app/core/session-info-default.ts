@@ -1,5 +1,5 @@
 import { SessionInfoV2 } from "./models";
-import { EQUIP_META, EquipSlotState, EquipState, SessionBonus } from "./tt-models.v3";
+import { BaseStatsAs, EQUIP_META, EquipSlotState, EquipState, SessionBonus } from "./tt-models.v3";
 import { TTCoreService } from "./tt-core.service";
 import { DefaultMap, DefaultMaxMap } from "./utils";
 
@@ -50,9 +50,9 @@ export function createEmptySessionBonus(): SessionBonus {
         skillIgnoreDefEle: new DefaultMap(() => []),
         // falgs will start empty
         flags: new DefaultMap(false),
-        
+
         skills: new DefaultMaxMap(0),
-        autoBonus: new Map()        
+        autoBonus: new Map()
     };
 }
 export function defaultEquipSlotState(): EquipSlotState {
@@ -67,6 +67,17 @@ export function defaultEquipState(): EquipState {
     return Object.fromEntries(
         Object.keys(EQUIP_META).map(slot => [slot, defaultEquipSlotState()])
     ) as EquipState;
+}
+
+export function defaultBaseStats(): BaseStatsAs<number> {
+    return {
+        str: 1,
+        agi: 1,
+        vit: 1,
+        int: 1,
+        dex: 1,
+        luk: 1
+    }
 }
 
 export const SESSION_INFO_DEFAULT: SessionInfoV2 = {
