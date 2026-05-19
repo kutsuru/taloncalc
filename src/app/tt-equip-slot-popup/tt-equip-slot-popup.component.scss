@@ -79,3 +79,18 @@
         border-top: 1px solid #ccc;
     }
 }
+
+// Mobile: fullscreen bottom sheet
+@media (max-width: 600px) {
+    .popup {
+        position: fixed;
+        inset: auto 0 0;
+        transform: none;
+        border-radius: 12px 12px 0 0;
+        min-width: unset;
+    }
+
+    .arrow {
+        display: none;
+    }
+}

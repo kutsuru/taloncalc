@@ -1,5 +1,5 @@
 <div class="backdrop" (click)="closed.emit()"></div>
-<div class="popup popup--right">
+<div class="popup" [class]="'popup--' + popupSide()">
     <div class="arrow"></div>
     <!-- refine -->
     @if(meta().canRefine){
