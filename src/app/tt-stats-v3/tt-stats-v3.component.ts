@@ -95,10 +95,9 @@ export class TtStatsV3Component {
   }
 
   #computeBonusStat(stat: BaseStatsNames): number {
-    const bonus = this.session.bonus();
-    const base = this.session.baseStats();
     const basePure = this.session.baseStatsPure();
+    const total = this.session.totalStats();
 
-    return bonus.stats[stat] + (base[stat] - basePure[stat]);
+    return total[stat] - basePure[stat];
   }
 }

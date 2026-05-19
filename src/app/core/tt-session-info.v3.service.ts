@@ -19,14 +19,15 @@ import { BuildData } from "./tt-body-builder.service";
  *      - Auto-Cast [Frost Joker] when attacking at [Bard Dancer Spirit] level
  */
 
-/** Dependencies 
- * BaseStats        Pure-Stats without any bonus
- * Equip            Pure equip,cards,refines,enchants
- * 
- * Bonus            f(BaseStats, Job, Equip, ...)          
- * TotalStats       f(BaseStats, Bonus)
- * "DerivedStats"   ATK/Flee/... f("all above")
-**/
+/** Signal dependency graph for TTSessionInfoV3Service */
+/*
+ * See docs/tt-session-info-v3-service-signal-graph.md for the full signal dependency tree.
+ *
+ * This service uses Angular signals for:
+ *   - raw inputs and state storage
+ *   - computed values derived from those inputs
+ *   - effects that update signals in response to other signal changes
+ */
 
 /*** types ***/
 /*** definitons ***/
@@ -55,6 +56,7 @@ export class TTSessionInfoV3Service {
     /* base stats */
     baseStatsPure: WritableSignal<BaseStatsAs<number>> = signal(defaultBaseStats());
     baseStats: Signal<BaseStatsAs<number>>;
+    jobBonusStats: Signal<BaseStatsAs<number>>;
     statPointsRemaining: Signal<number>;
 
     /* total stats */
@@ -210,17 +212,39 @@ export class TTSessionInfoV3Service {
 
             return stats;
         })
+        this.jobBonusStats = computed(() => {
+            const jobClass = this.jobClass();
+            const level = this.level();
+            const stats = defaultBaseStats();
+
+            if (jobClass) {
+                for (let stat in jobClass.jobBonus) {
+                    let bonus = jobClass.jobBonus[stat as BaseStatsNames].reduce((sum, bonusAt) => {
+                        if (bonusAt <= level.job) {
+                            return sum + 1;
+                        }
+                        else {
+                            return sum;
+                        }
+                    }, 0);
+                    stats[stat] = bonus;
+                }
+            }
+
+            return stats;
+        });
         this.totalStats = computed(() => {
             let bonus = this.bonus();
             let baseStats = this.baseStats();
+            let jobBonusStats = this.jobBonusStats();
 
             return {
-                agi: baseStats.agi + bonus.stats.agi,
-                str: baseStats.str + bonus.stats.str,
-                vit: baseStats.vit + bonus.stats.vit,
-                int: baseStats.int + bonus.stats.int,
-                dex: baseStats.dex + bonus.stats.dex,
-                luk: baseStats.luk + bonus.stats.luk
+                agi: baseStats.agi + bonus.stats.agi + jobBonusStats.agi,
+                str: baseStats.str + bonus.stats.str + jobBonusStats.str,
+                vit: baseStats.vit + bonus.stats.vit + jobBonusStats.vit,
+                int: baseStats.int + bonus.stats.int + jobBonusStats.int,
+                dex: baseStats.dex + bonus.stats.dex + jobBonusStats.dex,
+                luk: baseStats.luk + bonus.stats.luk + jobBonusStats.luk
             };
         });
         this.levelMax = computed(() => {
@@ -971,21 +995,6 @@ export class TTSessionInfoV3Service {
         const petId = this.pet();
         const autoBonus = this.#autoBonusState();
         // FIXME: how to handle getskilllv of active skills? not needed?
-
-        // job level stats bonus
-        if (jobClass) {
-            for (let stat in jobClass.jobBonus) {
-                let bonus = jobClass.jobBonus[stat as BaseStatsNames].reduce((sum, bonusAt) => {
-                    if (bonusAt <= level.job) {
-                        return sum + 1;
-                    }
-                    else {
-                        return sum;
-                    }
-                }, 0);
-                res.stats[stat] = bonus;
-            }
-        }
 
         /* create base substituion obj FIXME*/
         const bonusSubs: Partial<BonusSubstitution> = {
