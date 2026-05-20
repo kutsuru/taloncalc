@@ -6,7 +6,8 @@ import { TTCoreService } from "./tt-core.service";
 import { TTCoreServiceV3 } from "./tt-core.v3.service";
 import { BaseStatsAs, BaseStatsNames, BattleCalcEntry, CLASS_SPECIFIC_SQI, ClassWithSQI, DBItemCombo, DBJob, DBSkill, DBSkillEnum, DBWeaponTypeKey, DBWeaponTypeLeft, EQUIP_META, EquipSlotState, EquipState, FoodStatsNames, ItemLocations, SessionBonus, SkillBuff } from "./tt-models.v3";
 import { DefaultMap, DefaultMaxMap, isTwoHandedWeapon } from "./utils";
-import { BuildData } from "./tt-body-builder.service";
+import { BuildData, TTBodyBuilderService } from "./tt-body-builder.service";
+import { TTSnackbarService } from "../tt-snackbar/tt-snackbar.service";
 
 /**
  * FIXME FIXME FIXME FIXME FIXME 
@@ -40,6 +41,8 @@ export class TTSessionInfoV3Service {
     /* injects */
     readonly #core = inject(TTCoreServiceV3);
     readonly #bonusSession = inject(TTBonusEngineService);
+    readonly #bodyBuilder = inject(TTBodyBuilderService);
+    readonly #snackBar = inject(TTSnackbarService);
 
     /* job data */
     jobClassName = signal('');
@@ -601,6 +604,9 @@ export class TTSessionInfoV3Service {
     }
     public applyBuild(builder: BuildData) {
         // FIXME: destruct maybe?
+        if(!this.#bodyBuilder.verifyBuild(builder)){
+            this.#snackBar.show(`Loaded build includes invalid data`, 'debug');
+        }
         this.jobClassName.set(builder.jobClassName);
         this.level.set(builder.level);
         this.baseStatsPure.set(builder.baseStats);

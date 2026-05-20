@@ -22,7 +22,7 @@ export class TtSettingsService {
     public showSettings$: Observable<boolean>;
 
     /* signals */
-    debug = signal(false);
+    debug = signal(!environment.production);
 
     constructor() {
         this._showSettings = new BehaviorSubject(false);

@@ -53,7 +53,7 @@ export class DebugComponent {
       leftHand: {
         item: 2161,
         cards: [],
-        enchants: [4710, 4720],
+        enchants: [4771, 4780],
         refine: 7,
       },
       upperHg: {
@@ -77,7 +77,7 @@ export class DebugComponent {
       armor: {
         item: 2374,
         cards: [4451],
-        enchants: [4712],
+        enchants: [4773],
         refine: 7,
       },
       garment: {
