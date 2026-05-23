@@ -38,9 +38,12 @@ export const INLINE_FUNCTIONS: Record<string, InlineFunction> = {
                 throw new Error('Unknown callfunc ' + name);
         }
     },
-    // FIXME: check also for cards
     isequipped: (be, opts, ...gears: number[]) => {
-        const equipedIds = Object.values(be.sessionOpts.equip).map(_ => _.item);
+        const equipedIds = Object.values(be.sessionOpts.equip).reduce((allIDs, _) => {
+            allIDs.push(_.item, ..._.cards);
+            return allIDs;
+        }, [] as number[]);
+        console.log(equipedIds);
         return gears.every(gear => equipedIds.includes(gear));
     },
     readparam: (be, opts, param: string) => {

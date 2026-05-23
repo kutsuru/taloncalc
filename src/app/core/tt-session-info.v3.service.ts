@@ -301,7 +301,6 @@ export class TTSessionInfoV3Service {
         });
         this.def = computed(() => this.#computeDEF());
         this.sqiEquipped = computed(() => {
-            // FIXME: make a object with "job specifc SQi instead?"
             const equip = this.#equipmentState();
             const jobClassName = this.jobClassName();
 
