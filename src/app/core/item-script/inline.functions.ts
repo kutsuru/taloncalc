@@ -43,7 +43,6 @@ export const INLINE_FUNCTIONS: Record<string, InlineFunction> = {
             allIDs.push(_.item, ..._.cards);
             return allIDs;
         }, [] as number[]);
-        console.log(equipedIds);
         return gears.every(gear => equipedIds.includes(gear));
     },
     readparam: (be, opts, param: string) => {
