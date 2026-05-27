@@ -1144,8 +1144,6 @@ export class TTSessionInfoV3Service {
         for (const abID of autoBonus) {
             const abScripts = res.autoBonus.get(abID);
             if (abScripts) {
-                console.log('Apply autobonus for', abID);
-                console.log(abScripts);
                 for (const script of abScripts) {
                     this.#bonusSession.applyBonus('autoBonus', abID, script);
                 }

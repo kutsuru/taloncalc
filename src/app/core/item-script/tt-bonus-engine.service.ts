@@ -1,7 +1,7 @@
 /*** imports ***/
 import { inject, Injectable } from "@angular/core";
 import { getItemTypeValue, getJobValue, getWeaponTypeValue } from "../rAthena/ra-utils";
-import { createEmptySessionBonus, defaultEquipState, SESSION_INFO_DEFAULT } from "../session-info-default";
+import { createEmptySessionBonus, defaultBaseStats, defaultEquipState, SESSION_INFO_DEFAULT } from "../session-info-default";
 import { TTCoreServiceV3 } from "../tt-core.v3.service";
 import { BaseStatsAs, DBElement, DBJob, DBMobClass, DBMobRace, DBWeaponTypeKey, DBWeaponTypeLeft, EquipState, SESSION_BONUS_FLAGS, SessionBonus, SessionBonusFlag, SkillBuff } from "../tt-models.v3";
 import { DefaultMap, parseDBElement, parseDBMobClass, parseDBMobRace, parseDBMobRace2, parseDBMobSize } from "../utils";
@@ -230,6 +230,7 @@ const isBonusFlag = (key: string): key is SessionBonusFlag => {
  * set var,value                Handle as Assignment too
  * defRatioAtkClass for skills
  * bonus3 bSkillNoRequire,\"ASC_EDP\",NoReq_Item,3300; for SinX bonus maybe?  
+ * autobonus2/3/4               Some bonus only trigger on some skills
  */
 
 /*** service ***/
@@ -291,10 +292,9 @@ export class TTBonusEngineService {
 
         /* save session */
         this.session = emptyBonus;
-        // FIXME create default opts for this serivce
         this.sessionOpts = {
             level: { base: 0, job: 0 },
-            baseStats: { ...SESSION_INFO_DEFAULT.baseStats },
+            baseStats: defaultBaseStats(),
             equip: defaultEquipState(),
             lefhtHandtType: 'Unarmed',
             rightHandType: 'Unarmed',
@@ -507,7 +507,6 @@ export class TTBonusEngineService {
     }
 
     private _computeBonus(args: string[]) {
-        // FIXME: check args length
         let bonusType = transformKey(args[0]);
         let valRaw = args[1];
 
@@ -583,7 +582,6 @@ export class TTBonusEngineService {
 
         if (BONUS2_TO_IGNORE.has(bonusType)) return;
 
-        //FIXME: check for args length
         let value = this._resolveExpr(valRaw) as number;
 
         /* check if special bonus2 */
@@ -647,38 +645,66 @@ export class TTBonusEngineService {
 
     private _computeAutobonus(args: string[]) {
         let [script, ...rest] = args;
-        // console.log(script);
         script = this.#extractNestedScript(script);
-        /* get current scripts */
-        let scripts = this.session.autoBonus.get(this.#currentApplier!);
-        if (!scripts) {
-            scripts = [];
-        }
-        scripts.push(script);
+        if (script.length > 0) {
+            /* get current scripts */
+            let scripts = this.session.autoBonus.get(this.#currentApplier!);
+            if (!scripts) {
+                scripts = [];
+            }
+            scripts.push(script);
 
-        /* save / override current scripts */
-        this.session.autoBonus.set(this.#currentApplier!, scripts);
+            /* save / override current scripts */
+            this.session.autoBonus.set(this.#currentApplier!, scripts);
+        }
     }
-    // FIXME: add autobonus2 to session and allow user to manuelly enable it?
+
     private _computeAutobonus2(args: string[]) {
         let [script, ...rest] = args;
         script = this.#extractNestedScript(script);
+        if (script.length > 0) {
+            /* get current scripts */
+            let scripts = this.session.autoBonus.get(this.#currentApplier!);
+            if (!scripts) {
+                scripts = [];
+            }
+            scripts.push(script);
 
-        throw new Error(`Autobonus2 not implemented (${script})`);
+            /* save / override current scripts */
+            this.session.autoBonus.set(this.#currentApplier!, scripts);
+        }
     }
-    // FIXME: add autobonus3 to session and allow user to manuelly enable it?
+
     private _computeAutobonus3(args: string[]) {
         let [script, ...rest] = args;
         script = this.#extractNestedScript(script);
+        if (script.length > 0) {
+            /* get current scripts */
+            let scripts = this.session.autoBonus.get(this.#currentApplier!);
+            if (!scripts) {
+                scripts = [];
+            }
+            scripts.push(script);
 
-        throw new Error(`Autobonus3 not implemented (${script})`);
+            /* save / override current scripts */
+            this.session.autoBonus.set(this.#currentApplier!, scripts);
+        }
     }
-    // FIXME: add autobonus4 to session and allow user to manuelly enable it?
+
     private _computeAutobonus4(args: string[]) {
         let [script, ...rest] = args;
         script = this.#extractNestedScript(script);
+        if (script.length > 0) {
+            /* get current scripts */
+            let scripts = this.session.autoBonus.get(this.#currentApplier!);
+            if (!scripts) {
+                scripts = [];
+            }
+            scripts.push(script);
 
-        throw new Error(`Autobonus4 not implemented (${script})`);
+            /* save / override current scripts */
+            this.session.autoBonus.set(this.#currentApplier!, scripts);
+        }
     }
     // FIXME: only usables so far
     private _computeStatusEffectFunc2(args: string[]) {
@@ -760,11 +786,18 @@ export class TTBonusEngineService {
                 throw new Error('Unknown callfunc ' + fnName);
         }
     }
-    // FIXME: this needs antoher AST parsing and handling
+    
     private _computeBonusScript(args: string[]) {
         let [script, ...rest] = args;
         script = this.#extractNestedScript(script);
-        throw new Error(`bonus_script not implemented (${script})`);
+        if (script.length > 0) {
+            /* execute the script */
+            let scriptParsed = this._prepareBonus(script, this._localOpts.customSubs);
+            let parser = new TTItemScriptParser(scriptParsed);
+            let subAST = parser.parse();
+            /* run script */
+            this._evaluateNodes(subAST);
+        }
     }
 
     // FIXME: return type as generic?
@@ -847,6 +880,6 @@ export class TTBonusEngineService {
         if (match) {
             res = match[1];
         }
-        return res;
+        return res.trim();
     }
 }
