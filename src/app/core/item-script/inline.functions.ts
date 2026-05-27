@@ -91,21 +91,17 @@ export const INLINE_FUNCTIONS: Record<string, InlineFunction> = {
         return opts.refine ?? 0;
     },
     isequippedcnt: (be, opts, itemId: number) => {
-        // FIXME: can be optimized now with new equp structure
         // equips
         const equips = Object.values(be.sessionOpts.equip);
         let cntTotal = equips.reduce((curCnt: number, curEquip) => {
+            // item
             if (curEquip.item === itemId) curCnt++;
-            return curCnt;
-        }, 0);
-        // cards
-        const cards = Object.values(be.sessionOpts.equip).map(_ => _.cards);
-        cntTotal = cards.reduce((curCnt: number, curCards) => {
-            for (const entry of curCards) {
-                if (entry === itemId) curCnt++;
+            // cards
+            for (const card of curEquip.cards) {
+                if (card === itemId) curCnt++;
             }
             return curCnt;
-        }, cntTotal);
+        }, 0);
         return cntTotal;
     },
     strcharinfo: (be, opts, variant: CharInfoIndex) => {
