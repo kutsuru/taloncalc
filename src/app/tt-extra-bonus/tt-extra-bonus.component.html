@@ -1,4 +1,4 @@
 @for (autobonus of autobonusList(); track $index) {
 <mat-slide-toggle [checked]="autobonus.isActive"
-    (change)="session.toggleAutoBonus(autobonus.id)">{{autobonus.name}}</mat-slide-toggle>
+    (change)="session.toggleAutoBonus(autobonus.id)">{{autobonus.name}} @if(autobonus.bonus){[{{autobonus.bonus}}]}</mat-slide-toggle>
 }

@@ -171,6 +171,8 @@ export class TTSessionInfoV3Service {
                 // this.updateRightHandType("Whip");
                 // this.updateEquipmentId('rightHand', 1990);
                 this.updateEquipmentId('leftHand', 2150);
+                this.updateRightHandType("One-Handed Sword");
+                this.updateEquipmentId('rightHand', 13421);
             }
         })
 
@@ -603,7 +605,7 @@ export class TTSessionInfoV3Service {
     }
     public applyBuild(builder: BuildData) {
         // FIXME: destruct maybe?
-        if(!this.#bodyBuilder.verifyBuild(builder)){
+        if (!this.#bodyBuilder.verifyBuild(builder)) {
             this.#snackBar.show(`Loaded build includes invalid data`, 'debug');
         }
         this.jobClassName.set(builder.jobClassName);
