@@ -296,7 +296,7 @@ This view starts from derived output signals and shows the base signals that fee
 ### effect 1 — core load
 
 - writes: `jobClassName`, `#equipmentState` (via `updateEquipmentId('leftHand', 2150)`)
-- triggers: `#core.$loaded()`
+- triggers: `---`
 
 ### effect 2 — update equips if job class changes
 
@@ -306,12 +306,12 @@ This view starts from derived output signals and shows the base signals that fee
 ### effect 3 — load and map buff skills
 
 - writes: `#skillsBuffState`
-- reads: `#core.$loaded()`, `#core.skillDB`
+- reads: `#core.skillDB`
 
 ### effect 4 — load and map passive skills
 
 - writes: `#skillsPassiveState`
-- reads: `#core.$loaded()`, `jobClass`, `#core.skillDB`
+- reads:  `jobClass`, `#core.skillDB`
 
 ### effect 5 — clear SQI bonus on SQI changes
 

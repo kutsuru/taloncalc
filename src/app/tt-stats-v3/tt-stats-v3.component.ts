@@ -54,13 +54,8 @@ export class TtStatsV3Component {
   lukBonus = computed(() => this.#computeBonusStat('luk'));
 
   constructor() {
-    /* core service */
-    effect(() => {
-      if (this._core.$loaded()) {
-        this._allJobs = this._core.allJobNames;
-        this.jobClasses = this._allJobs;
-      }
-    });
+    this._allJobs = this._core.allJobNames;
+    this.jobClasses = this._allJobs;
     /* effects */
     effect(() => {
       this.selectedJob.setValue(this.session.jobClassName(), { emitEvent: false });

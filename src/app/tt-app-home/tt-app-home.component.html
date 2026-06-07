@@ -1,0 +1,127 @@
+<!-- header / toolbar -->
+<mat-toolbar>
+  <img src="/assets/img/ttcalc_logo.png" id="toolbar-logo" />
+  <span class="filler"></span>
+  <tt-themer-v3 />
+</mat-toolbar>
+<!-- main content -->
+<div class="drawer-content">
+  <!-- build loader -->
+  <tt-card [expanded]="false">
+    <header>Build Loader / Selector</header>
+    FIX ME
+  </tt-card>
+
+  <!-- ###################### V3 START ###################### -->
+  <!-- ####################### V3 END ####################### -->
+  <tt-card [expanded]="false">
+    <header>Debug</header>
+    <app-debug />
+  </tt-card>
+  <tt-card [expanded]="true">
+    <header>Test Runner</header>
+    <tt-battle-test-runner />
+  </tt-card>
+  <tt-card [expanded]="false">
+    <header>Stats</header>
+    <tt-stats-v3 />
+  </tt-card>
+  <tt-card [expanded]="false">
+    <header>Stats Info</header>
+    <tt-stats-info-v3 />
+  </tt-card>
+  <tt-card [expanded]="true" class="full">
+    <header>Equipment</header>
+    <tt-equip-v3 />
+  </tt-card>
+  <tt-card [expanded]="true">
+    <header>SQI Bonus</header>
+    <!-- FIXME only if equipped?-->
+    <tt-sqi-bonus />
+  </tt-card>
+  <tt-card [expanded]="true">
+    <header>Extra Bonus</header>
+    <!-- FIXME only if equipped?-->
+    <tt-extra-bonus />
+  </tt-card>
+  <tt-card [expanded]="false">
+    <header>Buffs</header>
+    <tt-buff-v3 />
+  </tt-card>
+  <tt-card [expanded]="false">
+    <header>Passive Skills</header>
+    <tt-passive-v3 />
+  </tt-card>
+  <tt-card [expanded]="false" class="full">
+    <header>Food</header>
+    <tt-food-v3 />
+  </tt-card>
+  <tt-card [expanded]="false" class="full">
+    <header>Battle Calculation</header>
+    <tt-battle-calc-v3 />
+  </tt-card>
+  <!-- ###################### V2 START ###################### -->
+  <!-- <tt-card>
+    <header>Stats</header>
+    <tt-stats></tt-stats>
+  </tt-card>
+  @if(!ttSettings.popup.statsInfo){
+  <tt-card>
+    <header>Stats Info</header>
+    <tt-stats-info></tt-stats-info>
+  </tt-card>
+  }
+  @if(!ttSettings.popup.buffs){
+  <tt-card>
+    <header>Buffs Selection</header>
+    <tt-buff></tt-buff>
+  </tt-card>
+  }
+  <tt-card>
+    <header>Passive Selection</header>
+    <tt-passive></tt-passive>
+  </tt-card>
+  <tt-card>
+    <header>Equips</header>
+    <tt-equip></tt-equip>
+  </tt-card>
+  <tt-card>
+    <header>Battle calculation</header>
+    <tt-battle-calc></tt-battle-calc>
+  </tt-card>
+  <tt-card>
+    <header>Food Selection</header>
+    <tt-food></tt-food>
+  </tt-card> -->
+  <!-- DEBUG (V2) -->
+  <!-- ####################### V2 END ####################### -->
+  <!-- mask generator -->
+  <!-- <tt-mask-generator></tt-mask-generator> -->
+</div>
+<!-- sidenav -->
+<div class="drawer-sidenav">
+  <div class="sidenav-content">
+    <!-- static buttons -->
+    <button mat-mini-fab (click)="ttSettings.showSettings()">
+      <mat-icon>settings</mat-icon>
+    </button>
+    <!-- dynamic buttons for popups -->
+    @if (ttSettings.popup.statsInfo) {
+    <tt-popup-button [popup]="popStatsInfo" icon="info"></tt-popup-button>
+    }
+    @if (ttSettings.popup.buffs) {
+    <tt-popup-button [popup]="popBuffs" icon="auto_awesome"></tt-popup-button>
+    }
+  </div>
+</div>
+<!-- popups -->
+<tt-popup-group>
+  <tt-popup #popStatsInfo>
+    <tt-stats-info></tt-stats-info>
+  </tt-popup>
+  <tt-popup #popBuffs>
+    <tt-buff></tt-buff>
+  </tt-popup>
+</tt-popup-group>
+<!-- settings -->
+<tt-settings></tt-settings>

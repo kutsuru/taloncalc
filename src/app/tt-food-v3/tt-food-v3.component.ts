@@ -30,7 +30,6 @@ export class TtFoodV3Component {
   /* stat foods */
   readonly statNames = ['STR', 'AGI', 'VIT', 'INT', 'DEX', 'LUK'];
   allFoods = computed(() => {
-    this._core.$loaded();
     return Array.from(this._core.foodDB.values());
   });
 

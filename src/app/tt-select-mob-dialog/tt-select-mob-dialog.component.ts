@@ -64,7 +64,6 @@ export class TtSelectMobDialogComponent {
 
   /* all mobs from DB */
   private mobsAll = computed(() => {
-    this._core.$loaded();
     return [...this._core.mobDB.values()];
   });
 

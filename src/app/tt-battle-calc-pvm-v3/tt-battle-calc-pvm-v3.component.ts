@@ -56,7 +56,6 @@ export class TtBattleCalcPvmV3Component {
 
   /* target */
   target = computed(() => {
-    this._core.$loaded();
     return this._core.mobDB.get(this.calcTarget()); // TODO: Default mob??
   });
   targetUrl = computed(() => {

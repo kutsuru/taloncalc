@@ -1,14 +1,14 @@
 import { enableProdMode, provideZonelessChangeDetection } from '@angular/core';
 
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions } from '@angular/material/core';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { AppComponent } from './app/app.component';
 import { FilteredKeyValuePipe } from './app/core/filtered-key-value.pipe';
 import { TtLvArrayPipe } from './app/core/tt-lv-array.pipe';
 import { environment } from './environments/environment';
-import { AppComponent } from './app/app.component';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions } from '@angular/material/core';
 
 if (environment.production) {
   enableProdMode();

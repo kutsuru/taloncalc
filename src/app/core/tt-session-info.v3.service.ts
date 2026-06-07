@@ -154,27 +154,23 @@ export class TTSessionInfoV3Service {
     battleCalcsPVM = this.#battleCalcsPVM.asReadonly();
 
     constructor() {
-        /* wait for core to be loaded */
-        effect(() => {
-            if (this.#core.$loaded()) {
-                const allJobs = this.#core.allJobNames;
-                this.jobClassName.set(allJobs[0]);
+        // HINT: core is loaded due to the loading strat of the app
+        const allJobs = this.#core.allJobNames;
+        this.jobClassName.set(allJobs[0]);
 
-                // DEBUG BUILD 1
-                // this.jobClassName.set('Lord Knight');   // FIXME: debug
-                // this.updateRightHandType("One-Handed Spear");
-                // this.updateEquipmentId("rightHand", 1430);
-                // this._sqiBonusState.set(["1430_12", "1430_8"]);
+        // DEBUG BUILD 1
+        // this.jobClassName.set('Lord Knight');   // FIXME: debug
+        // this.updateRightHandType("One-Handed Spear");
+        // this.updateEquipmentId("rightHand", 1430);
+        // this._sqiBonusState.set(["1430_12", "1430_8"]);
 
-                // DEBUG BUILD 2
-                this.jobClassName.set('Paladin');
-                // this.updateRightHandType("Whip");
-                // this.updateEquipmentId('rightHand', 1990);
-                this.updateEquipmentId('leftHand', 2150);
-                this.updateRightHandType("One-Handed Sword");
-                this.updateEquipmentId('rightHand', 13421);
-            }
-        })
+        // DEBUG BUILD 2
+        this.jobClassName.set('Paladin');
+        // this.updateRightHandType("Whip");
+        // this.updateEquipmentId('rightHand', 1990);
+        this.updateEquipmentId('leftHand', 2150);
+        this.updateRightHandType("One-Handed Sword");
+        this.updateEquipmentId('rightHand', 13421);
 
         /* create computed signals */
         this.jobClass = computed(() => {
@@ -390,34 +386,31 @@ export class TTSessionInfoV3Service {
         });
 
         // load and map buff skills
-        effect(() => {
-            this.#core.$loaded();
-            const resBuff: SkillBuff[] = [];
-            for (const [skillID, skill] of this.#core.skillDB) {
-                let value: number | boolean;
-                if (skill.isBuff && skill.type) {
-                    if (skill.type === 'check') {
-                        value = false;
-                    }
-                    else {
-                        value = 0;
-                    }
-                    resBuff.push({
-                        id: skill.id,
-                        maxLevel: skill.maxLevel,
-                        name: skill.name,
-                        enum: skill.enum,
-                        value: value,
-                        type: skill.type,
-                        itemScript: skill.itemScript
-                    });
+        const resBuff: SkillBuff[] = [];
+        for (const [skillID, skill] of this.#core.skillDB) {
+            let value: number | boolean;
+            if (skill.isBuff && skill.type) {
+                if (skill.type === 'check') {
+                    value = false;
                 }
+                else {
+                    value = 0;
+                }
+                resBuff.push({
+                    id: skill.id,
+                    maxLevel: skill.maxLevel,
+                    name: skill.name,
+                    enum: skill.enum,
+                    value: value,
+                    type: skill.type,
+                    itemScript: skill.itemScript
+                });
             }
-            this.#skillsBuffState.set(resBuff);
-        });
+        }
+        this.#skillsBuffState.set(resBuff);
+
         // load and map passive skills
         effect(() => {
-            this.#core.$loaded();
             const job = this.jobClass();
             if (!job) return;
             const jobMask = Number(job.mask);

@@ -119,11 +119,8 @@ export class TtEquipSlotComponent {
   });
   allSlotItems: Signal<DBItem[]> = computed(() => {
     /* triggers */
-    const isLoaded = this.#core.$loaded();
     const iFilter = this.itemFilter();
-
-    if (!isLoaded) return [];
-
+    
     const res: DBItem[] = [];
     for (const [id, item] of this.#core.itemDB) {
       if (iFilter.type === 'equip' && item.location === iFilter.location) {

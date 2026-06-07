@@ -29,7 +29,6 @@ export class TtBuffV3Component {
   private readonly _core = inject(TTCoreServiceV3);
 
   speedPotions: Signal<SimpelSelect<number>[]> = computed(() => {
-    this._core.$loaded();
     // this.session.jobClass();  // FIXME: filter the potions
     const res: SimpelSelect<number>[] = [];
 
@@ -46,8 +45,6 @@ export class TtBuffV3Component {
   });
 
   pets: Signal<SimpelSelect<number>[]> = computed(() => {
-    this._core.$loaded();
-
     const res: SimpelSelect<number>[] = [{ name: 'No pet', value: 0 }];
     for (const pet of this._core.petDB.valuesSorted()) {
       res.push({

@@ -1,0 +1,10 @@
+@let p = loader.progress();
+@let label = loader.currentLabel();
+<mat-card appearance="outlined">
+    <mat-spinner></mat-spinner>
+    <h3>Loading {{label ?? 'Core'}}...</h3>
+    @if (p) {
+        <progress [value]="p.completed" [max]="p.total"></progress>
+        <p>{{p.completed}} / {{p.total}}</p>
+    }
+</mat-card>

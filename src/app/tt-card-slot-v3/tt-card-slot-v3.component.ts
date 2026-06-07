@@ -30,7 +30,6 @@ export class TtCardSlotV3Component {
 
   /* varbs */
   cardName = computed(() => {
-    this._core.$loaded();
     const card = this._core.itemDB.get(this.cardId());
     return card ? card.name : '';
   });
