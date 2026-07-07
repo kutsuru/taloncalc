@@ -83,6 +83,11 @@ export const INLINE_FUNCTIONS: Record<string, InlineFunction> = {
                 return be.sessionOpts.equip.shoes.refine;
             case 'EQI_HEAD_TOP':
                 return be.sessionOpts.equip.upperHg.refine;
+            case 'EQI_COMPOUND_ON':
+                if (opts.location) {
+                    return be.sessionOpts.equip[opts.location].refine;
+                }
+                return 0;
             default:
                 return 0;
         }
@@ -136,6 +141,10 @@ export const INLINE_FUNCTIONS: Record<string, InlineFunction> = {
              * to fulfill this expecation
             */
             equip = 'EQI_HAND_R';
+        }
+        else if (equip === 'EQI_COMPOUND_ON' && opts.location) {
+            /* location of the calling equip */
+            return be.sessionOpts.equip[opts.location].item;
         }
         const loc = getItemLocationFromIndex(equip);
         if (loc) {

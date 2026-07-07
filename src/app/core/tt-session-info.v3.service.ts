@@ -1013,25 +1013,26 @@ export class TTSessionInfoV3Service {
 
         /* equip bonus & card bonus */
         for (let equipSlotKey in equip) {
-            const equipSlot = equip[equipSlotKey as ItemLocations];
+            const equipSlotKeyTyped = equipSlotKey as ItemLocations;
+            const equipSlot = equip[equipSlotKeyTyped];
             /* item bonus */
             let item = this.#core.itemDB.get(equipSlot.item);
             if (item && item.itemScript) {
-                this.#bonusSession.applyBonus('item', item.ID, item.itemScript, { refine: equipSlot.refine });
+                this.#bonusSession.applyBonus('item', item.ID, item.itemScript, { refine: equipSlot.refine, location: equipSlotKeyTyped });
             }
             /* card bonus */
             for (const cardId of equipSlot.cards) {
                 const card = this.#core.itemDB.get(cardId);
                 if (card && card.itemScript) {
                     // use refine of located equip
-                    this.#bonusSession.applyBonus('item', card.ID, card.itemScript, { refine: equipSlot.refine });
+                    this.#bonusSession.applyBonus('item', card.ID, card.itemScript, { refine: equipSlot.refine, location: equipSlotKeyTyped });
                 }
             }
             /* enchants */
             for (const enchantId of equipSlot.enchants) {
                 const enchant = this.#core.itemDB.get(enchantId);
                 if (enchant && enchant.itemScript) {
-                    this.#bonusSession.applyBonus('item', enchant.ID, enchant.itemScript);
+                    this.#bonusSession.applyBonus('item', enchant.ID, enchant.itemScript, { location: equipSlotKeyTyped });
                 }
             }
         }

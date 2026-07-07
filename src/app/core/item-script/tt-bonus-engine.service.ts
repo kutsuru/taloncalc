@@ -3,7 +3,7 @@ import { inject, Injectable } from "@angular/core";
 import { getItemTypeValue, getJobValue, getWeaponTypeValue } from "../rAthena/ra-utils";
 import { createEmptySessionBonus, defaultBaseStats, defaultEquipState, SESSION_INFO_DEFAULT } from "../session-info-default";
 import { TTCoreServiceV3 } from "../tt-core.v3.service";
-import { BaseStatsAs, DBElement, DBJob, DBMobClass, DBMobRace, DBWeaponTypeKey, DBWeaponTypeLeft, EquipState, SESSION_BONUS_FLAGS, SessionBonus, SessionBonusFlag, SkillBuff } from "../tt-models.v3";
+import { BaseStatsAs, DBElement, DBJob, DBMobClass, DBMobRace, DBWeaponTypeKey, DBWeaponTypeLeft, EquipState, ItemLocations, SESSION_BONUS_FLAGS, SessionBonus, SessionBonusFlag, SkillBuff } from "../tt-models.v3";
 import { DefaultMap, parseDBElement, parseDBMobClass, parseDBMobRace, parseDBMobRace2, parseDBMobSize } from "../utils";
 import { INLINE_FUNCTIONS, InlineFunction } from "./inline.functions";
 import { SC_FUNCTIONS, SCFunction } from "./sc.functions";
@@ -19,8 +19,9 @@ export type BonusSubstitution = {
 }
 type CustomBonusSubstitution = keyof BonusSubstitution;
 export type LocalOptions = {
-    refine?: number,       /* refine of current running equip or location of the card */
-    customSubs?: BonusSubstitution
+    refine?: number,                /* refine of current running equip or location of the card */
+    customSubs?: BonusSubstitution,
+    location?: ItemLocations,       /* location of the current running equip */
 }
 type ScriptValue = number | string | boolean;
 type SessionOptions = {
@@ -786,7 +787,7 @@ export class TTBonusEngineService {
                 throw new Error('Unknown callfunc ' + fnName);
         }
     }
-    
+
     private _computeBonusScript(args: string[]) {
         let [script, ...rest] = args;
         script = this.#extractNestedScript(script);
